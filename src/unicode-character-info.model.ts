@@ -1,4 +1,4 @@
 export interface UnicodeCharacterInfoModel {
-	code: string,
+	char: string,
 	description: string,
 }

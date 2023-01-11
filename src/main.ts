@@ -3,7 +3,7 @@ import {SampleSettingTab} from "./sample-setting.tab";
 import {UnicodeSearchPluginSettings} from "./unicode-search-plugin.settings";
 import {DEFAULT_SETTINGS} from "./config";
 import {UniModal} from "./uni.modal";
-import {UnicodeCharacterService} from "./unicode-character.service";
+import {UnicodeCharacterMockService} from "./unicode-character.service";
 
 export default class UnicodeSearchPlugin extends Plugin {
 	public settings: UnicodeSearchPluginSettings;
@@ -33,7 +33,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 			name: "Search Unicode characters",
 
 			editorCallback: editor => {
-				const modal = new UniModal(this.app, editor, new UnicodeCharacterService());
+				const modal = new UniModal(this.app, editor, new UnicodeCharacterMockService());
 				modal.open();
 				return true;
 			},
