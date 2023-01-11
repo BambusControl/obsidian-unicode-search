@@ -1,10 +1,9 @@
-import {App, MarkdownView, Notice, Plugin, PluginManifest} from "obsidian";
-import {SampleModal} from "./sample.modal";
+import {App, Notice, Plugin, PluginManifest} from "obsidian";
 import {SampleSettingTab} from "./sample-setting.tab";
 import {UnicodeSearchPluginSettings} from "./unicode-search-plugin.settings";
 import {DEFAULT_SETTINGS} from "./config";
-
-// Remember to rename these classes and interfaces!
+import {UniModal} from "./uni.modal";
+import {UnicodeCharacterService} from "./unicode-character.service";
 
 export default class UnicodeSearchPlugin extends Plugin {
 	public settings: UnicodeSearchPluginSettings;
@@ -29,42 +28,13 @@ export default class UnicodeSearchPlugin extends Plugin {
 		const statusBarItemEl: HTMLElement = this.addStatusBarItem();
 		statusBarItemEl.setText("Status Bar Text");
 
-		// This adds a simple command that can be triggered anywhere
 		this.addCommand({
-			id: "open-sample-modal-simple",
-			name: "Open sample modal (simple)",
-			callback: (): void => {
-				new SampleModal(this.app).open();
-			},
-		});
-		// This adds an editor command that can perform some operation on the current editor instance
-		this.addCommand({
-			id: "sample-editor-command",
-			name: "Sample editor command",
+			id: "search-unicode-chars",
+			name: "Search Unicode characters",
+
 			editorCallback: editor => {
-				console.log(editor.getSelection());
-				editor.replaceSelection("Sample Editor Command");
-			},
-		});
-		// This adds a complex command that can check whether the current state of the app allows execution of the command
-		this.addCommand({
-			id: "open-sample-modal-complex",
-			name: "Open sample modal (complex)",
-			checkCallback: checking => {
-				// Conditions to check
-				const markdownView: MarkdownView | null = this.app.workspace.getActiveViewOfType(MarkdownView);
-
-				if (!markdownView) {
-					return false;
-				}
-
-				// If checking is true, we're simply "checking" if the command can be run.
-				// If checking is false, then we want to actually perform the operation.
-				if (!checking) {
-					new SampleModal(this.app).open();
-				}
-
-				// This command will only show up in Command Palette when the check function returns true
+				const modal = new UniModal(this.app, editor, new UnicodeCharacterService());
+				modal.open();
 				return true;
 			},
 		});
