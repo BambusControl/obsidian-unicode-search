@@ -1,8 +1,8 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {SampleSettingTab} from "./components/sample-setting.tab";
+import {UnicodeSearchSettingsTab} from "./components/unicode-search-settings.tab";
 import {UnicodeSearchPluginSettings} from "./data/model/unicode-search-plugin.settings";
 import {DEFAULT_SETTINGS} from "./configuration/config";
-import {FuzzySearchModal} from "./components/search.modal";
+import {FuzzySearchModal} from "./components/fuzzy-search.modal";
 import {UnicodeCharacterStorage} from "./service/unicode-character.storage";
 import {ConstantUnicodeCharacterStorage} from "./service/constant-unicode-character.storage";
 
@@ -38,7 +38,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 		});
 
 		// TODO: settings
-		this.addSettingTab(new SampleSettingTab(this.app, this));
+		this.addSettingTab(new UnicodeSearchSettingsTab(this.app, this));
 	}
 
 	public override onunload(): void {

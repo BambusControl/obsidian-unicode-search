@@ -2,4 +2,6 @@ import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.mo
 
 export interface UnicodeCharacterStorage {
 	getAll(): UnicodeCharacterInfoModel[];
+
+	getRandom(): UnicodeCharacterInfoModel;
 }
