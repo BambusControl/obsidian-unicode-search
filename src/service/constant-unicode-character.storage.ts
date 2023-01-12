@@ -1,13 +1,13 @@
 import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
-import {unicodeData} from "../configuration/unicode.data";
+import {UNICODE_DATA} from "../configuration/unicode.data";
 import {UnicodeCharacterStorage} from "./unicode-character.storage";
 
-export class UnicodeCharacterBakedService implements UnicodeCharacterStorage {
+export class ConstantUnicodeCharacterStorage implements UnicodeCharacterStorage {
 
 	private readonly data: UnicodeCharacterInfoModel[];
 
 	public constructor() {
-		this.data = unicodeData;
+		this.data = UNICODE_DATA;
 	}
 
 	public getAll(): UnicodeCharacterInfoModel[] {
