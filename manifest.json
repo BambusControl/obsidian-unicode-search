@@ -3,9 +3,7 @@
 	"name": "Unicode Search",
 	"version": "0.1.0",
 	"minAppVersion": "0.15.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Easily search the Unicode Character Database index and insert any character into your editor.",
+	"author": "BambusControl",
 	"isDesktopOnly": false
 }
