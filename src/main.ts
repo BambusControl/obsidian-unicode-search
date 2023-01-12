@@ -4,9 +4,13 @@ import {UnicodeSearchPluginSettings} from "./data/model/unicode-search-plugin.se
 import {DEFAULT_SETTINGS} from "./configuration/config";
 import {UniModal} from "./components/uni.modal";
 import {UnicodeCharacterMockService} from "./service/unicode-character-mock.service";
+import {UnicodeCharacterService} from "./service/unicode-character.service";
+import {UnicodeCharacterBakedService} from "./service/unicode-character-baked.service";
 
 export default class UnicodeSearchPlugin extends Plugin {
 	public settings: UnicodeSearchPluginSettings;
+
+	private service?: UnicodeCharacterService;
 
 	public constructor(app: App, manifest: PluginManifest, settings: UnicodeSearchPluginSettings) {
 		super(app, manifest);
@@ -15,6 +19,8 @@ export default class UnicodeSearchPlugin extends Plugin {
 
 	public override async onload(): Promise<void> {
 		await this.loadSettings();
+
+		this.service = new UnicodeCharacterBakedService();
 
 		// This creates an icon in the left ribbon.
 		const ribbonIconEl: HTMLElement = this.addRibbonIcon("dice", "Sample Plugin", () => {
@@ -33,7 +39,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 			name: "Search Unicode characters",
 
 			editorCallback: editor => {
-				const modal = new UniModal(this.app, editor, new UnicodeCharacterMockService());
+				const modal = new UniModal(this.app, editor, this.service!);
 				modal.open();
 				return true;
 			},
@@ -53,7 +59,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 	}
 
 	public override onunload(): void {
-		// Intentionally left blank
+		delete this.service;
 	}
 
 	public async loadSettings(): Promise<void> {

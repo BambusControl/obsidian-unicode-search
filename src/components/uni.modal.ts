@@ -25,7 +25,7 @@ export class UniModal extends SuggestModal<UnicodeCharacterInfoModel> {
 	}
 
 	public renderSuggestion(value: UnicodeCharacterInfoModel, el: HTMLElement): any {
-		el.textContent = `${value.char} : ${value.description}`;
+		el.textContent = `${value.char} : ${value.name}`;
 	}
 
 }

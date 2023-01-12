@@ -10,26 +10,28 @@ export class UnicodeCharacterMockService implements UnicodeCharacterService {
 		this.db = [
 			{
 				char: convertToUnicode("2190"),
-				description: "Leftwards Arrow",
+				name: "Leftwards Arrow",
 			},
 			{
 				char: convertToUnicode("2191"),
-				description: "Upwards Arrow",
+				name: "Upwards Arrow",
 			},
 			{
 				char: convertToUnicode("2192"),
-				description: "Rightwards Arrow",
+				name: "Rightwards Arrow",
 			},
 			{
 				char: convertToUnicode("2193"),
-				description: "Downwards Arrow",
+				name: "Downwards Arrow",
 			},
 		];
 	}
 
 	public search(query: string): Promise<UnicodeCharacterInfoModel[]> {
+		const lowerQuery = query.toLowerCase()
+
 		return Promise.resolve(
-			this.db.filter(ch => ch.description.contains(query)),
+			this.db.filter(ch => ch.name.contains(lowerQuery)),
 		);
 	}
 }

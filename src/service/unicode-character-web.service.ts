@@ -52,7 +52,7 @@ export class UnicodeCharacterWebService implements UnicodeCharacterService {
 			.filter(([code, description]) => code != null && description != null)
 			.map(([code, description]) => ({
 				char: convertToUnicode(code!),
-				description: description!,
+				name: description!,
 			} as UnicodeCharacterInfoModel));
 	}
 
