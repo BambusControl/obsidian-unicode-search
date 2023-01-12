@@ -1,45 +1,10 @@
 import axios, {AxiosInstance, AxiosResponse, HttpStatusCode} from "axios";
-import {SearchResponseDto} from "./search-response.dto";
-import {UnicodeCharacterInfoModel} from "./unicode-character-info.model";
-import {convertToUnicode} from "./utils";
+import {SearchResponseDto} from "../data/dto/response/search-response.dto";
+import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
+import {convertToUnicode} from "../utils/utils";
+import {UnicodeCharacterService} from "./unicode-character.service";
 
-export interface UnicodeCharacterS {
-	search(query: string): Promise<UnicodeCharacterInfoModel[]>;
-}
-
-export class UnicodeCharacterMockService implements UnicodeCharacterS {
-
-	private readonly db: UnicodeCharacterInfoModel[];
-
-	public constructor() {
-		this.db = [
-			{
-				char: convertToUnicode("2190"),
-				description: "Leftwards Arrow",
-			},
-			{
-				char: convertToUnicode("2191"),
-				description: "Upwards Arrow",
-			},
-			{
-				char: convertToUnicode("2192"),
-				description: "Rightwards Arrow",
-			},
-			{
-				char: convertToUnicode("2193"),
-				description: "Downwards Arrow",
-			},
-		];
-	}
-
-	public search(query: string): Promise<UnicodeCharacterInfoModel[]> {
-		return Promise.resolve(
-			this.db.filter(ch => ch.description.contains(query)),
-		);
-	}
-}
-
-export class UnicodeCharacterService implements UnicodeCharacterS {
+export class UnicodeCharacterWebService implements UnicodeCharacterService {
 	private readonly http: AxiosInstance;
 
 	public constructor() {

@@ -1,9 +1,9 @@
 import {App, Notice, Plugin, PluginManifest} from "obsidian";
-import {SampleSettingTab} from "./sample-setting.tab";
-import {UnicodeSearchPluginSettings} from "./unicode-search-plugin.settings";
-import {DEFAULT_SETTINGS} from "./config";
-import {UniModal} from "./uni.modal";
-import {UnicodeCharacterMockService} from "./unicode-character.service";
+import {SampleSettingTab} from "./components/sample-setting.tab";
+import {UnicodeSearchPluginSettings} from "./data/model/unicode-search-plugin.settings";
+import {DEFAULT_SETTINGS} from "./configuration/config";
+import {UniModal} from "./components/uni.modal";
+import {UnicodeCharacterMockService} from "./service/unicode-character-mock.service";
 
 export default class UnicodeSearchPlugin extends Plugin {
 	public settings: UnicodeSearchPluginSettings;

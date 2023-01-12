@@ -1,5 +1,5 @@
 import {App, PluginSettingTab, Setting} from "obsidian";
-import UnicodeSearchPlugin from "./main";
+import UnicodeSearchPlugin from "../main";
 
 export class SampleSettingTab extends PluginSettingTab {
 	plugin: UnicodeSearchPlugin;

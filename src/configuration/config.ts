@@ -1,4 +1,4 @@
-import {UnicodeSearchPluginSettings} from "./unicode-search-plugin.settings";
+import {UnicodeSearchPluginSettings} from "../data/model/unicode-search-plugin.settings";
 
 export const DEFAULT_SETTINGS: UnicodeSearchPluginSettings = {
 	mySetting: "default",

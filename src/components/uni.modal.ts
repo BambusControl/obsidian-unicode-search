@@ -1,13 +1,13 @@
 import {App, Editor, SuggestModal} from "obsidian";
-import {UnicodeCharacterInfoModel} from "./unicode-character-info.model";
-import {UnicodeCharacterS} from "./unicode-character.service";
+import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
+import {UnicodeCharacterService} from "../service/unicode-character.service";
 
 export class UniModal extends SuggestModal<UnicodeCharacterInfoModel> {
 
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
-		private readonly service: UnicodeCharacterS,
+		private readonly service: UnicodeCharacterService,
 	) {
 		super(app);
 	}
@@ -21,7 +21,7 @@ export class UniModal extends SuggestModal<UnicodeCharacterInfoModel> {
 	}
 
 	public onChooseSuggestion(item: UnicodeCharacterInfoModel, evt: MouseEvent | KeyboardEvent): any {
-		this.editor.replaceSelection(item.char)
+		this.editor.replaceSelection(item.char);
 	}
 
 	public renderSuggestion(value: UnicodeCharacterInfoModel, el: HTMLElement): any {
