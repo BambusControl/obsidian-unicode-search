@@ -3,11 +3,11 @@ import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.mo
 export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "a with acute, latin capital letter",
-		char: "\u{00C1}",
+		char: "\u{00c1}",
 	},
 	{
 		name: "a with acute, latin small letter",
-		char: "\u{00E1}",
+		char: "\u{00e1}",
 	},
 	{
 		name: "a with breve, latin small letter",
@@ -15,23 +15,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "a with caron, latin small letter",
-		char: "\u{01CE}",
+		char: "\u{01ce}",
 	},
 	{
 		name: "a with circumflex, latin capital letter",
-		char: "\u{00C2}",
+		char: "\u{00c2}",
 	},
 	{
 		name: "a with circumflex, latin small letter",
-		char: "\u{00E2}",
+		char: "\u{00e2}",
 	},
 	{
 		name: "a with diaeresis, latin capital letter",
-		char: "\u{00C4}",
+		char: "\u{00c4}",
 	},
 	{
 		name: "a with diaeresis, latin small letter",
-		char: "\u{00E4}",
+		char: "\u{00e4}",
 	},
 	{
 		name: "a with dot above, latin small letter",
@@ -39,7 +39,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "a with dot below, latin small letter",
-		char: "\u{1EA1}",
+		char: "\u{1ea1}",
 	},
 	{
 		name: "a with double grave, latin small letter",
@@ -47,15 +47,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "a with grave, latin capital letter",
-		char: "\u{00C0}",
+		char: "\u{00c0}",
 	},
 	{
 		name: "a with grave, latin small letter",
-		char: "\u{00E0}",
+		char: "\u{00e0}",
 	},
 	{
 		name: "a with hook above, latin small letter",
-		char: "\u{1EA3}",
+		char: "\u{1ea3}",
 	},
 	{
 		name: "a with inverted breve, latin small letter",
@@ -71,39 +71,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "a with right half ring, latin small letter",
-		char: "\u{1E9A}",
+		char: "\u{1e9a}",
 	},
 	{
 		name: "a with ring above, latin capital letter",
-		char: "\u{00C5}",
+		char: "\u{00c5}",
 	},
 	{
 		name: "a with ring above, latin small letter",
-		char: "\u{00E5}",
+		char: "\u{00e5}",
 	},
 	{
 		name: "a with ring below, latin small letter",
-		char: "\u{1E01}",
+		char: "\u{1e01}",
 	},
 	{
 		name: "a with stroke, latin capital letter",
-		char: "\u{023A}",
+		char: "\u{023a}",
 	},
 	{
 		name: "a with tilde, latin capital letter",
-		char: "\u{00C3}",
+		char: "\u{00c3}",
 	},
 	{
 		name: "a with tilde, latin small letter",
-		char: "\u{00E3}",
-	},
-	{
-		name: "a, combining latin small letter",
-		char: "\u{0363}",
+		char: "\u{00e3}",
 	},
 	{
 		name: "a, latin letter small capital",
-		char: "\u{1D00}",
+		char: "\u{1d00}",
 	},
 	{
 		name: "a, latin small letter script",
@@ -115,11 +111,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "abbreviation mark, armenian",
-		char: "\u{055F}",
+		char: "\u{055f}",
 	},
 	{
 		name: "abbreviation mark, syriac",
-		char: "\u{070F}",
+		char: "\u{070f}",
 	},
 	{
 		name: "abbreviation sign, devanagari",
@@ -131,147 +127,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "aboriginal syllabics extended, unified canadian",
-		char: "\u{18B0}",
+		char: "\u{18b0}",
 	},
 	{
 		name: "aboriginal syllabics, unified canadian",
 		char: "\u{1400}",
 	},
 	{
-		name: "above right, combining comma",
-		char: "\u{0315}",
-	},
-	{
-		name: "above right, combining dot",
-		char: "\u{0358}",
-	},
-	{
 		name: "above, cedilla",
 		char: "\u{0312}",
 	},
 	{
-		name: "above, combining almost equal to",
-		char: "\u{034C}",
-	},
-	{
-		name: "above, combining anticlockwise arrow",
-		char: "\u{20D4}",
-	},
-	{
-		name: "above, combining asterisk",
-		char: "\u{20F0}",
-	},
-	{
-		name: "above, combining bridge",
-		char: "\u{0346}",
-	},
-	{
-		name: "above, combining clockwise arrow",
-		char: "\u{20D5}",
-	},
-	{
-		name: "above, combining comma",
-		char: "\u{0313}",
-	},
-	{
-		name: "above, combining counterclockwise arrow",
-		char: "\u{20D4}",
-	},
-	{
-		name: "above, combining dot",
-		char: "\u{0307}",
-	},
-	{
-		name: "above, combining double vertical line",
-		char: "\u{030E}",
-	},
-	{
-		name: "above, combining four dots",
-		char: "\u{20DC}",
-	},
-	{
-		name: "above, combining homothetic",
-		char: "\u{034B}",
-	},
-	{
-		name: "above, combining hook",
-		char: "\u{0309}",
-	},
-	{
-		name: "above, combining left angle",
-		char: "\u{031A}",
-	},
-	{
-		name: "above, combining left arrow",
-		char: "\u{20D6}",
-	},
-	{
-		name: "above, combining left half ring",
-		char: "\u{0351}",
-	},
-	{
-		name: "above, combining left harpoon",
-		char: "\u{20D0}",
-	},
-	{
-		name: "above, combining left right arrow",
-		char: "\u{20E1}",
-	},
-	{
-		name: "above, combining not tilde",
-		char: "\u{034A}",
-	},
-	{
-		name: "above, combining reversed comma",
-		char: "\u{0314}",
-	},
-	{
-		name: "above, combining right arrow",
-		char: "\u{20D7}",
-	},
-	{
-		name: "above, combining right arrowhead",
-		char: "\u{0350}",
-	},
-	{
-		name: "above, combining right half ring",
-		char: "\u{0357}",
-	},
-	{
-		name: "above, combining right harpoon",
-		char: "\u{20D1}",
-	},
-	{
-		name: "above, combining ring",
-		char: "\u{030A}",
-	},
-	{
-		name: "above, combining three dots",
-		char: "\u{20DB}",
-	},
-	{
-		name: "above, combining turned comma",
-		char: "\u{0312}",
-	},
-	{
-		name: "above, combining vertical line",
-		char: "\u{030D}",
-	},
-	{
-		name: "above, combining wide bridge",
-		char: "\u{20E9}",
-	},
-	{
-		name: "above, combining x",
-		char: "\u{033D}",
-	},
-	{
-		name: "above, combining zigzag",
-		char: "\u{035B}",
-	},
-	{
 		name: "above, dot",
-		char: "\u{02D9}",
+		char: "\u{02d9}",
 	},
 	{
 		name: "above, double dot",
@@ -279,75 +147,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "above, ring",
-		char: "\u{02DA}",
+		char: "\u{02da}",
 	},
 	{
 		name: "above, v",
-		char: "\u{030C}",
+		char: "\u{030c}",
 	},
 	{
 		name: "absolute continuity",
-		char: "\u{2AA1}",
+		char: "\u{2aa1}",
 	},
 	{
 		name: "absolute value",
-		char: "\u{007C}",
+		char: "\u{007c}",
 	},
 	{
 		name: "abstract syntax bracket, left",
-		char: "\u{301A}",
+		char: "\u{301a}",
 	},
 	{
 		name: "abstract syntax bracket, right",
-		char: "\u{301B}",
+		char: "\u{301b}",
 	},
 	{
 		name: "ac current",
-		char: "\u{23E6}",
-	},
-	{
-		name: "accent below, combining acute",
-		char: "\u{0317}",
-	},
-	{
-		name: "accent below, combining circumflex",
-		char: "\u{032D}",
-	},
-	{
-		name: "accent below, combining grave",
-		char: "\u{0316}",
+		char: "\u{23e6}",
 	},
 	{
 		name: "accent, acute",
-		char: "\u{00B4}",
+		char: "\u{00b4}",
 	},
 	{
 		name: "accent, circumflex",
-		char: "\u{005E}",
-	},
-	{
-		name: "accent, combining acute",
-		char: "\u{0301}",
-	},
-	{
-		name: "accent, combining circumflex",
-		char: "\u{0302}",
-	},
-	{
-		name: "accent, combining double acute",
-		char: "\u{030B}",
-	},
-	{
-		name: "accent, combining double grave",
-		char: "\u{030F}",
-	},
-	{
-		name: "accent, combining grave",
-		char: "\u{0300}",
+		char: "\u{005e}",
 	},
 	{
 		name: "accent, double acute",
-		char: "\u{02DD}",
+		char: "\u{02dd}",
 	},
 	{
 		name: "accent, grave",
@@ -355,35 +191,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "accent, modifier letter acute",
-		char: "\u{02CA}",
+		char: "\u{02ca}",
 	},
 	{
 		name: "accent, modifier letter circumflex",
-		char: "\u{02C6}",
+		char: "\u{02c6}",
 	},
 	{
 		name: "accent, modifier letter cross",
-		char: "\u{02DF}",
+		char: "\u{02df}",
 	},
 	{
 		name: "accent, modifier letter grave",
-		char: "\u{02CB}",
+		char: "\u{02cb}",
 	},
 	{
 		name: "accent, modifier letter low acute",
-		char: "\u{02CF}",
+		char: "\u{02cf}",
 	},
 	{
 		name: "accent, modifier letter low grave",
-		char: "\u{02CE}",
+		char: "\u{02ce}",
 	},
 	{
 		name: "accent, spacing acute",
-		char: "\u{00B4}",
+		char: "\u{00b4}",
 	},
 	{
 		name: "accent, spacing circumflex",
-		char: "\u{005E}",
+		char: "\u{005e}",
 	},
 	{
 		name: "accent, spacing grave",
@@ -391,15 +227,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "accent, swedish grave",
-		char: "\u{02DF}",
+		char: "\u{02df}",
 	},
 	{
 		name: "accessibility symbols",
-		char: "\u{1F9AE}",
+		char: "\u{1f9ae}",
 	},
 	{
 		name: "accident",
-		char: "\u{26CC}",
+		char: "\u{26cc}",
 	},
 	{
 		name: "account of",
@@ -407,11 +243,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "account, guest",
-		char: "\u{1F464}",
+		char: "\u{1f464}",
 	},
 	{
 		name: "accounts",
-		char: "\u{1F465}",
+		char: "\u{1f465}",
 	},
 	{
 		name: "acknowledge",
@@ -431,51 +267,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "acrophonic symbol three, epidaurean",
-		char: "\u{205D}",
+		char: "\u{205d}",
 	},
 	{
 		name: "actuarial bend",
-		char: "\u{20E7}",
+		char: "\u{20e7}",
 	},
 	{
 		name: "acute accent",
-		char: "\u{00B4}",
-	},
-	{
-		name: "acute accent below, combining",
-		char: "\u{0317}",
-	},
-	{
-		name: "acute accent, combining",
-		char: "\u{0301}",
-	},
-	{
-		name: "acute accent, combining double",
-		char: "\u{030B}",
+		char: "\u{00b4}",
 	},
 	{
 		name: "acute accent, double",
-		char: "\u{02DD}",
+		char: "\u{02dd}",
 	},
 	{
 		name: "acute accent, modifier letter",
-		char: "\u{02CA}",
+		char: "\u{02ca}",
 	},
 	{
 		name: "acute accent, modifier letter low",
-		char: "\u{02CF}",
+		char: "\u{02cf}",
 	},
 	{
 		name: "acute accent, spacing",
-		char: "\u{00B4}",
-	},
-	{
-		name: "acute tone mark, combining",
-		char: "\u{0341}",
+		char: "\u{00b4}",
 	},
 	{
 		name: "addak, gurmukhi",
-		char: "\u{0A71}",
+		char: "\u{0a71}",
 	},
 	{
 		name: "addressed to the subject",
@@ -483,35 +303,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "adi shakti",
-		char: "\u{262C}",
+		char: "\u{262c}",
 	},
 	{
 		name: "adlam",
-		char: "\u{1E900}",
+		char: "\u{1e900}",
 	},
 	{
 		name: "ae, latin capital letter",
-		char: "\u{00C6}",
+		char: "\u{00c6}",
 	},
 	{
 		name: "ae, latin capital ligature",
-		char: "\u{00C6}",
+		char: "\u{00c6}",
 	},
 	{
 		name: "ae, latin letter small capital",
-		char: "\u{1D01}",
+		char: "\u{1d01}",
 	},
 	{
 		name: "ae, latin small letter",
-		char: "\u{00E6}",
+		char: "\u{00e6}",
 	},
 	{
 		name: "ae, latin small letter turned",
-		char: "\u{1D02}",
+		char: "\u{1d02}",
 	},
 	{
 		name: "ae, latin small ligature",
-		char: "\u{00E6}",
+		char: "\u{00e6}",
 	},
 	{
 		name: "aegean word separator dot",
@@ -527,11 +347,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "afghani sign",
-		char: "\u{060B}",
+		char: "\u{060b}",
 	},
 	{
 		name: "african letters for clicks",
-		char: "\u{01C0}",
+		char: "\u{01c0}",
 	},
 	{
 		name: "ahom",
@@ -539,11 +359,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ain, latin letter",
-		char: "\u{1D25}",
+		char: "\u{1d25}",
 	},
 	{
 		name: "ainu, katakana extensions for",
-		char: "\u{31F0}",
+		char: "\u{31f0}",
 	},
 	{
 		name: "airplane",
@@ -551,15 +371,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "aktieselskab",
-		char: "\u{214D}",
+		char: "\u{214d}",
 	},
 	{
 		name: "al-lakuna, sinhala sign",
-		char: "\u{0DCA}",
+		char: "\u{0dca}",
 	},
 	{
 		name: "alarm clock",
-		char: "\u{23F0}",
+		char: "\u{23f0}",
 	},
 	{
 		name: "albanian, caucasian",
@@ -567,7 +387,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "alchemical symbols",
-		char: "\u{1F700}",
+		char: "\u{1f700}",
 	},
 	{
 		name: "aldus leaf",
@@ -583,19 +403,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "alien monster",
-		char: "\u{1F47E}",
+		char: "\u{1f47e}",
 	},
 	{
 		name: "alien, extraterrestrial",
-		char: "\u{1F47D}",
+		char: "\u{1f47d}",
 	},
 	{
 		name: "all around-profile",
-		char: "\u{232E}",
+		char: "\u{232e}",
 	},
 	{
 		name: "all equal to",
-		char: "\u{224C}",
+		char: "\u{224c}",
 	},
 	{
 		name: "all, for",
@@ -604,10 +424,6 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "almost equal to",
 		char: "\u{2248}",
-	},
-	{
-		name: "almost equal to above, combining",
-		char: "\u{034C}",
 	},
 	{
 		name: "almost equal to, not",
@@ -623,15 +439,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "alphabetic presentation forms",
-		char: "\u{FB00}",
+		char: "\u{fb00}",
 	},
 	{
 		name: "alphanumeric supplement, enclosed",
-		char: "\u{1F100}",
+		char: "\u{1f100}",
 	},
 	{
 		name: "alphanumeric symbols, mathematical",
-		char: "\u{1D400}",
+		char: "\u{1d400}",
 	},
 	{
 		name: "alphanumerics, enclosed",
@@ -639,7 +455,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "alternating current",
-		char: "\u{223F}",
+		char: "\u{223f}",
 	},
 	{
 		name: "alternative key symbol",
@@ -647,11 +463,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "alveolar click, latin letter",
-		char: "\u{01C2}",
+		char: "\u{01c2}",
 	},
 	{
 		name: "always",
-		char: "\u{25FB}",
+		char: "\u{25fb}",
 	},
 	{
 		name: "ampersand",
@@ -659,11 +475,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ampersand and ligature-et ornaments",
-		char: "\u{1F670}",
+		char: "\u{1f670}",
 	},
 	{
 		name: "ampersand, turned",
-		char: "\u{214B}",
+		char: "\u{214b}",
 	},
 	{
 		name: "anatolian hieroglyphs",
@@ -675,15 +491,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "anchor, interlinear annotation",
-		char: "\u{FFF9}",
+		char: "\u{fff9}",
 	},
 	{
 		name: "ancient greek textual symbols",
-		char: "\u{2E0E}",
+		char: "\u{2e0e}",
 	},
 	{
 		name: "and, curly logical",
-		char: "\u{22CF}",
+		char: "\u{22cf}",
 	},
 	{
 		name: "and, logical",
@@ -691,39 +507,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "and, n-ary logical",
-		char: "\u{22C0}",
+		char: "\u{22c0}",
 	},
 	{
 		name: "ands and ors, logical",
-		char: "\u{2A51}",
+		char: "\u{2a51}",
 	},
 	{
 		name: "angel, baby",
-		char: "\u{1F47C}",
+		char: "\u{1f47c}",
 	},
 	{
 		name: "anger symbol",
-		char: "\u{1F4A2}",
+		char: "\u{1f4a2}",
 	},
 	{
 		name: "angkhankhu, thai character",
-		char: "\u{0E5A}",
+		char: "\u{0e5a}",
 	},
 	{
 		name: "angle",
 		char: "\u{2220}",
 	},
 	{
-		name: "angle above, combining left",
-		char: "\u{031A}",
-	},
-	{
 		name: "angle arc",
 		char: "\u{2222}",
-	},
-	{
-		name: "angle below, combining left",
-		char: "\u{0349}",
 	},
 	{
 		name: "angle bracket, left",
@@ -731,7 +539,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "angle bracket, left double",
-		char: "\u{300A}",
+		char: "\u{300a}",
 	},
 	{
 		name: "angle bracket, left-pointing",
@@ -739,19 +547,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "angle bracket, mathematical left",
-		char: "\u{27E8}",
+		char: "\u{27e8}",
 	},
 	{
 		name: "angle bracket, mathematical left double",
-		char: "\u{27EA}",
+		char: "\u{27ea}",
 	},
 	{
 		name: "angle bracket, mathematical right",
-		char: "\u{27E9}",
+		char: "\u{27e9}",
 	},
 	{
 		name: "angle bracket, mathematical right double",
-		char: "\u{27EB}",
+		char: "\u{27eb}",
 	},
 	{
 		name: "angle bracket, right",
@@ -759,11 +567,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "angle bracket, right double",
-		char: "\u{300B}",
+		char: "\u{300b}",
 	},
 	{
 		name: "angle bracket, right-pointing",
-		char: "\u{232A}",
+		char: "\u{232a}",
 	},
 	{
 		name: "angle brackets, cjk",
@@ -771,11 +579,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "angle quotation mark, left-pointing double",
-		char: "\u{00AB}",
+		char: "\u{00ab}",
 	},
 	{
 		name: "angle quotation mark, right-pointing double",
-		char: "\u{00BB}",
+		char: "\u{00bb}",
 	},
 	{
 		name: "angle quotation mark, single left-pointing",
@@ -783,15 +591,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "angle quotation mark, single right-pointing",
-		char: "\u{203A}",
+		char: "\u{203a}",
 	},
 	{
 		name: "angle quotation marks, ornamental",
-		char: "\u{276E}",
+		char: "\u{276e}",
 	},
 	{
 		name: "angle with arc, right",
-		char: "\u{22BE}",
+		char: "\u{22be}",
 	},
 	{
 		name: "angle, measured",
@@ -799,7 +607,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "angle, right",
-		char: "\u{221F}",
+		char: "\u{221f}",
 	},
 	{
 		name: "angle, spherical",
@@ -807,31 +615,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "angled dash",
-		char: "\u{00AC}",
+		char: "\u{00ac}",
 	},
 	{
 		name: "angles",
-		char: "\u{221F}",
+		char: "\u{221f}",
 	},
 	{
 		name: "angles and measured angles",
-		char: "\u{299B}",
+		char: "\u{299b}",
 	},
 	{
 		name: "angstrom sign",
-		char: "\u{212B}",
+		char: "\u{212b}",
 	},
 	{
 		name: "animal faces",
-		char: "\u{1F42D}",
+		char: "\u{1f42d}",
 	},
 	{
 		name: "animal symbols",
-		char: "\u{1F400}",
+		char: "\u{1f400}",
 	},
 	{
 		name: "animal symbols",
-		char: "\u{1F980}",
+		char: "\u{1f980}",
 	},
 	{
 		name: "ankh",
@@ -839,47 +647,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "annotation anchor, interlinear",
-		char: "\u{FFF9}",
+		char: "\u{fff9}",
 	},
 	{
 		name: "annotation separator, interlinear",
-		char: "\u{FFFA}",
+		char: "\u{fffa}",
 	},
 	{
 		name: "annotation signs, arabic koranic",
-		char: "\u{06D6}",
+		char: "\u{06d6}",
 	},
 	{
 		name: "annotation signs, arabic qur'anic",
-		char: "\u{06D6}",
+		char: "\u{06d6}",
 	},
 	{
 		name: "annotation terminator, interlinear",
-		char: "\u{FFFB}",
+		char: "\u{fffb}",
 	},
 	{
 		name: "annotation, interlinear",
-		char: "\u{FFF9}",
+		char: "\u{fff9}",
 	},
 	{
 		name: "annotation, japanese kanbun ideographic",
 		char: "\u{3190}",
 	},
 	{
-		name: "annuity symbol, combining",
-		char: "\u{20E7}",
-	},
-	{
 		name: "ano teleia, greek",
-		char: "\u{00B7}",
+		char: "\u{00b7}",
 	},
 	{
 		name: "ant",
-		char: "\u{1F41C}",
-	},
-	{
-		name: "anticlockwise arrow above, combining",
-		char: "\u{20D4}",
+		char: "\u{1f41c}",
 	},
 	{
 		name: "anticlockwise contour integral",
@@ -887,11 +687,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "anticlockwise integration",
-		char: "\u{2A11}",
-	},
-	{
-		name: "anticlockwise ring overlay, combining",
-		char: "\u{20DA}",
+		char: "\u{2a11}",
 	},
 	{
 		name: "antisigma, claudian",
@@ -907,15 +703,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "anusvara, khmer",
-		char: "\u{17C6}",
+		char: "\u{17c6}",
 	},
 	{
 		name: "anusvara, tibetan",
-		char: "\u{0F7E}",
+		char: "\u{0f7e}",
 	},
 	{
 		name: "apl downstile",
-		char: "\u{230A}",
+		char: "\u{230a}",
 	},
 	{
 		name: "apl functional symbols",
@@ -927,7 +723,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "apl overbar",
-		char: "\u{00AF}",
+		char: "\u{00af}",
 	},
 	{
 		name: "apl quote",
@@ -939,7 +735,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "apl tilde",
-		char: "\u{223C}",
+		char: "\u{223c}",
 	},
 	{
 		name: "apl upstile",
@@ -955,19 +751,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "apostrophe, armenian",
-		char: "\u{055A}",
+		char: "\u{055a}",
 	},
 	{
 		name: "apostrophe, modifier letter",
-		char: "\u{02BC}",
+		char: "\u{02bc}",
 	},
 	{
 		name: "apostrophe, modifier letter double",
-		char: "\u{02EE}",
+		char: "\u{02ee}",
 	},
 	{
 		name: "apostrophe, neutral",
-		char: "\u{02BC}",
+		char: "\u{02bc}",
 	},
 	{
 		name: "apostrophe-quote",
@@ -979,7 +775,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "application program command",
-		char: "\u{009F}",
+		char: "\u{009f}",
 	},
 	{
 		name: "application, function",
@@ -1003,11 +799,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "arabian, old north",
-		char: "\u{10A80}",
+		char: "\u{10a80}",
 	},
 	{
 		name: "arabian, old south",
-		char: "\u{10A60}",
+		char: "\u{10a60}",
 	},
 	{
 		name: "arabic",
@@ -1018,32 +814,28 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0621}",
 	},
 	{
-		name: "arabic combining marks",
-		char: "\u{0653}",
-	},
-	{
 		name: "arabic comma",
-		char: "\u{060C}",
+		char: "\u{060c}",
 	},
 	{
 		name: "arabic contextual form glyphs",
-		char: "\u{FB50}",
+		char: "\u{fb50}",
 	},
 	{
 		name: "arabic contextual form glyphs",
-		char: "\u{FE80}",
+		char: "\u{fe80}",
 	},
 	{
 		name: "arabic date separator",
-		char: "\u{060D}",
+		char: "\u{060d}",
 	},
 	{
 		name: "arabic decimal separator",
-		char: "\u{066B}",
+		char: "\u{066b}",
 	},
 	{
 		name: "arabic extended-a",
-		char: "\u{08A0}",
+		char: "\u{08a0}",
 	},
 	{
 		name: "arabic extensions",
@@ -1051,11 +843,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "arabic full stop",
-		char: "\u{06D4}",
+		char: "\u{06d4}",
 	},
 	{
 		name: "arabic harakat",
-		char: "\u{064B}",
+		char: "\u{064b}",
 	},
 	{
 		name: "arabic honorifics",
@@ -1067,19 +859,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "arabic koranic annotation signs",
-		char: "\u{06D6}",
+		char: "\u{06d6}",
 	},
 	{
 		name: "arabic letter hamzah on ha",
-		char: "\u{06C0}",
+		char: "\u{06c0}",
 	},
 	{
 		name: "arabic letter heh with yeh above",
-		char: "\u{06C0}",
+		char: "\u{06c0}",
 	},
 	{
 		name: "arabic letter mark",
-		char: "\u{061C}",
+		char: "\u{061c}",
 	},
 	{
 		name: "arabic letters, extended",
@@ -1091,55 +883,55 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "arabic letters, extended",
-		char: "\u{10EC0}",
+		char: "\u{10ec0}",
 	},
 	{
 		name: "arabic ligature bismillah ar-rahman ar-raheem",
-		char: "\u{FDFD}",
+		char: "\u{fdfd}",
 	},
 	{
 		name: "arabic ligatures",
-		char: "\u{FBEA}",
+		char: "\u{fbea}",
 	},
 	{
 		name: "arabic mathematical alphabetic symbols",
-		char: "\u{1EE00}",
+		char: "\u{1ee00}",
 	},
 	{
 		name: "arabic phrase separator",
-		char: "\u{066C}",
+		char: "\u{066c}",
 	},
 	{
 		name: "arabic points, glyphs for spacing forms of",
-		char: "\u{FE70}",
+		char: "\u{fe70}",
 	},
 	{
 		name: "arabic presentation forms-a",
-		char: "\u{FB50}",
+		char: "\u{fb50}",
 	},
 	{
 		name: "arabic presentation forms-b",
-		char: "\u{FE70}",
+		char: "\u{fe70}",
 	},
 	{
 		name: "arabic punctuation",
-		char: "\u{060C}",
+		char: "\u{060c}",
 	},
 	{
 		name: "arabic question mark",
-		char: "\u{061F}",
+		char: "\u{061f}",
 	},
 	{
 		name: "arabic qur'anic annotation signs",
-		char: "\u{06D6}",
+		char: "\u{06d6}",
 	},
 	{
 		name: "arabic semicolon",
-		char: "\u{061B}",
+		char: "\u{061b}",
 	},
 	{
 		name: "arabic spacing diacritics",
-		char: "\u{FBB2}",
+		char: "\u{fbb2}",
 	},
 	{
 		name: "arabic subtending marks",
@@ -1155,7 +947,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "arabic thousands separator",
-		char: "\u{066C}",
+		char: "\u{066c}",
 	},
 	{
 		name: "arabic-indic digits",
@@ -1163,7 +955,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "arabic-indic digits, eastern",
-		char: "\u{06F0}",
+		char: "\u{06f0}",
 	},
 	{
 		name: "aramaic, imperial",
@@ -1179,19 +971,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "arc, right angle with",
-		char: "\u{22BE}",
-	},
-	{
-		name: "arch below, combining inverted double",
-		char: "\u{032B}",
+		char: "\u{22be}",
 	},
 	{
 		name: "arcs",
-		char: "\u{25DC}",
+		char: "\u{25dc}",
 	},
 	{
 		name: "area, asian scripts",
-		char: "\u{AC00}",
+		char: "\u{ac00}",
 	},
 	{
 		name: "area, cjk ideographs",
@@ -1199,11 +987,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "area, cjk phonetics and symbols",
-		char: "\u{2E80}",
+		char: "\u{2e80}",
 	},
 	{
 		name: "area, compatibility and specials",
-		char: "\u{F900}",
+		char: "\u{f900}",
 	},
 	{
 		name: "area, general scripts",
@@ -1211,11 +999,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "area, korean hangul syllables",
-		char: "\u{AC00}",
+		char: "\u{ac00}",
 	},
 	{
 		name: "area, private use",
-		char: "\u{E000}",
+		char: "\u{e000}",
 	},
 	{
 		name: "area, supplementary cjk ideographs",
@@ -1227,7 +1015,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "area, surrogates",
-		char: "\u{D800}",
+		char: "\u{d800}",
 	},
 	{
 		name: "area, symbols",
@@ -1235,7 +1023,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "area-a, supplementary private use",
-		char: "\u{F0000}",
+		char: "\u{f0000}",
 	},
 	{
 		name: "area-b, supplementary private use",
@@ -1243,7 +1031,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "argentinian former currency",
-		char: "\u{20B3}",
+		char: "\u{20b3}",
 	},
 	{
 		name: "aries",
@@ -1251,7 +1039,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "armenian abbreviation mark",
-		char: "\u{055F}",
+		char: "\u{055f}",
 	},
 	{
 		name: "armenian alphabet",
@@ -1259,15 +1047,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "armenian apostrophe",
-		char: "\u{055A}",
+		char: "\u{055a}",
 	},
 	{
 		name: "armenian batsaganchakan nshan",
-		char: "\u{055C}",
+		char: "\u{055c}",
 	},
 	{
 		name: "armenian bowt",
-		char: "\u{055D}",
+		char: "\u{055d}",
 	},
 	{
 		name: "armenian capital letters",
@@ -1275,15 +1063,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "armenian comma",
-		char: "\u{055D}",
+		char: "\u{055d}",
 	},
 	{
 		name: "armenian emphasis mark",
-		char: "\u{055B}",
+		char: "\u{055b}",
 	},
 	{
 		name: "armenian exclamation mark",
-		char: "\u{055C}",
+		char: "\u{055c}",
 	},
 	{
 		name: "armenian full stop",
@@ -1291,27 +1079,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "armenian hartsakan nshan",
-		char: "\u{055E}",
+		char: "\u{055e}",
 	},
 	{
 		name: "armenian hyphen",
-		char: "\u{058A}",
+		char: "\u{058a}",
 	},
 	{
 		name: "armenian ligatures",
-		char: "\u{FB13}",
+		char: "\u{fb13}",
 	},
 	{
 		name: "armenian patiw",
-		char: "\u{055F}",
+		char: "\u{055f}",
 	},
 	{
 		name: "armenian question mark",
-		char: "\u{055E}",
+		char: "\u{055e}",
 	},
 	{
 		name: "armenian shesht",
-		char: "\u{055B}",
+		char: "\u{055b}",
 	},
 	{
 		name: "armenian small letters",
@@ -1323,51 +1111,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "armenian yentamna",
-		char: "\u{058A}",
-	},
-	{
-		name: "arrow above, combining anticlockwise",
-		char: "\u{20D4}",
-	},
-	{
-		name: "arrow above, combining clockwise",
-		char: "\u{20D5}",
-	},
-	{
-		name: "arrow above, combining counterclockwise",
-		char: "\u{20D4}",
-	},
-	{
-		name: "arrow above, combining left",
-		char: "\u{20D6}",
-	},
-	{
-		name: "arrow above, combining left right",
-		char: "\u{20E1}",
-	},
-	{
-		name: "arrow above, combining right",
-		char: "\u{20D7}",
-	},
-	{
-		name: "arrow below, combining double rightwards",
-		char: "\u{0362}",
-	},
-	{
-		name: "arrow below, combining left",
-		char: "\u{20EE}",
-	},
-	{
-		name: "arrow below, combining left right",
-		char: "\u{034D}",
-	},
-	{
-		name: "arrow below, combining right",
-		char: "\u{20EF}",
-	},
-	{
-		name: "arrow below, combining upwards",
-		char: "\u{034E}",
+		char: "\u{058a}",
 	},
 	{
 		name: "arrow dingbats",
@@ -1375,15 +1119,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "arrow indicator, backward",
-		char: "\u{25C5}",
+		char: "\u{25c5}",
 	},
 	{
 		name: "arrow indicator, forward",
-		char: "\u{25BB}",
-	},
-	{
-		name: "arrow overlay, combining leftwards",
-		char: "\u{20EA}",
+		char: "\u{25bb}",
 	},
 	{
 		name: "arrow, downwards",
@@ -1406,18 +1146,6 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2191}",
 	},
 	{
-		name: "arrowhead above, combining right",
-		char: "\u{0350}",
-	},
-	{
-		name: "arrowhead below, combining left",
-		char: "\u{0354}",
-	},
-	{
-		name: "arrowhead below, combining right",
-		char: "\u{0355}",
-	},
-	{
 		name: "arrowhead, down",
 		char: "\u{2304}",
 	},
@@ -1427,7 +1155,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "arrowheads, modifier letter",
-		char: "\u{02C2}",
+		char: "\u{02c2}",
 	},
 	{
 		name: "arrows",
@@ -1439,31 +1167,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "arrows, double",
-		char: "\u{21CD}",
+		char: "\u{21cd}",
 	},
 	{
 		name: "arrows, long",
-		char: "\u{27F5}",
+		char: "\u{27f5}",
 	},
 	{
 		name: "arrows, mathematical",
-		char: "\u{2B30}",
+		char: "\u{2b30}",
 	},
 	{
 		name: "arrows, miscellaneous",
-		char: "\u{2B00}",
+		char: "\u{2b00}",
 	},
 	{
 		name: "arrows, user interface",
-		char: "\u{1F500}",
+		char: "\u{1f500}",
 	},
 	{
 		name: "arrows, words with",
-		char: "\u{1F519}",
+		char: "\u{1f519}",
 	},
 	{
 		name: "arrows-a supplement",
-		char: "\u{27F0}",
+		char: "\u{27f0}",
 	},
 	{
 		name: "arrows-b, supplemental",
@@ -1471,11 +1199,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "arrows-c, supplemental",
-		char: "\u{1F800}",
+		char: "\u{1f800}",
 	},
 	{
 		name: "ascending node",
-		char: "\u{260A}",
+		char: "\u{260a}",
 	},
 	{
 		name: "ascii c0 control codes",
@@ -1491,31 +1219,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ascii variants, fullwidth",
-		char: "\u{FF01}",
+		char: "\u{ff01}",
 	},
 	{
 		name: "ash",
-		char: "\u{00E6}",
+		char: "\u{00e6}",
 	},
 	{
 		name: "asian scripts area",
-		char: "\u{AC00}",
+		char: "\u{ac00}",
 	},
 	{
 		name: "assertion",
-		char: "\u{22A6}",
+		char: "\u{22a6}",
 	},
 	{
 		name: "asterisk",
-		char: "\u{002A}",
-	},
-	{
-		name: "asterisk above, combining",
-		char: "\u{20F0}",
-	},
-	{
-		name: "asterisk below, combining",
-		char: "\u{0359}",
+		char: "\u{002a}",
 	},
 	{
 		name: "asterisk dingbats",
@@ -1527,11 +1247,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "asterisk operator, circled",
-		char: "\u{229B}",
+		char: "\u{229b}",
 	},
 	{
 		name: "asterisk, low",
-		char: "\u{204E}",
+		char: "\u{204e}",
 	},
 	{
 		name: "asterisks",
@@ -1539,7 +1259,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "asterisks",
-		char: "\u{1F7AF}",
+		char: "\u{1f7af}",
 	},
 	{
 		name: "asterisks aligned vertically, two",
@@ -1551,19 +1271,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "astrological signs",
-		char: "\u{26B3}",
+		char: "\u{26b3}",
 	},
 	{
 		name: "astrological signs, tibetan",
-		char: "\u{0F15}",
+		char: "\u{0f15}",
 	},
 	{
 		name: "astrological symbols",
-		char: "\u{263D}",
+		char: "\u{263d}",
 	},
 	{
 		name: "astrological symbols",
-		char: "\u{2BD3}",
+		char: "\u{2bd3}",
 	},
 	{
 		name: "astrological symbols, weather and",
@@ -1591,35 +1311,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "atom symbol",
-		char: "\u{269B}",
+		char: "\u{269b}",
 	},
 	{
 		name: "audio and video symbols",
-		char: "\u{1F4F7}",
+		char: "\u{1f4f7}",
 	},
 	{
 		name: "austral sign",
-		char: "\u{20B3}",
+		char: "\u{20b3}",
 	},
 	{
 		name: "avagraha, devanagari sign",
-		char: "\u{093D}",
+		char: "\u{093d}",
 	},
 	{
 		name: "avestan",
-		char: "\u{10B00}",
+		char: "\u{10b00}",
 	},
 	{
 		name: "aytham, tamil",
-		char: "\u{0B83}",
+		char: "\u{0b83}",
 	},
 	{
 		name: "b with dot above, latin small letter",
-		char: "\u{1E03}",
+		char: "\u{1e03}",
 	},
 	{
 		name: "b with dot below, latin small letter",
-		char: "\u{1E05}",
+		char: "\u{1e05}",
 	},
 	{
 		name: "b with hook, latin capital letter",
@@ -1631,7 +1351,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "b with line below, latin small letter",
-		char: "\u{1E07}",
+		char: "\u{1e07}",
 	},
 	{
 		name: "b with stroke, latin capital letter",
@@ -1651,19 +1371,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "b, latin letter small capital barred",
-		char: "\u{1D03}",
+		char: "\u{1d03}",
 	},
 	{
 		name: "b, script capital",
-		char: "\u{212C}",
+		char: "\u{212c}",
 	},
 	{
 		name: "baby",
-		char: "\u{1F476}",
+		char: "\u{1f476}",
 	},
 	{
 		name: "baby angel",
-		char: "\u{1F47C}",
+		char: "\u{1f47c}",
 	},
 	{
 		name: "baby gamma, latin small letter",
@@ -1671,11 +1391,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "backslash",
-		char: "\u{005C}",
-	},
-	{
-		name: "backslash, combining enclosing circle",
-		char: "\u{20E0}",
+		char: "\u{005c}",
 	},
 	{
 		name: "backspace",
@@ -1687,7 +1403,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "backward arrow indicator",
-		char: "\u{25C5}",
+		char: "\u{25c5}",
 	},
 	{
 		name: "backward difference",
@@ -1695,47 +1411,47 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "backward, partial line",
-		char: "\u{008C}",
+		char: "\u{008c}",
 	},
 	{
 		name: "bag addition",
-		char: "\u{228E}",
+		char: "\u{228e}",
 	},
 	{
 		name: "bag bracket, left",
-		char: "\u{27E6}",
+		char: "\u{27e6}",
 	},
 	{
 		name: "bag bracket, right",
-		char: "\u{27E7}",
+		char: "\u{27e7}",
 	},
 	{
 		name: "bag count, infix",
-		char: "\u{266F}",
+		char: "\u{266f}",
 	},
 	{
 		name: "bag membership, z notation",
-		char: "\u{22FF}",
+		char: "\u{22ff}",
 	},
 	{
 		name: "bag subtraction",
-		char: "\u{2A41}",
+		char: "\u{2a41}",
 	},
 	{
 		name: "baht, thai currency symbol",
-		char: "\u{0E3F}",
+		char: "\u{0e3f}",
 	},
 	{
 		name: "balinese",
-		char: "\u{1B00}",
+		char: "\u{1b00}",
 	},
 	{
 		name: "balinese digits",
-		char: "\u{1B50}",
+		char: "\u{1b50}",
 	},
 	{
 		name: "balinese musical symbols",
-		char: "\u{1B61}",
+		char: "\u{1b61}",
 	},
 	{
 		name: "ballot box",
@@ -1751,7 +1467,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ballot symbols",
-		char: "\u{1F5F3}",
+		char: "\u{1f5f3}",
 	},
 	{
 		name: "ballot x",
@@ -1763,7 +1479,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bamum",
-		char: "\u{A6A0}",
+		char: "\u{a6a0}",
 	},
 	{
 		name: "bamum supplement",
@@ -1779,11 +1495,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bar symbols, error",
-		char: "\u{29EE}",
+		char: "\u{29ee}",
 	},
 	{
 		name: "bar, broken",
-		char: "\u{00A6}",
+		char: "\u{00a6}",
 	},
 	{
 		name: "bar, horizontal",
@@ -1791,23 +1507,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bar, vertical",
-		char: "\u{007C}",
+		char: "\u{007c}",
 	},
 	{
 		name: "bar, white vertical",
-		char: "\u{2AFE}",
+		char: "\u{2afe}",
 	},
 	{
 		name: "barber pole",
-		char: "\u{1F488}",
+		char: "\u{1f488}",
 	},
 	{
 		name: "barred b, latin letter small capital",
-		char: "\u{1D03}",
+		char: "\u{1d03}",
 	},
 	{
 		name: "barred o, latin capital letter",
-		char: "\u{019F}",
+		char: "\u{019f}",
 	},
 	{
 		name: "barred o, latin small letter",
@@ -1815,11 +1531,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "base",
-		char: "\u{22A5}",
+		char: "\u{22a5}",
 	},
 	{
 		name: "baseball",
-		char: "\u{26BE}",
+		char: "\u{26be}",
 	},
 	{
 		name: "basic musical symbols",
@@ -1827,23 +1543,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bassa vah",
-		char: "\u{16AD0}",
+		char: "\u{16ad0}",
 	},
 	{
 		name: "bat",
-		char: "\u{1F987}",
+		char: "\u{1f987}",
 	},
 	{
 		name: "batak",
-		char: "\u{1BC0}",
+		char: "\u{1bc0}",
 	},
 	{
 		name: "batsaganchakan nshan, armenian",
-		char: "\u{055C}",
+		char: "\u{055c}",
 	},
 	{
 		name: "battery",
-		char: "\u{1F50B}",
+		char: "\u{1f50b}",
 	},
 	{
 		name: "battleground symbol",
@@ -1851,27 +1567,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "beach, bathing",
-		char: "\u{26F1}",
+		char: "\u{26f1}",
 	},
 	{
 		name: "beamed eighth notes",
-		char: "\u{266B}",
+		char: "\u{266b}",
 	},
 	{
 		name: "beamed quavers",
-		char: "\u{266B}",
+		char: "\u{266b}",
 	},
 	{
 		name: "beamed semiquavers",
-		char: "\u{266C}",
+		char: "\u{266c}",
 	},
 	{
 		name: "beamed sixteenth notes",
-		char: "\u{266C}",
+		char: "\u{266c}",
 	},
 	{
 		name: "bear face",
-		char: "\u{1F43B}",
+		char: "\u{1f43b}",
 	},
 	{
 		name: "because",
@@ -1879,7 +1595,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "beef (on menus)",
-		char: "\u{1F404}",
+		char: "\u{1f404}",
 	},
 	{
 		name: "bell",
@@ -1887,195 +1603,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bell",
-		char: "\u{1F514}",
+		char: "\u{1f514}",
 	},
 	{
 		name: "bell symbol",
-		char: "\u{237E}",
+		char: "\u{237e}",
 	},
 	{
 		name: "bell, symbol for",
 		char: "\u{2407}",
 	},
 	{
-		name: "below, combining acute accent",
-		char: "\u{0317}",
-	},
-	{
-		name: "below, combining asterisk",
-		char: "\u{0359}",
-	},
-	{
-		name: "below, combining breve",
-		char: "\u{032E}",
-	},
-	{
-		name: "below, combining bridge",
-		char: "\u{032A}",
-	},
-	{
-		name: "below, combining caron",
-		char: "\u{032C}",
-	},
-	{
-		name: "below, combining circumflex accent",
-		char: "\u{032D}",
-	},
-	{
-		name: "below, combining comma",
-		char: "\u{0326}",
-	},
-	{
-		name: "below, combining diaeresis",
-		char: "\u{0324}",
-	},
-	{
-		name: "below, combining dot",
-		char: "\u{0323}",
-	},
-	{
-		name: "below, combining double breve",
-		char: "\u{035C}",
-	},
-	{
-		name: "below, combining double macron",
-		char: "\u{035F}",
-	},
-	{
-		name: "below, combining double rightwards arrow",
-		char: "\u{0362}",
-	},
-	{
-		name: "below, combining double ring",
-		char: "\u{035A}",
-	},
-	{
-		name: "below, combining double vertical line",
-		char: "\u{0348}",
-	},
-	{
-		name: "below, combining down tack",
-		char: "\u{031E}",
-	},
-	{
-		name: "below, combining equals sign",
-		char: "\u{0347}",
-	},
-	{
-		name: "below, combining grave accent",
-		char: "\u{0316}",
-	},
-	{
-		name: "below, combining inverted breve",
-		char: "\u{032F}",
-	},
-	{
-		name: "below, combining inverted bridge",
-		char: "\u{033A}",
-	},
-	{
-		name: "below, combining inverted double arch",
-		char: "\u{032B}",
-	},
-	{
-		name: "below, combining left angle",
-		char: "\u{0349}",
-	},
-	{
-		name: "below, combining left arrow",
-		char: "\u{20EE}",
-	},
-	{
-		name: "below, combining left arrowhead",
-		char: "\u{0354}",
-	},
-	{
-		name: "below, combining left half ring",
-		char: "\u{031C}",
-	},
-	{
-		name: "below, combining left right arrow",
-		char: "\u{034D}",
-	},
-	{
-		name: "below, combining left tack",
-		char: "\u{0318}",
-	},
-	{
-		name: "below, combining macron",
-		char: "\u{0331}",
-	},
-	{
-		name: "below, combining minus sign",
-		char: "\u{0320}",
-	},
-	{
-		name: "below, combining palatalized hook",
-		char: "\u{0321}",
-	},
-	{
-		name: "below, combining plus sign",
-		char: "\u{031F}",
-	},
-	{
-		name: "below, combining retroflex hook",
-		char: "\u{0322}",
-	},
-	{
-		name: "below, combining right arrow",
-		char: "\u{20EF}",
-	},
-	{
-		name: "below, combining right arrowhead",
-		char: "\u{0355}",
-	},
-	{
-		name: "below, combining right half ring",
-		char: "\u{0339}",
-	},
-	{
-		name: "below, combining right tack",
-		char: "\u{0319}",
-	},
-	{
-		name: "below, combining ring",
-		char: "\u{0325}",
-	},
-	{
-		name: "below, combining seagull",
-		char: "\u{033C}",
-	},
-	{
-		name: "below, combining square",
-		char: "\u{033B}",
-	},
-	{
-		name: "below, combining tilde",
-		char: "\u{0330}",
-	},
-	{
-		name: "below, combining up tack",
-		char: "\u{031D}",
-	},
-	{
-		name: "below, combining upwards arrow",
-		char: "\u{034E}",
-	},
-	{
-		name: "below, combining vertical line",
-		char: "\u{0329}",
-	},
-	{
-		name: "below, combining x",
-		char: "\u{0353}",
-	},
-	{
 		name: "belt, latin small letter l with",
-		char: "\u{026C}",
+		char: "\u{026c}",
 	},
 	{
 		name: "bend, actuarial",
-		char: "\u{20E7}",
+		char: "\u{20e7}",
 	},
 	{
 		name: "bengali",
@@ -2087,19 +1631,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bengali currency signs",
-		char: "\u{09F2}",
+		char: "\u{09f2}",
 	},
 	{
 		name: "bengali dependent vowel signs",
-		char: "\u{09BE}",
+		char: "\u{09be}",
 	},
 	{
 		name: "bengali digits",
-		char: "\u{09E6}",
+		char: "\u{09e6}",
 	},
 	{
 		name: "bengali hasant",
-		char: "\u{09CD}",
+		char: "\u{09cd}",
 	},
 	{
 		name: "bengali independent vowels",
@@ -2107,23 +1651,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bengali isshar",
-		char: "\u{09FA}",
+		char: "\u{09fa}",
 	},
 	{
 		name: "bengali rupee mark",
-		char: "\u{09F2}",
+		char: "\u{09f2}",
 	},
 	{
 		name: "bengali rupee sign",
-		char: "\u{09F3}",
+		char: "\u{09f3}",
 	},
 	{
 		name: "benzene ring",
-		char: "\u{232C}",
+		char: "\u{232c}",
 	},
 	{
 		name: "bernoulli function",
-		char: "\u{212C}",
+		char: "\u{212c}",
 	},
 	{
 		name: "bet symbol",
@@ -2131,19 +1675,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "beta symbol, greek",
-		char: "\u{03D0}",
+		char: "\u{03d0}",
 	},
 	{
 		name: "beta, curled",
-		char: "\u{03D0}",
+		char: "\u{03d0}",
 	},
 	{
 		name: "between",
-		char: "\u{226C}",
+		char: "\u{226c}",
 	},
 	{
 		name: "beverage symbols",
-		char: "\u{1F375}",
+		char: "\u{1f375}",
 	},
 	{
 		name: "beverage, hot",
@@ -2151,23 +1695,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bhaiksuki",
-		char: "\u{11C00}",
+		char: "\u{11c00}",
 	},
 	{
 		name: "bidirectional format characters",
-		char: "\u{202A}",
+		char: "\u{202a}",
 	},
 	{
 		name: "big 5, duplicate characters from",
-		char: "\u{FA0C}",
+		char: "\u{fa0c}",
 	},
 	{
 		name: "big reverse solidus",
-		char: "\u{29F9}",
+		char: "\u{29f9}",
 	},
 	{
 		name: "big solidus",
-		char: "\u{29F8}",
+		char: "\u{29f8}",
 	},
 	{
 		name: "bijection",
@@ -2179,7 +1723,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bilabial percussive, latin letter",
-		char: "\u{02AC}",
+		char: "\u{02ac}",
 	},
 	{
 		name: "bindu, devanagari",
@@ -2191,7 +1735,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bird",
-		char: "\u{1F426}",
+		char: "\u{1f426}",
 	},
 	{
 		name: "birga, mongolian",
@@ -2199,19 +1743,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bismillah ar-rahman ar-raheem, arabic ligature",
-		char: "\u{FDFD}",
+		char: "\u{fdfd}",
 	},
 	{
 		name: "bitcoin sign",
-		char: "\u{20BF}",
+		char: "\u{20bf}",
 	},
 	{
 		name: "black circle",
-		char: "\u{25CF}",
+		char: "\u{25cf}",
 	},
 	{
 		name: "black circle, medium",
-		char: "\u{26AB}",
+		char: "\u{26ab}",
 	},
 	{
 		name: "black flag",
@@ -2219,19 +1763,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "black heart",
-		char: "\u{1F5A4}",
+		char: "\u{1f5a4}",
 	},
 	{
 		name: "black hourglass",
-		char: "\u{29D7}",
+		char: "\u{29d7}",
 	},
 	{
 		name: "black left pointing index",
-		char: "\u{261A}",
+		char: "\u{261a}",
 	},
 	{
 		name: "black leftwards bullet",
-		char: "\u{204C}",
+		char: "\u{204c}",
 	},
 	{
 		name: "black lenticular bracket, left",
@@ -2243,15 +1787,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "black lozenge",
-		char: "\u{29EB}",
+		char: "\u{29eb}",
 	},
 	{
 		name: "black medium small square",
-		char: "\u{25FE}",
+		char: "\u{25fe}",
 	},
 	{
 		name: "black medium square",
-		char: "\u{25FC}",
+		char: "\u{25fc}",
 	},
 	{
 		name: "black nib",
@@ -2259,15 +1803,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "black parallelogram",
-		char: "\u{25B0}",
+		char: "\u{25b0}",
 	},
 	{
 		name: "black right pointing index",
-		char: "\u{261B}",
+		char: "\u{261b}",
 	},
 	{
 		name: "black rightwards bullet",
-		char: "\u{204D}",
+		char: "\u{204d}",
 	},
 	{
 		name: "black scissors",
@@ -2283,7 +1827,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "black smiling face",
-		char: "\u{263B}",
+		char: "\u{263b}",
 	},
 	{
 		name: "black star",
@@ -2295,15 +1839,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "black telephone",
-		char: "\u{260E}",
+		char: "\u{260e}",
 	},
 	{
 		name: "black-letter capital c",
-		char: "\u{212D}",
+		char: "\u{212d}",
 	},
 	{
 		name: "black-letter capital h",
-		char: "\u{210C}",
+		char: "\u{210c}",
 	},
 	{
 		name: "black-letter capital i",
@@ -2311,7 +1855,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "black-letter capital r",
-		char: "\u{211C}",
+		char: "\u{211c}",
 	},
 	{
 		name: "black-letter capital z",
@@ -2319,7 +1863,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "black-letter mathematical symbols",
-		char: "\u{1D504}",
+		char: "\u{1d504}",
 	},
 	{
 		name: "blank symbol",
@@ -2343,91 +1887,91 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "blowfish",
-		char: "\u{1F421}",
+		char: "\u{1f421}",
 	},
 	{
 		name: "boar",
-		char: "\u{1F417}",
+		char: "\u{1f417}",
 	},
 	{
 		name: "boat terminal",
-		char: "\u{26F4}",
+		char: "\u{26f4}",
 	},
 	{
 		name: "bohairic coptic",
-		char: "\u{2C80}",
+		char: "\u{2c80}",
 	},
 	{
 		name: "bold digits",
-		char: "\u{1D7CE}",
+		char: "\u{1d7ce}",
 	},
 	{
 		name: "bold digits, sans-serif",
-		char: "\u{1D7EC}",
+		char: "\u{1d7ec}",
 	},
 	{
 		name: "bold fraktur mathematical symbols",
-		char: "\u{1D56C}",
+		char: "\u{1d56c}",
 	},
 	{
 		name: "bold greek mathematical symbols",
-		char: "\u{1D6A8}",
+		char: "\u{1d6a8}",
 	},
 	{
 		name: "bold greek mathematical symbols, sans-serif",
-		char: "\u{1D756}",
+		char: "\u{1d756}",
 	},
 	{
 		name: "bold italic greek mathematical symbols",
-		char: "\u{1D71C}",
+		char: "\u{1d71c}",
 	},
 	{
 		name: "bold italic greek mathematical symbols, sans-serif",
-		char: "\u{1D790}",
+		char: "\u{1d790}",
 	},
 	{
 		name: "bold italic mathematical symbols",
-		char: "\u{1D468}",
+		char: "\u{1d468}",
 	},
 	{
 		name: "bold italic mathematical symbols, sans-serif",
-		char: "\u{1D63C}",
+		char: "\u{1d63c}",
 	},
 	{
 		name: "bold mathematical symbols",
-		char: "\u{1D400}",
+		char: "\u{1d400}",
 	},
 	{
 		name: "bold mathematical symbols, sans-serif",
-		char: "\u{1D5D4}",
+		char: "\u{1d5d4}",
 	},
 	{
 		name: "bold script mathematical symbols",
-		char: "\u{1D4D0}",
+		char: "\u{1d4d0}",
 	},
 	{
 		name: "bom",
-		char: "\u{FEFF}",
+		char: "\u{feff}",
 	},
 	{
 		name: "bomb",
-		char: "\u{1F4A3}",
+		char: "\u{1f4a3}",
 	},
 	{
 		name: "book",
-		char: "\u{1F56E}",
+		char: "\u{1f56e}",
 	},
 	{
 		name: "books",
-		char: "\u{1F4D5}",
+		char: "\u{1f4d5}",
 	},
 	{
 		name: "boomerang",
-		char: "\u{1FA83}",
+		char: "\u{1fa83}",
 	},
 	{
 		name: "bopomofo extensions, chinese",
-		char: "\u{31A0}",
+		char: "\u{31a0}",
 	},
 	{
 		name: "bopomofo, chinese",
@@ -2435,27 +1979,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bottom",
-		char: "\u{22A5}",
+		char: "\u{22a5}",
 	},
 	{
 		name: "bowt, armenian",
-		char: "\u{055D}",
+		char: "\u{055d}",
 	},
 	{
 		name: "bowtie",
-		char: "\u{22C8}",
+		char: "\u{22c8}",
 	},
 	{
 		name: "bowtie symbols",
-		char: "\u{29D1}",
+		char: "\u{29d1}",
 	},
 	{
 		name: "bowtie, large",
-		char: "\u{2A1D}",
+		char: "\u{2a1d}",
 	},
 	{
 		name: "bowtie, vertical",
-		char: "\u{29D6}",
+		char: "\u{29d6}",
 	},
 	{
 		name: "box drawing",
@@ -2479,7 +2023,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "box, shouldered open",
-		char: "\u{237D}",
+		char: "\u{237d}",
 	},
 	{
 		name: "box, x in a rectangle",
@@ -2487,31 +2031,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "boy",
-		char: "\u{1F466}",
+		char: "\u{1f466}",
 	},
 	{
 		name: "bra",
-		char: "\u{27E8}",
+		char: "\u{27e8}",
 	},
 	{
 		name: "brace, closing",
-		char: "\u{007D}",
+		char: "\u{007d}",
 	},
 	{
 		name: "brace, opening",
-		char: "\u{007B}",
+		char: "\u{007b}",
 	},
 	{
 		name: "bracket pieces",
-		char: "\u{239B}",
+		char: "\u{239b}",
 	},
 	{
 		name: "bracket pieces",
-		char: "\u{23B0}",
+		char: "\u{23b0}",
 	},
 	{
 		name: "bracket variants for vertical text",
-		char: "\u{23DC}",
+		char: "\u{23dc}",
 	},
 	{
 		name: "bracket with quill, left square",
@@ -2523,15 +2067,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bracket, closing curly",
-		char: "\u{007D}",
+		char: "\u{007d}",
 	},
 	{
 		name: "bracket, closing square",
-		char: "\u{005D}",
+		char: "\u{005d}",
 	},
 	{
 		name: "bracket, left abstract syntax",
-		char: "\u{301A}",
+		char: "\u{301a}",
 	},
 	{
 		name: "bracket, left angle",
@@ -2539,7 +2083,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bracket, left bag",
-		char: "\u{27E6}",
+		char: "\u{27e6}",
 	},
 	{
 		name: "bracket, left black lenticular",
@@ -2547,27 +2091,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bracket, left chevron",
-		char: "\u{27EA}",
+		char: "\u{27ea}",
 	},
 	{
 		name: "bracket, left corner",
-		char: "\u{300C}",
+		char: "\u{300c}",
 	},
 	{
 		name: "bracket, left curly",
-		char: "\u{007B}",
+		char: "\u{007b}",
 	},
 	{
 		name: "bracket, left double angle",
-		char: "\u{300A}",
+		char: "\u{300a}",
 	},
 	{
 		name: "bracket, left sequence",
-		char: "\u{27E8}",
+		char: "\u{27e8}",
 	},
 	{
 		name: "bracket, left square",
-		char: "\u{005B}",
+		char: "\u{005b}",
 	},
 	{
 		name: "bracket, left tortoise shell",
@@ -2575,7 +2119,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bracket, left white corner",
-		char: "\u{300E}",
+		char: "\u{300e}",
 	},
 	{
 		name: "bracket, left white curly",
@@ -2587,7 +2131,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bracket, left white square",
-		char: "\u{301A}",
+		char: "\u{301a}",
 	},
 	{
 		name: "bracket, left white tortoise shell",
@@ -2599,31 +2143,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bracket, mathematical left angle",
-		char: "\u{27E8}",
+		char: "\u{27e8}",
 	},
 	{
 		name: "bracket, mathematical left double angle",
-		char: "\u{27EA}",
+		char: "\u{27ea}",
 	},
 	{
 		name: "bracket, mathematical right angle",
-		char: "\u{27E9}",
+		char: "\u{27e9}",
 	},
 	{
 		name: "bracket, mathematical right double angle",
-		char: "\u{27EB}",
+		char: "\u{27eb}",
 	},
 	{
 		name: "bracket, opening curly",
-		char: "\u{007B}",
+		char: "\u{007b}",
 	},
 	{
 		name: "bracket, opening square",
-		char: "\u{005B}",
+		char: "\u{005b}",
 	},
 	{
 		name: "bracket, right abstract syntax",
-		char: "\u{301B}",
+		char: "\u{301b}",
 	},
 	{
 		name: "bracket, right angle",
@@ -2631,7 +2175,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bracket, right bag",
-		char: "\u{27E7}",
+		char: "\u{27e7}",
 	},
 	{
 		name: "bracket, right black lenticular",
@@ -2639,27 +2183,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bracket, right chevron",
-		char: "\u{27EB}",
+		char: "\u{27eb}",
 	},
 	{
 		name: "bracket, right corner",
-		char: "\u{300D}",
+		char: "\u{300d}",
 	},
 	{
 		name: "bracket, right curly",
-		char: "\u{007D}",
+		char: "\u{007d}",
 	},
 	{
 		name: "bracket, right double angle",
-		char: "\u{300B}",
+		char: "\u{300b}",
 	},
 	{
 		name: "bracket, right sequence",
-		char: "\u{27E9}",
+		char: "\u{27e9}",
 	},
 	{
 		name: "bracket, right square",
-		char: "\u{005D}",
+		char: "\u{005d}",
 	},
 	{
 		name: "bracket, right tortoise shell",
@@ -2667,7 +2211,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bracket, right white corner",
-		char: "\u{300F}",
+		char: "\u{300f}",
 	},
 	{
 		name: "bracket, right white curly",
@@ -2679,7 +2223,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bracket, right white square",
-		char: "\u{301B}",
+		char: "\u{301b}",
 	},
 	{
 		name: "bracket, right white tortoise shell",
@@ -2687,7 +2231,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bracket, right-pointing angle",
-		char: "\u{232A}",
+		char: "\u{232a}",
 	},
 	{
 		name: "brackets",
@@ -2699,7 +2243,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "brackets, cjk corner",
-		char: "\u{300C}",
+		char: "\u{300c}",
 	},
 	{
 		name: "brackets, corner",
@@ -2707,11 +2251,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "brackets, horizontal",
-		char: "\u{23B4}",
+		char: "\u{23b4}",
 	},
 	{
 		name: "brackets, mathematical",
-		char: "\u{27E6}",
+		char: "\u{27e6}",
 	},
 	{
 		name: "brackets, ornamental",
@@ -2727,7 +2271,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "brazilian currency",
-		char: "\u{20A2}",
+		char: "\u{20a2}",
 	},
 	{
 		name: "break here, no",
@@ -2747,91 +2291,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "breve",
-		char: "\u{02D8}",
-	},
-	{
-		name: "breve below, combining",
-		char: "\u{032E}",
-	},
-	{
-		name: "breve below, combining double",
-		char: "\u{035C}",
-	},
-	{
-		name: "breve below, combining double inverted",
-		char: "\u{1DFC}",
-	},
-	{
-		name: "breve below, combining inverted",
-		char: "\u{032F}",
-	},
-	{
-		name: "breve, combining",
-		char: "\u{0306}",
-	},
-	{
-		name: "breve, combining double",
-		char: "\u{035D}",
-	},
-	{
-		name: "breve, combining double inverted",
-		char: "\u{0361}",
-	},
-	{
-		name: "breve, combining inverted",
-		char: "\u{0311}",
+		char: "\u{02d8}",
 	},
 	{
 		name: "bride with veil",
-		char: "\u{1F470}",
-	},
-	{
-		name: "bridge above, combining",
-		char: "\u{0346}",
-	},
-	{
-		name: "bridge above, combining wide",
-		char: "\u{20E9}",
-	},
-	{
-		name: "bridge below, combining",
-		char: "\u{032A}",
-	},
-	{
-		name: "bridge below, combining inverted",
-		char: "\u{033A}",
+		char: "\u{1f470}",
 	},
 	{
 		name: "briffits",
-		char: "\u{1F4A8}",
+		char: "\u{1f4a8}",
 	},
 	{
 		name: "broken bar",
-		char: "\u{00A6}",
+		char: "\u{00a6}",
 	},
 	{
 		name: "broken vertical bar",
-		char: "\u{00A6}",
+		char: "\u{00a6}",
 	},
 	{
 		name: "bronze medal",
-		char: "\u{1F949}",
+		char: "\u{1f949}",
 	},
 	{
 		name: "bubble symbols, speech and thought",
-		char: "\u{1F5E8}",
+		char: "\u{1f5e8}",
 	},
 	{
 		name: "bud ornaments, pointing",
-		char: "\u{1F660}",
+		char: "\u{1f660}",
 	},
 	{
 		name: "bug",
-		char: "\u{1F41B}",
+		char: "\u{1f41b}",
 	},
 	{
 		name: "buginese",
-		char: "\u{1A00}",
+		char: "\u{1a00}",
 	},
 	{
 		name: "buhid",
@@ -2839,11 +2335,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "building and map symbols",
-		char: "\u{1F3D4}",
+		char: "\u{1f3d4}",
 	},
 	{
 		name: "building and map symbols",
-		char: "\u{1F3E0}",
+		char: "\u{1f3e0}",
 	},
 	{
 		name: "bullet",
@@ -2855,11 +2351,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bullet, black leftwards",
-		char: "\u{204C}",
+		char: "\u{204c}",
 	},
 	{
 		name: "bullet, black rightwards",
-		char: "\u{204D}",
+		char: "\u{204d}",
 	},
 	{
 		name: "bullet, hyphen",
@@ -2871,7 +2367,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bullet, tainome japanese",
-		char: "\u{25C9}",
+		char: "\u{25c9}",
 	},
 	{
 		name: "bullet, triangular",
@@ -2879,15 +2375,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "bullet, white",
-		char: "\u{25E6}",
+		char: "\u{25e6}",
 	},
 	{
 		name: "bullseye",
-		char: "\u{25CE}",
+		char: "\u{25ce}",
 	},
 	{
 		name: "bullseye",
-		char: "\u{1F78B}",
+		char: "\u{1f78b}",
 	},
 	{
 		name: "bullseye, latin letter",
@@ -2895,7 +2391,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "buried symbol",
-		char: "\u{26B0}",
+		char: "\u{26b0}",
 	},
 	{
 		name: "burmese",
@@ -2903,27 +2399,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "butterfly",
-		char: "\u{1F98B}",
+		char: "\u{1f98b}",
 	},
 	{
 		name: "by definition, equal to",
-		char: "\u{225C}",
+		char: "\u{225c}",
 	},
 	{
 		name: "by definition, equal to",
-		char: "\u{225D}",
+		char: "\u{225d}",
 	},
 	{
 		name: "by, measured",
-		char: "\u{225E}",
+		char: "\u{225e}",
 	},
 	{
 		name: "byte order mark",
-		char: "\u{FEFF}",
+		char: "\u{feff}",
 	},
 	{
 		name: "byzantine musical symbols",
-		char: "\u{1D000}",
+		char: "\u{1d000}",
 	},
 	{
 		name: "c with acute, latin small letter",
@@ -2931,15 +2427,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "c with caron, latin small letter",
-		char: "\u{010D}",
+		char: "\u{010d}",
 	},
 	{
 		name: "c with cedilla, latin capital letter",
-		char: "\u{00C7}",
+		char: "\u{00c7}",
 	},
 	{
 		name: "c with cedilla, latin small letter",
-		char: "\u{00E7}",
+		char: "\u{00e7}",
 	},
 	{
 		name: "c with circumflex, latin small letter",
@@ -2951,7 +2447,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "c with dot above, latin small letter",
-		char: "\u{010B}",
+		char: "\u{010b}",
 	},
 	{
 		name: "c with hook, latin small letter",
@@ -2959,11 +2455,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "c with stroke, latin capital letter",
-		char: "\u{023B}",
+		char: "\u{023b}",
 	},
 	{
 		name: "c with stroke, latin small letter",
-		char: "\u{023C}",
+		char: "\u{023c}",
 	},
 	{
 		name: "c, apostrophic",
@@ -2971,11 +2467,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "c, black-letter capital",
-		char: "\u{212D}",
-	},
-	{
-		name: "c, combining latin small letter",
-		char: "\u{0368}",
+		char: "\u{212d}",
 	},
 	{
 		name: "c, double-struck capital",
@@ -2983,7 +2475,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "c, latin letter small capital",
-		char: "\u{1D04}",
+		char: "\u{1d04}",
 	},
 	{
 		name: "c, latin letter stretched",
@@ -3011,7 +2503,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "call me hand",
-		char: "\u{1F919}",
+		char: "\u{1f919}",
 	},
 	{
 		name: "cambodian",
@@ -3019,19 +2511,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "camel, bactrian",
-		char: "\u{1F42B}",
+		char: "\u{1f42b}",
 	},
 	{
 		name: "camel, dromedary",
-		char: "\u{1F42A}",
+		char: "\u{1f42a}",
 	},
 	{
 		name: "camping site",
-		char: "\u{26FA}",
+		char: "\u{26fa}",
 	},
 	{
 		name: "canadian aboriginal syllabics extended, unified",
-		char: "\u{18B0}",
+		char: "\u{18b0}",
 	},
 	{
 		name: "canadian aboriginal syllabics, unified",
@@ -3039,11 +2531,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "canadian syllabics full stop",
-		char: "\u{166E}",
+		char: "\u{166e}",
 	},
 	{
 		name: "canadian syllabics punctuation",
-		char: "\u{166D}",
+		char: "\u{166d}",
 	},
 	{
 		name: "cancel",
@@ -3055,7 +2547,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cancel tag",
-		char: "\u{E007F}",
+		char: "\u{e007f}",
 	},
 	{
 		name: "cancel, symbol for",
@@ -3063,19 +2555,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cancellation mark, lao",
-		char: "\u{0ECC}",
+		char: "\u{0ecc}",
 	},
 	{
 		name: "cancellation x",
-		char: "\u{1F5D9}",
+		char: "\u{1f5d9}",
 	},
 	{
 		name: "cancer",
-		char: "\u{264B}",
-	},
-	{
-		name: "candrabindu, combining",
-		char: "\u{0310}",
+		char: "\u{264b}",
 	},
 	{
 		name: "candrabindu, devanagari sign",
@@ -3087,7 +2575,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cantillation signs, tibetan",
-		char: "\u{0FC0}",
+		char: "\u{0fc0}",
 	},
 	{
 		name: "cap",
@@ -3107,7 +2595,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "capital letters, georgian",
-		char: "\u{10A0}",
+		char: "\u{10a0}",
 	},
 	{
 		name: "capital letters, greek",
@@ -3119,7 +2607,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "capitulum",
-		char: "\u{2E3F}",
+		char: "\u{2e3f}",
 	},
 	{
 		name: "capricorn",
@@ -3127,23 +2615,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "caps lock",
-		char: "\u{21EA}",
+		char: "\u{21ea}",
 	},
 	{
 		name: "caps lock",
-		char: "\u{21EC}",
+		char: "\u{21ec}",
 	},
 	{
 		name: "caps lock",
-		char: "\u{2BB8}",
+		char: "\u{2bb8}",
 	},
 	{
 		name: "car sliding",
-		char: "\u{26D0}",
+		char: "\u{26d0}",
 	},
 	{
 		name: "car, disabled",
-		char: "\u{26CD}",
+		char: "\u{26cd}",
 	},
 	{
 		name: "card suits, playing",
@@ -3167,7 +2655,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cards, playing",
-		char: "\u{1F0A0}",
+		char: "\u{1f0a0}",
 	},
 	{
 		name: "care of",
@@ -3175,7 +2663,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "caret",
-		char: "\u{028C}",
+		char: "\u{028c}",
 	},
 	{
 		name: "caret",
@@ -3187,51 +2675,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "carian",
-		char: "\u{102A0}",
+		char: "\u{102a0}",
 	},
 	{
 		name: "caron",
-		char: "\u{02C7}",
-	},
-	{
-		name: "caron below, combining",
-		char: "\u{032C}",
-	},
-	{
-		name: "caron, combining",
-		char: "\u{030C}",
+		char: "\u{02c7}",
 	},
 	{
 		name: "carriage return",
-		char: "\u{000D}",
+		char: "\u{000d}",
 	},
 	{
 		name: "carriage return, symbol for",
-		char: "\u{240D}",
+		char: "\u{240d}",
 	},
 	{
 		name: "cartesian product",
-		char: "\u{00D7}",
+		char: "\u{00d7}",
 	},
 	{
 		name: "castle",
-		char: "\u{26EB}",
+		char: "\u{26eb}",
 	},
 	{
 		name: "cat",
-		char: "\u{1F408}",
+		char: "\u{1f408}",
 	},
 	{
 		name: "cat face",
-		char: "\u{1F431}",
+		char: "\u{1f431}",
 	},
 	{
 		name: "cat faces",
-		char: "\u{1F638}",
+		char: "\u{1f638}",
 	},
 	{
 		name: "caution",
-		char: "\u{1F6C6}",
+		char: "\u{1f6c6}",
 	},
 	{
 		name: "caution sign",
@@ -3239,35 +2719,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cd",
-		char: "\u{1F4BF}",
+		char: "\u{1f4bf}",
 	},
 	{
 		name: "cedi sign",
-		char: "\u{20B5}",
+		char: "\u{20b5}",
 	},
 	{
 		name: "cedilla",
-		char: "\u{00B8}",
+		char: "\u{00b8}",
 	},
 	{
 		name: "cedilla above",
 		char: "\u{0312}",
 	},
 	{
-		name: "cedilla, combining",
-		char: "\u{0327}",
-	},
-	{
 		name: "cedilla, latin capital letter c with",
-		char: "\u{00C7}",
+		char: "\u{00c7}",
 	},
 	{
 		name: "cedilla, latin small letter c with",
-		char: "\u{00E7}",
+		char: "\u{00e7}",
 	},
 	{
 		name: "cedilla, spacing",
-		char: "\u{00B8}",
+		char: "\u{00b8}",
 	},
 	{
 		name: "ceiling, left",
@@ -3279,7 +2755,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "celebration symbols",
-		char: "\u{1F380}",
+		char: "\u{1f380}",
 	},
 	{
 		name: "celsius, degree",
@@ -3287,11 +2763,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cemetery",
-		char: "\u{26FC}",
+		char: "\u{26fc}",
 	},
 	{
 		name: "cent sign",
-		char: "\u{00A2}",
+		char: "\u{00a2}",
 	},
 	{
 		name: "center",
@@ -3307,19 +2783,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "centreline low line",
-		char: "\u{FE4E}",
+		char: "\u{fe4e}",
 	},
 	{
 		name: "centreline overline",
-		char: "\u{FE4A}",
+		char: "\u{fe4a}",
 	},
 	{
 		name: "cgj",
-		char: "\u{034F}",
+		char: "\u{034f}",
 	},
 	{
 		name: "chains",
-		char: "\u{26D3}",
+		char: "\u{26d3}",
 	},
 	{
 		name: "chakma",
@@ -3327,15 +2803,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cham",
-		char: "\u{AA00}",
+		char: "\u{aa00}",
 	},
 	{
 		name: "chandrakkala, malayalam",
-		char: "\u{0D4D}",
+		char: "\u{0d4d}",
 	},
 	{
 		name: "character introducer, single",
-		char: "\u{009A}",
+		char: "\u{009a}",
 	},
 	{
 		name: "character tabulation",
@@ -3367,7 +2843,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "check mark, not",
-		char: "\u{237B}",
+		char: "\u{237b}",
 	},
 	{
 		name: "check, ballot box with",
@@ -3375,23 +2851,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "checker board",
-		char: "\u{1F67E}",
+		char: "\u{1f67e}",
 	},
 	{
 		name: "checkers, symbols for draughts and",
-		char: "\u{26C0}",
+		char: "\u{26c0}",
 	},
 	{
 		name: "cheese wedge",
-		char: "\u{1F9C0}",
+		char: "\u{1f9c0}",
 	},
 	{
 		name: "cherokee",
-		char: "\u{13A0}",
+		char: "\u{13a0}",
 	},
 	{
 		name: "cherokee supplement",
-		char: "\u{AB70}",
+		char: "\u{ab70}",
 	},
 	{
 		name: "chess symbols",
@@ -3399,7 +2875,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "chess symbols, chinese xiangqi",
-		char: "\u{1FA60}",
+		char: "\u{1fa60}",
 	},
 	{
 		name: "chess symbols, japanese",
@@ -3407,19 +2883,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "chess symbols, heterodox",
-		char: "\u{1FA00}",
+		char: "\u{1fa00}",
 	},
 	{
 		name: "chevron bracket, left",
-		char: "\u{27EA}",
+		char: "\u{27ea}",
 	},
 	{
 		name: "chevron bracket, right",
-		char: "\u{27EB}",
+		char: "\u{27eb}",
 	},
 	{
 		name: "chevrons",
-		char: "\u{00AB}",
+		char: "\u{00ab}",
 	},
 	{
 		name: "chi rho",
@@ -3427,23 +2903,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "chick, baby",
-		char: "\u{1F424}",
+		char: "\u{1f424}",
 	},
 	{
 		name: "chick, front-facing baby",
-		char: "\u{1F425}",
+		char: "\u{1f425}",
 	},
 	{
 		name: "chick, hatching",
-		char: "\u{1F423}",
+		char: "\u{1f423}",
 	},
 	{
 		name: "chicken",
-		char: "\u{1F414}",
+		char: "\u{1f414}",
 	},
 	{
 		name: "chillu letters, malayalam",
-		char: "\u{0D7A}",
+		char: "\u{0d7a}",
 	},
 	{
 		name: "chinese bopomofo",
@@ -3451,63 +2927,63 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "chinese bopomofo extensions",
-		char: "\u{31A0}",
+		char: "\u{31a0}",
 	},
 	{
 		name: "chinese fifth or neutral tone, mandarin",
-		char: "\u{02D9}",
+		char: "\u{02d9}",
 	},
 	{
 		name: "chinese first tone, mandarin",
-		char: "\u{02C9}",
+		char: "\u{02c9}",
 	},
 	{
 		name: "chinese folk religion symbols",
-		char: "\u{1F260}",
+		char: "\u{1f260}",
 	},
 	{
 		name: "chinese fourth tone, mandarin",
-		char: "\u{02CB}",
+		char: "\u{02cb}",
 	},
 	{
 		name: "chinese second tone, mandarin",
-		char: "\u{02CA}",
+		char: "\u{02ca}",
 	},
 	{
 		name: "chinese third tone, mandarin",
-		char: "\u{02C7}",
+		char: "\u{02c7}",
 	},
 	{
 		name: "chinese xiangqi chess symbols",
-		char: "\u{1FA60}",
+		char: "\u{1fa60}",
 	},
 	{
 		name: "chinese, corner tone marks for",
-		char: "\u{A700}",
+		char: "\u{a700}",
 	},
 	{
 		name: "chipmunk",
-		char: "\u{1F43F}",
+		char: "\u{1f43f}",
 	},
 	{
 		name: "choice, dijkstra",
-		char: "\u{2AFE}",
+		char: "\u{2afe}",
 	},
 	{
 		name: "choice, n-ary dijkstra",
-		char: "\u{2AFF}",
+		char: "\u{2aff}",
 	},
 	{
 		name: "chorasmian",
-		char: "\u{10FB0}",
+		char: "\u{10fb0}",
 	},
 	{
 		name: "christmas tree",
-		char: "\u{1F384}",
+		char: "\u{1f384}",
 	},
 	{
 		name: "christmas, father",
-		char: "\u{1F385}",
+		char: "\u{1f385}",
 	},
 	{
 		name: "christogram",
@@ -3515,79 +2991,71 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "church",
-		char: "\u{26EA}",
-	},
-	{
-		name: "circle backslash, combining enclosing",
-		char: "\u{20E0}",
+		char: "\u{26ea}",
 	},
 	{
 		name: "circle signs, heavy",
-		char: "\u{2B55}",
+		char: "\u{2b55}",
 	},
 	{
 		name: "circle symbols",
-		char: "\u{29B5}",
+		char: "\u{29b5}",
 	},
 	{
 		name: "circle, black",
-		char: "\u{25CF}",
+		char: "\u{25cf}",
 	},
 	{
 		name: "circle, black small",
 		char: "\u{2022}",
 	},
 	{
-		name: "circle, combining enclosing",
-		char: "\u{20DD}",
-	},
-	{
 		name: "circle, dotted",
-		char: "\u{25CC}",
+		char: "\u{25cc}",
 	},
 	{
 		name: "circle, jis composition",
-		char: "\u{20DD}",
+		char: "\u{20dd}",
 	},
 	{
 		name: "circle, large",
-		char: "\u{25EF}",
+		char: "\u{25ef}",
 	},
 	{
 		name: "circle, medium black",
-		char: "\u{26AB}",
+		char: "\u{26ab}",
 	},
 	{
 		name: "circle, medium small white",
-		char: "\u{26AC}",
+		char: "\u{26ac}",
 	},
 	{
 		name: "circle, medium white",
-		char: "\u{26AA}",
+		char: "\u{26aa}",
 	},
 	{
 		name: "circle, shadowed white",
-		char: "\u{274D}",
+		char: "\u{274d}",
 	},
 	{
 		name: "circle, white",
-		char: "\u{25CB}",
+		char: "\u{25cb}",
 	},
 	{
 		name: "circled asterisk operator",
-		char: "\u{229B}",
+		char: "\u{229b}",
 	},
 	{
 		name: "circled crossing lanes",
-		char: "\u{26D2}",
+		char: "\u{26d2}",
 	},
 	{
 		name: "circled dash",
-		char: "\u{229D}",
+		char: "\u{229d}",
 	},
 	{
 		name: "circled digit zero",
-		char: "\u{24EA}",
+		char: "\u{24ea}",
 	},
 	{
 		name: "circled digits, dingbat",
@@ -3595,7 +3063,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "circled division sign",
-		char: "\u{2A38}",
+		char: "\u{2a38}",
 	},
 	{
 		name: "circled division slash",
@@ -3607,11 +3075,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "circled dot operator, n-ary",
-		char: "\u{2A00}",
+		char: "\u{2a00}",
 	},
 	{
 		name: "circled equals",
-		char: "\u{229C}",
+		char: "\u{229c}",
 	},
 	{
 		name: "circled ideographs",
@@ -3623,7 +3091,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "circled katakana",
-		char: "\u{32D0}",
+		char: "\u{32d0}",
 	},
 	{
 		name: "circled korean hangul letters",
@@ -3631,15 +3099,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "circled korean hangul syllables",
-		char: "\u{326E}",
+		char: "\u{326e}",
 	},
 	{
 		name: "circled latin letters",
-		char: "\u{1F12B}",
+		char: "\u{1f12b}",
 	},
 	{
 		name: "circled latin letters",
-		char: "\u{24B6}",
+		char: "\u{24b6}",
 	},
 	{
 		name: "circled minus",
@@ -3655,15 +3123,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "circled numbers",
-		char: "\u{32B1}",
+		char: "\u{32b1}",
 	},
 	{
 		name: "circled numbers, double",
-		char: "\u{24F5}",
+		char: "\u{24f5}",
 	},
 	{
 		name: "circled numbers, white on black",
-		char: "\u{24EB}",
+		char: "\u{24eb}",
 	},
 	{
 		name: "circled plus",
@@ -3671,7 +3139,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "circled plus operator, n-ary",
-		char: "\u{2A01}",
+		char: "\u{2a01}",
 	},
 	{
 		name: "circled postal mark",
@@ -3679,7 +3147,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "circled ring operator",
-		char: "\u{229A}",
+		char: "\u{229a}",
 	},
 	{
 		name: "circled times",
@@ -3687,31 +3155,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "circled times operator, n-ary",
-		char: "\u{2A02}",
+		char: "\u{2a02}",
 	},
 	{
 		name: "circles",
-		char: "\u{25CB}",
+		char: "\u{25cb}",
 	},
 	{
 		name: "circumflex accent",
-		char: "\u{005E}",
-	},
-	{
-		name: "circumflex accent below, combining",
-		char: "\u{032D}",
-	},
-	{
-		name: "circumflex accent, combining",
-		char: "\u{0302}",
+		char: "\u{005e}",
 	},
 	{
 		name: "circumflex accent, modifier letter",
-		char: "\u{02C6}",
+		char: "\u{02c6}",
 	},
 	{
 		name: "circumflex accent, spacing",
-		char: "\u{005E}",
+		char: "\u{005e}",
 	},
 	{
 		name: "cjk angle brackets",
@@ -3723,27 +3183,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cjk compatibility forms",
-		char: "\u{FE30}",
+		char: "\u{fe30}",
 	},
 	{
 		name: "cjk compatibility ideographs",
-		char: "\u{F900}",
+		char: "\u{f900}",
 	},
 	{
 		name: "cjk compatibility ideographs supplement",
-		char: "\u{2F800}",
+		char: "\u{2f800}",
 	},
 	{
 		name: "cjk corner brackets",
-		char: "\u{300C}",
+		char: "\u{300c}",
 	},
 	{
 		name: "cjk diacritics",
-		char: "\u{302A}",
+		char: "\u{302a}",
 	},
 	{
 		name: "cjk ideographic description characters",
-		char: "\u{2FF0}",
+		char: "\u{2ff0}",
 	},
 	{
 		name: "cjk ideographs area",
@@ -3759,7 +3219,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cjk kangxi radicals",
-		char: "\u{2F00}",
+		char: "\u{2f00}",
 	},
 	{
 		name: "cjk letters and months, enclosed",
@@ -3767,23 +3227,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cjk phonetics and symbols area",
-		char: "\u{2E80}",
+		char: "\u{2e80}",
 	},
 	{
 		name: "cjk punctuation, halfwidth",
-		char: "\u{FF61}",
+		char: "\u{ff61}",
 	},
 	{
 		name: "cjk quotation marks",
-		char: "\u{300C}",
+		char: "\u{300c}",
 	},
 	{
 		name: "cjk radicals supplement",
-		char: "\u{2E80}",
+		char: "\u{2e80}",
 	},
 	{
 		name: "cjk strokes",
-		char: "\u{31C0}",
+		char: "\u{31c0}",
 	},
 	{
 		name: "cjk symbols and punctuation",
@@ -3791,7 +3251,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cjk unified ideographs",
-		char: "\u{4E00}",
+		char: "\u{4e00}",
 	},
 	{
 		name: "cjk unified ideographs extension a",
@@ -3803,19 +3263,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cjk unified ideographs extension c",
-		char: "\u{2A700}",
+		char: "\u{2a700}",
 	},
 	{
 		name: "cjk unified ideographs extension d",
-		char: "\u{2B740}",
+		char: "\u{2b740}",
 	},
 	{
 		name: "cjk unified ideographs extension e",
-		char: "\u{2B820}",
+		char: "\u{2b820}",
 	},
 	{
 		name: "cjk unified ideographs extension f",
-		char: "\u{2CEB0}",
+		char: "\u{2ceb0}",
 	},
 	{
 		name: "cjk unified ideographs extension g",
@@ -3827,7 +3287,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "clapping hands sign",
-		char: "\u{1F44F}",
+		char: "\u{1f44f}",
 	},
 	{
 		name: "claudian antisigma",
@@ -3843,7 +3303,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "clear screen symbol",
-		char: "\u{239A}",
+		char: "\u{239a}",
 	},
 	{
 		name: "clear weather",
@@ -3851,7 +3311,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "click, latin letter alveolar",
-		char: "\u{01C2}",
+		char: "\u{01c2}",
 	},
 	{
 		name: "click, latin letter bilabial",
@@ -3859,31 +3319,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "click, latin letter dental",
-		char: "\u{01C0}",
+		char: "\u{01c0}",
 	},
 	{
 		name: "click, latin letter lateral",
-		char: "\u{01C1}",
+		char: "\u{01c1}",
 	},
 	{
 		name: "click, latin letter retroflex",
-		char: "\u{01C3}",
+		char: "\u{01c3}",
 	},
 	{
 		name: "clicks, african letters for",
-		char: "\u{01C0}",
+		char: "\u{01c0}",
 	},
 	{
 		name: "clock face symbols",
-		char: "\u{1F550}",
+		char: "\u{1f550}",
 	},
 	{
 		name: "clock, alarm",
-		char: "\u{23F0}",
-	},
-	{
-		name: "clockwise arrow above, combining",
-		char: "\u{20D5}",
+		char: "\u{23f0}",
 	},
 	{
 		name: "clockwise contour integral",
@@ -3894,16 +3350,12 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2231}",
 	},
 	{
-		name: "clockwise ring overlay, combining",
-		char: "\u{20D9}",
-	},
-	{
 		name: "clone",
 		char: "\u{2104}",
 	},
 	{
 		name: "clones of diacritics, spacing",
-		char: "\u{02D8}",
+		char: "\u{02d8}",
 	},
 	{
 		name: "close up",
@@ -3911,7 +3363,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "closed epsilon, latin small letter",
-		char: "\u{029A}",
+		char: "\u{029a}",
 	},
 	{
 		name: "closed omega, latin small letter",
@@ -3919,23 +3371,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "closed open e, latin small letter",
-		char: "\u{029A}",
+		char: "\u{029a}",
 	},
 	{
 		name: "closed reversed epsilon, latin small letter",
-		char: "\u{025E}",
+		char: "\u{025e}",
 	},
 	{
 		name: "closed reversed open e, latin small letter",
-		char: "\u{025E}",
+		char: "\u{025e}",
 	},
 	{
 		name: "closing brace",
-		char: "\u{007D}",
+		char: "\u{007d}",
 	},
 	{
 		name: "closing curly bracket",
-		char: "\u{007D}",
+		char: "\u{007d}",
 	},
 	{
 		name: "closing mark, ideographic",
@@ -3947,11 +3399,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "closing square bracket",
-		char: "\u{005D}",
+		char: "\u{005d}",
 	},
 	{
 		name: "clothing and accessories",
-		char: "\u{1F451}",
+		char: "\u{1f451}",
 	},
 	{
 		name: "cloud",
@@ -3963,11 +3415,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cloudy, partly",
-		char: "\u{26C5}",
+		char: "\u{26c5}",
 	},
 	{
 		name: "cns 11643-1992, duplicate characters from",
-		char: "\u{2F800}",
+		char: "\u{2f800}",
 	},
 	{
 		name: "coffee, cup of",
@@ -3975,15 +3427,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "coffin",
-		char: "\u{26B0}",
+		char: "\u{26b0}",
 	},
 	{
 		name: "collision symbol",
-		char: "\u{1F4A5}",
+		char: "\u{1f4a5}",
 	},
 	{
 		name: "colon",
-		char: "\u{003A}",
+		char: "\u{003a}",
 	},
 	{
 		name: "colon equals",
@@ -3991,11 +3443,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "colon right arrow",
-		char: "\u{29F4}",
+		char: "\u{29f4}",
 	},
 	{
 		name: "colon sign",
-		char: "\u{20A1}",
+		char: "\u{20a1}",
 	},
 	{
 		name: "colon, equals",
@@ -4011,11 +3463,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "colon, modifier letter half triangular",
-		char: "\u{02D1}",
+		char: "\u{02d1}",
 	},
 	{
 		name: "colon, modifier letter triangular",
-		char: "\u{02D0}",
+		char: "\u{02d0}",
 	},
 	{
 		name: "colon, mongolian",
@@ -4027,615 +3479,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "colored shapes",
-		char: "\u{1F7E0}",
-	},
-	{
-		name: "combining acute accent",
-		char: "\u{0301}",
-	},
-	{
-		name: "combining acute accent below",
-		char: "\u{0317}",
-	},
-	{
-		name: "combining acute tone mark",
-		char: "\u{0341}",
-	},
-	{
-		name: "combining almost equal to above",
-		char: "\u{034C}",
-	},
-	{
-		name: "combining alphabet, korean hangul jamo",
-		char: "\u{1100}",
-	},
-	{
-		name: "combining annuity symbol",
-		char: "\u{20E7}",
-	},
-	{
-		name: "combining anticlockwise arrow above",
-		char: "\u{20D4}",
-	},
-	{
-		name: "combining anticlockwise ring overlay",
-		char: "\u{20DA}",
-	},
-	{
-		name: "combining asterisk above",
-		char: "\u{20F0}",
-	},
-	{
-		name: "combining asterisk below",
-		char: "\u{0359}",
-	},
-	{
-		name: "combining breve",
-		char: "\u{0306}",
-	},
-	{
-		name: "combining breve below",
-		char: "\u{032E}",
-	},
-	{
-		name: "combining bridge above",
-		char: "\u{0346}",
-	},
-	{
-		name: "combining bridge below",
-		char: "\u{032A}",
-	},
-	{
-		name: "combining candrabindu",
-		char: "\u{0310}",
-	},
-	{
-		name: "combining caron",
-		char: "\u{030C}",
-	},
-	{
-		name: "combining caron below",
-		char: "\u{032C}",
-	},
-	{
-		name: "combining cedilla",
-		char: "\u{0327}",
-	},
-	{
-		name: "combining characters, cyrillic",
-		char: "\u{0483}",
-	},
-	{
-		name: "combining circumflex accent",
-		char: "\u{0302}",
-	},
-	{
-		name: "combining circumflex accent below",
-		char: "\u{032D}",
-	},
-	{
-		name: "combining clockwise arrow above",
-		char: "\u{20D5}",
-	},
-	{
-		name: "combining clockwise ring overlay",
-		char: "\u{20D9}",
-	},
-	{
-		name: "combining comma above",
-		char: "\u{0313}",
-	},
-	{
-		name: "combining comma above right",
-		char: "\u{0315}",
-	},
-	{
-		name: "combining comma below",
-		char: "\u{0326}",
-	},
-	{
-		name: "combining conjoining macron",
-		char: "\u{FE26}",
-	},
-	{
-		name: "combining counterclockwise arrow above",
-		char: "\u{20D4}",
-	},
-	{
-		name: "combining counterclockwise ring overlay",
-		char: "\u{20DA}",
-	},
-	{
-		name: "combining diacritical marks",
-		char: "\u{0300}",
-	},
-	{
-		name: "combining diacritical marks extended",
-		char: "\u{1AB0}",
-	},
-	{
-		name: "combining diacritical marks for symbols",
-		char: "\u{20D0}",
-	},
-	{
-		name: "combining diacritical marks supplement",
-		char: "\u{1DC0}",
-	},
-	{
-		name: "combining diaeresis",
-		char: "\u{0308}",
-	},
-	{
-		name: "combining diaeresis below",
-		char: "\u{0324}",
-	},
-	{
-		name: "combining dot above",
-		char: "\u{0307}",
-	},
-	{
-		name: "combining dot above right",
-		char: "\u{0358}",
-	},
-	{
-		name: "combining dot below",
-		char: "\u{0323}",
-	},
-	{
-		name: "combining double acute accent",
-		char: "\u{030B}",
-	},
-	{
-		name: "combining double breve",
-		char: "\u{035D}",
-	},
-	{
-		name: "combining double breve below",
-		char: "\u{035C}",
-	},
-	{
-		name: "combining double grave accent",
-		char: "\u{030F}",
-	},
-	{
-		name: "combining double inverted breve",
-		char: "\u{0361}",
-	},
-	{
-		name: "combining double inverted breve below",
-		char: "\u{1DFC}",
-	},
-	{
-		name: "combining double low line",
-		char: "\u{0333}",
-	},
-	{
-		name: "combining double macron",
-		char: "\u{035E}",
-	},
-	{
-		name: "combining double macron below",
-		char: "\u{035F}",
-	},
-	{
-		name: "combining double overline",
-		char: "\u{033F}",
-	},
-	{
-		name: "combining double rightwards arrow below",
-		char: "\u{0362}",
-	},
-	{
-		name: "combining double ring below",
-		char: "\u{035A}",
-	},
-	{
-		name: "combining double tilde",
-		char: "\u{0360}",
-	},
-	{
-		name: "combining double vertical line above",
-		char: "\u{030E}",
-	},
-	{
-		name: "combining double vertical line below",
-		char: "\u{0348}",
-	},
-	{
-		name: "combining double vertical stroke overlay",
-		char: "\u{20E6}",
-	},
-	{
-		name: "combining down tack below",
-		char: "\u{031E}",
-	},
-	{
-		name: "combining enclosing circle",
-		char: "\u{20DD}",
-	},
-	{
-		name: "combining enclosing circle backslash",
-		char: "\u{20E0}",
-	},
-	{
-		name: "combining enclosing diamond",
-		char: "\u{20DF}",
-	},
-	{
-		name: "combining enclosing keycap",
-		char: "\u{20E3}",
-	},
-	{
-		name: "combining enclosing screen",
-		char: "\u{20E2}",
-	},
-	{
-		name: "combining enclosing square",
-		char: "\u{20DE}",
-	},
-	{
-		name: "combining enclosing upward pointing triangle",
-		char: "\u{20E4}",
-	},
-	{
-		name: "combining equals sign below",
-		char: "\u{0347}",
-	},
-	{
-		name: "combining fermata",
-		char: "\u{0352}",
-	},
-	{
-		name: "combining four dots above",
-		char: "\u{20DC}",
-	},
-	{
-		name: "combining grapheme joiner",
-		char: "\u{034F}",
-	},
-	{
-		name: "combining grave accent",
-		char: "\u{0300}",
-	},
-	{
-		name: "combining grave accent below",
-		char: "\u{0316}",
-	},
-	{
-		name: "combining grave tone mark",
-		char: "\u{0340}",
-	},
-	{
-		name: "combining greek dialytika tonos",
-		char: "\u{0344}",
-	},
-	{
-		name: "combining greek koronis",
-		char: "\u{0343}",
-	},
-	{
-		name: "combining greek perispomeni",
-		char: "\u{0342}",
-	},
-	{
-		name: "combining greek ypogegrammeni",
-		char: "\u{0345}",
-	},
-	{
-		name: "combining hacek",
-		char: "\u{030C}",
-	},
-	{
-		name: "combining half marks",
-		char: "\u{FE20}",
-	},
-	{
-		name: "combining half marks below",
-		char: "\u{FE27}",
-	},
-	{
-		name: "combining homothetic above",
-		char: "\u{034B}",
-	},
-	{
-		name: "combining hook above",
-		char: "\u{0309}",
-	},
-	{
-		name: "combining horn",
-		char: "\u{031B}",
-	},
-	{
-		name: "combining inverted breve",
-		char: "\u{0311}",
-	},
-	{
-		name: "combining inverted breve below",
-		char: "\u{032F}",
-	},
-	{
-		name: "combining inverted bridge below",
-		char: "\u{033A}",
-	},
-	{
-		name: "combining inverted double arch below",
-		char: "\u{032B}",
-	},
-	{
-		name: "combining japanese daku-on",
-		char: "\u{3099}",
-	},
-	{
-		name: "combining japanese han-daku-on",
-		char: "\u{309A}",
-	},
-	{
-		name: "combining latin small letters",
-		char: "\u{0363}",
-	},
-	{
-		name: "combining left angle above",
-		char: "\u{031A}",
-	},
-	{
-		name: "combining left angle below",
-		char: "\u{0349}",
-	},
-	{
-		name: "combining left arrow above",
-		char: "\u{20D6}",
-	},
-	{
-		name: "combining left arrow below",
-		char: "\u{20EE}",
-	},
-	{
-		name: "combining left arrowhead below",
-		char: "\u{0354}",
-	},
-	{
-		name: "combining left half ring above",
-		char: "\u{0351}",
-	},
-	{
-		name: "combining left half ring below",
-		char: "\u{031C}",
-	},
-	{
-		name: "combining left harpoon above",
-		char: "\u{20D0}",
-	},
-	{
-		name: "combining left right arrow above",
-		char: "\u{20E1}",
-	},
-	{
-		name: "combining left right arrow below",
-		char: "\u{034D}",
-	},
-	{
-		name: "combining left tack below",
-		char: "\u{0318}",
-	},
-	{
-		name: "combining leftwards arrow overlay",
-		char: "\u{20EA}",
-	},
-	{
-		name: "combining leftwards harpoon with barb downwards",
-		char: "\u{20ED}",
-	},
-	{
-		name: "combining long double solidus overlay",
-		char: "\u{20EB}",
-	},
-	{
-		name: "combining long solidus overlay",
-		char: "\u{0338}",
-	},
-	{
-		name: "combining long stroke overlay",
-		char: "\u{0336}",
-	},
-	{
-		name: "combining long vertical line overlay",
-		char: "\u{20D2}",
-	},
-	{
-		name: "combining low line",
-		char: "\u{0332}",
-	},
-	{
-		name: "combining macron",
-		char: "\u{0304}",
-	},
-	{
-		name: "combining macron below",
-		char: "\u{0331}",
-	},
-	{
-		name: "combining macron left half",
-		char: "\u{FE24}",
-	},
-	{
-		name: "combining macron right half",
-		char: "\u{FE25}",
-	},
-	{
-		name: "combining marks, arabic",
-		char: "\u{0653}",
-	},
-	{
-		name: "combining marks, ethiopic",
-		char: "\u{135D}",
-	},
-	{
-		name: "combining minus sign below",
-		char: "\u{0320}",
-	},
-	{
-		name: "combining not tilde above",
-		char: "\u{034A}",
-	},
-	{
-		name: "combining ogonek",
-		char: "\u{0328}",
-	},
-	{
-		name: "combining overline",
-		char: "\u{0305}",
-	},
-	{
-		name: "combining palatalized hook below",
-		char: "\u{0321}",
-	},
-	{
-		name: "combining plus sign below",
-		char: "\u{031F}",
-	},
-	{
-		name: "combining retroflex hook below",
-		char: "\u{0322}",
-	},
-	{
-		name: "combining reverse solidus overlay",
-		char: "\u{20E5}",
-	},
-	{
-		name: "combining reversed comma above",
-		char: "\u{0314}",
-	},
-	{
-		name: "combining right arrow above",
-		char: "\u{20D7}",
-	},
-	{
-		name: "combining right arrow below",
-		char: "\u{20EF}",
-	},
-	{
-		name: "combining right arrowhead above",
-		char: "\u{0350}",
-	},
-	{
-		name: "combining right arrowhead below",
-		char: "\u{0355}",
-	},
-	{
-		name: "combining right half ring above",
-		char: "\u{0357}",
-	},
-	{
-		name: "combining right half ring below",
-		char: "\u{0339}",
-	},
-	{
-		name: "combining right harpoon above",
-		char: "\u{20D1}",
-	},
-	{
-		name: "combining right tack below",
-		char: "\u{0319}",
-	},
-	{
-		name: "combining rightwards harpoon with barb downwards",
-		char: "\u{20EC}",
-	},
-	{
-		name: "combining ring above",
-		char: "\u{030A}",
-	},
-	{
-		name: "combining ring below",
-		char: "\u{0325}",
-	},
-	{
-		name: "combining ring overlay",
-		char: "\u{20D8}",
-	},
-	{
-		name: "combining seagull below",
-		char: "\u{033C}",
-	},
-	{
-		name: "combining short solidus overlay",
-		char: "\u{0337}",
-	},
-	{
-		name: "combining short stroke overlay",
-		char: "\u{0335}",
-	},
-	{
-		name: "combining short vertical line overlay",
-		char: "\u{20D3}",
-	},
-	{
-		name: "combining square below",
-		char: "\u{033B}",
-	},
-	{
-		name: "combining three dots above",
-		char: "\u{20DB}",
-	},
-	{
-		name: "combining tilde",
-		char: "\u{0303}",
-	},
-	{
-		name: "combining tilde below",
-		char: "\u{0330}",
-	},
-	{
-		name: "combining tilde overlay",
-		char: "\u{0334}",
-	},
-	{
-		name: "combining triple underdot",
-		char: "\u{20E8}",
-	},
-	{
-		name: "combining turned comma above",
-		char: "\u{0312}",
-	},
-	{
-		name: "combining up tack below",
-		char: "\u{031D}",
-	},
-	{
-		name: "combining upwards arrow below",
-		char: "\u{034E}",
-	},
-	{
-		name: "combining vertical line above",
-		char: "\u{030D}",
-	},
-	{
-		name: "combining vertical line below",
-		char: "\u{0329}",
-	},
-	{
-		name: "combining vertical tilde",
-		char: "\u{033E}",
-	},
-	{
-		name: "combining wide bridge above",
-		char: "\u{20E9}",
-	},
-	{
-		name: "combining x above",
-		char: "\u{033D}",
-	},
-	{
-		name: "combining x below",
-		char: "\u{0353}",
-	},
-	{
-		name: "combining zigzag above",
-		char: "\u{035B}",
+		char: "\u{1f7e0}",
 	},
 	{
 		name: "comedy and tragedy, masks of",
-		char: "\u{1F3AD}",
+		char: "\u{1f3ad}",
 	},
 	{
 		name: "comet",
@@ -4643,51 +3491,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "comic style symbols",
-		char: "\u{1F4A0}",
+		char: "\u{1f4a0}",
 	},
 	{
 		name: "comma",
-		char: "\u{002C}",
-	},
-	{
-		name: "comma above right, combining",
-		char: "\u{0315}",
-	},
-	{
-		name: "comma above, combining",
-		char: "\u{0313}",
-	},
-	{
-		name: "comma above, combining reversed",
-		char: "\u{0314}",
-	},
-	{
-		name: "comma above, combining turned",
-		char: "\u{0312}",
-	},
-	{
-		name: "comma below, combining",
-		char: "\u{0326}",
+		char: "\u{002c}",
 	},
 	{
 		name: "comma quotation mark, double",
-		char: "\u{201D}",
+		char: "\u{201d}",
 	},
 	{
 		name: "comma quotation mark, double reversed",
-		char: "\u{201F}",
+		char: "\u{201f}",
 	},
 	{
 		name: "comma quotation mark, double turned",
-		char: "\u{201C}",
+		char: "\u{201c}",
 	},
 	{
 		name: "comma quotation mark, low double",
-		char: "\u{201E}",
+		char: "\u{201e}",
 	},
 	{
 		name: "comma quotation mark, low single",
-		char: "\u{201A}",
+		char: "\u{201a}",
 	},
 	{
 		name: "comma quotation mark, single",
@@ -4695,7 +3523,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "comma quotation mark, single reversed",
-		char: "\u{201B}",
+		char: "\u{201b}",
 	},
 	{
 		name: "comma quotation mark, single turned",
@@ -4703,11 +3531,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "comma, arabic",
-		char: "\u{060C}",
+		char: "\u{060c}",
 	},
 	{
 		name: "comma, armenian",
-		char: "\u{055D}",
+		char: "\u{055d}",
 	},
 	{
 		name: "comma, ethiopic",
@@ -4715,7 +3543,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "comma, georgian",
-		char: "\u{00B7}",
+		char: "\u{00b7}",
 	},
 	{
 		name: "comma, ideographic",
@@ -4727,11 +3555,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "comma, modifier letter reversed",
-		char: "\u{02BD}",
+		char: "\u{02bd}",
 	},
 	{
 		name: "comma, modifier letter turned",
-		char: "\u{02BB}",
+		char: "\u{02bb}",
 	},
 	{
 		name: "comma, mongolian",
@@ -4743,7 +3571,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "comma, reversed",
-		char: "\u{2E41}",
+		char: "\u{2e41}",
 	},
 	{
 		name: "command key",
@@ -4751,11 +3579,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "command, application program",
-		char: "\u{009F}",
+		char: "\u{009f}",
 	},
 	{
 		name: "command, operating system",
-		char: "\u{009D}",
+		char: "\u{009d}",
 	},
 	{
 		name: "commercial at",
@@ -4767,43 +3595,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "communication symbols",
-		char: "\u{1F4DD}",
+		char: "\u{1f4dd}",
 	},
 	{
 		name: "communication symbols",
-		char: "\u{1F57B}",
+		char: "\u{1f57b}",
 	},
 	{
 		name: "compact disc",
-		char: "\u{1F4BF}",
+		char: "\u{1f4bf}",
 	},
 	{
 		name: "compass",
-		char: "\u{263C}",
+		char: "\u{263c}",
 	},
 	{
 		name: "compatibility and specials area",
-		char: "\u{F900}",
+		char: "\u{f900}",
 	},
 	{
 		name: "compatibility forms, cjk",
-		char: "\u{FE30}",
+		char: "\u{fe30}",
 	},
 	{
 		name: "compatibility ideographs supplement, cjk",
-		char: "\u{2F800}",
+		char: "\u{2f800}",
 	},
 	{
 		name: "compatibility ideographs, cjk",
-		char: "\u{F900}",
+		char: "\u{f900}",
 	},
 	{
 		name: "compatibility ideographs, dprk",
-		char: "\u{FA70}",
+		char: "\u{fa70}",
 	},
 	{
 		name: "compatibility ideographs, jis x 0213",
-		char: "\u{FA30}",
+		char: "\u{fa30}",
 	},
 	{
 		name: "compatibility jamo, korean hangul",
@@ -4823,7 +3651,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "component, radial",
-		char: "\u{27DF}",
+		char: "\u{27df}",
 	},
 	{
 		name: "components, form and chart",
@@ -4835,7 +3663,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "composition circle, jis",
-		char: "\u{20DD}",
+		char: "\u{20dd}",
 	},
 	{
 		name: "composition symbol",
@@ -4843,7 +3671,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "computer component symbols",
-		char: "\u{1F5A5}",
+		char: "\u{1f5a5}",
 	},
 	{
 		name: "concatenation, sequence",
@@ -4854,12 +3682,8 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2332}",
 	},
 	{
-		name: "conjoining macron, combining",
-		char: "\u{FE26}",
-	},
-	{
 		name: "conjugate matrix, hermitian",
-		char: "\u{22B9}",
+		char: "\u{22b9}",
 	},
 	{
 		name: "conjunction",
@@ -4867,11 +3691,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "conjunction",
-		char: "\u{260C}",
+		char: "\u{260c}",
 	},
 	{
 		name: "constant pi, mathematical",
-		char: "\u{03C0}",
+		char: "\u{03c0}",
 	},
 	{
 		name: "constant, euler",
@@ -4879,7 +3703,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "constant, planck",
-		char: "\u{210E}",
+		char: "\u{210e}",
 	},
 	{
 		name: "constantine's cross",
@@ -4887,35 +3711,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "construction",
-		char: "\u{26CF}",
+		char: "\u{26cf}",
 	},
 	{
 		name: "construction worker",
-		char: "\u{1F477}",
+		char: "\u{1f477}",
 	},
 	{
 		name: "contains as member",
-		char: "\u{220B}",
+		char: "\u{220b}",
 	},
 	{
 		name: "contains as member, small",
-		char: "\u{220D}",
+		char: "\u{220d}",
 	},
 	{
 		name: "contains as normal subgroup",
-		char: "\u{22B3}",
+		char: "\u{22b3}",
 	},
 	{
 		name: "contextual form glyphs, arabic",
-		char: "\u{FB50}",
+		char: "\u{fb50}",
 	},
 	{
 		name: "contextual form glyphs, arabic",
-		char: "\u{FE80}",
+		char: "\u{fe80}",
 	},
 	{
 		name: "continuity, absolute",
-		char: "\u{2AA1}",
+		char: "\u{2aa1}",
 	},
 	{
 		name: "continuous underline symbol",
@@ -4927,7 +3751,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "contour integral",
-		char: "\u{222E}",
+		char: "\u{222e}",
 	},
 	{
 		name: "contour integral, anticlockwise",
@@ -4943,7 +3767,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "contraction operator",
-		char: "\u{20E9}",
+		char: "\u{20e9}",
 	},
 	{
 		name: "control",
@@ -4951,7 +3775,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "control code graphics, quadrant",
-		char: "\u{25F0}",
+		char: "\u{25f0}",
 	},
 	{
 		name: "control codes, ascii c0",
@@ -4971,19 +3795,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "control codes, graphics for",
-		char: "\u{237D}",
+		char: "\u{237d}",
 	},
 	{
 		name: "control sequence introducer",
-		char: "\u{009B}",
+		char: "\u{009b}",
 	},
 	{
 		name: "controls, bidirectional format",
-		char: "\u{202A}",
+		char: "\u{202a}",
 	},
 	{
 		name: "controls, mongolian format",
-		char: "\u{180B}",
+		char: "\u{180b}",
 	},
 	{
 		name: "coproduct sign",
@@ -4995,31 +3819,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "coptic epact numbers",
-		char: "\u{102E0}",
+		char: "\u{102e0}",
 	},
 	{
 		name: "coptic letters derived from demotic",
-		char: "\u{03E2}",
+		char: "\u{03e2}",
 	},
 	{
 		name: "coptic, bohairic",
-		char: "\u{2C80}",
+		char: "\u{2c80}",
 	},
 	{
 		name: "coptic, continuous macrons for",
-		char: "\u{FE24}",
+		char: "\u{fe24}",
 	},
 	{
 		name: "coptic, extended",
-		char: "\u{2CB2}",
+		char: "\u{2cb2}",
 	},
 	{
 		name: "copyleft symbol",
-		char: "\u{1F12F}",
+		char: "\u{1f12f}",
 	},
 	{
 		name: "copyright sign",
-		char: "\u{00A9}",
+		char: "\u{00a9}",
 	},
 	{
 		name: "copyright, sound recording",
@@ -5031,15 +3855,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "corner brackets, cjk",
-		char: "\u{300C}",
+		char: "\u{300c}",
 	},
 	{
 		name: "corner tone marks for chinese",
-		char: "\u{A700}",
+		char: "\u{a700}",
 	},
 	{
 		name: "corners, quine",
-		char: "\u{231C}",
+		char: "\u{231c}",
 	},
 	{
 		name: "corresponds to",
@@ -5051,7 +3875,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "costa rican currency",
-		char: "\u{20A1}",
+		char: "\u{20a1}",
 	},
 	{
 		name: "countable, first transfinite cardinal",
@@ -5062,20 +3886,12 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2334}",
 	},
 	{
-		name: "counterclockwise arrow above, combining",
-		char: "\u{20D4}",
-	},
-	{
 		name: "counterclockwise contour integral",
 		char: "\u{2233}",
 	},
 	{
 		name: "counterclockwise integration",
-		char: "\u{2A11}",
-	},
-	{
-		name: "counterclockwise ring overlay, combining",
-		char: "\u{20DA}",
+		char: "\u{2a11}",
 	},
 	{
 		name: "countersink",
@@ -5083,55 +3899,55 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cow",
-		char: "\u{1F404}",
+		char: "\u{1f404}",
 	},
 	{
 		name: "cow face",
-		char: "\u{1F42E}",
+		char: "\u{1f42e}",
 	},
 	{
 		name: "cr",
-		char: "\u{000D}",
+		char: "\u{000d}",
 	},
 	{
 		name: "crab",
-		char: "\u{1F980}",
+		char: "\u{1f980}",
 	},
 	{
 		name: "creative commons symbols",
-		char: "\u{1F16D}",
+		char: "\u{1f16d}",
 	},
 	{
 		name: "credit sign, tamil",
-		char: "\u{0BF7}",
+		char: "\u{0bf7}",
 	},
 	{
 		name: "cremated symbol",
-		char: "\u{26B1}",
+		char: "\u{26b1}",
 	},
 	{
 		name: "crescent moon",
-		char: "\u{1F319}",
+		char: "\u{1f319}",
 	},
 	{
 		name: "crescent, star and",
-		char: "\u{262A}",
+		char: "\u{262a}",
 	},
 	{
 		name: "croatian digraphs matching serbian cyrillic letters",
-		char: "\u{01C4}",
+		char: "\u{01c4}",
 	},
 	{
 		name: "crocodile",
-		char: "\u{1F40A}",
+		char: "\u{1f40a}",
 	},
 	{
 		name: "crops",
-		char: "\u{230C}",
+		char: "\u{230c}",
 	},
 	{
 		name: "cross accent, modifier letter",
-		char: "\u{02DF}",
+		char: "\u{02df}",
 	},
 	{
 		name: "cross dingbats",
@@ -5139,7 +3955,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cross mark",
-		char: "\u{274C}",
+		char: "\u{274c}",
 	},
 	{
 		name: "cross of jerusalem",
@@ -5151,11 +3967,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cross pommee",
-		char: "\u{1F542}",
+		char: "\u{1f542}",
 	},
 	{
 		name: "cross ratio",
-		char: "\u{211E}",
+		char: "\u{211e}",
 	},
 	{
 		name: "cross, constantine's",
@@ -5163,7 +3979,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cross, dotted",
-		char: "\u{205C}",
+		char: "\u{205c}",
 	},
 	{
 		name: "cross, east syriac",
@@ -5171,11 +3987,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cross, heavy latin",
-		char: "\u{1F547}",
+		char: "\u{1f547}",
 	},
 	{
 		name: "cross, latin",
-		char: "\u{271D}",
+		char: "\u{271d}",
 	},
 	{
 		name: "cross, long",
@@ -5199,11 +4015,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cross, white latin",
-		char: "\u{1F546}",
+		char: "\u{1f546}",
 	},
 	{
 		name: "crossed fingers",
-		char: "\u{1F91E}",
+		char: "\u{1f91e}",
 	},
 	{
 		name: "crossed swords",
@@ -5215,7 +4031,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "crosses, greek",
-		char: "\u{1F7A1}",
+		char: "\u{1f7a1}",
 	},
 	{
 		name: "crosshatch",
@@ -5223,7 +4039,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "crotchet",
-		char: "\u{1D15F}",
+		char: "\u{1d15f}",
 	},
 	{
 		name: "crotchet",
@@ -5231,23 +4047,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cruzeiro sign",
-		char: "\u{20A2}",
+		char: "\u{20a2}",
 	},
 	{
 		name: "cryptogrammic letters",
-		char: "\u{2CEB}",
+		char: "\u{2ceb}",
 	},
 	{
 		name: "cube root",
-		char: "\u{221B}",
+		char: "\u{221b}",
 	},
 	{
 		name: "cubed",
-		char: "\u{00B3}",
+		char: "\u{00b3}",
 	},
 	{
 		name: "cultural symbols",
-		char: "\u{1F5FB}",
+		char: "\u{1f5fb}",
 	},
 	{
 		name: "cuneiform",
@@ -5263,7 +4079,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cup",
-		char: "\u{222A}",
+		char: "\u{222a}",
 	},
 	{
 		name: "cup of coffee",
@@ -5275,7 +4091,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cup on black square",
-		char: "\u{26FE}",
+		char: "\u{26fe}",
 	},
 	{
 		name: "cup, square",
@@ -5283,15 +4099,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "curled beta",
-		char: "\u{03D0}",
+		char: "\u{03d0}",
 	},
 	{
 		name: "curly bracket, closing",
-		char: "\u{007D}",
+		char: "\u{007d}",
 	},
 	{
 		name: "curly bracket, left",
-		char: "\u{007B}",
+		char: "\u{007b}",
 	},
 	{
 		name: "curly bracket, left white",
@@ -5299,11 +4115,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "curly bracket, opening",
-		char: "\u{007B}",
+		char: "\u{007b}",
 	},
 	{
 		name: "curly bracket, right",
-		char: "\u{007D}",
+		char: "\u{007d}",
 	},
 	{
 		name: "curly bracket, right white",
@@ -5311,27 +4127,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "curly logical and",
-		char: "\u{22CF}",
+		char: "\u{22cf}",
 	},
 	{
 		name: "curly logical or",
-		char: "\u{22CE}",
+		char: "\u{22ce}",
 	},
 	{
 		name: "currency sign",
-		char: "\u{00A4}",
+		char: "\u{00a4}",
 	},
 	{
 		name: "currency signs, bengali",
-		char: "\u{09F2}",
+		char: "\u{09f2}",
 	},
 	{
 		name: "currency symbol baht, thai",
-		char: "\u{0E3F}",
+		char: "\u{0e3f}",
 	},
 	{
 		name: "currency symbol riel, khmer",
-		char: "\u{17DB}",
+		char: "\u{17db}",
 	},
 	{
 		name: "currency symbol, florin",
@@ -5339,111 +4155,111 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "currency symbols",
-		char: "\u{20A0}",
+		char: "\u{20a0}",
 	},
 	{
 		name: "currency, argentinian former",
-		char: "\u{20B3}",
+		char: "\u{20b3}",
 	},
 	{
 		name: "currency, armenian",
-		char: "\u{058F}",
+		char: "\u{058f}",
 	},
 	{
 		name: "currency, azerbaijani",
-		char: "\u{20BC}",
+		char: "\u{20bc}",
 	},
 	{
 		name: "currency, brazilian",
-		char: "\u{20A2}",
+		char: "\u{20a2}",
 	},
 	{
 		name: "currency, costa rican",
-		char: "\u{20A1}",
+		char: "\u{20a1}",
 	},
 	{
 		name: "currency, el salvadorian",
-		char: "\u{20A1}",
+		char: "\u{20a1}",
 	},
 	{
 		name: "currency, euro european",
-		char: "\u{20AC}",
+		char: "\u{20ac}",
 	},
 	{
 		name: "currency, french",
-		char: "\u{20A3}",
+		char: "\u{20a3}",
 	},
 	{
 		name: "currency, georgian",
-		char: "\u{20BE}",
+		char: "\u{20be}",
 	},
 	{
 		name: "currency, ghana",
-		char: "\u{20B5}",
+		char: "\u{20b5}",
 	},
 	{
 		name: "currency, greek",
-		char: "\u{20AF}",
+		char: "\u{20af}",
 	},
 	{
 		name: "currency, indian",
-		char: "\u{20A8}",
+		char: "\u{20a8}",
 	},
 	{
 		name: "currency, iranian",
-		char: "\u{FDFC}",
+		char: "\u{fdfc}",
 	},
 	{
 		name: "currency, israeli",
-		char: "\u{20AA}",
+		char: "\u{20aa}",
 	},
 	{
 		name: "currency, italian",
-		char: "\u{20A4}",
+		char: "\u{20a4}",
 	},
 	{
 		name: "currency, korean",
-		char: "\u{20A9}",
+		char: "\u{20a9}",
 	},
 	{
 		name: "currency, laotian",
-		char: "\u{20AD}",
+		char: "\u{20ad}",
 	},
 	{
 		name: "currency, mongolian",
-		char: "\u{20AE}",
+		char: "\u{20ae}",
 	},
 	{
 		name: "currency, nigerian",
-		char: "\u{20A6}",
+		char: "\u{20a6}",
 	},
 	{
 		name: "currency, paraguayan",
-		char: "\u{20B2}",
+		char: "\u{20b2}",
 	},
 	{
 		name: "currency, phillipine",
-		char: "\u{20B1}",
+		char: "\u{20b1}",
 	},
 	{
 		name: "currency, russian",
-		char: "\u{20BD}",
+		char: "\u{20bd}",
 	},
 	{
 		name: "currency, spanish",
-		char: "\u{20A7}",
+		char: "\u{20a7}",
 	},
 	{
 		name: "currency, turkish",
-		char: "\u{20A4}",
+		char: "\u{20a4}",
 	},
 	{
 		name: "currency, ukrainian",
-		char: "\u{20B4}",
+		char: "\u{20b4}",
 	},
 	{
 		name: "currency, vietnamese",
-		char: "\u{20AB}",
+		char: "\u{20ab}",
 	},
 	{
 		name: "current symbol form two, direct",
@@ -5451,35 +4267,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "current, ac",
-		char: "\u{23E6}",
+		char: "\u{23e6}",
 	},
 	{
 		name: "current, alternating",
-		char: "\u{223F}",
+		char: "\u{223f}",
 	},
 	{
 		name: "cursor down, fast",
-		char: "\u{21A1}",
+		char: "\u{21a1}",
 	},
 	{
 		name: "cursor left, fast",
-		char: "\u{219E}",
+		char: "\u{219e}",
 	},
 	{
 		name: "cursor right, fast",
-		char: "\u{21A0}",
+		char: "\u{21a0}",
 	},
 	{
 		name: "cursor up, fast",
-		char: "\u{219F}",
+		char: "\u{219f}",
 	},
 	{
 		name: "cycle",
-		char: "\u{223C}",
+		char: "\u{223c}",
 	},
 	{
 		name: "cylindricity",
-		char: "\u{232D}",
+		char: "\u{232d}",
 	},
 	{
 		name: "cypriot syllabary",
@@ -5494,24 +4310,20 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0400}",
 	},
 	{
-		name: "cyrillic combining characters",
-		char: "\u{0483}",
-	},
-	{
 		name: "cyrillic extended-a",
-		char: "\u{2DE0}",
+		char: "\u{2de0}",
 	},
 	{
 		name: "cyrillic extended-b",
-		char: "\u{A640}",
+		char: "\u{a640}",
 	},
 	{
 		name: "cyrillic extended-c",
-		char: "\u{1C80}",
+		char: "\u{1c80}",
 	},
 	{
 		name: "cyrillic extended-d",
-		char: "\u{1E030}",
+		char: "\u{1e030}",
 	},
 	{
 		name: "cyrillic extensions",
@@ -5519,7 +4331,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "cyrillic extensions",
-		char: "\u{048A}",
+		char: "\u{048a}",
 	},
 	{
 		name: "cyrillic historic letters",
@@ -5534,24 +4346,20 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0500}",
 	},
 	{
-		name: "cyrillic titlo left half, combining",
-		char: "\u{FE2E}",
-	},
-	{
 		name: "d retroflex hook, latin small letter",
 		char: "\u{0256}",
 	},
 	{
 		name: "d with caron, latin small letter",
-		char: "\u{010F}",
+		char: "\u{010f}",
 	},
 	{
 		name: "d with cedilla, latin small letter",
-		char: "\u{1E11}",
+		char: "\u{1e11}",
 	},
 	{
 		name: "d with circumflex below, latin small letter",
-		char: "\u{1E13}",
+		char: "\u{1e13}",
 	},
 	{
 		name: "d with curl, latin small letter",
@@ -5559,15 +4367,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "d with dot above, latin small letter",
-		char: "\u{1E0B}",
+		char: "\u{1e0b}",
 	},
 	{
 		name: "d with dot below, latin small letter",
-		char: "\u{1E0D}",
+		char: "\u{1e0d}",
 	},
 	{
 		name: "d with hook, latin capital letter",
-		char: "\u{018A}",
+		char: "\u{018a}",
 	},
 	{
 		name: "d with hook, latin small letter",
@@ -5575,7 +4383,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "d with line below, latin small letter",
-		char: "\u{1E0F}",
+		char: "\u{1e0f}",
 	},
 	{
 		name: "d with stroke, latin small letter",
@@ -5587,15 +4395,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "d with topbar, latin small letter",
-		char: "\u{018C}",
+		char: "\u{018c}",
 	},
 	{
 		name: "d'alembertian",
-		char: "\u{29E0}",
-	},
-	{
-		name: "d, combining latin small letter",
-		char: "\u{0369}",
+		char: "\u{29e0}",
 	},
 	{
 		name: "d, double-struck italic capital",
@@ -5611,7 +4415,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "d, latin letter small capital",
-		char: "\u{1D05}",
+		char: "\u{1d05}",
 	},
 	{
 		name: "dagger",
@@ -5622,12 +4426,8 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2021}",
 	},
 	{
-		name: "daku-on, combining japanese",
-		char: "\u{3099}",
-	},
-	{
 		name: "daku-on, japanese",
-		char: "\u{309B}",
+		char: "\u{309b}",
 	},
 	{
 		name: "dalet symbol",
@@ -5643,11 +4443,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dash, angled",
-		char: "\u{00AC}",
+		char: "\u{00ac}",
 	},
 	{
 		name: "dash, circled",
-		char: "\u{229D}",
+		char: "\u{229d}",
 	},
 	{
 		name: "dash, em",
@@ -5663,7 +4463,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dash, omission",
-		char: "\u{2E3A}",
+		char: "\u{2e3a}",
 	},
 	{
 		name: "dash, quotation",
@@ -5675,11 +4475,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dash, two-em",
-		char: "\u{2E3A}",
+		char: "\u{2e3a}",
 	},
 	{
 		name: "dash, wave",
-		char: "\u{301C}",
+		char: "\u{301c}",
 	},
 	{
 		name: "dash, wavy",
@@ -5687,11 +4487,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dashed low line",
-		char: "\u{FE4D}",
+		char: "\u{fe4d}",
 	},
 	{
 		name: "dashed overline",
-		char: "\u{FE49}",
+		char: "\u{fe49}",
 	},
 	{
 		name: "dashes",
@@ -5711,7 +4511,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "database theory operators",
-		char: "\u{27D5}",
+		char: "\u{27d5}",
 	},
 	{
 		name: "david, star of",
@@ -5719,11 +4519,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "day sign, tamil",
-		char: "\u{0BF3}",
+		char: "\u{0bf3}",
 	},
 	{
 		name: "days, ideographic telegraph symbols for",
-		char: "\u{33E0}",
+		char: "\u{33e0}",
 	},
 	{
 		name: "db digraph, latin small letter",
@@ -5731,19 +4531,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "debit sign, tamil",
-		char: "\u{0BF6}",
+		char: "\u{0bf6}",
 	},
 	{
 		name: "decimal exponent symbol",
-		char: "\u{23E8}",
+		char: "\u{23e8}",
 	},
 	{
 		name: "decimal point",
-		char: "\u{002E}",
+		char: "\u{002e}",
 	},
 	{
 		name: "decimal separator",
-		char: "\u{002C}",
+		char: "\u{002c}",
 	},
 	{
 		name: "decimal separator key symbol",
@@ -5751,11 +4551,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "decimal separator, arabic",
-		char: "\u{066B}",
+		char: "\u{066b}",
 	},
 	{
 		name: "decrease",
-		char: "\u{23F7}",
+		char: "\u{23f7}",
 	},
 	{
 		name: "deergh viram, devanagari",
@@ -5771,7 +4571,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "degree sign",
-		char: "\u{00B0}",
+		char: "\u{00b0}",
 	},
 	{
 		name: "degrees centigrade",
@@ -5783,7 +4583,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "delete",
-		char: "\u{007F}",
+		char: "\u{007f}",
 	},
 	{
 		name: "delete form two, symbol for",
@@ -5791,7 +4591,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "delete to the left key",
-		char: "\u{232B}",
+		char: "\u{232b}",
 	},
 	{
 		name: "delete to the right key",
@@ -5803,27 +4603,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "delta equal to",
-		char: "\u{225C}",
+		char: "\u{225c}",
 	},
 	{
 		name: "delta, latin small letter turned",
-		char: "\u{018D}",
+		char: "\u{018d}",
 	},
 	{
 		name: "demotic, coptic letters derived from",
-		char: "\u{03E2}",
+		char: "\u{03e2}",
 	},
 	{
 		name: "dental click, latin letter",
-		char: "\u{01C0}",
+		char: "\u{01c0}",
 	},
 	{
 		name: "dentistry notation symbols",
-		char: "\u{23BE}",
+		char: "\u{23be}",
 	},
 	{
 		name: "depth symbol",
-		char: "\u{21A7}",
+		char: "\u{21a7}",
 	},
 	{
 		name: "derivative",
@@ -5835,15 +4635,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "derivative, fourth",
-		char: "\u{20DC}",
+		char: "\u{20dc}",
 	},
 	{
 		name: "derivative, third",
-		char: "\u{20DB}",
+		char: "\u{20db}",
 	},
 	{
 		name: "descending node",
-		char: "\u{260B}",
+		char: "\u{260b}",
 	},
 	{
 		name: "deseret",
@@ -5871,7 +4671,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "devanagari dependent vowel signs",
-		char: "\u{093E}",
+		char: "\u{093e}",
 	},
 	{
 		name: "devanagari digits",
@@ -5883,11 +4683,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "devanagari extended",
-		char: "\u{A8E0}",
+		char: "\u{a8e0}",
 	},
 	{
 		name: "devanagari extended-a",
-		char: "\u{11B00}",
+		char: "\u{11b00}",
 	},
 	{
 		name: "devanagari extensions",
@@ -5911,7 +4711,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "devanagari sign avagraha",
-		char: "\u{093D}",
+		char: "\u{093d}",
 	},
 	{
 		name: "devanagari sign candrabindu",
@@ -5919,11 +4719,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "devanagari sign nukta",
-		char: "\u{093C}",
+		char: "\u{093c}",
 	},
 	{
 		name: "devanagari sign virama",
-		char: "\u{094D}",
+		char: "\u{094d}",
 	},
 	{
 		name: "devanagari sign visarga",
@@ -5943,19 +4743,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "diacritic, finite function",
-		char: "\u{20E6}",
+		char: "\u{20e6}",
 	},
 	{
 		name: "diacritical marks for symbols",
-		char: "\u{20D0}",
-	},
-	{
-		name: "diacritical marks for symbols, combining",
-		char: "\u{20D0}",
-	},
-	{
-		name: "diacritical marks, combining",
-		char: "\u{0300}",
+		char: "\u{20d0}",
 	},
 	{
 		name: "diacritics for greek",
@@ -5971,15 +4763,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "diacritics, cjk",
-		char: "\u{302A}",
+		char: "\u{302a}",
 	},
 	{
 		name: "diacritics, double",
-		char: "\u{035C}",
+		char: "\u{035c}",
 	},
 	{
 		name: "diacritics, enclosing",
-		char: "\u{20DD}",
+		char: "\u{20dd}",
 	},
 	{
 		name: "diacritics, medieval superscript letter",
@@ -5995,35 +4787,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "diacritics, spacing clones of",
-		char: "\u{02D8}",
+		char: "\u{02d8}",
 	},
 	{
 		name: "diaeresis",
-		char: "\u{00A8}",
-	},
-	{
-		name: "diaeresis below, combining",
-		char: "\u{0324}",
-	},
-	{
-		name: "diaeresis, combining",
-		char: "\u{0308}",
+		char: "\u{00a8}",
 	},
 	{
 		name: "diaeresis, spacing",
-		char: "\u{00A8}",
+		char: "\u{00a8}",
 	},
 	{
 		name: "diagonal ellipsis, down right",
-		char: "\u{22F1}",
+		char: "\u{22f1}",
 	},
 	{
 		name: "diagonal ellipsis, up right",
-		char: "\u{22F0}",
-	},
-	{
-		name: "dialytika tonos, combining greek",
-		char: "\u{0344}",
+		char: "\u{22f0}",
 	},
 	{
 		name: "dialytika, greek",
@@ -6035,23 +4815,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "diamond operator",
-		char: "\u{22C4}",
-	},
-	{
-		name: "diamond, combining enclosing",
-		char: "\u{20DF}",
+		char: "\u{22c4}",
 	},
 	{
 		name: "diamonds",
-		char: "\u{25C6}",
+		char: "\u{25c6}",
 	},
 	{
 		name: "diamonds",
-		char: "\u{1F797}",
+		char: "\u{1f797}",
 	},
 	{
 		name: "diamonds and lozenges",
-		char: "\u{2B25}",
+		char: "\u{2b25}",
 	},
 	{
 		name: "dice",
@@ -6063,7 +4839,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dictionary punctuation",
-		char: "\u{2E1A}",
+		char: "\u{2e1a}",
 	},
 	{
 		name: "diesis",
@@ -6071,15 +4847,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "difference between",
-		char: "\u{223C}",
+		char: "\u{223c}",
 	},
 	{
 		name: "difference between",
-		char: "\u{224F}",
+		char: "\u{224f}",
 	},
 	{
 		name: "difference or sum, positive",
-		char: "\u{2A24}",
+		char: "\u{2a24}",
 	},
 	{
 		name: "difference, backward",
@@ -6091,7 +4867,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "difference, sum or positive",
-		char: "\u{2A26}",
+		char: "\u{2a26}",
 	},
 	{
 		name: "difference, symmetric",
@@ -6115,15 +4891,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "digit zero, circled",
-		char: "\u{24EA}",
+		char: "\u{24ea}",
 	},
 	{
 		name: "digits minus half, tibetan",
-		char: "\u{0F2A}",
+		char: "\u{0f2a}",
 	},
 	{
 		name: "digits symbols, mathematical",
-		char: "\u{1D7CE}",
+		char: "\u{1d7ce}",
 	},
 	{
 		name: "digits, arabic-indic",
@@ -6135,15 +4911,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "digits, balinese",
-		char: "\u{1B50}",
+		char: "\u{1b50}",
 	},
 	{
 		name: "digits, bengali",
-		char: "\u{09E6}",
+		char: "\u{09e6}",
 	},
 	{
 		name: "digits, bold",
-		char: "\u{1D7CE}",
+		char: "\u{1d7ce}",
 	},
 	{
 		name: "digits, devanagari",
@@ -6155,11 +4931,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "digits, double-struck",
-		char: "\u{1D7D8}",
+		char: "\u{1d7d8}",
 	},
 	{
 		name: "digits, eastern arabic-indic",
-		char: "\u{06F0}",
+		char: "\u{06f0}",
 	},
 	{
 		name: "digits, ethiopic",
@@ -6167,27 +4943,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "digits, gujarati",
-		char: "\u{0AE6}",
+		char: "\u{0ae6}",
 	},
 	{
 		name: "digits, gurmukhi",
-		char: "\u{0A66}",
+		char: "\u{0a66}",
 	},
 	{
 		name: "digits, kannada",
-		char: "\u{0CE6}",
+		char: "\u{0ce6}",
 	},
 	{
 		name: "digits, kharoshthi",
-		char: "\u{10A40}",
+		char: "\u{10a40}",
 	},
 	{
 		name: "digits, khmer",
-		char: "\u{17E0}",
+		char: "\u{17e0}",
 	},
 	{
 		name: "digits, lao",
-		char: "\u{0ED0}",
+		char: "\u{0ed0}",
 	},
 	{
 		name: "digits, limbu",
@@ -6195,7 +4971,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "digits, malayalam",
-		char: "\u{0D66}",
+		char: "\u{0d66}",
 	},
 	{
 		name: "digits, mongolian",
@@ -6203,7 +4979,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "digits, monospace",
-		char: "\u{1D7F6}",
+		char: "\u{1d7f6}",
 	},
 	{
 		name: "digits, myanmar",
@@ -6211,23 +4987,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "digits, new tai lue",
-		char: "\u{19D0}",
+		char: "\u{19d0}",
 	},
 	{
 		name: "digits, oriya",
-		char: "\u{0B66}",
+		char: "\u{0b66}",
 	},
 	{
 		name: "digits, osmanya",
-		char: "\u{104A0}",
+		char: "\u{104a0}",
 	},
 	{
 		name: "digits, sans-serif",
-		char: "\u{1D7E2}",
+		char: "\u{1d7e2}",
 	},
 	{
 		name: "digits, sans-serif bold",
-		char: "\u{1D7EC}",
+		char: "\u{1d7ec}",
 	},
 	{
 		name: "digits, subscript",
@@ -6239,43 +5015,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "digits, tamil",
-		char: "\u{0BE7}",
+		char: "\u{0be7}",
 	},
 	{
 		name: "digits, telugu",
-		char: "\u{0C66}",
+		char: "\u{0c66}",
 	},
 	{
 		name: "digits, thai",
-		char: "\u{0E50}",
+		char: "\u{0e50}",
 	},
 	{
 		name: "digits, tibetan",
-		char: "\u{0F20}",
+		char: "\u{0f20}",
 	},
 	{
 		name: "digram symbols, yijing / i ching monogram and",
-		char: "\u{268A}",
+		char: "\u{268a}",
 	},
 	{
 		name: "digraphs matching serbian cyrillic letters, croatian",
-		char: "\u{01C4}",
+		char: "\u{01c4}",
 	},
 	{
 		name: "digraphs, phonetic",
-		char: "\u{02A3}",
+		char: "\u{02a3}",
 	},
 	{
 		name: "digraphs, yiddish",
-		char: "\u{05F0}",
+		char: "\u{05f0}",
 	},
 	{
 		name: "dijkstra choice",
-		char: "\u{2AFE}",
+		char: "\u{2afe}",
 	},
 	{
 		name: "dijkstra choice, n-ary",
-		char: "\u{2AFF}",
+		char: "\u{2aff}",
 	},
 	{
 		name: "dimension origin",
@@ -6311,7 +5087,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dingbats, drop-shadowed",
-		char: "\u{274D}",
+		char: "\u{274d}",
 	},
 	{
 		name: "dingbats, hazard",
@@ -6331,19 +5107,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dingbats, ornamental",
-		char: "\u{1F650}",
+		char: "\u{1f650}",
 	},
 	{
 		name: "dingbats, pencil",
-		char: "\u{270E}",
+		char: "\u{270e}",
 	},
 	{
 		name: "dingbats, pointing index finger",
-		char: "\u{261A}",
+		char: "\u{261a}",
 	},
 	{
 		name: "dingbats, quotation mark",
-		char: "\u{275B}",
+		char: "\u{275b}",
 	},
 	{
 		name: "dingbats, scissors",
@@ -6375,7 +5151,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dining available symbol",
-		char: "\u{1F37D}",
+		char: "\u{1f37d}",
 	},
 	{
 		name: "direct current symbol form two",
@@ -6391,11 +5167,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "directional format characters",
-		char: "\u{202A}",
+		char: "\u{202a}",
 	},
 	{
 		name: "directional formatting, pop",
-		char: "\u{202C}",
+		char: "\u{202c}",
 	},
 	{
 		name: "directional isolate, pop",
@@ -6407,7 +5183,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "discretionary hyphen",
-		char: "\u{00AD}",
+		char: "\u{00ad}",
 	},
 	{
 		name: "disjunction",
@@ -6427,19 +5203,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "divination, khmer numeric symbols for",
-		char: "\u{17F0}",
+		char: "\u{17f0}",
 	},
 	{
 		name: "division sign",
-		char: "\u{00F7}",
+		char: "\u{00f7}",
 	},
 	{
 		name: "division sign operators, multiplication and",
-		char: "\u{2A2F}",
+		char: "\u{2a2f}",
 	},
 	{
 		name: "division sign, circled",
-		char: "\u{2A38}",
+		char: "\u{2a38}",
 	},
 	{
 		name: "division slash",
@@ -6451,35 +5227,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "division times",
-		char: "\u{22C7}",
+		char: "\u{22c7}",
 	},
 	{
 		name: "division, long",
-		char: "\u{27CC}",
+		char: "\u{27cc}",
 	},
 	{
 		name: "divorce symbol",
-		char: "\u{26AE}",
+		char: "\u{26ae}",
 	},
 	{
 		name: "dizzy symbol",
-		char: "\u{1F4AB}",
+		char: "\u{1f4ab}",
 	},
 	{
 		name: "do not enter",
-		char: "\u{26D4}",
+		char: "\u{26d4}",
 	},
 	{
 		name: "document",
-		char: "\u{1F5CE}",
+		char: "\u{1f5ce}",
 	},
 	{
 		name: "document, empty",
-		char: "\u{1F5CB}",
+		char: "\u{1f5cb}",
 	},
 	{
 		name: "does not contain as member",
-		char: "\u{220C}",
+		char: "\u{220c}",
 	},
 	{
 		name: "does not divide",
@@ -6491,15 +5267,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "does not yield",
-		char: "\u{22A3}",
+		char: "\u{22a3}",
 	},
 	{
 		name: "dog",
-		char: "\u{1F415}",
+		char: "\u{1f415}",
 	},
 	{
 		name: "dog face",
-		char: "\u{1F436}",
+		char: "\u{1f436}",
 	},
 	{
 		name: "dogra",
@@ -6511,47 +5287,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dolphin",
-		char: "\u{1F42C}",
+		char: "\u{1f42c}",
 	},
 	{
 		name: "domain restriction",
-		char: "\u{25C1}",
+		char: "\u{25c1}",
 	},
 	{
 		name: "domino tiles",
-		char: "\u{1F030}",
+		char: "\u{1f030}",
 	},
 	{
 		name: "dong sign",
-		char: "\u{20AB}",
+		char: "\u{20ab}",
 	},
 	{
 		name: "donkey",
-		char: "\u{1FACF}",
+		char: "\u{1facf}",
 	},
 	{
 		name: "dot",
-		char: "\u{002E}",
+		char: "\u{002e}",
 	},
 	{
 		name: "dot above",
-		char: "\u{02D9}",
-	},
-	{
-		name: "dot above right, combining",
-		char: "\u{0358}",
-	},
-	{
-		name: "dot above, combining",
-		char: "\u{0307}",
+		char: "\u{02d9}",
 	},
 	{
 		name: "dot above, double",
 		char: "\u{0308}",
-	},
-	{
-		name: "dot below, combining",
-		char: "\u{0323}",
 	},
 	{
 		name: "dot below, myanmar sign",
@@ -6575,7 +5339,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dot operator",
-		char: "\u{22C5}",
+		char: "\u{22c5}",
 	},
 	{
 		name: "dot operator, circled",
@@ -6583,7 +5347,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dot operator, squared",
-		char: "\u{22A1}",
+		char: "\u{22a1}",
 	},
 	{
 		name: "dot plus",
@@ -6603,15 +5367,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dot punctuation, two",
-		char: "\u{205A}",
+		char: "\u{205a}",
 	},
 	{
 		name: "dot, greek middle",
-		char: "\u{00B7}",
+		char: "\u{00b7}",
 	},
 	{
 		name: "dot, katakana middle",
-		char: "\u{30FB}",
+		char: "\u{30fb}",
 	},
 	{
 		name: "dot, latin capital letter i",
@@ -6619,23 +5383,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dot, latin letter sinological",
-		char: "\u{A78F}",
+		char: "\u{a78f}",
 	},
 	{
 		name: "dot, middle",
-		char: "\u{00B7}",
+		char: "\u{00b7}",
 	},
 	{
 		name: "dot, sesame",
-		char: "\u{FE45}",
+		char: "\u{fe45}",
 	},
 	{
 		name: "dot, vertical line with middle",
-		char: "\u{237F}",
+		char: "\u{237f}",
 	},
 	{
 		name: "dot, white sesame",
-		char: "\u{FE46}",
+		char: "\u{fe46}",
 	},
 	{
 		name: "dotless i, latin small letter",
@@ -6643,7 +5407,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dotless j with stroke, latin small letter",
-		char: "\u{025F}",
+		char: "\u{025f}",
 	},
 	{
 		name: "dotless j, latin small letter",
@@ -6651,15 +5415,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dotless mathematical symbols",
-		char: "\u{1D6A4}",
-	},
-	{
-		name: "dots above, combining four",
-		char: "\u{20DC}",
-	},
-	{
-		name: "dots above, combining three",
-		char: "\u{20DB}",
+		char: "\u{1d6a4}",
 	},
 	{
 		name: "dots, mongolian four",
@@ -6667,15 +5423,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dots, vertical four",
-		char: "\u{205E}",
+		char: "\u{205e}",
 	},
 	{
 		name: "dotted circle",
-		char: "\u{25CC}",
+		char: "\u{25cc}",
 	},
 	{
 		name: "dotted cross",
-		char: "\u{205C}",
+		char: "\u{205c}",
 	},
 	{
 		name: "dotted fence",
@@ -6687,67 +5443,51 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "double acute accent",
-		char: "\u{02DD}",
-	},
-	{
-		name: "double acute accent, combining",
-		char: "\u{030B}",
+		char: "\u{02dd}",
 	},
 	{
 		name: "double angle bracket, left",
-		char: "\u{300A}",
+		char: "\u{300a}",
 	},
 	{
 		name: "double angle bracket, mathematical left",
-		char: "\u{27EA}",
+		char: "\u{27ea}",
 	},
 	{
 		name: "double angle bracket, mathematical right",
-		char: "\u{27EB}",
+		char: "\u{27eb}",
 	},
 	{
 		name: "double angle bracket, right",
-		char: "\u{300B}",
+		char: "\u{300b}",
 	},
 	{
 		name: "double angle quotation mark, left-pointing",
-		char: "\u{00AB}",
+		char: "\u{00ab}",
 	},
 	{
 		name: "double angle quotation mark, right-pointing",
-		char: "\u{00BB}",
+		char: "\u{00bb}",
 	},
 	{
 		name: "double apostrophe, modifier letter",
-		char: "\u{02EE}",
-	},
-	{
-		name: "double arch below, combining inverted",
-		char: "\u{032B}",
+		char: "\u{02ee}",
 	},
 	{
 		name: "double arrows",
-		char: "\u{21CD}",
-	},
-	{
-		name: "double breve below, combining",
-		char: "\u{035C}",
-	},
-	{
-		name: "double breve, combining",
-		char: "\u{035D}",
+		char: "\u{21cd}",
 	},
 	{
 		name: "double circled numbers",
-		char: "\u{24F5}",
+		char: "\u{24f5}",
 	},
 	{
 		name: "double comma quotation mark",
-		char: "\u{201D}",
+		char: "\u{201d}",
 	},
 	{
 		name: "double comma quotation mark, low",
-		char: "\u{201E}",
+		char: "\u{201e}",
 	},
 	{
 		name: "double dagger",
@@ -6763,7 +5503,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "double diacritics",
-		char: "\u{035C}",
+		char: "\u{035c}",
 	},
 	{
 		name: "double dot above",
@@ -6771,79 +5511,55 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "double exclamation mark",
-		char: "\u{203C}",
-	},
-	{
-		name: "double grave accent, combining",
-		char: "\u{030F}",
+		char: "\u{203c}",
 	},
 	{
 		name: "double high-reversed-9 quotation mark",
-		char: "\u{201F}",
+		char: "\u{201f}",
 	},
 	{
 		name: "double hyphen, katakana-hiragana",
-		char: "\u{30A0}",
+		char: "\u{30a0}",
 	},
 	{
 		name: "double integral",
-		char: "\u{222C}",
+		char: "\u{222c}",
 	},
 	{
 		name: "double intersection",
-		char: "\u{22D2}",
-	},
-	{
-		name: "double inverted breve, combining",
-		char: "\u{0361}",
+		char: "\u{22d2}",
 	},
 	{
 		name: "double logical and",
-		char: "\u{2A53}",
+		char: "\u{2a53}",
 	},
 	{
 		name: "double logical or",
-		char: "\u{2A54}",
+		char: "\u{2a54}",
 	},
 	{
 		name: "double low line",
 		char: "\u{2017}",
 	},
 	{
-		name: "double low line, combining",
-		char: "\u{0333}",
-	},
-	{
 		name: "double low-9 quotation mark",
-		char: "\u{201E}",
-	},
-	{
-		name: "double macron below, combining",
-		char: "\u{035F}",
-	},
-	{
-		name: "double macron, combining",
-		char: "\u{035E}",
+		char: "\u{201e}",
 	},
 	{
 		name: "double operators",
-		char: "\u{22D0}",
-	},
-	{
-		name: "double overline, combining",
-		char: "\u{033F}",
+		char: "\u{22d0}",
 	},
 	{
 		name: "double pipe",
-		char: "\u{01C1}",
+		char: "\u{01c1}",
 	},
 	{
 		name: "double plus",
-		char: "\u{29FA}",
+		char: "\u{29fa}",
 	},
 	{
 		name: "double precedes",
-		char: "\u{2ABB}",
+		char: "\u{2abb}",
 	},
 	{
 		name: "double prime",
@@ -6851,19 +5567,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "double prime quotation mark",
-		char: "\u{301E}",
+		char: "\u{301e}",
 	},
 	{
 		name: "double prime quotation mark, low",
-		char: "\u{301F}",
+		char: "\u{301f}",
 	},
 	{
 		name: "double prime quotation mark, reversed",
-		char: "\u{301D}",
+		char: "\u{301d}",
 	},
 	{
 		name: "double prime, modifier letter",
-		char: "\u{02BA}",
+		char: "\u{02ba}",
 	},
 	{
 		name: "double prime, reversed",
@@ -6883,59 +5599,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "double quotation mark, left",
-		char: "\u{201C}",
+		char: "\u{201c}",
 	},
 	{
 		name: "double quotation mark, right",
-		char: "\u{201D}",
+		char: "\u{201d}",
 	},
 	{
 		name: "double reversed comma quotation mark",
-		char: "\u{201F}",
-	},
-	{
-		name: "double rightwards arrow below, combining",
-		char: "\u{0362}",
-	},
-	{
-		name: "double ring below, combining",
-		char: "\u{035A}",
+		char: "\u{201f}",
 	},
 	{
 		name: "double slash overlay, long",
-		char: "\u{20EB}",
+		char: "\u{20eb}",
 	},
 	{
 		name: "double solidus operator",
-		char: "\u{2AFD}",
-	},
-	{
-		name: "double solidus overlay, combining long",
-		char: "\u{20EB}",
+		char: "\u{2afd}",
 	},
 	{
 		name: "double subset",
-		char: "\u{22D0}",
+		char: "\u{22d0}",
 	},
 	{
 		name: "double succeeds",
-		char: "\u{2ABC}",
+		char: "\u{2abc}",
 	},
 	{
 		name: "double superset",
-		char: "\u{22D1}",
-	},
-	{
-		name: "double tilde, combining",
-		char: "\u{0360}",
+		char: "\u{22d1}",
 	},
 	{
 		name: "double triangles",
-		char: "\u{23E9}",
+		char: "\u{23e9}",
 	},
 	{
 		name: "double turned comma quotation mark",
-		char: "\u{201C}",
+		char: "\u{201c}",
 	},
 	{
 		name: "double underline",
@@ -6951,43 +5651,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "double union",
-		char: "\u{22D3}",
+		char: "\u{22d3}",
 	},
 	{
 		name: "double vertical line",
 		char: "\u{2016}",
 	},
 	{
-		name: "double vertical line above, combining",
-		char: "\u{030E}",
-	},
-	{
-		name: "double vertical line below, combining",
-		char: "\u{0348}",
-	},
-	{
-		name: "double vertical stroke overlay, combining",
-		char: "\u{20E6}",
-	},
-	{
 		name: "double wavy overline",
-		char: "\u{FE4C}",
+		char: "\u{fe4c}",
 	},
 	{
 		name: "double-barred pipe",
-		char: "\u{01C2}",
+		char: "\u{01c2}",
 	},
 	{
 		name: "double-struck digits",
-		char: "\u{1D7D8}",
+		char: "\u{1d7d8}",
 	},
 	{
 		name: "double-struck greek letters",
-		char: "\u{213C}",
+		char: "\u{213c}",
 	},
 	{
 		name: "double-struck greek letters",
-		char: "\u{213D}",
+		char: "\u{213d}",
 	},
 	{
 		name: "double-struck italic mathematical symbols",
@@ -6995,11 +5683,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "double-struck mathematical symbols",
-		char: "\u{1D538}",
+		char: "\u{1d538}",
 	},
 	{
 		name: "dove of peace",
-		char: "\u{1F54A}",
+		char: "\u{1f54a}",
 	},
 	{
 		name: "down arrowhead",
@@ -7007,27 +5695,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "down pointing index, white",
-		char: "\u{261F}",
+		char: "\u{261f}",
 	},
 	{
 		name: "down right diagonal ellipsis",
-		char: "\u{22F1}",
+		char: "\u{22f1}",
 	},
 	{
 		name: "down tack",
-		char: "\u{22A4}",
-	},
-	{
-		name: "down tack below, combining",
-		char: "\u{031E}",
+		char: "\u{22a4}",
 	},
 	{
 		name: "down, page",
-		char: "\u{21DF}",
+		char: "\u{21df}",
 	},
 	{
 		name: "downstile, apl",
-		char: "\u{230A}",
+		char: "\u{230a}",
 	},
 	{
 		name: "downwards arrow",
@@ -7035,23 +5719,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dprk compatibility ideographs",
-		char: "\u{FA70}",
+		char: "\u{fa70}",
 	},
 	{
 		name: "drachma sign",
-		char: "\u{20AF}",
+		char: "\u{20af}",
 	},
 	{
 		name: "drafting symbols",
-		char: "\u{232D}",
+		char: "\u{232d}",
 	},
 	{
 		name: "dragon",
-		char: "\u{1F409}",
+		char: "\u{1f409}",
 	},
 	{
 		name: "dragon face",
-		char: "\u{1F432}",
+		char: "\u{1f432}",
 	},
 	{
 		name: "dram",
@@ -7059,59 +5743,59 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "dram sign, armenian",
-		char: "\u{058F}",
+		char: "\u{058f}",
 	},
 	{
 		name: "draughts and checkers, symbols for",
-		char: "\u{26C0}",
+		char: "\u{26c0}",
 	},
 	{
 		name: "drive slow sign",
-		char: "\u{26DA}",
+		char: "\u{26da}",
 	},
 	{
 		name: "drive-in restaurant",
-		char: "\u{26FE}",
+		char: "\u{26fe}",
 	},
 	{
 		name: "drop",
-		char: "\u{264F}",
+		char: "\u{264f}",
 	},
 	{
 		name: "drop-shadowed dingbats",
-		char: "\u{274D}",
+		char: "\u{274d}",
 	},
 	{
 		name: "droplet",
-		char: "\u{1F4A7}",
+		char: "\u{1f4a7}",
 	},
 	{
 		name: "droplet, black",
-		char: "\u{1F322}",
+		char: "\u{1f322}",
 	},
 	{
 		name: "duplicate characters from big 5",
-		char: "\u{FA0C}",
+		char: "\u{fa0c}",
 	},
 	{
 		name: "duplicate characters from cns 11643-1992",
-		char: "\u{2F800}",
+		char: "\u{2f800}",
 	},
 	{
 		name: "duployan",
-		char: "\u{1BC00}",
+		char: "\u{1bc00}",
 	},
 	{
 		name: "dvd",
-		char: "\u{1F4C0}",
+		char: "\u{1f4c0}",
 	},
 	{
 		name: "e with acute, latin capital letter",
-		char: "\u{00C9}",
+		char: "\u{00c9}",
 	},
 	{
 		name: "e with acute, latin small letter",
-		char: "\u{00E9}",
+		char: "\u{00e9}",
 	},
 	{
 		name: "e with breve, latin small letter",
@@ -7119,7 +5803,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "e with caron, latin small letter",
-		char: "\u{011B}",
+		char: "\u{011b}",
 	},
 	{
 		name: "e with cedilla, latin small letter",
@@ -7127,23 +5811,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "e with circumflex below, latin small letter",
-		char: "\u{1E19}",
+		char: "\u{1e19}",
 	},
 	{
 		name: "e with circumflex, latin capital letter",
-		char: "\u{00CA}",
+		char: "\u{00ca}",
 	},
 	{
 		name: "e with circumflex, latin small letter",
-		char: "\u{00EA}",
+		char: "\u{00ea}",
 	},
 	{
 		name: "e with diaeresis, latin capital letter",
-		char: "\u{00CB}",
+		char: "\u{00cb}",
 	},
 	{
 		name: "e with diaeresis, latin small letter",
-		char: "\u{00EB}",
+		char: "\u{00eb}",
 	},
 	{
 		name: "e with dot above, latin small letter",
@@ -7151,7 +5835,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "e with dot below, latin small letter",
-		char: "\u{1EB9}",
+		char: "\u{1eb9}",
 	},
 	{
 		name: "e with double grave, latin small letter",
@@ -7159,19 +5843,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "e with grave, latin capital letter",
-		char: "\u{00C8}",
+		char: "\u{00c8}",
 	},
 	{
 		name: "e with grave, latin small letter",
-		char: "\u{00E8}",
+		char: "\u{00e8}",
 	},
 	{
 		name: "e with hook above, latin small letter",
-		char: "\u{1EBB}",
+		char: "\u{1ebb}",
 	},
 	{
 		name: "e with hook, latin small letter reversed open",
-		char: "\u{025D}",
+		char: "\u{025d}",
 	},
 	{
 		name: "e with inverted breve, latin small letter",
@@ -7195,15 +5879,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "e with tilde below, latin small letter",
-		char: "\u{1E1B}",
+		char: "\u{1e1b}",
 	},
 	{
 		name: "e with tilde, latin small letter",
-		char: "\u{1EBD}",
-	},
-	{
-		name: "e, combining latin small letter",
-		char: "\u{0364}",
+		char: "\u{1ebd}",
 	},
 	{
 		name: "e, double-struck italic small",
@@ -7215,23 +5895,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "e, latin capital letter reversed",
-		char: "\u{018E}",
+		char: "\u{018e}",
 	},
 	{
 		name: "e, latin capital letter turned",
-		char: "\u{018E}",
+		char: "\u{018e}",
 	},
 	{
 		name: "e, latin letter small capital",
-		char: "\u{1D07}",
+		char: "\u{1d07}",
 	},
 	{
 		name: "e, latin small letter closed open",
-		char: "\u{029A}",
+		char: "\u{029a}",
 	},
 	{
 		name: "e, latin small letter closed reversed open",
-		char: "\u{025E}",
+		char: "\u{025e}",
 	},
 	{
 		name: "e, latin small letter o",
@@ -7239,7 +5919,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "e, latin small letter open",
-		char: "\u{025B}",
+		char: "\u{025b}",
 	},
 	{
 		name: "e, latin small letter reversed",
@@ -7247,15 +5927,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "e, latin small letter reversed open",
-		char: "\u{025C}",
+		char: "\u{025c}",
 	},
 	{
 		name: "e, latin small letter turned",
-		char: "\u{01DD}",
+		char: "\u{01dd}",
 	},
 	{
 		name: "e, latin small letter turned open",
-		char: "\u{1D08}",
+		char: "\u{1d08}",
 	},
 	{
 		name: "e, script capital",
@@ -7263,15 +5943,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "e, script small",
-		char: "\u{212F}",
+		char: "\u{212f}",
 	},
 	{
 		name: "eagle",
-		char: "\u{1F985}",
+		char: "\u{1f985}",
 	},
 	{
 		name: "ear",
-		char: "\u{1F442}",
+		char: "\u{1f442}",
 	},
 	{
 		name: "earth",
@@ -7279,7 +5959,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "earth ground",
-		char: "\u{23DA}",
+		char: "\u{23da}",
 	},
 	{
 		name: "east syriac cross",
@@ -7287,11 +5967,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "eastern arabic-indic digits",
-		char: "\u{06F0}",
+		char: "\u{06f0}",
 	},
 	{
 		name: "editorial symbols, new testament",
-		char: "\u{2E00}",
+		char: "\u{2e00}",
 	},
 	{
 		name: "egressive airflow",
@@ -7307,27 +5987,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "eighth note",
-		char: "\u{266A}",
+		char: "\u{266a}",
 	},
 	{
 		name: "eighth notes, beamed",
-		char: "\u{266B}",
+		char: "\u{266b}",
 	},
 	{
 		name: "eighths, fractions",
-		char: "\u{215B}",
+		char: "\u{215b}",
 	},
 	{
 		name: "eject media",
-		char: "\u{23CF}",
+		char: "\u{23cf}",
 	},
 	{
 		name: "ek onkar, gurmukhi",
-		char: "\u{0A74}",
+		char: "\u{0a74}",
 	},
 	{
 		name: "el salvadorian currency",
-		char: "\u{20A1}",
+		char: "\u{20a1}",
 	},
 	{
 		name: "elbasan",
@@ -7339,15 +6019,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "electric plug",
-		char: "\u{1F50C}",
+		char: "\u{1f50c}",
 	},
 	{
 		name: "electrical intersection",
-		char: "\u{23E7}",
+		char: "\u{23e7}",
 	},
 	{
 		name: "electrolysis",
-		char: "\u{21AF}",
+		char: "\u{21af}",
 	},
 	{
 		name: "electromotive force",
@@ -7355,7 +6035,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "electrotechnical symbols",
-		char: "\u{238D}",
+		char: "\u{238d}",
 	},
 	{
 		name: "element of",
@@ -7367,7 +6047,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "element of, small",
-		char: "\u{220A}",
+		char: "\u{220a}",
 	},
 	{
 		name: "element, unique",
@@ -7375,15 +6055,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "elephant",
-		char: "\u{1F418}",
+		char: "\u{1f418}",
 	},
 	{
 		name: "ellipses",
-		char: "\u{2B2C}",
+		char: "\u{2b2c}",
 	},
 	{
 		name: "ellipsis, down right diagonal",
-		char: "\u{22F1}",
+		char: "\u{22f1}",
 	},
 	{
 		name: "ellipsis, horizontal",
@@ -7391,11 +6071,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ellipsis, lao",
-		char: "\u{0EAF}",
+		char: "\u{0eaf}",
 	},
 	{
 		name: "ellipsis, midline horizontal",
-		char: "\u{22EF}",
+		char: "\u{22ef}",
 	},
 	{
 		name: "ellipsis, mongolian",
@@ -7403,11 +6083,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ellipsis, up right diagonal",
-		char: "\u{22F0}",
+		char: "\u{22f0}",
 	},
 	{
 		name: "ellipsis, vertical",
-		char: "\u{22EE}",
+		char: "\u{22ee}",
 	},
 	{
 		name: "elliptic function, weierstrass",
@@ -7415,7 +6095,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "elymaic",
-		char: "\u{10FE0}",
+		char: "\u{10fe0}",
 	},
 	{
 		name: "em dash",
@@ -7431,11 +6111,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "embedding, left-to-right",
-		char: "\u{202A}",
+		char: "\u{202a}",
 	},
 	{
 		name: "embedding, right-to-left",
-		char: "\u{202B}",
+		char: "\u{202b}",
 	},
 	{
 		name: "emf",
@@ -7443,27 +6123,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "emoji components",
-		char: "\u{1F9B0}",
+		char: "\u{1f9b0}",
 	},
 	{
 		name: "emoji modifiers",
-		char: "\u{1F3FB}",
+		char: "\u{1f3fb}",
 	},
 	{
 		name: "emoticon faces",
-		char: "\u{1F910}",
+		char: "\u{1f910}",
 	},
 	{
 		name: "emoticons",
-		char: "\u{1F600}",
+		char: "\u{1f600}",
 	},
 	{
 		name: "emphasis mark, armenian",
-		char: "\u{055B}",
+		char: "\u{055b}",
 	},
 	{
 		name: "emphasis marks, sidelining",
-		char: "\u{FE45}",
+		char: "\u{fe45}",
 	},
 	{
 		name: "emphasis symbol",
@@ -7475,7 +6155,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "empty sets",
-		char: "\u{29B0}",
+		char: "\u{29b0}",
 	},
 	{
 		name: "en dash",
@@ -7491,7 +6171,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "enclosed alphanumeric supplement",
-		char: "\u{1F100}",
+		char: "\u{1f100}",
 	},
 	{
 		name: "enclosed alphanumerics",
@@ -7503,51 +6183,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "enclosed ideographic supplement",
-		char: "\u{1F200}",
+		char: "\u{1f200}",
 	},
 	{
 		name: "enclosed latin capital letters",
-		char: "\u{1F110}",
+		char: "\u{1f110}",
 	},
 	{
 		name: "enclosed mathematical operators",
 		char: "\u{2295}",
 	},
 	{
-		name: "enclosing circle backslash, combining",
-		char: "\u{20E0}",
-	},
-	{
-		name: "enclosing circle, combining",
-		char: "\u{20DD}",
-	},
-	{
 		name: "enclosing diacritics",
-		char: "\u{20DD}",
-	},
-	{
-		name: "enclosing diamond, combining",
-		char: "\u{20DF}",
-	},
-	{
-		name: "enclosing keycap, combining",
-		char: "\u{20E3}",
-	},
-	{
-		name: "enclosing screen, combining",
-		char: "\u{20E2}",
-	},
-	{
-		name: "enclosing square, combining",
-		char: "\u{20DE}",
-	},
-	{
-		name: "enclosing upward pointing triangle, combining",
-		char: "\u{20E4}",
+		char: "\u{20dd}",
 	},
 	{
 		name: "end",
-		char: "\u{21F2}",
+		char: "\u{21f2}",
 	},
 	{
 		name: "end of guarded area",
@@ -7555,7 +6207,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "end of line",
-		char: "\u{000A}",
+		char: "\u{000a}",
 	},
 	{
 		name: "end of medium",
@@ -7563,7 +6215,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "end of medium, symbol for",
-		char: "\u{237F}",
+		char: "\u{237f}",
 	},
 	{
 		name: "end of medium, symbol for",
@@ -7571,7 +6223,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "end of proof",
-		char: "\u{220E}",
+		char: "\u{220e}",
 	},
 	{
 		name: "end of selected area",
@@ -7607,15 +6259,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "eng, latin small letter",
-		char: "\u{014B}",
+		char: "\u{014b}",
 	},
 	{
 		name: "enn, tamil",
-		char: "\u{0BFA}",
+		char: "\u{0bfa}",
 	},
 	{
 		name: "enotikon, greek",
-		char: "\u{203F}",
+		char: "\u{203f}",
 	},
 	{
 		name: "enquiry",
@@ -7635,7 +6287,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "entertainment symbols",
-		char: "\u{1F3A0}",
+		char: "\u{1f3a0}",
 	},
 	{
 		name: "envelope",
@@ -7643,27 +6295,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "envelope, back of",
-		char: "\u{1F582}",
+		char: "\u{1f582}",
 	},
 	{
 		name: "envelope, stamped",
-		char: "\u{1F583}",
+		char: "\u{1f583}",
 	},
 	{
 		name: "eol",
-		char: "\u{000A}",
+		char: "\u{000a}",
 	},
 	{
 		name: "epidaurean acrophonic symbol three",
-		char: "\u{205D}",
+		char: "\u{205d}",
 	},
 	{
 		name: "epsilon symbol, greek lunate",
-		char: "\u{03F5}",
+		char: "\u{03f5}",
 	},
 	{
 		name: "epsilon symbol, greek reversed lunate",
-		char: "\u{03F6}",
+		char: "\u{03f6}",
 	},
 	{
 		name: "epsilon, latin capital letter",
@@ -7671,43 +6323,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "epsilon, latin small letter",
-		char: "\u{025B}",
+		char: "\u{025b}",
 	},
 	{
 		name: "epsilon, latin small letter closed",
-		char: "\u{029A}",
+		char: "\u{029a}",
 	},
 	{
 		name: "epsilon, latin small letter closed reversed",
-		char: "\u{025E}",
+		char: "\u{025e}",
 	},
 	{
 		name: "epsilon, reversed straight",
-		char: "\u{03F6}",
+		char: "\u{03f6}",
 	},
 	{
 		name: "epsilon, reversed straight",
-		char: "\u{220D}",
+		char: "\u{220d}",
 	},
 	{
 		name: "epsilon, straight",
-		char: "\u{03F5}",
-	},
-	{
-		name: "equal to above, combining almost",
-		char: "\u{034C}",
+		char: "\u{03f5}",
 	},
 	{
 		name: "equal to by definition",
-		char: "\u{225C}",
+		char: "\u{225c}",
 	},
 	{
 		name: "equal to by definition",
-		char: "\u{225D}",
+		char: "\u{225d}",
 	},
 	{
 		name: "equal to, all",
-		char: "\u{224C}",
+		char: "\u{224c}",
 	},
 	{
 		name: "equal to, almost",
@@ -7727,7 +6375,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "equal to, delta",
-		char: "\u{225C}",
+		char: "\u{225c}",
 	},
 	{
 		name: "equal to, geometrically",
@@ -7747,7 +6395,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "equal to, questioned",
-		char: "\u{225F}",
+		char: "\u{225f}",
 	},
 	{
 		name: "equal to, ring",
@@ -7763,7 +6411,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "equality and inequality signs",
-		char: "\u{22D5}",
+		char: "\u{22d5}",
 	},
 	{
 		name: "equals colon",
@@ -7771,19 +6419,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "equals sign",
-		char: "\u{003D}",
-	},
-	{
-		name: "equals sign below, combining",
-		char: "\u{0347}",
+		char: "\u{003d}",
 	},
 	{
 		name: "equals sign, heavy",
-		char: "\u{1F7F0}",
+		char: "\u{1f7f0}",
 	},
 	{
 		name: "equals, circled",
-		char: "\u{229C}",
+		char: "\u{229c}",
 	},
 	{
 		name: "equals, colon",
@@ -7795,27 +6439,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "equals, reversed tilde",
-		char: "\u{22CD}",
+		char: "\u{22cd}",
 	},
 	{
 		name: "equals, star",
-		char: "\u{225B}",
+		char: "\u{225b}",
 	},
 	{
 		name: "equiangular",
-		char: "\u{225C}",
+		char: "\u{225c}",
 	},
 	{
 		name: "equiangular to",
-		char: "\u{225A}",
+		char: "\u{225a}",
 	},
 	{
 		name: "equivalent to",
-		char: "\u{224D}",
+		char: "\u{224d}",
 	},
 	{
 		name: "equivalent to, geometrically",
-		char: "\u{224E}",
+		char: "\u{224e}",
 	},
 	{
 		name: "equivalent to, strictly",
@@ -7823,19 +6467,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "equivalent, tautological",
-		char: "\u{29E6}",
+		char: "\u{29e6}",
 	},
 	{
 		name: "era name, japanese",
-		char: "\u{32FF}",
+		char: "\u{32ff}",
 	},
 	{
 		name: "era names, japanese",
-		char: "\u{337B}",
+		char: "\u{337b}",
 	},
 	{
 		name: "erase to the left",
-		char: "\u{232B}",
+		char: "\u{232b}",
 	},
 	{
 		name: "erase to the right",
@@ -7843,23 +6487,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "error",
-		char: "\u{212F}",
+		char: "\u{212f}",
 	},
 	{
 		name: "error bar symbols",
-		char: "\u{29EE}",
+		char: "\u{29ee}",
 	},
 	{
 		name: "escape",
-		char: "\u{001B}",
+		char: "\u{001b}",
 	},
 	{
 		name: "escape",
-		char: "\u{238B}",
+		char: "\u{238b}",
 	},
 	{
 		name: "escape",
-		char: "\u{2BB9}",
+		char: "\u{2bb9}",
 	},
 	{
 		name: "escape, data link",
@@ -7867,7 +6511,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "escape, symbol for",
-		char: "\u{241B}",
+		char: "\u{241b}",
 	},
 	{
 		name: "escape, symbol for data link",
@@ -7879,11 +6523,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "esh loop, latin letter reversed",
-		char: "\u{01AA}",
+		char: "\u{01aa}",
 	},
 	{
 		name: "esh, latin capital letter",
-		char: "\u{01A9}",
+		char: "\u{01a9}",
 	},
 	{
 		name: "esh, latin small letter",
@@ -7895,7 +6539,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "estimated symbol",
-		char: "\u{212E}",
+		char: "\u{212e}",
 	},
 	{
 		name: "estimates",
@@ -7903,23 +6547,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "eszett",
-		char: "\u{00DF}",
+		char: "\u{00df}",
 	},
 	{
 		name: "et, tironian sign",
-		char: "\u{204A}",
+		char: "\u{204a}",
 	},
 	{
 		name: "eth, latin capital letter",
-		char: "\u{00D0}",
+		char: "\u{00d0}",
 	},
 	{
 		name: "eth, latin letter small capital",
-		char: "\u{1D06}",
+		char: "\u{1d06}",
 	},
 	{
 		name: "eth, latin small letter",
-		char: "\u{00F0}",
+		char: "\u{00f0}",
 	},
 	{
 		name: "ethel",
@@ -7928,10 +6572,6 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "ethiopic colon",
 		char: "\u{1365}",
-	},
-	{
-		name: "ethiopic combining marks",
-		char: "\u{135D}",
 	},
 	{
 		name: "ethiopic comma",
@@ -7943,11 +6583,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ethiopic extended",
-		char: "\u{2D80}",
+		char: "\u{2d80}",
 	},
 	{
 		name: "ethiopic extended-a",
-		char: "\u{AB00}",
+		char: "\u{ab00}",
 	},
 	{
 		name: "ethiopic full stop",
@@ -7995,11 +6635,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "euro european currency",
-		char: "\u{20AC}",
+		char: "\u{20ac}",
 	},
 	{
 		name: "euro sign",
-		char: "\u{20AC}",
+		char: "\u{20ac}",
 	},
 	{
 		name: "european latin",
@@ -8007,11 +6647,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "european paragraph sign",
-		char: "\u{00A7}",
+		char: "\u{00a7}",
 	},
 	{
 		name: "european section sign",
-		char: "\u{00B6}",
+		char: "\u{00b6}",
 	},
 	{
 		name: "excess",
@@ -8031,19 +6671,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "exclamation mark, armenian",
-		char: "\u{055C}",
+		char: "\u{055c}",
 	},
 	{
 		name: "exclamation mark, double",
-		char: "\u{203C}",
+		char: "\u{203c}",
 	},
 	{
 		name: "exclamation mark, inverted",
-		char: "\u{00A1}",
+		char: "\u{00a1}",
 	},
 	{
 		name: "exclamation mark, latin letter",
-		char: "\u{01C3}",
+		char: "\u{01c3}",
 	},
 	{
 		name: "exclamation mark, limbu",
@@ -8071,39 +6711,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "exponent, natural",
-		char: "\u{212F}",
+		char: "\u{212f}",
 	},
 	{
 		name: "extensions for ainu, katakana",
-		char: "\u{31F0}",
+		char: "\u{31f0}",
 	},
 	{
 		name: "extraterrestrial alien",
-		char: "\u{1F47D}",
+		char: "\u{1f47d}",
 	},
 	{
 		name: "eye",
-		char: "\u{1F441}",
+		char: "\u{1f441}",
 	},
 	{
 		name: "eyes",
-		char: "\u{1F440}",
+		char: "\u{1f440}",
 	},
 	{
 		name: "ezh reversed, latin small letter",
-		char: "\u{01B9}",
+		char: "\u{01b9}",
 	},
 	{
 		name: "ezh with caron, latin small letter",
-		char: "\u{01EF}",
+		char: "\u{01ef}",
 	},
 	{
 		name: "ezh, latin capital letter",
-		char: "\u{01B7}",
+		char: "\u{01b7}",
 	},
 	{
 		name: "ezh, latin letter small capital",
-		char: "\u{1D23}",
+		char: "\u{1d23}",
 	},
 	{
 		name: "ezh, latin small letter",
@@ -8111,7 +6751,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "f with dot above, latin small letter",
-		char: "\u{1E1F}",
+		char: "\u{1e1f}",
 	},
 	{
 		name: "f with hook, latin small letter",
@@ -8131,15 +6771,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "f, turned small",
-		char: "\u{214E}",
+		char: "\u{214e}",
 	},
 	{
 		name: "face palm",
-		char: "\u{1F926}",
+		char: "\u{1f926}",
 	},
 	{
 		name: "face, black smiling",
-		char: "\u{263B}",
+		char: "\u{263b}",
 	},
 	{
 		name: "face, postal mark",
@@ -8151,27 +6791,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "face, white smiling",
-		char: "\u{263A}",
+		char: "\u{263a}",
 	},
 	{
 		name: "faces",
-		char: "\u{1F600}",
+		char: "\u{1f600}",
 	},
 	{
 		name: "faces",
-		char: "\u{1F920}",
+		char: "\u{1f920}",
 	},
 	{
 		name: "faces",
-		char: "\u{1FAE0}",
+		char: "\u{1fae0}",
 	},
 	{
 		name: "facial parts symbols",
-		char: "\u{1F440}",
+		char: "\u{1f440}",
 	},
 	{
 		name: "facsimile sign",
-		char: "\u{213B}",
+		char: "\u{213b}",
 	},
 	{
 		name: "factorial",
@@ -8179,7 +6819,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "factory",
-		char: "\u{26ED}",
+		char: "\u{26ed}",
 	},
 	{
 		name: "fahrenheit, degree",
@@ -8187,43 +6827,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "fairy tale symbols",
-		char: "\u{1F478}",
+		char: "\u{1f478}",
 	},
 	{
 		name: "family",
-		char: "\u{1F46A}",
+		char: "\u{1f46a}",
 	},
 	{
 		name: "fan, folding hand",
-		char: "\u{1FAAD}",
+		char: "\u{1faad}",
 	},
 	{
 		name: "fast cursor down",
-		char: "\u{21A1}",
+		char: "\u{21a1}",
 	},
 	{
 		name: "fast cursor left",
-		char: "\u{219E}",
+		char: "\u{219e}",
 	},
 	{
 		name: "fast cursor right",
-		char: "\u{21A0}",
+		char: "\u{21a0}",
 	},
 	{
 		name: "fast cursor up",
-		char: "\u{219F}",
+		char: "\u{219f}",
 	},
 	{
 		name: "fast forward",
-		char: "\u{23E9}",
+		char: "\u{23e9}",
 	},
 	{
 		name: "fast rewind",
-		char: "\u{23EA}",
+		char: "\u{23ea}",
 	},
 	{
 		name: "father christmas",
-		char: "\u{1F385}",
+		char: "\u{1f385}",
 	},
 	{
 		name: "feet",
@@ -8235,7 +6875,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "feminine ordinal indicator",
-		char: "\u{00AA}",
+		char: "\u{00aa}",
 	},
 	{
 		name: "fence, dotted",
@@ -8247,19 +6887,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "fences, wiggly",
-		char: "\u{29D8}",
-	},
-	{
-		name: "fermata, combining",
-		char: "\u{0352}",
+		char: "\u{29d8}",
 	},
 	{
 		name: "ferry",
-		char: "\u{26F4}",
+		char: "\u{26f4}",
 	},
 	{
 		name: "ff",
-		char: "\u{000C}",
+		char: "\u{000c}",
 	},
 	{
 		name: "fifths, fractions",
@@ -8275,23 +6911,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "file folder",
-		char: "\u{1F4C1}",
+		char: "\u{1f4c1}",
 	},
 	{
 		name: "file folder, open",
-		char: "\u{1F4C2}",
+		char: "\u{1f4c2}",
 	},
 	{
 		name: "file separator",
-		char: "\u{001C}",
+		char: "\u{001c}",
 	},
 	{
 		name: "file separator, symbol for",
-		char: "\u{241C}",
+		char: "\u{241c}",
 	},
 	{
 		name: "fill space, ideographic half",
-		char: "\u{303F}",
+		char: "\u{303f}",
 	},
 	{
 		name: "filler, hangul",
@@ -8299,23 +6935,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "film frames",
-		char: "\u{1F39E}",
+		char: "\u{1f39e}",
 	},
 	{
 		name: "finger dingbats, pointing index",
-		char: "\u{261A}",
+		char: "\u{261a}",
 	},
 	{
 		name: "fingers crossed",
-		char: "\u{1F91E}",
+		char: "\u{1f91e}",
 	},
 	{
 		name: "finite function",
-		char: "\u{21FB}",
+		char: "\u{21fb}",
 	},
 	{
 		name: "finite function diacritic",
-		char: "\u{20E6}",
+		char: "\u{20e6}",
 	},
 	{
 		name: "finite injection",
@@ -8323,7 +6959,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "finite relation",
-		char: "\u{21FC}",
+		char: "\u{21fc}",
 	},
 	{
 		name: "finite surjection",
@@ -8335,15 +6971,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "fire",
-		char: "\u{1F525}",
+		char: "\u{1f525}",
 	},
 	{
 		name: "fire engine, oncoming",
-		char: "\u{1F6F1}",
+		char: "\u{1f6f1}",
 	},
 	{
 		name: "first quarter moon",
-		char: "\u{263D}",
+		char: "\u{263d}",
 	},
 	{
 		name: "first strong isolate",
@@ -8351,31 +6987,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "fish",
-		char: "\u{1F41F}",
+		char: "\u{1f41f}",
 	},
 	{
 		name: "fish tails",
-		char: "\u{297C}",
+		char: "\u{297c}",
 	},
 	{
 		name: "fish, tropical",
-		char: "\u{1F420}",
+		char: "\u{1f420}",
 	},
 	{
 		name: "fisheye",
-		char: "\u{25C9}",
+		char: "\u{25c9}",
 	},
 	{
 		name: "fist",
-		char: "\u{261E}",
+		char: "\u{261e}",
 	},
 	{
 		name: "fist, raised",
-		char: "\u{270A}",
+		char: "\u{270a}",
 	},
 	{
 		name: "fisted hand sign",
-		char: "\u{1F44A}",
+		char: "\u{1f44a}",
 	},
 	{
 		name: "five dot punctuation",
@@ -8383,7 +7019,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "flag in hole",
-		char: "\u{26F3}",
+		char: "\u{26f3}",
 	},
 	{
 		name: "flag, black",
@@ -8391,11 +7027,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "flag, waving black",
-		char: "\u{1F3F4}",
+		char: "\u{1f3f4}",
 	},
 	{
 		name: "flag, waving white",
-		char: "\u{1F3F3}",
+		char: "\u{1f3f3}",
 	},
 	{
 		name: "flag, white",
@@ -8403,27 +7039,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "flat sign, music",
-		char: "\u{266D}",
+		char: "\u{266d}",
 	},
 	{
 		name: "flatness",
-		char: "\u{23E5}",
+		char: "\u{23e5}",
 	},
 	{
 		name: "fleur-de-lis",
-		char: "\u{269C}",
+		char: "\u{269c}",
 	},
 	{
 		name: "floor, left",
-		char: "\u{230A}",
+		char: "\u{230a}",
 	},
 	{
 		name: "floor, right",
-		char: "\u{230B}",
+		char: "\u{230b}",
 	},
 	{
 		name: "floppy disk",
-		char: "\u{1F4BE}",
+		char: "\u{1f4be}",
 	},
 	{
 		name: "floral heart bullet, reversed rotated",
@@ -8435,7 +7071,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "flying saucer",
-		char: "\u{1F6F8}",
+		char: "\u{1f6f8}",
 	},
 	{
 		name: "folder",
@@ -8443,23 +7079,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "fongman, thai character",
-		char: "\u{0E4F}",
+		char: "\u{0e4f}",
 	},
 	{
 		name: "food available symbol",
-		char: "\u{1F37D}",
+		char: "\u{1f37d}",
 	},
 	{
 		name: "food symbols",
-		char: "\u{1F354}",
+		char: "\u{1f354}",
 	},
 	{
 		name: "food symbols",
-		char: "\u{1F950}",
+		char: "\u{1f950}",
 	},
 	{
 		name: "footprints",
-		char: "\u{1F463}",
+		char: "\u{1f463}",
 	},
 	{
 		name: "for all",
@@ -8467,7 +7103,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "forces",
-		char: "\u{22A9}",
+		char: "\u{22a9}",
 	},
 	{
 		name: "forfeda supplement, ogham",
@@ -8475,11 +7111,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "fork and knife with plate",
-		char: "\u{1F37D}",
+		char: "\u{1f37d}",
 	},
 	{
 		name: "forks",
-		char: "\u{2AD9}",
+		char: "\u{2ad9}",
 	},
 	{
 		name: "form and chart components",
@@ -8487,23 +7123,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "form feed",
-		char: "\u{000C}",
+		char: "\u{000c}",
 	},
 	{
 		name: "form feed",
-		char: "\u{21A1}",
+		char: "\u{21a1}",
 	},
 	{
 		name: "form feed, symbol for",
-		char: "\u{240C}",
+		char: "\u{240c}",
 	},
 	{
 		name: "format characters",
-		char: "\u{200C}",
+		char: "\u{200c}",
 	},
 	{
 		name: "format characters, directional",
-		char: "\u{202A}",
+		char: "\u{202a}",
 	},
 	{
 		name: "format controls, egyptian hieroglyph",
@@ -8511,15 +7147,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "format controls, mongolian",
-		char: "\u{180B}",
+		char: "\u{180b}",
 	},
 	{
 		name: "formatting, pop directional",
-		char: "\u{202C}",
+		char: "\u{202c}",
 	},
 	{
 		name: "forward arrow indicator",
-		char: "\u{25BB}",
+		char: "\u{25bb}",
 	},
 	{
 		name: "forward difference",
@@ -8527,31 +7163,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "forward play",
-		char: "\u{23F5}",
+		char: "\u{23f5}",
 	},
 	{
 		name: "forward, fast",
-		char: "\u{23E9}",
+		char: "\u{23e9}",
 	},
 	{
 		name: "fountain",
-		char: "\u{26F2}",
+		char: "\u{26f2}",
 	},
 	{
 		name: "four corners, square",
-		char: "\u{26F6}",
+		char: "\u{26f6}",
 	},
 	{
 		name: "four dot mark",
-		char: "\u{205B}",
+		char: "\u{205b}",
 	},
 	{
 		name: "four dot punctuation",
 		char: "\u{2058}",
-	},
-	{
-		name: "four dots above, combining",
-		char: "\u{20DC}",
 	},
 	{
 		name: "four dots, mongolian",
@@ -8559,7 +7191,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "four dots, vertical",
-		char: "\u{205E}",
+		char: "\u{205e}",
 	},
 	{
 		name: "four-per-em space",
@@ -8571,27 +7203,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "fourth derivative",
-		char: "\u{20DC}",
+		char: "\u{20dc}",
 	},
 	{
 		name: "fourth root",
-		char: "\u{221C}",
+		char: "\u{221c}",
 	},
 	{
 		name: "fourth tone, mandarin chinese",
-		char: "\u{02CB}",
+		char: "\u{02cb}",
 	},
 	{
 		name: "fourths, fractions",
-		char: "\u{00BC}",
+		char: "\u{00bc}",
 	},
 	{
 		name: "fraction numerator one",
-		char: "\u{215F}",
+		char: "\u{215f}",
 	},
 	{
 		name: "fraction one half, vulgar",
-		char: "\u{00BD}",
+		char: "\u{00bd}",
 	},
 	{
 		name: "fraction one ninth, vulgar",
@@ -8599,7 +7231,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "fraction one quarter, vulgar",
-		char: "\u{00BC}",
+		char: "\u{00bc}",
 	},
 	{
 		name: "fraction one seventh, vulgar",
@@ -8615,11 +7247,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "fraction three quarters, vulgar",
-		char: "\u{00BE}",
+		char: "\u{00be}",
 	},
 	{
 		name: "fractions eighths",
-		char: "\u{215B}",
+		char: "\u{215b}",
 	},
 	{
 		name: "fractions fifths",
@@ -8627,11 +7259,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "fractions fourths",
-		char: "\u{00BC}",
+		char: "\u{00bc}",
 	},
 	{
 		name: "fractions quarters",
-		char: "\u{00BC}",
+		char: "\u{00bc}",
 	},
 	{
 		name: "fractions sixths",
@@ -8647,19 +7279,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "fraktur mathematical symbols",
-		char: "\u{1D504}",
+		char: "\u{1d504}",
 	},
 	{
 		name: "fraktur mathematical symbols, bold",
-		char: "\u{1D56C}",
+		char: "\u{1d56c}",
 	},
 	{
 		name: "framus, white",
-		char: "\u{29D6}",
+		char: "\u{29d6}",
 	},
 	{
 		name: "franc sign, french",
-		char: "\u{20A3}",
+		char: "\u{20a3}",
 	},
 	{
 		name: "fricative, latin letter pharyngeal voiced",
@@ -8667,7 +7299,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "frog face",
-		char: "\u{1F438}",
+		char: "\u{1f438}",
 	},
 	{
 		name: "frown",
@@ -8679,11 +7311,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "fruit and vegetable symbols",
-		char: "\u{1F345}",
+		char: "\u{1f345}",
 	},
 	{
 		name: "fuel pump",
-		char: "\u{26FD}",
+		char: "\u{26fd}",
 	},
 	{
 		name: "full block",
@@ -8691,11 +7323,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "full stop",
-		char: "\u{002E}",
+		char: "\u{002e}",
 	},
 	{
 		name: "full stop, arabic",
-		char: "\u{06D4}",
+		char: "\u{06d4}",
 	},
 	{
 		name: "full stop, armenian",
@@ -8703,7 +7335,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "full stop, canadian syllabics",
-		char: "\u{166E}",
+		char: "\u{166e}",
 	},
 	{
 		name: "full stop, ethiopic",
@@ -8727,15 +7359,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "fullwidth ascii variants",
-		char: "\u{FF01}",
+		char: "\u{ff01}",
 	},
 	{
 		name: "fullwidth forms, halfwidth and",
-		char: "\u{FF00}",
+		char: "\u{ff00}",
 	},
 	{
 		name: "fullwidth symbol variants",
-		char: "\u{FFE0}",
+		char: "\u{ffe0}",
 	},
 	{
 		name: "function application",
@@ -8747,7 +7379,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "function, bernoulli",
-		char: "\u{212C}",
+		char: "\u{212c}",
 	},
 	{
 		name: "function, composite",
@@ -8755,7 +7387,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "function, finite",
-		char: "\u{21FB}",
+		char: "\u{21fb}",
 	},
 	{
 		name: "function, gamma",
@@ -8763,7 +7395,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "function, partial",
-		char: "\u{21F8}",
+		char: "\u{21f8}",
 	},
 	{
 		name: "function, total",
@@ -8779,27 +7411,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "funeral urn",
-		char: "\u{26B1}",
+		char: "\u{26b1}",
 	},
 	{
 		name: "fuse",
-		char: "\u{23DB}",
+		char: "\u{23db}",
 	},
 	{
 		name: "fvs1",
-		char: "\u{180B}",
+		char: "\u{180b}",
 	},
 	{
 		name: "g with acute, latin small letter",
-		char: "\u{01F5}",
+		char: "\u{01f5}",
 	},
 	{
 		name: "g with breve, latin small letter",
-		char: "\u{011F}",
+		char: "\u{011f}",
 	},
 	{
 		name: "g with caron, latin small letter",
-		char: "\u{01E7}",
+		char: "\u{01e7}",
 	},
 	{
 		name: "g with cedilla, latin small letter",
@@ -8807,7 +7439,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "g with circumflex, latin small letter",
-		char: "\u{011D}",
+		char: "\u{011d}",
 	},
 	{
 		name: "g with dot above, latin small letter",
@@ -8819,7 +7451,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "g with hook, latin letter small capital",
-		char: "\u{029B}",
+		char: "\u{029b}",
 	},
 	{
 		name: "g with hook, latin small letter",
@@ -8827,11 +7459,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "g with macron, latin small letter",
-		char: "\u{1E21}",
+		char: "\u{1e21}",
 	},
 	{
 		name: "g with stroke, latin small letter",
-		char: "\u{01E5}",
+		char: "\u{01e5}",
 	},
 	{
 		name: "g, latin letter small capital",
@@ -8843,7 +7475,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "g, script small",
-		char: "\u{210A}",
+		char: "\u{210a}",
 	},
 	{
 		name: "g, turned sans-serif capital",
@@ -8855,7 +7487,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "game symbols",
-		char: "\u{1F3AE}",
+		char: "\u{1f3ae}",
 	},
 	{
 		name: "gamma function",
@@ -8863,11 +7495,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "gamma, double-struck capital",
-		char: "\u{213E}",
+		char: "\u{213e}",
 	},
 	{
 		name: "gamma, double-struck small",
-		char: "\u{213D}",
+		char: "\u{213d}",
 	},
 	{
 		name: "gamma, latin capital letter",
@@ -8883,11 +7515,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "gamma, modifier letter small",
-		char: "\u{02E0}",
+		char: "\u{02e0}",
 	},
 	{
 		name: "gas station",
-		char: "\u{26FD}",
+		char: "\u{26fd}",
 	},
 	{
 		name: "gear",
@@ -8895,15 +7527,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "gemini",
-		char: "\u{264A}",
+		char: "\u{264a}",
 	},
 	{
 		name: "gender symbols",
-		char: "\u{26A2}",
+		char: "\u{26a2}",
 	},
 	{
 		name: "genealogical symbols",
-		char: "\u{26AD}",
+		char: "\u{26ad}",
 	},
 	{
 		name: "general punctuation",
@@ -8919,27 +7551,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "generalized intersection",
-		char: "\u{22C2}",
+		char: "\u{22c2}",
 	},
 	{
 		name: "generalized union",
-		char: "\u{22C3}",
+		char: "\u{22c3}",
 	},
 	{
 		name: "geometric proportion",
-		char: "\u{223A}",
+		char: "\u{223a}",
 	},
 	{
 		name: "geometric shapes",
-		char: "\u{1F532}",
+		char: "\u{1f532}",
 	},
 	{
 		name: "geometric shapes",
-		char: "\u{25A0}",
+		char: "\u{25a0}",
 	},
 	{
 		name: "geometric shapes extended",
-		char: "\u{1F780}",
+		char: "\u{1f780}",
 	},
 	{
 		name: "geometrically equal to",
@@ -8947,35 +7579,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "geometrically equivalent to",
-		char: "\u{224E}",
+		char: "\u{224e}",
 	},
 	{
 		name: "georgian",
-		char: "\u{10A0}",
+		char: "\u{10a0}",
 	},
 	{
 		name: "georgian alphabet",
-		char: "\u{10D0}",
+		char: "\u{10d0}",
 	},
 	{
 		name: "georgian capital letters",
-		char: "\u{10A0}",
+		char: "\u{10a0}",
 	},
 	{
 		name: "georgian comma",
-		char: "\u{00B7}",
+		char: "\u{00b7}",
 	},
 	{
 		name: "georgian currency",
-		char: "\u{20BE}",
+		char: "\u{20be}",
 	},
 	{
 		name: "georgian extended",
-		char: "\u{1C90}",
+		char: "\u{1c90}",
 	},
 	{
 		name: "georgian extensions",
-		char: "\u{10F1}",
+		char: "\u{10f1}",
 	},
 	{
 		name: "georgian full stop",
@@ -8983,23 +7615,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "georgian khutsuri",
-		char: "\u{10A0}",
+		char: "\u{10a0}",
 	},
 	{
 		name: "georgian mkhedruli",
-		char: "\u{10D0}",
+		char: "\u{10d0}",
 	},
 	{
 		name: "georgian paragraph separator",
-		char: "\u{10FB}",
+		char: "\u{10fb}",
 	},
 	{
 		name: "georgian small letters",
-		char: "\u{10D0}",
+		char: "\u{10d0}",
 	},
 	{
 		name: "georgian supplement",
-		char: "\u{2D00}",
+		char: "\u{2d00}",
 	},
 	{
 		name: "german mark pre-wwii",
@@ -9007,11 +7639,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "german penny sign",
-		char: "\u{20B0}",
+		char: "\u{20b0}",
 	},
 	{
 		name: "gesture symbols",
-		char: "\u{1F645}",
+		char: "\u{1f645}",
 	},
 	{
 		name: "geta mark",
@@ -9019,11 +7651,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ghana currency",
-		char: "\u{20B5}",
+		char: "\u{20b5}",
 	},
 	{
 		name: "ghost",
-		char: "\u{1F47B}",
+		char: "\u{1f47b}",
 	},
 	{
 		name: "gimel symbol",
@@ -9031,35 +7663,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ginger root",
-		char: "\u{1FADA}",
+		char: "\u{1fada}",
 	},
 	{
 		name: "girl",
-		char: "\u{1F467}",
+		char: "\u{1f467}",
 	},
 	{
 		name: "glagolitic",
-		char: "\u{2C00}",
+		char: "\u{2c00}",
 	},
 	{
 		name: "glagolitic supplement",
-		char: "\u{1E000}",
+		char: "\u{1e000}",
 	},
 	{
 		name: "gleich stark",
-		char: "\u{29E6}",
+		char: "\u{29e6}",
 	},
 	{
 		name: "globe symbols",
-		char: "\u{1F30D}",
+		char: "\u{1f30d}",
 	},
 	{
 		name: "globe with meridians",
-		char: "\u{1F310}",
+		char: "\u{1f310}",
 	},
 	{
 		name: "glottal stop",
-		char: "\u{02BC}",
+		char: "\u{02bc}",
 	},
 	{
 		name: "glottal stop, latin capital letter",
@@ -9083,19 +7715,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "glottal stop, modifier letter",
-		char: "\u{02C0}",
+		char: "\u{02c0}",
 	},
 	{
 		name: "glottal stop, modifier letter reversed",
-		char: "\u{02C1}",
+		char: "\u{02c1}",
 	},
 	{
 		name: "glottal stop, modifier letter small reversed",
-		char: "\u{02E4}",
+		char: "\u{02e4}",
 	},
 	{
 		name: "gnaborretni",
-		char: "\u{2E18}",
+		char: "\u{2e18}",
 	},
 	{
 		name: "go markers",
@@ -9103,27 +7735,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "goat",
-		char: "\u{1F410}",
+		char: "\u{1f410}",
 	},
 	{
 		name: "goblin, japanese",
-		char: "\u{1F47A}",
+		char: "\u{1f47a}",
 	},
 	{
 		name: "gold medal",
-		char: "\u{1F947}",
+		char: "\u{1f947}",
 	},
 	{
 		name: "golden numbers, runic",
-		char: "\u{16EE}",
+		char: "\u{16ee}",
 	},
 	{
 		name: "golf course",
-		char: "\u{26F3}",
+		char: "\u{26f3}",
 	},
 	{
 		name: "goose",
-		char: "\u{1FABF}",
+		char: "\u{1fabf}",
 	},
 	{
 		name: "gothic",
@@ -9134,12 +7766,8 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{11300}",
 	},
 	{
-		name: "grapheme joiner, combining",
-		char: "\u{034F}",
-	},
-	{
 		name: "graphic characters, terminal",
-		char: "\u{23B7}",
+		char: "\u{23b7}",
 	},
 	{
 		name: "graphic characters, terminal",
@@ -9151,35 +7779,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "graphics for control codes",
-		char: "\u{237D}",
+		char: "\u{237d}",
 	},
 	{
 		name: "graphics, quadrant control code",
-		char: "\u{25F0}",
+		char: "\u{25f0}",
 	},
 	{
 		name: "grave accent",
 		char: "\u{0060}",
 	},
 	{
-		name: "grave accent below, combining",
-		char: "\u{0316}",
-	},
-	{
-		name: "grave accent, combining",
-		char: "\u{0300}",
-	},
-	{
-		name: "grave accent, combining double",
-		char: "\u{030F}",
-	},
-	{
 		name: "grave accent, modifier letter",
-		char: "\u{02CB}",
+		char: "\u{02cb}",
 	},
 	{
 		name: "grave accent, modifier letter low",
-		char: "\u{02CE}",
+		char: "\u{02ce}",
 	},
 	{
 		name: "grave accent, spacing",
@@ -9187,15 +7803,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "grave accent, swedish",
-		char: "\u{02DF}",
-	},
-	{
-		name: "grave tone mark, combining",
-		char: "\u{0340}",
+		char: "\u{02df}",
 	},
 	{
 		name: "graveyard",
-		char: "\u{26FC}",
+		char: "\u{26fc}",
 	},
 	{
 		name: "greater-than or equal to",
@@ -9203,15 +7815,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "greater-than sign",
-		char: "\u{003E}",
+		char: "\u{003e}",
 	},
 	{
 		name: "greater-than, much",
-		char: "\u{226B}",
+		char: "\u{226b}",
 	},
 	{
 		name: "greater-than, very much",
-		char: "\u{22D9}",
+		char: "\u{22d9}",
 	},
 	{
 		name: "greek",
@@ -9223,15 +7835,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "greek ano teleia",
-		char: "\u{00B7}",
+		char: "\u{00b7}",
 	},
 	{
 		name: "greek archaic letters",
-		char: "\u{03D8}",
+		char: "\u{03d8}",
 	},
 	{
 		name: "greek beta symbol",
-		char: "\u{03D0}",
+		char: "\u{03d0}",
 	},
 	{
 		name: "greek capital letters",
@@ -9239,11 +7851,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "greek crosses",
-		char: "\u{1F7A1}",
+		char: "\u{1f7a1}",
 	},
 	{
 		name: "greek currency",
-		char: "\u{20AF}",
+		char: "\u{20af}",
 	},
 	{
 		name: "greek dasia",
@@ -9254,68 +7866,60 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0308}",
 	},
 	{
-		name: "greek dialytika tonos, combining",
-		char: "\u{0344}",
-	},
-	{
 		name: "greek enotikon",
-		char: "\u{203F}",
+		char: "\u{203f}",
 	},
 	{
 		name: "greek extended",
-		char: "\u{1F00}",
+		char: "\u{1f00}",
 	},
 	{
 		name: "greek iota subscript",
 		char: "\u{0345}",
 	},
 	{
-		name: "greek koronis, combining",
-		char: "\u{0343}",
-	},
-	{
 		name: "greek letters, double-struck",
-		char: "\u{213C}",
+		char: "\u{213c}",
 	},
 	{
 		name: "greek lunate epsilon symbol",
-		char: "\u{03F5}",
+		char: "\u{03f5}",
 	},
 	{
 		name: "greek lunate sigma symbol",
-		char: "\u{03F2}",
+		char: "\u{03f2}",
 	},
 	{
 		name: "greek mathematical symbols",
-		char: "\u{1D6A8}",
+		char: "\u{1d6a8}",
 	},
 	{
 		name: "greek mathematical symbols, bold",
-		char: "\u{1D6A8}",
+		char: "\u{1d6a8}",
 	},
 	{
 		name: "greek mathematical symbols, bold italic",
-		char: "\u{1D71C}",
+		char: "\u{1d71c}",
 	},
 	{
 		name: "greek mathematical symbols, italic",
-		char: "\u{1D6E2}",
+		char: "\u{1d6e2}",
 	},
 	{
 		name: "greek mathematical symbols, sans-serif bold",
-		char: "\u{1D756}",
+		char: "\u{1d756}",
 	},
 	{
 		name: "greek mathematical symbols, sans-serif bold italic",
-		char: "\u{1D790}",
+		char: "\u{1d790}",
 	},
 	{
 		name: "greek middle dot",
-		char: "\u{00B7}",
+		char: "\u{00b7}",
 	},
 	{
 		name: "greek musical notation, ancient",
-		char: "\u{1D200}",
+		char: "\u{1d200}",
 	},
 	{
 		name: "greek non-spacing iota below",
@@ -9327,7 +7931,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "greek old testament",
-		char: "\u{1D516}",
+		char: "\u{1d516}",
 	},
 	{
 		name: "greek oxia",
@@ -9338,16 +7942,12 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2059}",
 	},
 	{
-		name: "greek perispomeni, combining",
-		char: "\u{0342}",
-	},
-	{
 		name: "greek phi symbol",
-		char: "\u{03D5}",
+		char: "\u{03d5}",
 	},
 	{
 		name: "greek pi symbol",
-		char: "\u{03D6}",
+		char: "\u{03d6}",
 	},
 	{
 		name: "greek psili",
@@ -9359,15 +7959,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "greek question mark",
-		char: "\u{003B}",
+		char: "\u{003b}",
 	},
 	{
 		name: "greek question mark",
-		char: "\u{037E}",
+		char: "\u{037e}",
 	},
 	{
 		name: "greek reversed lunate epsilon symbol",
-		char: "\u{03F6}",
+		char: "\u{03f6}",
 	},
 	{
 		name: "greek rough breathing mark",
@@ -9379,15 +7979,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "greek small letter lunate sigma",
-		char: "\u{03F2}",
+		char: "\u{03f2}",
 	},
 	{
 		name: "greek small letter pi",
-		char: "\u{03C0}",
+		char: "\u{03c0}",
 	},
 	{
 		name: "greek small letters",
-		char: "\u{03B1}",
+		char: "\u{03b1}",
 	},
 	{
 		name: "greek smooth breathing mark",
@@ -9395,11 +7995,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "greek textual symbols, ancient",
-		char: "\u{2E0E}",
+		char: "\u{2e0e}",
 	},
 	{
 		name: "greek theta symbol",
-		char: "\u{03D1}",
+		char: "\u{03d1}",
 	},
 	{
 		name: "greek tonos",
@@ -9411,15 +8011,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "greek variant letterforms",
-		char: "\u{03D0}",
+		char: "\u{03d0}",
 	},
 	{
 		name: "greek vrachy",
 		char: "\u{0306}",
-	},
-	{
-		name: "greek ypogegrammeni, combining",
-		char: "\u{0345}",
 	},
 	{
 		name: "greek, diacritics for",
@@ -9427,39 +8023,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "greek, precomposed polytonic",
-		char: "\u{1F00}",
+		char: "\u{1f00}",
 	},
 	{
 		name: "gregorian musical symbols",
-		char: "\u{1D1D0}",
+		char: "\u{1d1d0}",
 	},
 	{
 		name: "groucho glasses, face with",
-		char: "\u{1F978}",
+		char: "\u{1f978}",
 	},
 	{
 		name: "ground, earth",
-		char: "\u{23DA}",
+		char: "\u{23da}",
 	},
 	{
 		name: "group lock",
-		char: "\u{21F0}",
+		char: "\u{21f0}",
 	},
 	{
 		name: "group select (iso 9995-7)",
-		char: "\u{21E8}",
+		char: "\u{21e8}",
 	},
 	{
 		name: "group separator",
-		char: "\u{001D}",
+		char: "\u{001d}",
 	},
 	{
 		name: "group separator, symbol for",
-		char: "\u{241D}",
+		char: "\u{241d}",
 	},
 	{
 		name: "guarani sign",
-		char: "\u{20B2}",
+		char: "\u{20b2}",
 	},
 	{
 		name: "guarded area, end of",
@@ -9471,7 +8067,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "guillemet, left pointing",
-		char: "\u{00AB}",
+		char: "\u{00ab}",
 	},
 	{
 		name: "guillemet, left pointing single",
@@ -9479,87 +8075,87 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "guillemet, right pointing",
-		char: "\u{00BB}",
+		char: "\u{00bb}",
 	},
 	{
 		name: "guillemet, right pointing single",
-		char: "\u{203A}",
+		char: "\u{203a}",
 	},
 	{
 		name: "gujarati",
-		char: "\u{0A80}",
+		char: "\u{0a80}",
 	},
 	{
 		name: "gujarati consonants",
-		char: "\u{0A95}",
+		char: "\u{0a95}",
 	},
 	{
 		name: "gujarati dependent vowel signs",
-		char: "\u{0ABE}",
+		char: "\u{0abe}",
 	},
 	{
 		name: "gujarati digits",
-		char: "\u{0AE6}",
+		char: "\u{0ae6}",
 	},
 	{
 		name: "gujarati independent vowels",
-		char: "\u{0A85}",
+		char: "\u{0a85}",
 	},
 	{
 		name: "gujarati rupee sign",
-		char: "\u{0AF1}",
+		char: "\u{0af1}",
 	},
 	{
 		name: "gunjala gondi",
-		char: "\u{11D60}",
+		char: "\u{11d60}",
 	},
 	{
 		name: "gurmukhi",
-		char: "\u{0A00}",
+		char: "\u{0a00}",
 	},
 	{
 		name: "gurmukhi addak",
-		char: "\u{0A71}",
+		char: "\u{0a71}",
 	},
 	{
 		name: "gurmukhi consonants",
-		char: "\u{0A15}",
+		char: "\u{0a15}",
 	},
 	{
 		name: "gurmukhi dependent vowel signs",
-		char: "\u{0A3E}",
+		char: "\u{0a3e}",
 	},
 	{
 		name: "gurmukhi digits",
-		char: "\u{0A66}",
+		char: "\u{0a66}",
 	},
 	{
 		name: "gurmukhi ek onkar",
-		char: "\u{0A74}",
+		char: "\u{0a74}",
 	},
 	{
 		name: "gurmukhi independent vowels",
-		char: "\u{0A05}",
+		char: "\u{0a05}",
 	},
 	{
 		name: "gurmukhi khanda",
-		char: "\u{262C}",
+		char: "\u{262c}",
 	},
 	{
 		name: "gurmukhi tippi",
-		char: "\u{0A70}",
+		char: "\u{0a70}",
 	},
 	{
 		name: "h with breve below, latin small letter",
-		char: "\u{1E2B}",
+		char: "\u{1e2b}",
 	},
 	{
 		name: "h with caron, latin small letter",
-		char: "\u{021F}",
+		char: "\u{021f}",
 	},
 	{
 		name: "h with cedilla, latin small letter",
-		char: "\u{1E29}",
+		char: "\u{1e29}",
 	},
 	{
 		name: "h with circumflex, latin small letter",
@@ -9567,19 +8163,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "h with diaeresis, latin small letter",
-		char: "\u{1E27}",
+		char: "\u{1e27}",
 	},
 	{
 		name: "h with dot above, latin small letter",
-		char: "\u{1E23}",
+		char: "\u{1e23}",
 	},
 	{
 		name: "h with dot below, latin small letter",
-		char: "\u{1E25}",
+		char: "\u{1e25}",
 	},
 	{
 		name: "h with fishhook, latin small letter turned",
-		char: "\u{02AE}",
+		char: "\u{02ae}",
 	},
 	{
 		name: "h with hook, latin small letter",
@@ -9587,7 +8183,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "h with line below, latin small letter",
-		char: "\u{1E96}",
+		char: "\u{1e96}",
 	},
 	{
 		name: "h with stroke, latin small letter",
@@ -9595,19 +8191,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "h, black-letter capital",
-		char: "\u{210C}",
-	},
-	{
-		name: "h, combining latin small letter",
-		char: "\u{036A}",
+		char: "\u{210c}",
 	},
 	{
 		name: "h, double-struck capital",
-		char: "\u{210D}",
+		char: "\u{210d}",
 	},
 	{
 		name: "h, latin letter small capital",
-		char: "\u{029C}",
+		char: "\u{029c}",
 	},
 	{
 		name: "h, latin small letter turned",
@@ -9619,35 +8211,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "h, modifier letter small",
-		char: "\u{02B0}",
+		char: "\u{02b0}",
 	},
 	{
 		name: "h, script capital",
-		char: "\u{210B}",
-	},
-	{
-		name: "hacek, combining",
-		char: "\u{030C}",
+		char: "\u{210b}",
 	},
 	{
 		name: "hacek, modifier letter",
-		char: "\u{02C7}",
+		char: "\u{02c7}",
 	},
 	{
 		name: "hair space",
-		char: "\u{200A}",
+		char: "\u{200a}",
 	},
 	{
 		name: "halant",
-		char: "\u{094D}",
+		char: "\u{094d}",
 	},
 	{
 		name: "halanta, tibetan mark",
-		char: "\u{0F84}",
+		char: "\u{0f84}",
 	},
 	{
 		name: "half fill space, ideographic",
-		char: "\u{303F}",
+		char: "\u{303f}",
 	},
 	{
 		name: "half integral, bottom",
@@ -9658,72 +8246,52 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2320}",
 	},
 	{
-		name: "half marks, combining",
-		char: "\u{FE20}",
-	},
-	{
-		name: "half ring above, combining left",
-		char: "\u{0351}",
-	},
-	{
-		name: "half ring above, combining right",
-		char: "\u{0357}",
-	},
-	{
-		name: "half ring below, combining left",
-		char: "\u{031C}",
-	},
-	{
-		name: "half ring below, combining right",
-		char: "\u{0339}",
-	},
-	{
 		name: "half ring, armenian modifier letter left",
 		char: "\u{0559}",
 	},
 	{
 		name: "half ring, armenian modifier letter right",
-		char: "\u{055A}",
+		char: "\u{055a}",
 	},
 	{
 		name: "half ring, modifier letter centred left",
-		char: "\u{02D3}",
+		char: "\u{02d3}",
 	},
 	{
 		name: "half ring, modifier letter left",
-		char: "\u{02BF}",
+		char: "\u{02bf}",
 	},
 	{
 		name: "half triangular colon, modifier letter",
-		char: "\u{02D1}",
+		char: "\u{02d1}",
 	},
 	{
 		name: "half, vulgar fraction one",
-		char: "\u{00BD}",
+		char: "\u{00bd}",
 	},
 	{
 		name: "halfwidth and fullwidth forms",
-		char: "\u{FF00}",
+		char: "\u{ff00}",
 	},
 	{
 		name: "halfwidth cjk punctuation",
-		char: "\u{FF61}",
+		char: "\u{ff61}",
 	},
 	{
 		name: "halfwidth japanese katakana variants",
-		char: "\u{FF61}",
+		char: "\u{ff61}",
 	},
 	{
 		name: "halfwidth korean hangul variants",
-		char: "\u{FFA0}",
+		char: "\u{ffa0}",
 	},
 	{
 		name: "halfwidth symbol variants",
-		char: "\u{FFE8}",
+		char: "\u{ffe8}",
 	},
 	{
 		name: "hamilton operator",
-		char: "\u{25BD}",
+		char: "\u{25bd}",
 	},
 	{
 		name: "hammer and pick",
@@ -9731,71 +8299,67 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hammer and sickle",
-		char: "\u{262D}",
+		char: "\u{262d}",
 	},
 	{
 		name: "hamster face",
-		char: "\u{1F439}",
+		char: "\u{1f439}",
 	},
 	{
 		name: "hamzah on ha, arabic letter",
-		char: "\u{06C0}",
+		char: "\u{06c0}",
 	},
 	{
 		name: "han ideographs",
-		char: "\u{4E00}",
-	},
-	{
-		name: "han-daku-on, combining japanese",
-		char: "\u{309A}",
+		char: "\u{4e00}",
 	},
 	{
 		name: "han-daku-on, japanese",
-		char: "\u{309C}",
+		char: "\u{309c}",
 	},
 	{
 		name: "hand symbols",
-		char: "\u{1F446}",
+		char: "\u{1f446}",
 	},
 	{
 		name: "hand symbols",
-		char: "\u{1F58E}",
+		char: "\u{1f58e}",
 	},
 	{
 		name: "hand symbols",
-		char: "\u{1F918}",
+		char: "\u{1f918}",
 	},
 	{
 		name: "hand symbols",
-		char: "\u{1FAF0}",
+		char: "\u{1faf0}",
 	},
 	{
 		name: "hand symbols, pointing",
-		char: "\u{261A}",
+		char: "\u{261a}",
 	},
 	{
 		name: "hand, index finger pointing",
-		char: "\u{1F446}",
+		char: "\u{1f446}",
 	},
 	{
 		name: "hand, raised",
-		char: "\u{270B}",
+		char: "\u{270b}",
 	},
 	{
 		name: "hand, raised back of",
-		char: "\u{1F91A}",
+		char: "\u{1f91a}",
 	},
 	{
 		name: "hand, victory",
-		char: "\u{270C}",
+		char: "\u{270c}",
 	},
 	{
 		name: "hand, writing",
-		char: "\u{270D}",
+		char: "\u{270d}",
 	},
 	{
 		name: "handshake",
-		char: "\u{1F91D}",
+		char: "\u{1f91d}",
 	},
 	{
 		name: "hangul archaic letters, korean",
@@ -9803,7 +8367,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hangul choseong filler",
-		char: "\u{115F}",
+		char: "\u{115f}",
 	},
 	{
 		name: "hangul compatibility jamo, korean",
@@ -9814,16 +8378,12 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{3164}",
 	},
 	{
-		name: "hangul jamo combining alphabet, korean",
-		char: "\u{1100}",
-	},
-	{
 		name: "hangul jamo extended-a, korean",
-		char: "\u{A960}",
+		char: "\u{a960}",
 	},
 	{
 		name: "hangul jamo extended-b, korean",
-		char: "\u{D7B0}",
+		char: "\u{d7b0}",
 	},
 	{
 		name: "hangul jungseong filler",
@@ -9839,19 +8399,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hangul syllables area, korean",
-		char: "\u{AC00}",
+		char: "\u{ac00}",
 	},
 	{
 		name: "hangul syllables, circled korean",
-		char: "\u{326E}",
+		char: "\u{326e}",
 	},
 	{
 		name: "hangul syllables, parenthesized korean",
-		char: "\u{320E}",
+		char: "\u{320e}",
 	},
 	{
 		name: "hangul variants, halfwidth korean",
-		char: "\u{FFA0}",
+		char: "\u{ffa0}",
 	},
 	{
 		name: "hangzhou numerals",
@@ -9859,7 +8419,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hanifi rohingya",
-		char: "\u{10D00}",
+		char: "\u{10d00}",
 	},
 	{
 		name: "hanunoo",
@@ -9867,7 +8427,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "harakat, arabic",
-		char: "\u{064B}",
+		char: "\u{064b}",
 	},
 	{
 		name: "harbor symbol",
@@ -9875,43 +8435,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hardhat",
-		char: "\u{1F477}",
-	},
-	{
-		name: "harpoon above, combining left",
-		char: "\u{20D0}",
-	},
-	{
-		name: "harpoon above, combining right",
-		char: "\u{20D1}",
-	},
-	{
-		name: "harpoon with barb downwards, combining leftwards",
-		char: "\u{20ED}",
-	},
-	{
-		name: "harpoon with barb downwards, combining rightwards",
-		char: "\u{20EC}",
+		char: "\u{1f477}",
 	},
 	{
 		name: "harpoons",
-		char: "\u{21BC}",
+		char: "\u{21bc}",
 	},
 	{
 		name: "harpoons, miscellaneous",
-		char: "\u{294A}",
+		char: "\u{294a}",
 	},
 	{
 		name: "hartsakan nshan, armenian",
-		char: "\u{055E}",
+		char: "\u{055e}",
 	},
 	{
 		name: "hasant, bengali",
-		char: "\u{09CD}",
+		char: "\u{09cd}",
 	},
 	{
 		name: "hasanta, syloti nagri sign",
-		char: "\u{A806}",
+		char: "\u{a806}",
 	},
 	{
 		name: "hash",
@@ -9927,11 +8471,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hatran",
-		char: "\u{108E0}",
+		char: "\u{108e0}",
 	},
 	{
 		name: "have a nice day!",
-		char: "\u{263A}",
+		char: "\u{263a}",
 	},
 	{
 		name: "hazard dingbats",
@@ -9939,7 +8483,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "head marks, tibetan",
-		char: "\u{0F01}",
+		char: "\u{0f01}",
 	},
 	{
 		name: "heading, start of",
@@ -9951,11 +8495,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "headphone",
-		char: "\u{1F3A7}",
+		char: "\u{1f3a7}",
 	},
 	{
 		name: "headstone graveyard symbol",
-		char: "\u{26FC}",
+		char: "\u{26fc}",
 	},
 	{
 		name: "heart bullet, reversed rotated floral",
@@ -9967,7 +8511,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "heart hands",
-		char: "\u{1FAF6}",
+		char: "\u{1faf6}",
 	},
 	{
 		name: "heart ornaments",
@@ -9975,15 +8519,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "heart symbols",
-		char: "\u{1F493}",
+		char: "\u{1f493}",
 	},
 	{
 		name: "heart, black",
-		char: "\u{1F5A4}",
+		char: "\u{1f5a4}",
 	},
 	{
 		name: "heart, white",
-		char: "\u{1F90D}",
+		char: "\u{1f90d}",
 	},
 	{
 		name: "heavy ballot x",
@@ -10011,7 +8555,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hebrew alphabet",
-		char: "\u{05D0}",
+		char: "\u{05d0}",
 	},
 	{
 		name: "hebrew cantillation marks",
@@ -10023,11 +8567,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hebrew points and punctuation",
-		char: "\u{05B0}",
+		char: "\u{05b0}",
 	},
 	{
 		name: "hebrew presentation forms",
-		char: "\u{FB1D}",
+		char: "\u{fb1d}",
 	},
 	{
 		name: "hedera",
@@ -10035,11 +8579,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hedgehog",
-		char: "\u{1F994}",
+		char: "\u{1f994}",
 	},
 	{
 		name: "heh with yeh above, arabic letter",
-		char: "\u{06C0}",
+		char: "\u{06c0}",
 	},
 	{
 		name: "helm symbol",
@@ -10047,27 +8591,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "helmet with white cross",
-		char: "\u{26D1}",
+		char: "\u{26d1}",
 	},
 	{
 		name: "hentaigana",
-		char: "\u{1B002}",
+		char: "\u{1b002}",
 	},
 	{
 		name: "hentaigana",
-		char: "\u{1B100}",
+		char: "\u{1b100}",
 	},
 	{
 		name: "hermes, staff of",
-		char: "\u{269A}",
+		char: "\u{269a}",
 	},
 	{
 		name: "hermitian conjugate matrix",
-		char: "\u{22B9}",
+		char: "\u{22b9}",
 	},
 	{
 		name: "hexagram symbols, yijing / i ching",
-		char: "\u{4DC0}",
+		char: "\u{4dc0}",
 	},
 	{
 		name: "hieroglyphs, anatolian",
@@ -10079,27 +8623,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "high surrogates",
-		char: "\u{D800}",
+		char: "\u{d800}",
 	},
 	{
 		name: "high voltage sign",
-		char: "\u{26A1}",
+		char: "\u{26a1}",
 	},
 	{
 		name: "high-reversed-9 quotation mark, double",
-		char: "\u{201F}",
+		char: "\u{201f}",
 	},
 	{
 		name: "high-reversed-9 quotation mark, single",
-		char: "\u{201B}",
+		char: "\u{201b}",
 	},
 	{
 		name: "higher rank than",
-		char: "\u{227B}",
+		char: "\u{227b}",
 	},
 	{
 		name: "hilbert space",
-		char: "\u{210C}",
+		char: "\u{210c}",
 	},
 	{
 		name: "hiragana",
@@ -10107,7 +8651,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hiragana iteration mark",
-		char: "\u{309D}",
+		char: "\u{309d}",
 	},
 	{
 		name: "hiragana letter small ka",
@@ -10123,23 +8667,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hiragana voiced iteration mark",
-		char: "\u{309E}",
+		char: "\u{309e}",
 	},
 	{
 		name: "histogram marker",
-		char: "\u{25AE}",
+		char: "\u{25ae}",
 	},
 	{
 		name: "historic site",
-		char: "\u{26EC}",
+		char: "\u{26ec}",
 	},
 	{
 		name: "hmong, nyiakeng puachue",
-		char: "\u{1E100}",
+		char: "\u{1e100}",
 	},
 	{
 		name: "hmong, pahawh",
-		char: "\u{16B00}",
+		char: "\u{16b00}",
 	},
 	{
 		name: "holler",
@@ -10147,43 +8691,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "home",
-		char: "\u{21B8}",
+		char: "\u{21b8}",
 	},
 	{
 		name: "home",
-		char: "\u{21F1}",
+		char: "\u{21f1}",
 	},
 	{
 		name: "homothetic",
-		char: "\u{223B}",
-	},
-	{
-		name: "homothetic above, combining",
-		char: "\u{034B}",
+		char: "\u{223b}",
 	},
 	{
 		name: "honeybee",
-		char: "\u{1F41D}",
+		char: "\u{1f41d}",
 	},
 	{
 		name: "honorifics, arabic",
 		char: "\u{0610}",
 	},
 	{
-		name: "hook above, combining",
-		char: "\u{0309}",
-	},
-	{
-		name: "hook below, combining palatalized",
-		char: "\u{0321}",
-	},
-	{
-		name: "hook below, combining retroflex",
-		char: "\u{0322}",
-	},
-	{
 		name: "hook, modifier letter rhotic",
-		char: "\u{02DE}",
+		char: "\u{02de}",
 	},
 	{
 		name: "hook, nasal",
@@ -10199,7 +8727,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "horizontal brackets",
-		char: "\u{23B4}",
+		char: "\u{23b4}",
 	},
 	{
 		name: "horizontal ellipsis",
@@ -10207,11 +8735,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "horizontal ellipsis, midline",
-		char: "\u{22EF}",
+		char: "\u{22ef}",
 	},
 	{
 		name: "horizontal scan lines",
-		char: "\u{23BA}",
+		char: "\u{23ba}",
 	},
 	{
 		name: "horizontal tabulation",
@@ -10222,20 +8750,16 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2409}",
 	},
 	{
-		name: "horn, combining",
-		char: "\u{031B}",
-	},
-	{
 		name: "horse",
-		char: "\u{1F40E}",
+		char: "\u{1f40e}",
 	},
 	{
 		name: "horse face",
-		char: "\u{1F434}",
+		char: "\u{1f434}",
 	},
 	{
 		name: "hospital",
-		char: "\u{26E8}",
+		char: "\u{26e8}",
 	},
 	{
 		name: "hot beverage",
@@ -10243,7 +8767,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hot dog",
-		char: "\u{1F32D}",
+		char: "\u{1f32d}",
 	},
 	{
 		name: "hot springs",
@@ -10251,15 +8775,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hourglass",
-		char: "\u{231B}",
+		char: "\u{231b}",
 	},
 	{
 		name: "hourglass with flowing sand",
-		char: "\u{23F3}",
+		char: "\u{23f3}",
 	},
 	{
 		name: "hourglass, black",
-		char: "\u{29D7}",
+		char: "\u{29d7}",
 	},
 	{
 		name: "hours, ideographic telegraph symbols for",
@@ -10271,7 +8795,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hryvnia sign",
-		char: "\u{20B4}",
+		char: "\u{20b4}",
 	},
 	{
 		name: "ht",
@@ -10279,7 +8803,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hungarian, old",
-		char: "\u{10C80}",
+		char: "\u{10c80}",
 	},
 	{
 		name: "hv, latin small letter",
@@ -10287,11 +8811,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hwair, latin capital letter",
-		char: "\u{01F6}",
+		char: "\u{01f6}",
 	},
 	{
 		name: "hyacinth",
-		char: "\u{1FABB}",
+		char: "\u{1fabb}",
 	},
 	{
 		name: "hyphen",
@@ -10303,23 +8827,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hyphen or minus sign",
-		char: "\u{002D}",
+		char: "\u{002d}",
 	},
 	{
 		name: "hyphen, armenian",
-		char: "\u{058A}",
+		char: "\u{058a}",
 	},
 	{
 		name: "hyphen, discretionary",
-		char: "\u{00AD}",
+		char: "\u{00ad}",
 	},
 	{
 		name: "hyphen, double",
-		char: "\u{2E40}",
+		char: "\u{2e40}",
 	},
 	{
 		name: "hyphen, katakana-hiragana double",
-		char: "\u{30A0}",
+		char: "\u{30a0}",
 	},
 	{
 		name: "hyphen, mongolian todo soft",
@@ -10331,19 +8855,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hyphen, oblique",
-		char: "\u{2E5D}",
+		char: "\u{2e5d}",
 	},
 	{
 		name: "hyphen, papyrological",
-		char: "\u{035C}",
+		char: "\u{035c}",
 	},
 	{
 		name: "hyphen, soft",
-		char: "\u{00AD}",
+		char: "\u{00ad}",
 	},
 	{
 		name: "hyphen-minus",
-		char: "\u{002D}",
+		char: "\u{002d}",
 	},
 	{
 		name: "hyphenation point",
@@ -10351,11 +8875,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "hyphus",
-		char: "\u{002D}",
+		char: "\u{002d}",
 	},
 	{
 		name: "hysteresis symbol",
-		char: "\u{238E}",
+		char: "\u{238e}",
 	},
 	{
 		name: "i bar, latin capital letter",
@@ -10363,11 +8887,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "i ching / yijing hexagram symbols",
-		char: "\u{4DC0}",
+		char: "\u{4dc0}",
 	},
 	{
 		name: "i ching / yijing monogram and digram symbols",
-		char: "\u{268A}",
+		char: "\u{268a}",
 	},
 	{
 		name: "i ching / yijing trigram symbols",
@@ -10379,39 +8903,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "i love you hand sign",
-		char: "\u{1F91F}",
+		char: "\u{1f91f}",
 	},
 	{
 		name: "i with acute, latin capital letter",
-		char: "\u{00CD}",
+		char: "\u{00cd}",
 	},
 	{
 		name: "i with acute, latin small letter",
-		char: "\u{00ED}",
+		char: "\u{00ed}",
 	},
 	{
 		name: "i with breve, latin small letter",
-		char: "\u{012D}",
+		char: "\u{012d}",
 	},
 	{
 		name: "i with caron, latin small letter",
-		char: "\u{01D0}",
+		char: "\u{01d0}",
 	},
 	{
 		name: "i with circumflex, latin capital letter",
-		char: "\u{00CE}",
+		char: "\u{00ce}",
 	},
 	{
 		name: "i with circumflex, latin small letter",
-		char: "\u{00EE}",
+		char: "\u{00ee}",
 	},
 	{
 		name: "i with diaeresis, latin capital letter",
-		char: "\u{00CF}",
+		char: "\u{00cf}",
 	},
 	{
 		name: "i with diaeresis, latin small letter",
-		char: "\u{00EF}",
+		char: "\u{00ef}",
 	},
 	{
 		name: "i with dot above, latin capital letter",
@@ -10419,7 +8943,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "i with dot below, latin small letter",
-		char: "\u{1ECB}",
+		char: "\u{1ecb}",
 	},
 	{
 		name: "i with double grave, latin small letter",
@@ -10427,27 +8951,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "i with grave, latin capital letter",
-		char: "\u{00CC}",
+		char: "\u{00cc}",
 	},
 	{
 		name: "i with grave, latin small letter",
-		char: "\u{00EC}",
+		char: "\u{00ec}",
 	},
 	{
 		name: "i with hook above, latin small letter",
-		char: "\u{1EC9}",
+		char: "\u{1ec9}",
 	},
 	{
 		name: "i with inverted breve, latin small letter",
-		char: "\u{020B}",
+		char: "\u{020b}",
 	},
 	{
 		name: "i with macron, latin small letter",
-		char: "\u{012B}",
+		char: "\u{012b}",
 	},
 	{
 		name: "i with ogonek, latin small letter",
-		char: "\u{012F}",
+		char: "\u{012f}",
 	},
 	{
 		name: "i with stroke, latin capital letter",
@@ -10459,7 +8983,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "i with tilde below, latin small letter",
-		char: "\u{1E2D}",
+		char: "\u{1e2d}",
 	},
 	{
 		name: "i with tilde, latin small letter",
@@ -10470,16 +8994,12 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2111}",
 	},
 	{
-		name: "i, combining latin small letter",
-		char: "\u{0365}",
-	},
-	{
 		name: "i, double-struck italic small",
 		char: "\u{2148}",
 	},
 	{
 		name: "i, latin letter small capital",
-		char: "\u{026A}",
+		char: "\u{026a}",
 	},
 	{
 		name: "i, latin small letter dotless",
@@ -10487,11 +9007,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "i, latin small letter turned",
-		char: "\u{1D09}",
+		char: "\u{1d09}",
 	},
 	{
 		name: "i, latin subscript small letter",
-		char: "\u{1D62}",
+		char: "\u{1d62}",
 	},
 	{
 		name: "i, script capital",
@@ -10503,15 +9023,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ice skate",
-		char: "\u{26F8}",
+		char: "\u{26f8}",
 	},
 	{
 		name: "icy road",
-		char: "\u{26D0}",
+		char: "\u{26d0}",
 	},
 	{
 		name: "idea",
-		char: "\u{1F4A1}",
+		char: "\u{1f4a1}",
 	},
 	{
 		name: "identical to",
@@ -10539,7 +9059,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ideographic description characters, cjk",
-		char: "\u{2FF0}",
+		char: "\u{2ff0}",
 	},
 	{
 		name: "ideographic full stop",
@@ -10547,7 +9067,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ideographic half fill space",
-		char: "\u{303F}",
+		char: "\u{303f}",
 	},
 	{
 		name: "ideographic iteration mark",
@@ -10555,7 +9075,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ideographic iteration mark, vertical",
-		char: "\u{303B}",
+		char: "\u{303b}",
 	},
 	{
 		name: "ideographic number zero",
@@ -10567,15 +9087,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ideographic supplement, enclosed",
-		char: "\u{1F200}",
+		char: "\u{1f200}",
 	},
 	{
 		name: "ideographic symbols and punctuation",
-		char: "\u{16FE0}",
+		char: "\u{16fe0}",
 	},
 	{
 		name: "ideographic telegraph symbols for days",
-		char: "\u{33E0}",
+		char: "\u{33e0}",
 	},
 	{
 		name: "ideographic telegraph symbols for hours",
@@ -10583,15 +9103,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ideographic telegraph symbols for months",
-		char: "\u{32C0}",
+		char: "\u{32c0}",
 	},
 	{
 		name: "ideographic tone marks",
-		char: "\u{302A}",
+		char: "\u{302a}",
 	},
 	{
 		name: "ideographic variation indicator",
-		char: "\u{303E}",
+		char: "\u{303e}",
 	},
 	{
 		name: "ideographs area, cjk",
@@ -10611,19 +9131,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ideographs extension c, cjk unified",
-		char: "\u{2A700}",
+		char: "\u{2a700}",
 	},
 	{
 		name: "ideographs extension d, cjk unified",
-		char: "\u{2B740}",
+		char: "\u{2b740}",
 	},
 	{
 		name: "ideographs extension e, cjk unified",
-		char: "\u{2B820}",
+		char: "\u{2b820}",
 	},
 	{
 		name: "ideographs extension f, cjk unified",
-		char: "\u{2CEB0}",
+		char: "\u{2ceb0}",
 	},
 	{
 		name: "ideographs extension g, cjk unified",
@@ -10635,7 +9155,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ideographs supplement, cjk compatibility",
-		char: "\u{2F800}",
+		char: "\u{2f800}",
 	},
 	{
 		name: "ideographs, circled",
@@ -10643,23 +9163,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ideographs, cjk compatibility",
-		char: "\u{F900}",
+		char: "\u{f900}",
 	},
 	{
 		name: "ideographs, cjk unified",
-		char: "\u{4E00}",
+		char: "\u{4e00}",
 	},
 	{
 		name: "ideographs, dprk compatibility",
-		char: "\u{FA70}",
+		char: "\u{fa70}",
 	},
 	{
 		name: "ideographs, han",
-		char: "\u{4E00}",
+		char: "\u{4e00}",
 	},
 	{
 		name: "ideographs, jis x 0213 compatibility",
-		char: "\u{FA30}",
+		char: "\u{fa30}",
 	},
 	{
 		name: "ideographs, parenthesized cjk",
@@ -10679,11 +9199,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "image of",
-		char: "\u{22B7}",
+		char: "\u{22b7}",
 	},
 	{
 		name: "image of, square",
-		char: "\u{228F}",
+		char: "\u{228f}",
 	},
 	{
 		name: "imaginary part",
@@ -10691,7 +9211,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "imp",
-		char: "\u{1F47F}",
+		char: "\u{1f47f}",
 	},
 	{
 		name: "imperial aramaic",
@@ -10699,7 +9219,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "implies",
-		char: "\u{22A2}",
+		char: "\u{22a2}",
 	},
 	{
 		name: "inches",
@@ -10715,11 +9235,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "incorporated, japanese",
-		char: "\u{337F}",
+		char: "\u{337f}",
 	},
 	{
 		name: "increase",
-		char: "\u{23F6}",
+		char: "\u{23f6}",
 	},
 	{
 		name: "increment",
@@ -10727,71 +9247,71 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "independence",
-		char: "\u{2AEB}",
+		char: "\u{2aeb}",
 	},
 	{
 		name: "independent",
-		char: "\u{2ADD}",
+		char: "\u{2add}",
 	},
 	{
 		name: "independent, not",
-		char: "\u{2ADC}",
+		char: "\u{2adc}",
 	},
 	{
 		name: "index finger dingbats, pointing",
-		char: "\u{261A}",
+		char: "\u{261a}",
 	},
 	{
 		name: "index finger pointing hand",
-		char: "\u{1F446}",
+		char: "\u{1f446}",
 	},
 	{
 		name: "index, black left pointing",
-		char: "\u{261A}",
+		char: "\u{261a}",
 	},
 	{
 		name: "index, black right pointing",
-		char: "\u{261B}",
+		char: "\u{261b}",
 	},
 	{
 		name: "index, white down pointing",
-		char: "\u{261F}",
+		char: "\u{261f}",
 	},
 	{
 		name: "index, white left pointing",
-		char: "\u{261C}",
+		char: "\u{261c}",
 	},
 	{
 		name: "index, white right pointing",
-		char: "\u{261E}",
+		char: "\u{261e}",
 	},
 	{
 		name: "index, white up pointing",
-		char: "\u{261D}",
+		char: "\u{261d}",
 	},
 	{
 		name: "indian currency",
-		char: "\u{20A8}",
+		char: "\u{20a8}",
 	},
 	{
 		name: "indian rupee sign",
-		char: "\u{20B9}",
+		char: "\u{20b9}",
 	},
 	{
 		name: "indic number forms, common",
-		char: "\u{A830}",
+		char: "\u{a830}",
 	},
 	{
 		name: "indicator, backward arrow",
-		char: "\u{25C5}",
+		char: "\u{25c5}",
 	},
 	{
 		name: "indicator, forward arrow",
-		char: "\u{25BB}",
+		char: "\u{25bb}",
 	},
 	{
 		name: "indic siyaq numbers",
-		char: "\u{1EC70}",
+		char: "\u{1ec70}",
 	},
 	{
 		name: "inequality signs, equality and",
@@ -10799,39 +9319,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "inequality signs, equality and",
-		char: "\u{22D5}",
+		char: "\u{22d5}",
 	},
 	{
 		name: "infinity",
-		char: "\u{221E}",
+		char: "\u{221e}",
 	},
 	{
 		name: "infinity, incomplete",
-		char: "\u{29DC}",
+		char: "\u{29dc}",
 	},
 	{
 		name: "infix bag count",
-		char: "\u{266F}",
+		char: "\u{266f}",
 	},
 	{
 		name: "information",
-		char: "\u{1F6C8}",
+		char: "\u{1f6c8}",
 	},
 	{
 		name: "information separator four",
-		char: "\u{001C}",
+		char: "\u{001c}",
 	},
 	{
 		name: "information separator one",
-		char: "\u{001F}",
+		char: "\u{001f}",
 	},
 	{
 		name: "information separator three",
-		char: "\u{001D}",
+		char: "\u{001d}",
 	},
 	{
 		name: "information separator two",
-		char: "\u{001E}",
+		char: "\u{001e}",
 	},
 	{
 		name: "information source",
@@ -10859,7 +9379,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "injection, total",
-		char: "\u{21A3}",
+		char: "\u{21a3}",
 	},
 	{
 		name: "insertion point, caret",
@@ -10875,15 +9395,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "integral",
-		char: "\u{222B}",
+		char: "\u{222b}",
 	},
 	{
 		name: "integral operator, quaternion",
-		char: "\u{2A16}",
+		char: "\u{2a16}",
 	},
 	{
 		name: "integral signs",
-		char: "\u{222B}",
+		char: "\u{222b}",
 	},
 	{
 		name: "integral, anticlockwise contour",
@@ -10903,7 +9423,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "integral, contour",
-		char: "\u{222E}",
+		char: "\u{222e}",
 	},
 	{
 		name: "integral, counterclockwise contour",
@@ -10911,19 +9431,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "integral, double",
-		char: "\u{222C}",
+		char: "\u{222c}",
 	},
 	{
 		name: "integral, lower",
-		char: "\u{2A1C}",
+		char: "\u{2a1c}",
 	},
 	{
 		name: "integral, riemann",
-		char: "\u{211B}",
+		char: "\u{211b}",
 	},
 	{
 		name: "integral, surface",
-		char: "\u{222F}",
+		char: "\u{222f}",
 	},
 	{
 		name: "integral, top half",
@@ -10931,11 +9451,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "integral, triple",
-		char: "\u{222D}",
+		char: "\u{222d}",
 	},
 	{
 		name: "integral, upper",
-		char: "\u{2A1B}",
+		char: "\u{2a1b}",
 	},
 	{
 		name: "integral, volume",
@@ -10943,19 +9463,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "integrals, summations and",
-		char: "\u{2A0A}",
+		char: "\u{2a0a}",
 	},
 	{
 		name: "integration, anticlockwise",
-		char: "\u{2A11}",
+		char: "\u{2a11}",
 	},
 	{
 		name: "integration, counterclockwise",
-		char: "\u{2A11}",
+		char: "\u{2a11}",
 	},
 	{
 		name: "intercalate",
-		char: "\u{22BA}",
+		char: "\u{22ba}",
 	},
 	{
 		name: "interest sign, place of",
@@ -10963,43 +9483,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "interior product",
-		char: "\u{2A3C}",
+		char: "\u{2a3c}",
 	},
 	{
 		name: "interior product, righthand",
-		char: "\u{2A3D}",
+		char: "\u{2a3d}",
 	},
 	{
 		name: "interleave",
-		char: "\u{2AF4}",
+		char: "\u{2af4}",
 	},
 	{
 		name: "interlinear annotation",
-		char: "\u{FFF9}",
+		char: "\u{fff9}",
 	},
 	{
 		name: "interlinear annotation anchor",
-		char: "\u{FFF9}",
+		char: "\u{fff9}",
 	},
 	{
 		name: "interlinear annotation separator",
-		char: "\u{FFFA}",
+		char: "\u{fffa}",
 	},
 	{
 		name: "interlinear annotation terminator",
-		char: "\u{FFFB}",
+		char: "\u{fffb}",
 	},
 	{
 		name: "interrobang",
-		char: "\u{203D}",
+		char: "\u{203d}",
 	},
 	{
 		name: "interrobang, inverted",
-		char: "\u{2E18}",
+		char: "\u{2e18}",
 	},
 	{
 		name: "interrupt",
-		char: "\u{238A}",
+		char: "\u{238a}",
 	},
 	{
 		name: "intersection",
@@ -11007,67 +9527,47 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "intersection, double",
-		char: "\u{22D2}",
+		char: "\u{22d2}",
 	},
 	{
 		name: "intersection, electrical",
-		char: "\u{23E7}",
+		char: "\u{23e7}",
 	},
 	{
 		name: "intersection, generalized",
-		char: "\u{22C2}",
+		char: "\u{22c2}",
 	},
 	{
 		name: "intersection, n-ary",
-		char: "\u{22C2}",
+		char: "\u{22c2}",
 	},
 	{
 		name: "intersection, proper",
-		char: "\u{22D4}",
+		char: "\u{22d4}",
 	},
 	{
 		name: "intersections and unions",
-		char: "\u{2A40}",
+		char: "\u{2a40}",
 	},
 	{
 		name: "intersyllabic tsheg, tibetan mark",
-		char: "\u{0F0B}",
+		char: "\u{0f0b}",
 	},
 	{
 		name: "introducer, control sequence",
-		char: "\u{009B}",
+		char: "\u{009b}",
 	},
 	{
 		name: "introducer, single character",
-		char: "\u{009A}",
+		char: "\u{009a}",
 	},
 	{
 		name: "inverse numbers, circled",
 		char: "\u{2776}",
 	},
 	{
-		name: "inverted breve below, combining",
-		char: "\u{032F}",
-	},
-	{
-		name: "inverted breve, combining",
-		char: "\u{0311}",
-	},
-	{
-		name: "inverted breve, combining double",
-		char: "\u{0361}",
-	},
-	{
-		name: "inverted bridge below, combining",
-		char: "\u{033A}",
-	},
-	{
-		name: "inverted double arch below, combining",
-		char: "\u{032B}",
-	},
-	{
 		name: "inverted exclamation mark",
-		char: "\u{00A1}",
+		char: "\u{00a1}",
 	},
 	{
 		name: "inverted glottal stop, latin letter",
@@ -11075,11 +9575,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "inverted interrobang",
-		char: "\u{2E18}",
+		char: "\u{2e18}",
 	},
 	{
 		name: "inverted lazy s",
-		char: "\u{223E}",
+		char: "\u{223e}",
 	},
 	{
 		name: "inverted ohm sign",
@@ -11087,7 +9587,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "inverted question mark",
-		char: "\u{00BF}",
+		char: "\u{00bf}",
 	},
 	{
 		name: "inverted r, latin letter small capital",
@@ -11095,7 +9595,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "inverted r, modifier letter small capital",
-		char: "\u{02B6}",
+		char: "\u{02b6}",
 	},
 	{
 		name: "inverted undertie",
@@ -11147,11 +9647,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "iranian currency",
-		char: "\u{FDFC}",
+		char: "\u{fdfc}",
 	},
 	{
 		name: "irish punt",
-		char: "\u{00A3}",
+		char: "\u{00a3}",
 	},
 	{
 		name: "isolate, first strong",
@@ -11171,51 +9671,51 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "israeli currency",
-		char: "\u{20AA}",
+		char: "\u{20aa}",
 	},
 	{
 		name: "isshar, bengali",
-		char: "\u{09FA}",
+		char: "\u{09fa}",
 	},
 	{
 		name: "isshar, oriya",
-		char: "\u{0B70}",
+		char: "\u{0b70}",
 	},
 	{
 		name: "italian currency",
-		char: "\u{20A4}",
+		char: "\u{20a4}",
 	},
 	{
 		name: "italian lira",
-		char: "\u{00A3}",
+		char: "\u{00a3}",
 	},
 	{
 		name: "italic greek mathematical symbols",
-		char: "\u{1D6E2}",
+		char: "\u{1d6e2}",
 	},
 	{
 		name: "italic greek mathematical symbols, bold",
-		char: "\u{1D71C}",
+		char: "\u{1d71c}",
 	},
 	{
 		name: "italic greek mathematical symbols, sans-serif bold",
-		char: "\u{1D790}",
+		char: "\u{1d790}",
 	},
 	{
 		name: "italic mathematical symbols",
-		char: "\u{1D434}",
+		char: "\u{1d434}",
 	},
 	{
 		name: "italic mathematical symbols, bold",
-		char: "\u{1D468}",
+		char: "\u{1d468}",
 	},
 	{
 		name: "italic mathematical symbols, sans-serif",
-		char: "\u{1D608}",
+		char: "\u{1d608}",
 	},
 	{
 		name: "italic mathematical symbols, sans-serif bold",
-		char: "\u{1D63C}",
+		char: "\u{1d63c}",
 	},
 	{
 		name: "italic, old",
@@ -11227,11 +9727,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "iteration mark, hiragana",
-		char: "\u{309D}",
+		char: "\u{309d}",
 	},
 	{
 		name: "iteration mark, hiragana voiced",
-		char: "\u{309E}",
+		char: "\u{309e}",
 	},
 	{
 		name: "iteration mark, ideographic",
@@ -11239,15 +9739,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "iteration mark, katakana",
-		char: "\u{30FD}",
+		char: "\u{30fd}",
 	},
 	{
 		name: "iteration mark, katakana voiced",
-		char: "\u{30FE}",
+		char: "\u{30fe}",
 	},
 	{
 		name: "iteration mark, vertical ideographic",
-		char: "\u{303B}",
+		char: "\u{303b}",
 	},
 	{
 		name: "ivy leaf",
@@ -11255,11 +9755,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "izafet",
-		char: "\u{06C0}",
+		char: "\u{06c0}",
 	},
 	{
 		name: "j with caron, latin small letter",
-		char: "\u{01F0}",
+		char: "\u{01f0}",
 	},
 	{
 		name: "j with circumflex, latin small letter",
@@ -11267,7 +9767,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "j with crossed-tail, latin small letter",
-		char: "\u{029D}",
+		char: "\u{029d}",
 	},
 	{
 		name: "j with stroke, latin capital letter",
@@ -11279,7 +9779,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "j with stroke, latin small letter dotless",
-		char: "\u{025F}",
+		char: "\u{025f}",
 	},
 	{
 		name: "j, double-struck italic small",
@@ -11287,7 +9787,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "j, latin letter small capital",
-		char: "\u{1D0A}",
+		char: "\u{1d0a}",
 	},
 	{
 		name: "j, latin small letter dotless",
@@ -11295,15 +9795,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "j, modifier letter small",
-		char: "\u{02B2}",
+		char: "\u{02b2}",
 	},
 	{
 		name: "jack",
 		char: "\u{2749}",
-	},
-	{
-		name: "jamo combining alphabet, korean hangul",
-		char: "\u{1100}",
 	},
 	{
 		name: "jamo, korean hangul compatibility",
@@ -11311,7 +9807,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "japanese bullet, tainome",
-		char: "\u{25C9}",
+		char: "\u{25c9}",
 	},
 	{
 		name: "japanese chess symbols",
@@ -11319,11 +9815,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "japanese era name",
-		char: "\u{32FF}",
+		char: "\u{32ff}",
 	},
 	{
 		name: "japanese era names",
-		char: "\u{337B}",
+		char: "\u{337b}",
 	},
 	{
 		name: "japanese hiragana",
@@ -11331,7 +9827,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "japanese incorporated",
-		char: "\u{337F}",
+		char: "\u{337f}",
 	},
 	{
 		name: "japanese industrial standard symbol",
@@ -11343,11 +9839,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "japanese katakana",
-		char: "\u{30A0}",
+		char: "\u{30a0}",
 	},
 	{
 		name: "japanese katakana variants, halfwidth",
-		char: "\u{FF61}",
+		char: "\u{ff61}",
 	},
 	{
 		name: "japanese katakana words, squared",
@@ -11355,19 +9851,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "japanese katakana, circled",
-		char: "\u{32D0}",
+		char: "\u{32d0}",
 	},
 	{
 		name: "japanese kome",
-		char: "\u{203B}",
+		char: "\u{203b}",
 	},
 	{
 		name: "javanese",
-		char: "\u{A980}",
+		char: "\u{a980}",
 	},
 	{
 		name: "jellyfish",
-		char: "\u{1FABC}",
+		char: "\u{1fabc}",
 	},
 	{
 		name: "jerusalem, cross of",
@@ -11375,19 +9871,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "jis composition circle",
-		char: "\u{20DD}",
+		char: "\u{20dd}",
 	},
 	{
 		name: "jis x 0213 compatibility ideographs",
-		char: "\u{FA30}",
+		char: "\u{fa30}",
 	},
 	{
 		name: "join",
-		char: "\u{2A1D}",
-	},
-	{
-		name: "joiner, combining grapheme",
-		char: "\u{034F}",
+		char: "\u{2a1d}",
 	},
 	{
 		name: "joiner, word",
@@ -11395,7 +9887,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "joiner, zero width",
-		char: "\u{200D}",
+		char: "\u{200d}",
 	},
 	{
 		name: "jolly roger",
@@ -11415,11 +9907,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "k with acute, latin small letter",
-		char: "\u{1E31}",
+		char: "\u{1e31}",
 	},
 	{
 		name: "k with caron, latin small letter",
-		char: "\u{01E9}",
+		char: "\u{01e9}",
 	},
 	{
 		name: "k with cedilla, latin small letter",
@@ -11427,7 +9919,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "k with dot below, latin small letter",
-		char: "\u{1E33}",
+		char: "\u{1e33}",
 	},
 	{
 		name: "k with hook, latin small letter",
@@ -11435,15 +9927,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "k with line below, latin small letter",
-		char: "\u{1E35}",
+		char: "\u{1e35}",
 	},
 	{
 		name: "k, latin letter small capital",
-		char: "\u{1D0B}",
+		char: "\u{1d0b}",
 	},
 	{
 		name: "k, latin small letter turned",
-		char: "\u{029E}",
+		char: "\u{029e}",
 	},
 	{
 		name: "k, latin subscript small letter",
@@ -11455,7 +9947,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "kabusiki-gaisya",
-		char: "\u{337F}",
+		char: "\u{337f}",
 	},
 	{
 		name: "kaithi",
@@ -11463,15 +9955,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "kaktovik numerals",
-		char: "\u{1D2C0}",
+		char: "\u{1d2c0}",
 	},
 	{
 		name: "kana extended-a",
-		char: "\u{1B100}",
+		char: "\u{1b100}",
 	},
 	{
 		name: "kana extension, small",
-		char: "\u{1B130}",
+		char: "\u{1b130}",
 	},
 	{
 		name: "kana repeat marks",
@@ -11479,7 +9971,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "kana supplement",
-		char: "\u{1B000}",
+		char: "\u{1b000}",
 	},
 	{
 		name: "kanbun ideographic annotation, japanese",
@@ -11487,27 +9979,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "kangxi radicals, cjk",
-		char: "\u{2F00}",
+		char: "\u{2f00}",
 	},
 	{
 		name: "kannada",
-		char: "\u{0C80}",
+		char: "\u{0c80}",
 	},
 	{
 		name: "kannada consonants",
-		char: "\u{0C95}",
+		char: "\u{0c95}",
 	},
 	{
 		name: "kannada dependent vowel signs",
-		char: "\u{0CBE}",
+		char: "\u{0cbe}",
 	},
 	{
 		name: "kannada digits",
-		char: "\u{0CE6}",
+		char: "\u{0ce6}",
 	},
 	{
 		name: "kannada independent vowels",
-		char: "\u{0C85}",
+		char: "\u{0c85}",
 	},
 	{
 		name: "kashida, arabic",
@@ -11515,35 +10007,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "katakana",
-		char: "\u{30A0}",
+		char: "\u{30a0}",
 	},
 	{
 		name: "katakana digraph koto",
-		char: "\u{30FF}",
+		char: "\u{30ff}",
 	},
 	{
 		name: "katakana extensions for ainu",
-		char: "\u{31F0}",
+		char: "\u{31f0}",
 	},
 	{
 		name: "katakana iteration mark",
-		char: "\u{30FD}",
+		char: "\u{30fd}",
 	},
 	{
 		name: "katakana middle dot",
-		char: "\u{30FB}",
+		char: "\u{30fb}",
 	},
 	{
 		name: "katakana phonetic extensions",
-		char: "\u{31F0}",
+		char: "\u{31f0}",
 	},
 	{
 		name: "katakana variants, halfwidth japanese",
-		char: "\u{FF61}",
+		char: "\u{ff61}",
 	},
 	{
 		name: "katakana voiced iteration mark",
-		char: "\u{30FE}",
+		char: "\u{30fe}",
 	},
 	{
 		name: "katakana words, squared",
@@ -11551,31 +10043,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "katakana, circled",
-		char: "\u{32D0}",
+		char: "\u{32d0}",
 	},
 	{
 		name: "katakana-hiragana double hyphen",
-		char: "\u{30A0}",
+		char: "\u{30a0}",
 	},
 	{
 		name: "katakana-hiragana prolonged sound mark",
-		char: "\u{30FC}",
+		char: "\u{30fc}",
 	},
 	{
 		name: "kawi",
-		char: "\u{11F00}",
+		char: "\u{11f00}",
 	},
 	{
 		name: "kayah li",
-		char: "\u{A900}",
+		char: "\u{a900}",
 	},
 	{
 		name: "kelvin sign",
-		char: "\u{212A}",
+		char: "\u{212a}",
 	},
 	{
 		name: "ket",
-		char: "\u{27E9}",
+		char: "\u{27e9}",
 	},
 	{
 		name: "key, clear",
@@ -11587,7 +10079,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "key, delete to the left",
-		char: "\u{232B}",
+		char: "\u{232b}",
 	},
 	{
 		name: "key, delete to the right",
@@ -11603,7 +10095,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "key, squared",
-		char: "\u{26BF}",
+		char: "\u{26bf}",
 	},
 	{
 		name: "keyboard",
@@ -11611,11 +10103,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "keyboard symbol for no break space",
-		char: "\u{237D}",
+		char: "\u{237d}",
 	},
 	{
 		name: "keyboard symbols",
-		char: "\u{21E6}",
+		char: "\u{21e6}",
 	},
 	{
 		name: "keyboard symbols",
@@ -11630,32 +10122,28 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2396}",
 	},
 	{
-		name: "keycap, combining enclosing",
-		char: "\u{20E3}",
-	},
-	{
 		name: "khanda",
-		char: "\u{1FAAF}",
+		char: "\u{1faaf}",
 	},
 	{
 		name: "khanda, gurmukhi",
-		char: "\u{262C}",
+		char: "\u{262c}",
 	},
 	{
 		name: "khanda ta, bangla",
-		char: "\u{09CE}",
+		char: "\u{09ce}",
 	},
 	{
 		name: "kharoshthi",
-		char: "\u{10A00}",
+		char: "\u{10a00}",
 	},
 	{
 		name: "kharoshthi digits",
-		char: "\u{10A40}",
+		char: "\u{10a40}",
 	},
 	{
 		name: "khitan small script",
-		char: "\u{18B00}",
+		char: "\u{18b00}",
 	},
 	{
 		name: "khmer",
@@ -11663,7 +10151,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "khmer anusvara",
-		char: "\u{17C6}",
+		char: "\u{17c6}",
 	},
 	{
 		name: "khmer consonants",
@@ -11671,51 +10159,51 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "khmer currency symbol riel",
-		char: "\u{17DB}",
+		char: "\u{17db}",
 	},
 	{
 		name: "khmer dependent vowel signs",
-		char: "\u{17B6}",
+		char: "\u{17b6}",
 	},
 	{
 		name: "khmer digits",
-		char: "\u{17E0}",
+		char: "\u{17e0}",
 	},
 	{
 		name: "khmer independent vowels",
-		char: "\u{17A5}",
+		char: "\u{17a5}",
 	},
 	{
 		name: "khmer numeric symbols for divination",
-		char: "\u{17F0}",
+		char: "\u{17f0}",
 	},
 	{
 		name: "khmer sign nikahit",
-		char: "\u{17C6}",
+		char: "\u{17c6}",
 	},
 	{
 		name: "khmer sign reahmuk",
-		char: "\u{17C7}",
+		char: "\u{17c7}",
 	},
 	{
 		name: "khmer signs",
-		char: "\u{17C6}",
+		char: "\u{17c6}",
 	},
 	{
 		name: "khmer srak ah",
-		char: "\u{17C7}",
+		char: "\u{17c7}",
 	},
 	{
 		name: "khmer srak am",
-		char: "\u{17C6}",
+		char: "\u{17c6}",
 	},
 	{
 		name: "khmer symbols",
-		char: "\u{19E0}",
+		char: "\u{19e0}",
 	},
 	{
 		name: "khmer visarga",
-		char: "\u{17C7}",
+		char: "\u{17c7}",
 	},
 	{
 		name: "khojki",
@@ -11723,19 +10211,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "khomut, thai character",
-		char: "\u{0E5B}",
+		char: "\u{0e5b}",
 	},
 	{
 		name: "khudawadi",
-		char: "\u{112B0}",
+		char: "\u{112b0}",
 	},
 	{
 		name: "khutsuri, georgian",
-		char: "\u{10A0}",
+		char: "\u{10a0}",
 	},
 	{
 		name: "kievan musical symbols",
-		char: "\u{1D1DE}",
+		char: "\u{1d1de}",
 	},
 	{
 		name: "killer, myanmar",
@@ -11743,7 +10231,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "kip sign",
-		char: "\u{20AD}",
+		char: "\u{20ad}",
 	},
 	{
 		name: "kissen",
@@ -11751,11 +10239,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "koala",
-		char: "\u{1F428}",
+		char: "\u{1f428}",
 	},
 	{
 		name: "kome, japanese",
-		char: "\u{203B}",
+		char: "\u{203b}",
 	},
 	{
 		name: "komi letters",
@@ -11763,15 +10251,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "koranic annotation signs, arabic",
-		char: "\u{06D6}",
-	},
-	{
-		name: "korean combining alphabet",
-		char: "\u{1100}",
+		char: "\u{06d6}",
 	},
 	{
 		name: "korean currency",
-		char: "\u{20A9}",
+		char: "\u{20a9}",
 	},
 	{
 		name: "korean hangul archaic letters",
@@ -11782,16 +10266,12 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{3130}",
 	},
 	{
-		name: "korean hangul jamo combining alphabet",
-		char: "\u{1100}",
-	},
-	{
 		name: "korean hangul jamo extended-a",
-		char: "\u{A960}",
+		char: "\u{a960}",
 	},
 	{
 		name: "korean hangul jamo extended-b",
-		char: "\u{D7B0}",
+		char: "\u{d7b0}",
 	},
 	{
 		name: "korean hangul letters, circled",
@@ -11803,31 +10283,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "korean hangul syllables",
-		char: "\u{AC00}",
+		char: "\u{ac00}",
 	},
 	{
 		name: "korean hangul syllables, circled",
-		char: "\u{326E}",
+		char: "\u{326e}",
 	},
 	{
 		name: "korean hangul syllables, parenthesized",
-		char: "\u{320E}",
+		char: "\u{320e}",
 	},
 	{
 		name: "korean hangul variants, halfwidth",
-		char: "\u{FFA0}",
+		char: "\u{ffa0}",
 	},
 	{
 		name: "korean standard symbol",
-		char: "\u{327F}",
-	},
-	{
-		name: "koronis, combining greek",
-		char: "\u{0343}",
+		char: "\u{327f}",
 	},
 	{
 		name: "koto, katakana digraph",
-		char: "\u{30FF}",
+		char: "\u{30ff}",
 	},
 	{
 		name: "kra, latin small letter",
@@ -11839,31 +10315,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "l with acute, latin small letter",
-		char: "\u{013A}",
+		char: "\u{013a}",
 	},
 	{
 		name: "l with bar, latin capital letter",
-		char: "\u{023D}",
+		char: "\u{023d}",
 	},
 	{
 		name: "l with bar, latin small letter",
-		char: "\u{019A}",
+		char: "\u{019a}",
 	},
 	{
 		name: "l with belt, latin small letter",
-		char: "\u{026C}",
+		char: "\u{026c}",
 	},
 	{
 		name: "l with caron, latin small letter",
-		char: "\u{013E}",
+		char: "\u{013e}",
 	},
 	{
 		name: "l with cedilla, latin small letter",
-		char: "\u{013C}",
+		char: "\u{013c}",
 	},
 	{
 		name: "l with circumflex below, latin small letter",
-		char: "\u{1E3D}",
+		char: "\u{1e3d}",
 	},
 	{
 		name: "l with curl, latin small letter",
@@ -11871,11 +10347,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "l with dot below, latin small letter",
-		char: "\u{1E37}",
+		char: "\u{1e37}",
 	},
 	{
 		name: "l with line below, latin small letter",
-		char: "\u{1E3B}",
+		char: "\u{1e3b}",
 	},
 	{
 		name: "l with middle dot, latin small letter",
@@ -11883,15 +10359,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "l with middle tilde, latin small letter",
-		char: "\u{026B}",
+		char: "\u{026b}",
 	},
 	{
 		name: "l with retroflex hook, latin small letter",
-		char: "\u{026D}",
+		char: "\u{026d}",
 	},
 	{
 		name: "l with stroke, latin letter small capital",
-		char: "\u{1D0C}",
+		char: "\u{1d0c}",
 	},
 	{
 		name: "l with stroke, latin small letter",
@@ -11899,7 +10375,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "l, latin letter small capital",
-		char: "\u{029F}",
+		char: "\u{029f}",
 	},
 	{
 		name: "l, latin subscript small letter",
@@ -11907,7 +10383,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "l, modifier letter small",
-		char: "\u{02E1}",
+		char: "\u{02e1}",
 	},
 	{
 		name: "l, reversed sans-serif capital",
@@ -11927,51 +10403,51 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "lady beetle",
-		char: "\u{1F41E}",
+		char: "\u{1f41e}",
 	},
 	{
 		name: "lambda bar, latin letter",
-		char: "\u{019B}",
+		char: "\u{019b}",
 	},
 	{
 		name: "language tag",
-		char: "\u{E0001}",
+		char: "\u{e0001}",
 	},
 	{
 		name: "lao",
-		char: "\u{0E80}",
+		char: "\u{0e80}",
 	},
 	{
 		name: "lao cancellation mark",
-		char: "\u{0ECC}",
+		char: "\u{0ecc}",
 	},
 	{
 		name: "lao consonants",
-		char: "\u{0E81}",
+		char: "\u{0e81}",
 	},
 	{
 		name: "lao digits",
-		char: "\u{0ED0}",
+		char: "\u{0ed0}",
 	},
 	{
 		name: "lao ellipsis",
-		char: "\u{0EAF}",
+		char: "\u{0eaf}",
 	},
 	{
 		name: "lao marks and signs",
-		char: "\u{0EC8}",
+		char: "\u{0ec8}",
 	},
 	{
 		name: "lao niggahita",
-		char: "\u{0ECD}",
+		char: "\u{0ecd}",
 	},
 	{
 		name: "lao vowels",
-		char: "\u{0EB0}",
+		char: "\u{0eb0}",
 	},
 	{
 		name: "laotian currency",
-		char: "\u{20AD}",
+		char: "\u{20ad}",
 	},
 	{
 		name: "laplace operator",
@@ -11983,27 +10459,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "large bowtie",
-		char: "\u{2A1D}",
+		char: "\u{2a1d}",
 	},
 	{
 		name: "large circle",
-		char: "\u{25EF}",
+		char: "\u{25ef}",
 	},
 	{
 		name: "large operators",
-		char: "\u{29F8}",
+		char: "\u{29f8}",
 	},
 	{
 		name: "lari sign",
-		char: "\u{20BE}",
+		char: "\u{20be}",
 	},
 	{
 		name: "last quarter moon",
-		char: "\u{263E}",
+		char: "\u{263e}",
 	},
 	{
 		name: "lateral click, latin letter",
-		char: "\u{01C1}",
+		char: "\u{01c1}",
 	},
 	{
 		name: "latin abbreviations, squared",
@@ -12015,19 +10491,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin capital letters, enclosed",
-		char: "\u{1F110}",
+		char: "\u{1f110}",
 	},
 	{
 		name: "latin capital letters, parenthesized",
-		char: "\u{1F110}",
+		char: "\u{1f110}",
 	},
 	{
 		name: "latin cross",
-		char: "\u{271D}",
+		char: "\u{271d}",
 	},
 	{
 		name: "latin extended additional",
-		char: "\u{1E00}",
+		char: "\u{1e00}",
 	},
 	{
 		name: "latin extended-a",
@@ -12039,31 +10515,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin extended-c",
-		char: "\u{2C60}",
+		char: "\u{2c60}",
 	},
 	{
 		name: "latin extended-d",
-		char: "\u{A720}",
+		char: "\u{a720}",
 	},
 	{
 		name: "latin extended-e",
-		char: "\u{AB30}",
+		char: "\u{ab30}",
 	},
 	{
 		name: "latin extensions",
-		char: "\u{1D00}",
+		char: "\u{1d00}",
 	},
 	{
 		name: "latin letter ain",
-		char: "\u{1D25}",
+		char: "\u{1d25}",
 	},
 	{
 		name: "latin letter alveolar click",
-		char: "\u{01C2}",
+		char: "\u{01c2}",
 	},
 	{
 		name: "latin letter bidental percussive",
-		char: "\u{02AD}",
+		char: "\u{02ad}",
 	},
 	{
 		name: "latin letter bilabial click",
@@ -12071,7 +10547,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin letter bilabial percussive",
-		char: "\u{02AC}",
+		char: "\u{02ac}",
 	},
 	{
 		name: "latin letter bullseye",
@@ -12079,11 +10555,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin letter dental click",
-		char: "\u{01C0}",
+		char: "\u{01c0}",
 	},
 	{
 		name: "latin letter exclamation mark",
-		char: "\u{01C3}",
+		char: "\u{01c3}",
 	},
 	{
 		name: "latin letter glottal stop",
@@ -12095,11 +10571,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin letter lambda bar",
-		char: "\u{019B}",
+		char: "\u{019b}",
 	},
 	{
 		name: "latin letter lateral click",
-		char: "\u{01C1}",
+		char: "\u{01c1}",
 	},
 	{
 		name: "latin letter pharyngeal voiced fricative",
@@ -12107,11 +10583,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin letter retroflex click",
-		char: "\u{01C3}",
+		char: "\u{01c3}",
 	},
 	{
 		name: "latin letter reversed esh loop",
-		char: "\u{01AA}",
+		char: "\u{01aa}",
 	},
 	{
 		name: "latin letter reversed glottal stop",
@@ -12123,43 +10599,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin letter voiced laryngeal spirant",
-		char: "\u{1D24}",
+		char: "\u{1d24}",
 	},
 	{
 		name: "latin letter wynn",
-		char: "\u{01BF}",
+		char: "\u{01bf}",
 	},
 	{
 		name: "latin letter yr",
-		char: "\u{01A6}",
+		char: "\u{01a6}",
 	},
 	{
 		name: "latin letters, circled",
-		char: "\u{1F12B}",
+		char: "\u{1f12b}",
 	},
 	{
 		name: "latin letters, circled",
-		char: "\u{24B6}",
+		char: "\u{24b6}",
 	},
 	{
 		name: "latin letters, parenthesized",
-		char: "\u{1F110}",
+		char: "\u{1f110}",
 	},
 	{
 		name: "latin letters, parenthesized",
-		char: "\u{249C}",
+		char: "\u{249c}",
 	},
 	{
 		name: "latin letters, phonetic modifiers derived from",
-		char: "\u{02B0}",
+		char: "\u{02b0}",
 	},
 	{
 		name: "latin letters, squared",
-		char: "\u{1F131}",
+		char: "\u{1f131}",
 	},
 	{
 		name: "latin ligatures",
-		char: "\u{FB00}",
+		char: "\u{fb00}",
 	},
 	{
 		name: "latin lowercase alphabet",
@@ -12167,7 +10643,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin small letter ae",
-		char: "\u{00E6}",
+		char: "\u{00e6}",
 	},
 	{
 		name: "latin small letter alpha",
@@ -12179,7 +10655,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin small letter closed epsilon",
-		char: "\u{029A}",
+		char: "\u{029a}",
 	},
 	{
 		name: "latin small letter closed omega",
@@ -12187,7 +10663,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin small letter closed reversed epsilon",
-		char: "\u{025E}",
+		char: "\u{025e}",
 	},
 	{
 		name: "latin small letter db digraph",
@@ -12195,11 +10671,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin small letter eng",
-		char: "\u{014B}",
+		char: "\u{014b}",
 	},
 	{
 		name: "latin small letter epsilon",
-		char: "\u{025B}",
+		char: "\u{025b}",
 	},
 	{
 		name: "latin small letter esh",
@@ -12207,7 +10683,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin small letter eth",
-		char: "\u{00F0}",
+		char: "\u{00f0}",
 	},
 	{
 		name: "latin small letter ezh",
@@ -12215,11 +10691,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin small letter ezh reversed",
-		char: "\u{01B9}",
+		char: "\u{01b9}",
 	},
 	{
 		name: "latin small letter ezh with caron",
-		char: "\u{01EF}",
+		char: "\u{01ef}",
 	},
 	{
 		name: "latin small letter gamma",
@@ -12243,11 +10719,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin small letter lezh",
-		char: "\u{026E}",
+		char: "\u{026e}",
 	},
 	{
 		name: "latin small letter oi",
-		char: "\u{01A3}",
+		char: "\u{01a3}",
 	},
 	{
 		name: "latin small letter ou",
@@ -12275,7 +10751,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin small letter thorn",
-		char: "\u{00FE}",
+		char: "\u{00fe}",
 	},
 	{
 		name: "latin small letter tone six",
@@ -12283,7 +10759,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin small letter turned ae",
-		char: "\u{1D02}",
+		char: "\u{1d02}",
 	},
 	{
 		name: "latin small letter turned alpha",
@@ -12291,31 +10767,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin small letter turned delta",
-		char: "\u{018D}",
+		char: "\u{018d}",
 	},
 	{
 		name: "latin small letter turned oe",
-		char: "\u{1D14}",
+		char: "\u{1d14}",
 	},
 	{
 		name: "latin small letter upsilon",
-		char: "\u{028A}",
+		char: "\u{028a}",
 	},
 	{
 		name: "latin small letter yogh",
-		char: "\u{021D}",
+		char: "\u{021d}",
 	},
 	{
 		name: "latin small letters",
 		char: "\u{0061}",
 	},
 	{
-		name: "latin small letters, combining",
-		char: "\u{0363}",
-	},
-	{
 		name: "latin small ligature ae",
-		char: "\u{00E6}",
+		char: "\u{00e6}",
 	},
 	{
 		name: "latin small ligature ij",
@@ -12327,7 +10799,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin superscript modifier letters",
-		char: "\u{02B0}",
+		char: "\u{02b0}",
 	},
 	{
 		name: "latin uppercase alphabet",
@@ -12343,19 +10815,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "latin-1 punctuation and symbols",
-		char: "\u{00A0}",
+		char: "\u{00a0}",
 	},
 	{
 		name: "latin-1 supplement",
-		char: "\u{00A0}",
+		char: "\u{00a0}",
 	},
 	{
 		name: "lazy s",
-		char: "\u{223D}",
+		char: "\u{223d}",
 	},
 	{
 		name: "lazy s, inverted",
-		char: "\u{223E}",
+		char: "\u{223e}",
 	},
 	{
 		name: "leader, one dot",
@@ -12371,7 +10843,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "leaf ornaments",
-		char: "\u{1F650}",
+		char: "\u{1f650}",
 	},
 	{
 		name: "leaf, aldus",
@@ -12383,15 +10855,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "left abstract syntax bracket",
-		char: "\u{301A}",
-	},
-	{
-		name: "left angle above, combining",
-		char: "\u{031A}",
-	},
-	{
-		name: "left angle below, combining",
-		char: "\u{0349}",
+		char: "\u{301a}",
 	},
 	{
 		name: "left angle bracket",
@@ -12399,23 +10863,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "left angle bracket, mathematical",
-		char: "\u{27E8}",
-	},
-	{
-		name: "left arrow above, combining",
-		char: "\u{20D6}",
-	},
-	{
-		name: "left arrow below, combining",
-		char: "\u{20EE}",
-	},
-	{
-		name: "left arrowhead below, combining",
-		char: "\u{0354}",
+		char: "\u{27e8}",
 	},
 	{
 		name: "left bag bracket",
-		char: "\u{27E6}",
+		char: "\u{27e6}",
 	},
 	{
 		name: "left black lenticular bracket",
@@ -12427,39 +10879,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "left chevron bracket",
-		char: "\u{27EA}",
+		char: "\u{27ea}",
 	},
 	{
 		name: "left corner bracket",
-		char: "\u{300C}",
+		char: "\u{300c}",
 	},
 	{
 		name: "left curly bracket",
-		char: "\u{007B}",
+		char: "\u{007b}",
 	},
 	{
 		name: "left double angle bracket",
-		char: "\u{300A}",
+		char: "\u{300a}",
 	},
 	{
 		name: "left double angle bracket, mathematical",
-		char: "\u{27EA}",
+		char: "\u{27ea}",
 	},
 	{
 		name: "left double quotation mark",
-		char: "\u{201C}",
+		char: "\u{201c}",
 	},
 	{
 		name: "left floor",
-		char: "\u{230A}",
-	},
-	{
-		name: "left half ring above, combining",
-		char: "\u{0351}",
-	},
-	{
-		name: "left half ring below, combining",
-		char: "\u{031C}",
+		char: "\u{230a}",
 	},
 	{
 		name: "left half ring, armenian modifier letter",
@@ -12467,19 +10911,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "left half ring, modifier letter",
-		char: "\u{02BF}",
+		char: "\u{02bf}",
 	},
 	{
 		name: "left half ring, modifier letter centred",
-		char: "\u{02D3}",
-	},
-	{
-		name: "left harpoon above, combining",
-		char: "\u{20D0}",
+		char: "\u{02d3}",
 	},
 	{
 		name: "left hook, latin capital letter n with",
-		char: "\u{019D}",
+		char: "\u{019d}",
 	},
 	{
 		name: "left hook, latin small letter n with",
@@ -12487,15 +10927,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "left key, delete to the",
-		char: "\u{232B}",
+		char: "\u{232b}",
 	},
 	{
 		name: "left moustache",
-		char: "\u{23B0}",
+		char: "\u{23b0}",
 	},
 	{
 		name: "left normal factor semidirect product",
-		char: "\u{22C9}",
+		char: "\u{22c9}",
 	},
 	{
 		name: "left parenthesis",
@@ -12503,39 +10943,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "left parenthesis, ornate",
-		char: "\u{FD3E}",
+		char: "\u{fd3e}",
 	},
 	{
 		name: "left pointing guillemet",
-		char: "\u{00AB}",
+		char: "\u{00ab}",
 	},
 	{
 		name: "left pointing index, black",
-		char: "\u{261A}",
+		char: "\u{261a}",
 	},
 	{
 		name: "left pointing index, white",
-		char: "\u{261C}",
+		char: "\u{261c}",
 	},
 	{
 		name: "left pointing single guillemet",
 		char: "\u{2039}",
 	},
 	{
-		name: "left right arrow above, combining",
-		char: "\u{20E1}",
-	},
-	{
-		name: "left right arrow below, combining",
-		char: "\u{034D}",
-	},
-	{
 		name: "left semidirect product",
-		char: "\u{22CB}",
+		char: "\u{22cb}",
 	},
 	{
 		name: "left sequence bracket",
-		char: "\u{27E8}",
+		char: "\u{27e8}",
 	},
 	{
 		name: "left single quotation mark",
@@ -12543,7 +10975,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "left square bracket",
-		char: "\u{005B}",
+		char: "\u{005b}",
 	},
 	{
 		name: "left square bracket with quill",
@@ -12551,11 +10983,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "left tack",
-		char: "\u{22A3}",
-	},
-	{
-		name: "left tack below, combining",
-		char: "\u{0318}",
+		char: "\u{22a3}",
 	},
 	{
 		name: "left tortoise shell bracket",
@@ -12563,7 +10991,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "left white corner bracket",
-		char: "\u{300E}",
+		char: "\u{300e}",
 	},
 	{
 		name: "left white curly bracket",
@@ -12579,7 +11007,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "left white square bracket",
-		char: "\u{301A}",
+		char: "\u{301a}",
 	},
 	{
 		name: "left white tortoise shell bracket",
@@ -12587,11 +11015,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "left, erase to the",
-		char: "\u{232B}",
+		char: "\u{232b}",
 	},
 	{
 		name: "left, fast cursor",
-		char: "\u{219E}",
+		char: "\u{219e}",
 	},
 	{
 		name: "left-pointing angle bracket",
@@ -12603,11 +11031,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "left-pointing double angle quotation mark",
-		char: "\u{00AB}",
+		char: "\u{00ab}",
 	},
 	{
 		name: "left-to-right embedding",
-		char: "\u{202A}",
+		char: "\u{202a}",
 	},
 	{
 		name: "left-to-right isolate",
@@ -12615,35 +11043,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "left-to-right mark",
-		char: "\u{200E}",
+		char: "\u{200e}",
 	},
 	{
 		name: "left-to-right override",
-		char: "\u{202D}",
+		char: "\u{202d}",
 	},
 	{
 		name: "leftward tab",
-		char: "\u{21E4}",
+		char: "\u{21e4}",
 	},
 	{
 		name: "leftwards arrow",
 		char: "\u{2190}",
 	},
 	{
-		name: "leftwards arrow overlay, combining",
-		char: "\u{20EA}",
-	},
-	{
 		name: "leftwards bullet, black",
-		char: "\u{204C}",
-	},
-	{
-		name: "leftwards harpoon with barb downwards, combining",
-		char: "\u{20ED}",
+		char: "\u{204c}",
 	},
 	{
 		name: "legacy computing, symbols for",
-		char: "\u{1FB00}",
+		char: "\u{1fb00}",
 	},
 	{
 		name: "lenticular bracket, left black",
@@ -12663,19 +11083,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "leo",
-		char: "\u{264C}",
+		char: "\u{264c}",
 	},
 	{
 		name: "leopard",
-		char: "\u{1F406}",
+		char: "\u{1f406}",
 	},
 	{
 		name: "lepcha",
-		char: "\u{1C00}",
+		char: "\u{1c00}",
 	},
 	{
 		name: "leppard",
-		char: "\u{DEAF}",
+		char: "\u{deaf}",
 	},
 	{
 		name: "less-than or equal to",
@@ -12683,15 +11103,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "less-than sign",
-		char: "\u{003C}",
+		char: "\u{003c}",
 	},
 	{
 		name: "less-than, much",
-		char: "\u{226A}",
+		char: "\u{226a}",
 	},
 	{
 		name: "less-than, very much",
-		char: "\u{22D8}",
+		char: "\u{22d8}",
 	},
 	{
 		name: "letterlike mathematical symbols, hebrew",
@@ -12703,43 +11123,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "level 2 lock",
-		char: "\u{21EB}",
+		char: "\u{21eb}",
 	},
 	{
 		name: "level 2 select (iso 9995-7)",
-		char: "\u{21E7}",
+		char: "\u{21e7}",
 	},
 	{
 		name: "level 3 lock",
-		char: "\u{21EF}",
+		char: "\u{21ef}",
 	},
 	{
 		name: "level 3 select",
-		char: "\u{21EE}",
+		char: "\u{21ee}",
 	},
 	{
 		name: "lezh, latin small letter",
-		char: "\u{026E}",
+		char: "\u{026e}",
 	},
 	{
 		name: "lf",
-		char: "\u{000A}",
+		char: "\u{000a}",
 	},
 	{
 		name: "lgroup",
-		char: "\u{27EE}",
+		char: "\u{27ee}",
 	},
 	{
 		name: "libra",
-		char: "\u{264E}",
+		char: "\u{264e}",
 	},
 	{
 		name: "ligature ae, latin capital",
-		char: "\u{00C6}",
+		char: "\u{00c6}",
 	},
 	{
 		name: "ligature ae, latin small",
-		char: "\u{00E6}",
+		char: "\u{00e6}",
 	},
 	{
 		name: "ligature ij, latin small",
@@ -12755,31 +11175,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ligature tie below",
-		char: "\u{035C}",
+		char: "\u{035c}",
 	},
 	{
 		name: "ligature-et ornaments, ampersand and",
-		char: "\u{1F670}",
+		char: "\u{1f670}",
 	},
 	{
 		name: "ligatures, arabic",
-		char: "\u{FBEA}",
+		char: "\u{fbea}",
 	},
 	{
 		name: "ligatures, armenian",
-		char: "\u{FB13}",
+		char: "\u{fb13}",
 	},
 	{
 		name: "ligatures, latin",
-		char: "\u{FB00}",
+		char: "\u{fb00}",
 	},
 	{
 		name: "light bulb, electric",
-		char: "\u{1F4A1}",
+		char: "\u{1f4a1}",
 	},
 	{
 		name: "lighthouse, map symbol for",
-		char: "\u{26EF}",
+		char: "\u{26ef}",
 	},
 	{
 		name: "lightning",
@@ -12787,11 +11207,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "lightning",
-		char: "\u{26A1}",
+		char: "\u{26a1}",
 	},
 	{
 		name: "lightning bolt",
-		char: "\u{1F5F2}",
+		char: "\u{1f5f2}",
 	},
 	{
 		name: "limbu",
@@ -12818,44 +11238,28 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2250}",
 	},
 	{
-		name: "line above, combining double vertical",
-		char: "\u{030E}",
-	},
-	{
-		name: "line above, combining vertical",
-		char: "\u{030D}",
-	},
-	{
 		name: "line backward, partial",
-		char: "\u{008C}",
-	},
-	{
-		name: "line below, combining double vertical",
-		char: "\u{0348}",
-	},
-	{
-		name: "line below, combining vertical",
-		char: "\u{0329}",
+		char: "\u{008c}",
 	},
 	{
 		name: "line feed",
-		char: "\u{000A}",
+		char: "\u{000a}",
 	},
 	{
 		name: "line feed",
-		char: "\u{21B4}",
+		char: "\u{21b4}",
 	},
 	{
 		name: "line feed, reverse",
-		char: "\u{008D}",
+		char: "\u{008d}",
 	},
 	{
 		name: "line feed, symbol for",
-		char: "\u{240A}",
+		char: "\u{240a}",
 	},
 	{
 		name: "line forward, partial",
-		char: "\u{008B}",
+		char: "\u{008b}",
 	},
 	{
 		name: "line marker",
@@ -12863,15 +11267,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "line operators, vertical",
-		char: "\u{2AEE}",
-	},
-	{
-		name: "line overlay, combining long vertical",
-		char: "\u{20D2}",
-	},
-	{
-		name: "line overlay, combining short vertical",
-		char: "\u{20D3}",
+		char: "\u{2aee}",
 	},
 	{
 		name: "line separator",
@@ -12883,15 +11279,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "line tabulation",
-		char: "\u{000B}",
+		char: "\u{000b}",
 	},
 	{
 		name: "line tabulation set",
-		char: "\u{008A}",
+		char: "\u{008a}",
 	},
 	{
 		name: "line with middle dot, vertical",
-		char: "\u{237F}",
+		char: "\u{237f}",
 	},
 	{
 		name: "line, beginning of",
@@ -12899,19 +11295,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "line, centreline low",
-		char: "\u{FE4E}",
-	},
-	{
-		name: "line, combining double low",
-		char: "\u{0333}",
-	},
-	{
-		name: "line, combining low",
-		char: "\u{0332}",
+		char: "\u{fe4e}",
 	},
 	{
 		name: "line, dashed low",
-		char: "\u{FE4D}",
+		char: "\u{fe4d}",
 	},
 	{
 		name: "line, double low",
@@ -12923,23 +11311,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "line, end of",
-		char: "\u{000A}",
+		char: "\u{000a}",
 	},
 	{
 		name: "line, low",
-		char: "\u{005F}",
+		char: "\u{005f}",
 	},
 	{
 		name: "line, modifier letter low vertical",
-		char: "\u{02CC}",
+		char: "\u{02cc}",
 	},
 	{
 		name: "line, modifier letter vertical",
-		char: "\u{02C8}",
+		char: "\u{02c8}",
 	},
 	{
 		name: "line, new",
-		char: "\u{000A}",
+		char: "\u{000a}",
 	},
 	{
 		name: "line, next",
@@ -12947,11 +11335,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "line, property",
-		char: "\u{214A}",
+		char: "\u{214a}",
 	},
 	{
 		name: "line, vertical",
-		char: "\u{007C}",
+		char: "\u{007c}",
 	},
 	{
 		name: "line, wavy",
@@ -12959,7 +11347,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "line, wavy low",
-		char: "\u{FE4F}",
+		char: "\u{fe4f}",
 	},
 	{
 		name: "linear a",
@@ -12975,7 +11363,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "lines, horizontal scan",
-		char: "\u{23BA}",
+		char: "\u{23ba}",
 	},
 	{
 		name: "lines, vertical",
@@ -12983,31 +11371,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "lion face",
-		char: "\u{1F981}",
+		char: "\u{1f981}",
 	},
 	{
 		name: "lips",
-		char: "\u{1F5E2}",
+		char: "\u{1f5e2}",
 	},
 	{
 		name: "lira sign",
-		char: "\u{20A4}",
+		char: "\u{20a4}",
 	},
 	{
 		name: "lira sign, turkish",
-		char: "\u{20BA}",
+		char: "\u{20ba}",
 	},
 	{
 		name: "lira, italian",
-		char: "\u{00A3}",
+		char: "\u{00a3}",
 	},
 	{
 		name: "lisu",
-		char: "\u{A4D0}",
+		char: "\u{a4d0}",
 	},
 	{
 		name: "lisu supplement",
-		char: "\u{11FB0}",
+		char: "\u{11fb0}",
 	},
 	{
 		name: "liter",
@@ -13015,39 +11403,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "livre tournois sign",
-		char: "\u{20B6}",
+		char: "\u{20b6}",
 	},
 	{
 		name: "lobster",
-		char: "\u{1F99E}",
+		char: "\u{1f99e}",
 	},
 	{
 		name: "lock symbols",
-		char: "\u{1F50F}",
+		char: "\u{1f50f}",
 	},
 	{
 		name: "lock, caps",
-		char: "\u{21EA}",
+		char: "\u{21ea}",
 	},
 	{
 		name: "lock, caps",
-		char: "\u{21EC}",
+		char: "\u{21ec}",
 	},
 	{
 		name: "lock, numerics",
-		char: "\u{21ED}",
+		char: "\u{21ed}",
 	},
 	{
 		name: "lock, parental",
-		char: "\u{26BF}",
+		char: "\u{26bf}",
 	},
 	{
 		name: "logic operators, modal",
-		char: "\u{27D8}",
+		char: "\u{27d8}",
 	},
 	{
 		name: "logic operators, modal",
-		char: "\u{27E0}",
+		char: "\u{27e0}",
 	},
 	{
 		name: "logical and",
@@ -13055,15 +11443,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "logical and, curly",
-		char: "\u{22CF}",
+		char: "\u{22cf}",
 	},
 	{
 		name: "logical and, n-ary",
-		char: "\u{22C0}",
+		char: "\u{22c0}",
 	},
 	{
 		name: "logical ands and ors",
-		char: "\u{2A51}",
+		char: "\u{2a51}",
 	},
 	{
 		name: "logical or",
@@ -13071,11 +11459,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "logical or, curly",
-		char: "\u{22CE}",
+		char: "\u{22ce}",
 	},
 	{
 		name: "logical or, n-ary",
-		char: "\u{22C1}",
+		char: "\u{22c1}",
 	},
 	{
 		name: "long",
@@ -13083,43 +11471,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "long arrows",
-		char: "\u{27F5}",
+		char: "\u{27f5}",
 	},
 	{
 		name: "long division",
-		char: "\u{27CC}",
+		char: "\u{27cc}",
 	},
 	{
 		name: "long double slash overlay",
-		char: "\u{20EB}",
+		char: "\u{20eb}",
 	},
 	{
 		name: "long s, latin small letter",
-		char: "\u{017F}",
+		char: "\u{017f}",
 	},
 	{
 		name: "long slash overlay",
 		char: "\u{0338}",
 	},
 	{
-		name: "long solidus overlay, combining",
-		char: "\u{0338}",
-	},
-	{
-		name: "long stroke overlay, combining",
-		char: "\u{0336}",
-	},
-	{
-		name: "long vertical line overlay, combining",
-		char: "\u{20D2}",
-	},
-	{
 		name: "loop, curly",
-		char: "\u{27B0}",
+		char: "\u{27b0}",
 	},
 	{
 		name: "loop, double curly",
-		char: "\u{27BF}",
+		char: "\u{27bf}",
 	},
 	{
 		name: "lorraine, cross of",
@@ -13127,51 +11503,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "lorry, black",
-		char: "\u{26DF}",
+		char: "\u{26df}",
 	},
 	{
 		name: "love, hand sign",
-		char: "\u{1F91F}",
+		char: "\u{1f91f}",
 	},
 	{
 		name: "low acute accent, modifier letter",
-		char: "\u{02CF}",
+		char: "\u{02cf}",
 	},
 	{
 		name: "low asterisk",
-		char: "\u{204E}",
+		char: "\u{204e}",
 	},
 	{
 		name: "low double comma quotation mark",
-		char: "\u{201E}",
+		char: "\u{201e}",
 	},
 	{
 		name: "low double prime quotation mark",
-		char: "\u{301F}",
+		char: "\u{301f}",
 	},
 	{
 		name: "low grave accent, modifier letter",
-		char: "\u{02CE}",
+		char: "\u{02ce}",
 	},
 	{
 		name: "low line",
-		char: "\u{005F}",
+		char: "\u{005f}",
 	},
 	{
 		name: "low line, centreline",
-		char: "\u{FE4E}",
-	},
-	{
-		name: "low line, combining",
-		char: "\u{0332}",
-	},
-	{
-		name: "low line, combining double",
-		char: "\u{0333}",
+		char: "\u{fe4e}",
 	},
 	{
 		name: "low line, dashed",
-		char: "\u{FE4D}",
+		char: "\u{fe4d}",
 	},
 	{
 		name: "low line, double",
@@ -13179,39 +11547,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "low line, wavy",
-		char: "\u{FE4F}",
+		char: "\u{fe4f}",
 	},
 	{
 		name: "low macron, modifier letter",
-		char: "\u{02CD}",
+		char: "\u{02cd}",
 	},
 	{
 		name: "low single comma quotation mark",
-		char: "\u{201A}",
+		char: "\u{201a}",
 	},
 	{
 		name: "low surrogates",
-		char: "\u{DC00}",
+		char: "\u{dc00}",
 	},
 	{
 		name: "low vertical line, modifier letter",
-		char: "\u{02CC}",
+		char: "\u{02cc}",
 	},
 	{
 		name: "low-9 quotation mark, double",
-		char: "\u{201E}",
+		char: "\u{201e}",
 	},
 	{
 		name: "low-9 quotation mark, single",
-		char: "\u{201A}",
+		char: "\u{201a}",
 	},
 	{
 		name: "lower integral",
-		char: "\u{2A1C}",
+		char: "\u{2a1c}",
 	},
 	{
 		name: "lower rank than",
-		char: "\u{227A}",
+		char: "\u{227a}",
 	},
 	{
 		name: "lowercase alphabet, latin",
@@ -13219,11 +11587,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "lozenge",
-		char: "\u{25CA}",
+		char: "\u{25ca}",
 	},
 	{
 		name: "lozenge, black",
-		char: "\u{29EB}",
+		char: "\u{29eb}",
 	},
 	{
 		name: "lozenge, square",
@@ -13231,31 +11599,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "lozenges",
-		char: "\u{1F79D}",
+		char: "\u{1f79d}",
 	},
 	{
 		name: "lre",
-		char: "\u{202A}",
+		char: "\u{202a}",
 	},
 	{
 		name: "lrm",
-		char: "\u{200E}",
+		char: "\u{200e}",
 	},
 	{
 		name: "lro",
-		char: "\u{202D}",
+		char: "\u{202d}",
 	},
 	{
 		name: "lunate epsilon symbol, greek",
-		char: "\u{03F5}",
+		char: "\u{03f5}",
 	},
 	{
 		name: "lunate epsilon symbol, greek reversed",
-		char: "\u{03F6}",
+		char: "\u{03f6}",
 	},
 	{
 		name: "lunate sigma symbol, greek",
-		char: "\u{03F2}",
+		char: "\u{03f2}",
 	},
 	{
 		name: "lycian",
@@ -13267,15 +11635,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "m with acute, latin small letter",
-		char: "\u{1E3F}",
+		char: "\u{1e3f}",
 	},
 	{
 		name: "m with dot above, latin small letter",
-		char: "\u{1E41}",
+		char: "\u{1e41}",
 	},
 	{
 		name: "m with dot below, latin small letter",
-		char: "\u{1E43}",
+		char: "\u{1e43}",
 	},
 	{
 		name: "m with hook, latin small letter",
@@ -13286,24 +11654,20 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0270}",
 	},
 	{
-		name: "m, combining latin small letter",
-		char: "\u{036B}",
-	},
-	{
 		name: "m, latin capital letter turned",
-		char: "\u{019C}",
+		char: "\u{019c}",
 	},
 	{
 		name: "m, latin letter small capital",
-		char: "\u{1D0D}",
+		char: "\u{1d0d}",
 	},
 	{
 		name: "m, latin small letter sideways turned",
-		char: "\u{1D1F}",
+		char: "\u{1d1f}",
 	},
 	{
 		name: "m, latin small letter turned",
-		char: "\u{026F}",
+		char: "\u{026f}",
 	},
 	{
 		name: "m, latin subscript small letter",
@@ -13319,47 +11683,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "maatham, tamil",
-		char: "\u{0BF4}",
+		char: "\u{0bf4}",
 	},
 	{
 		name: "macron",
-		char: "\u{00AF}",
-	},
-	{
-		name: "macron below, combining",
-		char: "\u{0331}",
-	},
-	{
-		name: "macron below, combining double",
-		char: "\u{035F}",
-	},
-	{
-		name: "macron left half, combining",
-		char: "\u{FE24}",
-	},
-	{
-		name: "macron right half, combining",
-		char: "\u{FE25}",
-	},
-	{
-		name: "macron, combining",
-		char: "\u{0304}",
-	},
-	{
-		name: "macron, combining double",
-		char: "\u{035E}",
+		char: "\u{00af}",
 	},
 	{
 		name: "macron, modifier letter",
-		char: "\u{02C9}",
+		char: "\u{02c9}",
 	},
 	{
 		name: "macron, modifier letter low",
-		char: "\u{02CD}",
+		char: "\u{02cd}",
 	},
 	{
 		name: "macron, spacing",
-		char: "\u{00AF}",
+		char: "\u{00af}",
 	},
 	{
 		name: "magnetic ink character recognition, micr",
@@ -13367,11 +11707,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "magnifying glass, left-pointing",
-		char: "\u{1F50D}",
+		char: "\u{1f50d}",
 	},
 	{
 		name: "magnifying glass, right-pointing",
-		char: "\u{1F50E}",
+		char: "\u{1f50e}",
 	},
 	{
 		name: "mahajani",
@@ -13379,51 +11719,51 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "mahjong tiles",
-		char: "\u{1F000}",
+		char: "\u{1f000}",
 	},
 	{
 		name: "mail symbols",
-		char: "\u{1F4E4}",
+		char: "\u{1f4e4}",
 	},
 	{
 		name: "makasar",
-		char: "\u{11EE0}",
+		char: "\u{11ee0}",
 	},
 	{
 		name: "malayalam",
-		char: "\u{0D00}",
+		char: "\u{0d00}",
 	},
 	{
 		name: "malayalam chandrakkala",
-		char: "\u{0D4D}",
+		char: "\u{0d4d}",
 	},
 	{
 		name: "malayalam chillu letters",
-		char: "\u{0D7A}",
+		char: "\u{0d7a}",
 	},
 	{
 		name: "malayalam consonants",
-		char: "\u{0D15}",
+		char: "\u{0d15}",
 	},
 	{
 		name: "malayalam dependent vowel signs",
-		char: "\u{0D3E}",
+		char: "\u{0d3e}",
 	},
 	{
 		name: "malayalam digits",
-		char: "\u{0D66}",
+		char: "\u{0d66}",
 	},
 	{
 		name: "malayalam independent vowels",
-		char: "\u{0D05}",
+		char: "\u{0d05}",
 	},
 	{
 		name: "malayalam sign virama",
-		char: "\u{0D4D}",
+		char: "\u{0d4d}",
 	},
 	{
 		name: "malayalam vowel half-u",
-		char: "\u{0D4D}",
+		char: "\u{0d4d}",
 	},
 	{
 		name: "male sign",
@@ -13435,19 +11775,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "man",
-		char: "\u{1F468}",
+		char: "\u{1f468}",
 	},
 	{
 		name: "man and woman holding hands",
-		char: "\u{1F46B}",
+		char: "\u{1f46b}",
 	},
 	{
 		name: "man, older",
-		char: "\u{1F474}",
+		char: "\u{1f474}",
 	},
 	{
 		name: "manat sign",
-		char: "\u{20BC}",
+		char: "\u{20bc}",
 	},
 	{
 		name: "manchu comma, mongolian",
@@ -13463,27 +11803,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "mandarin chinese fifth or neutral tone",
-		char: "\u{02D9}",
+		char: "\u{02d9}",
 	},
 	{
 		name: "mandarin chinese first tone",
-		char: "\u{02C9}",
+		char: "\u{02c9}",
 	},
 	{
 		name: "mandarin chinese fourth tone",
-		char: "\u{02CB}",
+		char: "\u{02cb}",
 	},
 	{
 		name: "mandarin chinese second tone",
-		char: "\u{02CA}",
+		char: "\u{02ca}",
 	},
 	{
 		name: "mandarin chinese third tone",
-		char: "\u{02C7}",
+		char: "\u{02c7}",
 	},
 	{
 		name: "manichaean",
-		char: "\u{10AC0}",
+		char: "\u{10ac0}",
 	},
 	{
 		name: "map symbols, dictionary and",
@@ -13491,11 +11831,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "maplet",
-		char: "\u{21A6}",
+		char: "\u{21a6}",
 	},
 	{
 		name: "maps from",
-		char: "\u{27FB}",
+		char: "\u{27fb}",
 	},
 	{
 		name: "maps from",
@@ -13503,7 +11843,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "maps to",
-		char: "\u{27FC}",
+		char: "\u{27fc}",
 	},
 	{
 		name: "maps to",
@@ -13515,11 +11855,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "marchen",
-		char: "\u{11C70}",
+		char: "\u{11c70}",
 	},
 	{
 		name: "marina or yacht harbour",
-		char: "\u{26F4}",
+		char: "\u{26f4}",
 	},
 	{
 		name: "mark pre-wwii, german",
@@ -13527,7 +11867,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "marker, histogram",
-		char: "\u{25AE}",
+		char: "\u{25ae}",
 	},
 	{
 		name: "marker, line",
@@ -13538,24 +11878,16 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2686}",
 	},
 	{
-		name: "marks, combining diacritical",
-		char: "\u{0300}",
-	},
-	{
-		name: "marks, combining half",
-		char: "\u{FE20}",
-	},
-	{
 		name: "marque de commerce",
-		char: "\u{1F16A}",
+		char: "\u{1f16a}",
 	},
 	{
 		name: "marque deposee",
-		char: "\u{1F16B}",
+		char: "\u{1f16b}",
 	},
 	{
 		name: "marriage symbol",
-		char: "\u{26AD}",
+		char: "\u{26ad}",
 	},
 	{
 		name: "mars",
@@ -13563,35 +11895,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "masaram gondi",
-		char: "\u{11D00}",
+		char: "\u{11d00}",
 	},
 	{
 		name: "masculine ordinal indicator",
-		char: "\u{00BA}",
+		char: "\u{00ba}",
 	},
 	{
 		name: "masks of comedy and tragedy",
-		char: "\u{1F3AD}",
+		char: "\u{1f3ad}",
 	},
 	{
 		name: "masu mark",
-		char: "\u{303C}",
+		char: "\u{303c}",
 	},
 	{
 		name: "mathematical alphanumeric symbols",
-		char: "\u{1D400}",
+		char: "\u{1d400}",
 	},
 	{
 		name: "mathematical brackets",
-		char: "\u{27E6}",
+		char: "\u{27e6}",
 	},
 	{
 		name: "mathematical constant 3.141592... pi",
-		char: "\u{03C0}",
+		char: "\u{03c0}",
 	},
 	{
 		name: "mathematical digits symbols",
-		char: "\u{1D7CE}",
+		char: "\u{1d7ce}",
 	},
 	{
 		name: "mathematical operators",
@@ -13607,19 +11939,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "mathematical operators, supplemental",
-		char: "\u{2A00}",
+		char: "\u{2a00}",
 	},
 	{
 		name: "mathematical operators, tilde",
-		char: "\u{223B}",
+		char: "\u{223b}",
 	},
 	{
 		name: "mathematical space, medium",
-		char: "\u{205F}",
+		char: "\u{205f}",
 	},
 	{
 		name: "mathematical symbols",
-		char: "\u{27C0}",
+		char: "\u{27c0}",
 	},
 	{
 		name: "mathematical symbols",
@@ -13627,43 +11959,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "mathematical symbols, black-letter",
-		char: "\u{1D504}",
+		char: "\u{1d504}",
 	},
 	{
 		name: "mathematical symbols, bold fraktur",
-		char: "\u{1D56C}",
+		char: "\u{1d56c}",
 	},
 	{
 		name: "mathematical symbols, bold greek",
-		char: "\u{1D6A8}",
+		char: "\u{1d6a8}",
 	},
 	{
 		name: "mathematical symbols, bold italic",
-		char: "\u{1D468}",
+		char: "\u{1d468}",
 	},
 	{
 		name: "mathematical symbols, bold italic greek",
-		char: "\u{1D71C}",
+		char: "\u{1d71c}",
 	},
 	{
 		name: "mathematical symbols, bold script",
-		char: "\u{1D4D0}",
+		char: "\u{1d4d0}",
 	},
 	{
 		name: "mathematical symbols, dotless",
-		char: "\u{1D6A4}",
+		char: "\u{1d6a4}",
 	},
 	{
 		name: "mathematical symbols, double-struck",
-		char: "\u{1D538}",
+		char: "\u{1d538}",
 	},
 	{
 		name: "mathematical symbols, fraktur",
-		char: "\u{1D504}",
+		char: "\u{1d504}",
 	},
 	{
 		name: "mathematical symbols, greek",
-		char: "\u{1D6A8}",
+		char: "\u{1d6a8}",
 	},
 	{
 		name: "mathematical symbols, hebrew letterlike",
@@ -13671,47 +12003,47 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "mathematical symbols, italic",
-		char: "\u{1D434}",
+		char: "\u{1d434}",
 	},
 	{
 		name: "mathematical symbols, italic greek",
-		char: "\u{1D6E2}",
+		char: "\u{1d6e2}",
 	},
 	{
 		name: "mathematical symbols, monospace",
-		char: "\u{1D670}",
+		char: "\u{1d670}",
 	},
 	{
 		name: "mathematical symbols, sans-serif",
-		char: "\u{1D5A0}",
+		char: "\u{1d5a0}",
 	},
 	{
 		name: "mathematical symbols, sans-serif bold",
-		char: "\u{1D5D4}",
+		char: "\u{1d5d4}",
 	},
 	{
 		name: "mathematical symbols, sans-serif bold greek",
-		char: "\u{1D756}",
+		char: "\u{1d756}",
 	},
 	{
 		name: "mathematical symbols, sans-serif bold italic",
-		char: "\u{1D63C}",
+		char: "\u{1d63c}",
 	},
 	{
 		name: "mathematical symbols, sans-serif bold italic greek",
-		char: "\u{1D790}",
+		char: "\u{1d790}",
 	},
 	{
 		name: "mathematical symbols, sans-serif italic",
-		char: "\u{1D608}",
+		char: "\u{1d608}",
 	},
 	{
 		name: "mathematical symbols, script",
-		char: "\u{1D49C}",
+		char: "\u{1d49c}",
 	},
 	{
 		name: "mathematical symbols-a, miscellaneous",
-		char: "\u{27C0}",
+		char: "\u{27c0}",
 	},
 	{
 		name: "mathematical symbols-b, miscellaneous",
@@ -13719,19 +12051,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "matrix, hermitian conjugate",
-		char: "\u{22B9}",
+		char: "\u{22b9}",
 	},
 	{
 		name: "mayan numerals",
-		char: "\u{1D2E0}",
+		char: "\u{1d2e0}",
 	},
 	{
 		name: "mc sign, raised",
-		char: "\u{1F16A}",
+		char: "\u{1f16a}",
 	},
 	{
 		name: "md sign, raised",
-		char: "\u{1F16B}",
+		char: "\u{1f16b}",
 	},
 	{
 		name: "measured angle",
@@ -13739,11 +12071,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "measured angles, angles and",
-		char: "\u{299B}",
+		char: "\u{299b}",
 	},
 	{
 		name: "measured by",
-		char: "\u{225E}",
+		char: "\u{225e}",
 	},
 	{
 		name: "med avdrag av",
@@ -13751,7 +12083,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "medefaidrin",
-		char: "\u{16E40}",
+		char: "\u{16e40}",
 	},
 	{
 		name: "medieval superscript letter diacritics",
@@ -13759,35 +12091,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "medieval superscript letter diacritics, latin",
-		char: "\u{1DD3}",
+		char: "\u{1dd3}",
 	},
 	{
 		name: "medievalist punctuation",
-		char: "\u{2E2A}",
+		char: "\u{2e2a}",
 	},
 	{
 		name: "medium black circle",
-		char: "\u{26AB}",
+		char: "\u{26ab}",
 	},
 	{
 		name: "medium mathematical space",
-		char: "\u{205F}",
+		char: "\u{205f}",
 	},
 	{
 		name: "medium small square, black",
-		char: "\u{25FE}",
+		char: "\u{25fe}",
 	},
 	{
 		name: "medium small white circle",
-		char: "\u{26AC}",
+		char: "\u{26ac}",
 	},
 	{
 		name: "medium square, black",
-		char: "\u{25FC}",
+		char: "\u{25fc}",
 	},
 	{
 		name: "medium white circle",
-		char: "\u{26AA}",
+		char: "\u{26aa}",
 	},
 	{
 		name: "medium, end of",
@@ -13799,23 +12131,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "meetei mayek",
-		char: "\u{ABC0}",
+		char: "\u{abc0}",
 	},
 	{
 		name: "meetei mayek extensions",
-		char: "\u{AAE0}",
+		char: "\u{aae0}",
 	},
 	{
 		name: "member, contains as",
-		char: "\u{220B}",
+		char: "\u{220b}",
 	},
 	{
 		name: "member, does not contain as",
-		char: "\u{220C}",
+		char: "\u{220c}",
 	},
 	{
 		name: "member, small contains as",
-		char: "\u{220D}",
+		char: "\u{220d}",
 	},
 	{
 		name: "membership signs, set",
@@ -13823,27 +12155,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "membership, z notation bag",
-		char: "\u{22FF}",
+		char: "\u{22ff}",
 	},
 	{
 		name: "men holding hands, two",
-		char: "\u{1F46C}",
+		char: "\u{1f46c}",
 	},
 	{
 		name: "mende kikakui",
-		char: "\u{1E800}",
+		char: "\u{1e800}",
 	},
 	{
 		name: "mercury",
-		char: "\u{263F}",
+		char: "\u{263f}",
 	},
 	{
 		name: "merge",
-		char: "\u{2A07}",
+		char: "\u{2a07}",
 	},
 	{
 		name: "meroitic cursive",
-		char: "\u{109A0}",
+		char: "\u{109a0}",
 	},
 	{
 		name: "meroitic hieroglyphs",
@@ -13851,7 +12183,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "merpadi, tamil",
-		char: "\u{0BF8}",
+		char: "\u{0bf8}",
 	},
 	{
 		name: "message waiting",
@@ -13859,11 +12191,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "message, privacy",
-		char: "\u{009E}",
+		char: "\u{009e}",
 	},
 	{
 		name: "metrical symbols",
-		char: "\u{23D1}",
+		char: "\u{23d1}",
 	},
 	{
 		name: "mho",
@@ -13871,7 +12203,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "miao",
-		char: "\u{16F00}",
+		char: "\u{16f00}",
 	},
 	{
 		name: "micr, magnetic ink character recognition",
@@ -13879,7 +12211,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "micro sign",
-		char: "\u{00B5}",
+		char: "\u{00b5}",
 	},
 	{
 		name: "mid space",
@@ -13887,15 +12219,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "middle dot",
-		char: "\u{00B7}",
+		char: "\u{00b7}",
 	},
 	{
 		name: "middle dot, greek",
-		char: "\u{00B7}",
+		char: "\u{00b7}",
 	},
 	{
 		name: "middle dot, katakana",
-		char: "\u{30FB}",
+		char: "\u{30fb}",
 	},
 	{
 		name: "middle dot, latin small letter l with",
@@ -13903,31 +12235,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "middle dot, vertical line with",
-		char: "\u{237F}",
+		char: "\u{237f}",
 	},
 	{
 		name: "middle dot, word separator",
-		char: "\u{2E31}",
+		char: "\u{2e31}",
 	},
 	{
 		name: "middle tilde, latin capital letter o with",
-		char: "\u{019F}",
+		char: "\u{019f}",
 	},
 	{
 		name: "middle tilde, latin small letter l with",
-		char: "\u{026B}",
+		char: "\u{026b}",
 	},
 	{
 		name: "midline horizontal ellipsis",
-		char: "\u{22EF}",
+		char: "\u{22ef}",
 	},
 	{
 		name: "midpoint",
-		char: "\u{00B7}",
+		char: "\u{00b7}",
 	},
 	{
 		name: "mill sign",
-		char: "\u{20A5}",
+		char: "\u{20a5}",
 	},
 	{
 		name: "mille sign, per",
@@ -13939,15 +12271,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "minim",
-		char: "\u{1D15E}",
+		char: "\u{1d15e}",
 	},
 	{
 		name: "minim",
-		char: "\u{264F}",
+		char: "\u{264f}",
 	},
 	{
 		name: "minim alternate glyph",
-		char: "\u{264D}",
+		char: "\u{264d}",
 	},
 	{
 		name: "mining symbol",
@@ -13958,12 +12290,8 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2212}",
 	},
 	{
-		name: "minus sign below, combining",
-		char: "\u{0320}",
-	},
-	{
 		name: "minus sign operators, plus and",
-		char: "\u{2A22}",
+		char: "\u{2a22}",
 	},
 	{
 		name: "minus sign, commercial",
@@ -13971,11 +12299,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "minus sign, hyphen or",
-		char: "\u{002D}",
+		char: "\u{002d}",
 	},
 	{
 		name: "minus sign, modifier letter",
-		char: "\u{02D7}",
+		char: "\u{02d7}",
 	},
 	{
 		name: "minus tilde",
@@ -13995,7 +12323,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "minus, squared",
-		char: "\u{229F}",
+		char: "\u{229f}",
 	},
 	{
 		name: "minus-or-plus sign",
@@ -14007,7 +12335,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "miny",
-		char: "\u{29FF}",
+		char: "\u{29ff}",
 	},
 	{
 		name: "miscellaneous symbols",
@@ -14015,23 +12343,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "miscellaneous symbols",
-		char: "\u{1F940}",
+		char: "\u{1f940}",
 	},
 	{
 		name: "mkhedruli, georgian",
-		char: "\u{10D0}",
+		char: "\u{10d0}",
 	},
 	{
 		name: "mmsp",
-		char: "\u{205F}",
+		char: "\u{205f}",
 	},
 	{
 		name: "modal logic operators",
-		char: "\u{27E0}",
+		char: "\u{27e0}",
 	},
 	{
 		name: "models",
-		char: "\u{22A7}",
+		char: "\u{22a7}",
 	},
 	{
 		name: "modi",
@@ -14039,35 +12367,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "modifier letter extensions",
-		char: "\u{1D2C}",
+		char: "\u{1d2c}",
 	},
 	{
 		name: "modifier letters, latin superscript",
-		char: "\u{02B0}",
+		char: "\u{02b0}",
 	},
 	{
 		name: "modifier letters, spacing",
-		char: "\u{02B0}",
+		char: "\u{02b0}",
 	},
 	{
 		name: "modifier tone letters",
-		char: "\u{A700}",
+		char: "\u{a700}",
 	},
 	{
 		name: "modifiers derived from latin letters, phonetic",
-		char: "\u{02B0}",
+		char: "\u{02b0}",
 	},
 	{
 		name: "modifiers, phonetic",
-		char: "\u{02B9}",
+		char: "\u{02b9}",
 	},
 	{
 		name: "modifiers, upa",
-		char: "\u{02EF}",
+		char: "\u{02ef}",
 	},
 	{
 		name: "money symbols",
-		char: "\u{1F4B0}",
+		char: "\u{1f4b0}",
 	},
 	{
 		name: "mongolian",
@@ -14091,7 +12419,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "mongolian currency",
-		char: "\u{20AE}",
+		char: "\u{20ae}",
 	},
 	{
 		name: "mongolian digits",
@@ -14107,7 +12435,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "mongolian format controls",
-		char: "\u{180B}",
+		char: "\u{180b}",
 	},
 	{
 		name: "mongolian four dots",
@@ -14115,15 +12443,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "mongolian free variation selector one",
-		char: "\u{180B}",
+		char: "\u{180b}",
 	},
 	{
 		name: "mongolian free variation selector three",
-		char: "\u{180D}",
+		char: "\u{180d}",
 	},
 	{
 		name: "mongolian free variation selector two",
-		char: "\u{180C}",
+		char: "\u{180c}",
 	},
 	{
 		name: "mongolian full stop",
@@ -14139,7 +12467,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "mongolian nirugu",
-		char: "\u{180A}",
+		char: "\u{180a}",
 	},
 	{
 		name: "mongolian punctuation",
@@ -14159,35 +12487,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "mongolian vowel separator",
-		char: "\u{180E}",
+		char: "\u{180e}",
 	},
 	{
 		name: "monkey",
-		char: "\u{1F412}",
+		char: "\u{1f412}",
 	},
 	{
 		name: "monkey face",
-		char: "\u{1F435}",
+		char: "\u{1f435}",
 	},
 	{
 		name: "monogram and digram symbols, yijing / i ching",
-		char: "\u{268A}",
+		char: "\u{268a}",
 	},
 	{
 		name: "monospace digits",
-		char: "\u{1D7F6}",
+		char: "\u{1d7f6}",
 	},
 	{
 		name: "monospace mathematical symbols",
-		char: "\u{1D670}",
+		char: "\u{1d670}",
 	},
 	{
 		name: "monostable symbol",
-		char: "\u{238D}",
+		char: "\u{238d}",
 	},
 	{
 		name: "month sign, tamil",
-		char: "\u{0BF4}",
+		char: "\u{0bf4}",
 	},
 	{
 		name: "months, enclosed cjk letters and",
@@ -14195,83 +12523,83 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "months, ideographic telegraph symbols for",
-		char: "\u{32C0}",
+		char: "\u{32c0}",
 	},
 	{
 		name: "moon, crescent",
-		char: "\u{1F319}",
+		char: "\u{1f319}",
 	},
 	{
 		name: "moon, first quarter",
-		char: "\u{263D}",
+		char: "\u{263d}",
 	},
 	{
 		name: "moon, last quarter",
-		char: "\u{263E}",
+		char: "\u{263e}",
 	},
 	{
 		name: "moon, sun, and star symbols",
-		char: "\u{1F311}",
+		char: "\u{1f311}",
 	},
 	{
 		name: "moose",
-		char: "\u{1FACE}",
+		char: "\u{1face}",
 	},
 	{
 		name: "mortarboard",
-		char: "\u{1F393}",
+		char: "\u{1f393}",
 	},
 	{
 		name: "most positive",
-		char: "\u{223E}",
+		char: "\u{223e}",
 	},
 	{
 		name: "motorway",
-		char: "\u{1F6E3}",
+		char: "\u{1f6e3}",
 	},
 	{
 		name: "mountain",
-		char: "\u{26F0}",
+		char: "\u{26f0}",
 	},
 	{
 		name: "mouse",
-		char: "\u{1F401}",
+		char: "\u{1f401}",
 	},
 	{
 		name: "mouse face",
-		char: "\u{1F42D}",
+		char: "\u{1f42d}",
 	},
 	{
 		name: "moustache, left",
-		char: "\u{23B0}",
+		char: "\u{23b0}",
 	},
 	{
 		name: "moustache, right",
-		char: "\u{23B1}",
+		char: "\u{23b1}",
 	},
 	{
 		name: "mouth",
-		char: "\u{1F444}",
+		char: "\u{1f444}",
 	},
 	{
 		name: "mro",
-		char: "\u{16A40}",
+		char: "\u{16a40}",
 	},
 	{
 		name: "much greater-than",
-		char: "\u{226B}",
+		char: "\u{226b}",
 	},
 	{
 		name: "much greater-than, very",
-		char: "\u{22D9}",
+		char: "\u{22d9}",
 	},
 	{
 		name: "much less-than",
-		char: "\u{226A}",
+		char: "\u{226a}",
 	},
 	{
 		name: "much less-than, very",
-		char: "\u{22D8}",
+		char: "\u{22d8}",
 	},
 	{
 		name: "multani",
@@ -14279,15 +12607,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "multimap",
-		char: "\u{22B8}",
+		char: "\u{22b8}",
 	},
 	{
 		name: "multiplication and division sign operators",
-		char: "\u{2A2F}",
+		char: "\u{2a2f}",
 	},
 	{
 		name: "multiplication sign",
-		char: "\u{00D7}",
+		char: "\u{00d7}",
 	},
 	{
 		name: "multiplication x",
@@ -14299,19 +12627,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "multiplication, multiset",
-		char: "\u{228D}",
+		char: "\u{228d}",
 	},
 	{
 		name: "multiset",
-		char: "\u{228C}",
+		char: "\u{228c}",
 	},
 	{
 		name: "multiset multiplication",
-		char: "\u{228D}",
+		char: "\u{228d}",
 	},
 	{
 		name: "multiset union",
-		char: "\u{228E}",
+		char: "\u{228e}",
 	},
 	{
 		name: "music dingbats",
@@ -14319,43 +12647,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "music flat sign",
-		char: "\u{266D}",
+		char: "\u{266d}",
 	},
 	{
 		name: "music natural sign",
-		char: "\u{266E}",
+		char: "\u{266e}",
 	},
 	{
 		name: "music sharp sign",
-		char: "\u{266F}",
+		char: "\u{266f}",
 	},
 	{
 		name: "music symbols",
-		char: "\u{1F3B5}",
+		char: "\u{1f3b5}",
 	},
 	{
 		name: "musical notation, ancient greek",
-		char: "\u{1D200}",
+		char: "\u{1d200}",
 	},
 	{
 		name: "musical notes, beamed ascending",
-		char: "\u{1F39C}",
+		char: "\u{1f39c}",
 	},
 	{
 		name: "musical notes, beamed descending",
-		char: "\u{1F39D}",
+		char: "\u{1f39d}",
 	},
 	{
 		name: "musical notes, multiple",
-		char: "\u{1F3B6}",
+		char: "\u{1f3b6}",
 	},
 	{
 		name: "musical symbols",
-		char: "\u{1D100}",
+		char: "\u{1d100}",
 	},
 	{
 		name: "musical symbols, balinese",
-		char: "\u{1B61}",
+		char: "\u{1b61}",
 	},
 	{
 		name: "musical symbols, basic",
@@ -14363,7 +12691,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "musical symbols, byzantine",
-		char: "\u{1D000}",
+		char: "\u{1d000}",
 	},
 	{
 		name: "mutton",
@@ -14383,7 +12711,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "myanmar dependent vowel signs",
-		char: "\u{102C}",
+		char: "\u{102c}",
 	},
 	{
 		name: "myanmar digits",
@@ -14391,11 +12719,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "myanmar extended-a",
-		char: "\u{AA60}",
+		char: "\u{aa60}",
 	},
 	{
 		name: "myanmar extended-b",
-		char: "\u{A9E0}",
+		char: "\u{a9e0}",
 	},
 	{
 		name: "myanmar independent vowels",
@@ -14427,7 +12755,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "n with circumflex below, latin small letter",
-		char: "\u{1E4B}",
+		char: "\u{1e4b}",
 	},
 	{
 		name: "n with curl, latin small letter",
@@ -14435,19 +12763,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "n with dot above, latin small letter",
-		char: "\u{1E45}",
+		char: "\u{1e45}",
 	},
 	{
 		name: "n with dot below, latin small letter",
-		char: "\u{1E47}",
+		char: "\u{1e47}",
 	},
 	{
 		name: "n with grave, latin small letter",
-		char: "\u{01F9}",
+		char: "\u{01f9}",
 	},
 	{
 		name: "n with left hook, latin capital letter",
-		char: "\u{019D}",
+		char: "\u{019d}",
 	},
 	{
 		name: "n with left hook, latin small letter",
@@ -14455,7 +12783,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "n with line below, latin small letter",
-		char: "\u{1E49}",
+		char: "\u{1e49}",
 	},
 	{
 		name: "n with long right leg, latin capital letter",
@@ -14463,7 +12791,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "n with long right leg, latin small letter",
-		char: "\u{019E}",
+		char: "\u{019e}",
 	},
 	{
 		name: "n with retroflex hook, latin small letter",
@@ -14471,11 +12799,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "n with tilde, latin capital letter",
-		char: "\u{00D1}",
+		char: "\u{00d1}",
 	},
 	{
 		name: "n with tilde, latin small letter",
-		char: "\u{00F1}",
+		char: "\u{00f1}",
 	},
 	{
 		name: "n, double-struck capital",
@@ -14487,7 +12815,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "n, latin letter small capital reversed",
-		char: "\u{1D0E}",
+		char: "\u{1d0e}",
 	},
 	{
 		name: "n, latin subscript small letter",
@@ -14499,31 +12827,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "n-ary dijkstra choice",
-		char: "\u{2AFF}",
+		char: "\u{2aff}",
 	},
 	{
 		name: "n-ary intersection",
-		char: "\u{22C2}",
+		char: "\u{22c2}",
 	},
 	{
 		name: "n-ary logical and",
-		char: "\u{22C0}",
+		char: "\u{22c0}",
 	},
 	{
 		name: "n-ary logical or",
-		char: "\u{22C1}",
+		char: "\u{22c1}",
 	},
 	{
 		name: "n-ary operators",
-		char: "\u{22C0}",
+		char: "\u{22c0}",
 	},
 	{
 		name: "n-ary operators",
-		char: "\u{2A00}",
+		char: "\u{2a00}",
 	},
 	{
 		name: "n-ary product",
-		char: "\u{220F}",
+		char: "\u{220f}",
 	},
 	{
 		name: "n-ary summation",
@@ -14535,19 +12863,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "n-ary times operator",
-		char: "\u{2A09}",
+		char: "\u{2a09}",
 	},
 	{
 		name: "n-ary union",
-		char: "\u{22C3}",
+		char: "\u{22c3}",
 	},
 	{
 		name: "n-ary white vertical bar",
-		char: "\u{2AFF}",
+		char: "\u{2aff}",
 	},
 	{
 		name: "naal, tamil",
-		char: "\u{0BF3}",
+		char: "\u{0bf3}",
 	},
 	{
 		name: "nabataean",
@@ -14559,23 +12887,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "nag mundari",
-		char: "\u{1E4D0}",
+		char: "\u{1e4d0}",
 	},
 	{
 		name: "naira sign",
-		char: "\u{20A6}",
+		char: "\u{20a6}",
 	},
 	{
 		name: "nand",
-		char: "\u{22BC}",
+		char: "\u{22bc}",
 	},
 	{
 		name: "nandinagari",
-		char: "\u{119A0}",
+		char: "\u{119a0}",
 	},
 	{
 		name: "narrow no-break space",
-		char: "\u{202F}",
+		char: "\u{202f}",
 	},
 	{
 		name: "nasal hook",
@@ -14583,7 +12911,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "natural exponent",
-		char: "\u{212F}",
+		char: "\u{212f}",
 	},
 	{
 		name: "natural number",
@@ -14591,11 +12919,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "natural sign, music",
-		char: "\u{266E}",
+		char: "\u{266e}",
 	},
 	{
 		name: "nbsp",
-		char: "\u{00A0}",
+		char: "\u{00a0}",
 	},
 	{
 		name: "nearly equals",
@@ -14603,7 +12931,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "necessarily satisfies",
-		char: "\u{2AF1}",
+		char: "\u{2af1}",
 	},
 	{
 		name: "negative acknowledge",
@@ -14615,7 +12943,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "negative squared cross mark, negative squared",
-		char: "\u{274E}",
+		char: "\u{274e}",
 	},
 	{
 		name: "nel",
@@ -14627,7 +12955,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "neuter",
-		char: "\u{26B2}",
+		char: "\u{26b2}",
 	},
 	{
 		name: "neutral quotation mark",
@@ -14639,15 +12967,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "neutral tone, mandarin chinese fifth or",
-		char: "\u{02D9}",
+		char: "\u{02d9}",
 	},
 	{
 		name: "new line",
-		char: "\u{000A}",
+		char: "\u{000a}",
 	},
 	{
 		name: "new sheqel sign",
-		char: "\u{20AA}",
+		char: "\u{20aa}",
 	},
 	{
 		name: "new tai lue",
@@ -14655,15 +12983,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "new tai lue digits",
-		char: "\u{19D0}",
+		char: "\u{19d0}",
 	},
 	{
 		name: "new testament editorial symbols",
-		char: "\u{2E00}",
+		char: "\u{2e00}",
 	},
 	{
 		name: "new testament majority text",
-		char: "\u{1D510}",
+		char: "\u{1d510}",
 	},
 	{
 		name: "newa",
@@ -14691,43 +13019,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "nigerian currency",
-		char: "\u{20A6}",
+		char: "\u{20a6}",
 	},
 	{
 		name: "niggahita, lao",
-		char: "\u{0ECD}",
+		char: "\u{0ecd}",
 	},
 	{
 		name: "nikahit, khmer sign",
-		char: "\u{17C6}",
+		char: "\u{17c6}",
 	},
 	{
 		name: "nikhahit, thai character",
-		char: "\u{0E4D}",
+		char: "\u{0e4d}",
 	},
 	{
 		name: "nim-addition",
-		char: "\u{2A27}",
+		char: "\u{2a27}",
 	},
 	{
 		name: "nirugu, mongolian",
-		char: "\u{180A}",
+		char: "\u{180a}",
 	},
 	{
 		name: "nko",
-		char: "\u{07C0}",
+		char: "\u{07c0}",
 	},
 	{
 		name: "nl",
-		char: "\u{000A}",
+		char: "\u{000a}",
 	},
 	{
 		name: "nnbsp",
-		char: "\u{202F}",
+		char: "\u{202f}",
 	},
 	{
 		name: "no",
-		char: "\u{20E0}",
+		char: "\u{20e0}",
 	},
 	{
 		name: "no break here",
@@ -14735,35 +13063,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "no break space, keyboard symbol for",
-		char: "\u{237D}",
+		char: "\u{237d}",
 	},
 	{
 		name: "no entry",
-		char: "\u{26D4}",
+		char: "\u{26d4}",
 	},
 	{
 		name: "no entry sign",
-		char: "\u{1F6AB}",
+		char: "\u{1f6ab}",
 	},
 	{
 		name: "no-break space",
-		char: "\u{00A0}",
+		char: "\u{00a0}",
 	},
 	{
 		name: "no-break space, narrow",
-		char: "\u{202F}",
+		char: "\u{202f}",
 	},
 	{
 		name: "no-break space, zero width",
-		char: "\u{FEFF}",
+		char: "\u{feff}",
 	},
 	{
 		name: "node, ascending",
-		char: "\u{260A}",
+		char: "\u{260a}",
 	},
 	{
 		name: "node, descending",
-		char: "\u{260B}",
+		char: "\u{260b}",
 	},
 	{
 		name: "non-breaking hyphen",
@@ -14771,11 +13099,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "non-breaking space",
-		char: "\u{00A0}",
+		char: "\u{00a0}",
 	},
 	{
 		name: "non-joiner, zero width",
-		char: "\u{200C}",
+		char: "\u{200c}",
 	},
 	{
 		name: "non-spacing iota below, greek",
@@ -14783,47 +13111,47 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "non-theorem",
-		char: "\u{22A3}",
+		char: "\u{22a3}",
 	},
 	{
 		name: "noncharacters (fdd0..fdef)",
-		char: "\u{FDD0}",
+		char: "\u{fdd0}",
 	},
 	{
 		name: "noncharacters (fffe..ffff)",
-		char: "\u{FFFE}",
+		char: "\u{fffe}",
 	},
 	{
 		name: "nor",
-		char: "\u{22BD}",
+		char: "\u{22bd}",
 	},
 	{
 		name: "normal factor semidirect product, left",
-		char: "\u{22C9}",
+		char: "\u{22c9}",
 	},
 	{
 		name: "normal factor semidirect product, right",
-		char: "\u{22CA}",
+		char: "\u{22ca}",
 	},
 	{
 		name: "normal subgroup of",
-		char: "\u{22B2}",
+		char: "\u{22b2}",
 	},
 	{
 		name: "normal subgroup signs",
-		char: "\u{22EA}",
+		char: "\u{22ea}",
 	},
 	{
 		name: "normal subgroup, contains as",
-		char: "\u{22B3}",
+		char: "\u{22b3}",
 	},
 	{
 		name: "nose",
-		char: "\u{1F443}",
+		char: "\u{1f443}",
 	},
 	{
 		name: "not",
-		char: "\u{223C}",
+		char: "\u{223c}",
 	},
 	{
 		name: "not a subset of",
@@ -14847,7 +13175,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "not check mark",
-		char: "\u{237B}",
+		char: "\u{237b}",
 	},
 	{
 		name: "not equal to",
@@ -14859,7 +13187,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "not independent",
-		char: "\u{2ADC}",
+		char: "\u{2adc}",
 	},
 	{
 		name: "not parallel to",
@@ -14867,7 +13195,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "not sign",
-		char: "\u{00AC}",
+		char: "\u{00ac}",
 	},
 	{
 		name: "not sign, reversed",
@@ -14882,16 +13210,12 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2241}",
 	},
 	{
-		name: "not tilde above, combining",
-		char: "\u{034A}",
-	},
-	{
 		name: "not yield, does",
-		char: "\u{22A3}",
+		char: "\u{22a3}",
 	},
 	{
 		name: "note, eighth",
-		char: "\u{266A}",
+		char: "\u{266a}",
 	},
 	{
 		name: "note, quarter",
@@ -14899,15 +13223,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "notes, beamed eighth",
-		char: "\u{266B}",
+		char: "\u{266b}",
 	},
 	{
 		name: "notes, beamed sixteenth",
-		char: "\u{266C}",
+		char: "\u{266c}",
 	},
 	{
 		name: "nukta, devanagari sign",
-		char: "\u{093C}",
+		char: "\u{093c}",
 	},
 	{
 		name: "null",
@@ -14931,11 +13255,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "number sign, tamil",
-		char: "\u{0BFA}",
+		char: "\u{0bfa}",
 	},
 	{
 		name: "number symbol, real",
-		char: "\u{210A}",
+		char: "\u{210a}",
 	},
 	{
 		name: "number zero, ideographic",
@@ -14967,7 +13291,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "numbers, circled",
-		char: "\u{32B1}",
+		char: "\u{32b1}",
 	},
 	{
 		name: "numbers, circled inverse",
@@ -14979,7 +13303,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "numbers, double circled",
-		char: "\u{24F5}",
+		char: "\u{24f5}",
 	},
 	{
 		name: "numbers, ethiopic",
@@ -14987,11 +13311,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "numbers, indic siyaq",
-		char: "\u{1EC70}",
+		char: "\u{1ec70}",
 	},
 	{
 		name: "numbers, ottoman siyaq",
-		char: "\u{1ED00}",
+		char: "\u{1ed00}",
 	},
 	{
 		name: "numbers, parenthesized",
@@ -14999,23 +13323,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "numbers, rational",
-		char: "\u{211A}",
+		char: "\u{211a}",
 	},
 	{
 		name: "numbers, real",
-		char: "\u{211D}",
+		char: "\u{211d}",
 	},
 	{
 		name: "numbers, runic golden",
-		char: "\u{16EE}",
+		char: "\u{16ee}",
 	},
 	{
 		name: "numbers, tamil",
-		char: "\u{0BE7}",
+		char: "\u{0be7}",
 	},
 	{
 		name: "numbers, white on black circled",
-		char: "\u{24EB}",
+		char: "\u{24eb}",
 	},
 	{
 		name: "numerals, hangzhou",
@@ -15023,11 +13347,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "numerals, kaktovik",
-		char: "\u{1D2C0}",
+		char: "\u{1d2c0}",
 	},
 	{
 		name: "numerals, mayan",
-		char: "\u{1D2E0}",
+		char: "\u{1d2e0}",
 	},
 	{
 		name: "numerals, old italic",
@@ -15043,15 +13367,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "numerator one, fraction",
-		char: "\u{215F}",
+		char: "\u{215f}",
 	},
 	{
 		name: "numeric symbols for divination, khmer",
-		char: "\u{17F0}",
+		char: "\u{17f0}",
 	},
 	{
 		name: "numerics lock",
-		char: "\u{21ED}",
+		char: "\u{21ed}",
 	},
 	{
 		name: "numero sign",
@@ -15059,7 +13383,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "nushu",
-		char: "\u{1B170}",
+		char: "\u{1b170}",
 	},
 	{
 		name: "nut",
@@ -15067,11 +13391,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "nyiakeng puachue hmong",
-		char: "\u{1E100}",
+		char: "\u{1e100}",
 	},
 	{
 		name: "o bar, latin capital letter",
-		char: "\u{019F}",
+		char: "\u{019f}",
 	},
 	{
 		name: "o bar, latin small letter",
@@ -15083,51 +13407,51 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "o slash, latin capital letter",
-		char: "\u{00D8}",
+		char: "\u{00d8}",
 	},
 	{
 		name: "o slash, latin small letter",
-		char: "\u{00F8}",
+		char: "\u{00f8}",
 	},
 	{
 		name: "o with acute, latin capital letter",
-		char: "\u{00D3}",
+		char: "\u{00d3}",
 	},
 	{
 		name: "o with acute, latin small letter",
-		char: "\u{00F3}",
+		char: "\u{00f3}",
 	},
 	{
 		name: "o with breve, latin small letter",
-		char: "\u{014F}",
+		char: "\u{014f}",
 	},
 	{
 		name: "o with caron, latin small letter",
-		char: "\u{01D2}",
+		char: "\u{01d2}",
 	},
 	{
 		name: "o with circumflex, latin capital letter",
-		char: "\u{00D4}",
+		char: "\u{00d4}",
 	},
 	{
 		name: "o with circumflex, latin small letter",
-		char: "\u{00F4}",
+		char: "\u{00f4}",
 	},
 	{
 		name: "o with diaeresis, latin capital letter",
-		char: "\u{00D6}",
+		char: "\u{00d6}",
 	},
 	{
 		name: "o with diaeresis, latin small letter",
-		char: "\u{00F6}",
+		char: "\u{00f6}",
 	},
 	{
 		name: "o with dot above, latin small letter",
-		char: "\u{022F}",
+		char: "\u{022f}",
 	},
 	{
 		name: "o with dot below, latin small letter",
-		char: "\u{1ECD}",
+		char: "\u{1ecd}",
 	},
 	{
 		name: "o with double acute, latin small letter",
@@ -15135,67 +13459,63 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "o with double grave, latin small letter",
-		char: "\u{020D}",
+		char: "\u{020d}",
 	},
 	{
 		name: "o with grave, latin capital letter",
-		char: "\u{00D2}",
+		char: "\u{00d2}",
 	},
 	{
 		name: "o with grave, latin small letter",
-		char: "\u{00F2}",
+		char: "\u{00f2}",
 	},
 	{
 		name: "o with hook above, latin small letter",
-		char: "\u{1ECF}",
+		char: "\u{1ecf}",
 	},
 	{
 		name: "o with horn, latin small letter",
-		char: "\u{01A1}",
+		char: "\u{01a1}",
 	},
 	{
 		name: "o with inverted breve, latin small letter",
-		char: "\u{020F}",
+		char: "\u{020f}",
 	},
 	{
 		name: "o with macron, latin small letter",
-		char: "\u{014D}",
+		char: "\u{014d}",
 	},
 	{
 		name: "o with middle tilde, latin capital letter",
-		char: "\u{019F}",
+		char: "\u{019f}",
 	},
 	{
 		name: "o with ogonek, latin small letter",
-		char: "\u{01EB}",
+		char: "\u{01eb}",
 	},
 	{
 		name: "o with stroke, latin capital letter",
-		char: "\u{00D8}",
+		char: "\u{00d8}",
 	},
 	{
 		name: "o with stroke, latin small letter",
-		char: "\u{00F8}",
+		char: "\u{00f8}",
 	},
 	{
 		name: "o with stroke, latin small letter sideways",
-		char: "\u{1D13}",
+		char: "\u{1d13}",
 	},
 	{
 		name: "o with tilde, latin capital letter",
-		char: "\u{00D5}",
+		char: "\u{00d5}",
 	},
 	{
 		name: "o with tilde, latin small letter",
-		char: "\u{00F5}",
-	},
-	{
-		name: "o, combining latin small letter",
-		char: "\u{0366}",
+		char: "\u{00f5}",
 	},
 	{
 		name: "o, latin capital letter barred",
-		char: "\u{019F}",
+		char: "\u{019f}",
 	},
 	{
 		name: "o, latin capital letter open",
@@ -15203,11 +13523,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "o, latin letter small capital",
-		char: "\u{1D0F}",
+		char: "\u{1d0f}",
 	},
 	{
 		name: "o, latin letter small capital open",
-		char: "\u{1D10}",
+		char: "\u{1d10}",
 	},
 	{
 		name: "o, latin small letter barred",
@@ -15215,7 +13535,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "o, latin small letter bottom half",
-		char: "\u{1D17}",
+		char: "\u{1d17}",
 	},
 	{
 		name: "o, latin small letter open",
@@ -15223,15 +13543,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "o, latin small letter sideways",
-		char: "\u{1D11}",
+		char: "\u{1d11}",
 	},
 	{
 		name: "o, latin small letter sideways open",
-		char: "\u{1D12}",
+		char: "\u{1d12}",
 	},
 	{
 		name: "o, latin small letter top half",
-		char: "\u{1D16}",
+		char: "\u{1d16}",
 	},
 	{
 		name: "o, script small",
@@ -15239,11 +13559,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "obelus",
-		char: "\u{00F7}",
+		char: "\u{00f7}",
 	},
 	{
 		name: "object replacement character",
-		char: "\u{FFFC}",
+		char: "\u{fffc}",
 	},
 	{
 		name: "ocr, optical character recognition",
@@ -15251,7 +13571,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "octopus",
-		char: "\u{1F419}",
+		char: "\u{1f419}",
 	},
 	{
 		name: "octothorpe",
@@ -15263,7 +13583,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "oe, latin small letter turned",
-		char: "\u{1D14}",
+		char: "\u{1d14}",
 	},
 	{
 		name: "oe, latin small ligature",
@@ -15271,7 +13591,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "office symbols",
-		char: "\u{1F4BA}",
+		char: "\u{1f4ba}",
 	},
 	{
 		name: "ogham",
@@ -15283,7 +13603,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ogham punctuation",
-		char: "\u{169B}",
+		char: "\u{169b}",
 	},
 	{
 		name: "ogham space mark",
@@ -15295,15 +13615,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ogonek",
-		char: "\u{02DB}",
-	},
-	{
-		name: "ogonek, combining",
-		char: "\u{0328}",
+		char: "\u{02db}",
 	},
 	{
 		name: "ogre, japanese",
-		char: "\u{1F479}",
+		char: "\u{1f479}",
 	},
 	{
 		name: "ohm sign",
@@ -15315,19 +13631,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "oi, latin small letter",
-		char: "\u{01A3}",
+		char: "\u{01a3}",
 	},
 	{
 		name: "ok hand sign",
-		char: "\u{1F44C}",
+		char: "\u{1f44c}",
 	},
 	{
 		name: "ol chiki",
-		char: "\u{1C50}",
+		char: "\u{1c50}",
 	},
 	{
 		name: "old hungarian",
-		char: "\u{10C80}",
+		char: "\u{10c80}",
 	},
 	{
 		name: "old italic",
@@ -15339,19 +13655,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "old persian",
-		char: "\u{103A0}",
+		char: "\u{103a0}",
 	},
 	{
 		name: "old sogdian",
-		char: "\u{10F00}",
+		char: "\u{10f00}",
 	},
 	{
 		name: "old testament, greek",
-		char: "\u{1D516}",
+		char: "\u{1d516}",
 	},
 	{
 		name: "om symbol",
-		char: "\u{1F549}",
+		char: "\u{1f549}",
 	},
 	{
 		name: "om, devanagari",
@@ -15359,11 +13675,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "om, tibetan syllable",
-		char: "\u{0F00}",
+		char: "\u{0f00}",
 	},
 	{
 		name: "omega pi",
-		char: "\u{03D6}",
+		char: "\u{03d6}",
 	},
 	{
 		name: "omega, latin small letter closed",
@@ -15371,7 +13687,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "omission dash",
-		char: "\u{2E3A}",
+		char: "\u{2e3a}",
 	},
 	{
 		name: "one dot leader",
@@ -15379,19 +13695,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "one half, vulgar fraction",
-		char: "\u{00BD}",
+		char: "\u{00bd}",
 	},
 	{
 		name: "one quarter, vulgar fraction",
-		char: "\u{00BC}",
+		char: "\u{00bc}",
 	},
 	{
 		name: "one, fraction numerator",
-		char: "\u{215F}",
+		char: "\u{215f}",
 	},
 	{
 		name: "one, superscript",
-		char: "\u{00B9}",
+		char: "\u{00b9}",
 	},
 	{
 		name: "open box",
@@ -15399,11 +13715,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "open box, shouldered",
-		char: "\u{237D}",
+		char: "\u{237d}",
 	},
 	{
 		name: "open e with hook, latin small letter reversed",
-		char: "\u{025D}",
+		char: "\u{025d}",
 	},
 	{
 		name: "open e, latin capital letter",
@@ -15411,23 +13727,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "open e, latin small letter",
-		char: "\u{025B}",
+		char: "\u{025b}",
 	},
 	{
 		name: "open e, latin small letter closed",
-		char: "\u{029A}",
+		char: "\u{029a}",
 	},
 	{
 		name: "open e, latin small letter closed reversed",
-		char: "\u{025E}",
+		char: "\u{025e}",
 	},
 	{
 		name: "open e, latin small letter reversed",
-		char: "\u{025C}",
+		char: "\u{025c}",
 	},
 	{
 		name: "open e, latin small letter turned",
-		char: "\u{1D08}",
+		char: "\u{1d08}",
 	},
 	{
 		name: "open o, latin capital letter",
@@ -15435,7 +13751,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "open o, latin letter small capital",
-		char: "\u{1D10}",
+		char: "\u{1d10}",
 	},
 	{
 		name: "open o, latin small letter",
@@ -15443,15 +13759,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "open o, latin small letter sideways",
-		char: "\u{1D12}",
+		char: "\u{1d12}",
 	},
 	{
 		name: "opening brace",
-		char: "\u{007B}",
+		char: "\u{007b}",
 	},
 	{
 		name: "opening curly bracket",
-		char: "\u{007B}",
+		char: "\u{007b}",
 	},
 	{
 		name: "opening parenthesis",
@@ -15459,11 +13775,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "opening square bracket",
-		char: "\u{005B}",
+		char: "\u{005b}",
 	},
 	{
 		name: "operating system command",
-		char: "\u{009D}",
+		char: "\u{009d}",
 	},
 	{
 		name: "operating system key (iso 9995-7)",
@@ -15471,11 +13787,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "operators supplement, mathematical",
-		char: "\u{2A00}",
+		char: "\u{2a00}",
 	},
 	{
 		name: "operators, database theory",
-		char: "\u{27D5}",
+		char: "\u{27d5}",
 	},
 	{
 		name: "operators, dotted mathematical",
@@ -15483,7 +13799,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "operators, double",
-		char: "\u{22D0}",
+		char: "\u{22d0}",
 	},
 	{
 		name: "operators, enclosed mathematical",
@@ -15495,7 +13811,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "operators, large",
-		char: "\u{29F8}",
+		char: "\u{29f8}",
 	},
 	{
 		name: "operators, mathematical",
@@ -15503,51 +13819,51 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "operators, modal logic",
-		char: "\u{27E0}",
+		char: "\u{27e0}",
 	},
 	{
 		name: "operators, multiplication and division sign",
-		char: "\u{2A2F}",
+		char: "\u{2a2f}",
 	},
 	{
 		name: "operators, n-ary",
-		char: "\u{22C0}",
+		char: "\u{22c0}",
 	},
 	{
 		name: "operators, n-ary",
-		char: "\u{2A00}",
+		char: "\u{2a00}",
 	},
 	{
 		name: "operators, plus and minus sign",
-		char: "\u{2A22}",
+		char: "\u{2a22}",
 	},
 	{
 		name: "operators, relational",
-		char: "\u{29E3}",
+		char: "\u{29e3}",
 	},
 	{
 		name: "operators, specialized plus sign",
-		char: "\u{29FA}",
+		char: "\u{29fa}",
 	},
 	{
 		name: "operators, supplemental mathematical",
-		char: "\u{2A00}",
+		char: "\u{2a00}",
 	},
 	{
 		name: "operators, tilde mathematical",
-		char: "\u{223B}",
+		char: "\u{223b}",
 	},
 	{
 		name: "operators, vertical line",
-		char: "\u{2AEE}",
+		char: "\u{2aee}",
 	},
 	{
 		name: "ophiuchus",
-		char: "\u{26CE}",
+		char: "\u{26ce}",
 	},
 	{
 		name: "opposition",
-		char: "\u{260D}",
+		char: "\u{260d}",
 	},
 	{
 		name: "optical character recognition, ocr",
@@ -15555,7 +13871,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "optical disc",
-		char: "\u{1F4BF}",
+		char: "\u{1f4bf}",
 	},
 	{
 		name: "option key",
@@ -15563,11 +13879,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "or, curly logical",
-		char: "\u{22CE}",
+		char: "\u{22ce}",
 	},
 	{
 		name: "or, double logical",
-		char: "\u{2A54}",
+		char: "\u{2a54}",
 	},
 	{
 		name: "or, logical",
@@ -15575,7 +13891,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "or, n-ary logical",
-		char: "\u{22C1}",
+		char: "\u{22c1}",
 	},
 	{
 		name: "order",
@@ -15583,23 +13899,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "order relation precedence signs",
-		char: "\u{227A}",
+		char: "\u{227a}",
 	},
 	{
 		name: "order relation precedence signs",
-		char: "\u{22DE}",
+		char: "\u{22de}",
 	},
 	{
 		name: "ordinal indicator, feminine",
-		char: "\u{00AA}",
+		char: "\u{00aa}",
 	},
 	{
 		name: "ordinal indicator, masculine",
-		char: "\u{00BA}",
+		char: "\u{00ba}",
 	},
 	{
 		name: "ordinarily satisfies",
-		char: "\u{2AE2}",
+		char: "\u{2ae2}",
 	},
 	{
 		name: "ordinary diacritics",
@@ -15611,7 +13927,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "original of",
-		char: "\u{22B6}",
+		char: "\u{22b6}",
 	},
 	{
 		name: "original of, square",
@@ -15619,31 +13935,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "oriya",
-		char: "\u{0B00}",
+		char: "\u{0b00}",
 	},
 	{
 		name: "oriya consonants",
-		char: "\u{0B15}",
+		char: "\u{0b15}",
 	},
 	{
 		name: "oriya dependent vowel signs",
-		char: "\u{0B3E}",
+		char: "\u{0b3e}",
 	},
 	{
 		name: "oriya digits",
-		char: "\u{0B66}",
+		char: "\u{0b66}",
 	},
 	{
 		name: "oriya independent vowels",
-		char: "\u{0B05}",
+		char: "\u{0b05}",
 	},
 	{
 		name: "oriya isshar",
-		char: "\u{0B70}",
+		char: "\u{0b70}",
 	},
 	{
 		name: "ornamental angle quotation marks",
-		char: "\u{276E}",
+		char: "\u{276e}",
 	},
 	{
 		name: "ornamental brackets",
@@ -15651,7 +13967,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ornamental dingbats",
-		char: "\u{1F650}",
+		char: "\u{1f650}",
 	},
 	{
 		name: "ornaments, heart",
@@ -15659,27 +13975,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ornaments, punctuation mark",
-		char: "\u{275B}",
+		char: "\u{275b}",
 	},
 	{
 		name: "ornaments, punctuation mark",
-		char: "\u{1F676}",
+		char: "\u{1f676}",
 	},
 	{
 		name: "ornaments, quotation mark",
-		char: "\u{275B}",
+		char: "\u{275b}",
 	},
 	{
 		name: "ornate left parenthesis",
-		char: "\u{FD3E}",
+		char: "\u{fd3e}",
 	},
 	{
 		name: "ornate right parenthesis",
-		char: "\u{FD3F}",
+		char: "\u{fd3f}",
 	},
 	{
 		name: "ors, logical ands and",
-		char: "\u{2A51}",
+		char: "\u{2a51}",
 	},
 	{
 		name: "orthodox cross",
@@ -15687,11 +14003,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "orthogonal to",
-		char: "\u{22A5}",
+		char: "\u{22a5}",
 	},
 	{
 		name: "osage",
-		char: "\u{104B0}",
+		char: "\u{104b0}",
 	},
 	{
 		name: "osmanya",
@@ -15699,15 +14015,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "osmanya digits",
-		char: "\u{104A0}",
+		char: "\u{104a0}",
 	},
 	{
 		name: "ottoman siyaq numbers",
-		char: "\u{1ED00}",
+		char: "\u{1ed00}",
 	},
 	{
 		name: "ou, latin letter small capital",
-		char: "\u{1D15}",
+		char: "\u{1d15}",
 	},
 	{
 		name: "ou, latin small letter",
@@ -15719,71 +14035,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "overbar, apl",
-		char: "\u{00AF}",
-	},
-	{
-		name: "overlay, combining anticlockwise ring",
-		char: "\u{20DA}",
-	},
-	{
-		name: "overlay, combining clockwise ring",
-		char: "\u{20D9}",
-	},
-	{
-		name: "overlay, combining counterclockwise ring",
-		char: "\u{20DA}",
-	},
-	{
-		name: "overlay, combining double vertical stroke",
-		char: "\u{20E6}",
-	},
-	{
-		name: "overlay, combining leftwards arrow",
-		char: "\u{20EA}",
-	},
-	{
-		name: "overlay, combining long double solidus",
-		char: "\u{20EB}",
-	},
-	{
-		name: "overlay, combining long solidus",
-		char: "\u{0338}",
-	},
-	{
-		name: "overlay, combining long stroke",
-		char: "\u{0336}",
-	},
-	{
-		name: "overlay, combining long vertical line",
-		char: "\u{20D2}",
-	},
-	{
-		name: "overlay, combining reverse solidus",
-		char: "\u{20E5}",
-	},
-	{
-		name: "overlay, combining ring",
-		char: "\u{20D8}",
-	},
-	{
-		name: "overlay, combining short solidus",
-		char: "\u{0337}",
-	},
-	{
-		name: "overlay, combining short stroke",
-		char: "\u{0335}",
-	},
-	{
-		name: "overlay, combining short vertical line",
-		char: "\u{20D3}",
-	},
-	{
-		name: "overlay, combining tilde",
-		char: "\u{0334}",
+		char: "\u{00af}",
 	},
 	{
 		name: "overlay, long double slash",
-		char: "\u{20EB}",
+		char: "\u{20eb}",
 	},
 	{
 		name: "overlay, long slash",
@@ -15795,43 +14051,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "overline",
-		char: "\u{00AF}",
+		char: "\u{00af}",
 	},
 	{
 		name: "overline",
-		char: "\u{203E}",
+		char: "\u{203e}",
 	},
 	{
 		name: "overline, centreline",
-		char: "\u{FE4A}",
-	},
-	{
-		name: "overline, combining",
-		char: "\u{0305}",
-	},
-	{
-		name: "overline, combining double",
-		char: "\u{033F}",
+		char: "\u{fe4a}",
 	},
 	{
 		name: "overline, dashed",
-		char: "\u{FE49}",
+		char: "\u{fe49}",
 	},
 	{
 		name: "overline, double wavy",
-		char: "\u{FE4C}",
+		char: "\u{fe4c}",
 	},
 	{
 		name: "overline, wavy",
-		char: "\u{FE4B}",
+		char: "\u{fe4b}",
 	},
 	{
 		name: "override, left-to-right",
-		char: "\u{202D}",
+		char: "\u{202d}",
 	},
 	{
 		name: "override, right-to-left",
-		char: "\u{202E}",
+		char: "\u{202e}",
 	},
 	{
 		name: "overscore",
@@ -15839,11 +14087,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "overscore, spacing",
-		char: "\u{203E}",
+		char: "\u{203e}",
 	},
 	{
 		name: "overscores and underscores",
-		char: "\u{FE49}",
+		char: "\u{fe49}",
 	},
 	{
 		name: "overstruck diacritics",
@@ -15851,7 +14099,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ox",
-		char: "\u{1F402}",
+		char: "\u{1f402}",
 	},
 	{
 		name: "oxia, greek",
@@ -15859,15 +14107,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "p with acute, latin small letter",
-		char: "\u{1E55}",
+		char: "\u{1e55}",
 	},
 	{
 		name: "p with dot above, latin small letter",
-		char: "\u{1E57}",
+		char: "\u{1e57}",
 	},
 	{
 		name: "p with hook, latin small letter",
-		char: "\u{01A5}",
+		char: "\u{01a5}",
 	},
 	{
 		name: "p, double-struck capital",
@@ -15875,11 +14123,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "p, latin letter small capital",
-		char: "\u{1D18}",
+		char: "\u{1d18}",
 	},
 	{
 		name: "p, latin subscript small letter",
-		char: "\u{209A}",
+		char: "\u{209a}",
 	},
 	{
 		name: "p, script capital",
@@ -15887,27 +14135,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "paella",
-		char: "\u{1F958}",
+		char: "\u{1f958}",
 	},
 	{
 		name: "page down",
-		char: "\u{21DF}",
+		char: "\u{21df}",
 	},
 	{
 		name: "page down",
-		char: "\u{2B7D}",
+		char: "\u{2b7d}",
 	},
 	{
 		name: "page facing up",
-		char: "\u{1F4C4}",
+		char: "\u{1f4c4}",
 	},
 	{
 		name: "page up",
-		char: "\u{21DE}",
+		char: "\u{21de}",
 	},
 	{
 		name: "page up",
-		char: "\u{2B7B}",
+		char: "\u{2b7b}",
 	},
 	{
 		name: "page, next",
@@ -15919,31 +14167,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "pahawh hmong",
-		char: "\u{16B00}",
+		char: "\u{16b00}",
 	},
 	{
 		name: "pahlavi",
-		char: "\u{10B60}",
+		char: "\u{10b60}",
 	},
 	{
 		name: "pahlavi, psalter",
-		char: "\u{10B80}",
+		char: "\u{10b80}",
 	},
 	{
 		name: "palaeotype transliteration symbols",
-		char: "\u{2E32}",
+		char: "\u{2e32}",
 	},
 	{
 		name: "palatal hook, latin small letter t with",
-		char: "\u{01AB}",
-	},
-	{
-		name: "palatalized hook below, combining",
-		char: "\u{0321}",
+		char: "\u{01ab}",
 	},
 	{
 		name: "palm branch",
-		char: "\u{2E19}",
+		char: "\u{2e19}",
 	},
 	{
 		name: "palmyrene",
@@ -15951,7 +14195,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "paluta, tibetan mark",
-		char: "\u{0F85}",
+		char: "\u{0f85}",
 	},
 	{
 		name: "pamudpod, hanunoo sign",
@@ -15959,27 +14203,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "panda face",
-		char: "\u{1F43C}",
+		char: "\u{1f43c}",
 	},
 	{
 		name: "paper in rock, paper, scissors game",
-		char: "\u{270B}",
+		char: "\u{270b}",
 	},
 	{
 		name: "paper sign, permanent",
-		char: "\u{267E}",
+		char: "\u{267e}",
 	},
 	{
 		name: "paper symbol, partially-recycled",
-		char: "\u{267D}",
+		char: "\u{267d}",
 	},
 	{
 		name: "paper symbol, recycled",
-		char: "\u{267C}",
+		char: "\u{267c}",
 	},
 	{
 		name: "papyrological hyphen",
-		char: "\u{035C}",
+		char: "\u{035c}",
 	},
 	{
 		name: "paragraph separator",
@@ -15991,15 +14235,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "paragraph separator, georgian",
-		char: "\u{10FB}",
+		char: "\u{10fb}",
 	},
 	{
 		name: "paragraph separator, urdu",
-		char: "\u{203B}",
+		char: "\u{203b}",
 	},
 	{
 		name: "paragraph sign",
-		char: "\u{00B6}",
+		char: "\u{00b6}",
 	},
 	{
 		name: "paragraph sign ornament, curved stem",
@@ -16007,11 +14251,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "paragraph sign, european",
-		char: "\u{00A7}",
+		char: "\u{00a7}",
 	},
 	{
 		name: "paraguayan currency",
-		char: "\u{20B2}",
+		char: "\u{20b2}",
 	},
 	{
 		name: "parallel to",
@@ -16023,11 +14267,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "parallelogram, black",
-		char: "\u{25B0}",
+		char: "\u{25b0}",
 	},
 	{
 		name: "parental lock",
-		char: "\u{26BF}",
+		char: "\u{26bf}",
 	},
 	{
 		name: "parenthesis, closing",
@@ -16047,11 +14291,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "parenthesis, ornate left",
-		char: "\u{FD3E}",
+		char: "\u{fd3e}",
 	},
 	{
 		name: "parenthesis, ornate right",
-		char: "\u{FD3F}",
+		char: "\u{fd3f}",
 	},
 	{
 		name: "parenthesis, right",
@@ -16071,19 +14315,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "parenthesized korean hangul syllables",
-		char: "\u{320E}",
+		char: "\u{320e}",
 	},
 	{
 		name: "parenthesized latin capital letters",
-		char: "\u{1F110}",
+		char: "\u{1f110}",
 	},
 	{
 		name: "parenthesized latin letters",
-		char: "\u{1F110}",
+		char: "\u{1f110}",
 	},
 	{
 		name: "parenthesized latin letters",
-		char: "\u{249C}",
+		char: "\u{249c}",
 	},
 	{
 		name: "parenthesized numbers",
@@ -16091,15 +14335,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "park",
-		char: "\u{26F2}",
+		char: "\u{26f2}",
 	},
 	{
 		name: "parted rule",
-		char: "\u{00A6}",
+		char: "\u{00a6}",
 	},
 	{
 		name: "parthian, inscriptional",
-		char: "\u{10B40}",
+		char: "\u{10b40}",
 	},
 	{
 		name: "partial differential",
@@ -16107,7 +14351,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "partial function",
-		char: "\u{21F8}",
+		char: "\u{21f8}",
 	},
 	{
 		name: "partial injection",
@@ -16115,15 +14359,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "partial line backward",
-		char: "\u{008C}",
+		char: "\u{008c}",
 	},
 	{
 		name: "partial line forward",
-		char: "\u{008B}",
+		char: "\u{008b}",
 	},
 	{
 		name: "partial relation",
-		char: "\u{21F9}",
+		char: "\u{21f9}",
 	},
 	{
 		name: "partial surjection",
@@ -16131,27 +14375,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "partially-recycled paper symbol",
-		char: "\u{267D}",
+		char: "\u{267d}",
 	},
 	{
 		name: "partly cloudy",
-		char: "\u{26C5}",
+		char: "\u{26c5}",
 	},
 	{
 		name: "partnership symbol, unmarried",
-		char: "\u{26AF}",
+		char: "\u{26af}",
 	},
 	{
 		name: "patiw, armenian",
-		char: "\u{055F}",
+		char: "\u{055f}",
 	},
 	{
 		name: "patru, tamil",
-		char: "\u{0BF6}",
+		char: "\u{0bf6}",
 	},
 	{
 		name: "pau cin hau",
-		char: "\u{11AC0}",
+		char: "\u{11ac0}",
 	},
 	{
 		name: "pause",
@@ -16159,35 +14403,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "pause play",
-		char: "\u{23F8}",
+		char: "\u{23f8}",
 	},
 	{
 		name: "paw prints",
-		char: "\u{1F43E}",
+		char: "\u{1f43e}",
 	},
 	{
 		name: "pdf",
-		char: "\u{202C}",
+		char: "\u{202c}",
 	},
 	{
 		name: "peace symbol",
-		char: "\u{262E}",
+		char: "\u{262e}",
 	},
 	{
 		name: "peace, dove of",
-		char: "\u{1F54A}",
+		char: "\u{1f54a}",
 	},
 	{
 		name: "pencil",
-		char: "\u{270F}",
+		char: "\u{270f}",
 	},
 	{
 		name: "pencil dingbats",
-		char: "\u{270E}",
+		char: "\u{270e}",
 	},
 	{
 		name: "pencil, lower right",
-		char: "\u{270E}",
+		char: "\u{270e}",
 	},
 	{
 		name: "pencil, upper right",
@@ -16195,27 +14439,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "penguin",
-		char: "\u{1F427}",
+		char: "\u{1f427}",
 	},
 	{
 		name: "pennant, black",
-		char: "\u{1F3F2}",
+		char: "\u{1f3f2}",
 	},
 	{
 		name: "pennant, white",
-		char: "\u{1F3F1}",
+		char: "\u{1f3f1}",
 	},
 	{
 		name: "penny sign, german",
-		char: "\u{20B0}",
+		char: "\u{20b0}",
 	},
 	{
 		name: "pentagram",
-		char: "\u{26E4}",
+		char: "\u{26e4}",
 	},
 	{
 		name: "pentalpha, pentangle",
-		char: "\u{26E4}",
+		char: "\u{26e4}",
 	},
 	{
 		name: "pentonkion, greek",
@@ -16223,7 +14467,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "pepper, hot",
-		char: "\u{1F336}",
+		char: "\u{1f336}",
 	},
 	{
 		name: "per mille sign",
@@ -16231,7 +14475,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "per sign",
-		char: "\u{214C}",
+		char: "\u{214c}",
 	},
 	{
 		name: "per ten thousand sign",
@@ -16247,43 +14491,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "percussive, latin letter bidental",
-		char: "\u{02AD}",
+		char: "\u{02ad}",
 	},
 	{
 		name: "percussive, latin letter bilabial",
-		char: "\u{02AC}",
+		char: "\u{02ac}",
 	},
 	{
 		name: "period",
-		char: "\u{002E}",
+		char: "\u{002e}",
 	},
 	{
 		name: "period, numbers followed by",
 		char: "\u{2488}",
 	},
 	{
-		name: "perispomeni, combining greek",
-		char: "\u{0342}",
-	},
-	{
 		name: "permanent paper sign",
-		char: "\u{267E}",
+		char: "\u{267e}",
 	},
 	{
 		name: "permission and prohibition signs",
-		char: "\u{1F6AC}",
+		char: "\u{1f6ac}",
 	},
 	{
 		name: "perpendicular",
-		char: "\u{22A5}",
+		char: "\u{22a5}",
 	},
 	{
 		name: "persian, old",
-		char: "\u{103A0}",
+		char: "\u{103a0}",
 	},
 	{
 		name: "personal care symbols",
-		char: "\u{1F484}",
+		char: "\u{1f484}",
 	},
 	{
 		name: "perspective",
@@ -16291,23 +14531,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "peseta sign",
-		char: "\u{20A7}",
+		char: "\u{20a7}",
 	},
 	{
 		name: "peso sign",
-		char: "\u{20B1}",
+		char: "\u{20b1}",
 	},
 	{
 		name: "petrol station",
-		char: "\u{26FD}",
+		char: "\u{26fd}",
 	},
 	{
 		name: "phags-pa",
-		char: "\u{A840}",
+		char: "\u{a840}",
 	},
 	{
 		name: "phaistos disc",
-		char: "\u{101D0}",
+		char: "\u{101d0}",
 	},
 	{
 		name: "pharyngeal voiced fricative, latin letter",
@@ -16315,7 +14555,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "phi symbol, greek",
-		char: "\u{03D5}",
+		char: "\u{03d5}",
 	},
 	{
 		name: "phi, latin small letter",
@@ -16331,7 +14571,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "phillipine currency",
-		char: "\u{20B1}",
+		char: "\u{20b1}",
 	},
 	{
 		name: "phoenician",
@@ -16339,27 +14579,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "phonetic digraphs",
-		char: "\u{02A3}",
+		char: "\u{02a3}",
 	},
 	{
 		name: "phonetic extensions",
-		char: "\u{1D00}",
+		char: "\u{1d00}",
 	},
 	{
 		name: "phonetic extensions, katakana",
-		char: "\u{31F0}",
+		char: "\u{31f0}",
 	},
 	{
 		name: "phonetic modifiers",
-		char: "\u{02B9}",
+		char: "\u{02b9}",
 	},
 	{
 		name: "phonetic modifiers derived from latin letters",
-		char: "\u{02B0}",
+		char: "\u{02b0}",
 	},
 	{
 		name: "phonetics and symbols area, cjk",
-		char: "\u{2E80}",
+		char: "\u{2e80}",
 	},
 	{
 		name: "phonorecord sign",
@@ -16371,39 +14611,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "pi symbol, greek",
-		char: "\u{03D6}",
+		char: "\u{03d6}",
 	},
 	{
 		name: "pi, double-struck capital",
-		char: "\u{213F}",
+		char: "\u{213f}",
 	},
 	{
 		name: "pi, double-struck small",
-		char: "\u{213C}",
+		char: "\u{213c}",
 	},
 	{
 		name: "pi, greek small letter",
-		char: "\u{03C0}",
+		char: "\u{03c0}",
 	},
 	{
 		name: "pi, mathematical constant 3.141592...",
-		char: "\u{03C0}",
+		char: "\u{03c0}",
 	},
 	{
 		name: "pick",
-		char: "\u{26CF}",
+		char: "\u{26cf}",
 	},
 	{
 		name: "pictographs extended-a, symbols and",
-		char: "\u{1FA70}",
+		char: "\u{1fa70}",
 	},
 	{
 		name: "pictographs, miscellaneous symbols and",
-		char: "\u{1F300}",
+		char: "\u{1f300}",
 	},
 	{
 		name: "pictographs, supplemental symbols and",
-		char: "\u{1F900}",
+		char: "\u{1f900}",
 	},
 	{
 		name: "pictures for control codes, graphic",
@@ -16411,23 +14651,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "pig",
-		char: "\u{1F416}",
+		char: "\u{1f416}",
 	},
 	{
 		name: "pig face",
-		char: "\u{1F437}",
+		char: "\u{1f437}",
 	},
 	{
 		name: "pig nose",
-		char: "\u{1F43D}",
+		char: "\u{1f43d}",
 	},
 	{
 		name: "pilcrow sign",
-		char: "\u{00B6}",
+		char: "\u{00b6}",
 	},
 	{
 		name: "pilcrow sign, reversed",
-		char: "\u{204B}",
+		char: "\u{204b}",
 	},
 	{
 		name: "pillow",
@@ -16435,15 +14675,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "pipe",
-		char: "\u{01C0}",
+		char: "\u{01c0}",
 	},
 	{
 		name: "pipe, double",
-		char: "\u{01C1}",
+		char: "\u{01c1}",
 	},
 	{
 		name: "pipe, double-barred",
-		char: "\u{01C2}",
+		char: "\u{01c2}",
 	},
 	{
 		name: "pisces",
@@ -16455,7 +14695,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "pitchfork",
-		char: "\u{22D4}",
+		char: "\u{22d4}",
 	},
 	{
 		name: "place of interest sign",
@@ -16463,31 +14703,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "plaintiff",
-		char: "\u{226C}",
+		char: "\u{226c}",
 	},
 	{
 		name: "planck constant",
-		char: "\u{210E}",
+		char: "\u{210e}",
 	},
 	{
 		name: "planck constant over two pi",
-		char: "\u{210F}",
+		char: "\u{210f}",
 	},
 	{
 		name: "planet symbols",
-		char: "\u{263F}",
+		char: "\u{263f}",
 	},
 	{
 		name: "planets, symbols for minor",
-		char: "\u{26B3}",
+		char: "\u{26b3}",
 	},
 	{
 		name: "planets, symbols for minor",
-		char: "\u{1F77B}",
+		char: "\u{1f77b}",
 	},
 	{
 		name: "plant symbols",
-		char: "\u{1F330}",
+		char: "\u{1f330}",
 	},
 	{
 		name: "plastics recycling symbols",
@@ -16503,31 +14743,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "playing cards",
-		char: "\u{1F0A0}",
+		char: "\u{1f0a0}",
 	},
 	{
 		name: "plewds",
-		char: "\u{1F4A6}",
+		char: "\u{1f4a6}",
 	},
 	{
 		name: "plus and minus sign operators",
-		char: "\u{2A22}",
+		char: "\u{2a22}",
 	},
 	{
 		name: "plus sign",
-		char: "\u{002B}",
-	},
-	{
-		name: "plus sign below, combining",
-		char: "\u{031F}",
+		char: "\u{002b}",
 	},
 	{
 		name: "plus sign operators, specialized",
-		char: "\u{29FA}",
+		char: "\u{29fa}",
 	},
 	{
 		name: "plus sign, modifier letter",
-		char: "\u{02D6}",
+		char: "\u{02d6}",
 	},
 	{
 		name: "plus, circled",
@@ -16539,7 +14775,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "plus, double",
-		char: "\u{29FA}",
+		char: "\u{29fa}",
 	},
 	{
 		name: "plus, invisible",
@@ -16547,15 +14783,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "plus, squared",
-		char: "\u{229E}",
+		char: "\u{229e}",
 	},
 	{
 		name: "plus, triple",
-		char: "\u{29FB}",
+		char: "\u{29fb}",
 	},
 	{
 		name: "plus-minus sign",
-		char: "\u{00B1}",
+		char: "\u{00b1}",
 	},
 	{
 		name: "pluto",
@@ -16563,7 +14799,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "point, decimal",
-		char: "\u{002E}",
+		char: "\u{002e}",
 	},
 	{
 		name: "point, hyphenation",
@@ -16571,51 +14807,51 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "pointers",
-		char: "\u{25BA}",
+		char: "\u{25ba}",
 	},
 	{
 		name: "pointing hand indexes",
-		char: "\u{1F597}",
+		char: "\u{1f597}",
 	},
 	{
 		name: "pointing hand symbols",
-		char: "\u{261A}",
+		char: "\u{261a}",
 	},
 	{
 		name: "pointing index finger dingbats",
-		char: "\u{261A}",
+		char: "\u{261a}",
 	},
 	{
 		name: "pointing index, black left",
-		char: "\u{261A}",
+		char: "\u{261a}",
 	},
 	{
 		name: "pointing index, black right",
-		char: "\u{261B}",
+		char: "\u{261b}",
 	},
 	{
 		name: "pointing index, white down",
-		char: "\u{261F}",
+		char: "\u{261f}",
 	},
 	{
 		name: "pointing index, white left",
-		char: "\u{261C}",
+		char: "\u{261c}",
 	},
 	{
 		name: "pointing index, white right",
-		char: "\u{261E}",
+		char: "\u{261e}",
 	},
 	{
 		name: "pointing index, white up",
-		char: "\u{261D}",
+		char: "\u{261d}",
 	},
 	{
 		name: "points and punctuation, hebrew",
-		char: "\u{05B0}",
+		char: "\u{05b0}",
 	},
 	{
 		name: "points, hebrew",
-		char: "\u{05B0}",
+		char: "\u{05b0}",
 	},
 	{
 		name: "points, syriac",
@@ -16627,7 +14863,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "police officer",
-		char: "\u{1F46E}",
+		char: "\u{1f46e}",
 	},
 	{
 		name: "political symbols, religious and",
@@ -16635,23 +14871,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "polygonal symbols",
-		char: "\u{2B12}",
+		char: "\u{2b12}",
 	},
 	{
 		name: "polytonic greek, precomposed",
-		char: "\u{1F00}",
+		char: "\u{1f00}",
 	},
 	{
 		name: "poo, pile of",
-		char: "\u{1F4A9}",
+		char: "\u{1f4a9}",
 	},
 	{
 		name: "poodle",
-		char: "\u{1F429}",
+		char: "\u{1f429}",
 	},
 	{
 		name: "pop directional formatting",
-		char: "\u{202C}",
+		char: "\u{202c}",
 	},
 	{
 		name: "pop directional isolate",
@@ -16659,19 +14895,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "pork (on menus)",
-		char: "\u{1F416}",
+		char: "\u{1f416}",
 	},
 	{
 		name: "portrait and role symbols",
-		char: "\u{1F464}",
+		char: "\u{1f464}",
 	},
 	{
 		name: "portrait and role symbols",
-		char: "\u{1F930}",
+		char: "\u{1f930}",
 	},
 	{
 		name: "portrait and role symbols",
-		char: "\u{1F9D0}",
+		char: "\u{1f9d0}",
 	},
 	{
 		name: "position indicator",
@@ -16679,23 +14915,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "position indicator, square",
-		char: "\u{2BD0}",
+		char: "\u{2bd0}",
 	},
 	{
 		name: "positive difference or sum",
-		char: "\u{2A24}",
+		char: "\u{2a24}",
 	},
 	{
 		name: "positive difference, sum or",
-		char: "\u{2A26}",
+		char: "\u{2a26}",
 	},
 	{
 		name: "positive, most",
-		char: "\u{223E}",
+		char: "\u{223e}",
 	},
 	{
 		name: "postal horn",
-		char: "\u{1F4EF}",
+		char: "\u{1f4ef}",
 	},
 	{
 		name: "postal mark",
@@ -16711,7 +14947,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "poultry (on menus)",
-		char: "\u{1F414}",
+		char: "\u{1f414}",
 	},
 	{
 		name: "pound sign",
@@ -16719,11 +14955,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "pound sign",
-		char: "\u{00A3}",
+		char: "\u{00a3}",
 	},
 	{
 		name: "pound sterling",
-		char: "\u{00A3}",
+		char: "\u{00a3}",
 	},
 	{
 		name: "pounds",
@@ -16731,59 +14967,59 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "power on/off symbols",
-		char: "\u{23FB}",
+		char: "\u{23fb}",
 	},
 	{
 		name: "power plant",
-		char: "\u{26EE}",
+		char: "\u{26ee}",
 	},
 	{
 		name: "power set",
-		char: "\u{1D4AB}",
+		char: "\u{1d4ab}",
 	},
 	{
 		name: "precedence signs, order relation",
-		char: "\u{227A}",
+		char: "\u{227a}",
 	},
 	{
 		name: "precedence signs, order relation",
-		char: "\u{22DE}",
+		char: "\u{22de}",
 	},
 	{
 		name: "precedes",
-		char: "\u{227A}",
+		char: "\u{227a}",
 	},
 	{
 		name: "precedes under relation",
-		char: "\u{22B0}",
+		char: "\u{22b0}",
 	},
 	{
 		name: "precedes, double",
-		char: "\u{2ABB}",
+		char: "\u{2abb}",
 	},
 	{
 		name: "precomposed polytonic greek",
-		char: "\u{1F00}",
+		char: "\u{1f00}",
 	},
 	{
 		name: "prescription take",
-		char: "\u{211E}",
+		char: "\u{211e}",
 	},
 	{
 		name: "presentation forms, alphabetic",
-		char: "\u{FB00}",
+		char: "\u{fb00}",
 	},
 	{
 		name: "presentation forms, hebrew",
-		char: "\u{FB1D}",
+		char: "\u{fb1d}",
 	},
 	{
 		name: "presentation forms-a, arabic",
-		char: "\u{FB50}",
+		char: "\u{fb50}",
 	},
 	{
 		name: "presentation forms-b, arabic",
-		char: "\u{FE70}",
+		char: "\u{fe70}",
 	},
 	{
 		name: "previous page",
@@ -16795,15 +15031,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "prime quotation mark, double",
-		char: "\u{301E}",
+		char: "\u{301e}",
 	},
 	{
 		name: "prime quotation mark, low double",
-		char: "\u{301F}",
+		char: "\u{301f}",
 	},
 	{
 		name: "prime quotation mark, reversed double",
-		char: "\u{301D}",
+		char: "\u{301d}",
 	},
 	{
 		name: "prime, double",
@@ -16811,11 +15047,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "prime, modifier letter",
-		char: "\u{02B9}",
+		char: "\u{02b9}",
 	},
 	{
 		name: "prime, modifier letter double",
-		char: "\u{02BA}",
+		char: "\u{02ba}",
 	},
 	{
 		name: "prime, quadruple",
@@ -16839,7 +15075,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "princess",
-		char: "\u{1F478}",
+		char: "\u{1f478}",
 	},
 	{
 		name: "print screen symbol",
@@ -16847,15 +15083,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "privacy message",
-		char: "\u{009E}",
+		char: "\u{009e}",
 	},
 	{
 		name: "private use area",
-		char: "\u{E000}",
+		char: "\u{e000}",
 	},
 	{
 		name: "private use area-a, supplementary",
-		char: "\u{F0000}",
+		char: "\u{f0000}",
 	},
 	{
 		name: "private use area-b, supplementary",
@@ -16871,11 +15107,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "product sign",
-		char: "\u{220F}",
+		char: "\u{220f}",
 	},
 	{
 		name: "product, cartesian",
-		char: "\u{00D7}",
+		char: "\u{00d7}",
 	},
 	{
 		name: "product, direct",
@@ -16883,39 +15119,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "product, interior",
-		char: "\u{2A3C}",
+		char: "\u{2a3c}",
 	},
 	{
 		name: "product, left normal factor semidirect",
-		char: "\u{22C9}",
+		char: "\u{22c9}",
 	},
 	{
 		name: "product, left semidirect",
-		char: "\u{22CB}",
+		char: "\u{22cb}",
 	},
 	{
 		name: "product, n-ary",
-		char: "\u{220F}",
+		char: "\u{220f}",
 	},
 	{
 		name: "product, right normal factor semidirect",
-		char: "\u{22CA}",
+		char: "\u{22ca}",
 	},
 	{
 		name: "product, right semidirect",
-		char: "\u{22CC}",
+		char: "\u{22cc}",
 	},
 	{
 		name: "product, righthand interior",
-		char: "\u{2A3D}",
+		char: "\u{2a3d}",
 	},
 	{
 		name: "product, shuffle",
-		char: "\u{29E2}",
+		char: "\u{29e2}",
 	},
 	{
 		name: "product, smash",
-		char: "\u{2A33}",
+		char: "\u{2a33}",
 	},
 	{
 		name: "product, tensor",
@@ -16923,7 +15159,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "product, vector or cross",
-		char: "\u{2A2F}",
+		char: "\u{2a2f}",
 	},
 	{
 		name: "product, wreath",
@@ -16931,19 +15167,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "program command, application",
-		char: "\u{009F}",
+		char: "\u{009f}",
 	},
 	{
 		name: "prohibited sign",
-		char: "\u{1F6C7}",
+		char: "\u{1f6c7}",
 	},
 	{
 		name: "prohibition",
-		char: "\u{20E0}",
+		char: "\u{20e0}",
 	},
 	{
 		name: "prohibition signs, permission and",
-		char: "\u{1F6AC}",
+		char: "\u{1f6ac}",
 	},
 	{
 		name: "projective",
@@ -16951,15 +15187,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "proof, end of",
-		char: "\u{220E}",
+		char: "\u{220e}",
 	},
 	{
 		name: "proper intersection",
-		char: "\u{22D4}",
+		char: "\u{22d4}",
 	},
 	{
 		name: "property line",
-		char: "\u{214A}",
+		char: "\u{214a}",
 	},
 	{
 		name: "proportion",
@@ -16967,19 +15203,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "proportion, geometric",
-		char: "\u{223A}",
+		char: "\u{223a}",
 	},
 	{
 		name: "proportional to",
-		char: "\u{221D}",
+		char: "\u{221d}",
 	},
 	{
 		name: "proportional to",
-		char: "\u{223C}",
+		char: "\u{223c}",
 	},
 	{
 		name: "proves",
-		char: "\u{22A2}",
+		char: "\u{22a2}",
 	},
 	{
 		name: "psili, greek",
@@ -16987,7 +15223,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "psifistoparakalesma",
-		char: "\u{1D06F}",
+		char: "\u{1d06f}",
 	},
 	{
 		name: "published",
@@ -16995,11 +15231,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "pullback",
-		char: "\u{27D3}",
+		char: "\u{27d3}",
 	},
 	{
 		name: "punch",
-		char: "\u{1F44A}",
+		char: "\u{1f44a}",
 	},
 	{
 		name: "punctuation and signs, greek",
@@ -17007,7 +15243,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "punctuation and signs, myanmar",
-		char: "\u{104A}",
+		char: "\u{104a}",
 	},
 	{
 		name: "punctuation and signs, syriac",
@@ -17019,7 +15255,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "punctuation and symbols, latin-1",
-		char: "\u{00A0}",
+		char: "\u{00a0}",
 	},
 	{
 		name: "punctuation for vertical text, double",
@@ -17027,11 +15263,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "punctuation mark ornaments",
-		char: "\u{275B}",
+		char: "\u{275b}",
 	},
 	{
 		name: "punctuation mark ornaments",
-		char: "\u{1F676}",
+		char: "\u{1f676}",
 	},
 	{
 		name: "punctuation space",
@@ -17039,11 +15275,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "punctuation, arabic",
-		char: "\u{060C}",
+		char: "\u{060c}",
 	},
 	{
 		name: "punctuation, canadian syllabics",
-		char: "\u{166D}",
+		char: "\u{166d}",
 	},
 	{
 		name: "punctuation, cjk symbols and",
@@ -17063,11 +15299,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "punctuation, halfwidth cjk",
-		char: "\u{FF61}",
+		char: "\u{ff61}",
 	},
 	{
 		name: "punctuation, hebrew points and",
-		char: "\u{05B0}",
+		char: "\u{05b0}",
 	},
 	{
 		name: "punctuation, mongolian",
@@ -17075,7 +15311,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "punctuation, ogham",
-		char: "\u{169B}",
+		char: "\u{169b}",
 	},
 	{
 		name: "punctuation, philippine double",
@@ -17087,15 +15323,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "punctuation, runic",
-		char: "\u{16EB}",
+		char: "\u{16eb}",
 	},
 	{
 		name: "punctuation, supplemental",
-		char: "\u{2E00}",
+		char: "\u{2e00}",
 	},
 	{
 		name: "punt, irish",
-		char: "\u{00A3}",
+		char: "\u{00a3}",
 	},
 	{
 		name: "purna viram, devanagari",
@@ -17103,7 +15339,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "pushout",
-		char: "\u{27D4}",
+		char: "\u{27d4}",
 	},
 	{
 		name: "puspika",
@@ -17111,27 +15347,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "q with hook tail, latin capital letter small",
-		char: "\u{024A}",
+		char: "\u{024a}",
 	},
 	{
 		name: "q with hook tail, latin small letter",
-		char: "\u{024B}",
+		char: "\u{024b}",
 	},
 	{
 		name: "q with hook, latin small letter",
-		char: "\u{02A0}",
+		char: "\u{02a0}",
 	},
 	{
 		name: "q, double-struck capital",
-		char: "\u{211A}",
+		char: "\u{211a}",
 	},
 	{
 		name: "q, rotated capital",
-		char: "\u{213A}",
+		char: "\u{213a}",
 	},
 	{
 		name: "q.e.d.",
-		char: "\u{220E}",
+		char: "\u{220e}",
 	},
 	{
 		name: "qp digraph, latin small letter",
@@ -17151,11 +15387,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "quadrant control code graphics",
-		char: "\u{25F0}",
+		char: "\u{25f0}",
 	},
 	{
 		name: "quadrature",
-		char: "\u{25A1}",
+		char: "\u{25a1}",
 	},
 	{
 		name: "quadruple prime",
@@ -17163,7 +15399,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "quantic",
-		char: "\u{226C}",
+		char: "\u{226c}",
 	},
 	{
 		name: "quantifier, existential",
@@ -17175,11 +15411,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "quarter moon, first",
-		char: "\u{263D}",
+		char: "\u{263d}",
 	},
 	{
 		name: "quarter moon, last",
-		char: "\u{263E}",
+		char: "\u{263e}",
 	},
 	{
 		name: "quarter note",
@@ -17187,31 +15423,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "quarter, vulgar fraction one",
-		char: "\u{00BC}",
+		char: "\u{00bc}",
 	},
 	{
 		name: "quarters, fractions",
-		char: "\u{00BC}",
+		char: "\u{00bc}",
 	},
 	{
 		name: "quarters, vulgar fraction three",
-		char: "\u{00BE}",
+		char: "\u{00be}",
 	},
 	{
 		name: "quaternion integral operator",
-		char: "\u{2A16}",
+		char: "\u{2a16}",
 	},
 	{
 		name: "quaver",
-		char: "\u{1D160}",
+		char: "\u{1d160}",
 	},
 	{
 		name: "quaver",
-		char: "\u{266A}",
+		char: "\u{266a}",
 	},
 	{
 		name: "quavers, beamed",
-		char: "\u{266B}",
+		char: "\u{266b}",
 	},
 	{
 		name: "question exclamation mark",
@@ -17219,7 +15455,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "question mark",
-		char: "\u{003F}",
+		char: "\u{003f}",
 	},
 	{
 		name: "question mark ornament, black",
@@ -17231,11 +15467,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "question mark, arabic",
-		char: "\u{061F}",
+		char: "\u{061f}",
 	},
 	{
 		name: "question mark, armenian",
-		char: "\u{055E}",
+		char: "\u{055e}",
 	},
 	{
 		name: "question mark, double",
@@ -17251,15 +15487,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "question mark, greek",
-		char: "\u{003B}",
+		char: "\u{003b}",
 	},
 	{
 		name: "question mark, greek",
-		char: "\u{037E}",
+		char: "\u{037e}",
 	},
 	{
 		name: "question mark, inverted",
-		char: "\u{00BF}",
+		char: "\u{00bf}",
 	},
 	{
 		name: "question mark, limbu",
@@ -17267,11 +15503,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "question mark, turned",
-		char: "\u{00BF}",
+		char: "\u{00bf}",
 	},
 	{
 		name: "questioned equal to",
-		char: "\u{225F}",
+		char: "\u{225f}",
 	},
 	{
 		name: "quill, left square bracket with",
@@ -17283,11 +15519,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "quilt square ornaments",
-		char: "\u{1F668}",
+		char: "\u{1f668}",
 	},
 	{
 		name: "quine corners",
-		char: "\u{231C}",
+		char: "\u{231c}",
 	},
 	{
 		name: "quotation dash",
@@ -17299,43 +15535,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "quotation mark dingbats",
-		char: "\u{275B}",
+		char: "\u{275b}",
 	},
 	{
 		name: "quotation mark ornaments",
-		char: "\u{275B}",
+		char: "\u{275b}",
 	},
 	{
 		name: "quotation mark, double comma",
-		char: "\u{201D}",
+		char: "\u{201d}",
 	},
 	{
 		name: "quotation mark, double high-reversed-9",
-		char: "\u{201F}",
+		char: "\u{201f}",
 	},
 	{
 		name: "quotation mark, double low-9",
-		char: "\u{201E}",
+		char: "\u{201e}",
 	},
 	{
 		name: "quotation mark, double low-reversed-9",
-		char: "\u{2E42}",
+		char: "\u{2e42}",
 	},
 	{
 		name: "quotation mark, double prime",
-		char: "\u{301E}",
+		char: "\u{301e}",
 	},
 	{
 		name: "quotation mark, double reversed comma",
-		char: "\u{201F}",
+		char: "\u{201f}",
 	},
 	{
 		name: "quotation mark, double turned comma",
-		char: "\u{201C}",
+		char: "\u{201c}",
 	},
 	{
 		name: "quotation mark, left double",
-		char: "\u{201C}",
+		char: "\u{201c}",
 	},
 	{
 		name: "quotation mark, left single",
@@ -17343,19 +15579,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "quotation mark, left-pointing double angle",
-		char: "\u{00AB}",
+		char: "\u{00ab}",
 	},
 	{
 		name: "quotation mark, low double comma",
-		char: "\u{201E}",
+		char: "\u{201e}",
 	},
 	{
 		name: "quotation mark, low double prime",
-		char: "\u{301F}",
+		char: "\u{301f}",
 	},
 	{
 		name: "quotation mark, low single comma",
-		char: "\u{201A}",
+		char: "\u{201a}",
 	},
 	{
 		name: "quotation mark, neutral",
@@ -17367,11 +15603,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "quotation mark, reversed double prime",
-		char: "\u{301D}",
+		char: "\u{301d}",
 	},
 	{
 		name: "quotation mark, right double",
-		char: "\u{201D}",
+		char: "\u{201d}",
 	},
 	{
 		name: "quotation mark, right single",
@@ -17379,7 +15615,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "quotation mark, right-pointing double angle",
-		char: "\u{00BB}",
+		char: "\u{00bb}",
 	},
 	{
 		name: "quotation mark, single comma",
@@ -17387,7 +15623,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "quotation mark, single high-reversed-9",
-		char: "\u{201B}",
+		char: "\u{201b}",
 	},
 	{
 		name: "quotation mark, single left-pointing angle",
@@ -17395,15 +15631,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "quotation mark, single low-9",
-		char: "\u{201A}",
+		char: "\u{201a}",
 	},
 	{
 		name: "quotation mark, single reversed comma",
-		char: "\u{201B}",
+		char: "\u{201b}",
 	},
 	{
 		name: "quotation mark, single right-pointing angle",
-		char: "\u{203A}",
+		char: "\u{203a}",
 	},
 	{
 		name: "quotation mark, single turned comma",
@@ -17415,11 +15651,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "quotation marks, cjk",
-		char: "\u{300C}",
+		char: "\u{300c}",
 	},
 	{
 		name: "quotation marks, ornamental angle",
-		char: "\u{276E}",
+		char: "\u{276e}",
 	},
 	{
 		name: "quote, apl",
@@ -17427,7 +15663,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "qur'anic annotation signs, arabic",
-		char: "\u{06D6}",
+		char: "\u{06d6}",
 	},
 	{
 		name: "r with acute, latin small letter",
@@ -17443,11 +15679,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "r with dot above, latin small letter",
-		char: "\u{1E59}",
+		char: "\u{1e59}",
 	},
 	{
 		name: "r with dot below, latin small letter",
-		char: "\u{1E5B}",
+		char: "\u{1e5b}",
 	},
 	{
 		name: "r with double grave, latin small letter",
@@ -17455,15 +15691,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "r with fishhook, latin small letter",
-		char: "\u{027E}",
+		char: "\u{027e}",
 	},
 	{
 		name: "r with fishhook, latin small letter reversed",
-		char: "\u{027F}",
+		char: "\u{027f}",
 	},
 	{
 		name: "r with hook, latin small letter turned",
-		char: "\u{027B}",
+		char: "\u{027b}",
 	},
 	{
 		name: "r with inverted breve, latin small letter",
@@ -17471,39 +15707,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "r with line below, latin small letter",
-		char: "\u{1E5F}",
+		char: "\u{1e5f}",
 	},
 	{
 		name: "r with long leg, latin small letter",
-		char: "\u{027C}",
+		char: "\u{027c}",
 	},
 	{
 		name: "r with long leg, latin small letter turned",
-		char: "\u{027A}",
+		char: "\u{027a}",
 	},
 	{
 		name: "r with stroke, latin capital letter",
-		char: "\u{024C}",
+		char: "\u{024c}",
 	},
 	{
 		name: "r with stroke, latin small letter",
-		char: "\u{024D}",
+		char: "\u{024d}",
 	},
 	{
 		name: "r with tail, latin small letter",
-		char: "\u{027D}",
+		char: "\u{027d}",
 	},
 	{
 		name: "r, black-letter capital",
-		char: "\u{211C}",
-	},
-	{
-		name: "r, combining latin small letter",
-		char: "\u{036C}",
+		char: "\u{211c}",
 	},
 	{
 		name: "r, double-struck capital",
-		char: "\u{211D}",
+		char: "\u{211d}",
 	},
 	{
 		name: "r, latin letter small capital",
@@ -17515,11 +15747,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "r, latin letter small capital reversed",
-		char: "\u{1D19}",
+		char: "\u{1d19}",
 	},
 	{
 		name: "r, latin letter small capital turned",
-		char: "\u{1D1A}",
+		char: "\u{1d1a}",
 	},
 	{
 		name: "r, latin small letter turned",
@@ -17527,51 +15759,51 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "r, latin subscript small letter",
-		char: "\u{1D63}",
+		char: "\u{1d63}",
 	},
 	{
 		name: "r, modifier letter small",
-		char: "\u{02B3}",
+		char: "\u{02b3}",
 	},
 	{
 		name: "r, modifier letter small capital inverted",
-		char: "\u{02B6}",
+		char: "\u{02b6}",
 	},
 	{
 		name: "r, modifier letter small turned",
-		char: "\u{02B4}",
+		char: "\u{02b4}",
 	},
 	{
 		name: "r, script capital",
-		char: "\u{211B}",
+		char: "\u{211b}",
 	},
 	{
 		name: "rabbit",
-		char: "\u{1F407}",
+		char: "\u{1f407}",
 	},
 	{
 		name: "rabbit face",
-		char: "\u{1F430}",
+		char: "\u{1f430}",
 	},
 	{
 		name: "radial component",
-		char: "\u{27DF}",
+		char: "\u{27df}",
 	},
 	{
 		name: "radical sign",
-		char: "\u{221A}",
+		char: "\u{221a}",
 	},
 	{
 		name: "radicals supplement, cjk",
-		char: "\u{2E80}",
+		char: "\u{2e80}",
 	},
 	{
 		name: "radicals, cjk kangxi",
-		char: "\u{2F00}",
+		char: "\u{2f00}",
 	},
 	{
 		name: "radicals, yi",
-		char: "\u{A490}",
+		char: "\u{a490}",
 	},
 	{
 		name: "radioactive sign",
@@ -17579,11 +15811,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "railway track",
-		char: "\u{1F6E4}",
+		char: "\u{1f6e4}",
 	},
 	{
 		name: "rain",
-		char: "\u{26C6}",
+		char: "\u{26c6}",
 	},
 	{
 		name: "rain drops, umbrella with",
@@ -17591,7 +15823,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "rainbow",
-		char: "\u{1F308}",
+		char: "\u{1f308}",
 	},
 	{
 		name: "rainy weather",
@@ -17599,7 +15831,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ram",
-		char: "\u{1F40F}",
+		char: "\u{1f40f}",
 	},
 	{
 		name: "rams horn, latin small letter",
@@ -17607,11 +15839,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "range restriction",
-		char: "\u{25B7}",
+		char: "\u{25b7}",
 	},
 	{
 		name: "rat",
-		char: "\u{1F400}",
+		char: "\u{1f400}",
 	},
 	{
 		name: "ratio",
@@ -17619,43 +15851,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ratio, cross",
-		char: "\u{211E}",
+		char: "\u{211e}",
 	},
 	{
 		name: "rational numbers",
-		char: "\u{211A}",
+		char: "\u{211a}",
 	},
 	{
 		name: "reahmuk, khmer sign",
-		char: "\u{17C7}",
+		char: "\u{17c7}",
 	},
 	{
 		name: "real number symbol",
-		char: "\u{210A}",
+		char: "\u{210a}",
 	},
 	{
 		name: "real numbers",
-		char: "\u{211D}",
+		char: "\u{211d}",
 	},
 	{
 		name: "real part",
-		char: "\u{211C}",
+		char: "\u{211c}",
 	},
 	{
 		name: "recipe",
-		char: "\u{211E}",
+		char: "\u{211e}",
 	},
 	{
 		name: "record",
-		char: "\u{23FA}",
+		char: "\u{23fa}",
 	},
 	{
 		name: "record separator",
-		char: "\u{001E}",
+		char: "\u{001e}",
 	},
 	{
 		name: "record separator, symbol for",
-		char: "\u{241E}",
+		char: "\u{241e}",
 	},
 	{
 		name: "recorder, telephone",
@@ -17671,15 +15903,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "rectangles",
-		char: "\u{25AC}",
+		char: "\u{25ac}",
 	},
 	{
 		name: "recycled paper symbol",
-		char: "\u{267C}",
+		char: "\u{267c}",
 	},
 	{
 		name: "recycled paper symbol, partially-",
-		char: "\u{267D}",
+		char: "\u{267d}",
 	},
 	{
 		name: "recycling symbol, universal",
@@ -17695,27 +15927,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "reduces to",
-		char: "\u{22A6}",
+		char: "\u{22a6}",
 	},
 	{
 		name: "reducible",
-		char: "\u{22A2}",
+		char: "\u{22a2}",
 	},
 	{
 		name: "reference mark",
-		char: "\u{203B}",
+		char: "\u{203b}",
 	},
 	{
 		name: "registered sign",
-		char: "\u{00AE}",
+		char: "\u{00ae}",
 	},
 	{
 		name: "registered trade mark sign",
-		char: "\u{00AE}",
+		char: "\u{00ae}",
 	},
 	{
 		name: "rejang",
-		char: "\u{A930}",
+		char: "\u{a930}",
 	},
 	{
 		name: "relation",
@@ -17723,19 +15955,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "relation, finite",
-		char: "\u{21FC}",
+		char: "\u{21fc}",
 	},
 	{
 		name: "relation, partial",
-		char: "\u{21F9}",
+		char: "\u{21f9}",
 	},
 	{
 		name: "relational operators",
-		char: "\u{29E3}",
+		char: "\u{29e3}",
 	},
 	{
 		name: "relations, subset and superset",
-		char: "\u{2ABD}",
+		char: "\u{2abd}",
 	},
 	{
 		name: "religious and political symbols",
@@ -17747,47 +15979,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "replacement character",
-		char: "\u{FFFD}",
+		char: "\u{fffd}",
 	},
 	{
 		name: "replacement character, object",
-		char: "\u{FFFC}",
+		char: "\u{fffc}",
 	},
 	{
 		name: "response",
-		char: "\u{211F}",
+		char: "\u{211f}",
 	},
 	{
 		name: "restaurant, meal (glyph may vary)",
-		char: "\u{1F374}",
+		char: "\u{1f374}",
 	},
 	{
 		name: "restriction, domain",
-		char: "\u{25C1}",
+		char: "\u{25c1}",
 	},
 	{
 		name: "restriction, range",
-		char: "\u{25B7}",
+		char: "\u{25b7}",
 	},
 	{
 		name: "restroom symbols",
-		char: "\u{1F6B9}",
+		char: "\u{1f6b9}",
 	},
 	{
 		name: "results in",
-		char: "\u{22A8}",
+		char: "\u{22a8}",
 	},
 	{
 		name: "retroflex click, latin letter",
-		char: "\u{01C3}",
-	},
-	{
-		name: "retroflex hook below, combining",
-		char: "\u{0322}",
+		char: "\u{01c3}",
 	},
 	{
 		name: "retroflex hook, latin capital letter t with",
-		char: "\u{01AE}",
+		char: "\u{01ae}",
 	},
 	{
 		name: "retroflex hook, latin small letter d",
@@ -17795,7 +16023,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "retroflex hook, latin small letter l with",
-		char: "\u{026D}",
+		char: "\u{026d}",
 	},
 	{
 		name: "retroflex hook, latin small letter n with",
@@ -17811,63 +16039,55 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "return symbol",
-		char: "\u{23CE}",
+		char: "\u{23ce}",
 	},
 	{
 		name: "return, carriage",
-		char: "\u{000D}",
+		char: "\u{000d}",
 	},
 	{
 		name: "return, symbol for carriage",
-		char: "\u{240D}",
+		char: "\u{240d}",
 	},
 	{
 		name: "reverse line feed",
-		char: "\u{008D}",
+		char: "\u{008d}",
 	},
 	{
 		name: "reverse play",
-		char: "\u{23F4}",
+		char: "\u{23f4}",
 	},
 	{
 		name: "reverse solidus",
-		char: "\u{005C}",
+		char: "\u{005c}",
 	},
 	{
 		name: "reverse solidus operator",
-		char: "\u{29F5}",
-	},
-	{
-		name: "reverse solidus overlay, combining",
-		char: "\u{20E5}",
+		char: "\u{29f5}",
 	},
 	{
 		name: "reverse solidus, big",
-		char: "\u{29F9}",
+		char: "\u{29f9}",
 	},
 	{
 		name: "reverse turnstile",
-		char: "\u{22A3}",
+		char: "\u{22a3}",
 	},
 	{
 		name: "reversed c, latin small letter",
 		char: "\u{2184}",
 	},
 	{
-		name: "reversed comma above, combining",
-		char: "\u{0314}",
-	},
-	{
 		name: "reversed comma quotation mark, double",
-		char: "\u{201F}",
+		char: "\u{201f}",
 	},
 	{
 		name: "reversed comma quotation mark, single",
-		char: "\u{201B}",
+		char: "\u{201b}",
 	},
 	{
 		name: "reversed comma, modifier letter",
-		char: "\u{02BD}",
+		char: "\u{02bd}",
 	},
 	{
 		name: "reversed double prime",
@@ -17875,11 +16095,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "reversed double prime quotation mark",
-		char: "\u{301D}",
+		char: "\u{301d}",
 	},
 	{
 		name: "reversed e, latin capital letter",
-		char: "\u{018E}",
+		char: "\u{018e}",
 	},
 	{
 		name: "reversed e, latin small letter",
@@ -17887,11 +16107,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "reversed epsilon, latin small letter closed",
-		char: "\u{025E}",
+		char: "\u{025e}",
 	},
 	{
 		name: "reversed esh loop, latin letter",
-		char: "\u{01AA}",
+		char: "\u{01aa}",
 	},
 	{
 		name: "reversed esh, latin small letter squat",
@@ -17903,19 +16123,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "reversed glottal stop, modifier letter",
-		char: "\u{02C1}",
+		char: "\u{02c1}",
 	},
 	{
 		name: "reversed glottal stop, modifier letter small",
-		char: "\u{02E4}",
+		char: "\u{02e4}",
 	},
 	{
 		name: "reversed lunate epsilon symbol, greek",
-		char: "\u{03F6}",
+		char: "\u{03f6}",
 	},
 	{
 		name: "reversed n, latin letter small capital",
-		char: "\u{1D0E}",
+		char: "\u{1d0e}",
 	},
 	{
 		name: "reversed not sign",
@@ -17923,19 +16143,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "reversed open e with hook, latin small letter",
-		char: "\u{025D}",
+		char: "\u{025d}",
 	},
 	{
 		name: "reversed open e, latin small letter",
-		char: "\u{025C}",
+		char: "\u{025c}",
 	},
 	{
 		name: "reversed open e, latin small letter closed",
-		char: "\u{025E}",
+		char: "\u{025e}",
 	},
 	{
 		name: "reversed pilcrow sign",
-		char: "\u{204B}",
+		char: "\u{204b}",
 	},
 	{
 		name: "reversed prime",
@@ -17943,11 +16163,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "reversed r with fishhook, latin small letter",
-		char: "\u{027F}",
+		char: "\u{027f}",
 	},
 	{
 		name: "reversed r, latin letter small capital",
-		char: "\u{1D19}",
+		char: "\u{1d19}",
 	},
 	{
 		name: "reversed rotated floral heart bullet",
@@ -17959,19 +16179,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "reversed semicolon",
-		char: "\u{204F}",
+		char: "\u{204f}",
 	},
 	{
 		name: "reversed straight epsilon",
-		char: "\u{03F6}",
+		char: "\u{03f6}",
 	},
 	{
 		name: "reversed tilde",
-		char: "\u{223D}",
+		char: "\u{223d}",
 	},
 	{
 		name: "reversed tilde equals",
-		char: "\u{22CD}",
+		char: "\u{22cd}",
 	},
 	{
 		name: "reversed triple prime",
@@ -17979,43 +16199,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "reversed, latin small letter ezh",
-		char: "\u{01B9}",
+		char: "\u{01b9}",
 	},
 	{
 		name: "rewind, fast",
-		char: "\u{23EA}",
+		char: "\u{23ea}",
 	},
 	{
 		name: "rgroup",
-		char: "\u{27EF}",
+		char: "\u{27ef}",
 	},
 	{
 		name: "rhotic hook, modifier letter",
-		char: "\u{02DE}",
+		char: "\u{02de}",
 	},
 	{
 		name: "rial sign",
-		char: "\u{FDFC}",
+		char: "\u{fdfc}",
 	},
 	{
 		name: "ribbon, reminder",
-		char: "\u{1F397}",
+		char: "\u{1f397}",
 	},
 	{
 		name: "riel, khmer currency symbol",
-		char: "\u{17DB}",
+		char: "\u{17db}",
 	},
 	{
 		name: "riemann integral",
-		char: "\u{211B}",
+		char: "\u{211b}",
 	},
 	{
 		name: "right abstract syntax bracket",
-		char: "\u{301B}",
+		char: "\u{301b}",
 	},
 	{
 		name: "right angle",
-		char: "\u{221F}",
+		char: "\u{221f}",
 	},
 	{
 		name: "right angle bracket",
@@ -18023,43 +16243,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "right angle bracket, mathematical",
-		char: "\u{27E9}",
+		char: "\u{27e9}",
 	},
 	{
 		name: "right angle with arc",
-		char: "\u{22BE}",
-	},
-	{
-		name: "right arrow above, combining",
-		char: "\u{20D7}",
-	},
-	{
-		name: "right arrow above, combining left",
-		char: "\u{20E1}",
-	},
-	{
-		name: "right arrow below, combining",
-		char: "\u{20EF}",
-	},
-	{
-		name: "right arrow below, combining left",
-		char: "\u{034D}",
+		char: "\u{22be}",
 	},
 	{
 		name: "right arrow, colon",
-		char: "\u{29F4}",
-	},
-	{
-		name: "right arrowhead above, combining",
-		char: "\u{0350}",
-	},
-	{
-		name: "right arrowhead below, combining",
-		char: "\u{0355}",
+		char: "\u{29f4}",
 	},
 	{
 		name: "right bag bracket",
-		char: "\u{27E7}",
+		char: "\u{27e7}",
 	},
 	{
 		name: "right black lenticular bracket",
@@ -18071,55 +16267,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "right chevron bracket",
-		char: "\u{27EB}",
+		char: "\u{27eb}",
 	},
 	{
 		name: "right corner bracket",
-		char: "\u{300D}",
+		char: "\u{300d}",
 	},
 	{
 		name: "right curly bracket",
-		char: "\u{007D}",
+		char: "\u{007d}",
 	},
 	{
 		name: "right diagonal ellipsis, down",
-		char: "\u{22F1}",
+		char: "\u{22f1}",
 	},
 	{
 		name: "right diagonal ellipsis, up",
-		char: "\u{22F0}",
+		char: "\u{22f0}",
 	},
 	{
 		name: "right double angle bracket",
-		char: "\u{300B}",
+		char: "\u{300b}",
 	},
 	{
 		name: "right double angle bracket, mathematical",
-		char: "\u{27EB}",
+		char: "\u{27eb}",
 	},
 	{
 		name: "right double quotation mark",
-		char: "\u{201D}",
+		char: "\u{201d}",
 	},
 	{
 		name: "right floor",
-		char: "\u{230B}",
-	},
-	{
-		name: "right half ring above, combining",
-		char: "\u{0357}",
-	},
-	{
-		name: "right half ring below, combining",
-		char: "\u{0339}",
+		char: "\u{230b}",
 	},
 	{
 		name: "right half ring, armenian modifier letter",
-		char: "\u{055A}",
-	},
-	{
-		name: "right harpoon above, combining",
-		char: "\u{20D1}",
+		char: "\u{055a}",
 	},
 	{
 		name: "right key, delete to the",
@@ -18127,11 +16311,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "right moustache",
-		char: "\u{23B1}",
+		char: "\u{23b1}",
 	},
 	{
 		name: "right normal factor semidirect product",
-		char: "\u{22CA}",
+		char: "\u{22ca}",
 	},
 	{
 		name: "right parenthesis",
@@ -18139,11 +16323,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "right parenthesis, ornate",
-		char: "\u{FD3F}",
+		char: "\u{fd3f}",
 	},
 	{
 		name: "right pencil, lower",
-		char: "\u{270E}",
+		char: "\u{270e}",
 	},
 	{
 		name: "right pencil, upper",
@@ -18151,27 +16335,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "right pointing guillemet",
-		char: "\u{00BB}",
+		char: "\u{00bb}",
 	},
 	{
 		name: "right pointing index, black",
-		char: "\u{261B}",
+		char: "\u{261b}",
 	},
 	{
 		name: "right pointing index, white",
-		char: "\u{261E}",
+		char: "\u{261e}",
 	},
 	{
 		name: "right pointing single guillemet",
-		char: "\u{203A}",
+		char: "\u{203a}",
 	},
 	{
 		name: "right semidirect product",
-		char: "\u{22CC}",
+		char: "\u{22cc}",
 	},
 	{
 		name: "right sequence bracket",
-		char: "\u{27E9}",
+		char: "\u{27e9}",
 	},
 	{
 		name: "right single quotation mark",
@@ -18179,7 +16363,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "right square bracket",
-		char: "\u{005D}",
+		char: "\u{005d}",
 	},
 	{
 		name: "right square bracket with quill",
@@ -18187,11 +16371,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "right tack",
-		char: "\u{22A2}",
-	},
-	{
-		name: "right tack below, combining",
-		char: "\u{0319}",
+		char: "\u{22a2}",
 	},
 	{
 		name: "right tortoise shell bracket",
@@ -18199,11 +16379,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "right triangle",
-		char: "\u{22BF}",
+		char: "\u{22bf}",
 	},
 	{
 		name: "right white corner bracket",
-		char: "\u{300F}",
+		char: "\u{300f}",
 	},
 	{
 		name: "right white curly bracket",
@@ -18219,19 +16399,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "right white square bracket",
-		char: "\u{301B}",
+		char: "\u{301b}",
 	},
 	{
 		name: "right white tortoise shell bracket",
 		char: "\u{3019}",
-	},
-	{
-		name: "right, combining comma above",
-		char: "\u{0315}",
-	},
-	{
-		name: "right, combining dot above",
-		char: "\u{0358}",
 	},
 	{
 		name: "right, erase to the",
@@ -18239,23 +16411,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "right, fast cursor",
-		char: "\u{21A0}",
+		char: "\u{21a0}",
 	},
 	{
 		name: "right-pointing angle bracket",
-		char: "\u{232A}",
+		char: "\u{232a}",
 	},
 	{
 		name: "right-pointing angle quotation mark, single",
-		char: "\u{203A}",
+		char: "\u{203a}",
 	},
 	{
 		name: "right-pointing double angle quotation mark",
-		char: "\u{00BB}",
+		char: "\u{00bb}",
 	},
 	{
 		name: "right-to-left embedding",
-		char: "\u{202B}",
+		char: "\u{202b}",
 	},
 	{
 		name: "right-to-left isolate",
@@ -18263,79 +16435,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "right-to-left mark",
-		char: "\u{200F}",
+		char: "\u{200f}",
 	},
 	{
 		name: "right-to-left override",
-		char: "\u{202E}",
+		char: "\u{202e}",
 	},
 	{
 		name: "righthand interior product",
-		char: "\u{2A3D}",
+		char: "\u{2a3d}",
 	},
 	{
 		name: "rightward tab",
-		char: "\u{21E5}",
+		char: "\u{21e5}",
 	},
 	{
 		name: "rightwards arrow",
 		char: "\u{2192}",
 	},
 	{
-		name: "rightwards arrow below, combining double",
-		char: "\u{0362}",
-	},
-	{
 		name: "rightwards bullet, black",
-		char: "\u{204D}",
-	},
-	{
-		name: "rightwards harpoon with barb downwards, combining",
-		char: "\u{20EC}",
+		char: "\u{204d}",
 	},
 	{
 		name: "ring above",
-		char: "\u{02DA}",
-	},
-	{
-		name: "ring above, combining",
-		char: "\u{030A}",
-	},
-	{
-		name: "ring above, combining left half",
-		char: "\u{0351}",
-	},
-	{
-		name: "ring above, combining right half",
-		char: "\u{0357}",
+		char: "\u{02da}",
 	},
 	{
 		name: "ring above, latin capital letter a with",
-		char: "\u{00C5}",
+		char: "\u{00c5}",
 	},
 	{
 		name: "ring above, latin small letter a with",
-		char: "\u{00E5}",
-	},
-	{
-		name: "ring below, combining",
-		char: "\u{0325}",
-	},
-	{
-		name: "ring below, combining double",
-		char: "\u{035A}",
-	},
-	{
-		name: "ring below, combining left half",
-		char: "\u{031C}",
-	},
-	{
-		name: "ring below, combining right half",
-		char: "\u{0339}",
+		char: "\u{00e5}",
 	},
 	{
 		name: "ring below, latin small letter a with",
-		char: "\u{1E01}",
+		char: "\u{1e01}",
 	},
 	{
 		name: "ring equal to",
@@ -18351,23 +16487,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ring operator, circled",
-		char: "\u{229A}",
-	},
-	{
-		name: "ring overlay, combining",
-		char: "\u{20D8}",
-	},
-	{
-		name: "ring overlay, combining anticlockwise",
-		char: "\u{20DA}",
-	},
-	{
-		name: "ring overlay, combining clockwise",
-		char: "\u{20D9}",
-	},
-	{
-		name: "ring overlay, combining counterclockwise",
-		char: "\u{20DA}",
+		char: "\u{229a}",
 	},
 	{
 		name: "ring, armenian modifier letter left half",
@@ -18375,75 +16495,75 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ring, armenian modifier letter right half",
-		char: "\u{055A}",
+		char: "\u{055a}",
 	},
 	{
 		name: "ring, benzene",
-		char: "\u{232C}",
+		char: "\u{232c}",
 	},
 	{
 		name: "ring, modifier letter centred left half",
-		char: "\u{02D3}",
+		char: "\u{02d3}",
 	},
 	{
 		name: "ring, modifier letter left half",
-		char: "\u{02BF}",
+		char: "\u{02bf}",
 	},
 	{
 		name: "rjes su nga ro, tibetan sign",
-		char: "\u{0F7E}",
+		char: "\u{0f7e}",
 	},
 	{
 		name: "rle",
-		char: "\u{202B}",
+		char: "\u{202b}",
 	},
 	{
 		name: "rlm",
-		char: "\u{200F}",
+		char: "\u{200f}",
 	},
 	{
 		name: "rlo",
-		char: "\u{202E}",
+		char: "\u{202e}",
 	},
 	{
 		name: "rnam bcad, tibetan sign",
-		char: "\u{0F7F}",
+		char: "\u{0f7f}",
 	},
 	{
 		name: "road closed",
-		char: "\u{26D2}",
+		char: "\u{26d2}",
 	},
 	{
 		name: "rock in rock, paper, scissors game",
-		char: "\u{270A}",
+		char: "\u{270a}",
 	},
 	{
 		name: "rofl",
-		char: "\u{1F923}",
+		char: "\u{1f923}",
 	},
 	{
 		name: "rohingya, hanifi",
-		char: "\u{10D00}",
+		char: "\u{10d00}",
 	},
 	{
 		name: "role symbols",
-		char: "\u{1F481}",
+		char: "\u{1f481}",
 	},
 	{
 		name: "role symbols, portrait and",
-		char: "\u{1F464}",
+		char: "\u{1f464}",
 	},
 	{
 		name: "role symbols, portrait and",
-		char: "\u{1F930}",
+		char: "\u{1f930}",
 	},
 	{
 		name: "role symbols, portrait and",
-		char: "\u{1F9D0}",
+		char: "\u{1f9d0}",
 	},
 	{
 		name: "rolling on the floor laughing",
-		char: "\u{1F923}",
+		char: "\u{1f923}",
 	},
 	{
 		name: "roman numerals",
@@ -18459,27 +16579,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "romance symbols",
-		char: "\u{1F48B}",
+		char: "\u{1f48b}",
 	},
 	{
 		name: "rooster",
-		char: "\u{1F413}",
+		char: "\u{1f413}",
 	},
 	{
 		name: "root, cube",
-		char: "\u{221B}",
+		char: "\u{221b}",
 	},
 	{
 		name: "root, fourth",
-		char: "\u{221C}",
+		char: "\u{221c}",
 	},
 	{
 		name: "root, square",
-		char: "\u{221A}",
+		char: "\u{221a}",
 	},
 	{
 		name: "rotated capital q",
-		char: "\u{213A}",
+		char: "\u{213a}",
 	},
 	{
 		name: "rough breathing mark, greek",
@@ -18487,31 +16607,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ruble sign",
-		char: "\u{20BD}",
+		char: "\u{20bd}",
 	},
 	{
 		name: "rule, parted",
-		char: "\u{00A6}",
+		char: "\u{00a6}",
 	},
 	{
 		name: "rule-delayed",
-		char: "\u{29F4}",
+		char: "\u{29f4}",
 	},
 	{
 		name: "rumi numeral symbols",
-		char: "\u{10E60}",
+		char: "\u{10e60}",
 	},
 	{
 		name: "runic",
-		char: "\u{16A0}",
+		char: "\u{16a0}",
 	},
 	{
 		name: "runic golden numbers",
-		char: "\u{16EE}",
+		char: "\u{16ee}",
 	},
 	{
 		name: "runic punctuation",
-		char: "\u{16EB}",
+		char: "\u{16eb}",
 	},
 	{
 		name: "runout, total",
@@ -18519,31 +16639,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "rupai, tamil",
-		char: "\u{0BF9}",
+		char: "\u{0bf9}",
 	},
 	{
 		name: "rupee mark, bengali",
-		char: "\u{09F2}",
+		char: "\u{09f2}",
 	},
 	{
 		name: "rupee sign",
-		char: "\u{20A8}",
+		char: "\u{20a8}",
 	},
 	{
 		name: "rupee sign, bengali",
-		char: "\u{09F3}",
+		char: "\u{09f3}",
 	},
 	{
 		name: "rupee sign, gujarati",
-		char: "\u{0AF1}",
+		char: "\u{0af1}",
 	},
 	{
 		name: "rupee sign, indian",
-		char: "\u{20B9}",
+		char: "\u{20b9}",
 	},
 	{
 		name: "rupee sign, tamil",
-		char: "\u{0BF9}",
+		char: "\u{0bf9}",
 	},
 	{
 		name: "russian alphabet",
@@ -18551,7 +16671,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "s with acute, latin small letter",
-		char: "\u{015B}",
+		char: "\u{015b}",
 	},
 	{
 		name: "s with caron, latin small letter",
@@ -18559,11 +16679,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "s with cedilla, latin small letter",
-		char: "\u{015F}",
+		char: "\u{015f}",
 	},
 	{
 		name: "s with circumflex, latin small letter",
-		char: "\u{015D}",
+		char: "\u{015d}",
 	},
 	{
 		name: "s with comma below, latin small letter",
@@ -18571,15 +16691,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "s with dot above, latin small letter",
-		char: "\u{1E61}",
+		char: "\u{1e61}",
 	},
 	{
 		name: "s with dot above, latin small letter long",
-		char: "\u{1E9B}",
+		char: "\u{1e9b}",
 	},
 	{
 		name: "s with dot below, latin small letter",
-		char: "\u{1E63}",
+		char: "\u{1e63}",
 	},
 	{
 		name: "s with hook, latin small letter",
@@ -18587,31 +16707,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "s with swash tail, latin small letter",
-		char: "\u{023F}",
+		char: "\u{023f}",
 	},
 	{
 		name: "s, inverted lazy",
-		char: "\u{223E}",
+		char: "\u{223e}",
 	},
 	{
 		name: "s, latin small letter long",
-		char: "\u{017F}",
+		char: "\u{017f}",
 	},
 	{
 		name: "s, latin small letter sharp",
-		char: "\u{00DF}",
+		char: "\u{00df}",
 	},
 	{
 		name: "s, latin subscript small letter",
-		char: "\u{209B}",
+		char: "\u{209b}",
 	},
 	{
 		name: "s, lazy",
-		char: "\u{223D}",
+		char: "\u{223d}",
 	},
 	{
 		name: "s, modifier letter small",
-		char: "\u{02E2}",
+		char: "\u{02e2}",
 	},
 	{
 		name: "sagittarius",
@@ -18619,7 +16739,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sailboat",
-		char: "\u{26F4}",
+		char: "\u{26f4}",
 	},
 	{
 		name: "saltire",
@@ -18627,11 +16747,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "saltires",
-		char: "\u{1F7A8}",
+		char: "\u{1f7a8}",
 	},
 	{
 		name: "sam, syriac",
-		char: "\u{070F}",
+		char: "\u{070f}",
 	},
 	{
 		name: "samaritan",
@@ -18639,27 +16759,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "samaritan source, symbol for",
-		char: "\u{214F}",
+		char: "\u{214f}",
 	},
 	{
 		name: "sans-serif bold digits",
-		char: "\u{1D7EC}",
+		char: "\u{1d7ec}",
 	},
 	{
 		name: "sans-serif bold greek mathematical symbols",
-		char: "\u{1D756}",
+		char: "\u{1d756}",
 	},
 	{
 		name: "sans-serif bold italic greek mathematical symbols",
-		char: "\u{1D790}",
+		char: "\u{1d790}",
 	},
 	{
 		name: "sans-serif bold italic mathematical symbols",
-		char: "\u{1D63C}",
+		char: "\u{1d63c}",
 	},
 	{
 		name: "sans-serif bold mathematical symbols",
-		char: "\u{1D5D4}",
+		char: "\u{1d5d4}",
 	},
 	{
 		name: "sans-serif capital g, turned",
@@ -18679,31 +16799,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sans-serif digits",
-		char: "\u{1D7E2}",
+		char: "\u{1d7e2}",
 	},
 	{
 		name: "sans-serif italic mathematical symbols",
-		char: "\u{1D608}",
+		char: "\u{1d608}",
 	},
 	{
 		name: "sans-serif mathematical symbols",
-		char: "\u{1D5A0}",
+		char: "\u{1d5a0}",
 	},
 	{
 		name: "santa claus",
-		char: "\u{1F385}",
+		char: "\u{1f385}",
 	},
 	{
 		name: "satisfies",
-		char: "\u{22A8}",
+		char: "\u{22a8}",
 	},
 	{
 		name: "satisfies, necessarily",
-		char: "\u{2AF1}",
+		char: "\u{2af1}",
 	},
 	{
 		name: "satisfies, ordinarily",
-		char: "\u{2AE2}",
+		char: "\u{2ae2}",
 	},
 	{
 		name: "saturating subtraction",
@@ -18715,7 +16835,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "saurashtra",
-		char: "\u{A880}",
+		char: "\u{a880}",
 	},
 	{
 		name: "scales",
@@ -18723,19 +16843,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "scan lines, horizontal",
-		char: "\u{23BA}",
+		char: "\u{23ba}",
 	},
 	{
 		name: "schema hiding",
-		char: "\u{29F9}",
+		char: "\u{29f9}",
 	},
 	{
 		name: "school grade symbols, japanese",
-		char: "\u{1F4AE}",
+		char: "\u{1f4ae}",
 	},
 	{
 		name: "schwa, latin capital letter",
-		char: "\u{018F}",
+		char: "\u{018f}",
 	},
 	{
 		name: "schwa, latin small letter",
@@ -18743,7 +16863,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "scissors in rock, paper, scissors game",
-		char: "\u{270C}",
+		char: "\u{270c}",
 	},
 	{
 		name: "scissors, black",
@@ -18759,23 +16879,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "scorpion",
-		char: "\u{1F982}",
+		char: "\u{1f982}",
 	},
 	{
 		name: "scorpius",
-		char: "\u{264F}",
+		char: "\u{264f}",
 	},
 	{
 		name: "screen symbol, clear",
-		char: "\u{239A}",
+		char: "\u{239a}",
 	},
 	{
 		name: "screen symbol, print",
 		char: "\u{2399}",
-	},
-	{
-		name: "screen, combining enclosing",
-		char: "\u{20E2}",
 	},
 	{
 		name: "script a, latin small letter",
@@ -18783,7 +16899,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "script capital b",
-		char: "\u{212C}",
+		char: "\u{212c}",
 	},
 	{
 		name: "script capital e",
@@ -18795,7 +16911,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "script capital h",
-		char: "\u{210B}",
+		char: "\u{210b}",
 	},
 	{
 		name: "script capital i",
@@ -18815,7 +16931,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "script capital r",
-		char: "\u{211B}",
+		char: "\u{211b}",
 	},
 	{
 		name: "script f, latin small letter",
@@ -18827,19 +16943,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "script mathematical symbols",
-		char: "\u{1D49C}",
+		char: "\u{1d49c}",
 	},
 	{
 		name: "script mathematical symbols, bold",
-		char: "\u{1D4D0}",
+		char: "\u{1d4d0}",
 	},
 	{
 		name: "script small e",
-		char: "\u{212F}",
+		char: "\u{212f}",
 	},
 	{
 		name: "script small g",
-		char: "\u{210A}",
+		char: "\u{210a}",
 	},
 	{
 		name: "script small l",
@@ -18851,35 +16967,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "script theta",
-		char: "\u{03D1}",
+		char: "\u{03d1}",
 	},
 	{
 		name: "script v, latin capital letter",
-		char: "\u{01B2}",
+		char: "\u{01b2}",
 	},
 	{
 		name: "script v, latin small letter",
-		char: "\u{028B}",
+		char: "\u{028b}",
 	},
 	{
 		name: "scrolling",
-		char: "\u{21F3}",
+		char: "\u{21f3}",
 	},
 	{
 		name: "scruple",
 		char: "\u{2108}",
 	},
 	{
-		name: "seagull below, combining",
-		char: "\u{033C}",
-	},
-	{
 		name: "seashell",
-		char: "\u{1F41A}",
+		char: "\u{1f41a}",
 	},
 	{
 		name: "second tone, mandarin chinese",
-		char: "\u{02CA}",
+		char: "\u{02ca}",
 	},
 	{
 		name: "seconds",
@@ -18887,11 +16999,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "section sign",
-		char: "\u{00A7}",
+		char: "\u{00a7}",
 	},
 	{
 		name: "section sign, european",
-		char: "\u{00B6}",
+		char: "\u{00b6}",
 	},
 	{
 		name: "sector",
@@ -18911,27 +17023,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "selectors supplement, variation",
-		char: "\u{E0100}",
+		char: "\u{e0100}",
 	},
 	{
 		name: "selectors, variation",
-		char: "\u{FE00}",
+		char: "\u{fe00}",
 	},
 	{
 		name: "selfie",
-		char: "\u{1F933}",
+		char: "\u{1f933}",
 	},
 	{
 		name: "semibreve",
-		char: "\u{1D15D}",
+		char: "\u{1d15d}",
 	},
 	{
 		name: "semicolon",
-		char: "\u{003B}",
+		char: "\u{003b}",
 	},
 	{
 		name: "semicolon, arabic",
-		char: "\u{061B}",
+		char: "\u{061b}",
 	},
 	{
 		name: "semicolon, ethiopic",
@@ -18939,31 +17051,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "semicolon, reversed",
-		char: "\u{204F}",
+		char: "\u{204f}",
 	},
 	{
 		name: "semidirect product, left",
-		char: "\u{22CB}",
+		char: "\u{22cb}",
 	},
 	{
 		name: "semidirect product, left normal factor",
-		char: "\u{22C9}",
+		char: "\u{22c9}",
 	},
 	{
 		name: "semidirect product, right",
-		char: "\u{22CC}",
+		char: "\u{22cc}",
 	},
 	{
 		name: "semidirect product, right normal factor",
-		char: "\u{22CA}",
+		char: "\u{22ca}",
 	},
 	{
 		name: "semiquaver",
-		char: "\u{1D161}",
+		char: "\u{1d161}",
 	},
 	{
 		name: "semiquavers, beamed",
-		char: "\u{266C}",
+		char: "\u{266c}",
 	},
 	{
 		name: "separator dot, aegean word",
@@ -18979,27 +17091,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "separator middle dot, word",
-		char: "\u{2E31}",
+		char: "\u{2e31}",
 	},
 	{
 		name: "separator, arabic date",
-		char: "\u{060D}",
+		char: "\u{060d}",
 	},
 	{
 		name: "separator, arabic decimal",
-		char: "\u{066B}",
+		char: "\u{066b}",
 	},
 	{
 		name: "separator, arabic phrase",
-		char: "\u{066C}",
+		char: "\u{066c}",
 	},
 	{
 		name: "separator, arabic thousands",
-		char: "\u{066C}",
+		char: "\u{066c}",
 	},
 	{
 		name: "separator, decimal",
-		char: "\u{002C}",
+		char: "\u{002c}",
 	},
 	{
 		name: "separator, devanagari phrase",
@@ -19011,19 +17123,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "separator, file",
-		char: "\u{001C}",
+		char: "\u{001c}",
 	},
 	{
 		name: "separator, georgian paragraph",
-		char: "\u{10FB}",
+		char: "\u{10fb}",
 	},
 	{
 		name: "separator, group",
-		char: "\u{001D}",
+		char: "\u{001d}",
 	},
 	{
 		name: "separator, interlinear annotation",
-		char: "\u{FFFA}",
+		char: "\u{fffa}",
 	},
 	{
 		name: "separator, invisible",
@@ -19035,7 +17147,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "separator, mongolian vowel",
-		char: "\u{180E}",
+		char: "\u{180e}",
 	},
 	{
 		name: "separator, paragraph",
@@ -19043,27 +17155,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "separator, record",
-		char: "\u{001E}",
+		char: "\u{001e}",
 	},
 	{
 		name: "separator, unit",
-		char: "\u{001F}",
+		char: "\u{001f}",
 	},
 	{
 		name: "separator, urdu paragraph",
-		char: "\u{203B}",
+		char: "\u{203b}",
 	},
 	{
 		name: "septuagint",
-		char: "\u{1D516}",
+		char: "\u{1d516}",
 	},
 	{
 		name: "sequence bracket, left",
-		char: "\u{27E8}",
+		char: "\u{27e8}",
 	},
 	{
 		name: "sequence bracket, right",
-		char: "\u{27E9}",
+		char: "\u{27e9}",
 	},
 	{
 		name: "sequence concatenation",
@@ -19071,7 +17183,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sequence introducer, control",
-		char: "\u{009B}",
+		char: "\u{009b}",
 	},
 	{
 		name: "service mark",
@@ -19079,11 +17191,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sesame dot",
-		char: "\u{FE45}",
+		char: "\u{fe45}",
 	},
 	{
 		name: "sesame dot, white",
-		char: "\u{FE46}",
+		char: "\u{fe46}",
 	},
 	{
 		name: "set membership signs",
@@ -19103,11 +17215,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "set of rational numbers, the",
-		char: "\u{211A}",
+		char: "\u{211a}",
 	},
 	{
 		name: "set of real numbers, the",
-		char: "\u{211D}",
+		char: "\u{211d}",
 	},
 	{
 		name: "set transmit state",
@@ -19131,11 +17243,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "set, power",
-		char: "\u{1D4AB}",
+		char: "\u{1d4ab}",
 	},
 	{
 		name: "sets, empty",
-		char: "\u{29B0}",
+		char: "\u{29b0}",
 	},
 	{
 		name: "sextile",
@@ -19147,7 +17259,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "shadowed white circle",
-		char: "\u{274D}",
+		char: "\u{274d}",
 	},
 	{
 		name: "shamrock",
@@ -19159,7 +17271,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "shapes, geometric",
-		char: "\u{25A0}",
+		char: "\u{25a0}",
 	},
 	{
 		name: "sharada",
@@ -19167,11 +17279,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sharp s, latin small letter",
-		char: "\u{00DF}",
+		char: "\u{00df}",
 	},
 	{
 		name: "sharp sign, music",
-		char: "\u{266F}",
+		char: "\u{266f}",
 	},
 	{
 		name: "shavian",
@@ -19179,47 +17291,47 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sheep",
-		char: "\u{1F411}",
+		char: "\u{1f411}",
 	},
 	{
 		name: "shell, spiral",
-		char: "\u{1F41A}",
+		char: "\u{1f41a}",
 	},
 	{
 		name: "sheqel sign, new",
-		char: "\u{20AA}",
+		char: "\u{20aa}",
 	},
 	{
 		name: "shesht, armenian",
-		char: "\u{055B}",
+		char: "\u{055b}",
 	},
 	{
 		name: "shield, black cross on",
-		char: "\u{26E8}",
+		char: "\u{26e8}",
 	},
 	{
 		name: "shift",
-		char: "\u{21E7}",
+		char: "\u{21e7}",
 	},
 	{
 		name: "shift in",
-		char: "\u{000F}",
+		char: "\u{000f}",
 	},
 	{
 		name: "shift in, symbol for",
-		char: "\u{240F}",
+		char: "\u{240f}",
 	},
 	{
 		name: "shift out",
-		char: "\u{000E}",
+		char: "\u{000e}",
 	},
 	{
 		name: "shift out, symbol for",
-		char: "\u{240E}",
+		char: "\u{240e}",
 	},
 	{
 		name: "shinto shrine",
-		char: "\u{26E9}",
+		char: "\u{26e9}",
 	},
 	{
 		name: "shogi piece, black",
@@ -19227,11 +17339,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "shogi piece, turned black",
-		char: "\u{26CA}",
+		char: "\u{26ca}",
 	},
 	{
 		name: "shogi piece, turned white",
-		char: "\u{26C9}",
+		char: "\u{26c9}",
 	},
 	{
 		name: "shogi piece, white",
@@ -19239,11 +17351,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "shooting star",
-		char: "\u{1F320}",
+		char: "\u{1f320}",
 	},
 	{
 		name: "shopping cart",
-		char: "\u{1F6D2}",
+		char: "\u{1f6d2}",
 	},
 	{
 		name: "short",
@@ -19254,24 +17366,12 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0337}",
 	},
 	{
-		name: "short solidus overlay, combining",
-		char: "\u{0337}",
-	},
-	{
-		name: "short stroke overlay, combining",
-		char: "\u{0335}",
-	},
-	{
-		name: "short vertical line overlay, combining",
-		char: "\u{20D3}",
-	},
-	{
 		name: "shorthand format controls",
-		char: "\u{1BCA0}",
+		char: "\u{1bca0}",
 	},
 	{
 		name: "shouldered open box",
-		char: "\u{237D}",
+		char: "\u{237d}",
 	},
 	{
 		name: "showery weather",
@@ -19279,11 +17379,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "shuffle product",
-		char: "\u{29E2}",
+		char: "\u{29e2}",
 	},
 	{
 		name: "shy",
-		char: "\u{00AD}",
+		char: "\u{00ad}",
 	},
 	{
 		name: "sibe syllable boundary marker, mongolian",
@@ -19295,43 +17395,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sidelining emphasis marks",
-		char: "\u{FE45}",
+		char: "\u{fe45}",
 	},
 	{
 		name: "sideways diaeresized u, latin small letter",
-		char: "\u{1D1E}",
+		char: "\u{1d1e}",
 	},
 	{
 		name: "sideways o with stroke, latin small letter",
-		char: "\u{1D13}",
+		char: "\u{1d13}",
 	},
 	{
 		name: "sideways o, latin small letter",
-		char: "\u{1D11}",
+		char: "\u{1d11}",
 	},
 	{
 		name: "sideways open o, latin small letter",
-		char: "\u{1D12}",
+		char: "\u{1d12}",
 	},
 	{
 		name: "sideways turned m, latin small letter",
-		char: "\u{1D1F}",
+		char: "\u{1d1f}",
 	},
 	{
 		name: "sideways u, latin small letter",
-		char: "\u{1D1D}",
+		char: "\u{1d1d}",
 	},
 	{
 		name: "sigma symbol, greek lunate",
-		char: "\u{03F2}",
+		char: "\u{03f2}",
 	},
 	{
 		name: "sigma, greek small letter lunate",
-		char: "\u{03F2}",
+		char: "\u{03f2}",
 	},
 	{
 		name: "signage and other symbols",
-		char: "\u{1F6A9}",
+		char: "\u{1f6a9}",
 	},
 	{
 		name: "signs, warning",
@@ -19339,27 +17439,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "signs, warning",
-		char: "\u{26A0}",
+		char: "\u{26a0}",
 	},
 	{
 		name: "signwriting, sutton",
-		char: "\u{1D800}",
+		char: "\u{1d800}",
 	},
 	{
 		name: "silver medal",
-		char: "\u{1F948}",
+		char: "\u{1f948}",
 	},
 	{
 		name: "similar to",
-		char: "\u{223C}",
+		char: "\u{223c}",
 	},
 	{
 		name: "sine wave",
-		char: "\u{223F}",
+		char: "\u{223f}",
 	},
 	{
 		name: "single character introducer",
-		char: "\u{009A}",
+		char: "\u{009a}",
 	},
 	{
 		name: "single comma quotation mark",
@@ -19367,7 +17467,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "single comma quotation mark, low",
-		char: "\u{201A}",
+		char: "\u{201a}",
 	},
 	{
 		name: "single guillemet, left pointing",
@@ -19375,11 +17475,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "single guillemet, right pointing",
-		char: "\u{203A}",
+		char: "\u{203a}",
 	},
 	{
 		name: "single high-reversed-9 quotation mark",
-		char: "\u{201B}",
+		char: "\u{201b}",
 	},
 	{
 		name: "single left-pointing angle quotation mark",
@@ -19387,7 +17487,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "single low-9 quotation mark",
-		char: "\u{201A}",
+		char: "\u{201a}",
 	},
 	{
 		name: "single punctuation, philippine",
@@ -19407,19 +17507,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "single reversed comma quotation mark",
-		char: "\u{201B}",
+		char: "\u{201b}",
 	},
 	{
 		name: "single right-pointing angle quotation mark",
-		char: "\u{203A}",
+		char: "\u{203a}",
 	},
 	{
 		name: "single shift three",
-		char: "\u{008F}",
+		char: "\u{008f}",
 	},
 	{
 		name: "single shift two",
-		char: "\u{008E}",
+		char: "\u{008e}",
 	},
 	{
 		name: "single turned comma quotation mark",
@@ -19427,39 +17527,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sinhala",
-		char: "\u{0D80}",
+		char: "\u{0d80}",
 	},
 	{
 		name: "sinhala archaic numbers",
-		char: "\u{111E0}",
+		char: "\u{111e0}",
 	},
 	{
 		name: "sinhala consonants",
-		char: "\u{0D9A}",
+		char: "\u{0d9a}",
 	},
 	{
 		name: "sinhala dependent vowel signs",
-		char: "\u{0DCF}",
+		char: "\u{0dcf}",
 	},
 	{
 		name: "sinhala independent vowels",
-		char: "\u{0D85}",
+		char: "\u{0d85}",
 	},
 	{
 		name: "sinhala sign al-lakuna",
-		char: "\u{0DCA}",
+		char: "\u{0dca}",
 	},
 	{
 		name: "sinhala virama",
-		char: "\u{0DCA}",
+		char: "\u{0dca}",
 	},
 	{
 		name: "sinological dot, latin letter",
-		char: "\u{A78F}",
+		char: "\u{a78f}",
 	},
 	{
 		name: "six dots, vertical",
-		char: "\u{2E3D}",
+		char: "\u{2e3d}",
 	},
 	{
 		name: "six-per-em space",
@@ -19467,7 +17567,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sixteenth notes, beamed",
-		char: "\u{266C}",
+		char: "\u{266c}",
 	},
 	{
 		name: "sixths, fractions",
@@ -19475,11 +17575,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "skier",
-		char: "\u{26F7}",
+		char: "\u{26f7}",
 	},
 	{
 		name: "skull",
-		char: "\u{1F480}",
+		char: "\u{1f480}",
 	},
 	{
 		name: "skull and crossbones",
@@ -19487,11 +17587,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "skull and crossbones, black",
-		char: "\u{1F571}",
+		char: "\u{1f571}",
 	},
 	{
 		name: "slash",
-		char: "\u{002F}",
+		char: "\u{002f}",
 	},
 	{
 		name: "slash overlay, long",
@@ -19499,7 +17599,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "slash overlay, long double",
-		char: "\u{20EB}",
+		char: "\u{20eb}",
 	},
 	{
 		name: "slash overlay, short",
@@ -19519,15 +17619,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "slash, latin capital letter o",
-		char: "\u{00D8}",
+		char: "\u{00d8}",
 	},
 	{
 		name: "slash, latin small letter o",
-		char: "\u{00F8}",
+		char: "\u{00f8}",
 	},
 	{
 		name: "sleeping symbol",
-		char: "\u{1F4A4}",
+		char: "\u{1f4a4}",
 	},
 	{
 		name: "slope",
@@ -19535,15 +17635,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "small capital ae, latin letter",
-		char: "\u{1D01}",
+		char: "\u{1d01}",
 	},
 	{
 		name: "small capital eth, latin letter",
-		char: "\u{1D06}",
+		char: "\u{1d06}",
 	},
 	{
 		name: "small capital ezh, latin letter",
-		char: "\u{1D23}",
+		char: "\u{1d23}",
 	},
 	{
 		name: "small capital oe, latin letter",
@@ -19551,7 +17651,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "small capital ou, latin letter",
-		char: "\u{1D15}",
+		char: "\u{1d15}",
 	},
 	{
 		name: "small circle, black",
@@ -19559,23 +17659,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "small contains as member",
-		char: "\u{220D}",
+		char: "\u{220d}",
 	},
 	{
 		name: "small element of",
-		char: "\u{220A}",
+		char: "\u{220a}",
 	},
 	{
 		name: "small form variants",
-		char: "\u{FE50}",
+		char: "\u{fe50}",
 	},
 	{
 		name: "small gamma, double-struck",
-		char: "\u{213D}",
+		char: "\u{213d}",
 	},
 	{
 		name: "small gamma, modifier letter",
-		char: "\u{02E0}",
+		char: "\u{02e0}",
 	},
 	{
 		name: "small ka, hiragana letter",
@@ -19590,20 +17690,16 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0561}",
 	},
 	{
-		name: "small letters, combining latin",
-		char: "\u{0363}",
-	},
-	{
 		name: "small letters, cyrillic",
 		char: "\u{0430}",
 	},
 	{
 		name: "small letters, georgian",
-		char: "\u{10D0}",
+		char: "\u{10d0}",
 	},
 	{
 		name: "small letters, greek",
-		char: "\u{03B1}",
+		char: "\u{03b1}",
 	},
 	{
 		name: "small letters, latin",
@@ -19611,7 +17707,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "small ligature ae, latin",
-		char: "\u{00E6}",
+		char: "\u{00e6}",
 	},
 	{
 		name: "small ligature ij, latin",
@@ -19623,27 +17719,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "small pi, double-struck",
-		char: "\u{213C}",
+		char: "\u{213c}",
 	},
 	{
 		name: "small reversed glottal stop, modifier letter",
-		char: "\u{02E4}",
+		char: "\u{02e4}",
 	},
 	{
 		name: "small square, black medium",
-		char: "\u{25FE}",
+		char: "\u{25fe}",
 	},
 	{
 		name: "small tilde",
-		char: "\u{02DC}",
+		char: "\u{02dc}",
 	},
 	{
 		name: "small white circle, medium",
-		char: "\u{26AC}",
+		char: "\u{26ac}",
 	},
 	{
 		name: "smash product",
-		char: "\u{2A33}",
+		char: "\u{2a33}",
 	},
 	{
 		name: "smile",
@@ -19651,11 +17747,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "smiling face, black",
-		char: "\u{263B}",
+		char: "\u{263b}",
 	},
 	{
 		name: "smiling face, white",
-		char: "\u{263A}",
+		char: "\u{263a}",
 	},
 	{
 		name: "smirk",
@@ -19667,19 +17763,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "snail",
-		char: "\u{1F40C}",
+		char: "\u{1f40c}",
 	},
 	{
 		name: "snake",
-		char: "\u{1F40D}",
+		char: "\u{1f40d}",
 	},
 	{
 		name: "snow, heavy",
-		char: "\u{26C7}",
+		char: "\u{26c7}",
 	},
 	{
 		name: "snow, light",
-		char: "\u{26C4}",
+		char: "\u{26c4}",
 	},
 	{
 		name: "snowflake dingbats",
@@ -19695,11 +17791,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "snowman without snow",
-		char: "\u{26C4}",
+		char: "\u{26c4}",
 	},
 	{
 		name: "snowman, black",
-		char: "\u{26C7}",
+		char: "\u{26c7}",
 	},
 	{
 		name: "snowy weather",
@@ -19707,11 +17803,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "soccer ball",
-		char: "\u{26BD}",
+		char: "\u{26bd}",
 	},
 	{
 		name: "soft hyphen",
-		char: "\u{00AD}",
+		char: "\u{00ad}",
 	},
 	{
 		name: "soft hyphen, mongolian todo",
@@ -19723,11 +17819,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sogdian",
-		char: "\u{10F30}",
+		char: "\u{10f30}",
 	},
 	{
 		name: "sogdian, old",
-		char: "\u{10F00}",
+		char: "\u{10f00}",
 	},
 	{
 		name: "solid",
@@ -19735,7 +17831,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "solidus",
-		char: "\u{002F}",
+		char: "\u{002f}",
 	},
 	{
 		name: "solidus",
@@ -19743,47 +17839,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "solidus operator, double",
-		char: "\u{2AFD}",
+		char: "\u{2afd}",
 	},
 	{
 		name: "solidus operator, reverse",
-		char: "\u{29F5}",
-	},
-	{
-		name: "solidus overlay, combining long",
-		char: "\u{0338}",
-	},
-	{
-		name: "solidus overlay, combining long double",
-		char: "\u{20EB}",
-	},
-	{
-		name: "solidus overlay, combining reverse",
-		char: "\u{20E5}",
-	},
-	{
-		name: "solidus overlay, combining short",
-		char: "\u{0337}",
+		char: "\u{29f5}",
 	},
 	{
 		name: "solidus, big",
-		char: "\u{29F8}",
+		char: "\u{29f8}",
 	},
 	{
 		name: "solidus, big reverse",
-		char: "\u{29F9}",
+		char: "\u{29f9}",
 	},
 	{
 		name: "solidus, reverse",
-		char: "\u{005C}",
+		char: "\u{005c}",
 	},
 	{
 		name: "sora sompeng",
-		char: "\u{110D0}",
+		char: "\u{110d0}",
 	},
 	{
 		name: "sound",
-		char: "\u{1F50A}",
+		char: "\u{1f50a}",
 	},
 	{
 		name: "sound recording copyright",
@@ -19795,7 +17875,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "soyombo",
-		char: "\u{11A50}",
+		char: "\u{11a50}",
 	},
 	{
 		name: "space",
@@ -19827,11 +17907,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "space, hair",
-		char: "\u{200A}",
+		char: "\u{200a}",
 	},
 	{
 		name: "space, hilbert",
-		char: "\u{210C}",
+		char: "\u{210c}",
 	},
 	{
 		name: "space, ideographic",
@@ -19839,15 +17919,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "space, ideographic half fill",
-		char: "\u{303F}",
+		char: "\u{303f}",
 	},
 	{
 		name: "space, keyboard symbol for no break",
-		char: "\u{237D}",
+		char: "\u{237d}",
 	},
 	{
 		name: "space, medium mathematical",
-		char: "\u{205F}",
+		char: "\u{205f}",
 	},
 	{
 		name: "space, mid",
@@ -19855,15 +17935,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "space, narrow no-break",
-		char: "\u{202F}",
+		char: "\u{202f}",
 	},
 	{
 		name: "space, no-break",
-		char: "\u{00A0}",
+		char: "\u{00a0}",
 	},
 	{
 		name: "space, non-breaking",
-		char: "\u{00A0}",
+		char: "\u{00a0}",
 	},
 	{
 		name: "space, punctuation",
@@ -19891,11 +17971,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "space, zero width",
-		char: "\u{200B}",
+		char: "\u{200b}",
 	},
 	{
 		name: "space, zero width no-break",
-		char: "\u{FEFF}",
+		char: "\u{feff}",
 	},
 	{
 		name: "spaces",
@@ -19903,23 +17983,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "spacing acute accent",
-		char: "\u{00B4}",
+		char: "\u{00b4}",
 	},
 	{
 		name: "spacing cedilla",
-		char: "\u{00B8}",
+		char: "\u{00b8}",
 	},
 	{
 		name: "spacing circumflex accent",
-		char: "\u{005E}",
+		char: "\u{005e}",
 	},
 	{
 		name: "spacing clones of diacritics",
-		char: "\u{02D8}",
+		char: "\u{02d8}",
 	},
 	{
 		name: "spacing diaeresis",
-		char: "\u{00A8}",
+		char: "\u{00a8}",
 	},
 	{
 		name: "spacing double underscore",
@@ -19931,27 +18011,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "spacing macron",
-		char: "\u{00AF}",
+		char: "\u{00af}",
 	},
 	{
 		name: "spacing modifier letters",
-		char: "\u{02B0}",
+		char: "\u{02b0}",
 	},
 	{
 		name: "spacing overscore",
-		char: "\u{203E}",
+		char: "\u{203e}",
 	},
 	{
 		name: "spacing tilde",
-		char: "\u{007E}",
+		char: "\u{007e}",
 	},
 	{
 		name: "spacing underscore",
-		char: "\u{005F}",
+		char: "\u{005f}",
 	},
 	{
 		name: "spanish currency",
-		char: "\u{20A7}",
+		char: "\u{20a7}",
 	},
 	{
 		name: "sparkle",
@@ -19967,23 +18047,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "speaker symbols",
-		char: "\u{1F507}",
+		char: "\u{1f507}",
 	},
 	{
 		name: "specials",
-		char: "\u{FFF0}",
+		char: "\u{fff0}",
 	},
 	{
 		name: "specials area, compatibility and",
-		char: "\u{F900}",
+		char: "\u{f900}",
 	},
 	{
 		name: "speech and thought bubble symbols",
-		char: "\u{1F5E8}",
+		char: "\u{1f5e8}",
 	},
 	{
 		name: "spesmilo sign",
-		char: "\u{20B7}",
+		char: "\u{20b7}",
 	},
 	{
 		name: "spherical angle",
@@ -19991,19 +18071,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "spicy",
-		char: "\u{1F336}",
+		char: "\u{1f336}",
 	},
 	{
 		name: "sport symbols",
-		char: "\u{1F3BD}",
+		char: "\u{1f3bd}",
 	},
 	{
 		name: "sport symbols",
-		char: "\u{1F3CF}",
-	},
-	{
-		name: "square below, combining",
-		char: "\u{033B}",
+		char: "\u{1f3cf}",
 	},
 	{
 		name: "square bracket with quill, left",
@@ -20015,27 +18091,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "square bracket, closing",
-		char: "\u{005D}",
+		char: "\u{005d}",
 	},
 	{
 		name: "square bracket, left",
-		char: "\u{005B}",
+		char: "\u{005b}",
 	},
 	{
 		name: "square bracket, left white",
-		char: "\u{301A}",
+		char: "\u{301a}",
 	},
 	{
 		name: "square bracket, opening",
-		char: "\u{005B}",
+		char: "\u{005b}",
 	},
 	{
 		name: "square bracket, right",
-		char: "\u{005D}",
+		char: "\u{005d}",
 	},
 	{
 		name: "square bracket, right white",
-		char: "\u{301B}",
+		char: "\u{301b}",
 	},
 	{
 		name: "square cap",
@@ -20047,11 +18123,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "square foot",
-		char: "\u{23CD}",
+		char: "\u{23cd}",
 	},
 	{
 		name: "square image of",
-		char: "\u{228F}",
+		char: "\u{228f}",
 	},
 	{
 		name: "square lozenge",
@@ -20063,23 +18139,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "square root",
-		char: "\u{221A}",
+		char: "\u{221a}",
 	},
 	{
 		name: "square symbols",
-		char: "\u{29C4}",
+		char: "\u{29c4}",
 	},
 	{
 		name: "square, black medium",
-		char: "\u{25FC}",
+		char: "\u{25fc}",
 	},
 	{
 		name: "square, black medium small",
-		char: "\u{25FE}",
-	},
-	{
-		name: "square, combining enclosing",
-		char: "\u{20DE}",
+		char: "\u{25fe}",
 	},
 	{
 		name: "square, viewdata",
@@ -20087,11 +18159,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "squared",
-		char: "\u{00B2}",
+		char: "\u{00b2}",
 	},
 	{
 		name: "squared dot operator",
-		char: "\u{22A1}",
+		char: "\u{22a1}",
 	},
 	{
 		name: "squared japanese katakana words",
@@ -20103,27 +18175,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "squared latin letters",
-		char: "\u{1F131}",
+		char: "\u{1f131}",
 	},
 	{
 		name: "squared minus",
-		char: "\u{229F}",
+		char: "\u{229f}",
 	},
 	{
 		name: "squared plus",
-		char: "\u{229E}",
+		char: "\u{229e}",
 	},
 	{
 		name: "squared times",
-		char: "\u{22A0}",
+		char: "\u{22a0}",
 	},
 	{
 		name: "squares",
-		char: "\u{25A0}",
+		char: "\u{25a0}",
 	},
 	{
 		name: "squares",
-		char: "\u{2B1A}",
+		char: "\u{2b1a}",
 	},
 	{
 		name: "squat reversed esh, latin small letter",
@@ -20131,19 +18203,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "squeans",
-		char: "\u{1F4AB}",
+		char: "\u{1f4ab}",
 	},
 	{
 		name: "srak ah, khmer",
-		char: "\u{17C7}",
+		char: "\u{17c7}",
 	},
 	{
 		name: "srak am, khmer",
-		char: "\u{17C6}",
+		char: "\u{17c6}",
 	},
 	{
 		name: "srog med, tibetan",
-		char: "\u{0F84}",
+		char: "\u{0f84}",
 	},
 	{
 		name: "st. andrew's cross",
@@ -20155,15 +18227,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "staff of hermes",
-		char: "\u{269A}",
+		char: "\u{269a}",
 	},
 	{
 		name: "star",
-		char: "\u{002A}",
+		char: "\u{002a}",
 	},
 	{
 		name: "star and crescent",
-		char: "\u{262A}",
+		char: "\u{262a}",
 	},
 	{
 		name: "star dingbats",
@@ -20171,7 +18243,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "star equals",
-		char: "\u{225B}",
+		char: "\u{225b}",
 	},
 	{
 		name: "star of david",
@@ -20179,11 +18251,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "star operator",
-		char: "\u{22C6}",
+		char: "\u{22c6}",
 	},
 	{
 		name: "star, arabic five pointed",
-		char: "\u{066D}",
+		char: "\u{066d}",
 	},
 	{
 		name: "star, black",
@@ -20191,7 +18263,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "star, shooting",
-		char: "\u{1F320}",
+		char: "\u{1f320}",
 	},
 	{
 		name: "star, white",
@@ -20199,7 +18271,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "starburst",
-		char: "\u{273A}",
+		char: "\u{273a}",
 	},
 	{
 		name: "stars",
@@ -20207,7 +18279,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "stars",
-		char: "\u{1F7C0}",
+		char: "\u{1f7c0}",
 	},
 	{
 		name: "start of guarded area",
@@ -20239,15 +18311,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "statement is true",
-		char: "\u{22A8}",
+		char: "\u{22a8}",
 	},
 	{
 		name: "stenographic full stop",
-		char: "\u{2E3C}",
+		char: "\u{2e3c}",
 	},
 	{
 		name: "sterling, pound",
-		char: "\u{00A3}",
+		char: "\u{00a3}",
 	},
 	{
 		name: "stile, apl",
@@ -20255,27 +18327,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "stop play",
-		char: "\u{23F9}",
+		char: "\u{23f9}",
 	},
 	{
 		name: "stop sign",
-		char: "\u{1F6D1}",
+		char: "\u{1f6d1}",
 	},
 	{
 		name: "stopwatch",
-		char: "\u{23F1}",
+		char: "\u{23f1}",
 	},
 	{
 		name: "straight epsilon",
-		char: "\u{03F5}",
+		char: "\u{03f5}",
 	},
 	{
 		name: "straight epsilon, reversed",
-		char: "\u{03F6}",
+		char: "\u{03f6}",
 	},
 	{
 		name: "straightness",
-		char: "\u{23E4}",
+		char: "\u{23e4}",
 	},
 	{
 		name: "stress mark",
@@ -20291,7 +18363,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "string terminator",
-		char: "\u{009C}",
+		char: "\u{009c}",
 	},
 	{
 		name: "string, device control",
@@ -20302,44 +18374,32 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0098}",
 	},
 	{
-		name: "stroke overlay, combining double vertical",
-		char: "\u{20E6}",
-	},
-	{
-		name: "stroke overlay, combining long",
-		char: "\u{0336}",
-	},
-	{
-		name: "stroke overlay, combining short",
-		char: "\u{0335}",
-	},
-	{
 		name: "stroke, latin capital letter o with",
-		char: "\u{00D8}",
+		char: "\u{00d8}",
 	},
 	{
 		name: "stroke, latin small letter o with",
-		char: "\u{00F8}",
+		char: "\u{00f8}",
 	},
 	{
 		name: "strokes, cjk",
-		char: "\u{31C0}",
+		char: "\u{31c0}",
 	},
 	{
 		name: "subgroup of, normal",
-		char: "\u{22B2}",
+		char: "\u{22b2}",
 	},
 	{
 		name: "subgroup signs, normal",
-		char: "\u{22EA}",
+		char: "\u{22ea}",
 	},
 	{
 		name: "subgroup, contains as normal",
-		char: "\u{22B3}",
+		char: "\u{22b3}",
 	},
 	{
 		name: "subjoined consonants, tibetan",
-		char: "\u{0F90}",
+		char: "\u{0f90}",
 	},
 	{
 		name: "subscript digits",
@@ -20355,7 +18415,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "subset and superset relations",
-		char: "\u{2ABD}",
+		char: "\u{2abd}",
 	},
 	{
 		name: "subset of",
@@ -20371,11 +18431,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "subset, double",
-		char: "\u{22D0}",
+		char: "\u{22d0}",
 	},
 	{
 		name: "substitute",
-		char: "\u{001A}",
+		char: "\u{001a}",
 	},
 	{
 		name: "substitute form two, symbol for",
@@ -20383,7 +18443,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "substitute, symbol for",
-		char: "\u{241A}",
+		char: "\u{241a}",
 	},
 	{
 		name: "subtending marks, arabic",
@@ -20391,7 +18451,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "subtraction, bag",
-		char: "\u{2A41}",
+		char: "\u{2a41}",
 	},
 	{
 		name: "subtraction, saturating",
@@ -20399,19 +18459,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "succeeds",
-		char: "\u{227B}",
+		char: "\u{227b}",
 	},
 	{
 		name: "succeeds under relation",
-		char: "\u{22B1}",
+		char: "\u{22b1}",
 	},
 	{
 		name: "succeeds, double",
-		char: "\u{2ABC}",
+		char: "\u{2abc}",
 	},
 	{
 		name: "such that",
-		char: "\u{220B}",
+		char: "\u{220b}",
 	},
 	{
 		name: "such that",
@@ -20423,7 +18483,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sum or positive difference",
-		char: "\u{2A26}",
+		char: "\u{2a26}",
 	},
 	{
 		name: "sum, direct",
@@ -20431,7 +18491,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sum, positive difference or",
-		char: "\u{2A24}",
+		char: "\u{2a24}",
 	},
 	{
 		name: "summation sign",
@@ -20439,7 +18499,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "summation sign parts",
-		char: "\u{23B2}",
+		char: "\u{23b2}",
 	},
 	{
 		name: "summation, double-struck n-ary",
@@ -20451,7 +18511,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "summations and integrals",
-		char: "\u{2A0A}",
+		char: "\u{2a0a}",
 	},
 	{
 		name: "sun",
@@ -20459,7 +18519,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sun behind cloud",
-		char: "\u{26C5}",
+		char: "\u{26c5}",
 	},
 	{
 		name: "sun with rays, black",
@@ -20467,19 +18527,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sun with rays, white",
-		char: "\u{263C}",
+		char: "\u{263c}",
 	},
 	{
 		name: "sundanese",
-		char: "\u{1B80}",
+		char: "\u{1b80}",
 	},
 	{
 		name: "sundanese supplement",
-		char: "\u{1CC0}",
+		char: "\u{1cc0}",
 	},
 	{
 		name: "sunna, telugu",
-		char: "\u{0C02}",
+		char: "\u{0c02}",
 	},
 	{
 		name: "superscript digits",
@@ -20487,7 +18547,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "superscript letter diacritics, latin medieval",
-		char: "\u{1DD3}",
+		char: "\u{1dd3}",
 	},
 	{
 		name: "superscript letter diacritics, medieval",
@@ -20495,19 +18555,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "superscript modifier letters, latin",
-		char: "\u{02B0}",
+		char: "\u{02b0}",
 	},
 	{
 		name: "superscript one",
-		char: "\u{00B9}",
+		char: "\u{00b9}",
 	},
 	{
 		name: "superscript three",
-		char: "\u{00B3}",
+		char: "\u{00b3}",
 	},
 	{
 		name: "superscript two",
-		char: "\u{00B2}",
+		char: "\u{00b2}",
 	},
 	{
 		name: "superscript zero",
@@ -20531,11 +18591,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "superset relations, subset and",
-		char: "\u{2ABD}",
+		char: "\u{2abd}",
 	},
 	{
 		name: "superset, double",
-		char: "\u{22D1}",
+		char: "\u{22d1}",
 	},
 	{
 		name: "supplemental arrows-b",
@@ -20543,11 +18603,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "supplemental mathematical operators",
-		char: "\u{2A00}",
+		char: "\u{2a00}",
 	},
 	{
 		name: "supplemental punctuation",
-		char: "\u{2E00}",
+		char: "\u{2e00}",
 	},
 	{
 		name: "supplementary cjk ideographs area",
@@ -20559,7 +18619,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "supplementary private use area-a",
-		char: "\u{F0000}",
+		char: "\u{f0000}",
 	},
 	{
 		name: "supplementary private use area-b",
@@ -20567,7 +18627,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "surface integral",
-		char: "\u{222F}",
+		char: "\u{222f}",
 	},
 	{
 		name: "surjection, finite",
@@ -20579,7 +18639,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "surjection, total",
-		char: "\u{21A0}",
+		char: "\u{21a0}",
 	},
 	{
 		name: "surjective injection",
@@ -20591,19 +18651,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "surrogates area",
-		char: "\u{D800}",
+		char: "\u{d800}",
 	},
 	{
 		name: "surrogates, high",
-		char: "\u{D800}",
+		char: "\u{d800}",
 	},
 	{
 		name: "surrogates, low",
-		char: "\u{DC00}",
+		char: "\u{dc00}",
 	},
 	{
 		name: "sutton signwriting",
-		char: "\u{1D800}",
+		char: "\u{1d800}",
 	},
 	{
 		name: "suzhou numerals",
@@ -20611,11 +18671,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "svasti signs",
-		char: "\u{0FD5}",
+		char: "\u{0fd5}",
 	},
 	{
 		name: "swash tail, latin small letter s with",
-		char: "\u{023F}",
+		char: "\u{023f}",
 	},
 	{
 		name: "swash tail, latin small letter z with",
@@ -20623,11 +18683,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "sweat symbol, splashing",
-		char: "\u{1F4A6}",
+		char: "\u{1f4a6}",
 	},
 	{
 		name: "swedish grave accent",
-		char: "\u{02DF}",
+		char: "\u{02df}",
 	},
 	{
 		name: "swords, crossed",
@@ -20647,11 +18707,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "syllabics full stop, canadian",
-		char: "\u{166E}",
+		char: "\u{166e}",
 	},
 	{
 		name: "syllabics punctuation, canadian",
-		char: "\u{166D}",
+		char: "\u{166d}",
 	},
 	{
 		name: "syllabics, unified canadian aboriginal",
@@ -20659,11 +18719,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "syllables, cherokee",
-		char: "\u{13A0}",
+		char: "\u{13a0}",
 	},
 	{
 		name: "syllables, circled korean hangul",
-		char: "\u{326E}",
+		char: "\u{326e}",
 	},
 	{
 		name: "syllables, ethiopic",
@@ -20671,39 +18731,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "syllables, korean hangul",
-		char: "\u{AC00}",
+		char: "\u{ac00}",
 	},
 	{
 		name: "syllables, parenthesized korean hangul",
-		char: "\u{320E}",
+		char: "\u{320e}",
 	},
 	{
 		name: "syllables, yi",
-		char: "\u{A000}",
+		char: "\u{a000}",
 	},
 	{
 		name: "syloti nagri",
-		char: "\u{A800}",
+		char: "\u{a800}",
 	},
 	{
 		name: "symbol variants, fullwidth",
-		char: "\u{FFE0}",
+		char: "\u{ffe0}",
 	},
 	{
 		name: "symbol variants, halfwidth",
-		char: "\u{FFE8}",
+		char: "\u{ffe8}",
 	},
 	{
 		name: "symbols and pictographs extended-a",
-		char: "\u{1FA70}",
+		char: "\u{1fa70}",
 	},
 	{
 		name: "symbols and pictographs, miscellaneous",
-		char: "\u{1F300}",
+		char: "\u{1f300}",
 	},
 	{
 		name: "symbols and pictographs, supplemental",
-		char: "\u{1F900}",
+		char: "\u{1f900}",
 	},
 	{
 		name: "symbols and punctuation, cjk",
@@ -20715,15 +18775,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols area, cjk phonetics and",
-		char: "\u{2E80}",
+		char: "\u{2e80}",
 	},
 	{
 		name: "symbols for days, ideographic telegraph",
-		char: "\u{33E0}",
+		char: "\u{33e0}",
 	},
 	{
 		name: "symbols for divination, khmer numeric",
-		char: "\u{17F0}",
+		char: "\u{17f0}",
 	},
 	{
 		name: "symbols for hours, ideographic telegraph",
@@ -20731,27 +18791,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols for months, ideographic telegraph",
-		char: "\u{32C0}",
+		char: "\u{32c0}",
 	},
 	{
 		name: "symbols, accessibility",
-		char: "\u{1F9AE}",
+		char: "\u{1f9ae}",
 	},
 	{
 		name: "symbols, alchemical",
-		char: "\u{1F700}",
+		char: "\u{1f700}",
 	},
 	{
 		name: "symbols, ancient greek textual",
-		char: "\u{2E0E}",
+		char: "\u{2e0e}",
 	},
 	{
 		name: "symbols, animal",
-		char: "\u{1F400}",
+		char: "\u{1f400}",
 	},
 	{
 		name: "symbols, animal",
-		char: "\u{1F980}",
+		char: "\u{1f980}",
 	},
 	{
 		name: "symbols, apl functional",
@@ -20759,7 +18819,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, arabic mathematical alphabetic",
-		char: "\u{1EE00}",
+		char: "\u{1ee00}",
 	},
 	{
 		name: "symbols, area,",
@@ -20767,7 +18827,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, area, cjk phonetics and",
-		char: "\u{2E80}",
+		char: "\u{2e80}",
 	},
 	{
 		name: "symbols, ascii punctuation and",
@@ -20775,23 +18835,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, astrological",
-		char: "\u{263D}",
+		char: "\u{263d}",
 	},
 	{
 		name: "symbols, astrological",
-		char: "\u{2BD3}",
+		char: "\u{2bd3}",
 	},
 	{
 		name: "symbols, audio and video",
-		char: "\u{1F4F7}",
+		char: "\u{1f4f7}",
 	},
 	{
 		name: "symbols, balinese musical",
-		char: "\u{1B61}",
+		char: "\u{1b61}",
 	},
 	{
 		name: "symbols, ballot",
-		char: "\u{1F5F3}",
+		char: "\u{1f5f3}",
 	},
 	{
 		name: "symbols, basic musical",
@@ -20799,55 +18859,55 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, beverage",
-		char: "\u{1F375}",
+		char: "\u{1f375}",
 	},
 	{
 		name: "symbols, black-letter mathematical",
-		char: "\u{1D504}",
+		char: "\u{1d504}",
 	},
 	{
 		name: "symbols, bold fraktur mathematical",
-		char: "\u{1D56C}",
+		char: "\u{1d56c}",
 	},
 	{
 		name: "symbols, bold greek mathematical",
-		char: "\u{1D6A8}",
+		char: "\u{1d6a8}",
 	},
 	{
 		name: "symbols, bold italic greek mathematical",
-		char: "\u{1D71C}",
+		char: "\u{1d71c}",
 	},
 	{
 		name: "symbols, bold italic mathematical",
-		char: "\u{1D468}",
+		char: "\u{1d468}",
 	},
 	{
 		name: "symbols, bold mathematical",
-		char: "\u{1D400}",
+		char: "\u{1d400}",
 	},
 	{
 		name: "symbols, bold script mathematical",
-		char: "\u{1D4D0}",
+		char: "\u{1d4d0}",
 	},
 	{
 		name: "symbols, bowtie",
-		char: "\u{29D1}",
+		char: "\u{29d1}",
 	},
 	{
 		name: "symbols, building and map",
-		char: "\u{1F3D4}",
+		char: "\u{1f3d4}",
 	},
 	{
 		name: "symbols, building and map",
-		char: "\u{1F3E0}",
+		char: "\u{1f3e0}",
 	},
 	{
 		name: "symbols, byzantine musical",
-		char: "\u{1D000}",
+		char: "\u{1d000}",
 	},
 	{
 		name: "symbols, celebration",
-		char: "\u{1F380}",
+		char: "\u{1f380}",
 	},
 	{
 		name: "symbols, chess",
@@ -20855,51 +18915,47 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, chess",
-		char: "\u{1FA00}",
+		char: "\u{1fa00}",
 	},
 	{
 		name: "symbols, circle",
-		char: "\u{29B5}",
+		char: "\u{29b5}",
 	},
 	{
 		name: "symbols, clock face",
-		char: "\u{1F550}",
-	},
-	{
-		name: "symbols, combining diacritical marks for",
-		char: "\u{20D0}",
+		char: "\u{1f550}",
 	},
 	{
 		name: "symbols, comic style",
-		char: "\u{1F4A0}",
+		char: "\u{1f4a0}",
 	},
 	{
 		name: "symbols, communication",
-		char: "\u{1F4DD}",
+		char: "\u{1f4dd}",
 	},
 	{
 		name: "symbols, communication",
-		char: "\u{1F57B}",
+		char: "\u{1f57b}",
 	},
 	{
 		name: "symbols, computer component",
-		char: "\u{1F5A5}",
+		char: "\u{1f5a5}",
 	},
 	{
 		name: "symbols, cultural",
-		char: "\u{1F5FB}",
+		char: "\u{1f5fb}",
 	},
 	{
 		name: "symbols, currency",
-		char: "\u{20A0}",
+		char: "\u{20a0}",
 	},
 	{
 		name: "symbols, dentistry notation",
-		char: "\u{23BE}",
+		char: "\u{23be}",
 	},
 	{
 		name: "symbols, diacritical marks for",
-		char: "\u{20D0}",
+		char: "\u{20d0}",
 	},
 	{
 		name: "symbols, dictionary and map",
@@ -20907,7 +18963,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, dotless mathematical",
-		char: "\u{1D6A4}",
+		char: "\u{1d6a4}",
 	},
 	{
 		name: "symbols, double-struck italic mathematical",
@@ -20915,91 +18971,91 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, double-struck mathematical",
-		char: "\u{1D538}",
+		char: "\u{1d538}",
 	},
 	{
 		name: "symbols, drafting",
-		char: "\u{232D}",
+		char: "\u{232d}",
 	},
 	{
 		name: "symbols, electrotechnical",
-		char: "\u{238D}",
+		char: "\u{238d}",
 	},
 	{
 		name: "symbols, entertainment",
-		char: "\u{1F3A0}",
+		char: "\u{1f3a0}",
 	},
 	{
 		name: "symbols, error bar",
-		char: "\u{29EE}",
+		char: "\u{29ee}",
 	},
 	{
 		name: "symbols, facial parts",
-		char: "\u{1F440}",
+		char: "\u{1f440}",
 	},
 	{
 		name: "symbols, fairy tale",
-		char: "\u{1F478}",
+		char: "\u{1f478}",
 	},
 	{
 		name: "symbols, food",
-		char: "\u{1F354}",
+		char: "\u{1f354}",
 	},
 	{
 		name: "symbols, food",
-		char: "\u{1F950}",
+		char: "\u{1f950}",
 	},
 	{
 		name: "symbols, fraktur mathematical",
-		char: "\u{1D504}",
+		char: "\u{1d504}",
 	},
 	{
 		name: "symbols, fruit and vegetable",
-		char: "\u{1F345}",
+		char: "\u{1f345}",
 	},
 	{
 		name: "symbols, game",
-		char: "\u{1F3AE}",
+		char: "\u{1f3ae}",
 	},
 	{
 		name: "symbols, gender",
-		char: "\u{26A2}",
+		char: "\u{26a2}",
 	},
 	{
 		name: "symbols, genealogical",
-		char: "\u{26AD}",
+		char: "\u{26ad}",
 	},
 	{
 		name: "symbols, gesture",
-		char: "\u{1F645}",
+		char: "\u{1f645}",
 	},
 	{
 		name: "symbols, globe",
-		char: "\u{1F30D}",
+		char: "\u{1f30d}",
 	},
 	{
 		name: "symbols, greek mathematical",
-		char: "\u{1D6A8}",
+		char: "\u{1d6a8}",
 	},
 	{
 		name: "symbols, gregorian musical",
-		char: "\u{1D1D0}",
+		char: "\u{1d1d0}",
 	},
 	{
 		name: "symbols, hand",
-		char: "\u{1F446}",
+		char: "\u{1f446}",
 	},
 	{
 		name: "symbols, hand",
-		char: "\u{1F58E}",
+		char: "\u{1f58e}",
 	},
 	{
 		name: "symbols, hand",
-		char: "\u{1F918}",
+		char: "\u{1f918}",
 	},
 	{
 		name: "symbols, heart",
-		char: "\u{1F493}",
+		char: "\u{1f493}",
 	},
 	{
 		name: "symbols, hebrew letterlike mathematical",
@@ -21007,11 +19063,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, i ching / yijing hexagram",
-		char: "\u{4DC0}",
+		char: "\u{4dc0}",
 	},
 	{
 		name: "symbols, i ching / yijing monogram and digram",
-		char: "\u{268A}",
+		char: "\u{268a}",
 	},
 	{
 		name: "symbols, i ching / yijing trigram",
@@ -21019,11 +19075,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, italic greek mathematical",
-		char: "\u{1D6E2}",
+		char: "\u{1d6e2}",
 	},
 	{
 		name: "symbols, italic mathematical",
-		char: "\u{1D434}",
+		char: "\u{1d434}",
 	},
 	{
 		name: "symbols, japanese chess",
@@ -21031,7 +19087,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, keyboard",
-		char: "\u{21E6}",
+		char: "\u{21e6}",
 	},
 	{
 		name: "symbols, keyboard",
@@ -21047,15 +19103,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, khmer",
-		char: "\u{19E0}",
+		char: "\u{19e0}",
 	},
 	{
 		name: "symbols, kievan musical",
-		char: "\u{1D1DE}",
+		char: "\u{1d1de}",
 	},
 	{
 		name: "symbols, latin-1 punctuation and",
-		char: "\u{00A0}",
+		char: "\u{00a0}",
 	},
 	{
 		name: "symbols, letterlike",
@@ -21063,15 +19119,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, lock",
-		char: "\u{1F50F}",
+		char: "\u{1f50f}",
 	},
 	{
 		name: "symbols, mail",
-		char: "\u{1F4E4}",
+		char: "\u{1f4e4}",
 	},
 	{
 		name: "symbols, mathematical",
-		char: "\u{27C0}",
+		char: "\u{27c0}",
 	},
 	{
 		name: "symbols, mathematical",
@@ -21079,15 +19135,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, mathematical alphanumeric",
-		char: "\u{1D400}",
+		char: "\u{1d400}",
 	},
 	{
 		name: "symbols, mathematical digits",
-		char: "\u{1D7CE}",
+		char: "\u{1d7ce}",
 	},
 	{
 		name: "symbols, metrical",
-		char: "\u{23D1}",
+		char: "\u{23d1}",
 	},
 	{
 		name: "symbols, miscellaneous",
@@ -21095,51 +19151,51 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, miscellaneous",
-		char: "\u{1F940}",
+		char: "\u{1f940}",
 	},
 	{
 		name: "symbols, money",
-		char: "\u{1F4B0}",
+		char: "\u{1f4b0}",
 	},
 	{
 		name: "symbols, monospace mathematical",
-		char: "\u{1D670}",
+		char: "\u{1d670}",
 	},
 	{
 		name: "symbols, moon, sun, and star",
-		char: "\u{1F311}",
+		char: "\u{1f311}",
 	},
 	{
 		name: "symbols, music",
-		char: "\u{1F3B5}",
+		char: "\u{1f3b5}",
 	},
 	{
 		name: "symbols, musical",
-		char: "\u{1D100}",
+		char: "\u{1d100}",
 	},
 	{
 		name: "symbols, new testament editorial",
-		char: "\u{2E00}",
+		char: "\u{2e00}",
 	},
 	{
 		name: "symbols, office",
-		char: "\u{1F4BA}",
+		char: "\u{1f4ba}",
 	},
 	{
 		name: "symbols, palaeotype transliteration",
-		char: "\u{2E32}",
+		char: "\u{2e32}",
 	},
 	{
 		name: "symbols, personal care",
-		char: "\u{1F484}",
+		char: "\u{1f484}",
 	},
 	{
 		name: "symbols, planet",
-		char: "\u{263F}",
+		char: "\u{263f}",
 	},
 	{
 		name: "symbols, plant",
-		char: "\u{1F330}",
+		char: "\u{1f330}",
 	},
 	{
 		name: "symbols, plastics recycling",
@@ -21151,23 +19207,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, pointing hand",
-		char: "\u{261A}",
+		char: "\u{261a}",
 	},
 	{
 		name: "symbols, polygonal",
-		char: "\u{2B12}",
+		char: "\u{2b12}",
 	},
 	{
 		name: "symbols, portrait and role",
-		char: "\u{1F464}",
+		char: "\u{1f464}",
 	},
 	{
 		name: "symbols, portrait and role",
-		char: "\u{1F930}",
+		char: "\u{1f930}",
 	},
 	{
 		name: "symbols, power on/off",
-		char: "\u{23FB}",
+		char: "\u{23fb}",
 	},
 	{
 		name: "symbols, recycling",
@@ -21179,11 +19235,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, restroom",
-		char: "\u{1F6B9}",
+		char: "\u{1f6b9}",
 	},
 	{
 		name: "symbols, role",
-		char: "\u{1F481}",
+		char: "\u{1f481}",
 	},
 	{
 		name: "symbols, roman",
@@ -21191,111 +19247,111 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, romance",
-		char: "\u{1F48B}",
+		char: "\u{1f48b}",
 	},
 	{
 		name: "symbols, rumi numeral",
-		char: "\u{10E60}",
+		char: "\u{10e60}",
 	},
 	{
 		name: "symbols, sans-serif bold greek mathematical",
-		char: "\u{1D756}",
+		char: "\u{1d756}",
 	},
 	{
 		name: "symbols, sans-serif bold italic greek mathematical",
-		char: "\u{1D790}",
+		char: "\u{1d790}",
 	},
 	{
 		name: "symbols, sans-serif bold italic mathematical",
-		char: "\u{1D63C}",
+		char: "\u{1d63c}",
 	},
 	{
 		name: "symbols, sans-serif bold mathematical",
-		char: "\u{1D5D4}",
+		char: "\u{1d5d4}",
 	},
 	{
 		name: "symbols, sans-serif italic mathematical",
-		char: "\u{1D608}",
+		char: "\u{1d608}",
 	},
 	{
 		name: "symbols, sans-serif mathematical",
-		char: "\u{1D5A0}",
+		char: "\u{1d5a0}",
 	},
 	{
 		name: "symbols, script mathematical",
-		char: "\u{1D49C}",
+		char: "\u{1d49c}",
 	},
 	{
 		name: "symbols, signage and other",
-		char: "\u{1F6A9}",
+		char: "\u{1f6a9}",
 	},
 	{
 		name: "symbols, speaker",
-		char: "\u{1F507}",
+		char: "\u{1f507}",
 	},
 	{
 		name: "symbols, speech and thought bubble",
-		char: "\u{1F5E8}",
+		char: "\u{1f5e8}",
 	},
 	{
 		name: "symbols, sport",
-		char: "\u{1F3BD}",
+		char: "\u{1f3bd}",
 	},
 	{
 		name: "symbols, sport",
-		char: "\u{1F3CF}",
+		char: "\u{1f3cf}",
 	},
 	{
 		name: "symbols, square",
-		char: "\u{29C4}",
+		char: "\u{29c4}",
 	},
 	{
 		name: "symbols, tai xuan jing",
-		char: "\u{1D300}",
+		char: "\u{1d300}",
 	},
 	{
 		name: "symbols, tamil",
-		char: "\u{0BF3}",
+		char: "\u{0bf3}",
 	},
 	{
 		name: "symbols, tibetan",
-		char: "\u{0FC4}",
+		char: "\u{0fc4}",
 	},
 	{
 		name: "symbols, tool",
-		char: "\u{1F525}",
+		char: "\u{1f525}",
 	},
 	{
 		name: "symbols, transport and map",
-		char: "\u{1F680}",
+		char: "\u{1f680}",
 	},
 	{
 		name: "symbols, triangle",
-		char: "\u{29CA}",
+		char: "\u{29ca}",
 	},
 	{
 		name: "symbols, user interface",
-		char: "\u{1F500}",
+		char: "\u{1f500}",
 	},
 	{
 		name: "symbols, user interface",
-		char: "\u{1F53A}",
+		char: "\u{1f53a}",
 	},
 	{
 		name: "symbols, user interface",
-		char: "\u{1F5BF}",
+		char: "\u{1f5bf}",
 	},
 	{
 		name: "symbols, user interface input status",
-		char: "\u{1F520}",
+		char: "\u{1f520}",
 	},
 	{
 		name: "symbols, vehicle",
-		char: "\u{1F6E5}",
+		char: "\u{1f6e5}",
 	},
 	{
 		name: "symbols, weather",
-		char: "\u{1F321}",
+		char: "\u{1f321}",
 	},
 	{
 		name: "symbols, weather and astrological",
@@ -21303,15 +19359,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols, weather, landscape, and sky",
-		char: "\u{1F300}",
+		char: "\u{1f300}",
 	},
 	{
 		name: "symbols, yijing / i ching hexagram",
-		char: "\u{4DC0}",
+		char: "\u{4dc0}",
 	},
 	{
 		name: "symbols, yijing / i ching monogram and digram",
-		char: "\u{268A}",
+		char: "\u{268a}",
 	},
 	{
 		name: "symbols, yijing / i ching trigram",
@@ -21323,7 +19379,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symbols-a, miscellaneous mathematical",
-		char: "\u{27C0}",
+		char: "\u{27c0}",
 	},
 	{
 		name: "symbols-b, miscellaneous mathematical",
@@ -21343,7 +19399,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "symmetry",
-		char: "\u{232F}",
+		char: "\u{232f}",
 	},
 	{
 		name: "synchronous idle",
@@ -21375,7 +19431,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "syriac sam",
-		char: "\u{070F}",
+		char: "\u{070f}",
 	},
 	{
 		name: "syriac supplement",
@@ -21391,11 +19447,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "t with circumflex below, latin small letter",
-		char: "\u{1E71}",
+		char: "\u{1e71}",
 	},
 	{
 		name: "t with comma below, latin small letter",
-		char: "\u{021B}",
+		char: "\u{021b}",
 	},
 	{
 		name: "t with curl, latin small letter",
@@ -21403,35 +19459,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "t with diaeresis, latin small letter",
-		char: "\u{1E97}",
+		char: "\u{1e97}",
 	},
 	{
 		name: "t with diagonal stroke, latin capital letter",
-		char: "\u{023E}",
+		char: "\u{023e}",
 	},
 	{
 		name: "t with dot above, latin small letter",
-		char: "\u{1E6B}",
+		char: "\u{1e6b}",
 	},
 	{
 		name: "t with dot below, latin small letter",
-		char: "\u{1E6D}",
+		char: "\u{1e6d}",
 	},
 	{
 		name: "t with hook, latin small letter",
-		char: "\u{01AD}",
+		char: "\u{01ad}",
 	},
 	{
 		name: "t with line below, latin small letter",
-		char: "\u{1E6F}",
+		char: "\u{1e6f}",
 	},
 	{
 		name: "t with palatal hook, latin small letter",
-		char: "\u{01AB}",
+		char: "\u{01ab}",
 	},
 	{
 		name: "t with retroflex hook, latin capital letter",
-		char: "\u{01AE}",
+		char: "\u{01ae}",
 	},
 	{
 		name: "t with retroflex hook, latin small letter",
@@ -21442,12 +19498,8 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0167}",
 	},
 	{
-		name: "t, combining latin small letter",
-		char: "\u{036D}",
-	},
-	{
 		name: "t, latin letter small capital",
-		char: "\u{1D1B}",
+		char: "\u{1d1b}",
 	},
 	{
 		name: "t, latin small letter turned",
@@ -21455,11 +19507,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "t, latin subscript small letter",
-		char: "\u{209C}",
+		char: "\u{209c}",
 	},
 	{
 		name: "t-rex",
-		char: "\u{1F996}",
+		char: "\u{1f996}",
 	},
 	{
 		name: "tab",
@@ -21467,39 +19519,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tab key, horizontal",
-		char: "\u{2B7E}",
+		char: "\u{2b7e}",
 	},
 	{
 		name: "tab key, vertical",
-		char: "\u{2B7F}",
+		char: "\u{2b7f}",
 	},
 	{
 		name: "tab with shift tab",
-		char: "\u{21B9}",
+		char: "\u{21b9}",
 	},
 	{
 		name: "tab, down",
-		char: "\u{2B73}",
+		char: "\u{2b73}",
 	},
 	{
 		name: "tab, left",
-		char: "\u{2B70}",
+		char: "\u{2b70}",
 	},
 	{
 		name: "tab, leftward",
-		char: "\u{21E4}",
+		char: "\u{21e4}",
 	},
 	{
 		name: "tab, right",
-		char: "\u{2B72}",
+		char: "\u{2b72}",
 	},
 	{
 		name: "tab, rightward",
-		char: "\u{21E5}",
+		char: "\u{21e5}",
 	},
 	{
 		name: "tab, up",
-		char: "\u{2B71}",
+		char: "\u{2b71}",
 	},
 	{
 		name: "tabulation set, character",
@@ -21507,7 +19559,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tabulation set, line",
-		char: "\u{008A}",
+		char: "\u{008a}",
 	},
 	{
 		name: "tabulation with justification, character",
@@ -21523,7 +19575,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tabulation, line",
-		char: "\u{000B}",
+		char: "\u{000b}",
 	},
 	{
 		name: "tabulation, symbol for horizontal",
@@ -21531,59 +19583,43 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tabulation, symbol for vertical",
-		char: "\u{240B}",
+		char: "\u{240b}",
 	},
 	{
 		name: "tabulation, vertical",
-		char: "\u{000B}",
-	},
-	{
-		name: "tack below, combining down",
-		char: "\u{031E}",
-	},
-	{
-		name: "tack below, combining left",
-		char: "\u{0318}",
-	},
-	{
-		name: "tack below, combining right",
-		char: "\u{0319}",
-	},
-	{
-		name: "tack below, combining up",
-		char: "\u{031D}",
+		char: "\u{000b}",
 	},
 	{
 		name: "tack, down",
-		char: "\u{22A4}",
+		char: "\u{22a4}",
 	},
 	{
 		name: "tack, left",
-		char: "\u{22A3}",
+		char: "\u{22a3}",
 	},
 	{
 		name: "tack, modifier letter up",
-		char: "\u{02D4}",
+		char: "\u{02d4}",
 	},
 	{
 		name: "tack, right",
-		char: "\u{22A2}",
+		char: "\u{22a2}",
 	},
 	{
 		name: "tack, up",
-		char: "\u{22A5}",
+		char: "\u{22a5}",
 	},
 	{
 		name: "tacks and turnstiles",
-		char: "\u{22A2}",
+		char: "\u{22a2}",
 	},
 	{
 		name: "tacks and turnstiles",
-		char: "\u{27D8}",
+		char: "\u{27d8}",
 	},
 	{
 		name: "tacks and turnstiles",
-		char: "\u{2ADE}",
+		char: "\u{2ade}",
 	},
 	{
 		name: "tagalog",
@@ -21599,7 +19635,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tags",
-		char: "\u{E0000}",
+		char: "\u{e0000}",
 	},
 	{
 		name: "tai le",
@@ -21607,7 +19643,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tai lue digits, new",
-		char: "\u{19D0}",
+		char: "\u{19d0}",
 	},
 	{
 		name: "tai lue, new",
@@ -21615,27 +19651,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tai tham",
-		char: "\u{1A20}",
+		char: "\u{1a20}",
 	},
 	{
 		name: "tai viet",
-		char: "\u{AA80}",
+		char: "\u{aa80}",
 	},
 	{
 		name: "tai xuan jing symbols",
-		char: "\u{1D300}",
+		char: "\u{1d300}",
 	},
 	{
 		name: "tails, fish",
-		char: "\u{297C}",
+		char: "\u{297c}",
 	},
 	{
 		name: "tainome japanese bullet",
-		char: "\u{25C9}",
+		char: "\u{25c9}",
 	},
 	{
 		name: "take, prescription",
-		char: "\u{211E}",
+		char: "\u{211e}",
 	},
 	{
 		name: "takri",
@@ -21643,111 +19679,111 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tally marks",
-		char: "\u{1D372}",
+		char: "\u{1d372}",
 	},
 	{
 		name: "tamil",
-		char: "\u{0B80}",
+		char: "\u{0b80}",
 	},
 	{
 		name: "tamil as above sign",
-		char: "\u{0BF8}",
+		char: "\u{0bf8}",
 	},
 	{
 		name: "tamil aytham",
-		char: "\u{0B83}",
+		char: "\u{0b83}",
 	},
 	{
 		name: "tamil consonants",
-		char: "\u{0B95}",
+		char: "\u{0b95}",
 	},
 	{
 		name: "tamil credit sign",
-		char: "\u{0BF7}",
+		char: "\u{0bf7}",
 	},
 	{
 		name: "tamil day sign",
-		char: "\u{0BF3}",
+		char: "\u{0bf3}",
 	},
 	{
 		name: "tamil debit sign",
-		char: "\u{0BF6}",
+		char: "\u{0bf6}",
 	},
 	{
 		name: "tamil dependent vowel signs",
-		char: "\u{0BBE}",
+		char: "\u{0bbe}",
 	},
 	{
 		name: "tamil digits",
-		char: "\u{0BE7}",
+		char: "\u{0be7}",
 	},
 	{
 		name: "tamil enn",
-		char: "\u{0BFA}",
+		char: "\u{0bfa}",
 	},
 	{
 		name: "tamil independent vowels",
-		char: "\u{0B85}",
+		char: "\u{0b85}",
 	},
 	{
 		name: "tamil maatham",
-		char: "\u{0BF4}",
+		char: "\u{0bf4}",
 	},
 	{
 		name: "tamil merpadi",
-		char: "\u{0BF8}",
+		char: "\u{0bf8}",
 	},
 	{
 		name: "tamil month sign",
-		char: "\u{0BF4}",
+		char: "\u{0bf4}",
 	},
 	{
 		name: "tamil naal",
-		char: "\u{0BF3}",
+		char: "\u{0bf3}",
 	},
 	{
 		name: "tamil number sign",
-		char: "\u{0BFA}",
+		char: "\u{0bfa}",
 	},
 	{
 		name: "tamil numbers",
-		char: "\u{0BE7}",
+		char: "\u{0be7}",
 	},
 	{
 		name: "tamil patru",
-		char: "\u{0BF6}",
+		char: "\u{0bf6}",
 	},
 	{
 		name: "tamil rupai",
-		char: "\u{0BF9}",
+		char: "\u{0bf9}",
 	},
 	{
 		name: "tamil rupee sign",
-		char: "\u{0BF9}",
+		char: "\u{0bf9}",
 	},
 	{
 		name: "tamil sign visarga",
-		char: "\u{0B83}",
+		char: "\u{0b83}",
 	},
 	{
 		name: "tamil supplement",
-		char: "\u{11FC0}",
+		char: "\u{11fc0}",
 	},
 	{
 		name: "tamil symbols",
-		char: "\u{0BF3}",
+		char: "\u{0bf3}",
 	},
 	{
 		name: "tamil varavu",
-		char: "\u{0BF7}",
+		char: "\u{0bf7}",
 	},
 	{
 		name: "tamil varudam",
-		char: "\u{0BF5}",
+		char: "\u{0bf5}",
 	},
 	{
 		name: "tamil year sign",
-		char: "\u{0BF5}",
+		char: "\u{0bf5}",
 	},
 	{
 		name: "tangut",
@@ -21759,7 +19795,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tangut supplement",
-		char: "\u{18D00}",
+		char: "\u{18d00}",
 	},
 	{
 		name: "tape drive",
@@ -21771,11 +19807,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "target, round",
-		char: "\u{1F78B}",
+		char: "\u{1f78b}",
 	},
 	{
 		name: "target, square",
-		char: "\u{1F796}",
+		char: "\u{1f796}",
 	},
 	{
 		name: "tatweel, arabic",
@@ -21787,11 +19823,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tautological equivalent",
-		char: "\u{29E6}",
+		char: "\u{29e6}",
 	},
 	{
 		name: "tautology",
-		char: "\u{22A8}",
+		char: "\u{22a8}",
 	},
 	{
 		name: "tea, cup of",
@@ -21803,7 +19839,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "telegraph symbols for days, ideographic",
-		char: "\u{33E0}",
+		char: "\u{33e0}",
 	},
 	{
 		name: "telegraph symbols for hours, ideographic",
@@ -21811,11 +19847,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "telegraph symbols for months, ideographic",
-		char: "\u{32C0}",
+		char: "\u{32c0}",
 	},
 	{
 		name: "telephone handset",
-		char: "\u{1F57D}",
+		char: "\u{1f57d}",
 	},
 	{
 		name: "telephone location sign",
@@ -21831,39 +19867,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "telephone, black",
-		char: "\u{260E}",
+		char: "\u{260e}",
 	},
 	{
 		name: "telephone, white",
-		char: "\u{260F}",
+		char: "\u{260f}",
 	},
 	{
 		name: "telugu",
-		char: "\u{0C00}",
+		char: "\u{0c00}",
 	},
 	{
 		name: "telugu consonants",
-		char: "\u{0C15}",
+		char: "\u{0c15}",
 	},
 	{
 		name: "telugu dependent vowel signs",
-		char: "\u{0C3E}",
+		char: "\u{0c3e}",
 	},
 	{
 		name: "telugu digits",
-		char: "\u{0C66}",
+		char: "\u{0c66}",
 	},
 	{
 		name: "telugu independent vowels",
-		char: "\u{0C05}",
+		char: "\u{0c05}",
 	},
 	{
 		name: "telugu sign anusvara",
-		char: "\u{0C02}",
+		char: "\u{0c02}",
 	},
 	{
 		name: "telugu sunna",
-		char: "\u{0C02}",
+		char: "\u{0c02}",
 	},
 	{
 		name: "ten thousand sign, per",
@@ -21871,7 +19907,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tenge sign",
-		char: "\u{20B8}",
+		char: "\u{20b8}",
 	},
 	{
 		name: "tensor product",
@@ -21879,11 +19915,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tent",
-		char: "\u{26FA}",
+		char: "\u{26fa}",
 	},
 	{
 		name: "terminal graphic characters",
-		char: "\u{23B7}",
+		char: "\u{23b7}",
 	},
 	{
 		name: "terminal graphic characters",
@@ -21891,11 +19927,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "terminator, interlinear annotation",
-		char: "\u{FFFB}",
+		char: "\u{fffb}",
 	},
 	{
 		name: "terminator, string",
-		char: "\u{009C}",
+		char: "\u{009c}",
 	},
 	{
 		name: "text, end of",
@@ -21919,59 +19955,59 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "thai",
-		char: "\u{0E00}",
+		char: "\u{0e00}",
 	},
 	{
 		name: "thai character angkhankhu",
-		char: "\u{0E5A}",
+		char: "\u{0e5a}",
 	},
 	{
 		name: "thai character fongman",
-		char: "\u{0E4F}",
+		char: "\u{0e4f}",
 	},
 	{
 		name: "thai character khomut",
-		char: "\u{0E5B}",
+		char: "\u{0e5b}",
 	},
 	{
 		name: "thai character nikhahit",
-		char: "\u{0E4D}",
+		char: "\u{0e4d}",
 	},
 	{
 		name: "thai character thanthakhat",
-		char: "\u{0E4C}",
+		char: "\u{0e4c}",
 	},
 	{
 		name: "thai character yamakkan",
-		char: "\u{0E4E}",
+		char: "\u{0e4e}",
 	},
 	{
 		name: "thai consonants",
-		char: "\u{0E01}",
+		char: "\u{0e01}",
 	},
 	{
 		name: "thai currency symbol baht",
-		char: "\u{0E3F}",
+		char: "\u{0e3f}",
 	},
 	{
 		name: "thai digits",
-		char: "\u{0E50}",
+		char: "\u{0e50}",
 	},
 	{
 		name: "thai marks and signs",
-		char: "\u{0E48}",
+		char: "\u{0e48}",
 	},
 	{
 		name: "thai vowels",
-		char: "\u{0E30}",
+		char: "\u{0e30}",
 	},
 	{
 		name: "thanthakhat, thai character",
-		char: "\u{0E4C}",
+		char: "\u{0e4c}",
 	},
 	{
 		name: "theater masks",
-		char: "\u{1F3AD}",
+		char: "\u{1f3ad}",
 	},
 	{
 		name: "there does not exist",
@@ -21987,19 +20023,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "thermodynamic",
-		char: "\u{29E7}",
+		char: "\u{29e7}",
 	},
 	{
 		name: "thermometer",
-		char: "\u{1F321}",
+		char: "\u{1f321}",
 	},
 	{
 		name: "theta symbol, greek",
-		char: "\u{03D1}",
+		char: "\u{03d1}",
 	},
 	{
 		name: "theta, script",
-		char: "\u{03D1}",
+		char: "\u{03d1}",
 	},
 	{
 		name: "thick space",
@@ -22011,11 +20047,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "third derivative",
-		char: "\u{20DB}",
+		char: "\u{20db}",
 	},
 	{
 		name: "third tone, mandarin chinese",
-		char: "\u{02C7}",
+		char: "\u{02c7}",
 	},
 	{
 		name: "thirds, fractions",
@@ -22023,15 +20059,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "thorn, latin capital letter",
-		char: "\u{00DE}",
+		char: "\u{00de}",
 	},
 	{
 		name: "thorn, latin small letter",
-		char: "\u{00FE}",
+		char: "\u{00fe}",
 	},
 	{
 		name: "thousands separator, arabic",
-		char: "\u{066C}",
+		char: "\u{066c}",
 	},
 	{
 		name: "three dot leader",
@@ -22042,16 +20078,12 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2056}",
 	},
 	{
-		name: "three dots above, combining",
-		char: "\u{20DB}",
-	},
-	{
 		name: "three quarters, vulgar fraction",
-		char: "\u{00BE}",
+		char: "\u{00be}",
 	},
 	{
 		name: "three, superscript",
-		char: "\u{00B3}",
+		char: "\u{00b3}",
 	},
 	{
 		name: "three-per-em space",
@@ -22059,15 +20091,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "thumbs down sign",
-		char: "\u{1F44E}",
+		char: "\u{1f44e}",
 	},
 	{
 		name: "thumbs up sign",
-		char: "\u{1F44D}",
+		char: "\u{1f44d}",
 	},
 	{
 		name: "thunder",
-		char: "\u{26A1}",
+		char: "\u{26a1}",
 	},
 	{
 		name: "thunderstorm",
@@ -22075,119 +20107,119 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "thunderstorm",
-		char: "\u{26C8}",
+		char: "\u{26c8}",
 	},
 	{
 		name: "tibetan",
-		char: "\u{0F00}",
+		char: "\u{0f00}",
 	},
 	{
 		name: "tibetan anusvara",
-		char: "\u{0F7E}",
+		char: "\u{0f7e}",
 	},
 	{
 		name: "tibetan astrological signs",
-		char: "\u{0F15}",
+		char: "\u{0f15}",
 	},
 	{
 		name: "tibetan cantillation signs",
-		char: "\u{0FC0}",
+		char: "\u{0fc0}",
 	},
 	{
 		name: "tibetan consonants",
-		char: "\u{0F40}",
+		char: "\u{0f40}",
 	},
 	{
 		name: "tibetan dependent vowel signs",
-		char: "\u{0F71}",
+		char: "\u{0f71}",
 	},
 	{
 		name: "tibetan digits",
-		char: "\u{0F20}",
+		char: "\u{0f20}",
 	},
 	{
 		name: "tibetan digits minus half",
-		char: "\u{0F2A}",
+		char: "\u{0f2a}",
 	},
 	{
 		name: "tibetan head marks",
-		char: "\u{0F01}",
+		char: "\u{0f01}",
 	},
 	{
 		name: "tibetan ku ru kha",
-		char: "\u{0FBE}",
+		char: "\u{0fbe}",
 	},
 	{
 		name: "tibetan ku ru kha bzhi mig can",
-		char: "\u{0FBF}",
+		char: "\u{0fbf}",
 	},
 	{
 		name: "tibetan mark delimiter tsheg bstar",
-		char: "\u{0F0C}",
+		char: "\u{0f0c}",
 	},
 	{
 		name: "tibetan mark halanta",
-		char: "\u{0F84}",
+		char: "\u{0f84}",
 	},
 	{
 		name: "tibetan mark intersyllabic tsheg",
-		char: "\u{0F0B}",
+		char: "\u{0f0b}",
 	},
 	{
 		name: "tibetan mark paluta",
-		char: "\u{0F85}",
+		char: "\u{0f85}",
 	},
 	{
 		name: "tibetan marks and signs",
-		char: "\u{0F08}",
+		char: "\u{0f08}",
 	},
 	{
 		name: "tibetan marks and signs",
-		char: "\u{0F34}",
+		char: "\u{0f34}",
 	},
 	{
 		name: "tibetan marks and signs",
-		char: "\u{0F82}",
+		char: "\u{0f82}",
 	},
 	{
 		name: "tibetan marks and signs",
-		char: "\u{0FBE}",
+		char: "\u{0fbe}",
 	},
 	{
 		name: "tibetan sign rjes su nga ro",
-		char: "\u{0F7E}",
+		char: "\u{0f7e}",
 	},
 	{
 		name: "tibetan sign rnam bcad",
-		char: "\u{0F7F}",
+		char: "\u{0f7f}",
 	},
 	{
 		name: "tibetan srog med",
-		char: "\u{0F84}",
+		char: "\u{0f84}",
 	},
 	{
 		name: "tibetan subjoined consonants",
-		char: "\u{0F90}",
+		char: "\u{0f90}",
 	},
 	{
 		name: "tibetan syllable om",
-		char: "\u{0F00}",
+		char: "\u{0f00}",
 	},
 	{
 		name: "tibetan symbols",
-		char: "\u{0FC4}",
+		char: "\u{0fc4}",
 	},
 	{
 		name: "tibetan visarga",
-		char: "\u{0F7F}",
+		char: "\u{0f7f}",
 	},
 	{
 		name: "tibetan vocalic modification",
-		char: "\u{0F7E}",
+		char: "\u{0f7e}",
 	},
 	{
 		name: "tie below, ligature",
-		char: "\u{035C}",
+		char: "\u{035c}",
 	},
 	{
 		name: "tie, character",
@@ -22199,59 +20231,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tifinagh",
-		char: "\u{2D30}",
+		char: "\u{2d30}",
 	},
 	{
 		name: "tiger",
-		char: "\u{1F405}",
+		char: "\u{1f405}",
 	},
 	{
 		name: "tiger face",
-		char: "\u{1F42F}",
+		char: "\u{1f42f}",
 	},
 	{
 		name: "tilde",
-		char: "\u{007E}",
-	},
-	{
-		name: "tilde above, combining not",
-		char: "\u{034A}",
-	},
-	{
-		name: "tilde below, combining",
-		char: "\u{0330}",
+		char: "\u{007e}",
 	},
 	{
 		name: "tilde equals, reversed",
-		char: "\u{22CD}",
+		char: "\u{22cd}",
 	},
 	{
 		name: "tilde mathematical operators",
-		char: "\u{223B}",
+		char: "\u{223b}",
 	},
 	{
 		name: "tilde operator",
-		char: "\u{223C}",
-	},
-	{
-		name: "tilde overlay, combining",
-		char: "\u{0334}",
+		char: "\u{223c}",
 	},
 	{
 		name: "tilde, apl",
-		char: "\u{223C}",
-	},
-	{
-		name: "tilde, combining",
-		char: "\u{0303}",
-	},
-	{
-		name: "tilde, combining double",
-		char: "\u{0360}",
-	},
-	{
-		name: "tilde, combining vertical",
-		char: "\u{033E}",
+		char: "\u{223c}",
 	},
 	{
 		name: "tilde, minus",
@@ -22263,35 +20271,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tilde, reversed",
-		char: "\u{223D}",
+		char: "\u{223d}",
 	},
 	{
 		name: "tilde, small",
-		char: "\u{02DC}",
+		char: "\u{02dc}",
 	},
 	{
 		name: "tilde, spacing",
-		char: "\u{007E}",
+		char: "\u{007e}",
 	},
 	{
 		name: "tilde, triple",
-		char: "\u{224B}",
+		char: "\u{224b}",
 	},
 	{
 		name: "tiles, domino",
-		char: "\u{1F030}",
+		char: "\u{1f030}",
 	},
 	{
 		name: "tiles, mahjong",
-		char: "\u{1F000}",
+		char: "\u{1f000}",
 	},
 	{
 		name: "timer clock",
-		char: "\u{23F2}",
+		char: "\u{23f2}",
 	},
 	{
 		name: "times operator, n-ary",
-		char: "\u{2A09}",
+		char: "\u{2a09}",
 	},
 	{
 		name: "times, circled",
@@ -22299,7 +20307,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "times, division",
-		char: "\u{22C7}",
+		char: "\u{22c7}",
 	},
 	{
 		name: "times, invisible",
@@ -22307,15 +20315,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "times, squared",
-		char: "\u{22A0}",
+		char: "\u{22a0}",
 	},
 	{
 		name: "tiny",
-		char: "\u{29FE}",
+		char: "\u{29fe}",
 	},
 	{
 		name: "tippi, gurmukhi",
-		char: "\u{0A70}",
+		char: "\u{0a70}",
 	},
 	{
 		name: "tirhuta",
@@ -22323,15 +20331,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tironian sign capital et",
-		char: "\u{2E52}",
+		char: "\u{2e52}",
 	},
 	{
 		name: "tironian sign et",
-		char: "\u{204A}",
-	},
-	{
-		name: "titlo left half, combining cyrillic",
-		char: "\u{FE2E}",
+		char: "\u{204a}",
 	},
 	{
 		name: "todo soft hyphen, mongolian",
@@ -22339,59 +20343,47 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tone letters",
-		char: "\u{02E5}",
+		char: "\u{02e5}",
 	},
 	{
 		name: "tone letters, modifier",
-		char: "\u{A700}",
-	},
-	{
-		name: "tone mark, combining acute",
-		char: "\u{0341}",
-	},
-	{
-		name: "tone mark, combining grave",
-		char: "\u{0340}",
+		char: "\u{a700}",
 	},
 	{
 		name: "tone marks for chinese, corner",
-		char: "\u{A700}",
+		char: "\u{a700}",
 	},
 	{
 		name: "tone marks, contour",
-		char: "\u{1DCB}",
+		char: "\u{1dcb}",
 	},
 	{
 		name: "tone marks, ideographic",
-		char: "\u{302A}",
+		char: "\u{302a}",
 	},
 	{
 		name: "tone, mandarin chinese fifth or neutral",
-		char: "\u{02D9}",
+		char: "\u{02d9}",
 	},
 	{
 		name: "tone, mandarin chinese first",
-		char: "\u{02C9}",
+		char: "\u{02c9}",
 	},
 	{
 		name: "tone, mandarin chinese fourth",
-		char: "\u{02CB}",
+		char: "\u{02cb}",
 	},
 	{
 		name: "tone, mandarin chinese second",
-		char: "\u{02CA}",
+		char: "\u{02ca}",
 	},
 	{
 		name: "tone, mandarin chinese third",
-		char: "\u{02C7}",
+		char: "\u{02c7}",
 	},
 	{
 		name: "tongue",
-		char: "\u{1F445}",
-	},
-	{
-		name: "tonos, combining greek dialytika",
-		char: "\u{0344}",
+		char: "\u{1f445}",
 	},
 	{
 		name: "tonos, greek",
@@ -22399,11 +20391,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "tool symbols",
-		char: "\u{1F525}",
+		char: "\u{1f525}",
 	},
 	{
 		name: "top",
-		char: "\u{22A4}",
+		char: "\u{22a4}",
 	},
 	{
 		name: "top half integral",
@@ -22411,7 +20403,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "torii",
-		char: "\u{26E9}",
+		char: "\u{26e9}",
 	},
 	{
 		name: "tortoise shell bracket, left",
@@ -22435,7 +20427,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "total injection",
-		char: "\u{21A3}",
+		char: "\u{21a3}",
 	},
 	{
 		name: "total runout",
@@ -22443,7 +20435,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "total surjection",
-		char: "\u{21A0}",
+		char: "\u{21a0}",
 	},
 	{
 		name: "trade mark sign",
@@ -22451,11 +20443,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "trade mark sign, registered",
-		char: "\u{00AE}",
+		char: "\u{00ae}",
 	},
 	{
 		name: "traffic signs",
-		char: "\u{1F6A5}",
+		char: "\u{1f6a5}",
 	},
 	{
 		name: "transfinite cardinal, first",
@@ -22503,35 +20495,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "transport and map symbols",
-		char: "\u{1F680}",
+		char: "\u{1f680}",
 	},
 	{
 		name: "trapezium, white",
-		char: "\u{23E2}",
+		char: "\u{23e2}",
 	},
 	{
 		name: "trashcan",
-		char: "\u{1F5D1}",
+		char: "\u{1f5d1}",
 	},
 	{
 		name: "triangle symbols",
-		char: "\u{29CA}",
-	},
-	{
-		name: "triangle, combining enclosing upward pointing",
-		char: "\u{20E4}",
+		char: "\u{29ca}",
 	},
 	{
 		name: "triangle, right",
-		char: "\u{22BF}",
+		char: "\u{22bf}",
 	},
 	{
 		name: "triangles",
-		char: "\u{25B2}",
+		char: "\u{25b2}",
 	},
 	{
 		name: "triangles, double",
-		char: "\u{23E9}",
+		char: "\u{23e9}",
 	},
 	{
 		name: "triangular bullet",
@@ -22539,15 +20527,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "triangular colon, modifier letter",
-		char: "\u{02D0}",
+		char: "\u{02d0}",
 	},
 	{
 		name: "triangular colon, modifier letter half",
-		char: "\u{02D1}",
+		char: "\u{02d1}",
 	},
 	{
 		name: "tricolon",
-		char: "\u{205D}",
+		char: "\u{205d}",
 	},
 	{
 		name: "trigram symbols, yijing / i ching",
@@ -22555,15 +20543,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "trine",
-		char: "\u{25B3}",
+		char: "\u{25b3}",
 	},
 	{
 		name: "triple integral",
-		char: "\u{222D}",
+		char: "\u{222d}",
 	},
 	{
 		name: "triple plus",
-		char: "\u{29FB}",
+		char: "\u{29fb}",
 	},
 	{
 		name: "triple prime",
@@ -22575,51 +20563,47 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "triple tilde",
-		char: "\u{224B}",
-	},
-	{
-		name: "triple underdot, combining",
-		char: "\u{20E8}",
+		char: "\u{224b}",
 	},
 	{
 		name: "truck, black",
-		char: "\u{26DF}",
+		char: "\u{26df}",
 	},
 	{
 		name: "true",
-		char: "\u{22A8}",
+		char: "\u{22a8}",
 	},
 	{
 		name: "tsheg bstar, tibetan mark delimiter",
-		char: "\u{0F0C}",
+		char: "\u{0f0c}",
 	},
 	{
 		name: "tsheg, tibetan mark intersyllabic",
-		char: "\u{0F0B}",
+		char: "\u{0f0b}",
 	},
 	{
 		name: "tugrik sign",
-		char: "\u{20AE}",
+		char: "\u{20ae}",
 	},
 	{
 		name: "turban, man with",
-		char: "\u{1F473}",
+		char: "\u{1f473}",
 	},
 	{
 		name: "turbofan",
-		char: "\u{274B}",
+		char: "\u{274b}",
 	},
 	{
 		name: "turkey",
-		char: "\u{1F983}",
+		char: "\u{1f983}",
 	},
 	{
 		name: "turkic, old",
-		char: "\u{10C00}",
+		char: "\u{10c00}",
 	},
 	{
 		name: "turkish lira sign",
-		char: "\u{20BA}",
+		char: "\u{20ba}",
 	},
 	{
 		name: "turned a, latin small letter",
@@ -22627,7 +20611,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "turned ae, latin small letter",
-		char: "\u{1D02}",
+		char: "\u{1d02}",
 	},
 	{
 		name: "turned alpha, latin small letter",
@@ -22635,19 +20619,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "turned ampersand",
-		char: "\u{214B}",
+		char: "\u{214b}",
 	},
 	{
 		name: "turned capital f",
 		char: "\u{2132}",
 	},
 	{
-		name: "turned comma above, combining",
-		char: "\u{0312}",
-	},
-	{
 		name: "turned comma quotation mark, double",
-		char: "\u{201C}",
+		char: "\u{201c}",
 	},
 	{
 		name: "turned comma quotation mark, single",
@@ -22655,19 +20635,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "turned comma, modifier letter",
-		char: "\u{02BB}",
+		char: "\u{02bb}",
 	},
 	{
 		name: "turned delta, latin small letter",
-		char: "\u{018D}",
+		char: "\u{018d}",
 	},
 	{
 		name: "turned e, latin capital letter",
-		char: "\u{018E}",
+		char: "\u{018e}",
 	},
 	{
 		name: "turned e, latin small letter",
-		char: "\u{01DD}",
+		char: "\u{01dd}",
 	},
 	{
 		name: "turned greek small letter iota",
@@ -22675,7 +20655,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "turned h with fishhook, latin small letter",
-		char: "\u{02AE}",
+		char: "\u{02ae}",
 	},
 	{
 		name: "turned h, latin small letter",
@@ -22683,11 +20663,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "turned i, latin small letter",
-		char: "\u{1D09}",
+		char: "\u{1d09}",
 	},
 	{
 		name: "turned k, latin small letter",
-		char: "\u{029E}",
+		char: "\u{029e}",
 	},
 	{
 		name: "turned m with long leg, latin small letter",
@@ -22695,15 +20675,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "turned m, latin capital letter",
-		char: "\u{019C}",
+		char: "\u{019c}",
 	},
 	{
 		name: "turned m, latin small letter",
-		char: "\u{026F}",
+		char: "\u{026f}",
 	},
 	{
 		name: "turned m, latin small letter sideways",
-		char: "\u{1D1F}",
+		char: "\u{1d1f}",
 	},
 	{
 		name: "turned not sign",
@@ -22711,27 +20691,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "turned oe, latin small letter",
-		char: "\u{1D14}",
+		char: "\u{1d14}",
 	},
 	{
 		name: "turned open e, latin small letter",
-		char: "\u{1D08}",
+		char: "\u{1d08}",
 	},
 	{
 		name: "turned question mark",
-		char: "\u{00BF}",
+		char: "\u{00bf}",
 	},
 	{
 		name: "turned r with hook, latin small letter",
-		char: "\u{027B}",
+		char: "\u{027b}",
 	},
 	{
 		name: "turned r with long leg, latin small letter",
-		char: "\u{027A}",
+		char: "\u{027a}",
 	},
 	{
 		name: "turned r, latin letter small capital",
-		char: "\u{1D1A}",
+		char: "\u{1d1a}",
 	},
 	{
 		name: "turned r, latin small letter",
@@ -22739,7 +20719,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "turned r, modifier letter small",
-		char: "\u{02B4}",
+		char: "\u{02b4}",
 	},
 	{
 		name: "turned sans-serif capital g",
@@ -22755,7 +20735,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "turned small f",
-		char: "\u{214E}",
+		char: "\u{214e}",
 	},
 	{
 		name: "turned t, latin small letter",
@@ -22767,39 +20747,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "turned v, latin small letter",
-		char: "\u{028C}",
+		char: "\u{028c}",
 	},
 	{
 		name: "turned w, latin small letter",
-		char: "\u{028D}",
+		char: "\u{028d}",
 	},
 	{
 		name: "turned y, latin small letter",
-		char: "\u{028E}",
+		char: "\u{028e}",
 	},
 	{
 		name: "turnstile",
-		char: "\u{22A2}",
+		char: "\u{22a2}",
 	},
 	{
 		name: "turnstile, reverse",
-		char: "\u{22A3}",
+		char: "\u{22a3}",
 	},
 	{
 		name: "turnstiles, tacks and",
-		char: "\u{22A2}",
+		char: "\u{22a2}",
 	},
 	{
 		name: "turnstiles, tacks and",
-		char: "\u{27D8}",
+		char: "\u{27d8}",
 	},
 	{
 		name: "turnstiles, tacks and",
-		char: "\u{2ADE}",
+		char: "\u{2ade}",
 	},
 	{
 		name: "turtle",
-		char: "\u{1F422}",
+		char: "\u{1f422}",
 	},
 	{
 		name: "two asterisks aligned vertically",
@@ -22811,19 +20791,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "two dot punctuation",
-		char: "\u{205A}",
+		char: "\u{205a}",
 	},
 	{
 		name: "two, superscript",
-		char: "\u{00B2}",
+		char: "\u{00b2}",
 	},
 	{
 		name: "two-em dash",
-		char: "\u{2E3A}",
+		char: "\u{2e3a}",
 	},
 	{
 		name: "type a electronics, symbol for",
-		char: "\u{2B97}",
+		char: "\u{2b97}",
 	},
 	{
 		name: "type b electronics, symbol for",
@@ -22831,15 +20811,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "typicon punctuation",
-		char: "\u{2E44}",
+		char: "\u{2e44}",
 	},
 	{
 		name: "typicon symbols",
-		char: "\u{1F900}",
+		char: "\u{1f900}",
 	},
 	{
 		name: "tyrannosaurus rex",
-		char: "\u{1F996}",
+		char: "\u{1f996}",
 	},
 	{
 		name: "u bar, latin capital letter",
@@ -22851,47 +20831,47 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "u with acute, latin capital letter",
-		char: "\u{00DA}",
+		char: "\u{00da}",
 	},
 	{
 		name: "u with acute, latin small letter",
-		char: "\u{00FA}",
+		char: "\u{00fa}",
 	},
 	{
 		name: "u with breve, latin small letter",
-		char: "\u{016D}",
+		char: "\u{016d}",
 	},
 	{
 		name: "u with caron, latin small letter",
-		char: "\u{01D4}",
+		char: "\u{01d4}",
 	},
 	{
 		name: "u with circumflex below, latin small letter",
-		char: "\u{1E77}",
+		char: "\u{1e77}",
 	},
 	{
 		name: "u with circumflex, latin capital letter",
-		char: "\u{00DB}",
+		char: "\u{00db}",
 	},
 	{
 		name: "u with circumflex, latin small letter",
-		char: "\u{00FB}",
+		char: "\u{00fb}",
 	},
 	{
 		name: "u with diaeresis below, latin small letter",
-		char: "\u{1E73}",
+		char: "\u{1e73}",
 	},
 	{
 		name: "u with diaeresis, latin capital letter",
-		char: "\u{00DC}",
+		char: "\u{00dc}",
 	},
 	{
 		name: "u with diaeresis, latin small letter",
-		char: "\u{00FC}",
+		char: "\u{00fc}",
 	},
 	{
 		name: "u with dot below, latin small letter",
-		char: "\u{1EE5}",
+		char: "\u{1ee5}",
 	},
 	{
 		name: "u with double acute, latin small letter",
@@ -22903,19 +20883,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "u with grave, latin capital letter",
-		char: "\u{00D9}",
+		char: "\u{00d9}",
 	},
 	{
 		name: "u with grave, latin small letter",
-		char: "\u{00F9}",
+		char: "\u{00f9}",
 	},
 	{
 		name: "u with hook above, latin small letter",
-		char: "\u{1EE7}",
+		char: "\u{1ee7}",
 	},
 	{
 		name: "u with horn, latin small letter",
-		char: "\u{01B0}",
+		char: "\u{01b0}",
 	},
 	{
 		name: "u with inverted breve, latin small letter",
@@ -22923,7 +20903,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "u with macron, latin small letter",
-		char: "\u{016B}",
+		char: "\u{016b}",
 	},
 	{
 		name: "u with ogonek, latin small letter",
@@ -22931,35 +20911,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "u with ring above, latin small letter",
-		char: "\u{016F}",
+		char: "\u{016f}",
 	},
 	{
 		name: "u with tilde below, latin small letter",
-		char: "\u{1E75}",
+		char: "\u{1e75}",
 	},
 	{
 		name: "u with tilde, latin small letter",
 		char: "\u{0169}",
 	},
 	{
-		name: "u, combining latin small letter",
-		char: "\u{0367}",
-	},
-	{
 		name: "u, latin letter small capital",
-		char: "\u{1D1C}",
+		char: "\u{1d1c}",
 	},
 	{
 		name: "u, latin small letter sideways",
-		char: "\u{1D1D}",
+		char: "\u{1d1d}",
 	},
 	{
 		name: "u, latin small letter sideways diaeresized",
-		char: "\u{1D1E}",
+		char: "\u{1d1e}",
 	},
 	{
 		name: "u, latin subscript small letter",
-		char: "\u{1D64}",
+		char: "\u{1d64}",
 	},
 	{
 		name: "ugaritic",
@@ -22967,7 +20943,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "ukrainian currency",
-		char: "\u{20B4}",
+		char: "\u{20b4}",
 	},
 	{
 		name: "umbrella",
@@ -22975,7 +20951,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "umbrella on ground",
-		char: "\u{26F1}",
+		char: "\u{26f1}",
 	},
 	{
 		name: "umbrella with rain drops",
@@ -22987,15 +20963,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "unaspirated, modifier letter",
-		char: "\u{02ED}",
+		char: "\u{02ed}",
 	},
 	{
 		name: "uncertainty sign",
-		char: "\u{2BD1}",
-	},
-	{
-		name: "underdot, combining triple",
-		char: "\u{20E8}",
+		char: "\u{2bd1}",
 	},
 	{
 		name: "underline",
@@ -23023,7 +20995,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "underscore, spacing",
-		char: "\u{005F}",
+		char: "\u{005f}",
 	},
 	{
 		name: "underscore, spacing double",
@@ -23031,11 +21003,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "underscores, overscores and",
-		char: "\u{FE49}",
+		char: "\u{fe49}",
 	},
 	{
 		name: "undertie",
-		char: "\u{203F}",
+		char: "\u{203f}",
 	},
 	{
 		name: "undertie, inverted",
@@ -23043,11 +21015,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "undo symbol",
-		char: "\u{238C}",
+		char: "\u{238c}",
 	},
 	{
 		name: "unicorn face",
-		char: "\u{1F984}",
+		char: "\u{1f984}",
 	},
 	{
 		name: "unified canadian aboriginal syllabics",
@@ -23055,7 +21027,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "unified canadian aboriginal syllabics extended",
-		char: "\u{18B0}",
+		char: "\u{18b0}",
 	},
 	{
 		name: "unified ideographs extension a, cjk",
@@ -23067,39 +21039,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "unified ideographs extension c, cjk",
-		char: "\u{2A700}",
+		char: "\u{2a700}",
 	},
 	{
 		name: "unified ideographs extension d, cjk",
-		char: "\u{2B740}",
+		char: "\u{2b740}",
 	},
 	{
 		name: "unified ideographs, cjk",
-		char: "\u{4E00}",
+		char: "\u{4e00}",
 	},
 	{
 		name: "union",
-		char: "\u{222A}",
+		char: "\u{222a}",
 	},
 	{
 		name: "union, double",
-		char: "\u{22D3}",
+		char: "\u{22d3}",
 	},
 	{
 		name: "union, generalized",
-		char: "\u{22C3}",
+		char: "\u{22c3}",
 	},
 	{
 		name: "union, multiset",
-		char: "\u{228E}",
+		char: "\u{228e}",
 	},
 	{
 		name: "union, n-ary",
-		char: "\u{22C3}",
+		char: "\u{22c3}",
 	},
 	{
 		name: "unions, intersections and",
-		char: "\u{2A40}",
+		char: "\u{2a40}",
 	},
 	{
 		name: "unique element",
@@ -23107,11 +21079,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "unit separator",
-		char: "\u{001F}",
+		char: "\u{001f}",
 	},
 	{
 		name: "unit separator, symbol for",
-		char: "\u{241F}",
+		char: "\u{241f}",
 	},
 	{
 		name: "universal quantifier",
@@ -23123,7 +21095,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "unmarried partnership symbol",
-		char: "\u{26AF}",
+		char: "\u{26af}",
 	},
 	{
 		name: "up arrowhead",
@@ -23131,23 +21103,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "up pointing index, white",
-		char: "\u{261D}",
+		char: "\u{261d}",
 	},
 	{
 		name: "up right diagonal ellipsis",
-		char: "\u{22F0}",
+		char: "\u{22f0}",
 	},
 	{
 		name: "up tack",
-		char: "\u{22A5}",
-	},
-	{
-		name: "up tack below, combining",
-		char: "\u{031D}",
+		char: "\u{22a5}",
 	},
 	{
 		name: "up tack, modifier letter",
-		char: "\u{02D4}",
+		char: "\u{02d4}",
 	},
 	{
 		name: "up, close",
@@ -23155,15 +21123,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "up, fast cursor",
-		char: "\u{219F}",
+		char: "\u{219f}",
 	},
 	{
 		name: "up, page",
-		char: "\u{21DE}",
+		char: "\u{21de}",
 	},
 	{
 		name: "upa modifiers",
-		char: "\u{02EF}",
+		char: "\u{02ef}",
 	},
 	{
 		name: "upper blade scissors",
@@ -23171,7 +21139,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "upper integral",
-		char: "\u{2A1B}",
+		char: "\u{2a1b}",
 	},
 	{
 		name: "upper right pencil",
@@ -23183,27 +21151,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "upsilon, latin capital letter",
-		char: "\u{01B1}",
+		char: "\u{01b1}",
 	},
 	{
 		name: "upsilon, latin small letter",
-		char: "\u{028A}",
+		char: "\u{028a}",
 	},
 	{
 		name: "upstile, apl",
 		char: "\u{2308}",
 	},
 	{
-		name: "upward pointing triangle, combining enclosing",
-		char: "\u{20E4}",
-	},
-	{
 		name: "upwards arrow",
 		char: "\u{2191}",
-	},
-	{
-		name: "upwards arrow below, combining",
-		char: "\u{034E}",
 	},
 	{
 		name: "uralic phonetic alphabet, diacritics for",
@@ -23215,59 +21175,55 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "uranus",
-		char: "\u{26E2}",
+		char: "\u{26e2}",
 	},
 	{
 		name: "urdu paragraph separator",
-		char: "\u{203B}",
+		char: "\u{203b}",
 	},
 	{
 		name: "urn, funeral",
-		char: "\u{26B1}",
+		char: "\u{26b1}",
 	},
 	{
 		name: "user interface input status symbols",
-		char: "\u{1F520}",
+		char: "\u{1f520}",
 	},
 	{
 		name: "user interface symbols",
-		char: "\u{1F500}",
+		char: "\u{1f500}",
 	},
 	{
 		name: "user interface symbols",
-		char: "\u{1F53A}",
+		char: "\u{1f53a}",
 	},
 	{
 		name: "user interface symbols",
-		char: "\u{1F5BF}",
+		char: "\u{1f5bf}",
 	},
 	{
 		name: "v above",
-		char: "\u{030C}",
+		char: "\u{030c}",
 	},
 	{
 		name: "v with dot below, latin small letter",
-		char: "\u{1E7F}",
+		char: "\u{1e7f}",
 	},
 	{
 		name: "v with hook, latin capital letter",
-		char: "\u{01B2}",
+		char: "\u{01b2}",
 	},
 	{
 		name: "v with hook, latin small letter",
-		char: "\u{028B}",
+		char: "\u{028b}",
 	},
 	{
 		name: "v with tilde, latin small letter",
-		char: "\u{1E7D}",
-	},
-	{
-		name: "v, combining latin small letter",
-		char: "\u{036E}",
+		char: "\u{1e7d}",
 	},
 	{
 		name: "v, latin capital letter script",
-		char: "\u{01B2}",
+		char: "\u{01b2}",
 	},
 	{
 		name: "v, latin capital letter turned",
@@ -23275,23 +21231,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "v, latin letter small capital",
-		char: "\u{1D20}",
+		char: "\u{1d20}",
 	},
 	{
 		name: "v, latin small letter script",
-		char: "\u{028B}",
+		char: "\u{028b}",
 	},
 	{
 		name: "v, latin small letter turned",
-		char: "\u{028C}",
+		char: "\u{028c}",
 	},
 	{
 		name: "v, latin subscript small letter",
-		char: "\u{1D65}",
+		char: "\u{1d65}",
 	},
 	{
 		name: "vai",
-		char: "\u{A500}",
+		char: "\u{a500}",
 	},
 	{
 		name: "valentine",
@@ -23299,15 +21255,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "valid",
-		char: "\u{22A8}",
+		char: "\u{22a8}",
 	},
 	{
 		name: "vampire",
-		char: "\u{1F9DB}",
+		char: "\u{1f9db}",
 	},
 	{
 		name: "varavu, tamil",
-		char: "\u{0BF7}",
+		char: "\u{0bf7}",
 	},
 	{
 		name: "varia, greek",
@@ -23315,51 +21271,51 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "variation indicator, ideographic",
-		char: "\u{303E}",
+		char: "\u{303e}",
 	},
 	{
 		name: "variation selector one, mongolian free",
-		char: "\u{180B}",
+		char: "\u{180b}",
 	},
 	{
 		name: "variation selector three, mongolian free",
-		char: "\u{180D}",
+		char: "\u{180d}",
 	},
 	{
 		name: "variation selector two, mongolian free",
-		char: "\u{180C}",
+		char: "\u{180c}",
 	},
 	{
 		name: "variation selector-1",
-		char: "\u{FE00}",
+		char: "\u{fe00}",
 	},
 	{
 		name: "variation selectors",
-		char: "\u{FE00}",
+		char: "\u{fe00}",
 	},
 	{
 		name: "variation selectors supplement",
-		char: "\u{E0100}",
+		char: "\u{e0100}",
 	},
 	{
 		name: "varies with",
-		char: "\u{223C}",
+		char: "\u{223c}",
 	},
 	{
 		name: "varudam, tamil",
-		char: "\u{0BF5}",
+		char: "\u{0bf5}",
 	},
 	{
 		name: "vector",
-		char: "\u{20D1}",
+		char: "\u{20d1}",
 	},
 	{
 		name: "vector",
-		char: "\u{20D7}",
+		char: "\u{20d7}",
 	},
 	{
 		name: "vector or cross product",
-		char: "\u{2A2F}",
+		char: "\u{2a2f}",
 	},
 	{
 		name: "vector pointing into page",
@@ -23375,11 +21331,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "vedic extensions",
-		char: "\u{1CD0}",
+		char: "\u{1cd0}",
 	},
 	{
 		name: "vedic signs",
-		char: "\u{0CF1}",
+		char: "\u{0cf1}",
 	},
 	{
 		name: "vedic tone marks",
@@ -23391,15 +21347,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "vegetable symbols, fruit and",
-		char: "\u{1F345}",
+		char: "\u{1f345}",
 	},
 	{
 		name: "vehicle symbols",
-		char: "\u{1F6E5}",
+		char: "\u{1f6e5}",
 	},
 	{
 		name: "vehicles",
-		char: "\u{1F680}",
+		char: "\u{1f680}",
 	},
 	{
 		name: "venus",
@@ -23411,7 +21367,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "vertical bar",
-		char: "\u{007C}",
+		char: "\u{007c}",
 	},
 	{
 		name: "vertical bar delimiter, triple",
@@ -23423,71 +21379,47 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "vertical bar, broken",
-		char: "\u{00A6}",
+		char: "\u{00a6}",
 	},
 	{
 		name: "vertical bar, n-ary white",
-		char: "\u{2AFF}",
+		char: "\u{2aff}",
 	},
 	{
 		name: "vertical bar, white",
-		char: "\u{2AFE}",
+		char: "\u{2afe}",
 	},
 	{
 		name: "vertical bowtie",
-		char: "\u{29D6}",
+		char: "\u{29d6}",
 	},
 	{
 		name: "vertical ellipsis",
-		char: "\u{22EE}",
+		char: "\u{22ee}",
 	},
 	{
 		name: "vertical form variants",
-		char: "\u{FE30}",
+		char: "\u{fe30}",
 	},
 	{
 		name: "vertical four dots",
-		char: "\u{205E}",
+		char: "\u{205e}",
 	},
 	{
 		name: "vertical ideographic iteration mark",
-		char: "\u{303B}",
+		char: "\u{303b}",
 	},
 	{
 		name: "vertical line",
-		char: "\u{007C}",
-	},
-	{
-		name: "vertical line above, combining",
-		char: "\u{030D}",
-	},
-	{
-		name: "vertical line above, combining double",
-		char: "\u{030E}",
-	},
-	{
-		name: "vertical line below, combining",
-		char: "\u{0329}",
-	},
-	{
-		name: "vertical line below, combining double",
-		char: "\u{0348}",
+		char: "\u{007c}",
 	},
 	{
 		name: "vertical line operators",
-		char: "\u{2AEE}",
-	},
-	{
-		name: "vertical line overlay, combining long",
-		char: "\u{20D2}",
-	},
-	{
-		name: "vertical line overlay, combining short",
-		char: "\u{20D3}",
+		char: "\u{2aee}",
 	},
 	{
 		name: "vertical line with middle dot",
-		char: "\u{237F}",
+		char: "\u{237f}",
 	},
 	{
 		name: "vertical line, double",
@@ -23495,47 +21427,39 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "vertical line, modifier letter",
-		char: "\u{02C8}",
+		char: "\u{02c8}",
 	},
 	{
 		name: "vertical line, modifier letter low",
-		char: "\u{02CC}",
+		char: "\u{02cc}",
 	},
 	{
 		name: "vertical lines",
 		char: "\u{2223}",
 	},
 	{
-		name: "vertical stroke overlay, combining double",
-		char: "\u{20E6}",
-	},
-	{
 		name: "vertical tabulation",
-		char: "\u{000B}",
+		char: "\u{000b}",
 	},
 	{
 		name: "vertical tabulation, symbol for",
-		char: "\u{240B}",
+		char: "\u{240b}",
 	},
 	{
 		name: "vertical text, bracket variants for",
-		char: "\u{23DC}",
+		char: "\u{23dc}",
 	},
 	{
 		name: "vertical text, double punctuation for",
 		char: "\u{2047}",
 	},
 	{
-		name: "vertical tilde, combining",
-		char: "\u{033E}",
+		name: "vertical variants, glyphs for",
+		char: "\u{fe10}",
 	},
 	{
 		name: "vertical variants, glyphs for",
-		char: "\u{FE10}",
-	},
-	{
-		name: "vertical variants, glyphs for",
-		char: "\u{FE30}",
+		char: "\u{fe30}",
 	},
 	{
 		name: "vertsaket, armenian",
@@ -23543,23 +21467,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "very much greater-than",
-		char: "\u{22D9}",
+		char: "\u{22d9}",
 	},
 	{
 		name: "very much less-than",
-		char: "\u{22D8}",
+		char: "\u{22d8}",
 	},
 	{
 		name: "victory hand",
-		char: "\u{270C}",
+		char: "\u{270c}",
 	},
 	{
 		name: "video symbols, audio and",
-		char: "\u{1F4F7}",
+		char: "\u{1f4f7}",
 	},
 	{
 		name: "vietnamese currency",
-		char: "\u{20AB}",
+		char: "\u{20ab}",
 	},
 	{
 		name: "viewdata square",
@@ -23579,11 +21503,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "virama, devanagari sign",
-		char: "\u{094D}",
+		char: "\u{094d}",
 	},
 	{
 		name: "virama, malayalam sign",
-		char: "\u{0D4D}",
+		char: "\u{0d4d}",
 	},
 	{
 		name: "virama, myanmar sign",
@@ -23591,7 +21515,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "virama, sinhala",
-		char: "\u{0DCA}",
+		char: "\u{0dca}",
 	},
 	{
 		name: "virama, tagalog sign",
@@ -23599,11 +21523,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "virgo",
-		char: "\u{264D}",
+		char: "\u{264d}",
 	},
 	{
 		name: "virgule",
-		char: "\u{002F}",
+		char: "\u{002f}",
 	},
 	{
 		name: "visarga, devanagari sign",
@@ -23611,15 +21535,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "visarga, khmer",
-		char: "\u{17C7}",
+		char: "\u{17c7}",
 	},
 	{
 		name: "visarga, tamil sign",
-		char: "\u{0B83}",
+		char: "\u{0b83}",
 	},
 	{
 		name: "visarga, tibetan",
-		char: "\u{0F7F}",
+		char: "\u{0f7f}",
 	},
 	{
 		name: "voiced fricative, latin letter pharyngeal",
@@ -23627,23 +21551,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "voiced iteration mark, hiragana",
-		char: "\u{309E}",
+		char: "\u{309e}",
 	},
 	{
 		name: "voiced iteration mark, katakana",
-		char: "\u{30FE}",
+		char: "\u{30fe}",
 	},
 	{
 		name: "voicing, modifier letter",
-		char: "\u{02EC}",
+		char: "\u{02ec}",
 	},
 	{
 		name: "volcano",
-		char: "\u{1F30B}",
+		char: "\u{1f30b}",
 	},
 	{
 		name: "voltage sign, high",
-		char: "\u{26A1}",
+		char: "\u{26a1}",
 	},
 	{
 		name: "volume integral",
@@ -23655,19 +21579,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "vs1",
-		char: "\u{FE00}",
+		char: "\u{fe00}",
 	},
 	{
 		name: "vs17",
-		char: "\u{E0100}",
+		char: "\u{e0100}",
 	},
 	{
 		name: "vt",
-		char: "\u{000B}",
+		char: "\u{000b}",
 	},
 	{
 		name: "vulgar fraction one half",
-		char: "\u{00BD}",
+		char: "\u{00bd}",
 	},
 	{
 		name: "vulgar fraction one ninth",
@@ -23675,7 +21599,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "vulgar fraction one quarter",
-		char: "\u{00BC}",
+		char: "\u{00bc}",
 	},
 	{
 		name: "vulgar fraction one seventh",
@@ -23687,7 +21611,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "vulgar fraction three quarters",
-		char: "\u{00BE}",
+		char: "\u{00be}",
 	},
 	{
 		name: "vulgar fractions",
@@ -23695,7 +21619,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "w with acute, latin small letter",
-		char: "\u{1E83}",
+		char: "\u{1e83}",
 	},
 	{
 		name: "w with circumflex, latin small letter",
@@ -23703,35 +21627,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "w with diaeresis, latin small letter",
-		char: "\u{1E85}",
+		char: "\u{1e85}",
 	},
 	{
 		name: "w with dot above, latin small letter",
-		char: "\u{1E87}",
+		char: "\u{1e87}",
 	},
 	{
 		name: "w with dot below, latin small letter",
-		char: "\u{1E89}",
+		char: "\u{1e89}",
 	},
 	{
 		name: "w with grave, latin small letter",
-		char: "\u{1E81}",
+		char: "\u{1e81}",
 	},
 	{
 		name: "w with ring above, latin small letter",
-		char: "\u{1E98}",
+		char: "\u{1e98}",
 	},
 	{
 		name: "w, latin letter small capital",
-		char: "\u{1D21}",
+		char: "\u{1d21}",
 	},
 	{
 		name: "w, latin small letter turned",
-		char: "\u{028D}",
+		char: "\u{028d}",
 	},
 	{
 		name: "w, modifier letter small",
-		char: "\u{02B7}",
+		char: "\u{02b7}",
 	},
 	{
 		name: "waiting, message",
@@ -23739,15 +21663,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "wancho",
-		char: "\u{1E2C0}",
+		char: "\u{1e2c0}",
 	},
 	{
 		name: "warang citi",
-		char: "\u{118A0}",
+		char: "\u{118a0}",
 	},
 	{
 		name: "warning sign",
-		char: "\u{26A0}",
+		char: "\u{26a0}",
 	},
 	{
 		name: "warning signs",
@@ -23755,31 +21679,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "wastebasket",
-		char: "\u{1F5D1}",
+		char: "\u{1f5d1}",
 	},
 	{
 		name: "watch",
-		char: "\u{231A}",
+		char: "\u{231a}",
 	},
 	{
 		name: "water buffalo",
-		char: "\u{1F403}",
+		char: "\u{1f403}",
 	},
 	{
 		name: "wave dash",
-		char: "\u{301C}",
+		char: "\u{301c}",
 	},
 	{
 		name: "wave, sine",
-		char: "\u{223F}",
+		char: "\u{223f}",
 	},
 	{
 		name: "wave, water",
-		char: "\u{1F30A}",
+		char: "\u{1f30a}",
 	},
 	{
 		name: "waving hand sign",
-		char: "\u{1F44B}",
+		char: "\u{1f44b}",
 	},
 	{
 		name: "wavy dash",
@@ -23791,15 +21715,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "wavy low line",
-		char: "\u{FE4F}",
+		char: "\u{fe4f}",
 	},
 	{
 		name: "wavy overline",
-		char: "\u{FE4B}",
+		char: "\u{fe4b}",
 	},
 	{
 		name: "wavy overline, double",
-		char: "\u{FE4C}",
+		char: "\u{fe4c}",
 	},
 	{
 		name: "weather and astrological symbols",
@@ -23807,7 +21731,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "weather symbols",
-		char: "\u{1F321}",
+		char: "\u{1f321}",
 	},
 	{
 		name: "weather, clear",
@@ -23819,7 +21743,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "weather, landscape, and sky symbols",
-		char: "\u{1F300}",
+		char: "\u{1f300}",
 	},
 	{
 		name: "weather, rainy",
@@ -23835,7 +21759,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "wedge",
-		char: "\u{028C}",
+		char: "\u{028c}",
 	},
 	{
 		name: "wedge",
@@ -23851,11 +21775,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "whale",
-		char: "\u{1F40B}",
+		char: "\u{1f40b}",
 	},
 	{
 		name: "whale, spouting",
-		char: "\u{1F433}",
+		char: "\u{1f433}",
 	},
 	{
 		name: "wheel of dharma",
@@ -23863,35 +21787,35 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "wheelchair symbol",
-		char: "\u{267F}",
+		char: "\u{267f}",
 	},
 	{
 		name: "white bullet",
-		char: "\u{25E6}",
+		char: "\u{25e6}",
 	},
 	{
 		name: "white circle",
-		char: "\u{25CB}",
+		char: "\u{25cb}",
 	},
 	{
 		name: "white circle, medium",
-		char: "\u{26AA}",
+		char: "\u{26aa}",
 	},
 	{
 		name: "white circle, medium small",
-		char: "\u{26AC}",
+		char: "\u{26ac}",
 	},
 	{
 		name: "white circle, shadowed",
-		char: "\u{274D}",
+		char: "\u{274d}",
 	},
 	{
 		name: "white corner bracket, left",
-		char: "\u{300E}",
+		char: "\u{300e}",
 	},
 	{
 		name: "white corner bracket, right",
-		char: "\u{300F}",
+		char: "\u{300f}",
 	},
 	{
 		name: "white curly bracket, left",
@@ -23903,7 +21827,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "white down pointing index",
-		char: "\u{261F}",
+		char: "\u{261f}",
 	},
 	{
 		name: "white flag",
@@ -23911,7 +21835,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "white framus",
-		char: "\u{29D6}",
+		char: "\u{29d6}",
 	},
 	{
 		name: "white frowning face",
@@ -23919,7 +21843,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "white left pointing index",
-		char: "\u{261C}",
+		char: "\u{261c}",
 	},
 	{
 		name: "white lenticular bracket, left",
@@ -23935,7 +21859,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "white on black circled numbers",
-		char: "\u{24EB}",
+		char: "\u{24eb}",
 	},
 	{
 		name: "white parenthesis, left",
@@ -23947,7 +21871,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "white right pointing index",
-		char: "\u{261E}",
+		char: "\u{261e}",
 	},
 	{
 		name: "white scissors",
@@ -23955,7 +21879,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "white sesame dot",
-		char: "\u{FE46}",
+		char: "\u{fe46}",
 	},
 	{
 		name: "white shogi piece",
@@ -23963,15 +21887,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "white smiling face",
-		char: "\u{263A}",
+		char: "\u{263a}",
 	},
 	{
 		name: "white square bracket, left",
-		char: "\u{301A}",
+		char: "\u{301a}",
 	},
 	{
 		name: "white square bracket, right",
-		char: "\u{301B}",
+		char: "\u{301b}",
 	},
 	{
 		name: "white star",
@@ -23979,11 +21903,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "white sun with rays",
-		char: "\u{263C}",
+		char: "\u{263c}",
 	},
 	{
 		name: "white telephone",
-		char: "\u{260F}",
+		char: "\u{260f}",
 	},
 	{
 		name: "white tortoise shell bracket, left",
@@ -23995,35 +21919,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "white trapezium",
-		char: "\u{23E2}",
+		char: "\u{23e2}",
 	},
 	{
 		name: "white up pointing index",
-		char: "\u{261D}",
+		char: "\u{261d}",
 	},
 	{
 		name: "white vertical bar",
-		char: "\u{2AFE}",
+		char: "\u{2afe}",
 	},
 	{
 		name: "white vertical bar, n-ary",
-		char: "\u{2AFF}",
-	},
-	{
-		name: "wide bridge above, combining",
-		char: "\u{20E9}",
+		char: "\u{2aff}",
 	},
 	{
 		name: "wiggly fences",
-		char: "\u{29D8}",
+		char: "\u{29d8}",
 	},
 	{
 		name: "wiggly vertical line",
-		char: "\u{2E3E}",
+		char: "\u{2e3e}",
 	},
 	{
 		name: "wing",
-		char: "\u{1FABD}",
+		char: "\u{1fabd}",
 	},
 	{
 		name: "wj",
@@ -24031,27 +21951,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "wolf face",
-		char: "\u{1F43A}",
+		char: "\u{1f43a}",
 	},
 	{
 		name: "woman",
-		char: "\u{1F469}",
+		char: "\u{1f469}",
 	},
 	{
 		name: "woman with bunny ears",
-		char: "\u{1F46F}",
+		char: "\u{1f46f}",
 	},
 	{
 		name: "woman, older",
-		char: "\u{1F475}",
+		char: "\u{1f475}",
 	},
 	{
 		name: "women holding hands, two",
-		char: "\u{1F46D}",
+		char: "\u{1f46d}",
 	},
 	{
 		name: "won sign",
-		char: "\u{20A9}",
+		char: "\u{20a9}",
 	},
 	{
 		name: "word joiner",
@@ -24059,7 +21979,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "word separator middle dot",
-		char: "\u{2E31}",
+		char: "\u{2e31}",
 	},
 	{
 		name: "word separators, aegean",
@@ -24083,27 +22003,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "writing hand",
-		char: "\u{270D}",
+		char: "\u{270d}",
 	},
 	{
 		name: "writing hand, left",
-		char: "\u{1F58E}",
+		char: "\u{1f58e}",
 	},
 	{
 		name: "wynn, latin capital letter",
-		char: "\u{01F7}",
+		char: "\u{01f7}",
 	},
 	{
 		name: "wynn, latin letter",
-		char: "\u{01BF}",
-	},
-	{
-		name: "x above, combining",
-		char: "\u{033D}",
-	},
-	{
-		name: "x below, combining",
-		char: "\u{0353}",
+		char: "\u{01bf}",
 	},
 	{
 		name: "x in a rectangle box",
@@ -24111,11 +22023,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "x with diaeresis, latin small letter",
-		char: "\u{1E8D}",
+		char: "\u{1e8d}",
 	},
 	{
 		name: "x with dot above, latin small letter",
-		char: "\u{1E8B}",
+		char: "\u{1e8b}",
 	},
 	{
 		name: "x, ballot",
@@ -24127,11 +22039,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "x, cancellation",
-		char: "\u{1F5D9}",
-	},
-	{
-		name: "x, combining latin small letter",
-		char: "\u{036F}",
+		char: "\u{1f5d9}",
 	},
 	{
 		name: "x, heavy ballot",
@@ -24143,7 +22051,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "x, modifier letter small",
-		char: "\u{02E3}",
+		char: "\u{02e3}",
 	},
 	{
 		name: "x, multiplication",
@@ -24151,19 +22059,19 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "xiangqi chess symbols, chinese",
-		char: "\u{1FA60}",
+		char: "\u{1fa60}",
 	},
 	{
 		name: "xor",
-		char: "\u{22BB}",
+		char: "\u{22bb}",
 	},
 	{
 		name: "y with acute, latin capital letter",
-		char: "\u{00DD}",
+		char: "\u{00dd}",
 	},
 	{
 		name: "y with acute, latin small letter",
-		char: "\u{00FD}",
+		char: "\u{00fd}",
 	},
 	{
 		name: "y with circumflex, latin small letter",
@@ -24175,27 +22083,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "y with diaeresis, latin small letter",
-		char: "\u{00FF}",
+		char: "\u{00ff}",
 	},
 	{
 		name: "y with dot above, latin small letter",
-		char: "\u{1E8F}",
+		char: "\u{1e8f}",
 	},
 	{
 		name: "y with dot below, latin small letter",
-		char: "\u{1EF5}",
+		char: "\u{1ef5}",
 	},
 	{
 		name: "y with grave, latin small letter",
-		char: "\u{1EF3}",
+		char: "\u{1ef3}",
 	},
 	{
 		name: "y with hook above, latin small letter",
-		char: "\u{1EF7}",
+		char: "\u{1ef7}",
 	},
 	{
 		name: "y with hook, latin small letter",
-		char: "\u{01B4}",
+		char: "\u{01b4}",
 	},
 	{
 		name: "y with macron, latin small letter",
@@ -24203,31 +22111,31 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "y with ring above, latin small letter",
-		char: "\u{1E99}",
+		char: "\u{1e99}",
 	},
 	{
 		name: "y with stroke, latin capital letter",
-		char: "\u{024E}",
+		char: "\u{024e}",
 	},
 	{
 		name: "y with stroke, latin small letter",
-		char: "\u{024F}",
+		char: "\u{024f}",
 	},
 	{
 		name: "y with tilde, latin small letter",
-		char: "\u{1EF9}",
+		char: "\u{1ef9}",
 	},
 	{
 		name: "y, latin letter small capital",
-		char: "\u{028F}",
+		char: "\u{028f}",
 	},
 	{
 		name: "y, latin small letter turned",
-		char: "\u{028E}",
+		char: "\u{028e}",
 	},
 	{
 		name: "y, modifier letter small",
-		char: "\u{02B8}",
+		char: "\u{02b8}",
 	},
 	{
 		name: "y, turned sans-serif capital",
@@ -24235,55 +22143,55 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "yamakkan, thai character",
-		char: "\u{0E4E}",
+		char: "\u{0e4e}",
 	},
 	{
 		name: "year sign, tamil",
-		char: "\u{0BF5}",
+		char: "\u{0bf5}",
 	},
 	{
 		name: "yen sign",
-		char: "\u{00A5}",
+		char: "\u{00a5}",
 	},
 	{
 		name: "yentamna, armenian",
-		char: "\u{058A}",
+		char: "\u{058a}",
 	},
 	{
 		name: "yezidi",
-		char: "\u{10E80}",
+		char: "\u{10e80}",
 	},
 	{
 		name: "yi radicals",
-		char: "\u{A490}",
+		char: "\u{a490}",
 	},
 	{
 		name: "yi syllables",
-		char: "\u{A000}",
+		char: "\u{a000}",
 	},
 	{
 		name: "yiddish digraphs",
-		char: "\u{05F0}",
+		char: "\u{05f0}",
 	},
 	{
 		name: "yield",
-		char: "\u{26DB}",
+		char: "\u{26db}",
 	},
 	{
 		name: "yield, does not",
-		char: "\u{22A3}",
+		char: "\u{22a3}",
 	},
 	{
 		name: "yields",
-		char: "\u{22A2}",
+		char: "\u{22a2}",
 	},
 	{
 		name: "yijing / i ching hexagram symbols",
-		char: "\u{4DC0}",
+		char: "\u{4dc0}",
 	},
 	{
 		name: "yijing / i ching monogram and digram symbols",
-		char: "\u{268A}",
+		char: "\u{268a}",
 	},
 	{
 		name: "yijing / i ching trigram symbols",
@@ -24291,31 +22199,27 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "yin yang",
-		char: "\u{262F}",
+		char: "\u{262f}",
 	},
 	{
 		name: "yogh, latin small letter",
-		char: "\u{021D}",
-	},
-	{
-		name: "ypogegrammeni, combining greek",
-		char: "\u{0345}",
+		char: "\u{021d}",
 	},
 	{
 		name: "yr, latin letter",
-		char: "\u{01A6}",
+		char: "\u{01a6}",
 	},
 	{
 		name: "yuan sign",
-		char: "\u{00A5}",
+		char: "\u{00a5}",
 	},
 	{
 		name: "z bar, latin small letter",
-		char: "\u{01B6}",
+		char: "\u{01b6}",
 	},
 	{
 		name: "z notation bag membership",
-		char: "\u{22FF}",
+		char: "\u{22ff}",
 	},
 	{
 		name: "z notation spot",
@@ -24327,15 +22231,15 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "z with acute, latin small letter",
-		char: "\u{017A}",
+		char: "\u{017a}",
 	},
 	{
 		name: "z with caron, latin small letter",
-		char: "\u{017E}",
+		char: "\u{017e}",
 	},
 	{
 		name: "z with circumflex, latin small letter",
-		char: "\u{1E91}",
+		char: "\u{1e91}",
 	},
 	{
 		name: "z with curl, latin small letter",
@@ -24343,11 +22247,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "z with dot above, latin small letter",
-		char: "\u{017C}",
+		char: "\u{017c}",
 	},
 	{
 		name: "z with dot below, latin small letter",
-		char: "\u{1E93}",
+		char: "\u{1e93}",
 	},
 	{
 		name: "z with hook, latin small letter",
@@ -24355,7 +22259,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "z with line below, latin small letter",
-		char: "\u{1E95}",
+		char: "\u{1e95}",
 	},
 	{
 		name: "z with retroflex hook, latin small letter",
@@ -24363,7 +22267,7 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "z with stroke, latin small letter",
-		char: "\u{01B6}",
+		char: "\u{01b6}",
 	},
 	{
 		name: "z with swash tail, latin small letter",
@@ -24379,11 +22283,11 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "z, latin letter small capital",
-		char: "\u{1D22}",
+		char: "\u{1d22}",
 	},
 	{
 		name: "zanabazar square",
-		char: "\u{11A00}",
+		char: "\u{11a00}",
 	},
 	{
 		name: "zapf dingbats series 100, itc",
@@ -24391,23 +22295,23 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "zero width joiner",
-		char: "\u{200D}",
+		char: "\u{200d}",
 	},
 	{
 		name: "zero width no-break space",
-		char: "\u{FEFF}",
+		char: "\u{feff}",
 	},
 	{
 		name: "zero width non-joiner",
-		char: "\u{200C}",
+		char: "\u{200c}",
 	},
 	{
 		name: "zero width space",
-		char: "\u{200B}",
+		char: "\u{200b}",
 	},
 	{
 		name: "zero, circled digit",
-		char: "\u{24EA}",
+		char: "\u{24ea}",
 	},
 	{
 		name: "zero, ideographic number",
@@ -24418,12 +22322,8 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2070}",
 	},
 	{
-		name: "zigzag above, combining",
-		char: "\u{035B}",
-	},
-	{
 		name: "zodiac, signs of the asian",
-		char: "\u{1F400}",
+		char: "\u{1f400}",
 	},
 	{
 		name: "zodiacal symbols",
@@ -24431,26 +22331,26 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	},
 	{
 		name: "zombie",
-		char: "\u{1F9DF}",
+		char: "\u{1f9df}",
 	},
 	{
 		name: "zorro",
-		char: "\u{1D1E9}",
+		char: "\u{1d1e9}",
 	},
 	{
 		name: "zwj",
-		char: "\u{200D}",
+		char: "\u{200d}",
 	},
 	{
 		name: "zwnbsp",
-		char: "\u{FEFF}",
+		char: "\u{feff}",
 	},
 	{
 		name: "zwnj",
-		char: "\u{200C}",
+		char: "\u{200c}",
 	},
 	{
 		name: "zwsp",
-		char: "\u{200B}",
+		char: "\u{200b}",
 	},
 ];
