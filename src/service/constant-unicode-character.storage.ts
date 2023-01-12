@@ -14,5 +14,10 @@ export class ConstantUnicodeCharacterStorage implements UnicodeCharacterStorage 
 		return this.data;
 	}
 
+	public getRandom(): UnicodeCharacterInfoModel {
+		const index: number = Math.floor(Math.random() * this.data.length);
+		return this.data[index];
+	}
+
 }
 
