@@ -3,24 +3,28 @@ import {SampleSettingTab} from "./components/sample-setting.tab";
 import {UnicodeSearchPluginSettings} from "./data/model/unicode-search-plugin.settings";
 import {DEFAULT_SETTINGS} from "./configuration/config";
 import {UniModal} from "./components/uni.modal";
-import {UnicodeCharacterMockService} from "./service/unicode-character-mock.service";
 import {UnicodeCharacterService} from "./service/unicode-character.service";
-import {UnicodeCharacterBakedService} from "./service/unicode-character-baked.service";
+import {UnicodeCharacterLocalService} from "./service/unicode-character-local.service";
 
 export default class UnicodeSearchPlugin extends Plugin {
 	public settings: UnicodeSearchPluginSettings;
 
 	private service?: UnicodeCharacterService;
+	private abortController: AbortController;
 
 	public constructor(app: App, manifest: PluginManifest, settings: UnicodeSearchPluginSettings) {
 		super(app, manifest);
 		this.settings = settings;
+		this.abortController = new AbortController();
 	}
 
 	public override async onload(): Promise<void> {
 		await this.loadSettings();
 
-		this.service = new UnicodeCharacterBakedService();
+		const svc = new UnicodeCharacterLocalService()
+		await svc.initialize("./.obsidian/plugins/obsidian-unicode-search/resources/index-min.json", this.abortController.signal);
+
+		this.service = svc;
 
 		// This creates an icon in the left ribbon.
 		const ribbonIconEl: HTMLElement = this.addRibbonIcon("dice", "Sample Plugin", () => {
@@ -59,7 +63,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 	}
 
 	public override onunload(): void {
-		delete this.service;
+		this.abortController.abort("Plugin unload requested");
 	}
 
 	public async loadSettings(): Promise<void> {
