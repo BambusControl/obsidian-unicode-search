@@ -1,8 +1,9 @@
-import {App, Editor, SuggestModal} from "obsidian";
+import {App, Editor, FuzzySuggestModal, SuggestModal} from "obsidian";
 import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
 import {UnicodeCharacterService} from "../service/unicode-character.service";
+import {UnicodeCharacterStorage} from "../service/unicode-character.storage";
 
-export class UniModal extends SuggestModal<UnicodeCharacterInfoModel> {
+export class SearchModal extends SuggestModal<UnicodeCharacterInfoModel> {
 
 	public constructor(
 		app: App,
@@ -30,3 +31,26 @@ export class UniModal extends SuggestModal<UnicodeCharacterInfoModel> {
 
 }
 
+export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoModel> {
+
+	public constructor(
+		app: App,
+		private readonly editor: Editor,
+		private readonly service: UnicodeCharacterStorage
+	) {
+		super(app);
+	}
+
+	public getItemText(item: UnicodeCharacterInfoModel): string {
+		return `${item.char} : ${item.name}`;
+	}
+
+	public getItems(): UnicodeCharacterInfoModel[] {
+		return this.service.getAll();
+	}
+
+	public onChooseItem(item: UnicodeCharacterInfoModel, evt: MouseEvent | KeyboardEvent): void {
+		this.editor.replaceSelection(item.char);
+	}
+
+}

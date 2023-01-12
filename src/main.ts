@@ -2,14 +2,14 @@ import {App, Notice, Plugin, PluginManifest} from "obsidian";
 import {SampleSettingTab} from "./components/sample-setting.tab";
 import {UnicodeSearchPluginSettings} from "./data/model/unicode-search-plugin.settings";
 import {DEFAULT_SETTINGS} from "./configuration/config";
-import {UniModal} from "./components/uni.modal";
-import {UnicodeCharacterService} from "./service/unicode-character.service";
-import {UnicodeCharacterLocalService} from "./service/unicode-character-local.service";
+import {FuzzySearchModal, SearchModal} from "./components/search.modal";
+import {UnicodeCharacterStorage} from "./service/unicode-character.storage";
+import {UnicodeCharacterBakedService} from "./service/unicode-character-baked.service";
 
 export default class UnicodeSearchPlugin extends Plugin {
 	public settings: UnicodeSearchPluginSettings;
 
-	private service?: UnicodeCharacterService;
+	private service?: UnicodeCharacterStorage;
 	private abortController: AbortController;
 
 	public constructor(app: App, manifest: PluginManifest, settings: UnicodeSearchPluginSettings) {
@@ -21,10 +21,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 	public override async onload(): Promise<void> {
 		await this.loadSettings();
 
-		const svc = new UnicodeCharacterLocalService()
-		await svc.initialize("./.obsidian/plugins/obsidian-unicode-search/resources/index-min.json", this.abortController.signal);
-
-		this.service = svc;
+		this.service = new UnicodeCharacterBakedService();
 
 		// This creates an icon in the left ribbon.
 		const ribbonIconEl: HTMLElement = this.addRibbonIcon("dice", "Sample Plugin", () => {
@@ -43,7 +40,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 			name: "Search Unicode characters",
 
 			editorCallback: editor => {
-				const modal = new UniModal(this.app, editor, this.service!);
+				const modal = new FuzzySearchModal(this.app, editor, this.service!);
 				modal.open();
 				return true;
 			},
