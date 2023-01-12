@@ -2,7 +2,7 @@ import {App, Notice, Plugin, PluginManifest} from "obsidian";
 import {SampleSettingTab} from "./components/sample-setting.tab";
 import {UnicodeSearchPluginSettings} from "./data/model/unicode-search-plugin.settings";
 import {DEFAULT_SETTINGS} from "./configuration/config";
-import {FuzzySearchModal, SearchModal} from "./components/search.modal";
+import {FuzzySearchModal} from "./components/search.modal";
 import {UnicodeCharacterStorage} from "./service/unicode-character.storage";
 import {UnicodeCharacterBakedService} from "./service/unicode-character-baked.service";
 
