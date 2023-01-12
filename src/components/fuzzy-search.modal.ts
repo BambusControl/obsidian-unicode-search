@@ -1,4 +1,4 @@
-import {App, Editor, FuzzySuggestModal} from "obsidian";
+import {App, Editor, FuzzyMatch, FuzzySuggestModal} from "obsidian";
 import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
 import {UnicodeCharacterStorage} from "../service/unicode-character.storage";
 
@@ -13,7 +13,27 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	}
 
 	public getItemText(item: UnicodeCharacterInfoModel): string {
-		return `${item.char} : ${item.name}`;
+		return item.name
+	}
+
+	public override renderSuggestion(item: FuzzyMatch<UnicodeCharacterInfoModel>, el: HTMLElement): void {
+		const container = el.createDiv({
+			cls: "plugin obsidian-unicode-search result-item",
+		} as DomElementInfo);
+
+		/* preview */
+		container.createDiv({
+			cls: "character-preview",
+		} as DomElementInfo).createSpan({
+			text: item.item.char
+		} as DomElementInfo)
+
+		/* indexed name */
+		const text = container.createDiv({
+			cls: "character-name",
+		} as DomElementInfo)
+
+		super.renderSuggestion(item, text);
 	}
 
 	public getItems(): UnicodeCharacterInfoModel[] {

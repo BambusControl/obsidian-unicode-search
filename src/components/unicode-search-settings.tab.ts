@@ -1,7 +1,7 @@
 import {App, PluginSettingTab, Setting} from "obsidian";
 import UnicodeSearchPlugin from "../main";
 
-export class SampleSettingTab extends PluginSettingTab {
+export class UnicodeSearchSettingsTab extends PluginSettingTab {
 	plugin: UnicodeSearchPlugin;
 
 	public constructor(app: App, plugin: UnicodeSearchPlugin) {
