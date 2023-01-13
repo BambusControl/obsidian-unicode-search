@@ -1,3 +1,24 @@
-.test {
-	font-weight: 234;
+.plugin.obsidian-unicode-search {
+	--scale: 1em;
+
+	&.result-item {
+		display: flex;
+		gap: var(--scale);
+		justify-content: flex-start;
+		align-items: center;
+
+		& > .character-preview {
+			font-size: calc(var(--scale) * 1.5);
+			width: calc(var(--scale) * 1.75);
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		& > .character-name {
+			padding-left: calc(var(--scale) * 1.5);
+			border-left: var(--prompt-border-width) solid var(--prompt-border-color);
+		}
+	}
 }

@@ -1,7 +1,5 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {UnicodeSearchSettingsTab} from "./components/unicode-search-settings.tab";
 import {UnicodeSearchPluginSettings} from "./data/model/unicode-search-plugin.settings";
-import {DEFAULT_SETTINGS} from "./configuration/config";
 import {FuzzySearchModal} from "./components/fuzzy-search.modal";
 import {UnicodeCharacterStorage} from "./service/unicode-character.storage";
 import {ConstantUnicodeCharacterStorage} from "./service/constant-unicode-character.storage";
@@ -23,9 +21,6 @@ export default class UnicodeSearchPlugin extends Plugin {
 	}
 
 	public override async onload(): Promise<void> {
-		await this.loadSettings();
-
-		// TODO: better commands
 		this.addCommand({
 			id: "search-unicode-chars",
 			name: "Search Unicode characters",
@@ -36,21 +31,10 @@ export default class UnicodeSearchPlugin extends Plugin {
 				return true;
 			},
 		});
-
-		// TODO: settings
-		this.addSettingTab(new UnicodeSearchSettingsTab(this.app, this));
 	}
 
 	public override onunload(): void {
 		// Intentionally left blank
-	}
-
-	public async loadSettings(): Promise<void> {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-	}
-
-	public async saveSettings(): Promise<void> {
-		await this.saveData(this.settings);
 	}
 }
 
