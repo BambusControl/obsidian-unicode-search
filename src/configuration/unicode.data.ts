@@ -98,6 +98,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{00e3}",
 	},
 	{
+		name: "a, combining latin small letter",
+		char: "\u{0363}",
+	},
+	{
 		name: "a, latin letter small capital",
 		char: "\u{1d00}",
 	},
@@ -134,8 +138,136 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{1400}",
 	},
 	{
+		name: "above right, combining comma",
+		char: "\u{0315}",
+	},
+	{
+		name: "above right, combining dot",
+		char: "\u{0358}",
+	},
+	{
 		name: "above, cedilla",
 		char: "\u{0312}",
+	},
+	{
+		name: "above, combining almost equal to",
+		char: "\u{034c}",
+	},
+	{
+		name: "above, combining anticlockwise arrow",
+		char: "\u{20d4}",
+	},
+	{
+		name: "above, combining asterisk",
+		char: "\u{20f0}",
+	},
+	{
+		name: "above, combining bridge",
+		char: "\u{0346}",
+	},
+	{
+		name: "above, combining clockwise arrow",
+		char: "\u{20d5}",
+	},
+	{
+		name: "above, combining comma",
+		char: "\u{0313}",
+	},
+	{
+		name: "above, combining counterclockwise arrow",
+		char: "\u{20d4}",
+	},
+	{
+		name: "above, combining dot",
+		char: "\u{0307}",
+	},
+	{
+		name: "above, combining double vertical line",
+		char: "\u{030e}",
+	},
+	{
+		name: "above, combining four dots",
+		char: "\u{20dc}",
+	},
+	{
+		name: "above, combining homothetic",
+		char: "\u{034b}",
+	},
+	{
+		name: "above, combining hook",
+		char: "\u{0309}",
+	},
+	{
+		name: "above, combining left angle",
+		char: "\u{031a}",
+	},
+	{
+		name: "above, combining left arrow",
+		char: "\u{20d6}",
+	},
+	{
+		name: "above, combining left half ring",
+		char: "\u{0351}",
+	},
+	{
+		name: "above, combining left harpoon",
+		char: "\u{20d0}",
+	},
+	{
+		name: "above, combining left right arrow",
+		char: "\u{20e1}",
+	},
+	{
+		name: "above, combining not tilde",
+		char: "\u{034a}",
+	},
+	{
+		name: "above, combining reversed comma",
+		char: "\u{0314}",
+	},
+	{
+		name: "above, combining right arrow",
+		char: "\u{20d7}",
+	},
+	{
+		name: "above, combining right arrowhead",
+		char: "\u{0350}",
+	},
+	{
+		name: "above, combining right half ring",
+		char: "\u{0357}",
+	},
+	{
+		name: "above, combining right harpoon",
+		char: "\u{20d1}",
+	},
+	{
+		name: "above, combining ring",
+		char: "\u{030a}",
+	},
+	{
+		name: "above, combining three dots",
+		char: "\u{20db}",
+	},
+	{
+		name: "above, combining turned comma",
+		char: "\u{0312}",
+	},
+	{
+		name: "above, combining vertical line",
+		char: "\u{030d}",
+	},
+	{
+		name: "above, combining wide bridge",
+		char: "\u{20e9}",
+	},
+	{
+		name: "above, combining x",
+		char: "\u{033d}",
+	},
+	{
+		name: "above, combining zigzag",
+		char: "\u{035b}",
 	},
 	{
 		name: "above, dot",
@@ -174,12 +306,44 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{23e6}",
 	},
 	{
+		name: "accent below, combining acute",
+		char: "\u{0317}",
+	},
+	{
+		name: "accent below, combining circumflex",
+		char: "\u{032d}",
+	},
+	{
+		name: "accent below, combining grave",
+		char: "\u{0316}",
+	},
+	{
 		name: "accent, acute",
 		char: "\u{00b4}",
 	},
 	{
 		name: "accent, circumflex",
 		char: "\u{005e}",
+	},
+	{
+		name: "accent, combining acute",
+		char: "\u{0301}",
+	},
+	{
+		name: "accent, combining circumflex",
+		char: "\u{0302}",
+	},
+	{
+		name: "accent, combining double acute",
+		char: "\u{030b}",
+	},
+	{
+		name: "accent, combining double grave",
+		char: "\u{030f}",
+	},
+	{
+		name: "accent, combining grave",
+		char: "\u{0300}",
 	},
 	{
 		name: "accent, double acute",
@@ -278,6 +442,18 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{00b4}",
 	},
 	{
+		name: "acute accent below, combining",
+		char: "\u{0317}",
+	},
+	{
+		name: "acute accent, combining",
+		char: "\u{0301}",
+	},
+	{
+		name: "acute accent, combining double",
+		char: "\u{030b}",
+	},
+	{
 		name: "acute accent, double",
 		char: "\u{02dd}",
 	},
@@ -292,6 +468,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "acute accent, spacing",
 		char: "\u{00b4}",
+	},
+	{
+		name: "acute tone mark, combining",
+		char: "\u{0341}",
 	},
 	{
 		name: "addak, gurmukhi",
@@ -426,6 +606,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2248}",
 	},
 	{
+		name: "almost equal to above, combining",
+		char: "\u{034c}",
+	},
+	{
 		name: "almost equal to, not",
 		char: "\u{2249}",
 	},
@@ -530,8 +714,16 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2220}",
 	},
 	{
+		name: "angle above, combining left",
+		char: "\u{031a}",
+	},
+	{
 		name: "angle arc",
 		char: "\u{2222}",
+	},
+	{
+		name: "angle below, combining left",
+		char: "\u{0349}",
 	},
 	{
 		name: "angle bracket, left",
@@ -674,6 +866,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{3190}",
 	},
 	{
+		name: "annuity symbol, combining",
+		char: "\u{20e7}",
+	},
+	{
 		name: "ano teleia, greek",
 		char: "\u{00b7}",
 	},
@@ -682,12 +878,20 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{1f41c}",
 	},
 	{
+		name: "anticlockwise arrow above, combining",
+		char: "\u{20d4}",
+	},
+	{
 		name: "anticlockwise contour integral",
 		char: "\u{2233}",
 	},
 	{
 		name: "anticlockwise integration",
 		char: "\u{2a11}",
+	},
+	{
+		name: "anticlockwise ring overlay, combining",
+		char: "\u{20da}",
 	},
 	{
 		name: "antisigma, claudian",
@@ -812,6 +1016,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "arabic alphabet",
 		char: "\u{0621}",
+	},
+	{
+		name: "arabic combining marks",
+		char: "\u{0653}",
 	},
 	{
 		name: "arabic comma",
@@ -974,6 +1182,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{22be}",
 	},
 	{
+		name: "arch below, combining inverted double",
+		char: "\u{032b}",
+	},
+	{
 		name: "arcs",
 		char: "\u{25dc}",
 	},
@@ -1114,6 +1326,50 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{058a}",
 	},
 	{
+		name: "arrow above, combining anticlockwise",
+		char: "\u{20d4}",
+	},
+	{
+		name: "arrow above, combining clockwise",
+		char: "\u{20d5}",
+	},
+	{
+		name: "arrow above, combining counterclockwise",
+		char: "\u{20d4}",
+	},
+	{
+		name: "arrow above, combining left",
+		char: "\u{20d6}",
+	},
+	{
+		name: "arrow above, combining left right",
+		char: "\u{20e1}",
+	},
+	{
+		name: "arrow above, combining right",
+		char: "\u{20d7}",
+	},
+	{
+		name: "arrow below, combining double rightwards",
+		char: "\u{0362}",
+	},
+	{
+		name: "arrow below, combining left",
+		char: "\u{20ee}",
+	},
+	{
+		name: "arrow below, combining left right",
+		char: "\u{034d}",
+	},
+	{
+		name: "arrow below, combining right",
+		char: "\u{20ef}",
+	},
+	{
+		name: "arrow below, combining upwards",
+		char: "\u{034e}",
+	},
+	{
 		name: "arrow dingbats",
 		char: "\u{2794}",
 	},
@@ -1124,6 +1380,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "arrow indicator, forward",
 		char: "\u{25bb}",
+	},
+	{
+		name: "arrow overlay, combining leftwards",
+		char: "\u{20ea}",
 	},
 	{
 		name: "arrow, downwards",
@@ -1144,6 +1404,18 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "arrow, upwards",
 		char: "\u{2191}",
+	},
+	{
+		name: "arrowhead above, combining right",
+		char: "\u{0350}",
+	},
+	{
+		name: "arrowhead below, combining left",
+		char: "\u{0354}",
+	},
+	{
+		name: "arrowhead below, combining right",
+		char: "\u{0355}",
 	},
 	{
 		name: "arrowhead, down",
@@ -1236,6 +1508,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "asterisk",
 		char: "\u{002a}",
+	},
+	{
+		name: "asterisk above, combining",
+		char: "\u{20f0}",
+	},
+	{
+		name: "asterisk below, combining",
+		char: "\u{0359}",
 	},
 	{
 		name: "asterisk dingbats",
@@ -1392,6 +1672,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "backslash",
 		char: "\u{005c}",
+	},
+	{
+		name: "backslash, combining enclosing circle",
+		char: "\u{20e0}",
 	},
 	{
 		name: "backspace",
@@ -1612,6 +1896,178 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "bell, symbol for",
 		char: "\u{2407}",
+	},
+	{
+		name: "below, combining acute accent",
+		char: "\u{0317}",
+	},
+	{
+		name: "below, combining asterisk",
+		char: "\u{0359}",
+	},
+	{
+		name: "below, combining breve",
+		char: "\u{032e}",
+	},
+	{
+		name: "below, combining bridge",
+		char: "\u{032a}",
+	},
+	{
+		name: "below, combining caron",
+		char: "\u{032c}",
+	},
+	{
+		name: "below, combining circumflex accent",
+		char: "\u{032d}",
+	},
+	{
+		name: "below, combining comma",
+		char: "\u{0326}",
+	},
+	{
+		name: "below, combining diaeresis",
+		char: "\u{0324}",
+	},
+	{
+		name: "below, combining dot",
+		char: "\u{0323}",
+	},
+	{
+		name: "below, combining double breve",
+		char: "\u{035c}",
+	},
+	{
+		name: "below, combining double macron",
+		char: "\u{035f}",
+	},
+	{
+		name: "below, combining double rightwards arrow",
+		char: "\u{0362}",
+	},
+	{
+		name: "below, combining double ring",
+		char: "\u{035a}",
+	},
+	{
+		name: "below, combining double vertical line",
+		char: "\u{0348}",
+	},
+	{
+		name: "below, combining down tack",
+		char: "\u{031e}",
+	},
+	{
+		name: "below, combining equals sign",
+		char: "\u{0347}",
+	},
+	{
+		name: "below, combining grave accent",
+		char: "\u{0316}",
+	},
+	{
+		name: "below, combining inverted breve",
+		char: "\u{032f}",
+	},
+	{
+		name: "below, combining inverted bridge",
+		char: "\u{033a}",
+	},
+	{
+		name: "below, combining inverted double arch",
+		char: "\u{032b}",
+	},
+	{
+		name: "below, combining left angle",
+		char: "\u{0349}",
+	},
+	{
+		name: "below, combining left arrow",
+		char: "\u{20ee}",
+	},
+	{
+		name: "below, combining left arrowhead",
+		char: "\u{0354}",
+	},
+	{
+		name: "below, combining left half ring",
+		char: "\u{031c}",
+	},
+	{
+		name: "below, combining left right arrow",
+		char: "\u{034d}",
+	},
+	{
+		name: "below, combining left tack",
+		char: "\u{0318}",
+	},
+	{
+		name: "below, combining macron",
+		char: "\u{0331}",
+	},
+	{
+		name: "below, combining minus sign",
+		char: "\u{0320}",
+	},
+	{
+		name: "below, combining palatalized hook",
+		char: "\u{0321}",
+	},
+	{
+		name: "below, combining plus sign",
+		char: "\u{031f}",
+	},
+	{
+		name: "below, combining retroflex hook",
+		char: "\u{0322}",
+	},
+	{
+		name: "below, combining right arrow",
+		char: "\u{20ef}",
+	},
+	{
+		name: "below, combining right arrowhead",
+		char: "\u{0355}",
+	},
+	{
+		name: "below, combining right half ring",
+		char: "\u{0339}",
+	},
+	{
+		name: "below, combining right tack",
+		char: "\u{0319}",
+	},
+	{
+		name: "below, combining ring",
+		char: "\u{0325}",
+	},
+	{
+		name: "below, combining seagull",
+		char: "\u{033c}",
+	},
+	{
+		name: "below, combining square",
+		char: "\u{033b}",
+	},
+	{
+		name: "below, combining tilde",
+		char: "\u{0330}",
+	},
+	{
+		name: "below, combining up tack",
+		char: "\u{031d}",
+	},
+	{
+		name: "below, combining upwards arrow",
+		char: "\u{034e}",
+	},
+	{
+		name: "below, combining vertical line",
+		char: "\u{0329}",
+	},
+	{
+		name: "below, combining x",
+		char: "\u{0353}",
 	},
 	{
 		name: "belt, latin small letter l with",
@@ -2294,8 +2750,56 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{02d8}",
 	},
 	{
+		name: "breve below, combining",
+		char: "\u{032e}",
+	},
+	{
+		name: "breve below, combining double",
+		char: "\u{035c}",
+	},
+	{
+		name: "breve below, combining double inverted",
+		char: "\u{1dfc}",
+	},
+	{
+		name: "breve below, combining inverted",
+		char: "\u{032f}",
+	},
+	{
+		name: "breve, combining",
+		char: "\u{0306}",
+	},
+	{
+		name: "breve, combining double",
+		char: "\u{035d}",
+	},
+	{
+		name: "breve, combining double inverted",
+		char: "\u{0361}",
+	},
+	{
+		name: "breve, combining inverted",
+		char: "\u{0311}",
+	},
+	{
 		name: "bride with veil",
 		char: "\u{1f470}",
+	},
+	{
+		name: "bridge above, combining",
+		char: "\u{0346}",
+	},
+	{
+		name: "bridge above, combining wide",
+		char: "\u{20e9}",
+	},
+	{
+		name: "bridge below, combining",
+		char: "\u{032a}",
+	},
+	{
+		name: "bridge below, combining inverted",
+		char: "\u{033a}",
 	},
 	{
 		name: "briffits",
@@ -2470,6 +2974,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{212d}",
 	},
 	{
+		name: "c, combining latin small letter",
+		char: "\u{0368}",
+	},
+	{
 		name: "c, double-struck capital",
 		char: "\u{2102}",
 	},
@@ -2564,6 +3072,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "cancer",
 		char: "\u{264b}",
+	},
+	{
+		name: "candrabindu, combining",
+		char: "\u{0310}",
 	},
 	{
 		name: "candrabindu, devanagari sign",
@@ -2682,6 +3194,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{02c7}",
 	},
 	{
+		name: "caron below, combining",
+		char: "\u{032c}",
+	},
+	{
+		name: "caron, combining",
+		char: "\u{030c}",
+	},
+	{
 		name: "carriage return",
 		char: "\u{000d}",
 	},
@@ -2732,6 +3252,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "cedilla above",
 		char: "\u{0312}",
+	},
+	{
+		name: "cedilla, combining",
+		char: "\u{0327}",
 	},
 	{
 		name: "cedilla, latin capital letter c with",
@@ -2994,6 +3518,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{26ea}",
 	},
 	{
+		name: "circle backslash, combining enclosing",
+		char: "\u{20e0}",
+	},
+	{
 		name: "circle signs, heavy",
 		char: "\u{2b55}",
 	},
@@ -3008,6 +3536,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "circle, black small",
 		char: "\u{2022}",
+	},
+	{
+		name: "circle, combining enclosing",
+		char: "\u{20dd}",
 	},
 	{
 		name: "circle, dotted",
@@ -3164,6 +3696,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "circumflex accent",
 		char: "\u{005e}",
+	},
+	{
+		name: "circumflex accent below, combining",
+		char: "\u{032d}",
+	},
+	{
+		name: "circumflex accent, combining",
+		char: "\u{0302}",
 	},
 	{
 		name: "circumflex accent, modifier letter",
@@ -3342,12 +3882,20 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{23f0}",
 	},
 	{
+		name: "clockwise arrow above, combining",
+		char: "\u{20d5}",
+	},
+	{
 		name: "clockwise contour integral",
 		char: "\u{2232}",
 	},
 	{
 		name: "clockwise integral",
 		char: "\u{2231}",
+	},
+	{
+		name: "clockwise ring overlay, combining",
+		char: "\u{20d9}",
 	},
 	{
 		name: "clone",
@@ -3482,6 +4030,610 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{1f7e0}",
 	},
 	{
+		name: "combining acute accent",
+		char: "\u{0301}",
+	},
+	{
+		name: "combining acute accent below",
+		char: "\u{0317}",
+	},
+	{
+		name: "combining acute tone mark",
+		char: "\u{0341}",
+	},
+	{
+		name: "combining almost equal to above",
+		char: "\u{034c}",
+	},
+	{
+		name: "combining alphabet, korean hangul jamo",
+		char: "\u{1100}",
+	},
+	{
+		name: "combining annuity symbol",
+		char: "\u{20e7}",
+	},
+	{
+		name: "combining anticlockwise arrow above",
+		char: "\u{20d4}",
+	},
+	{
+		name: "combining anticlockwise ring overlay",
+		char: "\u{20da}",
+	},
+	{
+		name: "combining asterisk above",
+		char: "\u{20f0}",
+	},
+	{
+		name: "combining asterisk below",
+		char: "\u{0359}",
+	},
+	{
+		name: "combining breve",
+		char: "\u{0306}",
+	},
+	{
+		name: "combining breve below",
+		char: "\u{032e}",
+	},
+	{
+		name: "combining bridge above",
+		char: "\u{0346}",
+	},
+	{
+		name: "combining bridge below",
+		char: "\u{032a}",
+	},
+	{
+		name: "combining candrabindu",
+		char: "\u{0310}",
+	},
+	{
+		name: "combining caron",
+		char: "\u{030c}",
+	},
+	{
+		name: "combining caron below",
+		char: "\u{032c}",
+	},
+	{
+		name: "combining cedilla",
+		char: "\u{0327}",
+	},
+	{
+		name: "combining characters, cyrillic",
+		char: "\u{0483}",
+	},
+	{
+		name: "combining circumflex accent",
+		char: "\u{0302}",
+	},
+	{
+		name: "combining circumflex accent below",
+		char: "\u{032d}",
+	},
+	{
+		name: "combining clockwise arrow above",
+		char: "\u{20d5}",
+	},
+	{
+		name: "combining clockwise ring overlay",
+		char: "\u{20d9}",
+	},
+	{
+		name: "combining comma above",
+		char: "\u{0313}",
+	},
+	{
+		name: "combining comma above right",
+		char: "\u{0315}",
+	},
+	{
+		name: "combining comma below",
+		char: "\u{0326}",
+	},
+	{
+		name: "combining conjoining macron",
+		char: "\u{fe26}",
+	},
+	{
+		name: "combining counterclockwise arrow above",
+		char: "\u{20d4}",
+	},
+	{
+		name: "combining counterclockwise ring overlay",
+		char: "\u{20da}",
+	},
+	{
+		name: "combining diacritical marks",
+		char: "\u{0300}",
+	},
+	{
+		name: "combining diacritical marks extended",
+		char: "\u{1ab0}",
+	},
+	{
+		name: "combining diacritical marks for symbols",
+		char: "\u{20d0}",
+	},
+	{
+		name: "combining diacritical marks supplement",
+		char: "\u{1dc0}",
+	},
+	{
+		name: "combining diaeresis",
+		char: "\u{0308}",
+	},
+	{
+		name: "combining diaeresis below",
+		char: "\u{0324}",
+	},
+	{
+		name: "combining dot above",
+		char: "\u{0307}",
+	},
+	{
+		name: "combining dot above right",
+		char: "\u{0358}",
+	},
+	{
+		name: "combining dot below",
+		char: "\u{0323}",
+	},
+	{
+		name: "combining double acute accent",
+		char: "\u{030b}",
+	},
+	{
+		name: "combining double breve",
+		char: "\u{035d}",
+	},
+	{
+		name: "combining double breve below",
+		char: "\u{035c}",
+	},
+	{
+		name: "combining double grave accent",
+		char: "\u{030f}",
+	},
+	{
+		name: "combining double inverted breve",
+		char: "\u{0361}",
+	},
+	{
+		name: "combining double inverted breve below",
+		char: "\u{1dfc}",
+	},
+	{
+		name: "combining double low line",
+		char: "\u{0333}",
+	},
+	{
+		name: "combining double macron",
+		char: "\u{035e}",
+	},
+	{
+		name: "combining double macron below",
+		char: "\u{035f}",
+	},
+	{
+		name: "combining double overline",
+		char: "\u{033f}",
+	},
+	{
+		name: "combining double rightwards arrow below",
+		char: "\u{0362}",
+	},
+	{
+		name: "combining double ring below",
+		char: "\u{035a}",
+	},
+	{
+		name: "combining double tilde",
+		char: "\u{0360}",
+	},
+	{
+		name: "combining double vertical line above",
+		char: "\u{030e}",
+	},
+	{
+		name: "combining double vertical line below",
+		char: "\u{0348}",
+	},
+	{
+		name: "combining double vertical stroke overlay",
+		char: "\u{20e6}",
+	},
+	{
+		name: "combining down tack below",
+		char: "\u{031e}",
+	},
+	{
+		name: "combining enclosing circle",
+		char: "\u{20dd}",
+	},
+	{
+		name: "combining enclosing circle backslash",
+		char: "\u{20e0}",
+	},
+	{
+		name: "combining enclosing diamond",
+		char: "\u{20df}",
+	},
+	{
+		name: "combining enclosing keycap",
+		char: "\u{20e3}",
+	},
+	{
+		name: "combining enclosing screen",
+		char: "\u{20e2}",
+	},
+	{
+		name: "combining enclosing square",
+		char: "\u{20de}",
+	},
+	{
+		name: "combining enclosing upward pointing triangle",
+		char: "\u{20e4}",
+	},
+	{
+		name: "combining equals sign below",
+		char: "\u{0347}",
+	},
+	{
+		name: "combining fermata",
+		char: "\u{0352}",
+	},
+	{
+		name: "combining four dots above",
+		char: "\u{20dc}",
+	},
+	{
+		name: "combining grapheme joiner",
+		char: "\u{034f}",
+	},
+	{
+		name: "combining grave accent",
+		char: "\u{0300}",
+	},
+	{
+		name: "combining grave accent below",
+		char: "\u{0316}",
+	},
+	{
+		name: "combining grave tone mark",
+		char: "\u{0340}",
+	},
+	{
+		name: "combining greek dialytika tonos",
+		char: "\u{0344}",
+	},
+	{
+		name: "combining greek koronis",
+		char: "\u{0343}",
+	},
+	{
+		name: "combining greek perispomeni",
+		char: "\u{0342}",
+	},
+	{
+		name: "combining greek ypogegrammeni",
+		char: "\u{0345}",
+	},
+	{
+		name: "combining hacek",
+		char: "\u{030c}",
+	},
+	{
+		name: "combining half marks",
+		char: "\u{fe20}",
+	},
+	{
+		name: "combining half marks below",
+		char: "\u{fe27}",
+	},
+	{
+		name: "combining homothetic above",
+		char: "\u{034b}",
+	},
+	{
+		name: "combining hook above",
+		char: "\u{0309}",
+	},
+	{
+		name: "combining horn",
+		char: "\u{031b}",
+	},
+	{
+		name: "combining inverted breve",
+		char: "\u{0311}",
+	},
+	{
+		name: "combining inverted breve below",
+		char: "\u{032f}",
+	},
+	{
+		name: "combining inverted bridge below",
+		char: "\u{033a}",
+	},
+	{
+		name: "combining inverted double arch below",
+		char: "\u{032b}",
+	},
+	{
+		name: "combining japanese daku-on",
+		char: "\u{3099}",
+	},
+	{
+		name: "combining japanese han-daku-on",
+		char: "\u{309a}",
+	},
+	{
+		name: "combining latin small letters",
+		char: "\u{0363}",
+	},
+	{
+		name: "combining left angle above",
+		char: "\u{031a}",
+	},
+	{
+		name: "combining left angle below",
+		char: "\u{0349}",
+	},
+	{
+		name: "combining left arrow above",
+		char: "\u{20d6}",
+	},
+	{
+		name: "combining left arrow below",
+		char: "\u{20ee}",
+	},
+	{
+		name: "combining left arrowhead below",
+		char: "\u{0354}",
+	},
+	{
+		name: "combining left half ring above",
+		char: "\u{0351}",
+	},
+	{
+		name: "combining left half ring below",
+		char: "\u{031c}",
+	},
+	{
+		name: "combining left harpoon above",
+		char: "\u{20d0}",
+	},
+	{
+		name: "combining left right arrow above",
+		char: "\u{20e1}",
+	},
+	{
+		name: "combining left right arrow below",
+		char: "\u{034d}",
+	},
+	{
+		name: "combining left tack below",
+		char: "\u{0318}",
+	},
+	{
+		name: "combining leftwards arrow overlay",
+		char: "\u{20ea}",
+	},
+	{
+		name: "combining leftwards harpoon with barb downwards",
+		char: "\u{20ed}",
+	},
+	{
+		name: "combining long double solidus overlay",
+		char: "\u{20eb}",
+	},
+	{
+		name: "combining long solidus overlay",
+		char: "\u{0338}",
+	},
+	{
+		name: "combining long stroke overlay",
+		char: "\u{0336}",
+	},
+	{
+		name: "combining long vertical line overlay",
+		char: "\u{20d2}",
+	},
+	{
+		name: "combining low line",
+		char: "\u{0332}",
+	},
+	{
+		name: "combining macron",
+		char: "\u{0304}",
+	},
+	{
+		name: "combining macron below",
+		char: "\u{0331}",
+	},
+	{
+		name: "combining macron left half",
+		char: "\u{fe24}",
+	},
+	{
+		name: "combining macron right half",
+		char: "\u{fe25}",
+	},
+	{
+		name: "combining marks, arabic",
+		char: "\u{0653}",
+	},
+	{
+		name: "combining marks, ethiopic",
+		char: "\u{135d}",
+	},
+	{
+		name: "combining minus sign below",
+		char: "\u{0320}",
+	},
+	{
+		name: "combining not tilde above",
+		char: "\u{034a}",
+	},
+	{
+		name: "combining ogonek",
+		char: "\u{0328}",
+	},
+	{
+		name: "combining overline",
+		char: "\u{0305}",
+	},
+	{
+		name: "combining palatalized hook below",
+		char: "\u{0321}",
+	},
+	{
+		name: "combining plus sign below",
+		char: "\u{031f}",
+	},
+	{
+		name: "combining retroflex hook below",
+		char: "\u{0322}",
+	},
+	{
+		name: "combining reverse solidus overlay",
+		char: "\u{20e5}",
+	},
+	{
+		name: "combining reversed comma above",
+		char: "\u{0314}",
+	},
+	{
+		name: "combining right arrow above",
+		char: "\u{20d7}",
+	},
+	{
+		name: "combining right arrow below",
+		char: "\u{20ef}",
+	},
+	{
+		name: "combining right arrowhead above",
+		char: "\u{0350}",
+	},
+	{
+		name: "combining right arrowhead below",
+		char: "\u{0355}",
+	},
+	{
+		name: "combining right half ring above",
+		char: "\u{0357}",
+	},
+	{
+		name: "combining right half ring below",
+		char: "\u{0339}",
+	},
+	{
+		name: "combining right harpoon above",
+		char: "\u{20d1}",
+	},
+	{
+		name: "combining right tack below",
+		char: "\u{0319}",
+	},
+	{
+		name: "combining rightwards harpoon with barb downwards",
+		char: "\u{20ec}",
+	},
+	{
+		name: "combining ring above",
+		char: "\u{030a}",
+	},
+	{
+		name: "combining ring below",
+		char: "\u{0325}",
+	},
+	{
+		name: "combining ring overlay",
+		char: "\u{20d8}",
+	},
+	{
+		name: "combining seagull below",
+		char: "\u{033c}",
+	},
+	{
+		name: "combining short solidus overlay",
+		char: "\u{0337}",
+	},
+	{
+		name: "combining short stroke overlay",
+		char: "\u{0335}",
+	},
+	{
+		name: "combining short vertical line overlay",
+		char: "\u{20d3}",
+	},
+	{
+		name: "combining square below",
+		char: "\u{033b}",
+	},
+	{
+		name: "combining three dots above",
+		char: "\u{20db}",
+	},
+	{
+		name: "combining tilde",
+		char: "\u{0303}",
+	},
+	{
+		name: "combining tilde below",
+		char: "\u{0330}",
+	},
+	{
+		name: "combining tilde overlay",
+		char: "\u{0334}",
+	},
+	{
+		name: "combining triple underdot",
+		char: "\u{20e8}",
+	},
+	{
+		name: "combining turned comma above",
+		char: "\u{0312}",
+	},
+	{
+		name: "combining up tack below",
+		char: "\u{031d}",
+	},
+	{
+		name: "combining upwards arrow below",
+		char: "\u{034e}",
+	},
+	{
+		name: "combining vertical line above",
+		char: "\u{030d}",
+	},
+	{
+		name: "combining vertical line below",
+		char: "\u{0329}",
+	},
+	{
+		name: "combining vertical tilde",
+		char: "\u{033e}",
+	},
+	{
+		name: "combining wide bridge above",
+		char: "\u{20e9}",
+	},
+	{
+		name: "combining x above",
+		char: "\u{033d}",
+	},
+	{
+		name: "combining x below",
+		char: "\u{0353}",
+	},
+	{
+		name: "combining zigzag above",
+		char: "\u{035b}",
+	},
+	{
 		name: "comedy and tragedy, masks of",
 		char: "\u{1f3ad}",
 	},
@@ -3496,6 +4648,26 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "comma",
 		char: "\u{002c}",
+	},
+	{
+		name: "comma above right, combining",
+		char: "\u{0315}",
+	},
+	{
+		name: "comma above, combining",
+		char: "\u{0313}",
+	},
+	{
+		name: "comma above, combining reversed",
+		char: "\u{0314}",
+	},
+	{
+		name: "comma above, combining turned",
+		char: "\u{0312}",
+	},
+	{
+		name: "comma below, combining",
+		char: "\u{0326}",
 	},
 	{
 		name: "comma quotation mark, double",
@@ -3680,6 +4852,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "conical taper",
 		char: "\u{2332}",
+	},
+	{
+		name: "conjoining macron, combining",
+		char: "\u{fe26}",
 	},
 	{
 		name: "conjugate matrix, hermitian",
@@ -3886,12 +5062,20 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2334}",
 	},
 	{
+		name: "counterclockwise arrow above, combining",
+		char: "\u{20d4}",
+	},
+	{
 		name: "counterclockwise contour integral",
 		char: "\u{2233}",
 	},
 	{
 		name: "counterclockwise integration",
 		char: "\u{2a11}",
+	},
+	{
+		name: "counterclockwise ring overlay, combining",
+		char: "\u{20da}",
 	},
 	{
 		name: "countersink",
@@ -4310,6 +5494,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0400}",
 	},
 	{
+		name: "cyrillic combining characters",
+		char: "\u{0483}",
+	},
+	{
 		name: "cyrillic extended-a",
 		char: "\u{2de0}",
 	},
@@ -4344,6 +5532,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "cyrillic supplement",
 		char: "\u{0500}",
+	},
+	{
+		name: "cyrillic titlo left half, combining",
+		char: "\u{fe2e}",
 	},
 	{
 		name: "d retroflex hook, latin small letter",
@@ -4402,6 +5594,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{29e0}",
 	},
 	{
+		name: "d, combining latin small letter",
+		char: "\u{0369}",
+	},
+	{
 		name: "d, double-struck italic capital",
 		char: "\u{2145}",
 	},
@@ -4424,6 +5620,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "dagger, double",
 		char: "\u{2021}",
+	},
+	{
+		name: "daku-on, combining japanese",
+		char: "\u{3099}",
 	},
 	{
 		name: "daku-on, japanese",
@@ -4750,6 +5950,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{20d0}",
 	},
 	{
+		name: "diacritical marks for symbols, combining",
+		char: "\u{20d0}",
+	},
+	{
+		name: "diacritical marks, combining",
+		char: "\u{0300}",
+	},
+	{
 		name: "diacritics for greek",
 		char: "\u{0342}",
 	},
@@ -4794,6 +6002,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{00a8}",
 	},
 	{
+		name: "diaeresis below, combining",
+		char: "\u{0324}",
+	},
+	{
+		name: "diaeresis, combining",
+		char: "\u{0308}",
+	},
+	{
 		name: "diaeresis, spacing",
 		char: "\u{00a8}",
 	},
@@ -4806,6 +6022,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{22f0}",
 	},
 	{
+		name: "dialytika tonos, combining greek",
+		char: "\u{0344}",
+	},
+	{
 		name: "dialytika, greek",
 		char: "\u{0308}",
 	},
@@ -4816,6 +6036,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "diamond operator",
 		char: "\u{22c4}",
+	},
+	{
+		name: "diamond, combining enclosing",
+		char: "\u{20df}",
 	},
 	{
 		name: "diamonds",
@@ -5314,8 +6538,20 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{02d9}",
 	},
 	{
+		name: "dot above right, combining",
+		char: "\u{0358}",
+	},
+	{
+		name: "dot above, combining",
+		char: "\u{0307}",
+	},
+	{
 		name: "dot above, double",
 		char: "\u{0308}",
+	},
+	{
+		name: "dot below, combining",
+		char: "\u{0323}",
 	},
 	{
 		name: "dot below, myanmar sign",
@@ -5418,6 +6654,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{1d6a4}",
 	},
 	{
+		name: "dots above, combining four",
+		char: "\u{20dc}",
+	},
+	{
+		name: "dots above, combining three",
+		char: "\u{20db}",
+	},
+	{
 		name: "dots, mongolian four",
 		char: "\u{1805}",
 	},
@@ -5444,6 +6688,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "double acute accent",
 		char: "\u{02dd}",
+	},
+	{
+		name: "double acute accent, combining",
+		char: "\u{030b}",
 	},
 	{
 		name: "double angle bracket, left",
@@ -5474,8 +6722,20 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{02ee}",
 	},
 	{
+		name: "double arch below, combining inverted",
+		char: "\u{032b}",
+	},
+	{
 		name: "double arrows",
 		char: "\u{21cd}",
+	},
+	{
+		name: "double breve below, combining",
+		char: "\u{035c}",
+	},
+	{
+		name: "double breve, combining",
+		char: "\u{035d}",
 	},
 	{
 		name: "double circled numbers",
@@ -5514,6 +6774,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{203c}",
 	},
 	{
+		name: "double grave accent, combining",
+		char: "\u{030f}",
+	},
+	{
 		name: "double high-reversed-9 quotation mark",
 		char: "\u{201f}",
 	},
@@ -5530,6 +6794,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{22d2}",
 	},
 	{
+		name: "double inverted breve, combining",
+		char: "\u{0361}",
+	},
+	{
 		name: "double logical and",
 		char: "\u{2a53}",
 	},
@@ -5542,12 +6810,28 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2017}",
 	},
 	{
+		name: "double low line, combining",
+		char: "\u{0333}",
+	},
+	{
 		name: "double low-9 quotation mark",
 		char: "\u{201e}",
 	},
 	{
+		name: "double macron below, combining",
+		char: "\u{035f}",
+	},
+	{
+		name: "double macron, combining",
+		char: "\u{035e}",
+	},
+	{
 		name: "double operators",
 		char: "\u{22d0}",
+	},
+	{
+		name: "double overline, combining",
+		char: "\u{033f}",
 	},
 	{
 		name: "double pipe",
@@ -5610,12 +6894,24 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{201f}",
 	},
 	{
+		name: "double rightwards arrow below, combining",
+		char: "\u{0362}",
+	},
+	{
+		name: "double ring below, combining",
+		char: "\u{035a}",
+	},
+	{
 		name: "double slash overlay, long",
 		char: "\u{20eb}",
 	},
 	{
 		name: "double solidus operator",
 		char: "\u{2afd}",
+	},
+	{
+		name: "double solidus overlay, combining long",
+		char: "\u{20eb}",
 	},
 	{
 		name: "double subset",
@@ -5628,6 +6924,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "double superset",
 		char: "\u{22d1}",
+	},
+	{
+		name: "double tilde, combining",
+		char: "\u{0360}",
 	},
 	{
 		name: "double triangles",
@@ -5656,6 +6956,18 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "double vertical line",
 		char: "\u{2016}",
+	},
+	{
+		name: "double vertical line above, combining",
+		char: "\u{030e}",
+	},
+	{
+		name: "double vertical line below, combining",
+		char: "\u{0348}",
+	},
+	{
+		name: "double vertical stroke overlay, combining",
+		char: "\u{20e6}",
 	},
 	{
 		name: "double wavy overline",
@@ -5704,6 +7016,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "down tack",
 		char: "\u{22a4}",
+	},
+	{
+		name: "down tack below, combining",
+		char: "\u{031e}",
 	},
 	{
 		name: "down, page",
@@ -5884,6 +7200,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "e with tilde, latin small letter",
 		char: "\u{1ebd}",
+	},
+	{
+		name: "e, combining latin small letter",
+		char: "\u{0364}",
 	},
 	{
 		name: "e, double-struck italic small",
@@ -6194,8 +7514,36 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2295}",
 	},
 	{
+		name: "enclosing circle backslash, combining",
+		char: "\u{20e0}",
+	},
+	{
+		name: "enclosing circle, combining",
+		char: "\u{20dd}",
+	},
+	{
 		name: "enclosing diacritics",
 		char: "\u{20dd}",
+	},
+	{
+		name: "enclosing diamond, combining",
+		char: "\u{20df}",
+	},
+	{
+		name: "enclosing keycap, combining",
+		char: "\u{20e3}",
+	},
+	{
+		name: "enclosing screen, combining",
+		char: "\u{20e2}",
+	},
+	{
+		name: "enclosing square, combining",
+		char: "\u{20de}",
+	},
+	{
+		name: "enclosing upward pointing triangle, combining",
+		char: "\u{20e4}",
 	},
 	{
 		name: "end",
@@ -6346,6 +7694,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{03f5}",
 	},
 	{
+		name: "equal to above, combining almost",
+		char: "\u{034c}",
+	},
+	{
 		name: "equal to by definition",
 		char: "\u{225c}",
 	},
@@ -6420,6 +7772,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "equals sign",
 		char: "\u{003d}",
+	},
+	{
+		name: "equals sign below, combining",
+		char: "\u{0347}",
 	},
 	{
 		name: "equals sign, heavy",
@@ -6572,6 +7928,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "ethiopic colon",
 		char: "\u{1365}",
+	},
+	{
+		name: "ethiopic combining marks",
+		char: "\u{135d}",
 	},
 	{
 		name: "ethiopic comma",
@@ -6890,6 +8250,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{29d8}",
 	},
 	{
+		name: "fermata, combining",
+		char: "\u{0352}",
+	},
+	{
 		name: "ferry",
 		char: "\u{26f4}",
 	},
@@ -7184,6 +8548,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "four dot punctuation",
 		char: "\u{2058}",
+	},
+	{
+		name: "four dots above, combining",
+		char: "\u{20dc}",
 	},
 	{
 		name: "four dots, mongolian",
@@ -7766,6 +9134,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{11300}",
 	},
 	{
+		name: "grapheme joiner, combining",
+		char: "\u{034f}",
+	},
+	{
 		name: "graphic characters, terminal",
 		char: "\u{23b7}",
 	},
@@ -7790,6 +9162,18 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0060}",
 	},
 	{
+		name: "grave accent below, combining",
+		char: "\u{0316}",
+	},
+	{
+		name: "grave accent, combining",
+		char: "\u{0300}",
+	},
+	{
+		name: "grave accent, combining double",
+		char: "\u{030f}",
+	},
+	{
 		name: "grave accent, modifier letter",
 		char: "\u{02cb}",
 	},
@@ -7804,6 +9188,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "grave accent, swedish",
 		char: "\u{02df}",
+	},
+	{
+		name: "grave tone mark, combining",
+		char: "\u{0340}",
 	},
 	{
 		name: "graveyard",
@@ -7866,6 +9254,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0308}",
 	},
 	{
+		name: "greek dialytika tonos, combining",
+		char: "\u{0344}",
+	},
+	{
 		name: "greek enotikon",
 		char: "\u{203f}",
 	},
@@ -7876,6 +9268,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "greek iota subscript",
 		char: "\u{0345}",
+	},
+	{
+		name: "greek koronis, combining",
+		char: "\u{0343}",
 	},
 	{
 		name: "greek letters, double-struck",
@@ -7940,6 +9336,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "greek pentonkion",
 		char: "\u{2059}",
+	},
+	{
+		name: "greek perispomeni, combining",
+		char: "\u{0342}",
 	},
 	{
 		name: "greek phi symbol",
@@ -8016,6 +9416,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "greek vrachy",
 		char: "\u{0306}",
+	},
+	{
+		name: "greek ypogegrammeni, combining",
+		char: "\u{0345}",
 	},
 	{
 		name: "greek, diacritics for",
@@ -8194,6 +9598,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{210c}",
 	},
 	{
+		name: "h, combining latin small letter",
+		char: "\u{036a}",
+	},
+	{
 		name: "h, double-struck capital",
 		char: "\u{210d}",
 	},
@@ -8216,6 +9624,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "h, script capital",
 		char: "\u{210b}",
+	},
+	{
+		name: "hacek, combining",
+		char: "\u{030c}",
 	},
 	{
 		name: "hacek, modifier letter",
@@ -8244,6 +9656,26 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "half integral, top",
 		char: "\u{2320}",
+	},
+	{
+		name: "half marks, combining",
+		char: "\u{fe20}",
+	},
+	{
+		name: "half ring above, combining left",
+		char: "\u{0351}",
+	},
+	{
+		name: "half ring above, combining right",
+		char: "\u{0357}",
+	},
+	{
+		name: "half ring below, combining left",
+		char: "\u{031c}",
+	},
+	{
+		name: "half ring below, combining right",
+		char: "\u{0339}",
 	},
 	{
 		name: "half ring, armenian modifier letter left",
@@ -8314,6 +9746,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{4e00}",
 	},
 	{
+		name: "han-daku-on, combining japanese",
+		char: "\u{309a}",
+	},
+	{
 		name: "han-daku-on, japanese",
 		char: "\u{309c}",
 	},
@@ -8378,6 +9814,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{3164}",
 	},
 	{
+		name: "hangul jamo combining alphabet, korean",
+		char: "\u{1100}",
+	},
+	{
 		name: "hangul jamo extended-a, korean",
 		char: "\u{a960}",
 	},
@@ -8436,6 +9876,22 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "hardhat",
 		char: "\u{1f477}",
+	},
+	{
+		name: "harpoon above, combining left",
+		char: "\u{20d0}",
+	},
+	{
+		name: "harpoon above, combining right",
+		char: "\u{20d1}",
+	},
+	{
+		name: "harpoon with barb downwards, combining leftwards",
+		char: "\u{20ed}",
+	},
+	{
+		name: "harpoon with barb downwards, combining rightwards",
+		char: "\u{20ec}",
 	},
 	{
 		name: "harpoons",
@@ -8702,12 +10158,28 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{223b}",
 	},
 	{
+		name: "homothetic above, combining",
+		char: "\u{034b}",
+	},
+	{
 		name: "honeybee",
 		char: "\u{1f41d}",
 	},
 	{
 		name: "honorifics, arabic",
 		char: "\u{0610}",
+	},
+	{
+		name: "hook above, combining",
+		char: "\u{0309}",
+	},
+	{
+		name: "hook below, combining palatalized",
+		char: "\u{0321}",
+	},
+	{
+		name: "hook below, combining retroflex",
+		char: "\u{0322}",
 	},
 	{
 		name: "hook, modifier letter rhotic",
@@ -8748,6 +10220,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "horizontal tabulation, symbol for",
 		char: "\u{2409}",
+	},
+	{
+		name: "horn, combining",
+		char: "\u{031b}",
 	},
 	{
 		name: "horse",
@@ -8992,6 +10468,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "i, black-letter capital",
 		char: "\u{2111}",
+	},
+	{
+		name: "i, combining latin small letter",
+		char: "\u{0365}",
 	},
 	{
 		name: "i, double-struck italic small",
@@ -9566,6 +11046,26 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2776}",
 	},
 	{
+		name: "inverted breve below, combining",
+		char: "\u{032f}",
+	},
+	{
+		name: "inverted breve, combining",
+		char: "\u{0311}",
+	},
+	{
+		name: "inverted breve, combining double",
+		char: "\u{0361}",
+	},
+	{
+		name: "inverted bridge below, combining",
+		char: "\u{033a}",
+	},
+	{
+		name: "inverted double arch below, combining",
+		char: "\u{032b}",
+	},
+	{
 		name: "inverted exclamation mark",
 		char: "\u{00a1}",
 	},
@@ -9802,6 +11302,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2749}",
 	},
 	{
+		name: "jamo combining alphabet, korean hangul",
+		char: "\u{1100}",
+	},
+	{
 		name: "jamo, korean hangul compatibility",
 		char: "\u{3130}",
 	},
@@ -9880,6 +11384,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "join",
 		char: "\u{2a1d}",
+	},
+	{
+		name: "joiner, combining grapheme",
+		char: "\u{034f}",
 	},
 	{
 		name: "joiner, word",
@@ -10122,6 +11630,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2396}",
 	},
 	{
+		name: "keycap, combining enclosing",
+		char: "\u{20e3}",
+	},
+	{
 		name: "khanda",
 		char: "\u{1faaf}",
 	},
@@ -10254,6 +11766,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{06d6}",
 	},
 	{
+		name: "korean combining alphabet",
+		char: "\u{1100}",
+	},
+	{
 		name: "korean currency",
 		char: "\u{20a9}",
 	},
@@ -10264,6 +11780,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "korean hangul compatibility jamo",
 		char: "\u{3130}",
+	},
+	{
+		name: "korean hangul jamo combining alphabet",
+		char: "\u{1100}",
 	},
 	{
 		name: "korean hangul jamo extended-a",
@@ -10300,6 +11820,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "korean standard symbol",
 		char: "\u{327f}",
+	},
+	{
+		name: "koronis, combining greek",
+		char: "\u{0343}",
 	},
 	{
 		name: "koto, katakana digraph",
@@ -10786,6 +12310,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0061}",
 	},
 	{
+		name: "latin small letters, combining",
+		char: "\u{0363}",
+	},
+	{
 		name: "latin small ligature ae",
 		char: "\u{00e6}",
 	},
@@ -10858,12 +12386,32 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{301a}",
 	},
 	{
+		name: "left angle above, combining",
+		char: "\u{031a}",
+	},
+	{
+		name: "left angle below, combining",
+		char: "\u{0349}",
+	},
+	{
 		name: "left angle bracket",
 		char: "\u{3008}",
 	},
 	{
 		name: "left angle bracket, mathematical",
 		char: "\u{27e8}",
+	},
+	{
+		name: "left arrow above, combining",
+		char: "\u{20d6}",
+	},
+	{
+		name: "left arrow below, combining",
+		char: "\u{20ee}",
+	},
+	{
+		name: "left arrowhead below, combining",
+		char: "\u{0354}",
 	},
 	{
 		name: "left bag bracket",
@@ -10906,6 +12454,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{230a}",
 	},
 	{
+		name: "left half ring above, combining",
+		char: "\u{0351}",
+	},
+	{
+		name: "left half ring below, combining",
+		char: "\u{031c}",
+	},
+	{
 		name: "left half ring, armenian modifier letter",
 		char: "\u{0559}",
 	},
@@ -10916,6 +12472,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "left half ring, modifier letter centred",
 		char: "\u{02d3}",
+	},
+	{
+		name: "left harpoon above, combining",
+		char: "\u{20d0}",
 	},
 	{
 		name: "left hook, latin capital letter n with",
@@ -10962,6 +12522,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2039}",
 	},
 	{
+		name: "left right arrow above, combining",
+		char: "\u{20e1}",
+	},
+	{
+		name: "left right arrow below, combining",
+		char: "\u{034d}",
+	},
+	{
 		name: "left semidirect product",
 		char: "\u{22cb}",
 	},
@@ -10984,6 +12552,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "left tack",
 		char: "\u{22a3}",
+	},
+	{
+		name: "left tack below, combining",
+		char: "\u{0318}",
 	},
 	{
 		name: "left tortoise shell bracket",
@@ -11058,8 +12630,16 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2190}",
 	},
 	{
+		name: "leftwards arrow overlay, combining",
+		char: "\u{20ea}",
+	},
+	{
 		name: "leftwards bullet, black",
 		char: "\u{204c}",
+	},
+	{
+		name: "leftwards harpoon with barb downwards, combining",
+		char: "\u{20ed}",
 	},
 	{
 		name: "legacy computing, symbols for",
@@ -11238,8 +12818,24 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2250}",
 	},
 	{
+		name: "line above, combining double vertical",
+		char: "\u{030e}",
+	},
+	{
+		name: "line above, combining vertical",
+		char: "\u{030d}",
+	},
+	{
 		name: "line backward, partial",
 		char: "\u{008c}",
+	},
+	{
+		name: "line below, combining double vertical",
+		char: "\u{0348}",
+	},
+	{
+		name: "line below, combining vertical",
+		char: "\u{0329}",
 	},
 	{
 		name: "line feed",
@@ -11270,6 +12866,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2aee}",
 	},
 	{
+		name: "line overlay, combining long vertical",
+		char: "\u{20d2}",
+	},
+	{
+		name: "line overlay, combining short vertical",
+		char: "\u{20d3}",
+	},
+	{
 		name: "line separator",
 		char: "\u{2028}",
 	},
@@ -11296,6 +12900,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "line, centreline low",
 		char: "\u{fe4e}",
+	},
+	{
+		name: "line, combining double low",
+		char: "\u{0333}",
+	},
+	{
+		name: "line, combining low",
+		char: "\u{0332}",
 	},
 	{
 		name: "line, dashed low",
@@ -11490,6 +13102,18 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0338}",
 	},
 	{
+		name: "long solidus overlay, combining",
+		char: "\u{0338}",
+	},
+	{
+		name: "long stroke overlay, combining",
+		char: "\u{0336}",
+	},
+	{
+		name: "long vertical line overlay, combining",
+		char: "\u{20d2}",
+	},
+	{
 		name: "loop, curly",
 		char: "\u{27b0}",
 	},
@@ -11536,6 +13160,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "low line, centreline",
 		char: "\u{fe4e}",
+	},
+	{
+		name: "low line, combining",
+		char: "\u{0332}",
+	},
+	{
+		name: "low line, combining double",
+		char: "\u{0333}",
 	},
 	{
 		name: "low line, dashed",
@@ -11654,6 +13286,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0270}",
 	},
 	{
+		name: "m, combining latin small letter",
+		char: "\u{036b}",
+	},
+	{
 		name: "m, latin capital letter turned",
 		char: "\u{019c}",
 	},
@@ -11688,6 +13324,30 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "macron",
 		char: "\u{00af}",
+	},
+	{
+		name: "macron below, combining",
+		char: "\u{0331}",
+	},
+	{
+		name: "macron below, combining double",
+		char: "\u{035f}",
+	},
+	{
+		name: "macron left half, combining",
+		char: "\u{fe24}",
+	},
+	{
+		name: "macron right half, combining",
+		char: "\u{fe25}",
+	},
+	{
+		name: "macron, combining",
+		char: "\u{0304}",
+	},
+	{
+		name: "macron, combining double",
+		char: "\u{035e}",
 	},
 	{
 		name: "macron, modifier letter",
@@ -11876,6 +13536,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "markers, go",
 		char: "\u{2686}",
+	},
+	{
+		name: "marks, combining diacritical",
+		char: "\u{0300}",
+	},
+	{
+		name: "marks, combining half",
+		char: "\u{fe20}",
 	},
 	{
 		name: "marque de commerce",
@@ -12288,6 +13956,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "minus sign",
 		char: "\u{2212}",
+	},
+	{
+		name: "minus sign below, combining",
+		char: "\u{0320}",
 	},
 	{
 		name: "minus sign operators, plus and",
@@ -13210,6 +14882,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2241}",
 	},
 	{
+		name: "not tilde above, combining",
+		char: "\u{034a}",
+	},
+	{
 		name: "not yield, does",
 		char: "\u{22a3}",
 	},
@@ -13514,6 +15190,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{00f5}",
 	},
 	{
+		name: "o, combining latin small letter",
+		char: "\u{0366}",
+	},
+	{
 		name: "o, latin capital letter barred",
 		char: "\u{019f}",
 	},
@@ -13616,6 +15296,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "ogonek",
 		char: "\u{02db}",
+	},
+	{
+		name: "ogonek, combining",
+		char: "\u{0328}",
 	},
 	{
 		name: "ogre, japanese",
@@ -14038,6 +15722,66 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{00af}",
 	},
 	{
+		name: "overlay, combining anticlockwise ring",
+		char: "\u{20da}",
+	},
+	{
+		name: "overlay, combining clockwise ring",
+		char: "\u{20d9}",
+	},
+	{
+		name: "overlay, combining counterclockwise ring",
+		char: "\u{20da}",
+	},
+	{
+		name: "overlay, combining double vertical stroke",
+		char: "\u{20e6}",
+	},
+	{
+		name: "overlay, combining leftwards arrow",
+		char: "\u{20ea}",
+	},
+	{
+		name: "overlay, combining long double solidus",
+		char: "\u{20eb}",
+	},
+	{
+		name: "overlay, combining long solidus",
+		char: "\u{0338}",
+	},
+	{
+		name: "overlay, combining long stroke",
+		char: "\u{0336}",
+	},
+	{
+		name: "overlay, combining long vertical line",
+		char: "\u{20d2}",
+	},
+	{
+		name: "overlay, combining reverse solidus",
+		char: "\u{20e5}",
+	},
+	{
+		name: "overlay, combining ring",
+		char: "\u{20d8}",
+	},
+	{
+		name: "overlay, combining short solidus",
+		char: "\u{0337}",
+	},
+	{
+		name: "overlay, combining short stroke",
+		char: "\u{0335}",
+	},
+	{
+		name: "overlay, combining short vertical line",
+		char: "\u{20d3}",
+	},
+	{
+		name: "overlay, combining tilde",
+		char: "\u{0334}",
+	},
+	{
 		name: "overlay, long double slash",
 		char: "\u{20eb}",
 	},
@@ -14060,6 +15804,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "overline, centreline",
 		char: "\u{fe4a}",
+	},
+	{
+		name: "overline, combining",
+		char: "\u{0305}",
+	},
+	{
+		name: "overline, combining double",
+		char: "\u{033f}",
 	},
 	{
 		name: "overline, dashed",
@@ -14184,6 +15936,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "palatal hook, latin small letter t with",
 		char: "\u{01ab}",
+	},
+	{
+		name: "palatalized hook below, combining",
+		char: "\u{0321}",
 	},
 	{
 		name: "palm branch",
@@ -14506,6 +16262,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2488}",
 	},
 	{
+		name: "perispomeni, combining greek",
+		char: "\u{0342}",
+	},
+	{
 		name: "permanent paper sign",
 		char: "\u{267e}",
 	},
@@ -14756,6 +16516,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "plus sign",
 		char: "\u{002b}",
+	},
+	{
+		name: "plus sign below, combining",
+		char: "\u{031f}",
 	},
 	{
 		name: "plus sign operators, specialized",
@@ -15734,6 +17498,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{211c}",
 	},
 	{
+		name: "r, combining latin small letter",
+		char: "\u{036c}",
+	},
+	{
 		name: "r, double-struck capital",
 		char: "\u{211d}",
 	},
@@ -16014,6 +17782,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{01c3}",
 	},
 	{
+		name: "retroflex hook below, combining",
+		char: "\u{0322}",
+	},
+	{
 		name: "retroflex hook, latin capital letter t with",
 		char: "\u{01ae}",
 	},
@@ -16066,6 +17838,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{29f5}",
 	},
 	{
+		name: "reverse solidus overlay, combining",
+		char: "\u{20e5}",
+	},
+	{
 		name: "reverse solidus, big",
 		char: "\u{29f9}",
 	},
@@ -16076,6 +17852,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "reversed c, latin small letter",
 		char: "\u{2184}",
+	},
+	{
+		name: "reversed comma above, combining",
+		char: "\u{0314}",
 	},
 	{
 		name: "reversed comma quotation mark, double",
@@ -16250,8 +18030,32 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{22be}",
 	},
 	{
+		name: "right arrow above, combining",
+		char: "\u{20d7}",
+	},
+	{
+		name: "right arrow above, combining left",
+		char: "\u{20e1}",
+	},
+	{
+		name: "right arrow below, combining",
+		char: "\u{20ef}",
+	},
+	{
+		name: "right arrow below, combining left",
+		char: "\u{034d}",
+	},
+	{
 		name: "right arrow, colon",
 		char: "\u{29f4}",
+	},
+	{
+		name: "right arrowhead above, combining",
+		char: "\u{0350}",
+	},
+	{
+		name: "right arrowhead below, combining",
+		char: "\u{0355}",
 	},
 	{
 		name: "right bag bracket",
@@ -16302,8 +18106,20 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{230b}",
 	},
 	{
+		name: "right half ring above, combining",
+		char: "\u{0357}",
+	},
+	{
+		name: "right half ring below, combining",
+		char: "\u{0339}",
+	},
+	{
 		name: "right half ring, armenian modifier letter",
 		char: "\u{055a}",
+	},
+	{
+		name: "right harpoon above, combining",
+		char: "\u{20d1}",
 	},
 	{
 		name: "right key, delete to the",
@@ -16374,6 +18190,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{22a2}",
 	},
 	{
+		name: "right tack below, combining",
+		char: "\u{0319}",
+	},
+	{
 		name: "right tortoise shell bracket",
 		char: "\u{3015}",
 	},
@@ -16404,6 +18224,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "right white tortoise shell bracket",
 		char: "\u{3019}",
+	},
+	{
+		name: "right, combining comma above",
+		char: "\u{0315}",
+	},
+	{
+		name: "right, combining dot above",
+		char: "\u{0358}",
 	},
 	{
 		name: "right, erase to the",
@@ -16454,12 +18282,32 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2192}",
 	},
 	{
+		name: "rightwards arrow below, combining double",
+		char: "\u{0362}",
+	},
+	{
 		name: "rightwards bullet, black",
 		char: "\u{204d}",
 	},
 	{
+		name: "rightwards harpoon with barb downwards, combining",
+		char: "\u{20ec}",
+	},
+	{
 		name: "ring above",
 		char: "\u{02da}",
+	},
+	{
+		name: "ring above, combining",
+		char: "\u{030a}",
+	},
+	{
+		name: "ring above, combining left half",
+		char: "\u{0351}",
+	},
+	{
+		name: "ring above, combining right half",
+		char: "\u{0357}",
 	},
 	{
 		name: "ring above, latin capital letter a with",
@@ -16468,6 +18316,22 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "ring above, latin small letter a with",
 		char: "\u{00e5}",
+	},
+	{
+		name: "ring below, combining",
+		char: "\u{0325}",
+	},
+	{
+		name: "ring below, combining double",
+		char: "\u{035a}",
+	},
+	{
+		name: "ring below, combining left half",
+		char: "\u{031c}",
+	},
+	{
+		name: "ring below, combining right half",
+		char: "\u{0339}",
 	},
 	{
 		name: "ring below, latin small letter a with",
@@ -16488,6 +18352,22 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "ring operator, circled",
 		char: "\u{229a}",
+	},
+	{
+		name: "ring overlay, combining",
+		char: "\u{20d8}",
+	},
+	{
+		name: "ring overlay, combining anticlockwise",
+		char: "\u{20da}",
+	},
+	{
+		name: "ring overlay, combining clockwise",
+		char: "\u{20d9}",
+	},
+	{
+		name: "ring overlay, combining counterclockwise",
+		char: "\u{20da}",
 	},
 	{
 		name: "ring, armenian modifier letter left half",
@@ -16894,6 +18774,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2399}",
 	},
 	{
+		name: "screen, combining enclosing",
+		char: "\u{20e2}",
+	},
+	{
 		name: "script a, latin small letter",
 		char: "\u{0251}",
 	},
@@ -16984,6 +18868,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "scruple",
 		char: "\u{2108}",
+	},
+	{
+		name: "seagull below, combining",
+		char: "\u{033c}",
 	},
 	{
 		name: "seashell",
@@ -17366,6 +19254,18 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0337}",
 	},
 	{
+		name: "short solidus overlay, combining",
+		char: "\u{0337}",
+	},
+	{
+		name: "short stroke overlay, combining",
+		char: "\u{0335}",
+	},
+	{
+		name: "short vertical line overlay, combining",
+		char: "\u{20d3}",
+	},
+	{
 		name: "shorthand format controls",
 		char: "\u{1bca0}",
 	},
@@ -17690,6 +19590,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0561}",
 	},
 	{
+		name: "small letters, combining latin",
+		char: "\u{0363}",
+	},
+	{
 		name: "small letters, cyrillic",
 		char: "\u{0430}",
 	},
@@ -17844,6 +19748,22 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "solidus operator, reverse",
 		char: "\u{29f5}",
+	},
+	{
+		name: "solidus overlay, combining long",
+		char: "\u{0338}",
+	},
+	{
+		name: "solidus overlay, combining long double",
+		char: "\u{20eb}",
+	},
+	{
+		name: "solidus overlay, combining reverse",
+		char: "\u{20e5}",
+	},
+	{
+		name: "solidus overlay, combining short",
+		char: "\u{0337}",
 	},
 	{
 		name: "solidus, big",
@@ -18082,6 +20002,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{1f3cf}",
 	},
 	{
+		name: "square below, combining",
+		char: "\u{033b}",
+	},
+	{
 		name: "square bracket with quill, left",
 		char: "\u{2045}",
 	},
@@ -18152,6 +20076,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "square, black medium small",
 		char: "\u{25fe}",
+	},
+	{
+		name: "square, combining enclosing",
+		char: "\u{20de}",
 	},
 	{
 		name: "square, viewdata",
@@ -18372,6 +20300,18 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "string, start of",
 		char: "\u{0098}",
+	},
+	{
+		name: "stroke overlay, combining double vertical",
+		char: "\u{20e6}",
+	},
+	{
+		name: "stroke overlay, combining long",
+		char: "\u{0336}",
+	},
+	{
+		name: "stroke overlay, combining short",
+		char: "\u{0335}",
 	},
 	{
 		name: "stroke, latin capital letter o with",
@@ -18924,6 +20864,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "symbols, clock face",
 		char: "\u{1f550}",
+	},
+	{
+		name: "symbols, combining diacritical marks for",
+		char: "\u{20d0}",
 	},
 	{
 		name: "symbols, comic style",
@@ -19498,6 +21442,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0167}",
 	},
 	{
+		name: "t, combining latin small letter",
+		char: "\u{036d}",
+	},
+	{
 		name: "t, latin letter small capital",
 		char: "\u{1d1b}",
 	},
@@ -19588,6 +21536,22 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "tabulation, vertical",
 		char: "\u{000b}",
+	},
+	{
+		name: "tack below, combining down",
+		char: "\u{031e}",
+	},
+	{
+		name: "tack below, combining left",
+		char: "\u{0318}",
+	},
+	{
+		name: "tack below, combining right",
+		char: "\u{0319}",
+	},
+	{
+		name: "tack below, combining up",
+		char: "\u{031d}",
 	},
 	{
 		name: "tack, down",
@@ -20078,6 +22042,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2056}",
 	},
 	{
+		name: "three dots above, combining",
+		char: "\u{20db}",
+	},
+	{
 		name: "three quarters, vulgar fraction",
 		char: "\u{00be}",
 	},
@@ -20246,6 +22214,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{007e}",
 	},
 	{
+		name: "tilde above, combining not",
+		char: "\u{034a}",
+	},
+	{
+		name: "tilde below, combining",
+		char: "\u{0330}",
+	},
+	{
 		name: "tilde equals, reversed",
 		char: "\u{22cd}",
 	},
@@ -20258,8 +22234,24 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{223c}",
 	},
 	{
+		name: "tilde overlay, combining",
+		char: "\u{0334}",
+	},
+	{
 		name: "tilde, apl",
 		char: "\u{223c}",
+	},
+	{
+		name: "tilde, combining",
+		char: "\u{0303}",
+	},
+	{
+		name: "tilde, combining double",
+		char: "\u{0360}",
+	},
+	{
+		name: "tilde, combining vertical",
+		char: "\u{033e}",
 	},
 	{
 		name: "tilde, minus",
@@ -20338,6 +22330,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{204a}",
 	},
 	{
+		name: "titlo left half, combining cyrillic",
+		char: "\u{fe2e}",
+	},
+	{
 		name: "todo soft hyphen, mongolian",
 		char: "\u{1806}",
 	},
@@ -20348,6 +22344,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "tone letters, modifier",
 		char: "\u{a700}",
+	},
+	{
+		name: "tone mark, combining acute",
+		char: "\u{0341}",
+	},
+	{
+		name: "tone mark, combining grave",
+		char: "\u{0340}",
 	},
 	{
 		name: "tone marks for chinese, corner",
@@ -20384,6 +22388,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "tongue",
 		char: "\u{1f445}",
+	},
+	{
+		name: "tonos, combining greek dialytika",
+		char: "\u{0344}",
 	},
 	{
 		name: "tonos, greek",
@@ -20510,6 +22518,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{29ca}",
 	},
 	{
+		name: "triangle, combining enclosing upward pointing",
+		char: "\u{20e4}",
+	},
+	{
 		name: "triangle, right",
 		char: "\u{22bf}",
 	},
@@ -20564,6 +22576,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "triple tilde",
 		char: "\u{224b}",
+	},
+	{
+		name: "triple underdot, combining",
+		char: "\u{20e8}",
 	},
 	{
 		name: "truck, black",
@@ -20624,6 +22640,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "turned capital f",
 		char: "\u{2132}",
+	},
+	{
+		name: "turned comma above, combining",
+		char: "\u{0312}",
 	},
 	{
 		name: "turned comma quotation mark, double",
@@ -20922,6 +22942,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{0169}",
 	},
 	{
+		name: "u, combining latin small letter",
+		char: "\u{0367}",
+	},
+	{
 		name: "u, latin letter small capital",
 		char: "\u{1d1c}",
 	},
@@ -20968,6 +22992,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "uncertainty sign",
 		char: "\u{2bd1}",
+	},
+	{
+		name: "underdot, combining triple",
+		char: "\u{20e8}",
 	},
 	{
 		name: "underline",
@@ -21114,6 +23142,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{22a5}",
 	},
 	{
+		name: "up tack below, combining",
+		char: "\u{031d}",
+	},
+	{
 		name: "up tack, modifier letter",
 		char: "\u{02d4}",
 	},
@@ -21162,8 +23194,16 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2308}",
 	},
 	{
+		name: "upward pointing triangle, combining enclosing",
+		char: "\u{20e4}",
+	},
+	{
 		name: "upwards arrow",
 		char: "\u{2191}",
+	},
+	{
+		name: "upwards arrow below, combining",
+		char: "\u{034e}",
 	},
 	{
 		name: "uralic phonetic alphabet, diacritics for",
@@ -21220,6 +23260,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "v with tilde, latin small letter",
 		char: "\u{1e7d}",
+	},
+	{
+		name: "v, combining latin small letter",
+		char: "\u{036e}",
 	},
 	{
 		name: "v, latin capital letter script",
@@ -21414,8 +23458,32 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{007c}",
 	},
 	{
+		name: "vertical line above, combining",
+		char: "\u{030d}",
+	},
+	{
+		name: "vertical line above, combining double",
+		char: "\u{030e}",
+	},
+	{
+		name: "vertical line below, combining",
+		char: "\u{0329}",
+	},
+	{
+		name: "vertical line below, combining double",
+		char: "\u{0348}",
+	},
+	{
 		name: "vertical line operators",
 		char: "\u{2aee}",
+	},
+	{
+		name: "vertical line overlay, combining long",
+		char: "\u{20d2}",
+	},
+	{
+		name: "vertical line overlay, combining short",
+		char: "\u{20d3}",
 	},
 	{
 		name: "vertical line with middle dot",
@@ -21438,6 +23506,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2223}",
 	},
 	{
+		name: "vertical stroke overlay, combining double",
+		char: "\u{20e6}",
+	},
+	{
 		name: "vertical tabulation",
 		char: "\u{000b}",
 	},
@@ -21452,6 +23524,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "vertical text, double punctuation for",
 		char: "\u{2047}",
+	},
+	{
+		name: "vertical tilde, combining",
+		char: "\u{033e}",
 	},
 	{
 		name: "vertical variants, glyphs for",
@@ -21934,6 +24010,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{2aff}",
 	},
 	{
+		name: "wide bridge above, combining",
+		char: "\u{20e9}",
+	},
+	{
 		name: "wiggly fences",
 		char: "\u{29d8}",
 	},
@@ -22018,6 +24098,14 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{01bf}",
 	},
 	{
+		name: "x above, combining",
+		char: "\u{033d}",
+	},
+	{
+		name: "x below, combining",
+		char: "\u{0353}",
+	},
+	{
 		name: "x in a rectangle box",
 		char: "\u{2327}",
 	},
@@ -22040,6 +24128,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "x, cancellation",
 		char: "\u{1f5d9}",
+	},
+	{
+		name: "x, combining latin small letter",
+		char: "\u{036f}",
 	},
 	{
 		name: "x, heavy ballot",
@@ -22206,6 +24298,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 		char: "\u{021d}",
 	},
 	{
+		name: "ypogegrammeni, combining greek",
+		char: "\u{0345}",
+	},
+	{
 		name: "yr, latin letter",
 		char: "\u{01a6}",
 	},
@@ -22320,6 +24416,10 @@ export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
 		name: "zero, superscript",
 		char: "\u{2070}",
+	},
+	{
+		name: "zigzag above, combining",
+		char: "\u{035b}",
 	},
 	{
 		name: "zodiac, signs of the asian",
