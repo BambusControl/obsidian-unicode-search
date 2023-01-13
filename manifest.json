@@ -3,7 +3,8 @@
 	"name": "Unicode Search",
 	"version": "0.1.0",
 	"minAppVersion": "0.15.0",
-	"description": "Easily search the Unicode Character Database index and insert any character into your editor.",
+	"description": "Search and insert Unicode characters into your editor",
 	"author": "BambusControl",
+	"authorUrl": "https://github.com/BambusControl",
 	"isDesktopOnly": false
 }

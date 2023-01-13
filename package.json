@@ -1,7 +1,7 @@
 {
 	"name": "obsidian-unicode-search",
 	"version": "0.1.0",
-	"description": "Obsidian plugin for searching unicode characters.",
+	"description": "Obsidian plugin for searching Unicode characters.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
