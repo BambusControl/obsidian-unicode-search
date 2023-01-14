@@ -13,6 +13,7 @@ const sourceDir = "./src";
 const outputDir = "./dist/obsidian-unicode-search";
 
 /* Copy the manifest for working*/
+await fs.mkdir(outputDir, {recursive: true});
 await fs.copyFile("manifest.json", `${outputDir}/manifest.json`);
 
 esbuild.build({
