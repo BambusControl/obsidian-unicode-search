@@ -10,10 +10,10 @@ const banner =
 const prodBuild = (process.argv[2] === "production");
 
 const sourceDir = "./src";
-const outputDir = "./dist";
+const outputDir = "./dist/obsidian-unicode-search";
 
 /* Copy the manifest for working*/
-await fs.copyFile("manifest.json", "dist/manifest.json");
+await fs.copyFile("manifest.json", `${outputDir}/manifest.json`);
 
 esbuild.build({
 	banner: {
