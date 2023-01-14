@@ -22,7 +22,4 @@ jobs:
       - run: |
           "npm ci"
           "npm run build"
-
-      - name: "ZIP Build output"
-      - run: |
           "zip -r ${{ env.BUILD_DIR }}.zip ${{ env.BUILD_DIR }}"
