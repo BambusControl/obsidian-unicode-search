@@ -3,7 +3,7 @@ name: Build obsidian plugin
 on:
   push:
     branches:
-      - "*"
+      - "feature/github-actions"
 
 env:
   PLUGIN_NAME: "obsidian-unicode-search"
