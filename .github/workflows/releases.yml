@@ -2,7 +2,8 @@ name: Build obsidian plugin
 
 on:
   push:
-    - "*"
+    branches:
+      - "*"
 
 env:
   PLUGIN_NAME: "obsidian-unicode-search"
@@ -13,11 +14,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+
+      - uses: actions/setup-node@v3
         with:
           node-version: "18"
+
+      - name: "Install and build"
         run: |
-          npm install
-          npm run build
-          zip -r ${{ env.BUILD_DIR }}.zip ${{ env.BUILD_DIR }}
+          "npm install"
+          "npm run build"
+
+      - name: "ZIP Build output"
+        run: |
+          "zip -r ${{ env.BUILD_DIR }}.zip ${{ env.BUILD_DIR }}"
