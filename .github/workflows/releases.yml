@@ -5,7 +5,7 @@ on:
     branches:
       - "feature/github-actions"
 
-ENV:
+env:
   PLUGIN_NAME: "obsidian-unicode-search"
   BUILD_DIR: "./dist"
 
@@ -23,6 +23,6 @@ jobs:
           npm run build --if-present
 
       - name: ZIP build output
-        working-directory: ${{ ENV.BUILD_DIR }}
+        working-directory: ${{ env.BUILD_DIR }}
         run: |
-          zip -r ${{ ENV.PLUGIN_NAME }}.zip ${{ ENV.PLUGIN_NAME }}
+          zip -r ${{ env.PLUGIN_NAME }}.zip ${{ env.PLUGIN_NAME }}
