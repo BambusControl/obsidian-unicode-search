@@ -36,19 +36,19 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	public override renderSuggestion(item: FuzzyMatch<UnicodeCharacterInfoModel>, el: HTMLElement): void {
 		const container = el.createDiv({
 			cls: "plugin obsidian-unicode-search result-item",
-		} as DomElementInfo);
+		});
 
 		/* preview */
 		container.createDiv({
 			cls: "character-preview",
-		} as DomElementInfo).createSpan({
+		}).createSpan({
 			text: item.item.char,
-		} as DomElementInfo);
+		});
 
 		/* indexed name */
 		const text = container.createDiv({
 			cls: "character-name",
-		} as DomElementInfo);
+		});
 
 		super.renderSuggestion(item, text);
 	}
