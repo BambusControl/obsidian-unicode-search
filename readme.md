@@ -19,3 +19,18 @@ and press <kbd>↵</kbd> to insert it into the editor.
 The character is inserted into the editor.
 
 ![Inserted wave symbol](./assets/wave-inserted.png)
+
+## Development
+
+Docker compose is provided for easier environment set-up.
+
+Install dependencies.
+
+```console
+docker-compose run --rm npm install
+```
+Build the project.
+
+```console
+docker-compose run --rm npm run build
+```
