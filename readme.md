@@ -29,6 +29,7 @@ Install dependencies.
 ```console
 docker-compose run --rm npm install
 ```
+
 Build the project.
 
 ```console
