@@ -1,6 +1,7 @@
 import {App, Editor, FuzzyMatch, FuzzySuggestModal, Instruction} from "obsidian";
 import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
 import {UnicodeCharacterStorage} from "../service/unicode-character.storage";
+import {PersistentSuggestionStorage} from "../service/persistent-suggestion.storage";
 
 const INSERT_CHAR_INSTRUCTION = {
 	command: "↵",
@@ -17,7 +18,8 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
-		private readonly service: UnicodeCharacterStorage,
+		private readonly characterService: UnicodeCharacterStorage,
+		private readonly suggestionService: PersistentSuggestionStorage,
 	) {
 		super(app);
 
@@ -54,7 +56,14 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	}
 
 	public getItems(): UnicodeCharacterInfoModel[] {
-		return this.service.getAll();
+		const suggestions = this.suggestionService.getAll();
+		const others = this.characterService.getAll()
+				.filter(char => !suggestions.contains(char));
+
+		return [
+			...suggestions,
+			...others
+		];
 	}
 
 	public onChooseItem(item: UnicodeCharacterInfoModel, evt: MouseEvent | KeyboardEvent): void {
@@ -66,7 +75,7 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	}
 
 	private setRandomPlaceholder(): void {
-		const placeholder = `Unicode search: ${this.service.getRandom().name}`;
+		const placeholder = `Unicode search: ${this.characterService.getRandom().name}`;
 		super.setPlaceholder(placeholder);
 	}
 

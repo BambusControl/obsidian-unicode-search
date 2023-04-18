@@ -1,18 +1,16 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {FuzzySearchModal} from "./components/fuzzy-search.modal";
-import {UnicodeCharacterStorage} from "./service/unicode-character.storage";
-import {ConstantUnicodeCharacterStorage} from "./service/constant-unicode-character.storage";
+import {DependencyManager} from "./configuration/dependency.manager";
 
 export default class UnicodeSearchPlugin extends Plugin {
 
-	private readonly service: UnicodeCharacterStorage;
+	private readonly dependency: DependencyManager;
 
 	public constructor(
 		app: App,
 		manifest: PluginManifest,
 	) {
 		super(app, manifest);
-		this.service = new ConstantUnicodeCharacterStorage();
+		this.dependency = new DependencyManager();
 	}
 
 	public override async onload(): Promise<void> {
@@ -21,7 +19,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 			name: "Search Unicode characters",
 
 			editorCallback: editor => {
-				const modal = new FuzzySearchModal(this.app, editor, this.service);
+				const modal = this.dependency.factory.FuzzySearchModal(app, editor);
 				modal.open();
 				return true;
 			},
@@ -31,5 +29,5 @@ export default class UnicodeSearchPlugin extends Plugin {
 	public override onunload(): void {
 		// Intentionally left blank
 	}
-}
 
+}
