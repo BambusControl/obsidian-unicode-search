@@ -1,7 +1,8 @@
 import {App, Editor, FuzzyMatch, FuzzySuggestModal, Instruction} from "obsidian";
-import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
-import {UnicodeCharacterStorage} from "../service/unicode-character.storage";
-import {PersistentSuggestionStorage} from "../service/persistent-suggestion.storage";
+import {equals, UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
+import {ImmutableCharacterStorage} from "../service/storage/immutable-character.storage";
+import {OrderedCharacterStorage} from "../service/storage/ordered-character.storage";
+import {SavedCharacterStorage} from "../service/storage/saved-character.storage";
 
 const INSERT_CHAR_INSTRUCTION = {
 	command: "↵",
@@ -18,8 +19,9 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
-		private readonly characterService: UnicodeCharacterStorage,
-		private readonly suggestionService: PersistentSuggestionStorage,
+		private readonly immutableStorage: ImmutableCharacterStorage,
+		private readonly orderedStorage: OrderedCharacterStorage,
+		private readonly savedStorage: SavedCharacterStorage,
 	) {
 		super(app);
 
@@ -56,17 +58,26 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	}
 
 	public getItems(): UnicodeCharacterInfoModel[] {
-		const suggestions = this.suggestionService.getAll();
-		const others = this.characterService.getAll()
-				.filter(char => !suggestions.contains(char));
+		const saved = this.savedStorage.getAll();
+
+		const ordered = this.orderedStorage.getAll()
+			.filter(outer => !saved.some(inner => equals(outer, inner)));
+
+		const everything = this.immutableStorage.getAll()
+			.filter(outer =>
+				!saved.some(inner => equals(outer, inner)
+					&& !ordered.some(inner => equals(outer, inner))
+				));
 
 		return [
-			...suggestions,
-			...others
+			...saved,
+			...ordered,
+			...everything
 		];
 	}
 
 	public onChooseItem(item: UnicodeCharacterInfoModel, evt: MouseEvent | KeyboardEvent): void {
+		this.orderedStorage.affect({...item, hitCount: -1})
 		this.editor.replaceSelection(item.char);
 	}
 
@@ -75,8 +86,15 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	}
 
 	private setRandomPlaceholder(): void {
-		const placeholder = `Unicode search: ${this.characterService.getRandom().name}`;
+		const placeholder = `Unicode search: ${this.getRandomCharacter().name}`;
 		super.setPlaceholder(placeholder);
+	}
+
+	private getRandomCharacter(): UnicodeCharacterInfoModel {
+		const data = this.immutableStorage.getAll();
+
+		const index: number = Math.floor(Math.random() * data.length);
+		return data[index];
 	}
 
 }

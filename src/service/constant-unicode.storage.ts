@@ -1,8 +1,8 @@
 import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
 import {UNICODE_DATA} from "../configuration/unicode.data";
-import {UnicodeCharacterStorage} from "./unicode-character.storage";
+import {ImmutableCharacterStorage} from "./storage/immutable-character.storage";
 
-export class ConstantUnicodeCharacterStorage implements UnicodeCharacterStorage {
+export class ConstantUnicodeStorage implements ImmutableCharacterStorage {
 
 	private readonly data: UnicodeCharacterInfoModel[];
 
@@ -14,10 +14,4 @@ export class ConstantUnicodeCharacterStorage implements UnicodeCharacterStorage 
 		return this.data;
 	}
 
-	public getRandom(): UnicodeCharacterInfoModel {
-		const index: number = Math.floor(Math.random() * this.data.length);
-		return this.data[index];
-	}
-
 }
-
