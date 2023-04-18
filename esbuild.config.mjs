@@ -10,7 +10,7 @@ const banner =
 const prodBuild = (process.argv[2] === "production");
 
 const sourceDir = "./src";
-const outputDir = "./dist/obsidian-unicode-search";
+const outputDir = "./dist/unicode-search";
 
 /* Copy the manifest for working*/
 await fs.mkdir(outputDir, {recursive: true});
