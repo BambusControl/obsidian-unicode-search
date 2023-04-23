@@ -1,6 +1,5 @@
 import {
 	CharacterKeyType,
-	CharacterMap,
 	CharacterMapOf,
 	UnicodeCharacterInfoModel,
 } from "../../data/model/unicode-character-info.model";

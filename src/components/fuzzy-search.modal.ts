@@ -1,9 +1,8 @@
 import {App, Editor, FuzzyMatch, FuzzySuggestModal, Instruction} from "obsidian";
-import {equals, UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
-import {Storage} from "../service/storage/storage";
+import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
 import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
-import {PinnedStorage} from "../service/storage/pinned.storage";
-import {DataService} from "../service/data.service";
+
+import {DataAccess} from "../service/data.access";
 
 const INSERT_CHAR_INSTRUCTION = {
 	command: "↵",
@@ -20,9 +19,8 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
-		private readonly constantStorage: Storage,
+		private readonly dataService: DataAccess,
 		private readonly statTrackedStorage: StatTrackedStorage,
-		private readonly pinnedStorage: PinnedStorage,
 	) {
 		super(app);
 
@@ -59,22 +57,7 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	}
 
 	public getItems(): UnicodeCharacterInfoModel[] {
-		const saved = this.pinnedStorage.getAll();
-
-		const ordered = this.statTrackedStorage.getAll()
-			.filter(outer => !saved.some(inner => equals(outer, inner)));
-
-		const everything = this.constantStorage.getAll()
-			.filter(outer =>
-				!saved.some(inner => equals(outer, inner)
-					&& !ordered.some(inner => equals(outer, inner)),
-				));
-
-		return [
-			...saved,
-			...ordered,
-			...everything,
-		];
+		return this.dataService.getCharacters();
 	}
 
 	public onChooseItem(item: UnicodeCharacterInfoModel, evt: MouseEvent | KeyboardEvent): void {
@@ -92,14 +75,10 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	}
 
 	private getRandomCharacter(): UnicodeCharacterInfoModel {
-		const data = this.constantStorage.getAll();
+		const data = this.dataService.getCharacters();
 
-		// const index: number = Math.floor(Math.random() * data.length);
-		// return data[index];
-		return {
-			name: "fufu",
-			char: "iweruowe"
-		}
+		const index: number = Math.floor(Math.random() * data.length);
+		return data[index];
 	}
 
 }

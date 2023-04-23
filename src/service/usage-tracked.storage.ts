@@ -1,4 +1,4 @@
-import {CharacterKeyType, CharacterMapOf, UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
+import {CharacterKeyType, CharacterMapOf} from "../data/model/unicode-character-info.model";
 import {ObsidianUnicodeSearchError} from "../data/exception/obsidian-unicode-search.error";
 
 import {StatTrackedCharacter, StatTrackedStorage} from "./storage/stat-tracked.storage";
@@ -23,7 +23,7 @@ export class UsageTrackedStorage implements StatTrackedStorage {
 		}
 
 		char.useCount = (char.useCount ?? 0) + 1;
-		char.lastUsed = new Date();
+		char.lastUsed = (new Date()).valueOf();
 
 		await this.exportService.exportChar(char);
 	}

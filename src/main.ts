@@ -37,6 +37,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 			);
 
 			await this.exportService.exportData(newData);
+			await this.exportService.setAsInitialized();
 		}
 		/// Initialize
 
@@ -52,9 +53,8 @@ export default class UnicodeSearchPlugin extends Plugin {
 				const modal = new FuzzySearchModal(
 					app,
 					editor,
-					this.constantStorage!,
+					this.exportService!,
 					this.usageTrackedStorage!,
-					this.userPinnedStorage!,
 				);
 				modal.open();
 				return true;

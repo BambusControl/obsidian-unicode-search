@@ -4,8 +4,6 @@ import {
 	UnicodeCharacterInfoModel,
 } from "../../data/model/unicode-character-info.model";
 import {StatTracked} from "../../data/type/stat-tracked";
-import {Pinnable} from "../../data/type/pinnable";
-
 
 export type StatTrackedCharacter = UnicodeCharacterInfoModel & Partial<StatTracked>;
 

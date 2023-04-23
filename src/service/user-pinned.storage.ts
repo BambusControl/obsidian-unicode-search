@@ -1,6 +1,5 @@
-import {CharacterKeyType, CharacterMapOf, UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
+import {CharacterKeyType, CharacterMapOf} from "../data/model/unicode-character-info.model";
 import {ObsidianUnicodeSearchError} from "../data/exception/obsidian-unicode-search.error";
-import {Pinnable} from "../data/type/pinnable";
 import {PinnedCharacter, PinnedStorage} from "./storage/pinned.storage";
 import {DataService} from "./data.service";
 
