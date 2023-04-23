@@ -1,17 +1,15 @@
-import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
-import {UNICODE_DATA} from "../configuration/unicode.data";
-import {BaseStorage} from "./storage/base.storage";
+import {Storage} from "./storage/storage";
+import {DataService} from "./data.service";
 
-export class ConstantStorage implements BaseStorage {
+export class ConstantStorage implements Storage {
 
-	private readonly data: UnicodeCharacterInfoModel[];
-
-	public constructor() {
-		this.data = UNICODE_DATA;
+	public constructor(
+		private readonly dataService: DataService,
+	) {
 	}
 
-	public getAll(): UnicodeCharacterInfoModel[] {
-		return this.data;
+	public async getAll(): Promise<any> {
+		return await this.dataService.getData();
 	}
 
 }

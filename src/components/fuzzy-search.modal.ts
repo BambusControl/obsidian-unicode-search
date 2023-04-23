@@ -1,6 +1,9 @@
 import {App, Editor, FuzzyMatch, FuzzySuggestModal, Instruction} from "obsidian";
 import {equals, UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
-import {BaseStorage, PinnedStorage, StatTrackedStorage} from "../service/storage/base.storage";
+import {Storage} from "../service/storage/storage";
+import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
+import {PinnedStorage} from "../service/storage/pinned.storage";
+import {DataService} from "../service/data.service";
 
 const INSERT_CHAR_INSTRUCTION = {
 	command: "↵",
@@ -17,7 +20,7 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
-		private readonly constantStorage: BaseStorage,
+		private readonly constantStorage: Storage,
 		private readonly statTrackedStorage: StatTrackedStorage,
 		private readonly pinnedStorage: PinnedStorage,
 	) {
@@ -91,8 +94,12 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	private getRandomCharacter(): UnicodeCharacterInfoModel {
 		const data = this.constantStorage.getAll();
 
-		const index: number = Math.floor(Math.random() * data.length);
-		return data[index];
+		// const index: number = Math.floor(Math.random() * data.length);
+		// return data[index];
+		return {
+			name: "fufu",
+			char: "iweruowe"
+		}
 	}
 
 }

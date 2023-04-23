@@ -3,17 +3,17 @@ import {ConstantStorage} from "./service/constant.storage";
 import {UsageTrackedStorage} from "./service/usage-tracked.storage";
 import {UserPinnedStorage} from "./service/user-pinned.storage";
 import {FuzzySearchModal} from "./components/fuzzy-search.modal";
-import {ExternalData} from "./data/type/external.data";
+import {PluginExportService} from "./service/plugin-export.service";
+import {PinnedStorage} from "./service/storage/pinned.storage";
+import {UNICODE_DATA} from "./configuration/unicode.data";
 
 export default class UnicodeSearchPlugin extends Plugin {
 
-	private services?: {
-		constantStorage: ConstantStorage,
-		usageTrackedStorage: UsageTrackedStorage,
-		userPinnedStorage: UserPinnedStorage,
-	};
+	private exportService?: PluginExportService;
 
-	private externalData?: ExternalData<any>[];
+	private constantStorage?: ConstantStorage;
+	private usageTrackedStorage?: UsageTrackedStorage;
+	private userPinnedStorage?: PinnedStorage;
 
 	public constructor(
 		app: App,
@@ -23,18 +23,26 @@ export default class UnicodeSearchPlugin extends Plugin {
 	}
 
 	public override async onload(): Promise<void> {
-		this.services = {
-			constantStorage: new ConstantStorage(),
-			usageTrackedStorage: new UsageTrackedStorage(),
-			userPinnedStorage: new UserPinnedStorage(),
-		};
+		this.exportService = new PluginExportService(this);
 
-		this.externalData = [
-			this.services.usageTrackedStorage,
-			this.services.userPinnedStorage,
-		]
+		/// Initialize
+		const initialized = await this.exportService.isInitialized();
+		if (!initialized) {
+			const newData = UNICODE_DATA.reduce(
+				(accumulator, character) => {
+					accumulator[character.char] = character;
+					return accumulator;
+				},
+				{} as any,
+			);
 
-		await this.importData()
+			await this.exportService.exportData(newData);
+		}
+		/// Initialize
+
+		this.constantStorage = new ConstantStorage(this.exportService);
+		this.usageTrackedStorage = new UsageTrackedStorage(this.exportService);
+		this.userPinnedStorage = new UserPinnedStorage(this.exportService);
 
 		this.addCommand({
 			id: "search-unicode-chars",
@@ -44,34 +52,14 @@ export default class UnicodeSearchPlugin extends Plugin {
 				const modal = new FuzzySearchModal(
 					app,
 					editor,
-					this.services!.constantStorage,
-					this.services!.usageTrackedStorage,
-					this.services!.userPinnedStorage,
+					this.constantStorage!,
+					this.usageTrackedStorage!,
+					this.userPinnedStorage!,
 				);
 				modal.open();
 				return true;
 			},
 		});
-	}
-
-	public override async onunload(): Promise<void> {
-		await this.exportData();
-	}
-
-	private async importData(): Promise<any> {
-		const data = await super.loadData();
-
-		for (const service of this.externalData!) {
-			service.importData(data)
-		}
-	}
-
-	private async exportData(): Promise<void> {
-		// TODO: this doesn't work like this, we need a callback.
-		const data = this.externalData!.map(s => s.exportData())
-			.reduce((prev, curr) => ({...prev, ...curr}), {})
-
-		return await super.saveData(data);
 	}
 
 }
