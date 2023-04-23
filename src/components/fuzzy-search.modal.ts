@@ -1,8 +1,6 @@
 import {App, Editor, FuzzyMatch, FuzzySuggestModal, Instruction} from "obsidian";
 import {equals, UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
-import {ImmutableCharacterStorage} from "../service/storage/immutable-character.storage";
-import {OrderedCharacterStorage} from "../service/storage/ordered-character.storage";
-import {SavedCharacterStorage} from "../service/storage/saved-character.storage";
+import {BaseStorage, PinnedStorage, StatTrackedStorage} from "../service/storage/base.storage";
 
 const INSERT_CHAR_INSTRUCTION = {
 	command: "↵",
@@ -19,9 +17,9 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
-		private readonly immutableStorage: ImmutableCharacterStorage,
-		private readonly orderedStorage: OrderedCharacterStorage,
-		private readonly savedStorage: SavedCharacterStorage,
+		private readonly constantStorage: BaseStorage,
+		private readonly statTrackedStorage: StatTrackedStorage,
+		private readonly pinnedStorage: PinnedStorage,
 	) {
 		super(app);
 
@@ -58,26 +56,26 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	}
 
 	public getItems(): UnicodeCharacterInfoModel[] {
-		const saved = this.savedStorage.getAll();
+		const saved = this.pinnedStorage.getAll();
 
-		const ordered = this.orderedStorage.getAll()
+		const ordered = this.statTrackedStorage.getAll()
 			.filter(outer => !saved.some(inner => equals(outer, inner)));
 
-		const everything = this.immutableStorage.getAll()
+		const everything = this.constantStorage.getAll()
 			.filter(outer =>
 				!saved.some(inner => equals(outer, inner)
-					&& !ordered.some(inner => equals(outer, inner))
+					&& !ordered.some(inner => equals(outer, inner)),
 				));
 
 		return [
 			...saved,
 			...ordered,
-			...everything
+			...everything,
 		];
 	}
 
 	public onChooseItem(item: UnicodeCharacterInfoModel, evt: MouseEvent | KeyboardEvent): void {
-		this.orderedStorage.affect({...item, hitCount: -1})
+		this.statTrackedStorage.recordUsage(item.char);
 		this.editor.replaceSelection(item.char);
 	}
 
@@ -91,7 +89,7 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 	}
 
 	private getRandomCharacter(): UnicodeCharacterInfoModel {
-		const data = this.immutableStorage.getAll();
+		const data = this.constantStorage.getAll();
 
 		const index: number = Math.floor(Math.random() * data.length);
 		return data[index];

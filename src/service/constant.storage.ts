@@ -1,8 +1,8 @@
 import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
 import {UNICODE_DATA} from "../configuration/unicode.data";
-import {ImmutableCharacterStorage} from "./storage/immutable-character.storage";
+import {BaseStorage} from "./storage/base.storage";
 
-export class ConstantUnicodeStorage implements ImmutableCharacterStorage {
+export class ConstantStorage implements BaseStorage {
 
 	private readonly data: UnicodeCharacterInfoModel[];
 
