@@ -37,6 +37,8 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 	}
 
 	public override renderSuggestion(item: FuzzyMatch<Character>, el: HTMLElement): void {
+		const char = item.item;
+
 		const container = el.createDiv({
 			cls: "plugin obsidian-unicode-search result-item",
 		});
@@ -45,7 +47,7 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 		container.createDiv({
 			cls: "character-preview",
 		}).createSpan({
-			text: item.item.char,
+			text: char.char,
 		});
 
 		/* indexed name */
@@ -55,22 +57,28 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 
 		const attributes = container.createDiv({
 			cls: "attributes",
-		})
+		});
 
-		attributes.createDiv({
-			cls: "pin-order",
-			text: "❤"
-		})
+		if (char.pinned != null) {
+			attributes.createDiv({
+				cls: "pin-order",
+				text: "❤",
+			});
+		}
 
-		attributes.createDiv({
-			cls: "last-used",
-			text: "↩"
-		})
+		if (char.lastUsed != null) {
+			attributes.createDiv({
+				cls: "last-used",
+				text: "↩",
+			});
+		}
 
-		attributes.createDiv({
-			cls: "usage-count",
-			text: "↺"
-		})
+		if (char.useCount != null && char.useCount != 0) {
+			attributes.createDiv({
+				cls: "usage-count",
+				text: "↺",
+			});
+		}
 
 		/* the parent renders the elements text with styling for matching letters */
 		super.renderSuggestion(item, text);
