@@ -4,7 +4,7 @@ import {StatTracked} from "../data/stat-tracked";
 import {comparePinnableCharacters} from "./compare-pinnable.characters";
 import {compareNullable} from "./compare.nullable";
 import {compareStatTrackedCharacters} from "./compare-stat-tracked.characters";
-import {compareUnicodeCharacters} from "./compare-unicode.characters";
+import {compareUnicodeNames} from "./compare-unicode.names";
 
 export function compareCharacters(left: Character, right: Character): Order {
 	let order = comparePinnableCharacters(left, right);
@@ -23,5 +23,5 @@ export function compareCharacters(left: Character, right: Character): Order {
 		return order;
 	}
 
-	return compareUnicodeCharacters(left, right);
+	return compareUnicodeNames(left, right);
 }
