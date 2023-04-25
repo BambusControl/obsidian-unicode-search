@@ -1,19 +1,18 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {ConstantStorage} from "./service/constant.storage";
-import {UsageTrackedStorage} from "./service/usage-tracked.storage";
-import {UserPinnedStorage} from "./service/user-pinned.storage";
+import {UsageTrackedStorage} from "./service/storage/usage-tracked.storage";
 import {FuzzySearchModal} from "./components/fuzzy-search.modal";
-import {PluginExportService} from "./service/plugin-export.service";
-import {PinnedStorage} from "./service/storage/pinned.storage";
+import {PluginDataService} from "./service/plugin-data.service";
 import {UNICODE_DATA} from "./configuration/unicode.data";
+import {StatTrackedStorage} from "./service/storage/stat-tracked.storage";
+import {DataService} from "./service/data.service";
+import {DataAccess} from "./service/data.access";
 
 export default class UnicodeSearchPlugin extends Plugin {
 
-	private exportService?: PluginExportService;
-
-	private constantStorage?: ConstantStorage;
-	private usageTrackedStorage?: UsageTrackedStorage;
-	private userPinnedStorage?: PinnedStorage;
+	private services? : {
+		dataService: DataService & DataAccess,
+		usageTrackedStorage: StatTrackedStorage,
+	};
 
 	public constructor(
 		app: App,
@@ -23,27 +22,15 @@ export default class UnicodeSearchPlugin extends Plugin {
 	}
 
 	public override async onload(): Promise<void> {
-		this.exportService = new PluginExportService(this);
+		const dataService = new PluginDataService(this);
+		const usageTrackedStorage= new UsageTrackedStorage(dataService);
 
-		/// Initialize
-		const initialized = await this.exportService.isInitialized();
-		if (!initialized) {
-			const newData = UNICODE_DATA.reduce(
-				(accumulator, character) => {
-					accumulator[character.char] = character;
-					return accumulator;
-				},
-				{} as any,
-			);
-
-			await this.exportService.exportData(newData);
-			await this.exportService.setAsInitialized();
+		this.services = {
+			dataService: dataService,
+			usageTrackedStorage: usageTrackedStorage,
 		}
-		/// Initialize
 
-		this.constantStorage = new ConstantStorage(this.exportService);
-		this.usageTrackedStorage = new UsageTrackedStorage(this.exportService);
-		this.userPinnedStorage = new UserPinnedStorage(this.exportService);
+		await UnicodeSearchPlugin.initializeData(dataService);
 
 		this.addCommand({
 			id: "search-unicode-chars",
@@ -53,13 +40,29 @@ export default class UnicodeSearchPlugin extends Plugin {
 				const modal = new FuzzySearchModal(
 					app,
 					editor,
-					this.exportService!,
-					this.usageTrackedStorage!,
+					dataService,
+					usageTrackedStorage,
 				);
 				modal.open();
 				return true;
 			},
 		});
+	}
+
+	private static async initializeData(dataService: DataService): Promise<void> {
+		const initialized = await dataService.isInitialized();
+		if (!initialized) {
+			const newData = UNICODE_DATA.reduce(
+				(accumulator, character) => {
+					accumulator[character.char] = character;
+					return accumulator;
+				},
+				{} as any,
+			);
+
+			await dataService.exportData(newData);
+			await dataService.setAsInitialized();
+		}
 	}
 
 }

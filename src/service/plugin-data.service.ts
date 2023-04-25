@@ -23,7 +23,7 @@ const INITALIZATION_STORE: DataStore = {
 	data: {},
 };
 
-export class PluginExportService implements DataService, DataAccess {
+export class PluginDataService implements DataService, DataAccess {
 
 	private _store?: DataStore;
 

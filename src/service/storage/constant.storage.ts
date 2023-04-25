@@ -1,5 +1,5 @@
-import {Storage} from "./storage/storage";
-import {DataService} from "./data.service";
+import {Storage} from "./storage";
+import {DataService} from "../data.service";
 
 export class ConstantStorage implements Storage {
 
