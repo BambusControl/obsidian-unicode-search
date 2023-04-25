@@ -52,7 +52,7 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 		this.setRandomPlaceholder();
 	}
 
-	public getItemText(item: Character): string {
+	public override getItemText(item: Character): string {
 		return item.name;
 	}
 
@@ -114,13 +114,15 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 		super.renderSuggestion(item, text);
 	}
 
-	public getItems(): Character[] {
+	public override getItems(): Character[] {
 		return this.dataService.getCharacters();
 	}
 
-	public onChooseItem(item: Character, evt: MouseEvent | KeyboardEvent): void {
-		this.statTrackedStorage.recordUsage(item.char);
+	public override onChooseItem(item: Character, evt: MouseEvent | KeyboardEvent): void {
 		this.editor.replaceSelection(item.char);
+
+		// I don't want to await this, its more of a side effect
+		this.statTrackedStorage.recordUsage(item.char).then(undefined, (err) => console.error(err));
 	}
 
 	public override onNoSuggestion(): void {

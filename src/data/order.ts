@@ -10,7 +10,6 @@ export enum Order {
 	 * **First** argument is **equal to** the **second** argument.
 	 */
 	Equal = 0,
-	Same = Equal,
 
 	/**
 	 * **First** argument is **greater than** the **second** argument.
