@@ -3,13 +3,13 @@
 
 	&.result-item {
 		display: flex;
-		gap: var(--scale);
+		gap: 1em;
 		justify-content: flex-start;
 		align-items: center;
 
 		& > .character-preview {
-			font-size: calc(var(--scale) * 1.5);
-			width: calc(var(--scale) * 1.75);
+			font-size: 1.5em;
+			width: 1.75em;
 
 			display: flex;
 			justify-content: center;
@@ -17,8 +17,28 @@
 		}
 
 		& > .character-name {
-			padding-left: calc(var(--scale) * 1.5);
+			padding-left: calc(1em * 1.5);
 			border-left: var(--prompt-border-width) solid var(--prompt-border-color);
+			flex-grow: 1;
+		}
+
+		& > .attributes {
+			display: flex;
+			gap: calc(.5em);
+			justify-content: flex-end;
+			align-items: center;
+
+			& > .pin-order {
+				color: var(--text-accent);
+			}
+
+			& > .last-used {
+				color: var(--text-muted);
+			}
+
+			& > .usage-count {
+				color: var(--text-muted);
+			}
 		}
 	}
 }

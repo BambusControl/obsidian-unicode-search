@@ -53,6 +53,26 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 			cls: "character-name",
 		});
 
+		const attributes = container.createDiv({
+			cls: "attributes",
+		})
+
+		attributes.createDiv({
+			cls: "pin-order",
+			text: "❤"
+		})
+
+		attributes.createDiv({
+			cls: "last-used",
+			text: "↩"
+		})
+
+		attributes.createDiv({
+			cls: "usage-count",
+			text: "↺"
+		})
+
+		/* the parent renders the elements text with styling for matching letters */
 		super.renderSuggestion(item, text);
 	}
 
