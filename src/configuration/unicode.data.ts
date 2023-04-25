@@ -1,6 +1,6 @@
-import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
+import {UnicodeCharacter} from "../data/unicode.character";
 
-export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
+export const UNICODE_DATA: Array<UnicodeCharacter> = [
 	{
 		name: "a with acute, latin capital letter",
 		char: "\u{00c1}",
