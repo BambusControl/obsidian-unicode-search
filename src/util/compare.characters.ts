@@ -1,4 +1,4 @@
-import {Character} from "../data/unicode-character-info.model";
+import {Character} from "../data/unicode.character";
 import {Order} from "../data/order";
 import {StatTracked} from "../data/stat-tracked";
 import {comparePinnableCharacters} from "./compare-pinnable.characters";

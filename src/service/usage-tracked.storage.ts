@@ -1,4 +1,4 @@
-import {CharacterKeyType, CharacterMapOf} from "../data/unicode-character-info.model";
+import {CharacterKeyType, CharacterMapOf} from "../data/unicode.character";
 import {ObsidianUnicodeSearchError} from "../data/obsidian-unicode-search.error";
 
 import {StatTrackedCharacter, StatTrackedStorage} from "./storage/stat-tracked.storage";

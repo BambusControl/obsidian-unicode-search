@@ -1,4 +1,4 @@
-import {Character} from "../data/unicode-character-info.model";
+import {Character} from "../data/unicode.character";
 
 export interface DataAccess {
 	getCharacters(): Array<Character>;

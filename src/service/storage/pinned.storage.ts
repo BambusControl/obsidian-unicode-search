@@ -1,7 +1,7 @@
-import {CharacterKeyType, CharacterMapOf, UnicodeCharacterInfoModel} from "../../data/unicode-character-info.model";
+import {CharacterKeyType, CharacterMapOf, UnicodeCharacter} from "../../data/unicode.character";
 import {Pinnable} from "../../data/pinnable";
 
-export type PinnedCharacter = UnicodeCharacterInfoModel & Partial<Pinnable>;
+export type PinnedCharacter = UnicodeCharacter & Partial<Pinnable>;
 
 export interface PinnedStorage {
 	getAll(): Promise<CharacterMapOf<PinnedCharacter>>;

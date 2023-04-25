@@ -1,7 +1,7 @@
 import {Plugin} from "obsidian";
 import {DataService} from "./data.service";
 import {ObsidianUnicodeSearchError} from "../data/obsidian-unicode-search.error";
-import {Character, CharacterMap, PartialCharacter} from "../data/unicode-character-info.model";
+import {Character, CharacterMap, PartialCharacter} from "../data/unicode.character";
 import {DataAccess} from "./data.access";
 import {compareCharacters} from "../util/compare.characters";
 

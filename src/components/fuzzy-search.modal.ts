@@ -1,5 +1,5 @@
 import {App, Editor, FuzzyMatch, FuzzySuggestModal, Instruction} from "obsidian";
-import {UnicodeCharacterInfoModel} from "../data/unicode-character-info.model";
+import {Character} from "../data/unicode.character";
 import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
 
 import {DataAccess} from "../service/data.access";
@@ -14,7 +14,7 @@ const INSTRUCTION_DISMISS = {
 	purpose: "to dismiss",
 } as Instruction;
 
-export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoModel> {
+export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 
 	public constructor(
 		app: App,
@@ -32,11 +32,11 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 		this.setRandomPlaceholder();
 	}
 
-	public getItemText(item: UnicodeCharacterInfoModel): string {
+	public getItemText(item: Character): string {
 		return item.name;
 	}
 
-	public override renderSuggestion(item: FuzzyMatch<UnicodeCharacterInfoModel>, el: HTMLElement): void {
+	public override renderSuggestion(item: FuzzyMatch<Character>, el: HTMLElement): void {
 		const container = el.createDiv({
 			cls: "plugin obsidian-unicode-search result-item",
 		});
@@ -76,11 +76,11 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 		super.renderSuggestion(item, text);
 	}
 
-	public getItems(): UnicodeCharacterInfoModel[] {
+	public getItems(): Character[] {
 		return this.dataService.getCharacters();
 	}
 
-	public onChooseItem(item: UnicodeCharacterInfoModel, evt: MouseEvent | KeyboardEvent): void {
+	public onChooseItem(item: Character, evt: MouseEvent | KeyboardEvent): void {
 		this.statTrackedStorage.recordUsage(item.char);
 		this.editor.replaceSelection(item.char);
 	}
@@ -94,7 +94,7 @@ export class FuzzySearchModal extends FuzzySuggestModal<UnicodeCharacterInfoMode
 		super.setPlaceholder(placeholder);
 	}
 
-	private getRandomCharacter(): UnicodeCharacterInfoModel {
+	private getRandomCharacter(): Character {
 		const data = this.dataService.getCharacters();
 
 		const index: number = Math.floor(Math.random() * data.length);

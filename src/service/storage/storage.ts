@@ -1,5 +1,5 @@
-import {UnicodeCharacterInfoModel} from "../../data/unicode-character-info.model";
+import {UnicodeCharacter} from "../../data/unicode.character";
 
 export interface Storage {
-	getAll(): Promise<UnicodeCharacterInfoModel[]>;
+	getAll(): Promise<UnicodeCharacter[]>;
 }

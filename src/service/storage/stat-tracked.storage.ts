@@ -1,7 +1,7 @@
-import {CharacterKeyType, CharacterMapOf, UnicodeCharacterInfoModel} from "../../data/unicode-character-info.model";
+import {CharacterKeyType, CharacterMapOf, UnicodeCharacter} from "../../data/unicode.character";
 import {StatTracked} from "../../data/stat-tracked";
 
-export type StatTrackedCharacter = UnicodeCharacterInfoModel & Partial<StatTracked>;
+export type StatTrackedCharacter = UnicodeCharacter & Partial<StatTracked>;
 
 export interface StatTrackedStorage {
 	getAll(): Promise<CharacterMapOf<StatTrackedCharacter>>;
