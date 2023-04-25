@@ -1,4 +1,4 @@
 export interface StatTracked {
-	lastUsed?: Date | number;
+	lastUsed?: number;
 	useCount: number;
 }

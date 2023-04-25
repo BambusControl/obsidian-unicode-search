@@ -1,9 +1,5 @@
-import {
-	CharacterKeyType,
-	CharacterMapOf,
-	UnicodeCharacterInfoModel,
-} from "../../data/model/unicode-character-info.model";
-import {Pinnable} from "../../data/type/pinnable";
+import {CharacterKeyType, CharacterMapOf, UnicodeCharacterInfoModel} from "../../data/unicode-character-info.model";
+import {Pinnable} from "../../data/pinnable";
 
 export type PinnedCharacter = UnicodeCharacterInfoModel & Partial<Pinnable>;
 

@@ -1,4 +1,4 @@
-import {Character, CharacterMap} from "../data/model/unicode-character-info.model";
+import {Character, CharacterMap} from "../data/unicode-character-info.model";
 
 export interface DataService {
 	getData(): Promise<CharacterMap>;

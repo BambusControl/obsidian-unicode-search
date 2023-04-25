@@ -1,5 +1,5 @@
-import {StatTracked} from "../type/stat-tracked";
-import {Pinnable} from "../type/pinnable";
+import {StatTracked} from "./stat-tracked";
+import {Pinnable} from "./pinnable";
 
 export interface UnicodeCharacterInfoModel {
 	name: string,

@@ -1,9 +1,5 @@
-import {
-	CharacterKeyType,
-	CharacterMapOf,
-	UnicodeCharacterInfoModel,
-} from "../../data/model/unicode-character-info.model";
-import {StatTracked} from "../../data/type/stat-tracked";
+import {CharacterKeyType, CharacterMapOf, UnicodeCharacterInfoModel} from "../../data/unicode-character-info.model";
+import {StatTracked} from "../../data/stat-tracked";
 
 export type StatTrackedCharacter = UnicodeCharacterInfoModel & Partial<StatTracked>;
 

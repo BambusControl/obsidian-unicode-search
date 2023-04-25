@@ -1,8 +1,9 @@
 import {Plugin} from "obsidian";
 import {DataService} from "./data.service";
-import {ObsidianUnicodeSearchError} from "../data/exception/obsidian-unicode-search.error";
-import {Character, CharacterMap, PartialCharacter} from "../data/model/unicode-character-info.model";
+import {ObsidianUnicodeSearchError} from "../data/obsidian-unicode-search.error";
+import {Character, CharacterMap, PartialCharacter} from "../data/unicode-character-info.model";
 import {DataAccess} from "./data.access";
+import {compareCharacters} from "../util/compare.characters";
 
 export type MetaType = {
 	initialized: boolean;
@@ -52,50 +53,7 @@ export class PluginExportService implements DataService, DataAccess {
 		const data = this._store?.data ?? {}
 		return Object.entries(data)
 			.map(([, value]) => ({...value}))
-			.sort((a, b) => {
-				// TODO SORTING
-				if (a.pinned != null) {
-					if (b.pinned == null) {
-						// A < B
-						return -1;
-					}
-
-					// A < B if B has order greater than A
-					return a.pinned - b.pinned;
-				}
-
-				if (b.pinned != null) {
-					// A > B
-					return 1;
-				}
-
-				if (a.lastUsed != null) {
-					if (b.lastUsed == null) {
-						// A < B
-						return -1;
-					}
-
-					// A < B if B has time of use later than A
-					return a.lastUsed.valueOf() - b.lastUsed.valueOf();
-				}
-
-				if (b.lastUsed != null) {
-					// A > B
-					return 1;
-				}
-
-				if (a.useCount != null) {
-					if (b.useCount == null) {
-						// A < B
-						return -1;
-					}
-
-					// A < B if B has fewer uses than A
-					return b.useCount - a.useCount;
-				}
-
-				return 1;
-			})
+			.sort(compareCharacters)
 	}
 
 	public async isInitialized(): Promise<boolean> {

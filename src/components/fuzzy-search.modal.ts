@@ -1,5 +1,5 @@
 import {App, Editor, FuzzyMatch, FuzzySuggestModal, Instruction} from "obsidian";
-import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
+import {UnicodeCharacterInfoModel} from "../data/unicode-character-info.model";
 import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
 
 import {DataAccess} from "../service/data.access";

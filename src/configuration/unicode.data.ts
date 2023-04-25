@@ -1,4 +1,4 @@
-import {UnicodeCharacterInfoModel} from "../data/model/unicode-character-info.model";
+import {UnicodeCharacterInfoModel} from "../data/unicode-character-info.model";
 
 export const UNICODE_DATA: Array<UnicodeCharacterInfoModel> = [
 	{
