@@ -5,12 +5,12 @@ import {Character, CharacterMap, PartialCharacter} from "../data/unicode.charact
 import {DataAccess} from "./data.access";
 import {compareCharacters} from "../util/compare.characters";
 
-export type MetaType = {
+type MetaType = {
 	initialized: boolean;
 	version: "1";
 };
 
-export type DataStore = {
+type DataStore = {
 	meta: MetaType;
 	data: CharacterMap;
 }

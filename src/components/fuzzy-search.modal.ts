@@ -3,6 +3,8 @@ import {Character} from "../data/unicode.character";
 import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
 
 import {DataAccess} from "../service/data.access";
+import {compareNumbers} from "../util/compare.numbers";
+import {inverse} from "../util/inverse";
 
 const INSERT_CHAR_INSTRUCTION = {
 	command: "↵",
@@ -15,6 +17,8 @@ const INSTRUCTION_DISMISS = {
 } as Instruction;
 
 export class FuzzySearchModal extends FuzzySuggestModal<Character> {
+	private readonly topLastUsed: number[];
+	private readonly averageUsageCount: number;
 
 	public constructor(
 		app: App,
@@ -28,6 +32,22 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 			INSERT_CHAR_INSTRUCTION,
 			INSTRUCTION_DISMISS,
 		]);
+
+		const chars = dataService.getCharacters();
+
+		this.topLastUsed = chars.map(char => char.lastUsed)
+			.filter(timestamp => timestamp != null)
+			.map(timestamp => timestamp as number)
+			.sort((a, b) => inverse(compareNumbers(a, b)))
+			.slice(0, 3);
+
+		this.averageUsageCount = chars.map(char => char.useCount)
+			.filter(count => count != null)
+			.map(count => count as number)
+			.reduce((sum, current, i, arr) => {
+				sum += current;
+				return i === arr.length - 1 ? (sum / arr.length) : sum;
+			}, 0);
 
 		this.setRandomPlaceholder();
 	}
@@ -55,28 +75,38 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 			cls: "character-name",
 		});
 
-		const attributes = container.createDiv({
+		const detail  = container.createDiv({
+			cls: "detail",
+		});
+
+		const showPin = char.pinned != null;
+		const showLastUsed = char.lastUsed != null && this.topLastUsed.contains(char.lastUsed) && !showPin;
+		const showUseCount = char.useCount != null && char.useCount > this.averageUsageCount;
+
+		// Feature: User wants to pin characters most useful to him
+		// detail.createDiv({
+		// 	cls: "icon interactive pinnable",
+		// 	text: "❤",
+		// });
+
+		const attributes = detail.createDiv({
 			cls: "attributes",
 		});
 
-		if (char.pinned != null) {
-			attributes.createDiv({
-				cls: "pin-order",
-				text: "❤",
-			});
-		}
 
-		if (char.lastUsed != null) {
+		if (showLastUsed) {
 			attributes.createDiv({
-				cls: "last-used",
+				cls: "icon inline-description recent",
 				text: "↩",
+				title: "used recently"
 			});
 		}
 
-		if (char.useCount != null && char.useCount != 0) {
+		if (showUseCount) {
 			attributes.createDiv({
-				cls: "usage-count",
+				cls: "icon inline-description frequent",
 				text: "↺",
+				title: "used frequently",
 			});
 		}
 

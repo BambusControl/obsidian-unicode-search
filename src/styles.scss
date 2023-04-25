@@ -1,6 +1,4 @@
 .plugin.obsidian-unicode-search {
-	--scale: 1em;
-
 	&.result-item {
 		display: flex;
 		gap: 1em;
@@ -17,28 +15,45 @@
 		}
 
 		& > .character-name {
-			padding-left: calc(1em * 1.5);
+			padding-left: 1.5em;
 			border-left: var(--prompt-border-width) solid var(--prompt-border-color);
 			flex-grow: 1;
 		}
 
-		& > .attributes {
+		& > .detail {
 			display: flex;
-			gap: calc(.5em);
+			flex-direction: row;
 			justify-content: flex-end;
 			align-items: center;
+			gap: .5em;
 
-			& > .pin-order {
-				color: var(--text-accent);
+			& > .pinnable {
+				font-size: 1.3em;
 			}
 
-			& > .last-used {
-				color: var(--text-muted);
-			}
-
-			& > .usage-count {
-				color: var(--text-muted);
+			& > .attributes {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				font-size: .8em;
 			}
 		}
 	}
+
+	& .icon {
+		color: var(--icon-color);
+		opacity: var(--icon-opacity);
+
+		&:hover {
+			color: var(--icon-color-hover);
+			opacity: var(--icon-opacity-hover);
+
+			&.interactive {
+				color: var(--interactive-accent-hover);
+			}
+		}
+
+	}
+
 }
