@@ -1,85 +1,78 @@
 import {request} from "obsidian";
 import {UnicodeCharacter} from "../data/unicode.character";
-import {parseString} from "@fast-csv/parse";
+import {ParserOptionsArgs, parseString} from "@fast-csv/parse";
 
-type Version = "4.1.0"
-	| "5.0.0"
-	| "5.1.0"
-	| "5.2.0"
-	| "6.0.0"
-	| "6.1.0"
-	| "6.2.0"
-	| "6.3.0"
-	| "7.0.0"
-	| "8.0.0"
-	| "9.0.0"
-	| "10.0.0"
-	| "11.0.0"
-	| "12.0.0"
-	| "12.1.0"
-	| "13.0.0"
-	| "14.0.0"
-	| "15.0.0"
-	| "15.1.0"
-	| "UCD/latest"
-
-type GeneralCharacterAttribute = "Lu" | "Ll" | "Lt" | "Lm" | "Lo"
-	| "Mn" | "Mc" | "Me"
-	| "Nd" | "Nl" | "No"
-	| "Pc" | "Pd" | "Ps" | "Pe" | "Pi" | "Pf" | "Po"
-	| "Sm" | "Sc" | "Sk" | "So"
-	| "Zs" | "Zl" | "Zp"
-	| "Cc" | "Cf" | "Cs" | "Co" | "Cn";
-
-type UnicodeCharacterDatabaseSourceUri = `https://www.unicode.org/Public/${Version}/ucd/UnicodeData.txt`
-
-const excludedAttributes: string[] = [
-	"Cc", "Cn", "Cf", "Co", "Cs",
-];
-
-/**
- * https://www.unicode.org/reports/tr44/#Directory_Structure
- *
- * https://www.unicode.org/Public/15.0.0/
- * https://www.unicode.org/Public/UCD/latest/
- */
-const dataUri: UnicodeCharacterDatabaseSourceUri = "https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt";
+type ParsedCharacter = {
+	singleCodePoint: string;
+	characterName: string;
+	generalCategory: string;
+}
 
 export class UcdService {
 
-	public async doStuff(): Promise<UnicodeCharacter[]> {
-		const result = await request(dataUri);
+	private readonly parserOpts: ParserOptionsArgs = {
+		headers: [
+			"singleCodePoint",
+			"characterName",
+			"generalCategory",
+			null, null, null, null, null, null, null, null, null, null, null, null,
+		],
+		delimiter: ";",
+	};
+
+	public async fetchCharacters(): Promise<UnicodeCharacter[]> {
+		const result = await request("https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt");
 		return await this.promiseMeData(result);
 	}
 
 	private promiseMeData(csvString: string): Promise<UnicodeCharacter[]> {
-		const arr = new Array<UnicodeCharacter>();
+		// Predetermined size from testing
+		const length = 15432;
+		let i = 0;
 
-		const stream = parseString(csvString, {
-			headers: false,
-			delimiter: ";",
-		})
-			.on("data", (row) => {
-				const dd = row as Array<string>;
-				const prop = dd[2] == null || excludedAttributes.contains(dd[2]);
+		const results = new Array<UnicodeCharacter>(length);
 
-				// No 'other' chars
-				if (prop) {
-					return;
+		const stream = parseString<ParsedCharacter, ParsedCharacter>(csvString, this.parserOpts)
+			.on("data", (char) => {
+				if (UcdService.charFilter(char)) {
+					results[i++] = UcdService.intoUnicode(char);
 				}
-
-				const prse: UnicodeCharacter = {
-					char: String.fromCodePoint(parseInt(dd[0], 16)),
-					name: dd[1],
-				};
-
-				arr.push(prse);
 			});
 
 		return new Promise((resolve, reject) => {
 			stream.on("error", (error) => reject(error))
-				.on("end", () => resolve(arr));
+				.on("end", () => resolve(results));
 		});
+	}
+
+	private static charFilter(char: ParsedCharacter): boolean {
+		return UcdService.planeIncluded(char)
+			&& !UcdService.categoryExcluded(char)
+			&& !UcdService.nameIsLabelInfo(char)
+			;
+	}
+
+	private static planeIncluded(char: ParsedCharacter): boolean {
+		// Only use the first plane
+		return parseInt(char.singleCodePoint, 16) <= 0xFFFF;
+	}
+
+	private static categoryExcluded(char: ParsedCharacter): boolean {
+		// No 'other' or 'marker'
+		return char.generalCategory.startsWith("C")
+			|| char.generalCategory.startsWith("M");
+	}
+
+	private static nameIsLabelInfo(char: ParsedCharacter): boolean {
+		return char.characterName.startsWith("<")
+			&& char.characterName.endsWith(">");
+	}
+
+	private static intoUnicode(char: ParsedCharacter): UnicodeCharacter {
+		return {
+			char: String.fromCodePoint(parseInt(char.singleCodePoint, 16)),
+			name: char.characterName,
+		};
 	}
 
 }
