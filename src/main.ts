@@ -6,6 +6,7 @@ import {UNICODE_DATA} from "./configuration/unicode.data";
 import {StatTrackedStorage} from "./service/storage/stat-tracked.storage";
 import {DataService} from "./service/data.service";
 import {DataAccess} from "./service/data.access";
+import {UcdService} from "./service/ucd.service";
 
 export default class UnicodeSearchPlugin extends Plugin {
 
@@ -24,6 +25,8 @@ export default class UnicodeSearchPlugin extends Plugin {
 	public override async onload(): Promise<void> {
 		const dataService = new PluginDataService(this);
 		const usageTrackedStorage= new UsageTrackedStorage(dataService);
+
+		await (new UcdService()).doStuff();
 
 		this.services = {
 			dataService: dataService,
