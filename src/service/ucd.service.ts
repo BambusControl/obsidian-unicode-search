@@ -1,6 +1,6 @@
 import {request} from "obsidian";
 import {UnicodeCharacter} from "../data/unicode.character";
-import {parseString, RowArray} from "@fast-csv/parse";
+import {parseString} from "@fast-csv/parse";
 
 type Version = "4.1.0"
 	| "5.0.0"
@@ -23,7 +23,19 @@ type Version = "4.1.0"
 	| "15.1.0"
 	| "UCD/latest"
 
+type GeneralCharacterAttribute = "Lu" | "Ll" | "Lt" | "Lm" | "Lo"
+	| "Mn" | "Mc" | "Me"
+	| "Nd" | "Nl" | "No"
+	| "Pc" | "Pd" | "Ps" | "Pe" | "Pi" | "Pf" | "Po"
+	| "Sm" | "Sc" | "Sk" | "So"
+	| "Zs" | "Zl" | "Zp"
+	| "Cc" | "Cf" | "Cs" | "Co" | "Cn";
+
 type UnicodeCharacterDatabaseSourceUri = `https://www.unicode.org/Public/${Version}/ucd/UnicodeData.txt`
+
+const excludedAttributes: string[] = [
+	"Cc", "Cn", "Cf", "Co", "Cs",
+];
 
 /**
  * https://www.unicode.org/reports/tr44/#Directory_Structure
@@ -35,13 +47,9 @@ const dataUri: UnicodeCharacterDatabaseSourceUri = "https://www.unicode.org/Publ
 
 export class UcdService {
 
-	public async doStuff() {
-
-
+	public async doStuff(): Promise<UnicodeCharacter[]> {
 		const result = await request(dataUri);
-		const arr = await this.promiseMeData(result);
-		console.log("MOJO DATO", arr);
-
+		return await this.promiseMeData(result);
 	}
 
 	private promiseMeData(csvString: string): Promise<UnicodeCharacter[]> {
@@ -51,15 +59,22 @@ export class UcdService {
 			headers: false,
 			delimiter: ";",
 		})
-			.transform((row, next) => {
-				const dd = row as RowArray;
+			.on("data", (row) => {
+				const dd = row as Array<string>;
+				const prop = dd[2] == null || excludedAttributes.contains(dd[2]);
+
+				// No 'other' chars
+				if (prop) {
+					return;
+				}
+
 				const prse: UnicodeCharacter = {
 					char: String.fromCodePoint(parseInt(dd[0], 16)),
-					name: dd[1] as string,
+					name: dd[1],
 				};
-				next(null, prse);
-			})
-			.on("data", (dato) => arr.push(dato));
+
+				arr.push(prse);
+			});
 
 		return new Promise((resolve, reject) => {
 			stream.on("error", (error) => reject(error))
