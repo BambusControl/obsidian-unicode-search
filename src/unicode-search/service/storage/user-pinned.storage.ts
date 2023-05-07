@@ -22,7 +22,7 @@ export class UserPinnedStorage implements PinnedStorage {
 		await this.exportService.exportChar(char);
 	}
 
-    public async unpin(id: CharacterKeyType): Promise<void> {
+	public async unpin(id: CharacterKeyType): Promise<void> {
 		const data = await this.exportService.getData();
 		const char = data.find(char => char.char === id);
 
@@ -32,7 +32,7 @@ export class UserPinnedStorage implements PinnedStorage {
 
 		char.pinned = undefined;
 		await this.exportService.exportChar(char);
-    }
+	}
 
 	public async getAll(): Promise<CharacterMapOf<PinnedCharacter>> {
 		return await this.exportService.getData();

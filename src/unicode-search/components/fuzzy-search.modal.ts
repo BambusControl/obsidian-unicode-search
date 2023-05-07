@@ -9,7 +9,7 @@ import {StatTracked} from "../../libraries/types/stat-tracked";
 
 type Timestamp = number;
 
-const INSERT_CHAR_INSTRUCTION: Instruction= {
+const INSERT_CHAR_INSTRUCTION: Instruction = {
 	command: "↵",
 	purpose: "to insert selected character",
 };
