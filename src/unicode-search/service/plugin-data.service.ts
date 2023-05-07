@@ -5,6 +5,7 @@ import {Character, Characters, PartialCharacter} from "../../libraries/types/uni
 import {DataAccess} from "./data.access";
 import {compareCharacters} from "../../libraries/comparison/compare.characters";
 import {SaveData} from "../../libraries/types/data/save-data";
+import {isTypeSaveData} from "../../libraries/types/data/is-type-save-data";
 
 const INITALIZATION_STORE: SaveData = {
 	meta: {
@@ -101,8 +102,8 @@ export class PluginDataService implements DataService, DataAccess {
 	}
 
 	private async _loadTheData(): Promise<SaveData> {
-		const externalData: SaveData | null = await this.plugin.loadData();
-		const dataLoaded = externalData != null;
+		const externalData = await this.plugin.loadData();
+		const dataLoaded = externalData != null && isTypeSaveData(externalData);
 
 		const newData = dataLoaded
 			? externalData

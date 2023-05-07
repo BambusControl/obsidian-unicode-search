@@ -5,3 +5,4 @@ export interface SaveData {
 	meta: Metadata;
 	data: Characters;
 }
+
