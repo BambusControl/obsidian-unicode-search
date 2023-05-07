@@ -1,29 +1,45 @@
 import {App, Editor, FuzzyMatch, FuzzySuggestModal, Instruction} from "obsidian";
-import {Character} from "../data/unicode.character";
+import {Character, Characters} from "../../libraries/types/unicode.character";
 import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
 
 import {DataAccess} from "../service/data.access";
-import {compareNumbers} from "../util/compare.numbers";
-import {inverse} from "../util/inverse";
+import {compareNumbers} from "../../libraries/comparison/compare.numbers";
+import {inverse} from "../../libraries/order/inverse";
+import {StatTracked} from "../../libraries/types/stat-tracked";
 
-const INSERT_CHAR_INSTRUCTION = {
+type Timestamp = number;
+
+const INSERT_CHAR_INSTRUCTION: Instruction = {
 	command: "↵",
 	purpose: "to insert selected character",
-} as Instruction;
+};
 
-const INSTRUCTION_DISMISS = {
+const INSTRUCTION_DISMISS: Instruction = {
 	command: "esc",
 	purpose: "to dismiss",
-} as Instruction;
+};
+
+const ELEMENT_RECENT: DomElementInfo = {
+	cls: "icon inline-description recent",
+	text: "↩",
+	title: "used recently"
+};
+
+const ELEMENT_FREQUENT: DomElementInfo = {
+	cls: "icon inline-description frequent",
+	text: "↺",
+	title: "used frequently",
+};
 
 export class FuzzySearchModal extends FuzzySuggestModal<Character> {
-	private readonly topLastUsed: number[];
+	private readonly topLastUsed: Timestamp[];
 	private readonly averageUsageCount: number;
+	private readonly characters: Characters;
 
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
-		private readonly dataService: DataAccess,
+		dataService: DataAccess,
 		private readonly statTrackedStorage: StatTrackedStorage,
 	) {
 		super(app);
@@ -33,21 +49,9 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 			INSTRUCTION_DISMISS,
 		]);
 
-		const chars = dataService.getCharacters();
-
-		this.topLastUsed = chars.map(char => char.lastUsed)
-			.filter(timestamp => timestamp != null)
-			.map(timestamp => timestamp as number)
-			.sort((a, b) => inverse(compareNumbers(a, b)))
-			.slice(0, 3);
-
-		this.averageUsageCount = chars.map(char => char.useCount)
-			.filter(count => count != null)
-			.map(count => count as number)
-			.reduce((sum, current, i, arr) => {
-				sum += current;
-				return i === arr.length - 1 ? (sum / arr.length) : sum;
-			}, 0);
+		this.characters = dataService.getCharacters();
+		this.topLastUsed = FuzzySearchModal.getMostRecentUsages(this.characters);
+		this.averageUsageCount = FuzzySearchModal.getAverageUseCount(this.characters);
 
 		this.setRandomPlaceholder();
 	}
@@ -75,7 +79,7 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 			cls: "character-name",
 		});
 
-		const detail  = container.createDiv({
+		const detail = container.createDiv({
 			cls: "detail",
 		});
 
@@ -93,21 +97,12 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 			cls: "attributes",
 		});
 
-
 		if (showLastUsed) {
-			attributes.createDiv({
-				cls: "icon inline-description recent",
-				text: "↩",
-				title: "used recently"
-			});
+			attributes.createDiv(ELEMENT_RECENT);
 		}
 
 		if (showUseCount) {
-			attributes.createDiv({
-				cls: "icon inline-description frequent",
-				text: "↺",
-				title: "used frequently",
-			});
+			attributes.createDiv(ELEMENT_FREQUENT);
 		}
 
 		/* the parent renders the elements text with styling for matching letters */
@@ -115,7 +110,7 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 	}
 
 	public override getItems(): Character[] {
-		return this.dataService.getCharacters();
+		return this.characters;
 	}
 
 	public override onChooseItem(item: Character, evt: MouseEvent | KeyboardEvent): void {
@@ -135,10 +130,37 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 	}
 
 	private getRandomCharacter(): Character {
-		const data = this.dataService.getCharacters();
+		const chars = this.characters;
 
-		const index: number = Math.floor(Math.random() * data.length);
-		return data[index];
+		const index: number = Math.floor(Math.random() * chars.length);
+		return chars[index];
+	}
+
+	private static getMostRecentUsages(characters: Partial<StatTracked>[]): Timestamp[] {
+		return characters
+			.map(char => char.lastUsed)
+			.filter(timestamp => timestamp != null)
+			.map(timestamp => timestamp as number)
+			.sort((a, b) => inverse(compareNumbers(a, b)))
+			.slice(0, 3)
+		;
+	}
+
+	private static getAverageUseCount(characters: Partial<StatTracked>[]): number {
+		const usageStats = characters
+			.map(char => char.useCount)
+			.filter(count => count != null)
+			.map(count => count as number)
+		;
+
+		const totalCount = usageStats.length;
+
+		if (totalCount == 0) {
+			return 0;
+		}
+
+		const sum = usageStats.reduce((sum, current) => sum + current, 0)
+		return sum / totalCount;
 	}
 
 }

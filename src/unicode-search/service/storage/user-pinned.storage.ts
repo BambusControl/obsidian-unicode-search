@@ -1,6 +1,6 @@
-import {CharacterKeyType, CharacterMapOf} from "../../data/unicode.character";
-import {ObsidianUnicodeSearchError} from "../../data/obsidian-unicode-search.error";
-import {PinnedCharacter, PinnedStorage} from "./pinned.storage";
+import {CharacterKeyType, PinnedCharacters} from "../../../libraries/types/unicode.character";
+import {ObsidianUnicodeSearchError} from "../../errors/obsidian-unicode-search.error";
+import {PinnedStorage} from "./pinned.storage";
 import {DataService} from "../data.service";
 
 export class UserPinnedStorage implements PinnedStorage {
@@ -11,17 +11,20 @@ export class UserPinnedStorage implements PinnedStorage {
 	}
 
 	public async pin(id: CharacterKeyType, order: number): Promise<void> {
-		const char = (await this.exportService.getData())[id];
+		const data = await this.exportService.getData();
+		const char = data.find(char => char.char === id);
 
 		if (char == null) {
 			throw new ObsidianUnicodeSearchError(`No character '${id}' exists.`);
 		}
 
 		char.pinned = order;
+		await this.exportService.exportChar(char);
 	}
 
-    public async unpin(id: CharacterKeyType): Promise<void> {
-		const char = (await this.exportService.getData())[id];
+	public async unpin(id: CharacterKeyType): Promise<void> {
+		const data = await this.exportService.getData();
+		const char = data.find(char => char.char === id);
 
 		if (char == null) {
 			throw new ObsidianUnicodeSearchError(`No character '${id}' exists.`);
@@ -29,9 +32,9 @@ export class UserPinnedStorage implements PinnedStorage {
 
 		char.pinned = undefined;
 		await this.exportService.exportChar(char);
-    }
+	}
 
-	public async getAll(): Promise<CharacterMapOf<PinnedCharacter>> {
+	public async getAll(): Promise<PinnedCharacters> {
 		return await this.exportService.getData();
 	}
 }

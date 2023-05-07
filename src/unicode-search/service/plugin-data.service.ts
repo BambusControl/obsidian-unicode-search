@@ -1,31 +1,23 @@
 import {Plugin} from "obsidian";
 import {DataService} from "./data.service";
-import {ObsidianUnicodeSearchError} from "../data/obsidian-unicode-search.error";
-import {Character, CharacterMap, PartialCharacter} from "../data/unicode.character";
+import {ObsidianUnicodeSearchError} from "../errors/obsidian-unicode-search.error";
+import {Character, Characters, PartialCharacter} from "../../libraries/types/unicode.character";
 import {DataAccess} from "./data.access";
-import {compareCharacters} from "../util/compare.characters";
+import {compareCharacters} from "../../libraries/comparison/compare.characters";
+import {SaveData} from "../../libraries/types/data/save-data";
+import {isTypeSaveData} from "../../libraries/types/data/is-type-save-data";
 
-type MetaType = {
-	initialized: boolean;
-	version: "1";
-};
-
-type DataStore = {
-	meta: MetaType;
-	data: CharacterMap;
-}
-
-const INITALIZATION_STORE: DataStore = {
+const INITALIZATION_STORE: SaveData = {
 	meta: {
 		initialized: false,
-		version: "1",
+		version: "0.4.0",
 	},
-	data: {},
+	data: [],
 };
 
 export class PluginDataService implements DataService, DataAccess {
 
-	private _store?: DataStore;
+	private _store?: SaveData;
 
 	public constructor(
 		private readonly plugin: Plugin,
@@ -33,7 +25,7 @@ export class PluginDataService implements DataService, DataAccess {
 		this.getData().then();
 	}
 
-	public async exportData(data: CharacterMap): Promise<CharacterMap> {
+	public async exportData(data: Characters): Promise<Characters> {
 		return (
 			await this.saveDataToStorage({
 				data: data,
@@ -45,19 +37,21 @@ export class PluginDataService implements DataService, DataAccess {
 		return (await this.saveCharToStorage(data));
 	}
 
-	public async getData(): Promise<CharacterMap> {
+	public async getData(): Promise<Characters> {
 		return (await this.getFromStorage()).data;
 	}
 
-	public getCharacters(): Array<Character> {
-		const data = this._store?.data ?? {}
-		return Object.entries(data)
-			.map(([, value]) => ({...value}))
-			.sort(compareCharacters)
+	public getCharacters(): Characters {
+		const data = this._store?.data ?? [];
+		return data.sort(compareCharacters)
 	}
 
 	public async isInitialized(): Promise<boolean> {
-		return (await this.getFromStorage()).meta.initialized;
+		const data = (await this.getFromStorage());
+		const meta = data.meta;
+
+		return meta.initialized
+			&& meta.version === INITALIZATION_STORE.meta.version;
 	}
 
 	public async setAsInitialized(): Promise<void> {
@@ -66,12 +60,13 @@ export class PluginDataService implements DataService, DataAccess {
 		await this.saveDataToStorage({
 			meta: {
 				...data.meta,
+				...INITALIZATION_STORE.meta,
 				initialized: true,
 			},
 		});
 	}
 
-	private async getFromStorage(): Promise<DataStore> {
+	private async getFromStorage(): Promise<SaveData> {
 		if (this._store == null) {
 			this._store = await this._loadTheData();
 		}
@@ -79,10 +74,10 @@ export class PluginDataService implements DataService, DataAccess {
 		return this._store;
 	}
 
-	private async saveDataToStorage(data: Partial<DataStore>): Promise<DataStore> {
+	private async saveDataToStorage(data: Partial<SaveData>): Promise<SaveData> {
 		const currentData = await this.getFromStorage();
 
-		const newData: DataStore = {
+		const newData: SaveData = {
 			...currentData,
 			...data,
 		};
@@ -93,7 +88,12 @@ export class PluginDataService implements DataService, DataAccess {
 	}
 
 	private async saveCharToStorage(char: PartialCharacter): Promise<Character> {
-		const currentChar = (await this.getData())[char.char];
+		const currentChar = (await this.getData())
+			.find(v => v.char === char.char);
+
+		if (currentChar == null) {
+			throw new ObsidianUnicodeSearchError(`Cannot save non-existent character '${char.char}' to storage`);
+		}
 
 		Object.assign(currentChar, char);
 
@@ -101,12 +101,12 @@ export class PluginDataService implements DataService, DataAccess {
 		return currentChar;
 	}
 
-	private async _loadTheData(): Promise<DataStore> {
+	private async _loadTheData(): Promise<SaveData> {
 		const externalData = await this.plugin.loadData();
-		const dataLoaded = externalData != null;
+		const dataLoaded = externalData != null && isTypeSaveData(externalData);
 
-		const newData: DataStore = dataLoaded
-			? (externalData as DataStore)
+		const newData = dataLoaded
+			? externalData
 			: INITALIZATION_STORE;
 
 		if (newData == null) {
@@ -120,3 +120,4 @@ export class PluginDataService implements DataService, DataAccess {
 		return newData;
 	}
 }
+

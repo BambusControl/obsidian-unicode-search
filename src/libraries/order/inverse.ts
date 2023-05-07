@@ -1,4 +1,4 @@
-import {Order} from "../data/order";
+import {Order} from "./order";
 
 export function inverse(order: Order): Order {
 	switch (order) {

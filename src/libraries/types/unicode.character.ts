@@ -7,10 +7,13 @@ export interface UnicodeCharacter {
 }
 
 export type Character = UnicodeCharacter & Partial<StatTracked> & Partial<Pinnable>;
-export type CharacterKeyType = UnicodeCharacter["char"];
+export type PinnedCharacter = UnicodeCharacter & Partial<Pinnable>;
+export type StatTrackedCharacter = UnicodeCharacter & Partial<StatTracked>;
 
+export type Characters = Array<Character>;
+export type PinnedCharacters = Array<PinnedCharacter>;
+export type StatTrackedCharacters = Array<StatTrackedCharacter>;
+
+export type CharacterKeyType = UnicodeCharacter["char"];
 export type CharacterWithKey = { char: CharacterKeyType };
 export type PartialCharacter = CharacterWithKey & Partial<Character>
-export type CharacterMap = { [key: CharacterKeyType]: Character };
-export type CharacterMapOf<T extends Character> = { [key: CharacterKeyType]: T };
-

@@ -9,14 +9,14 @@ const banner =
 
 const prodBuild = (process.argv[2] === "production");
 
-const sourceDir = "./src";
+const sourceDir = "./src/unicode-search";
 const outputDir = "./dist/unicode-search";
 
 /* Copy the manifest for working*/
 await fs.mkdir(outputDir, {recursive: true});
 await fs.copyFile("manifest.json", `${outputDir}/manifest.json`);
 
-esbuild.build({
+const buildOptions = {
 	banner: {
 		js: banner,
 	},
@@ -32,7 +32,6 @@ esbuild.build({
 		...builtins,
 	],
 	format: "cjs",
-	watch: !prodBuild,
 	target: "ES6",
 	logLevel: "info",
 	sourcemap: prodBuild ? false : "inline",
@@ -44,4 +43,15 @@ esbuild.build({
 			style: prodBuild ? "compressed" : "expanded",
 		}),
 	],
-}).catch(() => process.exit(1));
+};
+
+try {
+	if (prodBuild) {
+		await esbuild.build(buildOptions);
+	} else {
+		await (await esbuild.context(buildOptions)).watch();
+	}
+
+} catch {
+	process.exit(1);
+}

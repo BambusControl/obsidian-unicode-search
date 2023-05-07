@@ -1,6 +1,6 @@
-import {StatTracked} from "../data/stat-tracked";
-import {Order} from "../data/order";
-import {inverse} from "./inverse";
+import {StatTracked} from "../types/stat-tracked";
+import {Order} from "../order/order";
+import {inverse} from "../order/inverse";
 import {compareNullable} from "./compare.nullable";
 import {compareNumbers} from "./compare.numbers";
 
