@@ -16,7 +16,7 @@ const outputDir = "./dist/unicode-search";
 await fs.mkdir(outputDir, {recursive: true});
 await fs.copyFile("manifest.json", `${outputDir}/manifest.json`);
 
-const context = await esbuild.context({
+const buildOptions = {
 	banner: {
 		js: banner,
 	},
@@ -43,10 +43,15 @@ const context = await esbuild.context({
 			style: prodBuild ? "compressed" : "expanded",
 		}),
 	],
-})
+};
 
 try {
-	await (prodBuild ? context.rebuild() : context.watch());
+	if (prodBuild) {
+		await esbuild.build(buildOptions);
+	} else {
+		await (await esbuild.context(buildOptions)).watch();
+	}
+
 } catch {
 	process.exit(1);
 }
