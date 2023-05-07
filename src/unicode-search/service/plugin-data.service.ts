@@ -3,6 +3,7 @@ import {DataService} from "./data.service";
 import {ObsidianUnicodeSearchError} from "../errors/obsidian-unicode-search.error";
 import {Character, CharacterMap, PartialCharacter} from "../../libraries/types/unicode.character";
 import {DataAccess} from "./data.access";
+import {compareCharacters} from "../../libraries/comparison/compare.characters";
 
 type DataVersions = "1" | "2";
 
@@ -51,7 +52,8 @@ export class PluginDataService implements DataService, DataAccess {
 	}
 
 	public getCharacters(): Array<Character> {
-		return this._store?.data ?? [];
+		const data = this._store?.data ?? [];
+		return data.sort(compareCharacters)
 	}
 
 	public async isInitialized(): Promise<boolean> {
