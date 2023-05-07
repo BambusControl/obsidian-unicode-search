@@ -5,7 +5,7 @@ import {Character, CharacterMap, PartialCharacter} from "../../libraries/types/u
 import {DataAccess} from "./data.access";
 import {compareCharacters} from "../../libraries/comparison/compare.characters";
 
-type DataVersions = "1" | "2";
+type DataVersions = "1" | "0.3.0-NEXT";
 
 type MetaType = {
 	initialized: boolean;
@@ -20,7 +20,7 @@ type DataStore = {
 const INITALIZATION_STORE: DataStore = {
 	meta: {
 		initialized: false,
-		version: "2",
+		version: "0.3.0-NEXT",
 	},
 	data: [],
 };
@@ -60,7 +60,7 @@ export class PluginDataService implements DataService, DataAccess {
 		const meta = (await this.getFromStorage()).meta;
 
 		return meta.initialized
-			&& meta.version === "2";
+			&& meta.version === INITALIZATION_STORE.meta.version;
 	}
 
 	public async setAsInitialized(): Promise<void> {
@@ -69,8 +69,7 @@ export class PluginDataService implements DataService, DataAccess {
 		await this.saveDataToStorage({
 			meta: {
 				...data.meta,
-				initialized: true,
-				version: "2",
+				...INITALIZATION_STORE.meta,
 			},
 		});
 	}
