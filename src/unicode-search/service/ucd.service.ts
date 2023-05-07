@@ -71,7 +71,7 @@ export class UcdService {
 	private static intoUnicode(char: ParsedCharacter): UnicodeCharacter {
 		return {
 			char: String.fromCodePoint(parseInt(char.singleCodePoint, 16)),
-			name: char.characterName,
+			name: char.characterName.toLowerCase(),
 		};
 	}
 
