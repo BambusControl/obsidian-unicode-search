@@ -1,5 +1,5 @@
-import {CharacterKeyType, CharacterMapOf, UnicodeCharacter} from "../../data/unicode.character";
-import {Pinnable} from "../../data/pinnable";
+import {CharacterKeyType, CharacterMapOf, UnicodeCharacter} from "../../../libraries/types/unicode.character";
+import {Pinnable} from "../../../libraries/types/pinnable";
 
 export type PinnedCharacter = UnicodeCharacter & Partial<Pinnable>;
 

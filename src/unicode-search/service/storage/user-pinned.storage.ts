@@ -1,5 +1,5 @@
-import {CharacterKeyType, CharacterMapOf} from "../../data/unicode.character";
-import {ObsidianUnicodeSearchError} from "../../data/obsidian-unicode-search.error";
+import {CharacterKeyType, CharacterMapOf} from "../../../libraries/types/unicode.character";
+import {ObsidianUnicodeSearchError} from "../../errors/obsidian-unicode-search.error";
 import {PinnedCharacter, PinnedStorage} from "./pinned.storage";
 import {DataService} from "../data.service";
 

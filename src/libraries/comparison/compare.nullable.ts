@@ -1,4 +1,4 @@
-import {Order} from "../data/order";
+import {Order} from "../order/order";
 
 export function compareNullable<T>(
 	left: T | null | undefined,

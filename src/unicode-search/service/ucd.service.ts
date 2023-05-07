@@ -1,5 +1,5 @@
 import {request} from "obsidian";
-import {UnicodeCharacter} from "../data/unicode.character";
+import {UnicodeCharacter} from "../../libraries/types/unicode.character";
 import {ParserOptionsArgs, parseString} from "@fast-csv/parse";
 
 type ParsedCharacter = {

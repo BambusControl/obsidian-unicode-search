@@ -1,10 +1,10 @@
 import {App, Editor, FuzzyMatch, FuzzySuggestModal, Instruction} from "obsidian";
-import {Character} from "../data/unicode.character";
+import {Character} from "../../libraries/types/unicode.character";
 import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
 
 import {DataAccess} from "../service/data.access";
-import {compareNumbers} from "../util/compare.numbers";
-import {inverse} from "../util/inverse";
+import {compareNumbers} from "../../libraries/comparison/compare.numbers";
+import {inverse} from "../../libraries/order/inverse";
 
 const INSERT_CHAR_INSTRUCTION = {
 	command: "↵",

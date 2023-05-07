@@ -9,7 +9,7 @@ const banner =
 
 const prodBuild = (process.argv[2] === "production");
 
-const sourceDir = "./src";
+const sourceDir = "./src/unicode-search";
 const outputDir = "./dist/unicode-search";
 
 /* Copy the manifest for working*/

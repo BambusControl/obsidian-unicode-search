@@ -1,5 +1,5 @@
-import {Pinnable} from "../data/pinnable";
-import {Order} from "../data/order";
+import {Pinnable} from "../types/pinnable";
+import {Order} from "../order/order";
 import {compareNullable} from "./compare.nullable";
 import {compareNumbers} from "./compare.numbers";
 

@@ -1,4 +1,4 @@
-import {Order} from "../data/order";
+import {Order} from "../order/order";
 
 export function compareNumbers(left: number, right: number): Order {
 	if (left == right) {
