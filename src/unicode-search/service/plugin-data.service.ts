@@ -3,11 +3,12 @@ import {DataService} from "./data.service";
 import {ObsidianUnicodeSearchError} from "../errors/obsidian-unicode-search.error";
 import {Character, CharacterMap, PartialCharacter} from "../../libraries/types/unicode.character";
 import {DataAccess} from "./data.access";
-import {compareCharacters} from "../../libraries/comparison/compare.characters";
+
+type DataVersions = "1" | "2";
 
 type MetaType = {
 	initialized: boolean;
-	version: "1";
+	version: DataVersions;
 };
 
 type DataStore = {
@@ -18,9 +19,9 @@ type DataStore = {
 const INITALIZATION_STORE: DataStore = {
 	meta: {
 		initialized: false,
-		version: "1",
+		version: "2",
 	},
-	data: {},
+	data: [],
 };
 
 export class PluginDataService implements DataService, DataAccess {
@@ -50,14 +51,14 @@ export class PluginDataService implements DataService, DataAccess {
 	}
 
 	public getCharacters(): Array<Character> {
-		const data = this._store?.data ?? {}
-		return Object.entries(data)
-			.map(([, value]) => ({...value}))
-			.sort(compareCharacters)
+		return this._store?.data ?? [];
 	}
 
 	public async isInitialized(): Promise<boolean> {
-		return (await this.getFromStorage()).meta.initialized;
+		const meta = (await this.getFromStorage()).meta;
+
+		return meta.initialized
+			&& meta.version === "2";
 	}
 
 	public async setAsInitialized(): Promise<void> {
@@ -67,6 +68,7 @@ export class PluginDataService implements DataService, DataAccess {
 			meta: {
 				...data.meta,
 				initialized: true,
+				version: "2",
 			},
 		});
 	}
@@ -93,7 +95,12 @@ export class PluginDataService implements DataService, DataAccess {
 	}
 
 	private async saveCharToStorage(char: PartialCharacter): Promise<Character> {
-		const currentChar = (await this.getData())[char.char];
+		const currentChar = (await this.getData())
+			.find(v => v.char === char.char);
+
+		if (currentChar == null) {
+			throw new ObsidianUnicodeSearchError(`Cannot save non-existent character '${char.char}' to storage`);
+		}
 
 		Object.assign(currentChar, char);
 
@@ -102,11 +109,11 @@ export class PluginDataService implements DataService, DataAccess {
 	}
 
 	private async _loadTheData(): Promise<DataStore> {
-		const externalData = await this.plugin.loadData();
+		const externalData: DataStore | null = await this.plugin.loadData();
 		const dataLoaded = externalData != null;
 
-		const newData: DataStore = dataLoaded
-			? (externalData as DataStore)
+		const newData = dataLoaded
+			? externalData
 			: INITALIZATION_STORE;
 
 		if (newData == null) {

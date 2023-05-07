@@ -58,15 +58,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 
 		const data = await ucdService.fetchCharacters();
 
-		const newData = data.reduce(
-			(accumulator, character) => {
-				accumulator[character.char] = character;
-				return accumulator;
-			},
-			{} as any,
-		);
-
-		await dataService.exportData(newData);
+		await dataService.exportData(data);
 		await dataService.setAsInitialized();
 	}
 

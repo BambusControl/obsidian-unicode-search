@@ -11,17 +11,20 @@ export class UserPinnedStorage implements PinnedStorage {
 	}
 
 	public async pin(id: CharacterKeyType, order: number): Promise<void> {
-		const char = (await this.exportService.getData())[id];
+		const data = await this.exportService.getData();
+		const char = data.find(char => char.char === id);
 
 		if (char == null) {
 			throw new ObsidianUnicodeSearchError(`No character '${id}' exists.`);
 		}
 
 		char.pinned = order;
+		await this.exportService.exportChar(char);
 	}
 
     public async unpin(id: CharacterKeyType): Promise<void> {
-		const char = (await this.exportService.getData())[id];
+		const data = await this.exportService.getData();
+		const char = data.find(char => char.char === id);
 
 		if (char == null) {
 			throw new ObsidianUnicodeSearchError(`No character '${id}' exists.`);
