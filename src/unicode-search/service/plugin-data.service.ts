@@ -60,6 +60,7 @@ export class PluginDataService implements DataService, DataAccess {
 			meta: {
 				...data.meta,
 				...INITALIZATION_STORE.meta,
+				initialized: true,
 			},
 		});
 	}
