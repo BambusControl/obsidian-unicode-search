@@ -1,5 +1,5 @@
 import {App, Editor, FuzzyMatch, FuzzySuggestModal, Instruction} from "obsidian";
-import {Character} from "../../libraries/types/unicode.character";
+import {Character, Characters} from "../../libraries/types/unicode.character";
 import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
 
 import {DataAccess} from "../service/data.access";
@@ -34,7 +34,7 @@ const ELEMENT_FREQUENT: DomElementInfo = {
 export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 	private readonly topLastUsed: Timestamp[];
 	private readonly averageUsageCount: number;
-	private readonly characters: Array<Character>;
+	private readonly characters: Characters;
 
 	public constructor(
 		app: App,

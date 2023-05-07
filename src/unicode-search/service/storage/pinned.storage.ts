@@ -1,10 +1,7 @@
-import {CharacterKeyType, CharacterMapOf, UnicodeCharacter} from "../../../libraries/types/unicode.character";
-import {Pinnable} from "../../../libraries/types/pinnable";
-
-export type PinnedCharacter = UnicodeCharacter & Partial<Pinnable>;
+import {CharacterKeyType, PinnedCharacters} from "../../../libraries/types/unicode.character";
 
 export interface PinnedStorage {
-	getAll(): Promise<CharacterMapOf<PinnedCharacter>>;
+	getAll(): Promise<PinnedCharacters>;
 
 	pin(id: CharacterKeyType, order: number): Promise<void>;
 

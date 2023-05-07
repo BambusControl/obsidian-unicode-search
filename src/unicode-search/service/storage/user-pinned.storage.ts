@@ -1,6 +1,6 @@
-import {CharacterKeyType, CharacterMapOf} from "../../../libraries/types/unicode.character";
+import {CharacterKeyType, PinnedCharacters} from "../../../libraries/types/unicode.character";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidian-unicode-search.error";
-import {PinnedCharacter, PinnedStorage} from "./pinned.storage";
+import {PinnedStorage} from "./pinned.storage";
 import {DataService} from "../data.service";
 
 export class UserPinnedStorage implements PinnedStorage {
@@ -34,7 +34,7 @@ export class UserPinnedStorage implements PinnedStorage {
 		await this.exportService.exportChar(char);
 	}
 
-	public async getAll(): Promise<CharacterMapOf<PinnedCharacter>> {
+	public async getAll(): Promise<PinnedCharacters> {
 		return await this.exportService.getData();
 	}
 }

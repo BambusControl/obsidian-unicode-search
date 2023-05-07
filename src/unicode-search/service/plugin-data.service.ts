@@ -1,23 +1,12 @@
 import {Plugin} from "obsidian";
 import {DataService} from "./data.service";
 import {ObsidianUnicodeSearchError} from "../errors/obsidian-unicode-search.error";
-import {Character, CharacterMap, PartialCharacter} from "../../libraries/types/unicode.character";
+import {Character, Characters, PartialCharacter} from "../../libraries/types/unicode.character";
 import {DataAccess} from "./data.access";
 import {compareCharacters} from "../../libraries/comparison/compare.characters";
+import {SaveData} from "../../libraries/types/data/save-data";
 
-type DataVersions = "1" | "0.3.0-NEXT";
-
-type MetaType = {
-	initialized: boolean;
-	version: DataVersions;
-};
-
-type DataStore = {
-	meta: MetaType;
-	data: CharacterMap;
-}
-
-const INITALIZATION_STORE: DataStore = {
+const INITALIZATION_STORE: SaveData = {
 	meta: {
 		initialized: false,
 		version: "0.3.0-NEXT",
@@ -27,7 +16,7 @@ const INITALIZATION_STORE: DataStore = {
 
 export class PluginDataService implements DataService, DataAccess {
 
-	private _store?: DataStore;
+	private _store?: SaveData;
 
 	public constructor(
 		private readonly plugin: Plugin,
@@ -35,7 +24,7 @@ export class PluginDataService implements DataService, DataAccess {
 		this.getData().then();
 	}
 
-	public async exportData(data: CharacterMap): Promise<CharacterMap> {
+	public async exportData(data: Characters): Promise<Characters> {
 		return (
 			await this.saveDataToStorage({
 				data: data,
@@ -47,17 +36,18 @@ export class PluginDataService implements DataService, DataAccess {
 		return (await this.saveCharToStorage(data));
 	}
 
-	public async getData(): Promise<CharacterMap> {
+	public async getData(): Promise<Characters> {
 		return (await this.getFromStorage()).data;
 	}
 
-	public getCharacters(): Array<Character> {
+	public getCharacters(): Characters {
 		const data = this._store?.data ?? [];
 		return data.sort(compareCharacters)
 	}
 
 	public async isInitialized(): Promise<boolean> {
-		const meta = (await this.getFromStorage()).meta;
+		const data = (await this.getFromStorage());
+		const meta = data.meta;
 
 		return meta.initialized
 			&& meta.version === INITALIZATION_STORE.meta.version;
@@ -74,7 +64,7 @@ export class PluginDataService implements DataService, DataAccess {
 		});
 	}
 
-	private async getFromStorage(): Promise<DataStore> {
+	private async getFromStorage(): Promise<SaveData> {
 		if (this._store == null) {
 			this._store = await this._loadTheData();
 		}
@@ -82,10 +72,10 @@ export class PluginDataService implements DataService, DataAccess {
 		return this._store;
 	}
 
-	private async saveDataToStorage(data: Partial<DataStore>): Promise<DataStore> {
+	private async saveDataToStorage(data: Partial<SaveData>): Promise<SaveData> {
 		const currentData = await this.getFromStorage();
 
-		const newData: DataStore = {
+		const newData: SaveData = {
 			...currentData,
 			...data,
 		};
@@ -109,8 +99,8 @@ export class PluginDataService implements DataService, DataAccess {
 		return currentChar;
 	}
 
-	private async _loadTheData(): Promise<DataStore> {
-		const externalData: DataStore | null = await this.plugin.loadData();
+	private async _loadTheData(): Promise<SaveData> {
+		const externalData: SaveData | null = await this.plugin.loadData();
 		const dataLoaded = externalData != null;
 
 		const newData = dataLoaded

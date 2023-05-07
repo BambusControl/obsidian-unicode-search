@@ -1,10 +1,7 @@
-import {CharacterKeyType, CharacterMapOf, UnicodeCharacter} from "../../../libraries/types/unicode.character";
-import {StatTracked} from "../../../libraries/types/stat-tracked";
-
-export type StatTrackedCharacter = UnicodeCharacter & Partial<StatTracked>;
+import {CharacterKeyType, StatTrackedCharacters} from "../../../libraries/types/unicode.character";
 
 export interface StatTrackedStorage {
-	getAll(): Promise<CharacterMapOf<StatTrackedCharacter>>;
+	getAll(): Promise<StatTrackedCharacters>;
 
 	recordUsage(id: CharacterKeyType): Promise<void>;
 }
