@@ -1,5 +1,5 @@
-import {CharacterKeyType, CharacterMapOf} from "../../data/unicode.character";
-import {ObsidianUnicodeSearchError} from "../../data/obsidian-unicode-search.error";
+import {CharacterKeyType, CharacterMapOf} from "../../../libraries/types/unicode.character";
+import {ObsidianUnicodeSearchError} from "../../errors/obsidian-unicode-search.error";
 
 import {StatTrackedCharacter, StatTrackedStorage} from "./stat-tracked.storage";
 import {DataService} from "../data.service";
@@ -16,7 +16,8 @@ export class UsageTrackedStorage implements StatTrackedStorage {
 	}
 
 	public async recordUsage(id: CharacterKeyType): Promise<void> {
-		const char = (await this.exportService.getData())[id];
+		const data = await this.exportService.getData();
+		const char = data.find(char => char.char === id);
 
 		if (char == null) {
 			throw new ObsidianUnicodeSearchError(`No character '${id}' exists.`);

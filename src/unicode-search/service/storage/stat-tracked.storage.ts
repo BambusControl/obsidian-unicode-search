@@ -1,5 +1,5 @@
-import {CharacterKeyType, CharacterMapOf, UnicodeCharacter} from "../../data/unicode.character";
-import {StatTracked} from "../../data/stat-tracked";
+import {CharacterKeyType, CharacterMapOf, UnicodeCharacter} from "../../../libraries/types/unicode.character";
+import {StatTracked} from "../../../libraries/types/stat-tracked";
 
 export type StatTrackedCharacter = UnicodeCharacter & Partial<StatTracked>;
 
