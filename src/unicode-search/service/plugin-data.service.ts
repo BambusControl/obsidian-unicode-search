@@ -43,7 +43,7 @@ export class PluginDataService implements DataService, DataAccess {
 
 	public getCharacters(): Characters {
 		const data = this._store?.data ?? [];
-		return data.sort(compareCharacters)
+		return data.sort(compareCharacters);
 	}
 
 	public async isInitialized(): Promise<boolean> {

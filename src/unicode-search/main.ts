@@ -32,7 +32,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 
 		await UnicodeSearchPlugin.initializeData(dataService, new UcdService());
 
-		this.addCommand({
+		super.addCommand({
 			id: "search-unicode-chars",
 			name: "Search Unicode characters",
 

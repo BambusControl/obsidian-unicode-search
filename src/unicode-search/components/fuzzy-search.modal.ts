@@ -22,7 +22,7 @@ const INSTRUCTION_DISMISS: Instruction = {
 const ELEMENT_RECENT: DomElementInfo = {
 	cls: "icon inline-description recent",
 	text: "↩",
-	title: "used recently"
+	title: "used recently",
 };
 
 const ELEMENT_FREQUENT: DomElementInfo = {
@@ -109,7 +109,7 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 		super.renderSuggestion(item, text);
 	}
 
-	public override getItems(): Character[] {
+	public override getItems(): Characters {
 		return this.characters;
 	}
 
@@ -143,7 +143,7 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 			.map(timestamp => timestamp as number)
 			.sort((a, b) => inverse(compareNumbers(a, b)))
 			.slice(0, 3)
-		;
+			;
 	}
 
 	private static getAverageUseCount(characters: Partial<StatTracked>[]): number {
@@ -159,7 +159,7 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 			return 0;
 		}
 
-		const sum = usageStats.reduce((sum, current) => sum + current, 0)
+		const sum = usageStats.reduce((sum, current) => sum + current, 0);
 		return sum / totalCount;
 	}
 
