@@ -1,5 +1,5 @@
 import {request} from "obsidian";
-import {UnicodeCharacter} from "../../libraries/types/unicode.character";
+import {UnicodeCharacter, UnicodeCharacters} from "../../libraries/types/unicode.character";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
 import {ObsidianUnicodeSearchError} from "../errors/obsidian-unicode-search.error";
 
@@ -21,20 +21,19 @@ export class UcdService {
 		fastMode: true,
 	};
 
-	public async fetchCharacters(): Promise<UnicodeCharacter[]> {
+	public async fetchCharacters(): Promise<UnicodeCharacters> {
 		const result = await request("https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt");
-		return await this.promiseMeData(result);
+		return await this.transformToCharacters(result);
 	}
 
-	private promiseMeData(csvString: string): Promise<UnicodeCharacter[]> {
+	private transformToCharacters(csvString: string): Promise<UnicodeCharacters> {
 		return new Promise((resolve, reject) => {
-
 			const completeFn = (results: ParseResult<ParsedData>): void => {
 				if (results.errors.length !== 0) {
 					reject(new ObsidianUnicodeSearchError("Error while parsing data from Unicode Character Database"));
 				}
 
-				const ff = results.data
+				const unicodeCharacters = results.data
 					.map((row): ParsedCharacter => ({
 						singleCodePoint: row[0],
 						characterName: row[1],
@@ -43,7 +42,7 @@ export class UcdService {
 					.filter(char => UcdService.charFilter(char))
 					.map(pch => UcdService.intoUnicode(pch));
 
-				resolve(ff);
+				resolve(unicodeCharacters);
 			};
 
 			const configuration: ParseWorkerConfig<ParsedData> = {
