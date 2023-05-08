@@ -1,5 +1,5 @@
-import {UnicodeCharacter} from "../../../libraries/types/unicode.character";
+import {UnicodeCharacters} from "../../../libraries/types/unicode.character";
 
 export interface Storage {
-	getAll(): Promise<UnicodeCharacter[]>;
+	getAll(): Promise<UnicodeCharacters>;
 }

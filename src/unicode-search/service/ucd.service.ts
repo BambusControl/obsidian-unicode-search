@@ -1,47 +1,57 @@
 import {request} from "obsidian";
-import {UnicodeCharacter} from "../../libraries/types/unicode.character";
-import {ParserOptionsArgs, parseString} from "@fast-csv/parse";
+import {UnicodeCharacter, UnicodeCharacters} from "../../libraries/types/unicode.character";
+import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
+import {ObsidianUnicodeSearchError} from "../errors/obsidian-unicode-search.error";
+
+type ParsedData = Array<string>;
 
 type ParsedCharacter = {
 	singleCodePoint: string;
 	characterName: string;
 	generalCategory: string;
-}
+};
 
 export class UcdService {
 
-	private readonly parserOpts: ParserOptionsArgs = {
-		headers: [
-			"singleCodePoint",
-			"characterName",
-			"generalCategory",
-			null, null, null, null, null, null, null, null, null, null, null, null,
-		],
+	private readonly config: ParseConfig = {
 		delimiter: ";",
+		header: false,
+		transformHeader: undefined,
+		dynamicTyping: false,
+		fastMode: true,
 	};
 
-	public async fetchCharacters(): Promise<UnicodeCharacter[]> {
+	public async fetchCharacters(): Promise<UnicodeCharacters> {
 		const result = await request("https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt");
-		return await this.promiseMeData(result);
+		return await this.transformToCharacters(result);
 	}
 
-	private promiseMeData(csvString: string): Promise<UnicodeCharacter[]> {
-		// Predetermined size from testing
-		const length = 15432;
-		let i = 0;
-
-		const results = new Array<UnicodeCharacter>(length);
-
-		const stream = parseString<ParsedCharacter, ParsedCharacter>(csvString, this.parserOpts)
-			.on("data", (char) => {
-				if (UcdService.charFilter(char)) {
-					results[i++] = UcdService.intoUnicode(char);
-				}
-			});
-
+	private transformToCharacters(csvString: string): Promise<UnicodeCharacters> {
 		return new Promise((resolve, reject) => {
-			stream.on("error", (error) => reject(error))
-				.on("end", () => resolve(results));
+			const completeFn = (results: ParseResult<ParsedData>): void => {
+				if (results.errors.length !== 0) {
+					reject(new ObsidianUnicodeSearchError("Error while parsing data from Unicode Character Database"));
+				}
+
+				const unicodeCharacters = results.data
+					.map((row): ParsedCharacter => ({
+						singleCodePoint: row[0],
+						characterName: row[1],
+						generalCategory: row[2],
+					}))
+					.filter(char => UcdService.charFilter(char))
+					.map(pch => UcdService.intoUnicode(pch));
+
+				resolve(unicodeCharacters);
+			};
+
+			const configuration: ParseWorkerConfig<ParsedData> = {
+				...this.config,
+				worker: true,
+				complete: results => completeFn(results),
+			};
+
+			parse<ParsedData>(csvString, configuration);
 		});
 	}
 
