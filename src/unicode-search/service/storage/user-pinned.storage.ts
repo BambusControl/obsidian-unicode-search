@@ -1,5 +1,5 @@
 import {CharacterKeyType, PinnedCharacters} from "../../../libraries/types/unicode.character";
-import {ObsidianUnicodeSearchError} from "../../errors/obsidian-unicode-search.error";
+import {UnicodeSearchError} from "../../errors/unicode-search.error";
 import {PinnedStorage} from "./pinned.storage";
 import {DataService} from "../data.service";
 
@@ -15,7 +15,7 @@ export class UserPinnedStorage implements PinnedStorage {
 		const char = data.find(char => char.char === id);
 
 		if (char == null) {
-			throw new ObsidianUnicodeSearchError(`No character '${id}' exists.`);
+			throw new UnicodeSearchError(`No character '${id}' exists.`);
 		}
 
 		char.pinned = order;
@@ -27,7 +27,7 @@ export class UserPinnedStorage implements PinnedStorage {
 		const char = data.find(char => char.char === id);
 
 		if (char == null) {
-			throw new ObsidianUnicodeSearchError(`No character '${id}' exists.`);
+			throw new UnicodeSearchError(`No character '${id}' exists.`);
 		}
 
 		char.pinned = undefined;

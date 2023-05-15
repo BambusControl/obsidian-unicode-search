@@ -1,7 +1,7 @@
 import {request} from "obsidian";
 import {UnicodeCharacter, UnicodeCharacters} from "../../libraries/types/unicode.character";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
-import {ObsidianUnicodeSearchError} from "../errors/obsidian-unicode-search.error";
+import {UnicodeSearchError} from "../errors/unicode-search.error";
 
 type ParsedData = Array<string>;
 
@@ -30,7 +30,7 @@ export class UcdService {
 		return new Promise((resolve, reject) => {
 			const completeFn = (results: ParseResult<ParsedData>): void => {
 				if (results.errors.length !== 0) {
-					reject(new ObsidianUnicodeSearchError("Error while parsing data from Unicode Character Database"));
+					reject(new UnicodeSearchError("Error while parsing data from Unicode Character Database"));
 				}
 
 				const unicodeCharacters = results.data

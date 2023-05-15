@@ -1,6 +1,6 @@
 import {Plugin} from "obsidian";
 import {DataService} from "./data.service";
-import {ObsidianUnicodeSearchError} from "../errors/obsidian-unicode-search.error";
+import {UnicodeSearchError} from "../errors/unicode-search.error";
 import {Character, Characters, PartialCharacter} from "../../libraries/types/unicode.character";
 import {DataAccess} from "./data.access";
 import {compareCharacters} from "../../libraries/comparison/compare.characters";
@@ -92,7 +92,7 @@ export class PluginDataService implements DataService, DataAccess {
 			.find(v => v.char === char.char);
 
 		if (currentChar == null) {
-			throw new ObsidianUnicodeSearchError(`Cannot save non-existent character '${char.char}' to storage`);
+			throw new UnicodeSearchError(`Cannot save non-existent character '${char.char}' to storage`);
 		}
 
 		Object.assign(currentChar, char);
@@ -110,7 +110,7 @@ export class PluginDataService implements DataService, DataAccess {
 			: INITALIZATION_STORE;
 
 		if (newData == null) {
-			throw new ObsidianUnicodeSearchError("Cannot import plugin data. The file is not valid!");
+			throw new UnicodeSearchError("Cannot import plugin data. The file is not valid!");
 		}
 
 		if (!dataLoaded) {

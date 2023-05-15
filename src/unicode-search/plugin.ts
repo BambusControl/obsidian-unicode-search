@@ -1,4 +1,4 @@
-import {ObsidianUnicodeSearchError} from "./errors/obsidian-unicode-search.error";
+import {UnicodeSearchError} from "./errors/unicode-search.error";
 
 export class Plugin {
 
@@ -16,11 +16,11 @@ export class Plugin {
 	 * @private
 	 */
 	private loadPluginData(): unknown | "dataOrNone" {
-		throw new ObsidianUnicodeSearchError("Not yet implemented");
+		throw new UnicodeSearchError("Not yet implemented");
 	}
 
 	private loadSettings(): void {
-		throw new ObsidianUnicodeSearchError("Not yet implemented");
+		throw new UnicodeSearchError("Not yet implemented");
 	}
 
 	/**
@@ -28,11 +28,11 @@ export class Plugin {
 	 * @private
 	 */
 	private loadUnicodeCharacterData(): void {
-		throw new ObsidianUnicodeSearchError("Not yet implemented");
+		throw new UnicodeSearchError("Not yet implemented");
 	}
 
 	private registerObsidianCommands(): void {
-		throw new ObsidianUnicodeSearchError("Not yet implemented");
+		throw new UnicodeSearchError("Not yet implemented");
 	}
 
 }
