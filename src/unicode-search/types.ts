@@ -1,24 +1,60 @@
 import {Characters} from "../libraries/types/unicode.character";
 
-export type SaveData = {
+export type SaveDataMeta = {
 	meta: MetaData;
-	data: Data;
 };
 
+export type SaveDataSettings = {
+	settings: Settings;
+};
+
+export type SaveDataPrimary = {
+	primary: PrimaryData;
+};
+
+/**
+ * Root of persistent plugin data.
+ */
+export type SaveData
+	= SaveDataMeta
+	& SaveDataSettings
+	& SaveDataPrimary
+	;
+
+/**
+ * Data needed for ingesting, verifying and manipulating {@link SaveData}
+ */
 export type MetaData = {
-	initialized: boolean;
 	version: DataVersion
 };
 
+/**
+ * Every released plugin version.
+ * The latest version must be same as in `package.json` & `manifest.json`
+ */
 export type PluginVersion
 	= "0.4.0"
 	| "0.4.1"
 	;
 
-export type DataVersion = PluginVersion &
+/**
+ * Versions of save data.
+ * Must be a {@link PluginVersion} value.
+ */
+export type DataVersion = Extract<PluginVersion,
 	( "0.4.0"
-	);
+	)>;
 
-export type Data = {
+
+/**
+ * Primary plugin data used for its core functionality.
+ */
+export type PrimaryData = {
 	characters: Characters,
+};
+
+/**
+ * User customizable plugin settings.
+ */
+export type Settings = {
 };
