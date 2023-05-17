@@ -1,25 +1,22 @@
 import {MetaData, PrimaryData, SaveData, SaveDataMeta, SaveDataPrimary, SaveDataSettings, Settings} from "./types";
 
-type Shape<T> = {
-  [P in keyof T]: unknown;
+export type Shape<T> = {
+  [P in keyof T]: unknown | T[P];
 };
 
 export function shapeOfSaveDataMeta(object: any): object is SaveDataMeta {
-	return containsProperties<SaveDataMeta>(object, "meta")
-		&& shapeOfMetaData(object.meta)
+	return containsProperties<SaveDataMeta>(object, "meta");
 }
 
 export function shapeOfSaveDataSettings(object: any): object is SaveDataSettings {
-	return containsProperties<SaveDataSettings>(object, "settings")
-		&& shapeOfSettings(object.settings)
+	return containsProperties<SaveDataSettings>(object, "settings");
 }
 
 export function shapeOfSaveDataPrimary(object: any): object is SaveDataPrimary {
-	return containsProperties<SaveDataPrimary>(object, "primary")
-		&& shapeOfPrimaryData(object.primary)
+	return containsProperties<SaveDataPrimary>(object, "primary");
 }
 
-export function shapeOfSaveData(object: any): object is SaveData {
+export function shapeOfSaveData(object: any): object is Shape<SaveData> {
 	return containsProperties<SaveData>(object, "primary", "meta", "settings")
 }
 
