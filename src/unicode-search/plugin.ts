@@ -1,58 +1,51 @@
 import {UnicodeSearchError} from "./errors/unicode-search.error";
 import {INITIAL_SAVE_DATA} from "./constant";
-import {SaveDataMeta} from "./types";
-import {shapeOfSaveDataMeta} from "./shape";
+import {DataParser} from "./dataParser";
+import {shapeOfSaveData} from "./shape";
+import {InvalidSaveData} from "./errors/invalid-save.data";
 
 export class Plugin {
 	private readonly loadData: () => Promise<unknown>;
+	private readonly parser: DataParser;
 
 
 	public constructor() {
 		// TODO data loading
 		this.loadData = () => Promise.resolve({});
+		this.parser = new DataParser();
 	}
 
 	public async load(): Promise<void> {
-		await this.loadSaveData();
+		console.debug("Loading save data");
+		const rawData = await this.getRawSaveData();
 
-		this.loadSettings();
-		this.loadUnicodeCharacterData();
+		console.debug("Parsing save data");
+		if (!shapeOfSaveData(rawData)) {
+			throw new InvalidSaveData("Save data structure invalid");
+		}
+
+		const d1 = this.parser.parseMetaData(rawData);
+		// Check version and run migration of data if necessary.
+
+		const d2 = this.parser.parseSettingsData(d1);
+		// Future: check settings for registering commands.
+
+		const d3 = this.parser.parsePrimaryData(d2);
+		// Check if the data is empty and character data needs to be fetched.
 
 		this.registerObsidianCommands();
 	}
 
-	/**
-	 * Load saved data, assert it is valid for current plugin version.
-	 * @private
-	 */
-	private async loadSaveData(): Promise<SaveDataMeta> {
-		console.debug("Loading save data")
+	private async getRawSaveData(): Promise<unknown> {
 		const rawData = await this.loadData();
 
-		if (rawData == null) {
-			// Initialize
-			console.info("Initializing save data")
-			return {...INITIAL_SAVE_DATA()};
-		}
-
-		if (shapeOfSaveDataMeta(rawData)) {
-			console.debug("Save data loaded")
+		if (rawData != null) {
+			console.debug("Raw save data loaded successfully");
 			return rawData;
 		}
 
-		throw new UnicodeSearchError("Invalid structure of save file");
-	}
-
-	private loadSettings(): void {
-		throw new UnicodeSearchError("Not yet implemented");
-	}
-
-	/**
-	 * Load the unicode character database and transform it for plugin use.
-	 * @private
-	 */
-	private loadUnicodeCharacterData(): void {
-		throw new UnicodeSearchError("Not yet implemented");
+		console.info("No save data found, initializing")
+		return INITIAL_SAVE_DATA();
 	}
 
 	private registerObsidianCommands(): void {
@@ -60,3 +53,4 @@ export class Plugin {
 	}
 
 }
+
