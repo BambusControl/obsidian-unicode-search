@@ -1,9 +1,19 @@
 import {UnicodeSearchError} from "./errors/unicode-search.error";
+import {INITIAL_SAVE_DATA} from "./constant";
+import {SaveDataMeta} from "./types";
+import {shapeOfSaveDataMeta} from "./shape";
 
 export class Plugin {
+	private readonly loadData: () => Promise<unknown>;
 
-	public load(): void {
-		this.loadPluginData();
+
+	public constructor() {
+		// TODO data loading
+		this.loadData = () => Promise.resolve({});
+	}
+
+	public async load(): Promise<void> {
+		await this.loadSaveData();
 
 		this.loadSettings();
 		this.loadUnicodeCharacterData();
@@ -15,8 +25,22 @@ export class Plugin {
 	 * Load saved data, assert it is valid for current plugin version.
 	 * @private
 	 */
-	private loadPluginData(): unknown | "dataOrNone" {
-		throw new UnicodeSearchError("Not yet implemented");
+	private async loadSaveData(): Promise<SaveDataMeta> {
+		console.debug("Loading save data")
+		const rawData = await this.loadData();
+
+		if (rawData == null) {
+			// Initialize
+			console.info("Initializing save data")
+			return {...INITIAL_SAVE_DATA()};
+		}
+
+		if (shapeOfSaveDataMeta(rawData)) {
+			console.debug("Save data loaded")
+			return rawData;
+		}
+
+		throw new UnicodeSearchError("Invalid structure of save file");
 	}
 
 	private loadSettings(): void {
