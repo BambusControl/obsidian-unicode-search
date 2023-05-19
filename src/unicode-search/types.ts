@@ -1,5 +1,7 @@
 import {Characters} from "../libraries/types/unicode.character";
 
+export type NotNull = {};
+
 export type SaveDataMeta = {
 	meta: MetaData;
 };

@@ -1,20 +1,23 @@
 import {App, Plugin as ObsidianPlugin, PluginManifest} from "obsidian";
-import {Plugin} from "./plugin";
+import {SaveDataLoader} from "./save-data-loader";
 
 export default class UnicodeSearch extends ObsidianPlugin {
 
-	private readonly plugin: Plugin;
+	private readonly saveDataLoader: SaveDataLoader;
 
 	public constructor(
 		app: App,
 		manifest: PluginManifest,
 	) {
 		super(app, manifest);
-		this.plugin = new Plugin();
+
+		this.saveDataLoader = new SaveDataLoader();
 	}
 
-	public override onload(): void {
-		this.plugin.load();
+	public override async onload(): Promise<void> {
+		// TODO: Obsidian does not expect a promise here.
+		const saveData = await super.loadData();
+		await this.saveDataLoader.loadSaveData(saveData);
 		super.onload();
 	}
 }

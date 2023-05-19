@@ -1,23 +1,19 @@
-import {UnicodeSearchError} from "./errors/unicode-search.error";
-import {INITIAL_SAVE_DATA} from "./constant";
-import {DataParser} from "./dataParser";
+import {DataParser} from "./data-parser";
 import {shapeOfSaveData} from "./shape";
 import {InvalidSaveData} from "./errors/invalid-save.data";
+import {INITIAL_SAVE_DATA} from "./constant";
 
-export class Plugin {
-	private readonly loadData: () => Promise<unknown>;
+export class SaveDataLoader {
+
 	private readonly parser: DataParser;
 
-
 	public constructor() {
-		// TODO data loading
-		this.loadData = () => Promise.resolve({});
 		this.parser = new DataParser();
 	}
 
-	public async load(): Promise<void> {
+	public async loadSaveData(data: any): Promise<void> {
 		console.debug("Loading save data");
-		const rawData = await this.getRawSaveData();
+		const rawData = this.initializeData(data);
 
 		console.debug("Parsing save data");
 		if (!shapeOfSaveData(rawData)) {
@@ -32,25 +28,16 @@ export class Plugin {
 
 		const d3 = this.parser.parsePrimaryData(d2);
 		// Check if the data is empty and character data needs to be fetched.
-
-		this.registerObsidianCommands();
 	}
 
-	private async getRawSaveData(): Promise<unknown> {
-		const rawData = await this.loadData();
-
-		if (rawData != null) {
+	private initializeData(data: any): unknown {
+		if (data != null) {
 			console.debug("Raw save data loaded successfully");
-			return rawData;
+			return data;
 		}
 
 		console.info("No save data found, initializing")
 		return INITIAL_SAVE_DATA();
 	}
 
-	private registerObsidianCommands(): void {
-		throw new UnicodeSearchError("Not yet implemented");
-	}
-
 }
-
