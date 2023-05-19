@@ -37,6 +37,7 @@ export type MetaData = {
 export type PluginVersion
 	= "0.4.0"
 	| "0.4.1"
+	| "0.4.1-NEXT"
 	;
 
 /**
@@ -45,6 +46,7 @@ export type PluginVersion
  */
 export type DataVersion = Extract<PluginVersion,
 	( "0.4.0"
+	| "0.4.1-NEXT"
 	)>;
 
 
