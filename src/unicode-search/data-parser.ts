@@ -1,5 +1,6 @@
-import {SaveDataMeta, SaveDataPrimary, SaveDataSettings} from "./types";
+import {SaveData, SaveDataMeta, SaveDataPrimary, SaveDataSettings} from "./types";
 import {
+	Shape,
 	shapeOfMetaData,
 	shapeOfPrimaryData,
 	shapeOfSaveDataMeta,
@@ -12,7 +13,20 @@ import {InvalidSaveData} from "./errors/invalid-save.data";
 import {INITIAL_SAVE_DATA_META, INITIAL_SAVE_DATA_PRIMARY, INITIAL_SAVE_DATA_SETTINGS} from "./constant";
 
 export class DataParser {
-	public parseMetaData<T>(data: T): T & SaveDataMeta {
+
+	public parseData(rawData: Shape<SaveData>): SaveData {
+		console.group("Save data parsing");
+
+		const meta = this.parseMetaData(rawData);
+		const metaAndSettings = this.parseSettingsData(meta);
+		const parsedSaveData = this.parsePrimaryData(metaAndSettings);
+
+		console.info("Save data successfully parsed");
+		console.groupEnd();
+		return parsedSaveData;
+	}
+
+	private parseMetaData<T>(data: T): T & SaveDataMeta {
 		if (!shapeOfSaveDataMeta(data)) {
 			console.info("Initializing meta data");
 			return {
@@ -30,7 +44,7 @@ export class DataParser {
 		return data;
 	}
 
-	public parseSettingsData<T>(data: T): T & SaveDataSettings {
+	private parseSettingsData<T>(data: T): T & SaveDataSettings {
 		if (!shapeOfSaveDataSettings(data)) {
 			console.info("Initializing settings data");
 			return {
@@ -47,7 +61,7 @@ export class DataParser {
 		return data;
 	}
 
-	public parsePrimaryData<T>(data: T): T & SaveDataPrimary {
+	private parsePrimaryData<T>(data: T): T & SaveDataPrimary {
 		if (!shapeOfSaveDataPrimary(data)) {
 			console.info("Initializing primary data");
 			return {
@@ -63,4 +77,5 @@ export class DataParser {
 		console.debug("Primary data successfully parsed");
 		return data;
 	}
+
 }

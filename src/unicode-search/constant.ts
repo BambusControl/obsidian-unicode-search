@@ -1,4 +1,4 @@
-import {SaveData, SaveDataMeta, SaveDataPrimary, SaveDataSettings} from "./types";
+import {DataVersion, PluginVersion, SaveData, SaveDataMeta, SaveDataPrimary, SaveDataSettings} from "./types";
 import {Shape} from "./shape";
 
 /*
@@ -34,4 +34,12 @@ export function INITIAL_SAVE_DATA_PRIMARY(): SaveDataPrimary {
 			characters: []
 		}
 	}
+}
+
+export function LATEST_PLUGIN_VERSION(): PluginVersion {
+	return "0.4.1-NEXT";
+}
+
+export function LATEST_DATA_VERSION(): DataVersion {
+	return "0.4.1-NEXT";
 }
