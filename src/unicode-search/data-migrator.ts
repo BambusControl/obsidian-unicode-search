@@ -1,5 +1,5 @@
-import {MetaData, PrimaryData, SaveData, Settings} from "./types";
 import {LATEST_DATA_VERSION} from "./constant";
+import {MetaData, PrimaryData, SaveData, Settings} from "./save-data/types-0.4.1-NEXT";
 
 export class DataMigrator {
 

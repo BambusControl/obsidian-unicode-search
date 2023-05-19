@@ -2,8 +2,8 @@ import {DataParser} from "./data-parser";
 import {shapeOfSaveData} from "./shape";
 import {InvalidSaveData} from "./errors/invalid-save.data";
 import {INITIAL_SAVE_DATA, LATEST_DATA_VERSION} from "./constant";
-import {SaveData} from "./types";
 import {DataMigrator} from "./data-migrator";
+import {SaveData} from "./save-data/types-0.4.1-NEXT";
 
 export class SaveDataLoader {
 

@@ -1,4 +1,12 @@
-import {MetaData, PrimaryData, SaveData, SaveDataMeta, SaveDataPrimary, SaveDataSettings, Settings} from "./types";
+import {
+	MetaData,
+	PrimaryData,
+	SaveData,
+	SaveDataMeta,
+	SaveDataPrimary,
+	SaveDataSettings,
+	Settings
+} from "./save-data/types-0.4.1-NEXT";
 
 export type Shape<T> = {
   [P in keyof T]: unknown | T[P];

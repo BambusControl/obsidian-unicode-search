@@ -1,4 +1,3 @@
-import {SaveData, SaveDataMeta, SaveDataPrimary, SaveDataSettings} from "./types";
 import {
 	Shape,
 	shapeOfMetaData,
@@ -11,6 +10,7 @@ import {
 
 import {InvalidSaveData} from "./errors/invalid-save.data";
 import {INITIAL_SAVE_DATA_META, INITIAL_SAVE_DATA_PRIMARY, INITIAL_SAVE_DATA_SETTINGS} from "./constant";
+import {SaveData, SaveDataMeta, SaveDataPrimary, SaveDataSettings} from "./save-data/types-0.4.1-NEXT";
 
 export class DataParser {
 

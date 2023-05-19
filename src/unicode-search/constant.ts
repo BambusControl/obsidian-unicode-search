@@ -1,5 +1,6 @@
-import {DataVersion, PluginVersion, SaveData, SaveDataMeta, SaveDataPrimary, SaveDataSettings} from "./types";
+import {DataVersion, PluginVersion} from "./types";
 import {Shape} from "./shape";
+import {SaveData, SaveDataMeta, SaveDataPrimary, SaveDataSettings} from "./save-data/types-0.4.1-NEXT";
 
 /*
 * The easiest way to make sure this value doesn't get modified is to create a new object each time.
