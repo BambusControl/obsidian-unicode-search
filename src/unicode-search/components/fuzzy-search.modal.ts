@@ -103,33 +103,12 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			.sort((l, r) =>
 				(r.match.codepoint.score - l.match.codepoint.score) + (r.match.name.score - l.match.name.score)
 			)
-
-		// return this.characters
-		// 	.map(character => ({
-		// 		item: character,
-		// 		match: {
-		// 			/* Characters are expected to always have a single character */
-		// 			codepoint: sq(toHexadecimal(character)),
-		// 			name: pq(character.name),
-		// 		},
-		// 	} as CharacterMatch))
-		// 	.filter(character => character.match.name != null || character.match.codepoint != null)
-		// 	.sort((left, right) => {
-		// 		return compareNumbers(
-		// 			/* TODO: Weighing Function */
-		// 			2 * left.match.codepoint.score + left.match.name.score,
-		// 			2 * right.match.codepoint.score + right.match.name.score,
-		// 		);
-		// 	})
-        // ;
 	}
 
-	public override renderSuggestion(item: CharacterMatch, el: HTMLElement): void {
+	public override renderSuggestion(item: CharacterMatch, container: HTMLElement): void {
 		const char = item.item;
 
-		const container = el.createDiv({
-			cls: "plugin obsidian-unicode-search result-item",
-		});
+		container.addClass("plugin", "unicode-search", "result-item")
 
 		/* preview */
 		container.createDiv({
@@ -138,10 +117,25 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			text: char.char,
 		});
 
+		const matches = container.createDiv({
+			cls: "character-match",
+		})
+
+		const codepoint = matches.createDiv({
+			cls: [
+				"character-codepoint",
+				item.match.codepoint.matches.length > 0 ? "show" : "",
+			],
+		});
+
+		renderMatches(codepoint, toHexadecimal(item.item), item.match.codepoint.matches);
+
 		/* indexed name */
-		const text = container.createDiv({
+		const text = matches.createDiv({
 			cls: "character-name",
 		});
+
+		renderMatches(text, item.item.name, item.match.name.matches)
 
 		const detail = container.createDiv({
 			cls: "detail",
@@ -168,27 +162,6 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 		if (showUseCount) {
 			attributes.createDiv(ELEMENT_FREQUENT);
 		}
-
-		/* the parent renders the elements text with styling for matching letters */
-		FuzzySearchModal.renderMatch(item, text);
-	}
-
-	private static renderMatch(item: CharacterMatch, el: HTMLElement) {
-		renderMatches(el, toHexadecimal(item.item).toUpperCase(), item.match.codepoint.matches);
-
-		el.createSpan({
-			text: " | "
-		})
-
-		el.createSpan({
-			text: item.match.name.score.toString()
-		})
-
-		el.createSpan({
-			text: " | "
-		})
-
-		renderMatches(el, item.item.name, item.match.name.matches)
 	}
 
 	public override onChooseSuggestion(item: CharacterMatch, evt: MouseEvent | KeyboardEvent): void {

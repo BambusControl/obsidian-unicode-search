@@ -1,4 +1,4 @@
-.plugin.obsidian-unicode-search {
+.plugin.unicode-search {
 	&.result-item {
 		display: flex;
 		gap: 1em;
@@ -14,10 +14,49 @@
 			align-items: center;
 		}
 
-		& > .character-name {
-			padding-left: 1.5em;
-			border-left: var(--prompt-border-width) solid var(--prompt-border-color);
+		& > .character-match {
 			flex-grow: 1;
+			border-left: var(--prompt-border-width) solid var(--prompt-border-color);
+
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: flex-end;
+
+			& > .character-codepoint {
+				border-radius: var(--radius-s);
+				background-color: var(--code-background);
+
+				font-family: var(--font-monospace);
+				font-size: var(--code-size);
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				color: var(--code-normal);
+
+				overflow: hidden;
+				width: 0;
+				margin-left: 1.5em;
+				margin-right: 0;
+
+				&::before {
+					content: "U+";
+				}
+
+				&.show {
+					margin-left: 1em;
+					margin-right: 1em;
+					padding: calc(var(--tag-padding-y) / 4) calc(var(--tag-padding-x) / 2);
+					width: revert;
+				}
+
+				& > .suggestion-highlight {
+					color: var(--text-normal);
+				}
+			}
+
+			& > .character-name {
+				flex-grow: 1;
+			}
 		}
 
 		& > .detail {
