@@ -1,4 +1,10 @@
-import {App, Editor, FuzzyMatch, FuzzySuggestModal, Instruction} from "obsidian";
+import {
+	App,
+	Editor,
+	Instruction,
+	prepareFuzzySearch, prepareQuery, prepareSimpleSearch, renderMatches, SearchResult,
+	SuggestModal
+} from "obsidian";
 import {Character, Characters} from "../../libraries/types/unicode.character";
 import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
 
@@ -6,6 +12,10 @@ import {DataAccess} from "../service/data.access";
 import {compareNumbers} from "../../libraries/comparison/compare.numbers";
 import {inverse} from "../../libraries/order/inverse";
 import {StatTracked} from "../../libraries/types/stat-tracked";
+import * as console from "console";
+import {placeholder} from "@codemirror/view";
+import {compareNullable} from "../../libraries/comparison/compare.nullable";
+import {toHexadecimal} from "../../libraries/helpers/hexadecimal.characters";
 
 type Timestamp = number;
 
@@ -31,7 +41,21 @@ const ELEMENT_FREQUENT: DomElementInfo = {
 	title: "used frequently",
 };
 
-export class FuzzySearchModal extends FuzzySuggestModal<Character> {
+type CharacterMatch = {
+	item: Character,
+	// match: Record<keyof Character, SearchResult>;
+	match: {
+		codepoint: SearchResult,
+		name: SearchResult,
+	},
+}
+
+const NONE_RESULT: SearchResult = {
+	score: 0,
+	matches: []
+}
+
+export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 	private readonly topLastUsed: Timestamp[];
 	private readonly averageUsageCount: number;
 	private readonly characters: Characters;
@@ -56,11 +80,51 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 		this.setRandomPlaceholder();
 	}
 
-	public override getItemText(item: Character): string {
-		return item.name;
+	public override getSuggestions(query: string): CharacterMatch[] | Promise<CharacterMatch[]> {
+		const isHexSafe = query.length <= 4 && !query.contains(" ")
+
+		const sq = isHexSafe ? prepareSimpleSearch(query) : ((text: string) => null);
+		const pq = prepareFuzzySearch(query);
+
+		return this.characters
+			.map(ch => ({
+				item: ch,
+				match: {
+					codepoint: sq(toHexadecimal(ch)),
+					name: pq(ch.name)
+				}
+			}))
+			.filter(r => r.match.name != null || r.match.codepoint != null)
+			.map(r => {
+				r.match.name ??= NONE_RESULT
+				r.match.codepoint ??= NONE_RESULT
+				return r as CharacterMatch
+			})
+			.sort((l, r) =>
+				(r.match.codepoint.score - l.match.codepoint.score) + (r.match.name.score - l.match.name.score)
+			)
+
+		// return this.characters
+		// 	.map(character => ({
+		// 		item: character,
+		// 		match: {
+		// 			/* Characters are expected to always have a single character */
+		// 			codepoint: sq(toHexadecimal(character)),
+		// 			name: pq(character.name),
+		// 		},
+		// 	} as CharacterMatch))
+		// 	.filter(character => character.match.name != null || character.match.codepoint != null)
+		// 	.sort((left, right) => {
+		// 		return compareNumbers(
+		// 			/* TODO: Weighing Function */
+		// 			2 * left.match.codepoint.score + left.match.name.score,
+		// 			2 * right.match.codepoint.score + right.match.name.score,
+		// 		);
+		// 	})
+        // ;
 	}
 
-	public override renderSuggestion(item: FuzzyMatch<Character>, el: HTMLElement): void {
+	public override renderSuggestion(item: CharacterMatch, el: HTMLElement): void {
 		const char = item.item;
 
 		const container = el.createDiv({
@@ -106,18 +170,32 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 		}
 
 		/* the parent renders the elements text with styling for matching letters */
-		super.renderSuggestion(item, text);
+		FuzzySearchModal.renderMatch(item, text);
 	}
 
-	public override getItems(): Characters {
-		return this.characters;
+	private static renderMatch(item: CharacterMatch, el: HTMLElement) {
+		renderMatches(el, toHexadecimal(item.item).toUpperCase(), item.match.codepoint.matches);
+
+		el.createSpan({
+			text: " | "
+		})
+
+		el.createSpan({
+			text: item.match.name.score.toString()
+		})
+
+		el.createSpan({
+			text: " | "
+		})
+
+		renderMatches(el, item.item.name, item.match.name.matches)
 	}
 
-	public override onChooseItem(item: Character, evt: MouseEvent | KeyboardEvent): void {
-		this.editor.replaceSelection(item.char);
+	public override onChooseSuggestion(item: CharacterMatch, evt: MouseEvent | KeyboardEvent): void {
+		this.editor.replaceSelection(item.item.char);
 
 		// I don't want to await this, its more of a side effect
-		this.statTrackedStorage.recordUsage(item.char).then(undefined, (err) => console.error(err));
+		this.statTrackedStorage.recordUsage(item.item.char).then(undefined, (err) => console.error(err));
 	}
 
 	public override onNoSuggestion(): void {
