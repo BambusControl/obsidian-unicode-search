@@ -10,7 +10,7 @@ import {isTypeSaveData} from "../../libraries/types/data/is-type-save-data";
 const INITALIZATION_STORE: SaveData = {
 	meta: {
 		initialized: false,
-		version: "0.4.0",
+		version: "0.5.0",
 	},
 	data: [],
 };
