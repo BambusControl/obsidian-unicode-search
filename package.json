@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-unicode-search",
-	"version": "0.4.1-NEXT",
+	"version": "0.5.0",
 	"description": "Obsidian plugin for searching Unicode characters.",
 	"main": "main.js",
 	"scripts": {
