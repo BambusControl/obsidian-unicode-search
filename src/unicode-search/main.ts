@@ -7,12 +7,9 @@ import {DataService} from "./service/data.service";
 import {DataAccess} from "./service/data.access";
 import {UcdService} from "./service/ucd.service";
 
+/* Used by Obsidian */
+// noinspection JSUnusedGlobalSymbols
 export default class UnicodeSearchPlugin extends Plugin {
-
-	private services?: {
-		dataService: DataService & DataAccess,
-		usageTrackedStorage: StatTrackedStorage,
-	};
 
 	public constructor(
 		app: App,
@@ -24,11 +21,6 @@ export default class UnicodeSearchPlugin extends Plugin {
 	public override async onload(): Promise<void> {
 		const dataService = new PluginDataService(this);
 		const usageTrackedStorage = new UsageTrackedStorage(dataService);
-
-		this.services = {
-			dataService: dataService,
-			usageTrackedStorage: usageTrackedStorage,
-		};
 
 		await UnicodeSearchPlugin.initializeData(dataService, new UcdService());
 

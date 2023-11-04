@@ -1,4 +1,4 @@
-import {App, Editor, FuzzyMatch, FuzzySuggestModal, Instruction} from "obsidian";
+import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
 import {Character, Characters} from "../../libraries/types/unicode.character";
 import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
 
@@ -6,32 +6,18 @@ import {DataAccess} from "../service/data.access";
 import {compareNumbers} from "../../libraries/comparison/compare.numbers";
 import {inverse} from "../../libraries/order/inverse";
 import {StatTracked} from "../../libraries/types/stat-tracked";
+import * as console from "console";
+import {CharacterMatch, NONE_RESULT, Timestamp} from "./character.metadata";
+import {
+	ELEMENT_FREQUENT,
+	ELEMENT_RECENT,
+	INSERT_CHAR_INSTRUCTION,
+	INSTRUCTION_DISMISS,
+	NAVIGATE_INSTRUCTION
+} from "./visual.elements";
+import {toHexadecimal} from "../../libraries/helpers/hexadecimal.characters";
 
-type Timestamp = number;
-
-const INSERT_CHAR_INSTRUCTION: Instruction = {
-	command: "↵",
-	purpose: "to insert selected character",
-};
-
-const INSTRUCTION_DISMISS: Instruction = {
-	command: "esc",
-	purpose: "to dismiss",
-};
-
-const ELEMENT_RECENT: DomElementInfo = {
-	cls: "icon inline-description recent",
-	text: "↩",
-	title: "used recently",
-};
-
-const ELEMENT_FREQUENT: DomElementInfo = {
-	cls: "icon inline-description frequent",
-	text: "↺",
-	title: "used frequently",
-};
-
-export class FuzzySearchModal extends FuzzySuggestModal<Character> {
+export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 	private readonly topLastUsed: Timestamp[];
 	private readonly averageUsageCount: number;
 	private readonly characters: Characters;
@@ -45,6 +31,7 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 		super(app);
 
 		super.setInstructions([
+			NAVIGATE_INSTRUCTION,
 			INSERT_CHAR_INSTRUCTION,
 			INSTRUCTION_DISMISS,
 		]);
@@ -56,28 +43,65 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 		this.setRandomPlaceholder();
 	}
 
-	public override getItemText(item: Character): string {
-		return item.name;
+	public override getSuggestions(query: string): CharacterMatch[] | Promise<CharacterMatch[]> {
+		const isHexSafe = query.length <= 4 && !query.contains(" ")
+
+		const codepointSearch = isHexSafe ? prepareSimpleSearch(query) : ((text: string) => null);
+		const fuzzyNameSearch = prepareFuzzySearch(query);
+
+		return this.characters
+			.map(character => ({
+				item: character,
+				match: {
+					codepoint: codepointSearch(toHexadecimal(character)),
+					name: fuzzyNameSearch(character.name)
+				}
+			}))
+			.filter(result => result.match.name != null || result.match.codepoint != null)
+			.map(result => {
+				/* Fill with empty result, so that we don't have to deal with null values */
+				result.match.name ??= NONE_RESULT
+				result.match.codepoint ??= NONE_RESULT
+				return result as CharacterMatch
+			})
+			.sort((l, r) =>
+				/* Matches are scored with negative values up to 0, with 0 meaning full match for fuzzy search */
+				(r.match.codepoint.score - l.match.codepoint.score) + (r.match.name.score - l.match.name.score)
+			)
 	}
 
-	public override renderSuggestion(item: FuzzyMatch<Character>, el: HTMLElement): void {
+	public override renderSuggestion(item: CharacterMatch, container: HTMLElement): void {
 		const char = item.item;
 
-		const container = el.createDiv({
-			cls: "plugin obsidian-unicode-search result-item",
-		});
+		container.addClass("plugin", "unicode-search", "result-item")
 
-		/* preview */
 		container.createDiv({
 			cls: "character-preview",
 		}).createSpan({
 			text: char.char,
 		});
 
-		/* indexed name */
-		const text = container.createDiv({
+		const separator = container.createDiv({
+			cls: "separator"
+		})
+
+		const matches = container.createDiv({
+			cls: "character-match",
+		})
+
+		const text = matches.createDiv({
 			cls: "character-name",
 		});
+
+		renderMatches(text, item.item.name, item.match.name.matches)
+
+		if (item.match.codepoint.matches.length > 0) {
+			const codepoint = matches.createDiv({
+				cls: "character-codepoint",
+			});
+
+			renderMatches(codepoint, toHexadecimal(item.item), item.match.codepoint.matches);
+		}
 
 		const detail = container.createDiv({
 			cls: "detail",
@@ -86,12 +110,6 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 		const showPin = char.pinned != null;
 		const showLastUsed = char.lastUsed != null && this.topLastUsed.contains(char.lastUsed) && !showPin;
 		const showUseCount = char.useCount != null && char.useCount > this.averageUsageCount;
-
-		// Feature: User wants to pin characters most useful to him
-		// detail.createDiv({
-		// 	cls: "icon interactive pinnable",
-		// 	text: "❤",
-		// });
 
 		const attributes = detail.createDiv({
 			cls: "attributes",
@@ -104,20 +122,13 @@ export class FuzzySearchModal extends FuzzySuggestModal<Character> {
 		if (showUseCount) {
 			attributes.createDiv(ELEMENT_FREQUENT);
 		}
-
-		/* the parent renders the elements text with styling for matching letters */
-		super.renderSuggestion(item, text);
 	}
 
-	public override getItems(): Characters {
-		return this.characters;
-	}
-
-	public override onChooseItem(item: Character, evt: MouseEvent | KeyboardEvent): void {
-		this.editor.replaceSelection(item.char);
+	public override onChooseSuggestion(item: CharacterMatch, evt: MouseEvent | KeyboardEvent): void {
+		this.editor.replaceSelection(item.item.char);
 
 		// I don't want to await this, its more of a side effect
-		this.statTrackedStorage.recordUsage(item.char).then(undefined, (err) => console.error(err));
+		this.statTrackedStorage.recordUsage(item.item.char).then(undefined, (err) => console.error(err));
 	}
 
 	public override onNoSuggestion(): void {
