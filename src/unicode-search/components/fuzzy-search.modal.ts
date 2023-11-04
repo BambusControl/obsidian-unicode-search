@@ -7,9 +7,9 @@ import {compareNumbers} from "../../libraries/comparison/compare.numbers";
 import {inverse} from "../../libraries/order/inverse";
 import {StatTracked} from "../../libraries/types/stat-tracked";
 import * as console from "console";
-import {toHexadecimal} from "../../libraries/helpers/hexadecimal.characters";
 import {CharacterMatch, NONE_RESULT, Timestamp} from "./character.metadata";
 import {ELEMENT_FREQUENT, ELEMENT_RECENT, INSERT_CHAR_INSTRUCTION, INSTRUCTION_DISMISS} from "./visual.elements";
+import {toHexadecimal} from "../../libraries/helpers/hexadecimal.characters";
 
 export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 	private readonly topLastUsed: Timestamp[];
@@ -74,24 +74,27 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			text: char.char,
 		});
 
+		const separator = container.createDiv({
+			cls: "separator"
+		})
+
 		const matches = container.createDiv({
 			cls: "character-match",
 		})
-
-		const codepoint = matches.createDiv({
-			cls: [
-				"character-codepoint",
-				item.match.codepoint.matches.length > 0 ? "show" : "",
-			],
-		});
-
-		renderMatches(codepoint, toHexadecimal(item.item), item.match.codepoint.matches);
 
 		const text = matches.createDiv({
 			cls: "character-name",
 		});
 
 		renderMatches(text, item.item.name, item.match.name.matches)
+
+		if (item.match.codepoint.matches.length > 0) {
+			const codepoint = matches.createDiv({
+				cls: "character-codepoint",
+			});
+
+			renderMatches(codepoint, toHexadecimal(item.item), item.match.codepoint.matches);
+		}
 
 		const detail = container.createDiv({
 			cls: "detail",
