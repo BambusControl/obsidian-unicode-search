@@ -8,7 +8,13 @@ import {inverse} from "../../libraries/order/inverse";
 import {StatTracked} from "../../libraries/types/stat-tracked";
 import * as console from "console";
 import {CharacterMatch, NONE_RESULT, Timestamp} from "./character.metadata";
-import {ELEMENT_FREQUENT, ELEMENT_RECENT, INSERT_CHAR_INSTRUCTION, INSTRUCTION_DISMISS} from "./visual.elements";
+import {
+	ELEMENT_FREQUENT,
+	ELEMENT_RECENT,
+	INSERT_CHAR_INSTRUCTION,
+	INSTRUCTION_DISMISS,
+	NAVIGATE_INSTRUCTION
+} from "./visual.elements";
 import {toHexadecimal} from "../../libraries/helpers/hexadecimal.characters";
 
 export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
@@ -25,6 +31,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 		super(app);
 
 		super.setInstructions([
+			NAVIGATE_INSTRUCTION,
 			INSERT_CHAR_INSTRUCTION,
 			INSTRUCTION_DISMISS,
 		]);

@@ -1,5 +1,9 @@
 import {Instruction} from "obsidian";
 
+export const NAVIGATE_INSTRUCTION: Instruction = {
+	command: "⮁",
+	purpose: "to navigate",
+};
 export const INSERT_CHAR_INSTRUCTION: Instruction = {
 	command: "↵",
 	purpose: "to insert selected character",
