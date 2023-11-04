@@ -1,10 +1,4 @@
-import {
-	App,
-	Editor,
-	Instruction,
-	prepareFuzzySearch, prepareQuery, prepareSimpleSearch, renderMatches, SearchResult,
-	SuggestModal
-} from "obsidian";
+import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
 import {Character, Characters} from "../../libraries/types/unicode.character";
 import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
 
@@ -13,47 +7,9 @@ import {compareNumbers} from "../../libraries/comparison/compare.numbers";
 import {inverse} from "../../libraries/order/inverse";
 import {StatTracked} from "../../libraries/types/stat-tracked";
 import * as console from "console";
-import {placeholder} from "@codemirror/view";
-import {compareNullable} from "../../libraries/comparison/compare.nullable";
 import {toHexadecimal} from "../../libraries/helpers/hexadecimal.characters";
-
-type Timestamp = number;
-
-const INSERT_CHAR_INSTRUCTION: Instruction = {
-	command: "↵",
-	purpose: "to insert selected character",
-};
-
-const INSTRUCTION_DISMISS: Instruction = {
-	command: "esc",
-	purpose: "to dismiss",
-};
-
-const ELEMENT_RECENT: DomElementInfo = {
-	cls: "icon inline-description recent",
-	text: "↩",
-	title: "used recently",
-};
-
-const ELEMENT_FREQUENT: DomElementInfo = {
-	cls: "icon inline-description frequent",
-	text: "↺",
-	title: "used frequently",
-};
-
-type CharacterMatch = {
-	item: Character,
-	// match: Record<keyof Character, SearchResult>;
-	match: {
-		codepoint: SearchResult,
-		name: SearchResult,
-	},
-}
-
-const NONE_RESULT: SearchResult = {
-	score: 0,
-	matches: []
-}
+import {CharacterMatch, NONE_RESULT, Timestamp} from "./character.metadata";
+import {ELEMENT_FREQUENT, ELEMENT_RECENT, INSERT_CHAR_INSTRUCTION, INSTRUCTION_DISMISS} from "./visual.elements";
 
 export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 	private readonly topLastUsed: Timestamp[];
@@ -83,24 +39,26 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 	public override getSuggestions(query: string): CharacterMatch[] | Promise<CharacterMatch[]> {
 		const isHexSafe = query.length <= 4 && !query.contains(" ")
 
-		const sq = isHexSafe ? prepareSimpleSearch(query) : ((text: string) => null);
-		const pq = prepareFuzzySearch(query);
+		const codepointSearch = isHexSafe ? prepareSimpleSearch(query) : ((text: string) => null);
+		const fuzzyNameSearch = prepareFuzzySearch(query);
 
 		return this.characters
-			.map(ch => ({
-				item: ch,
+			.map(character => ({
+				item: character,
 				match: {
-					codepoint: sq(toHexadecimal(ch)),
-					name: pq(ch.name)
+					codepoint: codepointSearch(toHexadecimal(character)),
+					name: fuzzyNameSearch(character.name)
 				}
 			}))
-			.filter(r => r.match.name != null || r.match.codepoint != null)
-			.map(r => {
-				r.match.name ??= NONE_RESULT
-				r.match.codepoint ??= NONE_RESULT
-				return r as CharacterMatch
+			.filter(result => result.match.name != null || result.match.codepoint != null)
+			.map(result => {
+				/* Fill with empty result, so that we don't have to deal with null values */
+				result.match.name ??= NONE_RESULT
+				result.match.codepoint ??= NONE_RESULT
+				return result as CharacterMatch
 			})
 			.sort((l, r) =>
+				/* Matches are scored with negative values up to 0, with 0 meaning full match for fuzzy search */
 				(r.match.codepoint.score - l.match.codepoint.score) + (r.match.name.score - l.match.name.score)
 			)
 	}
@@ -110,7 +68,6 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 
 		container.addClass("plugin", "unicode-search", "result-item")
 
-		/* preview */
 		container.createDiv({
 			cls: "character-preview",
 		}).createSpan({
@@ -130,7 +87,6 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 
 		renderMatches(codepoint, toHexadecimal(item.item), item.match.codepoint.matches);
 
-		/* indexed name */
 		const text = matches.createDiv({
 			cls: "character-name",
 		});
@@ -144,12 +100,6 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 		const showPin = char.pinned != null;
 		const showLastUsed = char.lastUsed != null && this.topLastUsed.contains(char.lastUsed) && !showPin;
 		const showUseCount = char.useCount != null && char.useCount > this.averageUsageCount;
-
-		// Feature: User wants to pin characters most useful to him
-		// detail.createDiv({
-		// 	cls: "icon interactive pinnable",
-		// 	text: "❤",
-		// });
 
 		const attributes = detail.createDiv({
 			cls: "attributes",
