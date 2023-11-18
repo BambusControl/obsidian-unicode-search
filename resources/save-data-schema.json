@@ -1,0 +1,92 @@
+{
+    "$id": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.5.0-NEXT/resources/save-data-schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "Character": {
+            "allOf": [
+                {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.5.0-NEXT/resources/save-data-schema.json#/definitions/UnicodeCharacter"
+                },
+                {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.5.0-NEXT/resources/save-data-schema.json#/definitions/Partial<UsageInfo>"
+                }
+            ],
+            "description": "Base representation of a character"
+        },
+        "DataVersions": {
+            "description": "Version of the save data schema.\n\nMust comply with RegEx:\n```^[0-9]+\\\\.[0-9]+\\\\.[0-9]+(?:-[A-Z]+)?$```",
+            "enum": [
+                "0.4.0",
+                "0.5.0",
+                "0.5.0-NEXT"
+            ],
+            "type": "string"
+        },
+        "Metadata": {
+            "description": "Meta-properties of the file, required for its validation",
+            "properties": {
+                "initialized": {
+                    "description": "True, if the plugin save data is fully initialized",
+                    "type": "boolean"
+                },
+                "version": {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.5.0-NEXT/resources/save-data-schema.json#/definitions/DataVersions"
+                }
+            },
+            "required": [
+                "initialized",
+                "version"
+            ],
+            "type": "object"
+        },
+        "Partial<UsageInfo>": {
+            "properties": {
+                "lastUsed": {
+                    "type": "number"
+                },
+                "useCount": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "UnicodeCharacter": {
+            "properties": {
+                "char": {
+                    "description": "A single character defined by a Unicode Codepoint",
+                    "maxLength": 1,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unicode provided description of the character",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "char",
+                "name"
+            ],
+            "type": "object"
+        }
+    },
+    "description": "Save data exported by the plugin",
+    "properties": {
+        "data": {
+            "description": "Locally stored characters",
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.5.0-NEXT/resources/save-data-schema.json#/definitions/Character"
+            },
+            "type": "array"
+        },
+        "meta": {
+            "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.5.0-NEXT/resources/save-data-schema.json#/definitions/Metadata"
+        }
+    },
+    "required": [
+        "data",
+        "meta"
+    ],
+    "type": "object"
+}
+

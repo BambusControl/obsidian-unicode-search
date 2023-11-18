@@ -1,35 +1,37 @@
 {
-	"name": "obsidian-unicode-search",
-	"version": "0.5.0-NEXT",
-	"description": "Obsidian plugin for searching Unicode characters.",
-	"main": "main.js",
-	"scripts": {
-		"dev": "node esbuild.config.mjs",
-		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production"
-	},
-	"keywords": [
-		"obsidian"
-	],
-	"private": true,
-	"repository": "https://github.com/BambusControl/obsidian-unicode-search",
-	"author": {
-		"name": "BambusControl",
-		"url": "https://github.com/BambusControl"
-	},
-	"license": "Apache-2.0",
-	"dependencies": {
-		"papaparse": "^5.4.1"
-	},
-	"devDependencies": {
-		"@types/node": "^18.11.18",
-		"@typescript-eslint/eslint-plugin": "^5.48.1",
-		"@typescript-eslint/parser": "^5.48.1",
-		"builtin-modules": "^3.3.0",
-		"esbuild": "^0.17.17",
-		"esbuild-sass-plugin": "^2.8.1",
-		"obsidian": "latest",
-		"tslib": "^2.4.1",
-		"typescript": "^4.9.4",
-		"@types/papaparse": "^5.3.7"
-	}
+  "name": "obsidian-unicode-search",
+  "version": "0.5.0-NEXT",
+  "description": "Obsidian plugin for searching Unicode characters.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "export-schema": "typescript-json-schema --required --strictNullChecks --validationKeywords --ignoreErrors --refs --id https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.5.0-NEXT/resources/save-data-schema.json --out ./resources/save-data-schema.json tsconfig.json SaveData"
+  },
+  "keywords": [
+    "obsidian"
+  ],
+  "private": true,
+  "repository": "https://github.com/BambusControl/obsidian-unicode-search",
+  "author": {
+    "name": "BambusControl",
+    "url": "https://github.com/BambusControl"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "papaparse": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
+    "builtin-modules": "^3.3.0",
+    "esbuild": "^0.17.17",
+    "esbuild-sass-plugin": "^2.8.1",
+    "obsidian": "latest",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.4",
+    "@types/papaparse": "^5.3.7",
+    "typescript-json-schema": "^0.62.0"
+  }
 }
