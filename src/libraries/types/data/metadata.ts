@@ -1,6 +1,13 @@
 import {DataVersions} from "./data-versions";
 
+/**
+ * Meta-properties of the file, required for its validation
+ */
 export interface Metadata {
-	initialized: boolean;
-	version: DataVersions;
+
+    /**
+     * True, if the plugin save data is fully initialized
+     */
+    initialized: boolean;
+    version: DataVersions;
 }

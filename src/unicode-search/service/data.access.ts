@@ -1,6 +1,6 @@
-import {Characters} from "../../libraries/types/unicode.character";
+import {Character} from "../../libraries/types/character";
 
 export interface DataAccess {
-	getCharacters(): Characters;
+	getCharacters(): Character[];
 }
 

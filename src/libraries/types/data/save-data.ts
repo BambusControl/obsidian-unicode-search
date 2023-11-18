@@ -1,8 +1,15 @@
-import {Characters} from "../unicode.character";
 import {Metadata} from "./metadata";
+import {Character} from "../character";
 
+/**
+ * Save data exported by the plugin
+ */
 export interface SaveData {
-	meta: Metadata;
-	data: Characters;
+    meta: Metadata;
+
+    /**
+     * Locally stored characters
+     */
+    data: Character[];
 }
 

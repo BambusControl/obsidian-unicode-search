@@ -1,11 +1,10 @@
 import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
-import {Character, Characters} from "../../libraries/types/unicode.character";
-import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
+import {CharacterStore} from "../service/storage/character.store";
 
 import {DataAccess} from "../service/data.access";
 import {compareNumbers} from "../../libraries/comparison/compare.numbers";
 import {inverse} from "../../libraries/order/inverse";
-import {StatTracked} from "../../libraries/types/stat-tracked";
+import {UsageInfo} from "../../libraries/types/usage-info";
 import * as console from "console";
 import {CharacterMatch, NONE_RESULT, Timestamp} from "./character.metadata";
 import {
@@ -16,17 +15,18 @@ import {
 	NAVIGATE_INSTRUCTION
 } from "./visual.elements";
 import {toHexadecimal} from "../../libraries/helpers/hexadecimal.characters";
+import {Character} from "../../libraries/types/character";
 
 export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 	private readonly topLastUsed: Timestamp[];
 	private readonly averageUsageCount: number;
-	private readonly characters: Characters;
+	private readonly characters: Character[];
 
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
 		dataService: DataAccess,
-		private readonly statTrackedStorage: StatTrackedStorage,
+		private readonly statTrackedStorage: CharacterStore,
 	) {
 		super(app);
 
@@ -107,8 +107,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			cls: "detail",
 		});
 
-		const showPin = char.pinned != null;
-		const showLastUsed = char.lastUsed != null && this.topLastUsed.contains(char.lastUsed) && !showPin;
+		const showLastUsed = char.lastUsed != null && this.topLastUsed.contains(char.lastUsed);
 		const showUseCount = char.useCount != null && char.useCount > this.averageUsageCount;
 
 		const attributes = detail.createDiv({
@@ -147,7 +146,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 		return chars[index];
 	}
 
-	private static getMostRecentUsages(characters: Partial<StatTracked>[]): Timestamp[] {
+	private static getMostRecentUsages(characters: Partial<UsageInfo>[]): Timestamp[] {
 		return characters
 			.map(char => char.lastUsed)
 			.filter(timestamp => timestamp != null)
@@ -157,7 +156,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			;
 	}
 
-	private static getAverageUseCount(characters: Partial<StatTracked>[]): number {
+	private static getAverageUseCount(characters: Partial<UsageInfo>[]): number {
 		const usageStats = characters
 			.map(char => char.useCount)
 			.filter(count => count != null)

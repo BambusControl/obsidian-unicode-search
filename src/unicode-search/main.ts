@@ -1,10 +1,8 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {UsageTrackedStorage} from "./service/storage/usage-tracked.storage";
+import {UsageTrackedStore} from "./service/storage/usage-tracked.store";
 import {FuzzySearchModal} from "./components/fuzzy-search.modal";
 import {PluginDataService} from "./service/plugin-data.service";
-import {StatTrackedStorage} from "./service/storage/stat-tracked.storage";
 import {DataService} from "./service/data.service";
-import {DataAccess} from "./service/data.access";
 import {UcdService} from "./service/ucd.service";
 
 /* Used by Obsidian */
@@ -20,7 +18,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 
 	public override async onload(): Promise<void> {
 		const dataService = new PluginDataService(this);
-		const usageTrackedStorage = new UsageTrackedStorage(dataService);
+		const usageTrackedStorage = new UsageTrackedStore(dataService);
 
 		await UnicodeSearchPlugin.initializeData(dataService, new UcdService());
 

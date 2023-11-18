@@ -1,5 +1,5 @@
-import {Character} from "../../libraries/types/unicode.character";
 import {SearchResult} from "obsidian";
+import {Character} from "../../libraries/types/character";
 
 export type Timestamp = number;
 

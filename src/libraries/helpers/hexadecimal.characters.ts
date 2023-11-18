@@ -1,4 +1,4 @@
-import {Character} from "../types/unicode.character";
+import {Character} from "../types/character";
 
 export function toHexadecimal(character: Character): string {
     /* Characters are expected to always have a single character */

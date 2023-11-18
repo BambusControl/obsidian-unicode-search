@@ -1,21 +1,14 @@
-import {Character} from "../types/unicode.character";
 import {Order} from "../order/order";
-import {StatTracked} from "../types/stat-tracked";
-import {comparePinnableCharacters} from "./compare-pinnable.characters";
+import {UsageInfo} from "../types/usage-info";
 import {compareNullable} from "./compare.nullable";
 import {compareStatTrackedCharacters} from "./compare-stat-tracked.characters";
 import {compareUnicodeNames} from "./compare-unicode.names";
+import {Character} from "../types/character";
 
 export function compareCharacters(left: Character, right: Character): Order {
-	let order = comparePinnableCharacters(left, right);
-
-	if (order != Order.Equal) {
-		return order;
-	}
-
-	order = compareNullable(
-		left as StatTracked,
-		right as StatTracked,
+	const order = compareNullable(
+		left as UsageInfo,
+		right as UsageInfo,
 		(l, r) => compareStatTrackedCharacters(l, r),
 	);
 
