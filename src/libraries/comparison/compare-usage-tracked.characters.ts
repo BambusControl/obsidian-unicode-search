@@ -4,7 +4,7 @@ import {inverse} from "../order/inverse";
 import {compareNullable} from "./compare.nullable";
 import {compareNumbers} from "./compare.numbers";
 
-export function compareStatTrackedCharacters(left: UsageInfo, right: UsageInfo): Order {
+export function compareUsageTrackedCharacters(left: UsageInfo, right: UsageInfo): Order {
 	// We want the most recently used to be first.
 	const lastUsedComparison = compareNullable(
 		left.lastUsed,
