@@ -1,4 +1,4 @@
-import {toHexadecimal} from "./hexadecimal.characters";
+import {toHexadecimal} from "../../../src/libraries/helpers/hexadecimal.characters";
 
 test(
     "character `b` is `0062`",
