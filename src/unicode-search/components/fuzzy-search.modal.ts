@@ -1,5 +1,5 @@
 import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
-import {TrackedStorage} from "../service/storage/tracked.storage";
+import {CharacterStore} from "../service/storage/character.store";
 
 import {DataAccess} from "../service/data.access";
 import {compareNumbers} from "../../libraries/comparison/compare.numbers";
@@ -26,7 +26,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 		app: App,
 		private readonly editor: Editor,
 		dataService: DataAccess,
-		private readonly statTrackedStorage: TrackedStorage,
+		private readonly statTrackedStorage: CharacterStore,
 	) {
 		super(app);
 
