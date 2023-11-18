@@ -1,17 +1,17 @@
-import {CharacterKeyType, StatTrackedCharacters} from "../../../libraries/types/unicode.character";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidian-unicode-search.error";
 
-import {StatTrackedStorage} from "./stat-tracked.storage";
+import {TrackedStorage} from "./tracked.storage";
 import {DataService} from "../data.service";
+import {CharacterKeyType, UsageTrackedCharacter} from "../../../libraries/types/character";
 
-export class UsageTrackedStorage implements StatTrackedStorage {
+export class UsageTrackedStorage implements TrackedStorage {
 
 	public constructor(
 		private readonly exportService: DataService,
 	) {
 	}
 
-	public async getAll(): Promise<StatTrackedCharacters> {
+	public async getAll(): Promise<UsageTrackedCharacter[]> {
 		return await this.exportService.getData();
 	}
 

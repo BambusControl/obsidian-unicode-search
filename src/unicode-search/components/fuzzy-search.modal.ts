@@ -1,6 +1,5 @@
 import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
-import {Character, Characters} from "../../libraries/types/unicode.character";
-import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
+import {TrackedStorage} from "../service/storage/tracked.storage";
 
 import {DataAccess} from "../service/data.access";
 import {compareNumbers} from "../../libraries/comparison/compare.numbers";
@@ -16,17 +15,18 @@ import {
 	NAVIGATE_INSTRUCTION
 } from "./visual.elements";
 import {toHexadecimal} from "../../libraries/helpers/hexadecimal.characters";
+import {Character} from "../../libraries/types/character";
 
 export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 	private readonly topLastUsed: Timestamp[];
 	private readonly averageUsageCount: number;
-	private readonly characters: Characters;
+	private readonly characters: Character[];
 
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
 		dataService: DataAccess,
-		private readonly statTrackedStorage: StatTrackedStorage,
+		private readonly statTrackedStorage: TrackedStorage,
 	) {
 		super(app);
 

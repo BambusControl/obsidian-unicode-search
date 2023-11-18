@@ -1,11 +1,11 @@
 import {Plugin} from "obsidian";
 import {DataService} from "./data.service";
 import {ObsidianUnicodeSearchError} from "../errors/obsidian-unicode-search.error";
-import {Character, Characters, PartialCharacter} from "../../libraries/types/unicode.character";
 import {DataAccess} from "./data.access";
 import {compareCharacters} from "../../libraries/comparison/compare.characters";
 import {SaveData} from "../../libraries/types/data/save-data";
 import {isTypeSaveData} from "../../libraries/types/data/is-type-save-data";
+import {Character, PartialCharacter} from "../../libraries/types/character";
 
 const INITALIZATION_STORE: SaveData = {
 	meta: {
@@ -25,7 +25,7 @@ export class PluginDataService implements DataService, DataAccess {
 		this.getData().then();
 	}
 
-	public async exportData(data: Characters): Promise<Characters> {
+	public async exportData(data: Character[]): Promise<Character[]> {
 		return (
 			await this.saveDataToStorage({
 				data: data,
@@ -37,11 +37,11 @@ export class PluginDataService implements DataService, DataAccess {
 		return (await this.saveCharToStorage(data));
 	}
 
-	public async getData(): Promise<Characters> {
+	public async getData(): Promise<Character[]> {
 		return (await this.getFromStorage()).data;
 	}
 
-	public getCharacters(): Characters {
+	public getCharacters(): Character[] {
 		const data = this._store?.data ?? [];
 		return data.sort(compareCharacters);
 	}

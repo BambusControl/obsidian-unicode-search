@@ -1,9 +1,9 @@
-import {Character, Characters} from "../../libraries/types/unicode.character";
+import {Character} from "../../libraries/types/character";
 
 export interface DataService {
-	getData(): Promise<Characters>;
+	getData(): Promise<Character[]>;
 
-	exportData(data: Partial<Characters>): Promise<Characters>;
+	exportData(data: Partial<Character[]>): Promise<Character[]>;
 
 	exportChar(data: Partial<Character>): Promise<Character>;
 
