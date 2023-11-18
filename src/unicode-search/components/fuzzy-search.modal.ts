@@ -107,8 +107,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			cls: "detail",
 		});
 
-		const showPin = char.pinned != null;
-		const showLastUsed = char.lastUsed != null && this.topLastUsed.contains(char.lastUsed) && !showPin;
+		const showLastUsed = char.lastUsed != null && this.topLastUsed.contains(char.lastUsed);
 		const showUseCount = char.useCount != null && char.useCount > this.averageUsageCount;
 
 		const attributes = detail.createDiv({
