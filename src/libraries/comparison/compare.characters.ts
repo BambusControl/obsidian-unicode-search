@@ -1,6 +1,6 @@
 import {Character} from "../types/unicode.character";
 import {Order} from "../order/order";
-import {StatTracked} from "../types/stat-tracked";
+import {UsageInfo} from "../types/usage-info";
 import {comparePinnableCharacters} from "./compare-pinnable.characters";
 import {compareNullable} from "./compare.nullable";
 import {compareStatTrackedCharacters} from "./compare-stat-tracked.characters";
@@ -14,8 +14,8 @@ export function compareCharacters(left: Character, right: Character): Order {
 	}
 
 	order = compareNullable(
-		left as StatTracked,
-		right as StatTracked,
+		left as UsageInfo,
+		right as UsageInfo,
 		(l, r) => compareStatTrackedCharacters(l, r),
 	);
 

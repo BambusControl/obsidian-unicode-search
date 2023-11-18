@@ -1,10 +1,10 @@
-import {StatTracked} from "../types/stat-tracked";
+import {UsageInfo} from "../types/usage-info";
 import {Order} from "../order/order";
 import {inverse} from "../order/inverse";
 import {compareNullable} from "./compare.nullable";
 import {compareNumbers} from "./compare.numbers";
 
-export function compareStatTrackedCharacters(left: StatTracked, right: StatTracked): Order {
+export function compareStatTrackedCharacters(left: UsageInfo, right: UsageInfo): Order {
 	// We want the most recently used to be first.
 	const lastUsedComparison = compareNullable(
 		left.lastUsed,

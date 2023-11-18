@@ -6,6 +6,10 @@ import {Metadata} from "./metadata";
  */
 export interface SaveData {
     meta: Metadata;
-	data: Characters;
+
+    /**
+     * Locally stored characters
+     */
+    data: Characters;
 }
 

@@ -5,7 +5,7 @@ import {StatTrackedStorage} from "../service/storage/stat-tracked.storage";
 import {DataAccess} from "../service/data.access";
 import {compareNumbers} from "../../libraries/comparison/compare.numbers";
 import {inverse} from "../../libraries/order/inverse";
-import {StatTracked} from "../../libraries/types/stat-tracked";
+import {UsageInfo} from "../../libraries/types/usage-info";
 import * as console from "console";
 import {CharacterMatch, NONE_RESULT, Timestamp} from "./character.metadata";
 import {
@@ -147,7 +147,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 		return chars[index];
 	}
 
-	private static getMostRecentUsages(characters: Partial<StatTracked>[]): Timestamp[] {
+	private static getMostRecentUsages(characters: Partial<UsageInfo>[]): Timestamp[] {
 		return characters
 			.map(char => char.lastUsed)
 			.filter(timestamp => timestamp != null)
@@ -157,7 +157,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			;
 	}
 
-	private static getAverageUseCount(characters: Partial<StatTracked>[]): number {
+	private static getAverageUseCount(characters: Partial<UsageInfo>[]): number {
 		const usageStats = characters
 			.map(char => char.useCount)
 			.filter(count => count != null)
