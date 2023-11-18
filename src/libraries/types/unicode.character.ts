@@ -6,6 +6,9 @@ export interface UnicodeCharacter {
 	char: string,
 }
 
+/**
+ *
+ */
 export type Character = UnicodeCharacter & Partial<StatTracked> & Partial<Pinnable>;
 export type PinnedCharacter = UnicodeCharacter & Partial<Pinnable>;
 export type StatTrackedCharacter = UnicodeCharacter & Partial<StatTracked>;
