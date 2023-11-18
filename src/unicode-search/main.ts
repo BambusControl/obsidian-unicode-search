@@ -2,9 +2,7 @@ import {App, Plugin, PluginManifest} from "obsidian";
 import {UsageTrackedStorage} from "./service/storage/usage-tracked.storage";
 import {FuzzySearchModal} from "./components/fuzzy-search.modal";
 import {PluginDataService} from "./service/plugin-data.service";
-import {StatTrackedStorage} from "./service/storage/stat-tracked.storage";
 import {DataService} from "./service/data.service";
-import {DataAccess} from "./service/data.access";
 import {UcdService} from "./service/ucd.service";
 
 /* Used by Obsidian */
