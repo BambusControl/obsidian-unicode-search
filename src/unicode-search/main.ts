@@ -4,6 +4,7 @@ import {FuzzySearchModal} from "./components/fuzzy-search.modal";
 import {PluginDataService} from "./service/plugin-data.service";
 import {DataService} from "./service/data.service";
 import {UcdService} from "./service/ucd.service";
+import {SettingTab} from "./components/settings.tab"
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -17,7 +18,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 	}
 
 	public override async onload(): Promise<void> {
-		const dataService = new PluginDataService(this);
+        const dataService = new PluginDataService(this);
 		const usageTrackedStorage = new UsageTrackedStore(dataService);
 
 		await UnicodeSearchPlugin.initializeData(dataService, new UcdService());
@@ -37,6 +38,8 @@ export default class UnicodeSearchPlugin extends Plugin {
 				return true;
 			},
 		});
+
+        this.addSettingTab(new SettingTab(this.app, this));
 	}
 
 	private static async initializeData(dataService: DataService, ucdService: UcdService): Promise<void> {
