@@ -14,13 +14,6 @@
 			align-items: center;
 		}
 
-		& > .separator {
-			border-left: var(--prompt-border-width) solid var(--prompt-border-color);
-			min-height: 1.5em;
-			height: 75%;
-			width: var(--prompt-border-width);
-		}
-
 		& > .character-match {
 			flex-grow: 1;
 
@@ -61,9 +54,6 @@
 				& > .suggestion-highlight {
 					color: var(--text-normal);
 				}
-			}
-
-			& > .character-name {
 			}
 		}
 

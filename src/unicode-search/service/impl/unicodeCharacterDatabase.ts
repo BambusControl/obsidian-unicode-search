@@ -1,8 +1,8 @@
 import {request} from "obsidian";
-import {UnicodeCharacter} from "../../libraries/types/unicodeCharacter";
+import {UnicodeCharacter} from "../../../libraries/types/unicodeCharacter";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
-import {ObsidianUnicodeSearchError} from "../errors/obsidianUnicodeSearchError";
-import {CharacterDownloadService} from "./characterDownloadService";
+import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
+import {CharacterDownloader} from "../characterDownloader";
 
 type ParsedData = Array<string>;
 
@@ -12,7 +12,7 @@ type ParsedCharacter = {
 	generalCategory: string;
 };
 
-export class UnicodeCharacterDatabaseService implements CharacterDownloadService {
+export class UnicodeCharacterDatabase implements CharacterDownloader {
 
 	private readonly config: ParseConfig = {
 		delimiter: ";",
@@ -40,8 +40,8 @@ export class UnicodeCharacterDatabaseService implements CharacterDownloadService
 						characterName: row[1],
 						generalCategory: row[2],
 					}))
-					.filter(char => UnicodeCharacterDatabaseService.charFilter(char))
-					.map(pch => UnicodeCharacterDatabaseService.intoUnicode(pch));
+					.filter(char => UnicodeCharacterDatabase.charFilter(char))
+					.map(pch => UnicodeCharacterDatabase.intoUnicode(pch));
 
 				resolve(unicodeCharacters);
 			};
@@ -57,9 +57,9 @@ export class UnicodeCharacterDatabaseService implements CharacterDownloadService
 	}
 
 	private static charFilter(char: ParsedCharacter): boolean {
-		return UnicodeCharacterDatabaseService.planeIncluded(char)
-			&& !UnicodeCharacterDatabaseService.categoryExcluded(char)
-			&& !UnicodeCharacterDatabaseService.nameIsLabelInfo(char)
+		return UnicodeCharacterDatabase.planeIncluded(char)
+			&& !UnicodeCharacterDatabase.categoryExcluded(char)
+			&& !UnicodeCharacterDatabase.nameIsLabelInfo(char)
 			;
 	}
 

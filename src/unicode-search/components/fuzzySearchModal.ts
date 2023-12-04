@@ -1,12 +1,12 @@
 import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
-import {CharacterStore} from "../service/storage/characterStore";
+import {CharacterStore} from "../service/characterStore";
 
-import {CharacterService} from "../service/characterService";
+import {CharacterProvider} from "../service/characterProvider";
 import {compareNumbers} from "../../libraries/comparison/compareNumbers";
 import {inverse} from "../../libraries/order/inverse";
 import {UsageInfo} from "../../libraries/types/usageInfo";
 import * as console from "console";
-import {CharacterMatch, NONE_RESULT, Timestamp} from "./characterMetadata";
+import {CharacterMatch, NONE_RESULT} from "./characterMetadata";
 import {
 	ELEMENT_FREQUENT,
 	ELEMENT_RECENT,
@@ -18,15 +18,15 @@ import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
 import {Character} from "../../libraries/types/character";
 
 export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
-	private readonly topLastUsed: Timestamp[];
+	private readonly topLastUsed: number[];
 	private readonly averageUsageCount: number;
 	private readonly characters: Character[];
 
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
-		dataService: CharacterService,
-		private readonly statTrackedStorage: CharacterStore,
+		characterProvider: CharacterProvider,
+		private readonly characterStore: CharacterStore,
 	) {
 		super(app);
 
@@ -36,7 +36,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			INSTRUCTION_DISMISS,
 		]);
 
-		this.characters = dataService.getCharacters();
+		this.characters = characterProvider.getCharacters();
 		this.topLastUsed = FuzzySearchModal.getMostRecentUsages(this.characters);
 		this.averageUsageCount = FuzzySearchModal.getAverageUseCount(this.characters);
 
@@ -81,10 +81,6 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			text: char.char,
 		});
 
-		const separator = container.createDiv({
-			cls: "separator"
-		})
-
 		const matches = container.createDiv({
 			cls: "character-match",
 		})
@@ -127,7 +123,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 		this.editor.replaceSelection(item.item.char);
 
 		// I don't want to await this, its more of a side effect
-		this.statTrackedStorage.recordUsage(item.item.char).then(undefined, (err) => console.error(err));
+		this.characterStore.recordUsage(item.item.char).then(undefined, (err) => console.error(err));
 	}
 
 	public override onNoSuggestion(): void {
@@ -146,7 +142,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 		return chars[index];
 	}
 
-	private static getMostRecentUsages(characters: Partial<UsageInfo>[]): Timestamp[] {
+	private static getMostRecentUsages(characters: Partial<UsageInfo>[]): number[] {
 		return characters
 			.map(char => char.lastUsed)
 			.filter(timestamp => timestamp != null)

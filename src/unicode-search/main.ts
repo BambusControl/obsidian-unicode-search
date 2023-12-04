@@ -1,11 +1,11 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {UsageTrackedStore} from "./service/storage/usageTrackedStore";
+import {UsageTrackedStore} from "./service/impl/usageTrackedStore";
 import {FuzzySearchModal} from "./components/fuzzySearchModal";
-import {PluginSaveDataService} from "./service/pluginSaveDataService";
-import {StorageService} from "./service/storageService";
-import {UnicodeCharacterDatabaseService} from "./service/unicodeCharacterDatabaseService";
+import {PluginSaveDataStore} from "./service/impl/pluginSaveDataStore";
+import {SaveDataStore} from "./service/saveDataStore";
+import {UnicodeCharacterDatabase} from "./service/impl/unicodeCharacterDatabase";
 import {SettingTab} from "./components/settingsTab"
-import {CharacterDownloadService} from "./service/characterDownloadService";
+import {CharacterDownloader} from "./service/characterDownloader";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -19,10 +19,10 @@ export default class UnicodeSearchPlugin extends Plugin {
 	}
 
 	public override async onload(): Promise<void> {
-        const dataService = new PluginSaveDataService(this);
+        const dataService = new PluginSaveDataStore(this);
 		const usageTrackedStorage = new UsageTrackedStore(dataService);
 
-		await UnicodeSearchPlugin.initializeData(dataService, new UnicodeCharacterDatabaseService());
+		await UnicodeSearchPlugin.initializeData(dataService, new UnicodeCharacterDatabase());
 
 		super.addCommand({
 			id: "search-unicode-chars",
@@ -43,7 +43,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         this.addSettingTab(new SettingTab(this.app, this));
 	}
 
-	private static async initializeData(dataService: StorageService, ucdService: CharacterDownloadService): Promise<void> {
+	private static async initializeData(dataService: SaveDataStore, ucdService: CharacterDownloader): Promise<void> {
 		const initialized = await dataService.isInitialized();
 
 		if (initialized) {

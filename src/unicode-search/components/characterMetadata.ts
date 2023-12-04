@@ -1,11 +1,8 @@
 import {SearchResult} from "obsidian";
 import {Character} from "../../libraries/types/character";
 
-export type Timestamp = number;
-
 export type CharacterMatch = {
     item: Character,
-    // match: Record<keyof Character, SearchResult>;
     match: {
         codepoint: SearchResult,
         name: SearchResult,

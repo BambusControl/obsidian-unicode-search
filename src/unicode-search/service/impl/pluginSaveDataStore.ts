@@ -1,11 +1,11 @@
 import {Plugin} from "obsidian";
-import {StorageService} from "./storageService";
-import {ObsidianUnicodeSearchError} from "../errors/obsidianUnicodeSearchError";
-import {CharacterService} from "./characterService";
-import {compareCharacters} from "../../libraries/comparison/compareCharacters";
-import {SaveData} from "../../libraries/types/data/saveData";
-import {isTypeSaveData} from "../../libraries/types/data/isTypeSaveData";
-import {Character, PartialCharacter} from "../../libraries/types/character";
+import {SaveDataStore} from "../saveDataStore";
+import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
+import {CharacterProvider} from "../characterProvider";
+import {compareCharacters} from "../../../libraries/comparison/compareCharacters";
+import {SaveData} from "../../../libraries/types/data/saveData";
+import {isTypeSaveData} from "../../../libraries/types/data/isTypeSaveData";
+import {Character, PartialCharacter} from "../../../libraries/types/character";
 
 const INITALIZATION_STORE: SaveData = {
 	meta: {
@@ -16,7 +16,7 @@ const INITALIZATION_STORE: SaveData = {
 	data: [],
 };
 
-export class PluginSaveDataService implements StorageService, CharacterService {
+export class PluginSaveDataStore implements SaveDataStore, CharacterProvider {
 
 	private _store?: SaveData;
 
