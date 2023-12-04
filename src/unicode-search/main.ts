@@ -18,8 +18,6 @@ export default class UnicodeSearchPlugin extends Plugin {
 	}
 
 	public override async onload(): Promise<void> {
-		await UnicodeSearchPlugin.loadUserSettings();
-
         const dataService = new PluginDataService(this);
 		const usageTrackedStorage = new UsageTrackedStore(dataService);
 
@@ -55,10 +53,6 @@ export default class UnicodeSearchPlugin extends Plugin {
 
 		await dataService.exportData(data);
 		await dataService.setAsInitialized();
-	}
-
-	private static async loadUserSettings() {
-		// this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
 	}
 
 }

@@ -12,6 +12,7 @@ const INITALIZATION_STORE: SaveData = {
 		initialized: false,
 		version: "0.5.0-NEXT",
 	},
+    user: {},
 	data: [],
 };
 
