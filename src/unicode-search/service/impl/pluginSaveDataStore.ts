@@ -1,32 +1,37 @@
 import {Plugin} from "obsidian";
-import {SaveDataStore} from "../saveDataStore";
+import {CharacterDataStore} from "../characterDataStore";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 import {CharacterProvider} from "../characterProvider";
 import {compareCharacters} from "../../../libraries/comparison/compareCharacters";
 import {SaveData} from "../../../libraries/types/data/saveData";
 import {isTypeSaveData} from "../../../libraries/types/data/isTypeSaveData";
 import {Character, PartialCharacter} from "../../../libraries/types/character";
+import {UserOptionStore} from "../userOptionStore";
+import { UserOptions } from "src/libraries/types/userOptions";
 
 const INITALIZATION_STORE: SaveData = {
 	meta: {
 		initialized: false,
 		version: "0.5.0-NEXT",
 	},
-    user: {},
+	user: {
+		pinned: [],
+	},
 	data: [],
 };
 
-export class PluginSaveDataStore implements SaveDataStore, CharacterProvider {
+export class PluginSaveDataStore implements CharacterDataStore, CharacterProvider, UserOptionStore {
 
 	private _store?: SaveData;
 
 	public constructor(
 		private readonly plugin: Plugin,
 	) {
-		this.getData().then();
+		// TODO: Since fetching is managed by this component's lifecycle, it should not be in its public interface.
+		this.fetchCharacters().then();
 	}
 
-	public async exportData(data: Character[]): Promise<Character[]> {
+	public async exportCharacters(data: Character[]): Promise<Character[]> {
 		return (
 			await this.saveDataToStorage({
 				data: data,
@@ -34,11 +39,11 @@ export class PluginSaveDataStore implements SaveDataStore, CharacterProvider {
 		).data;
 	}
 
-	public async exportChar(data: PartialCharacter): Promise<Character> {
+	public async exportCharacter(data: PartialCharacter): Promise<Character> {
 		return (await this.saveCharToStorage(data));
 	}
 
-	public async getData(): Promise<Character[]> {
+	public async fetchCharacters(): Promise<Character[]> {
 		return (await this.getFromStorage()).data;
 	}
 
@@ -47,7 +52,7 @@ export class PluginSaveDataStore implements SaveDataStore, CharacterProvider {
 		return data.sort(compareCharacters);
 	}
 
-	public async isInitialized(): Promise<boolean> {
+	public async isSaveDataInitialized(): Promise<boolean> {
 		const data = (await this.getFromStorage());
 		const meta = data.meta;
 
@@ -55,7 +60,7 @@ export class PluginSaveDataStore implements SaveDataStore, CharacterProvider {
 			&& meta.version === INITALIZATION_STORE.meta.version;
 	}
 
-	public async setAsInitialized(): Promise<void> {
+	public async setSaveDataAsInitialized(): Promise<void> {
 		const data = await this.getFromStorage();
 
 		await this.saveDataToStorage({
@@ -89,7 +94,7 @@ export class PluginSaveDataStore implements SaveDataStore, CharacterProvider {
 	}
 
 	private async saveCharToStorage(char: PartialCharacter): Promise<Character> {
-		const currentChar = (await this.getData())
+		const currentChar = (await this.fetchCharacters())
 			.find(v => v.char === char.char);
 
 		if (currentChar == null) {
@@ -108,7 +113,7 @@ export class PluginSaveDataStore implements SaveDataStore, CharacterProvider {
 
 		const newData = dataLoaded
 			? externalData
-			: INITALIZATION_STORE;
+			: {...INITALIZATION_STORE};
 
 		if (newData == null) {
 			throw new ObsidianUnicodeSearchError("Cannot import plugin data. The file is not valid!");
@@ -120,5 +125,11 @@ export class PluginSaveDataStore implements SaveDataStore, CharacterProvider {
 
 		return newData;
 	}
+
+	getUserOptions(): UserOptions {
+		return this._store?.user
+			?? {...INITALIZATION_STORE.user};
+    }
+
 }
 

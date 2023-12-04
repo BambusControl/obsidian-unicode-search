@@ -1,8 +1,8 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {UsageTrackedStore} from "./service/impl/usageTrackedStore";
+import {UsageTrackedCharacterStore} from "./service/impl/usageTrackedCharacterStore";
 import {FuzzySearchModal} from "./components/fuzzySearchModal";
 import {PluginSaveDataStore} from "./service/impl/pluginSaveDataStore";
-import {SaveDataStore} from "./service/saveDataStore";
+import {CharacterDataStore} from "./service/characterDataStore";
 import {UnicodeCharacterDatabase} from "./service/impl/unicodeCharacterDatabase";
 import {SettingTab} from "./components/settingsTab"
 import {CharacterDownloader} from "./service/characterDownloader";
@@ -20,7 +20,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 
 	public override async onload(): Promise<void> {
         const dataService = new PluginSaveDataStore(this);
-		const usageTrackedStorage = new UsageTrackedStore(dataService);
+		const usageTrackedStorage = new UsageTrackedCharacterStore(dataService);
 
 		await UnicodeSearchPlugin.initializeData(dataService, new UnicodeCharacterDatabase());
 
@@ -43,8 +43,8 @@ export default class UnicodeSearchPlugin extends Plugin {
         this.addSettingTab(new SettingTab(this.app, this));
 	}
 
-	private static async initializeData(dataService: SaveDataStore, ucdService: CharacterDownloader): Promise<void> {
-		const initialized = await dataService.isInitialized();
+	private static async initializeData(dataService: CharacterDataStore, ucdService: CharacterDownloader): Promise<void> {
+		const initialized = await dataService.isSaveDataInitialized();
 
 		if (initialized) {
 			return;
@@ -52,8 +52,8 @@ export default class UnicodeSearchPlugin extends Plugin {
 
 		const data = await ucdService.fetchCharacters();
 
-		await dataService.exportData(data);
-		await dataService.setAsInitialized();
+		await dataService.exportCharacters(data);
+		await dataService.setSaveDataAsInitialized();
 	}
 
 }

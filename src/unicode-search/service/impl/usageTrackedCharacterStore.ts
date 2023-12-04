@@ -1,22 +1,22 @@
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 
 import {CharacterStore} from "../characterStore";
-import {SaveDataStore} from "../saveDataStore";
+import {CharacterDataStore} from "../characterDataStore";
 import {CharacterKeyType, UsageTrackedCharacter} from "../../../libraries/types/character";
 
-export class UsageTrackedStore implements CharacterStore {
+export class UsageTrackedCharacterStore implements CharacterStore {
 
 	public constructor(
-		private readonly exportService: SaveDataStore,
+		private readonly exportService: CharacterDataStore,
 	) {
 	}
 
 	public async getAll(): Promise<UsageTrackedCharacter[]> {
-		return await this.exportService.getData();
+		return await this.exportService.fetchCharacters();
 	}
 
 	public async recordUsage(id: CharacterKeyType): Promise<void> {
-		const data = await this.exportService.getData();
+		const data = await this.exportService.fetchCharacters();
 		const char = data.find(char => char.char === id);
 
 		if (char == null) {
@@ -26,7 +26,7 @@ export class UsageTrackedStore implements CharacterStore {
 		char.useCount = (char.useCount ?? 0) + 1;
 		char.lastUsed = (new Date()).valueOf();
 
-		await this.exportService.exportChar(char);
+		await this.exportService.exportCharacter(char);
 	}
 }
 
