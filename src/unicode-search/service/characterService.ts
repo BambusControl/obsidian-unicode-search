@@ -1,6 +1,6 @@
 import {Character} from "../../libraries/types/character";
 
-export interface DataAccess {
+export interface CharacterService {
 	getCharacters(): Character[];
 }
 

@@ -1,5 +1,5 @@
-import {SaveData} from "./save-data";
-import {isTypeMetadata} from "./is-type-metadata";
+import {SaveData} from "./saveData";
+import {isTypeMetadata} from "./isTypeMetadata";
 
 export function isTypeSaveData(object: any): object is SaveData {
 	return "meta" in object

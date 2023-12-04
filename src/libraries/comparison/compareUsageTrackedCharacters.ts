@@ -1,8 +1,8 @@
-import {UsageInfo} from "../types/usage-info";
+import {UsageInfo} from "../types/usageInfo";
 import {Order} from "../order/order";
 import {inverse} from "../order/inverse";
-import {compareNullable} from "./compare.nullable";
-import {compareNumbers} from "./compare.numbers";
+import {compareNullable} from "./compareNullable";
+import {compareNumbers} from "./compareNumbers";
 
 export function compareUsageTrackedCharacters(left: UsageInfo, right: UsageInfo): Order {
 	// We want the most recently used to be first.

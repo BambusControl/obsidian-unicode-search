@@ -1,13 +1,13 @@
-import {ObsidianUnicodeSearchError} from "../../errors/obsidian-unicode-search.error";
+import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 
-import {CharacterStore} from "./character.store";
-import {DataService} from "../data.service";
+import {CharacterStore} from "./characterStore";
+import {StorageService} from "../storageService";
 import {CharacterKeyType, UsageTrackedCharacter} from "../../../libraries/types/character";
 
 export class UsageTrackedStore implements CharacterStore {
 
 	public constructor(
-		private readonly exportService: DataService,
+		private readonly exportService: StorageService,
 	) {
 	}
 

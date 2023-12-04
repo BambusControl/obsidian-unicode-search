@@ -1,4 +1,4 @@
-import {compareUsageTrackedCharacters} from "../../../src/libraries/comparison/compare-usage-tracked.characters";
+import {compareUsageTrackedCharacters} from "../../../src/libraries/comparison/compareUsageTrackedCharacters";
 
 test(
 	"later use is before sooner use",

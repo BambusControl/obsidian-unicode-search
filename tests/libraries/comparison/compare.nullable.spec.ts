@@ -1,6 +1,6 @@
 import {expect, test} from "@jest/globals";
-import {compareNullable} from "../../../src/libraries/comparison/compare.nullable";
-import {compareNumbers} from "../../../src/libraries/comparison/compare.numbers";
+import {compareNullable} from "../../../src/libraries/comparison/compareNullable";
+import {compareNumbers} from "../../../src/libraries/comparison/compareNumbers";
 
 test(
     "null equals null",

@@ -1,8 +1,8 @@
 import {Order} from "../order/order";
-import {UsageInfo} from "../types/usage-info";
-import {compareNullable} from "./compare.nullable";
-import {compareUsageTrackedCharacters} from "./compare-usage-tracked.characters";
-import {compareUnicodeNames} from "./compare-unicode.names";
+import {UsageInfo} from "../types/usageInfo";
+import {compareNullable} from "./compareNullable";
+import {compareUsageTrackedCharacters} from "./compareUsageTrackedCharacters";
+import {compareUnicodeNames} from "./compareUnicodeNames";
 import {Character} from "../types/character";
 
 export function compareCharacters(left: Character, right: Character): Order {

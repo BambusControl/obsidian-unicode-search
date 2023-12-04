@@ -1,6 +1,6 @@
 import {Metadata} from "./metadata";
 import {Character} from "../character";
-import {UserOptions} from "../user-options";
+import {UserOptions} from "../userOptions";
 
 /**
  * Save data exported by the plugin

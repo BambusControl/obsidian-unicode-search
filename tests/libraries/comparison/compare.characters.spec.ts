@@ -1,4 +1,4 @@
-import {compareCharacters} from "../../../src/libraries/comparison/compare.characters";
+import {compareCharacters} from "../../../src/libraries/comparison/compareCharacters";
 
 test(
     "character with name `a` is before character with name `b`",

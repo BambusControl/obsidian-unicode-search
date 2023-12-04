@@ -1,7 +1,8 @@
 import {request} from "obsidian";
-import {UnicodeCharacter} from "../../libraries/types/unicode.character";
+import {UnicodeCharacter} from "../../libraries/types/unicodeCharacter";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
-import {ObsidianUnicodeSearchError} from "../errors/obsidian-unicode-search.error";
+import {ObsidianUnicodeSearchError} from "../errors/obsidianUnicodeSearchError";
+import {CharacterDownloadService} from "./characterDownloadService";
 
 type ParsedData = Array<string>;
 
@@ -11,7 +12,7 @@ type ParsedCharacter = {
 	generalCategory: string;
 };
 
-export class UcdService {
+export class UnicodeCharacterDatabaseService implements CharacterDownloadService {
 
 	private readonly config: ParseConfig = {
 		delimiter: ";",
@@ -21,12 +22,12 @@ export class UcdService {
 		fastMode: true,
 	};
 
-	public async fetchCharacters(): Promise<UnicodeCharacter[]> {
-		const result = await request("https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt");
-		return await this.transformToCharacters(result);
-	}
+    async fetchCharacters(): Promise<UnicodeCharacter[]> {
+        const result = await request("https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt");
+        return await this.transformToCharacters(result);
+    }
 
-	private transformToCharacters(csvString: string): Promise<UnicodeCharacter[]> {
+    private transformToCharacters(csvString: string): Promise<UnicodeCharacter[]> {
 		return new Promise((resolve, reject) => {
 			const completeFn = (results: ParseResult<ParsedData>): void => {
 				if (results.errors.length !== 0) {
@@ -39,8 +40,8 @@ export class UcdService {
 						characterName: row[1],
 						generalCategory: row[2],
 					}))
-					.filter(char => UcdService.charFilter(char))
-					.map(pch => UcdService.intoUnicode(pch));
+					.filter(char => UnicodeCharacterDatabaseService.charFilter(char))
+					.map(pch => UnicodeCharacterDatabaseService.intoUnicode(pch));
 
 				resolve(unicodeCharacters);
 			};
@@ -56,9 +57,9 @@ export class UcdService {
 	}
 
 	private static charFilter(char: ParsedCharacter): boolean {
-		return UcdService.planeIncluded(char)
-			&& !UcdService.categoryExcluded(char)
-			&& !UcdService.nameIsLabelInfo(char)
+		return UnicodeCharacterDatabaseService.planeIncluded(char)
+			&& !UnicodeCharacterDatabaseService.categoryExcluded(char)
+			&& !UnicodeCharacterDatabaseService.nameIsLabelInfo(char)
 			;
 	}
 

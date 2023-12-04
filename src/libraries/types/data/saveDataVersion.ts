@@ -4,7 +4,7 @@
  * Must comply with RegEx:
  * ```^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[A-Z]+)?$```
  */
-export type DataVersions
+export type SaveDataVersion
 	= "0.4.0"
 	| "0.5.0"
 	| "0.5.0-NEXT"

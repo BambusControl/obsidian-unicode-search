@@ -1,5 +1,5 @@
-import {UsageInfo} from "./usage-info";
-import {UnicodeCharacter} from "./unicode.character";
+import {UsageInfo} from "./usageInfo";
+import {UnicodeCharacter} from "./unicodeCharacter";
 
 /**
  * Base representation of a character

@@ -1,4 +1,4 @@
-import {UnicodeCharacter} from "../types/unicode.character";
+import {UnicodeCharacter} from "../types/unicodeCharacter";
 import {Order} from "../order/order";
 
 export function compareUnicodeNames(a: UnicodeCharacter, b: UnicodeCharacter): Order {

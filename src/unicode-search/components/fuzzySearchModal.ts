@@ -1,20 +1,20 @@
 import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
-import {CharacterStore} from "../service/storage/character.store";
+import {CharacterStore} from "../service/storage/characterStore";
 
-import {DataAccess} from "../service/data.access";
-import {compareNumbers} from "../../libraries/comparison/compare.numbers";
+import {CharacterService} from "../service/characterService";
+import {compareNumbers} from "../../libraries/comparison/compareNumbers";
 import {inverse} from "../../libraries/order/inverse";
-import {UsageInfo} from "../../libraries/types/usage-info";
+import {UsageInfo} from "../../libraries/types/usageInfo";
 import * as console from "console";
-import {CharacterMatch, NONE_RESULT, Timestamp} from "./character.metadata";
+import {CharacterMatch, NONE_RESULT, Timestamp} from "./characterMetadata";
 import {
 	ELEMENT_FREQUENT,
 	ELEMENT_RECENT,
 	INSERT_CHAR_INSTRUCTION,
 	INSTRUCTION_DISMISS,
 	NAVIGATE_INSTRUCTION
-} from "./visual.elements";
-import {toHexadecimal} from "../../libraries/helpers/hexadecimal.characters";
+} from "./visualElements";
+import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
 import {Character} from "../../libraries/types/character";
 
 export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
@@ -25,7 +25,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
-		dataService: DataAccess,
+		dataService: CharacterService,
 		private readonly statTrackedStorage: CharacterStore,
 	) {
 		super(app);
