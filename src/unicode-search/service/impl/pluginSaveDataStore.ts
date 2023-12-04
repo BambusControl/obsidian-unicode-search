@@ -57,8 +57,19 @@ export class PluginSaveDataStore implements SaveDataStore, CharacterDataStore, C
 		const data = (await this.getFromStorage());
 		const meta = data.meta;
 
-		return meta.initialized
-			&& meta.version === INITALIZATION_STORE.meta.version;
+		// TODO: move data migration logic
+		if (meta.version !== INITALIZATION_STORE.meta.version) {
+			const newData = {
+				...INITALIZATION_STORE,
+				...data,
+			};
+
+			newData.meta.version = INITALIZATION_STORE.meta.version;
+
+			await this.saveDataToStorage(newData)
+		}
+
+		return meta.initialized;
 	}
 
 	public async setSaveDataAsInitialized(): Promise<void> {
@@ -127,10 +138,17 @@ export class PluginSaveDataStore implements SaveDataStore, CharacterDataStore, C
 		return newData;
 	}
 
-	getUserOptions(): UserOptions {
-		return this._store?.user
-			?? {...INITALIZATION_STORE.user};
+	public async fetchUserOptions(): Promise<UserOptions> {
+		return (await this.getFromStorage()).user;
     }
+
+	public async exportUserOptions(userOptions: UserOptions): Promise<UserOptions> {
+		return (
+			await this.saveDataToStorage({
+				user: userOptions,
+			})
+		).user;
+	}
 
 }
 
