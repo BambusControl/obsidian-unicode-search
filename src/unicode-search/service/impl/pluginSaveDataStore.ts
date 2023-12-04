@@ -8,6 +8,7 @@ import {isTypeSaveData} from "../../../libraries/types/data/isTypeSaveData";
 import {Character, PartialCharacter} from "../../../libraries/types/character";
 import {UserOptionStore} from "../userOptionStore";
 import { UserOptions } from "src/libraries/types/userOptions";
+import {SaveDataStore} from "../saveDataStore";
 
 const INITALIZATION_STORE: SaveData = {
 	meta: {
@@ -20,7 +21,7 @@ const INITALIZATION_STORE: SaveData = {
 	data: [],
 };
 
-export class PluginSaveDataStore implements CharacterDataStore, CharacterProvider, UserOptionStore {
+export class PluginSaveDataStore implements SaveDataStore, CharacterDataStore, CharacterProvider, UserOptionStore {
 
 	private _store?: SaveData;
 

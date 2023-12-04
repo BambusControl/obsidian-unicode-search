@@ -6,9 +6,5 @@ export interface CharacterDataStore {
 	exportCharacters(data: Partial<Character[]>): Promise<Character[]>;
 
 	exportCharacter(data: Partial<Character>): Promise<Character>;
-
-	isSaveDataInitialized(): Promise<boolean>;
-
-	setSaveDataAsInitialized(): Promise<void>;
 }
 

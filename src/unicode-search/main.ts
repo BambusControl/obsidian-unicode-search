@@ -6,6 +6,7 @@ import {CharacterDataStore} from "./service/characterDataStore";
 import {UnicodeCharacterDatabase} from "./service/impl/unicodeCharacterDatabase";
 import {SettingTab} from "./components/settingsTab"
 import {CharacterDownloader} from "./service/characterDownloader";
+import {SaveDataStore} from "./service/saveDataStore";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -19,10 +20,10 @@ export default class UnicodeSearchPlugin extends Plugin {
 	}
 
 	public override async onload(): Promise<void> {
-        const dataService = new PluginSaveDataStore(this);
-		const usageTrackedStorage = new UsageTrackedCharacterStore(dataService);
+        const dataStore = new PluginSaveDataStore(this);
+		const characterStore = new UsageTrackedCharacterStore(dataStore);
 
-		await UnicodeSearchPlugin.initializeData(dataService, new UnicodeCharacterDatabase());
+		await UnicodeSearchPlugin.initializeData(dataStore, dataStore, new UnicodeCharacterDatabase());
 
 		super.addCommand({
 			id: "search-unicode-chars",
@@ -32,19 +33,23 @@ export default class UnicodeSearchPlugin extends Plugin {
 				const modal = new FuzzySearchModal(
 					app,
 					editor,
-					dataService,
-					usageTrackedStorage,
+					dataStore,
+					characterStore,
 				);
 				modal.open();
 				return true;
 			},
 		});
 
-        this.addSettingTab(new SettingTab(this.app, this));
+        this.addSettingTab(new SettingTab(this.app, this, characterStore, dataStore));
 	}
 
-	private static async initializeData(dataService: CharacterDataStore, ucdService: CharacterDownloader): Promise<void> {
-		const initialized = await dataService.isSaveDataInitialized();
+	private static async initializeData(
+		saveDataStore: SaveDataStore,
+		characterDataStore: CharacterDataStore,
+		ucdService: CharacterDownloader
+	): Promise<void> {
+		const initialized = await saveDataStore.isSaveDataInitialized();
 
 		if (initialized) {
 			return;
@@ -52,8 +57,8 @@ export default class UnicodeSearchPlugin extends Plugin {
 
 		const data = await ucdService.fetchCharacters();
 
-		await dataService.exportCharacters(data);
-		await dataService.setSaveDataAsInitialized();
+		await characterDataStore.exportCharacters(data);
+		await saveDataStore.setSaveDataAsInitialized();
 	}
 
 }
