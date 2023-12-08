@@ -2,9 +2,6 @@ import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, Sug
 import {CharacterStore} from "../service/characterStore";
 
 import {CharacterProvider} from "../service/characterProvider";
-import {compareNumbers} from "../../libraries/comparison/compareNumbers";
-import {inverse} from "../../libraries/order/inverse";
-import {UsageInfo} from "../../libraries/types/usageInfo";
 import * as console from "console";
 import {CharacterMatch, NONE_RESULT} from "./characterMetadata";
 import {
@@ -16,9 +13,13 @@ import {
 } from "./visualElements";
 import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
 import {Character} from "../../libraries/types/character";
+import {mostRecentlyUsed} from "../../libraries/helpers/mostRecentlyUsed";
+import {averageUseCount} from "../../libraries/helpers/averageUseCount";
+import {getRandomItem} from "../../libraries/helpers/getRandomItem";
+import {UsageInfo} from "../../libraries/types/usageInfo";
 
 export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
-	private readonly topLastUsed: number[];
+	private readonly mostRecentCutoff: number;
 	private readonly averageUsageCount: number;
 	private readonly characters: Character[];
 
@@ -37,8 +38,15 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 		]);
 
 		this.characters = characterProvider.getCharacters();
-		this.topLastUsed = FuzzySearchModal.getMostRecentUsages(this.characters);
-		this.averageUsageCount = FuzzySearchModal.getAverageUseCount(this.characters);
+
+
+        // TODO: Used characters code duplicate
+        const usedCharacters = this.characters
+            .filter(char => char.useCount != null && char.lastUsed != null)
+            .map(char => char as (Character & UsageInfo));
+
+		this.mostRecentCutoff = mostRecentlyUsed(usedCharacters).last()?.lastUsed ?? 0;
+		this.averageUsageCount = averageUseCount(usedCharacters);
 
 		this.setRandomPlaceholder();
 	}
@@ -103,7 +111,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			cls: "detail",
 		});
 
-		const showLastUsed = char.lastUsed != null && this.topLastUsed.contains(char.lastUsed);
+		const showLastUsed = char.lastUsed != null && char.lastUsed >= this.mostRecentCutoff;
 		const showUseCount = char.useCount != null && char.useCount > this.averageUsageCount;
 
 		const attributes = detail.createDiv({
@@ -131,42 +139,8 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 	}
 
 	private setRandomPlaceholder(): void {
-		const placeholder = `Unicode search: ${this.getRandomCharacter().name}`;
+		const placeholder = `Unicode search: ${getRandomItem(this.characters).name}`;
 		super.setPlaceholder(placeholder);
-	}
-
-	private getRandomCharacter(): Character {
-		const chars = this.characters;
-
-		const index: number = Math.floor(Math.random() * chars.length);
-		return chars[index];
-	}
-
-	private static getMostRecentUsages(characters: Partial<UsageInfo>[]): number[] {
-		return characters
-			.map(char => char.lastUsed)
-			.filter(timestamp => timestamp != null)
-			.map(timestamp => timestamp as number)
-			.sort((a, b) => inverse(compareNumbers(a, b)))
-			.slice(0, 3)
-			;
-	}
-
-	private static getAverageUseCount(characters: Partial<UsageInfo>[]): number {
-		const usageStats = characters
-			.map(char => char.useCount)
-			.filter(count => count != null)
-			.map(count => count as number)
-		;
-
-		const totalCount = usageStats.length;
-
-		if (totalCount == 0) {
-			return 0;
-		}
-
-		const sum = usageStats.reduce((sum, current) => sum + current, 0);
-		return sum / totalCount;
 	}
 
 }
