@@ -4,8 +4,7 @@ import {UserOptionStore} from "../service/userOptionStore";
 import {UserOptions} from "../../libraries/types/userOptions";
 import {mostRecentlyUsed} from "../../libraries/helpers/mostRecentlyUsed";
 import {averageUseCount} from "../../libraries/helpers/averageUseCount";
-import {Character, CharacterKeyType} from "../../libraries/types/character";
-import {UsageInfo} from "../../libraries/types/usageInfo";
+import {CharacterKeyType} from "../../libraries/types/character";
 
 export class SettingTab extends PluginSettingTab {
 
@@ -24,8 +23,6 @@ export class SettingTab extends PluginSettingTab {
     public override async display(): Promise<void> {
         this.userOptions = await this.userOptionStore.fetchUserOptions();
         const options = this.userOptions;
-        const characters = await this.characterStore.fetchAll();
-
         const container = this.containerEl;
 
         container.createEl(
@@ -61,11 +58,7 @@ export class SettingTab extends PluginSettingTab {
             .createEl("p")
             .createEl("strong", { text: "Recently Used" });
 
-        // TODO: Used characters code duplicate
-        const usedCharacters = characters
-            .filter(char => char.useCount != null && char.lastUsed != null)
-            .map(char => char as (Character & UsageInfo));
-
+        const usedCharacters = await this.characterStore.fetchTouched();
         const recentlyUsed = mostRecentlyUsed(usedCharacters);
 
         for (const character of recentlyUsed) {

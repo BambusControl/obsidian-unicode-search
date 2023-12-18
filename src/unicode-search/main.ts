@@ -33,7 +33,6 @@ export default class UnicodeSearchPlugin extends Plugin {
 				const modal = new FuzzySearchModal(
 					app,
 					editor,
-					dataStore,
 					characterStore,
 				);
 				modal.open();

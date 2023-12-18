@@ -1,8 +1,6 @@
 import {Plugin} from "obsidian";
 import {CharacterDataStore} from "../characterDataStore";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
-import {CharacterProvider} from "../characterProvider";
-import {compareCharacters} from "../../../libraries/comparison/compareCharacters";
 import {SaveData} from "../../../libraries/types/data/saveData";
 import {isTypeSaveData} from "../../../libraries/types/data/isTypeSaveData";
 import {Character, PartialCharacter} from "../../../libraries/types/character";
@@ -21,7 +19,7 @@ const INITALIZATION_STORE: SaveData = {
 	data: [],
 };
 
-export class PluginSaveDataStore implements SaveDataStore, CharacterDataStore, CharacterProvider, UserOptionStore {
+export class PluginSaveDataStore implements SaveDataStore, CharacterDataStore, UserOptionStore {
 
 	private _store?: SaveData;
 
@@ -46,11 +44,6 @@ export class PluginSaveDataStore implements SaveDataStore, CharacterDataStore, C
 
 	public async fetchCharacters(): Promise<Character[]> {
 		return (await this.getFromStorage()).data;
-	}
-
-	public getCharacters(): Character[] {
-		const data = this._store?.data ?? [];
-		return data.sort(compareCharacters);
 	}
 
 	public async isSaveDataInitialized(): Promise<boolean> {

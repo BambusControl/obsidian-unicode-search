@@ -1,7 +1,6 @@
 import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
 import {CharacterStore} from "../service/characterStore";
 
-import {CharacterProvider} from "../service/characterProvider";
 import * as console from "console";
 import {CharacterMatch, NONE_RESULT} from "./characterMetadata";
 import {
@@ -12,21 +11,15 @@ import {
 	NAVIGATE_INSTRUCTION
 } from "./visualElements";
 import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
-import {Character} from "../../libraries/types/character";
 import {mostRecentlyUsed} from "../../libraries/helpers/mostRecentlyUsed";
 import {averageUseCount} from "../../libraries/helpers/averageUseCount";
 import {getRandomItem} from "../../libraries/helpers/getRandomItem";
-import {UsageInfo} from "../../libraries/types/usageInfo";
 
 export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
-	private readonly mostRecentCutoff: number;
-	private readonly averageUsageCount: number;
-	private readonly characters: Character[];
 
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
-		characterProvider: CharacterProvider,
 		private readonly characterStore: CharacterStore,
 	) {
 		super(app);
@@ -37,27 +30,17 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			INSTRUCTION_DISMISS,
 		]);
 
-		this.characters = characterProvider.getCharacters();
-
-
-        // TODO: Used characters code duplicate
-        const usedCharacters = this.characters
-            .filter(char => char.useCount != null && char.lastUsed != null)
-            .map(char => char as (Character & UsageInfo));
-
-		this.mostRecentCutoff = mostRecentlyUsed(usedCharacters).last()?.lastUsed ?? 0;
-		this.averageUsageCount = averageUseCount(usedCharacters);
-
-		this.setRandomPlaceholder();
+        // Purposefully ignored result
+		this.setRandomPlaceholder().then();
 	}
 
-	public override getSuggestions(query: string): CharacterMatch[] | Promise<CharacterMatch[]> {
+    public override async getSuggestions(query: string): Promise<CharacterMatch[]> {
 		const isHexSafe = query.length <= 4 && !query.contains(" ")
 
 		const codepointSearch = isHexSafe ? prepareSimpleSearch(query) : ((text: string) => null);
 		const fuzzyNameSearch = prepareFuzzySearch(query);
 
-		return this.characters
+		return (await this.characterStore.fetchAll())
 			.map(character => ({
 				item: character,
 				match: {
@@ -78,7 +61,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			)
 	}
 
-	public override renderSuggestion(item: CharacterMatch, container: HTMLElement): void {
+	public override async renderSuggestion(item: CharacterMatch, container: HTMLElement): Promise<void> {
 		const char = item.item;
 
 		container.addClass("plugin", "unicode-search", "result-item")
@@ -111,8 +94,12 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			cls: "detail",
 		});
 
-		const showLastUsed = char.lastUsed != null && char.lastUsed >= this.mostRecentCutoff;
-		const showUseCount = char.useCount != null && char.useCount > this.averageUsageCount;
+        const usedCharacters = (await this.characterStore.fetchTouched());
+		const mostRecentCutoff = mostRecentlyUsed(usedCharacters).last()?.lastUsed ?? 0;
+		const averageUsageCount = averageUseCount(usedCharacters);
+
+		const showLastUsed = char.lastUsed != null && char.lastUsed >= mostRecentCutoff;
+		const showUseCount = char.useCount != null && char.useCount > averageUsageCount;
 
 		const attributes = detail.createDiv({
 			cls: "attributes",
@@ -134,12 +121,12 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 		this.characterStore.recordUsage(item.item.char).then(undefined, (err) => console.error(err));
 	}
 
-	public override onNoSuggestion(): void {
-		this.setRandomPlaceholder();
+	public override async onNoSuggestion(): Promise<void> {
+		await this.setRandomPlaceholder();
 	}
 
-	private setRandomPlaceholder(): void {
-		const placeholder = `Unicode search: ${getRandomItem(this.characters).name}`;
+	private async setRandomPlaceholder(): Promise<void> {
+		const placeholder = `Unicode search: ${getRandomItem((await this.characterStore.fetchAll())).name}`;
 		super.setPlaceholder(placeholder);
 	}
 
