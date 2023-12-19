@@ -1,12 +1,12 @@
 import {Plugin} from "obsidian";
-import {CharacterDataStore} from "../characterDataStore";
+import {CharacterStore} from "../characterStore";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 import {SaveData} from "../../../libraries/types/data/saveData";
 import {isTypeSaveData} from "../../../libraries/types/data/isTypeSaveData";
 import {Character, PartialCharacter} from "../../../libraries/types/character";
 import {UserOptionStore} from "../userOptionStore";
 import { UserOptions } from "src/libraries/types/userOptions";
-import {SaveDataStore} from "../saveDataStore";
+import {MetadataStore} from "../metadataStore";
 
 const INITALIZATION_STORE: SaveData = {
 	meta: {
@@ -14,12 +14,11 @@ const INITALIZATION_STORE: SaveData = {
 		version: "0.5.0-NEXT",
 	},
 	user: {
-		pinned: [],
 	},
 	data: [],
 };
 
-export class PluginSaveDataStore implements SaveDataStore, CharacterDataStore, UserOptionStore {
+export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserOptionStore {
 
 	private _store?: SaveData;
 
@@ -27,10 +26,10 @@ export class PluginSaveDataStore implements SaveDataStore, CharacterDataStore, U
 		private readonly plugin: Plugin,
 	) {
 		// TODO: Since fetching is managed by this component's lifecycle, it should not be in its public interface.
-		this.fetchCharacters().then();
+		this.loadCharacters().then();
 	}
 
-	public async exportCharacters(data: Character[]): Promise<Character[]> {
+	public async saveCharacters(data: Character[]): Promise<Character[]> {
 		return (
 			await this.saveDataToStorage({
 				data: data,
@@ -38,11 +37,11 @@ export class PluginSaveDataStore implements SaveDataStore, CharacterDataStore, U
 		).data;
 	}
 
-	public async exportCharacter(data: PartialCharacter): Promise<Character> {
+	public async saveCharacter(data: PartialCharacter): Promise<Character> {
 		return (await this.saveCharToStorage(data));
 	}
 
-	public async fetchCharacters(): Promise<Character[]> {
+	public async loadCharacters(): Promise<Character[]> {
 		return (await this.getFromStorage()).data;
 	}
 
@@ -99,7 +98,7 @@ export class PluginSaveDataStore implements SaveDataStore, CharacterDataStore, U
 	}
 
 	private async saveCharToStorage(char: PartialCharacter): Promise<Character> {
-		const currentChar = (await this.fetchCharacters())
+		const currentChar = (await this.loadCharacters())
 			.find(v => v.char === char.char);
 
 		if (currentChar == null) {

@@ -1,22 +1,22 @@
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 
+import {CharacterService} from "../characterService";
 import {CharacterStore} from "../characterStore";
-import {CharacterDataStore} from "../characterDataStore";
 import {Character, CharacterKeyType, UsedCharacter} from "../../../libraries/types/character";
 
-export class UsageTrackedCharacterStore implements CharacterStore {
+export class UsageTrackedCharacterService implements CharacterService {
 
 	public constructor(
-		private readonly exportService: CharacterDataStore,
+        private readonly characterStore: CharacterStore,
 	) {
 	}
 
-	public async fetchAll(): Promise<Character[]> {
-		return await this.exportService.fetchCharacters();
+	public getAll(): Promise<Character[]> {
+        return this.characterStore.loadCharacters();
 	}
 
 	public async recordUsage(id: CharacterKeyType): Promise<void> {
-		const data = await this.exportService.fetchCharacters();
+		const data = await this.getAll();
 		const char = data.find(char => char.char === id);
 
 		if (char == null) {
@@ -26,11 +26,11 @@ export class UsageTrackedCharacterStore implements CharacterStore {
 		char.useCount = (char.useCount ?? 0) + 1;
 		char.lastUsed = (new Date()).valueOf();
 
-		await this.exportService.exportCharacter(char);
+		await this.characterStore.saveCharacter(char);
 	}
 
-    public async fetchTouched(): Promise<UsedCharacter[]> {
-        return (await this.fetchAll())
+    public async getUsed(): Promise<UsedCharacter[]> {
+        return (await this.getAll())
             .filter(char => char.useCount != null && char.lastUsed != null)
             .map(char => char as UsedCharacter)
     }

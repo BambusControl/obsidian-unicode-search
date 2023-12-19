@@ -1,5 +1,5 @@
 import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
-import {CharacterStore} from "../service/characterStore";
+import {CharacterService} from "../service/characterService";
 
 import * as console from "console";
 import {CharacterMatch, NONE_RESULT} from "./characterMetadata";
@@ -20,7 +20,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
-		private readonly characterStore: CharacterStore,
+		private readonly characterService: CharacterService,
 	) {
 		super(app);
 
@@ -40,7 +40,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 		const codepointSearch = isHexSafe ? prepareSimpleSearch(query) : ((text: string) => null);
 		const fuzzyNameSearch = prepareFuzzySearch(query);
 
-		return (await this.characterStore.fetchAll())
+		return (await this.characterService.getAll())
 			.map(character => ({
 				item: character,
 				match: {
@@ -94,7 +94,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			cls: "detail",
 		});
 
-        const usedCharacters = (await this.characterStore.fetchTouched());
+        const usedCharacters = (await this.characterService.getUsed());
 		const mostRecentCutoff = mostRecentlyUsed(usedCharacters).last()?.lastUsed ?? 0;
 		const averageUsageCount = averageUseCount(usedCharacters);
 
@@ -118,7 +118,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 		this.editor.replaceSelection(item.item.char);
 
 		// I don't want to await this, its more of a side effect
-		this.characterStore.recordUsage(item.item.char).then(undefined, (err) => console.error(err));
+		this.characterService.recordUsage(item.item.char).then(undefined, (err) => console.error(err));
 	}
 
 	public override async onNoSuggestion(): Promise<void> {
@@ -126,7 +126,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 	}
 
 	private async setRandomPlaceholder(): Promise<void> {
-		const placeholder = `Unicode search: ${getRandomItem((await this.characterStore.fetchAll())).name}`;
+		const placeholder = `Unicode search: ${getRandomItem((await this.characterService.getAll())).name}`;
 		super.setPlaceholder(placeholder);
 	}
 

@@ -1,12 +1,12 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {UsageTrackedCharacterStore} from "./service/impl/usageTrackedCharacterStore";
+import {UsageTrackedCharacterService} from "./service/impl/usageTrackedCharacterService";
 import {FuzzySearchModal} from "./components/fuzzySearchModal";
 import {PluginSaveDataStore} from "./service/impl/pluginSaveDataStore";
-import {CharacterDataStore} from "./service/characterDataStore";
-import {UnicodeCharacterDatabase} from "./service/impl/unicodeCharacterDatabase";
+import {CharacterStore} from "./service/characterStore";
+import {UCDDownloader} from "./service/impl/ucdDownloader";
 import {SettingTab} from "./components/settingsTab"
 import {CharacterDownloader} from "./service/characterDownloader";
-import {SaveDataStore} from "./service/saveDataStore";
+import {MetadataStore} from "./service/metadataStore";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -21,9 +21,9 @@ export default class UnicodeSearchPlugin extends Plugin {
 
 	public override async onload(): Promise<void> {
         const dataStore = new PluginSaveDataStore(this);
-		const characterStore = new UsageTrackedCharacterStore(dataStore);
+		const characterService = new UsageTrackedCharacterService(dataStore);
 
-		await UnicodeSearchPlugin.initializeData(dataStore, dataStore, new UnicodeCharacterDatabase());
+		await UnicodeSearchPlugin.initializeData(dataStore, dataStore, new UCDDownloader());
 
 		super.addCommand({
 			id: "search-unicode-chars",
@@ -33,19 +33,19 @@ export default class UnicodeSearchPlugin extends Plugin {
 				const modal = new FuzzySearchModal(
 					app,
 					editor,
-					characterStore,
+					characterService,
 				);
 				modal.open();
 				return true;
 			},
 		});
 
-        this.addSettingTab(new SettingTab(this.app, this, characterStore, dataStore));
+        this.addSettingTab(new SettingTab(this.app, this, characterService, dataStore));
 	}
 
 	private static async initializeData(
-		saveDataStore: SaveDataStore,
-		characterDataStore: CharacterDataStore,
+		saveDataStore: MetadataStore,
+		characterDataStore: CharacterStore,
 		ucdService: CharacterDownloader
 	): Promise<void> {
 		const initialized = await saveDataStore.isSaveDataInitialized();
@@ -54,9 +54,9 @@ export default class UnicodeSearchPlugin extends Plugin {
 			return;
 		}
 
-		const data = await ucdService.fetchCharacters();
+		const data = await ucdService.download();
 
-		await characterDataStore.exportCharacters(data);
+		await characterDataStore.saveCharacters(data);
 		await saveDataStore.setSaveDataAsInitialized();
 	}
 

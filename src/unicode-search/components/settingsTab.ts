@@ -1,5 +1,5 @@
 import {App, Plugin, PluginSettingTab, Setting} from "obsidian";
-import {CharacterStore} from "../service/characterStore";
+import {CharacterService} from "../service/characterService";
 import {UserOptionStore} from "../service/userOptionStore";
 import {UserOptions} from "../../libraries/types/userOptions";
 import {mostRecentlyUsed} from "../../libraries/helpers/mostRecentlyUsed";
@@ -13,7 +13,7 @@ export class SettingTab extends PluginSettingTab {
     constructor(
         app: App,
         plugin: Plugin,
-        private readonly characterStore: CharacterStore,
+        private readonly characterService: CharacterService,
         private readonly userOptionStore: UserOptionStore
     ) {
         super(app, plugin);
@@ -48,9 +48,9 @@ export class SettingTab extends PluginSettingTab {
             .createEl("p")
             .createEl("strong", { text: "Pinned Previously" });
 
-        for (const character of options.pinned) {
-            SettingTab.addPinCharacterToggle(pinnedContainer, character, options);
-        }
+//        for (const character of options.pinned) {
+//            SettingTab.addPinCharacterToggle(pinnedContainer, character, options);
+//        }
 
         const recentsContainer = pinSectionContainer.createDiv();
 
@@ -58,7 +58,7 @@ export class SettingTab extends PluginSettingTab {
             .createEl("p")
             .createEl("strong", { text: "Recently Used" });
 
-        const usedCharacters = await this.characterStore.fetchTouched();
+        const usedCharacters = await this.characterService.getUsed();
         const recentlyUsed = mostRecentlyUsed(usedCharacters);
 
         for (const character of recentlyUsed) {
@@ -92,8 +92,8 @@ export class SettingTab extends PluginSettingTab {
         new Setting(container)
             .setName(char)
             .addToggle(input => input
-                .setValue(userOptions.pinned.some(item => item === char))
-                .onChange(value => userOptions.pinned.push(char))
+//                .setValue(userOptions.pinned.some(item => item === char))
+//                .onChange(value => userOptions.pinned.push(char))
             )
     }
 
