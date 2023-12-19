@@ -4,7 +4,7 @@ import {UserOptionStore} from "../service/userOptionStore";
 import {UserOptions} from "../../libraries/types/userOptions";
 import {mostRecentlyUsed} from "../../libraries/helpers/mostRecentlyUsed";
 import {averageUseCount} from "../../libraries/helpers/averageUseCount";
-import {CharacterKey} from "../../libraries/types/character";
+import {Character} from "../../libraries/types/character";
 
 export class SettingTab extends PluginSettingTab {
 
@@ -51,7 +51,7 @@ export class SettingTab extends PluginSettingTab {
         const recentlyUsed = mostRecentlyUsed(usedCharacters);
 
         for (const character of recentlyUsed) {
-            this.addPinCharacterToggle(recentsContainer, character.char);
+            this.addPinCharacterToggle(recentsContainer, character);
         }
 
         const oftensContainer = pinSectionContainer.createDiv();
@@ -64,7 +64,7 @@ export class SettingTab extends PluginSettingTab {
         const oftenUsed = usedCharacters.filter(char => char.useCount > avgUseCount)
 
         for (const character of oftenUsed) {
-            this.addPinCharacterToggle(oftensContainer, character.char);
+            this.addPinCharacterToggle(oftensContainer, character);
         }
     }
 
@@ -77,16 +77,16 @@ export class SettingTab extends PluginSettingTab {
         this.containerEl.empty();
     }
 
-    private addPinCharacterToggle(container: HTMLElement, char: CharacterKey) {
+    private addPinCharacterToggle(container: HTMLElement, character: Character) {
         new Setting(container)
-            .setName(char)
+            .setName(character.char)
             .addToggle(input => input
-               .setValue(this.characterService.getOne(char) != null)
+               .setValue(character.pin != null)
                // Weird `this` referencing
                // Here you have to define the `this` argument, otherwise it will call `pin` or `unpin` on `undefined`.
                // .onChange(value => (value ? this.characterService.pin : this.characterService.unpin)(char))
-               .onChange(value =>
-                   (value ? this.characterService.pin : this.characterService.unpin).call(this.characterService, char)
+               .onChange(async (value) =>
+                   await (value ? this.characterService.pin : this.characterService.unpin).call(this.characterService, character.char)
                )
             )
     }

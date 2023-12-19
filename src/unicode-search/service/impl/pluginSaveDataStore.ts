@@ -30,6 +30,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 	}
 
 	public async saveCharacters(data: Character[]): Promise<Character[]> {
+        // TODO #2: On unpin all characters get yeeted
 		return (
 			await this.saveDataToStorage({
 				data: data,

@@ -35,7 +35,7 @@ export class UsageTrackedCharacterService implements CharacterService {
     public async getUsed(): Promise<UsedCharacter[]> {
         return (await this.getAll())
             .filter(char => char.useCount != null && char.lastUsed != null)
-            .map(char => char as UsedCharacter)
+            .map(char => char as UsedCharacter);
     }
 
 	public async recordUsage(key: CharacterKey): Promise<UsedCharacter> {
@@ -52,8 +52,9 @@ export class UsageTrackedCharacterService implements CharacterService {
 	}
 
     public async getPinned(): Promise<PinnedCharacter[]> {
-
-        return Promise.resolve([]);
+        return (await this.getAll())
+            .filter(char => char.pin != null)
+            .map(char => char as PinnedCharacter);
     }
 
     public async pin(key: CharacterKey): Promise<PinnedCharacter> {
@@ -73,6 +74,8 @@ export class UsageTrackedCharacterService implements CharacterService {
     }
 
     public async unpin(key: CharacterKey): Promise<UnpinnedCharacter> {
+        // TODO #1: On unpin all characters get yeeted
+
 		const char = await this.getOne(key);
 
         if (char.pin == null) {
