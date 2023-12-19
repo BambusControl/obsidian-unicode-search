@@ -4,7 +4,7 @@ import {UserOptionStore} from "../service/userOptionStore";
 import {UserOptions} from "../../libraries/types/userOptions";
 import {mostRecentlyUsed} from "../../libraries/helpers/mostRecentlyUsed";
 import {averageUseCount} from "../../libraries/helpers/averageUseCount";
-import {CharacterKeyType} from "../../libraries/types/character";
+import {CharacterKey} from "../../libraries/types/character";
 
 export class SettingTab extends PluginSettingTab {
 
@@ -88,7 +88,7 @@ export class SettingTab extends PluginSettingTab {
         this.containerEl.empty();
     }
 
-    private static addPinCharacterToggle(container: HTMLElement, char: CharacterKeyType, userOptions: UserOptions) {
+    private static addPinCharacterToggle(container: HTMLElement, char: CharacterKey, userOptions: UserOptions) {
         new Setting(container)
             .setName(char)
             .addToggle(input => input

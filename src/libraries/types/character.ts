@@ -1,12 +1,13 @@
 import {UsageInfo} from "./usageInfo";
 import {UnicodeCharacter} from "./unicodeCharacter";
+import {PinInfo} from "./pinInfo";
 
 /**
  * Base representation of a character
  */
-export type Character = UnicodeCharacter & Partial<UsageInfo>;
+export type Character = UnicodeCharacter & Partial<UsageInfo> & Partial<PinInfo>;
 
-export type CharacterKeyType = UnicodeCharacter["char"];
-export type CharacterWithKey = { char: CharacterKeyType };
-export type PartialCharacter = CharacterWithKey & Partial<Character>
 export type UsedCharacter = Character & UsageInfo
+export type PinnedCharacter = Character & PinInfo
+
+export type CharacterKey = UnicodeCharacter["char"];

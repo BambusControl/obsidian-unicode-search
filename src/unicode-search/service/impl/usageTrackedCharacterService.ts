@@ -2,7 +2,7 @@ import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchErro
 
 import {CharacterService} from "../characterService";
 import {CharacterStore} from "../characterStore";
-import {Character, CharacterKeyType, UsedCharacter} from "../../../libraries/types/character";
+import {Character, CharacterKey, UsedCharacter} from "../../../libraries/types/character";
 
 export class UsageTrackedCharacterService implements CharacterService {
 
@@ -15,7 +15,7 @@ export class UsageTrackedCharacterService implements CharacterService {
         return this.characterStore.loadCharacters();
 	}
 
-	public async recordUsage(id: CharacterKeyType): Promise<void> {
+	public async recordUsage(id: CharacterKey): Promise<void> {
 		const data = await this.getAll();
 		const char = data.find(char => char.char === id);
 

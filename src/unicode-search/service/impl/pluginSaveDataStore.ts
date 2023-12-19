@@ -3,7 +3,7 @@ import {CharacterStore} from "../characterStore";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 import {SaveData} from "../../../libraries/types/data/saveData";
 import {isTypeSaveData} from "../../../libraries/types/data/isTypeSaveData";
-import {Character, PartialCharacter} from "../../../libraries/types/character";
+import {Character} from "../../../libraries/types/character";
 import {UserOptionStore} from "../userOptionStore";
 import { UserOptions } from "src/libraries/types/userOptions";
 import {MetadataStore} from "../metadataStore";
@@ -37,7 +37,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 		).data;
 	}
 
-	public async saveCharacter(data: PartialCharacter): Promise<Character> {
+	public async saveCharacter(data: Character): Promise<Character> {
 		return (await this.saveCharToStorage(data));
 	}
 
@@ -97,7 +97,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 		return this._store;
 	}
 
-	private async saveCharToStorage(char: PartialCharacter): Promise<Character> {
+	private async saveCharToStorage(char: Character): Promise<Character> {
 		const currentChar = (await this.loadCharacters())
 			.find(v => v.char === char.char);
 
