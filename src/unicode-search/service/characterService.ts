@@ -7,7 +7,7 @@ import {
 } from "../../libraries/types/character";
 
 export interface CharacterService {
-	get(key: CharacterKey): Promise<Character>;
+	getOne(key: CharacterKey): Promise<Character>;
 	getAll(): Promise<Character[]>;
     getUsed(): Promise<UsedCharacter[]>
 	recordUsage(key: CharacterKey): Promise<UsedCharacter>;

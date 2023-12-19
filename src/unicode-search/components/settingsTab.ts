@@ -81,8 +81,13 @@ export class SettingTab extends PluginSettingTab {
         new Setting(container)
             .setName(char)
             .addToggle(input => input
-               .setValue(this.characterService.get(char) != null)
-               .onChange(value => (value ? this.characterService.pin : this.characterService.unpin)(char))
+               .setValue(this.characterService.getOne(char) != null)
+               // Weird `this` referencing
+               // Here you have to define the `this` argument, otherwise it will call `pin` or `unpin` on `undefined`.
+               // .onChange(value => (value ? this.characterService.pin : this.characterService.unpin)(char))
+               .onChange(value =>
+                   (value ? this.characterService.pin : this.characterService.unpin).call(this.characterService, char)
+               )
             )
     }
 

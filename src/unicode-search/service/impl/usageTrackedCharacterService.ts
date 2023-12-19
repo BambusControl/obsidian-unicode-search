@@ -17,7 +17,7 @@ export class UsageTrackedCharacterService implements CharacterService {
 	) {
 	}
 
-    public async get(key: CharacterKey): Promise<Character> {
+    public async getOne(key: CharacterKey): Promise<Character> {
         const characters = await this.getAll();
         const char = characters.find(char => char.char === key);
 
@@ -39,7 +39,7 @@ export class UsageTrackedCharacterService implements CharacterService {
     }
 
 	public async recordUsage(key: CharacterKey): Promise<UsedCharacter> {
-		const char = await this.get(key);
+		const char = await this.getOne(key);
 
         const usedChar: UsedCharacter = {
             ...char,
@@ -57,7 +57,7 @@ export class UsageTrackedCharacterService implements CharacterService {
     }
 
     public async pin(key: CharacterKey): Promise<PinnedCharacter> {
-        const char = await this.get(key);
+		const char = await this.getOne(key);
 
         if (char.pin != null) {
 			throw new ObsidianUnicodeSearchError(`Character '${key}' is already pinned.`);
@@ -73,7 +73,7 @@ export class UsageTrackedCharacterService implements CharacterService {
     }
 
     public async unpin(key: CharacterKey): Promise<UnpinnedCharacter> {
-        const char = await this.get(key);
+		const char = await this.getOne(key);
 
         if (char.pin == null) {
 			throw new ObsidianUnicodeSearchError(`Character '${key}' is not pinned.`);
