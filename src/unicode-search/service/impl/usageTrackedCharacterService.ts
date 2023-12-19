@@ -2,7 +2,13 @@ import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchErro
 
 import {CharacterService} from "../characterService";
 import {CharacterStore} from "../characterStore";
-import {Character, CharacterKey, UsedCharacter} from "../../../libraries/types/character";
+import {
+    Character,
+    CharacterKey,
+    PinnedCharacter,
+    UnpinnedCharacter,
+    UsedCharacter
+} from "../../../libraries/types/character";
 
 export class UsageTrackedCharacterService implements CharacterService {
 
@@ -11,28 +17,83 @@ export class UsageTrackedCharacterService implements CharacterService {
 	) {
 	}
 
-	public getAll(): Promise<Character[]> {
-        return this.characterStore.loadCharacters();
-	}
-
-	public async recordUsage(id: CharacterKey): Promise<void> {
-		const data = await this.getAll();
-		const char = data.find(char => char.char === id);
+    public async get(key: CharacterKey): Promise<Character> {
+        const characters = await this.getAll();
+        const char = characters.find(char => char.char === key);
 
 		if (char == null) {
-			throw new ObsidianUnicodeSearchError(`No character '${id}' exists.`);
+			throw new ObsidianUnicodeSearchError(`No character '${key}' exists.`);
 		}
 
-		char.useCount = (char.useCount ?? 0) + 1;
-		char.lastUsed = (new Date()).valueOf();
+        return char;
+    }
 
-		await this.characterStore.saveCharacter(char);
+	public getAll(): Promise<Character[]> {
+        return this.characterStore.loadCharacters();
 	}
 
     public async getUsed(): Promise<UsedCharacter[]> {
         return (await this.getAll())
             .filter(char => char.useCount != null && char.lastUsed != null)
             .map(char => char as UsedCharacter)
+    }
+
+	public async recordUsage(key: CharacterKey): Promise<UsedCharacter> {
+		const char = await this.get(key);
+
+        const usedChar: UsedCharacter = {
+            ...char,
+            useCount: (char.useCount ?? 0) + 1,
+            lastUsed: (new Date()).valueOf(),
+        }
+
+		await this.characterStore.saveCharacter(usedChar);
+        return usedChar;
+	}
+
+    public async getPinned(): Promise<PinnedCharacter[]> {
+
+        return Promise.resolve([]);
+    }
+
+    public async pin(key: CharacterKey): Promise<PinnedCharacter> {
+        const char = await this.get(key);
+
+        if (char.pin != null) {
+			throw new ObsidianUnicodeSearchError(`Character '${key}' is already pinned.`);
+        }
+
+        const pinnedChar: PinnedCharacter = {
+            ...char,
+            pin: (await this.getPinned()).length + 1
+        };
+
+		await this.characterStore.saveCharacter(pinnedChar);
+        return pinnedChar;
+    }
+
+    public async unpin(key: CharacterKey): Promise<UnpinnedCharacter> {
+        const char = await this.get(key);
+
+        if (char.pin == null) {
+			throw new ObsidianUnicodeSearchError(`Character '${key}' is not pinned.`);
+        }
+
+        const pinnedChar = char as PinnedCharacter;
+        const {pin, ...unpinnedChar } = pinnedChar;
+
+        await this.characterStore.saveCharacter(unpinnedChar);
+
+        const followingCharacters = (await this.getPinned())
+            .filter(ch => ch.pin > pinnedChar.pin)
+            .map(ch => ({
+                ...ch,
+                pin: ch.pin - 1
+            }));
+
+        await this.characterStore.saveCharacters(followingCharacters);
+
+        return unpinnedChar;
     }
 }
 

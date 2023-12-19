@@ -7,7 +7,9 @@ import {PinInfo} from "./pinInfo";
  */
 export type Character = UnicodeCharacter & Partial<UsageInfo> & Partial<PinInfo>;
 
-export type UsedCharacter = Character & UsageInfo
-export type PinnedCharacter = Character & PinInfo
+export type UsedCharacter = Character & UsageInfo;
+export type UnusedCharacter = UnicodeCharacter & Partial<PinInfo>;
+export type PinnedCharacter = Character & PinInfo;
+export type UnpinnedCharacter = UnicodeCharacter & Partial<UsageInfo>;
 
 export type CharacterKey = UnicodeCharacter["char"];

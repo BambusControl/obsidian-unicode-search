@@ -22,7 +22,6 @@ export class SettingTab extends PluginSettingTab {
 
     public override async display(): Promise<void> {
         this.userOptions = await this.userOptionStore.fetchUserOptions();
-        const options = this.userOptions;
         const container = this.containerEl;
 
         container.createEl(
@@ -42,16 +41,6 @@ export class SettingTab extends PluginSettingTab {
         // TODO: rework to use the same sorting logic as the search modal
 
         const pinSectionContainer = container.createDiv({cls: "pin-table"})
-        const pinnedContainer = pinSectionContainer.createDiv();
-
-        pinnedContainer
-            .createEl("p")
-            .createEl("strong", { text: "Pinned Previously" });
-
-//        for (const character of options.pinned) {
-//            SettingTab.addPinCharacterToggle(pinnedContainer, character, options);
-//        }
-
         const recentsContainer = pinSectionContainer.createDiv();
 
         recentsContainer
@@ -62,7 +51,7 @@ export class SettingTab extends PluginSettingTab {
         const recentlyUsed = mostRecentlyUsed(usedCharacters);
 
         for (const character of recentlyUsed) {
-            SettingTab.addPinCharacterToggle(recentsContainer, character.char, options);
+            this.addPinCharacterToggle(recentsContainer, character.char);
         }
 
         const oftensContainer = pinSectionContainer.createDiv();
@@ -75,7 +64,7 @@ export class SettingTab extends PluginSettingTab {
         const oftenUsed = usedCharacters.filter(char => char.useCount > avgUseCount)
 
         for (const character of oftenUsed) {
-            SettingTab.addPinCharacterToggle(oftensContainer, character.char, options);
+            this.addPinCharacterToggle(oftensContainer, character.char);
         }
     }
 
@@ -88,12 +77,12 @@ export class SettingTab extends PluginSettingTab {
         this.containerEl.empty();
     }
 
-    private static addPinCharacterToggle(container: HTMLElement, char: CharacterKey, userOptions: UserOptions) {
+    private addPinCharacterToggle(container: HTMLElement, char: CharacterKey) {
         new Setting(container)
             .setName(char)
             .addToggle(input => input
-//                .setValue(userOptions.pinned.some(item => item === char))
-//                .onChange(value => userOptions.pinned.push(char))
+               .setValue(this.characterService.get(char) != null)
+               .onChange(value => (value ? this.characterService.pin : this.characterService.unpin)(char))
             )
     }
 
