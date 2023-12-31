@@ -48,7 +48,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 		characterDataStore: CharacterStore,
 		ucdService: CharacterDownloader
 	): Promise<void> {
-		const initialized = await saveDataStore.isSaveDataInitialized();
+		const initialized = await saveDataStore.isInitialized();
 
 		if (initialized) {
 			return;
@@ -57,7 +57,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 		const data = await ucdService.download();
 
 		await characterDataStore.saveCharacters(data);
-		await saveDataStore.setSaveDataAsInitialized();
+		await saveDataStore.setAsInitialized();
 	}
 
 }

@@ -21,7 +21,7 @@ export class SettingTab extends PluginSettingTab {
     }
 
     public override async display(): Promise<void> {
-        this.userOptions = await this.userOptionStore.fetchUserOptions();
+        this.userOptions = await this.userOptionStore.getUserOptions();
         const container = this.containerEl;
 
         container.createEl(
@@ -73,7 +73,7 @@ export class SettingTab extends PluginSettingTab {
             return;
         }
 
-        await this.userOptionStore.exportUserOptions(this.userOptions);
+        await this.userOptionStore.saveUserOptions(this.userOptions);
         this.containerEl.empty();
     }
 

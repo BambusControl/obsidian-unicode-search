@@ -1,4 +1,4 @@
 export interface MetadataStore {
-    isSaveDataInitialized(): Promise<boolean>;
-    setSaveDataAsInitialized(): Promise<void>;
+    isInitialized(): Promise<boolean>;
+    setAsInitialized(): Promise<void>;
 }

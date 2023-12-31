@@ -29,7 +29,7 @@ export class UsageTrackedCharacterService implements CharacterService {
     }
 
 	public getAll(): Promise<Character[]> {
-        return this.characterStore.loadCharacters();
+        return this.characterStore.getCharacters();
 	}
 
     public async getUsed(): Promise<UsedCharacter[]> {

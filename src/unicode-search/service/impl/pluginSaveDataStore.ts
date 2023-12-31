@@ -26,21 +26,48 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 		private readonly plugin: Plugin,
 	) {
 		// TODO: Since fetching is managed by this component's lifecycle, it should not be in its public interface.
-		this.loadCharacters().then();
+		this.getCharacters().then();
 	}
 
-	public async loadCharacters(): Promise<Character[]> {
+	public async getCharacters(): Promise<Character[]> {
 		return (await this.getFromStorage()).data;
 	}
 
-    // TODO: Refactor these oneliners.
-	public async saveCharacter(character: Character): Promise<void> {
-		await this.saveCharToStorage(character);
+	public async saveCharacter(char: Character): Promise<void> {
+		const currentChars = await this.getCharacters();
+
+        const foundIndex = currentChars.findIndex(ch => ch.char === char.char)
+        const found = foundIndex >= 0;
+
+        const newChars = currentChars;
+
+        if (found) {
+            newChars[foundIndex] = char;
+        } else {
+            newChars.push(char);
+        }
+
+        await this.saveDataToStorage({data: newChars});
 	}
 
-    // TODO: Refactor these oneliners.
-	public async putCharacter(data: PartialCharacter): Promise<void> {
-		await this.putCharToStorage(data);
+	public async putCharacter(char: PartialCharacter): Promise<void> {
+		const currentChars = await this.getCharacters();
+
+        const foundIndex = currentChars.findIndex(ch => ch.char === char.char)
+        const found = foundIndex >= 0;
+
+        const newChars = currentChars;
+
+        if (found) {
+            newChars[foundIndex] = {
+                ...newChars[foundIndex],
+                ...char,
+            } as Character;
+        } else {
+            throw new ObsidianUnicodeSearchError(`Cannot save non-existent character '${char.char}' to storage`);
+        }
+
+        await this.saveDataToStorage({data: newChars});
 	}
 
 	public async saveCharacters(data: Character[]): Promise<void> {
@@ -49,12 +76,35 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
         })
 	}
 
-    // TODO: Refactor these oneliners.
-    public async putCharacters(characters: PartialCharacter[]): Promise<void> {
-        await this.putCharsToStorage(characters);
+    public async putCharacters(chars: PartialCharacter[]): Promise<void> {
+        const oldChars = new Map((await this.getCharacters()).map(v => [v.char, v]));
+        const newChars = new Map(chars.map(v => [v.char, v]));
+
+        const oldKeys = Array.from(oldChars.keys());
+        const newKeys = Array.from(newChars.keys());
+
+        const missingKeys = newKeys.filter(newKey => !oldKeys.contains(newKey));
+
+        if (missingKeys.length > 0) {
+			throw new ObsidianUnicodeSearchError(`Cannot save non-existent characters '${missingKeys}' to storage`);
+		}
+
+        for (const [newKey, newChar] of newChars.entries()) {
+
+            const mergedChar = {
+                ...oldChars.get(newKey)!,
+                ...newChar,
+            } as Character;
+
+            oldChars.set(newKey, mergedChar);
+        }
+
+        const mergedCharacters = Array.from(oldChars.values());
+
+        await this.saveDataToStorage({data: mergedCharacters});
     }
 
-	public async isSaveDataInitialized(): Promise<boolean> {
+	public async isInitialized(): Promise<boolean> {
 		const data = (await this.getFromStorage());
 		const meta = data.meta;
 
@@ -73,7 +123,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 		return meta.initialized;
 	}
 
-	public async setSaveDataAsInitialized(): Promise<void> {
+	public async setAsInitialized(): Promise<void> {
 		const data = await this.getFromStorage();
 
 		await this.saveDataToStorage({
@@ -106,78 +156,6 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 		return this._store;
 	}
 
-	private async saveCharToStorage(char: Character): Promise<Character> {
-        const currentChars = await this.loadCharacters();
-
-        const foundIndex = currentChars.findIndex(ch => ch.char === char.char)
-        const found = foundIndex >= 0;
-
-        const newChars = currentChars;
-
-        if (found) {
-            newChars[foundIndex] = char;
-        } else {
-            newChars.push(char);
-        }
-
-        await this.saveDataToStorage({data: newChars});
-
-        // TODO: Are returns needed?
-		return char;
-	}
-
-	private async putCharToStorage(char: PartialCharacter): Promise<Character> {
-		const currentChars = await this.loadCharacters();
-
-        const foundIndex = currentChars.findIndex(ch => ch.char === char.char)
-        const found = foundIndex >= 0;
-
-        const newChars = currentChars;
-
-        if (found) {
-            newChars[foundIndex] = {
-                ...newChars[foundIndex],
-                ...char,
-            } as Character;
-        } else {
-            throw new ObsidianUnicodeSearchError(`Cannot save non-existent character '${char.char}' to storage`);
-        }
-
-        await this.saveDataToStorage({data: newChars});
-
-        // TODO: Are returns needed?
-		return newChars[foundIndex];
-	}
-
-	private async putCharsToStorage(chars: PartialCharacter[]): Promise<Character[]> {
-        const oldChars = new Map((await this.loadCharacters()).map(v => [v.char, v]));
-        const newChars = new Map(chars.map(v => [v.char, v]));
-
-        const oldKeys = Array.from(oldChars.keys());
-        const newKeys = Array.from(newChars.keys());
-
-        const missingKeys = newKeys.filter(newKey => !oldKeys.contains(newKey));
-
-        if (missingKeys.length > 0) {
-			throw new ObsidianUnicodeSearchError(`Cannot save non-existent characters '${missingKeys}' to storage`);
-		}
-
-        for (const [newKey, newChar] of newChars.entries()) {
-
-            const mergedChar = {
-                ...oldChars.get(newKey)!,
-                ...newChar,
-            } as Character;
-
-            oldChars.set(newKey, mergedChar);
-        }
-
-        const mergedCharacters = Array.from(oldChars.values());
-
-        await this.saveDataToStorage({data: mergedCharacters});
-        return mergedCharacters;
-	}
-
 	private async _loadTheData(): Promise<SaveData> {
 		const externalData = await this.plugin.loadData();
 		const dataLoaded = externalData != null && isTypeSaveData(externalData);
@@ -197,11 +175,11 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 		return newData;
 	}
 
-	public async fetchUserOptions(): Promise<UserOptions> {
+	public async getUserOptions(): Promise<UserOptions> {
 		return (await this.getFromStorage()).user;
     }
 
-	public async exportUserOptions(userOptions: UserOptions): Promise<UserOptions> {
+	public async saveUserOptions(userOptions: UserOptions): Promise<UserOptions> {
 		return (
 			await this.saveDataToStorage({
 				user: userOptions,
