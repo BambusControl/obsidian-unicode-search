@@ -6,6 +6,7 @@ import {PinInfo} from "./pinInfo";
  * Base representation of a character
  */
 export type Character = UnicodeCharacter & Partial<UsageInfo> & Partial<PinInfo>;
+export type PartialCharacter = Partial<Character> & Pick<Character, "char">;
 
 export type UsedCharacter = Character & UsageInfo;
 export type UnusedCharacter = UnicodeCharacter & Partial<PinInfo>;

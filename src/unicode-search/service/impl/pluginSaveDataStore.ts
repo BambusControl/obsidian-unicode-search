@@ -3,7 +3,7 @@ import {CharacterStore} from "../characterStore";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 import {SaveData} from "../../../libraries/types/data/saveData";
 import {isTypeSaveData} from "../../../libraries/types/data/isTypeSaveData";
-import {Character} from "../../../libraries/types/character";
+import {Character, PartialCharacter} from "../../../libraries/types/character";
 import {UserOptionStore} from "../userOptionStore";
 import { UserOptions } from "src/libraries/types/userOptions";
 import {MetadataStore} from "../metadataStore";
@@ -30,7 +30,6 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 	}
 
 	public async saveCharacters(data: Character[]): Promise<Character[]> {
-        // TODO #2: On unpin all characters get yeeted
 		return (
 			await this.saveDataToStorage({
 				data: data,
@@ -38,8 +37,13 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 		).data;
 	}
 
+    // TODO: Refactor these oneliners.
+    public putCharacters(characters: PartialCharacter[]): Promise<Character[]> {
+        return this.mergeCharsToStorage(characters);
+    }
+
 	public async saveCharacter(data: Character): Promise<Character> {
-		return (await this.saveCharToStorage(data));
+		return (await this.mergeCharToStorage(data));
 	}
 
 	public async loadCharacters(): Promise<Character[]> {
@@ -98,7 +102,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 		return this._store;
 	}
 
-	private async saveCharToStorage(char: Character): Promise<Character> {
+	private async mergeCharToStorage(char: Character): Promise<Character> {
 		const currentChar = (await this.loadCharacters())
 			.find(v => v.char === char.char);
 
@@ -110,6 +114,35 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 
 		await this.plugin.saveData(this._store);
 		return currentChar;
+	}
+
+	private async mergeCharsToStorage(chars: PartialCharacter[]): Promise<Character[]> {
+        const oldChars = new Map((await this.loadCharacters()).map(v => [v.char, v]));
+        const newChars = new Map(chars.map(v => [v.char, v]));
+
+        const oldKeys = Array.from(oldChars.keys());
+        const newKeys = Array.from(newChars.keys());
+
+        const missingKeys = newKeys.filter(newKey => !oldKeys.contains(newKey));
+
+        if (missingKeys.length > 0) {
+			throw new ObsidianUnicodeSearchError(`Cannot save non-existent characters '${missingKeys}' to storage`);
+		}
+
+        for (const [newKey, newChar] of newChars.entries()) {
+
+            const mergedChar = {
+                ...oldChars.get(newKey)!,
+                ...newChar,
+            } as Character;
+
+            oldChars.set(newKey, mergedChar);
+        }
+
+        const mergedCharacters = Array.from(oldChars.values());
+
+        await this.saveDataToStorage({data: mergedCharacters});
+        return mergedCharacters;
 	}
 
 	private async _loadTheData(): Promise<SaveData> {

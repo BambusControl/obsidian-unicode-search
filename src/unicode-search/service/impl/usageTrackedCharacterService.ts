@@ -74,8 +74,6 @@ export class UsageTrackedCharacterService implements CharacterService {
     }
 
     public async unpin(key: CharacterKey): Promise<UnpinnedCharacter> {
-        // TODO #1: On unpin all characters get yeeted
-
 		const char = await this.getOne(key);
 
         if (char.pin == null) {
@@ -94,7 +92,7 @@ export class UsageTrackedCharacterService implements CharacterService {
                 pin: ch.pin - 1
             }));
 
-        await this.characterStore.saveCharacters(followingCharacters);
+        await this.characterStore.putCharacters(followingCharacters);
 
         return unpinnedChar;
     }
