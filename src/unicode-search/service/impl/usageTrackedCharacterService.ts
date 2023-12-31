@@ -47,7 +47,7 @@ export class UsageTrackedCharacterService implements CharacterService {
             lastUsed: (new Date()).valueOf(),
         }
 
-		await this.characterStore.saveCharacter(usedChar);
+		await this.characterStore.putCharacter(usedChar);
         return usedChar;
 	}
 
@@ -69,7 +69,7 @@ export class UsageTrackedCharacterService implements CharacterService {
             pin: (await this.getPinned()).length + 1
         };
 
-		await this.characterStore.saveCharacter(pinnedChar);
+		await this.characterStore.putCharacter(pinnedChar);
         return pinnedChar;
     }
 
@@ -83,7 +83,7 @@ export class UsageTrackedCharacterService implements CharacterService {
         const pinnedChar = char as PinnedCharacter;
         const {pin, ...unpinnedChar } = pinnedChar;
 
-        await this.characterStore.saveCharacter(unpinnedChar);
+        await this.characterStore.putCharacter(unpinnedChar);
 
         const followingCharacters = (await this.getPinned())
             .filter(ch => ch.pin > pinnedChar.pin)

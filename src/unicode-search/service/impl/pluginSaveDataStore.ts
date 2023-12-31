@@ -29,26 +29,30 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 		this.loadCharacters().then();
 	}
 
-	public async saveCharacters(data: Character[]): Promise<Character[]> {
-		return (
-			await this.saveDataToStorage({
-				data: data,
-			})
-		).data;
-	}
-
-    // TODO: Refactor these oneliners.
-    public putCharacters(characters: PartialCharacter[]): Promise<Character[]> {
-        return this.mergeCharsToStorage(characters);
-    }
-
-	public async saveCharacter(data: Character): Promise<Character> {
-		return (await this.mergeCharToStorage(data));
-	}
-
 	public async loadCharacters(): Promise<Character[]> {
 		return (await this.getFromStorage()).data;
 	}
+
+    // TODO: Refactor these oneliners.
+	public async saveCharacter(character: Character): Promise<void> {
+		await this.saveCharToStorage(character);
+	}
+
+    // TODO: Refactor these oneliners.
+	public async putCharacter(data: PartialCharacter): Promise<void> {
+		await this.putCharToStorage(data);
+	}
+
+	public async saveCharacters(data: Character[]): Promise<void> {
+        await this.saveDataToStorage({
+            data: data,
+        })
+	}
+
+    // TODO: Refactor these oneliners.
+    public async putCharacters(characters: PartialCharacter[]): Promise<void> {
+        await this.putCharsToStorage(characters);
+    }
 
 	public async isSaveDataInitialized(): Promise<boolean> {
 		const data = (await this.getFromStorage());
@@ -102,21 +106,50 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 		return this._store;
 	}
 
-	private async mergeCharToStorage(char: Character): Promise<Character> {
-		const currentChar = (await this.loadCharacters())
-			.find(v => v.char === char.char);
+	private async saveCharToStorage(char: Character): Promise<Character> {
+        const currentChars = await this.loadCharacters();
 
-		if (currentChar == null) {
-			throw new ObsidianUnicodeSearchError(`Cannot save non-existent character '${char.char}' to storage`);
-		}
+        const foundIndex = currentChars.findIndex(ch => ch.char === char.char)
+        const found = foundIndex >= 0;
 
-		Object.assign(currentChar, char);
+        const newChars = currentChars;
 
-		await this.plugin.saveData(this._store);
-		return currentChar;
+        if (found) {
+            newChars[foundIndex] = char;
+        } else {
+            newChars.push(char);
+        }
+
+        await this.saveDataToStorage({data: newChars});
+
+        // TODO: Are returns needed?
+		return char;
 	}
 
-	private async mergeCharsToStorage(chars: PartialCharacter[]): Promise<Character[]> {
+	private async putCharToStorage(char: PartialCharacter): Promise<Character> {
+		const currentChars = await this.loadCharacters();
+
+        const foundIndex = currentChars.findIndex(ch => ch.char === char.char)
+        const found = foundIndex >= 0;
+
+        const newChars = currentChars;
+
+        if (found) {
+            newChars[foundIndex] = {
+                ...newChars[foundIndex],
+                ...char,
+            } as Character;
+        } else {
+            throw new ObsidianUnicodeSearchError(`Cannot save non-existent character '${char.char}' to storage`);
+        }
+
+        await this.saveDataToStorage({data: newChars});
+
+        // TODO: Are returns needed?
+		return newChars[foundIndex];
+	}
+
+	private async putCharsToStorage(chars: PartialCharacter[]): Promise<Character[]> {
         const oldChars = new Map((await this.loadCharacters()).map(v => [v.char, v]));
         const newChars = new Map(chars.map(v => [v.char, v]));
 

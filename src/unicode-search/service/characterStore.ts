@@ -2,8 +2,8 @@ import {Character, PartialCharacter} from "../../libraries/types/character";
 
 export interface CharacterStore {
     loadCharacters(): Promise<Character[]>;
-	// TODO: remove partials
-    saveCharacter(data: Partial<Character>): Promise<Character>;
-	saveCharacters(data: Partial<Character[]>): Promise<Character[]>;
-	putCharacters(data: PartialCharacter[]): Promise<Character[]>;
+    saveCharacter(data: Character): Promise<void>;
+    putCharacter(data: PartialCharacter): Promise<void>;
+	saveCharacters(data: Character[]): Promise<void>;
+	putCharacters(data: PartialCharacter[]): Promise<void>;
 }
