@@ -1,10 +1,6 @@
 import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
-import {CharacterStore} from "../service/characterStore";
+import {CharacterService} from "../service/characterService";
 
-import {CharacterProvider} from "../service/characterProvider";
-import {compareNumbers} from "../../libraries/comparison/compareNumbers";
-import {inverse} from "../../libraries/order/inverse";
-import {UsageInfo} from "../../libraries/types/usageInfo";
 import * as console from "console";
 import {CharacterMatch, NONE_RESULT} from "./characterMetadata";
 import {
@@ -15,18 +11,16 @@ import {
 	NAVIGATE_INSTRUCTION
 } from "./visualElements";
 import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
-import {Character} from "../../libraries/types/character";
+import {mostRecentlyUsed} from "../../libraries/helpers/mostRecentlyUsed";
+import {averageUseCount} from "../../libraries/helpers/averageUseCount";
+import {getRandomItem} from "../../libraries/helpers/getRandomItem";
 
 export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
-	private readonly topLastUsed: number[];
-	private readonly averageUsageCount: number;
-	private readonly characters: Character[];
 
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
-		characterProvider: CharacterProvider,
-		private readonly characterStore: CharacterStore,
+		private readonly characterService: CharacterService,
 	) {
 		super(app);
 
@@ -36,20 +30,17 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			INSTRUCTION_DISMISS,
 		]);
 
-		this.characters = characterProvider.getCharacters();
-		this.topLastUsed = FuzzySearchModal.getMostRecentUsages(this.characters);
-		this.averageUsageCount = FuzzySearchModal.getAverageUseCount(this.characters);
-
-		this.setRandomPlaceholder();
+        // Purposefully ignored result
+		this.setRandomPlaceholder().then();
 	}
 
-	public override getSuggestions(query: string): CharacterMatch[] | Promise<CharacterMatch[]> {
+    public override async getSuggestions(query: string): Promise<CharacterMatch[]> {
 		const isHexSafe = query.length <= 4 && !query.contains(" ")
 
 		const codepointSearch = isHexSafe ? prepareSimpleSearch(query) : ((text: string) => null);
 		const fuzzyNameSearch = prepareFuzzySearch(query);
 
-		return this.characters
+		return (await this.characterService.getAll())
 			.map(character => ({
 				item: character,
 				match: {
@@ -70,7 +61,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			)
 	}
 
-	public override renderSuggestion(item: CharacterMatch, container: HTMLElement): void {
+	public override async renderSuggestion(item: CharacterMatch, container: HTMLElement): Promise<void> {
 		const char = item.item;
 
 		container.addClass("plugin", "unicode-search", "result-item")
@@ -103,8 +94,12 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 			cls: "detail",
 		});
 
-		const showLastUsed = char.lastUsed != null && this.topLastUsed.contains(char.lastUsed);
-		const showUseCount = char.useCount != null && char.useCount > this.averageUsageCount;
+        const usedCharacters = (await this.characterService.getUsed());
+		const mostRecentCutoff = mostRecentlyUsed(usedCharacters).last()?.lastUsed ?? 0;
+		const averageUsageCount = averageUseCount(usedCharacters);
+
+		const showLastUsed = char.lastUsed != null && char.lastUsed >= mostRecentCutoff;
+		const showUseCount = char.useCount != null && char.useCount > averageUsageCount;
 
 		const attributes = detail.createDiv({
 			cls: "attributes",
@@ -123,50 +118,16 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 		this.editor.replaceSelection(item.item.char);
 
 		// I don't want to await this, its more of a side effect
-		this.characterStore.recordUsage(item.item.char).then(undefined, (err) => console.error(err));
+		this.characterService.recordUsage(item.item.char).then(undefined, (err) => console.error(err));
 	}
 
-	public override onNoSuggestion(): void {
-		this.setRandomPlaceholder();
+	public override async onNoSuggestion(): Promise<void> {
+		await this.setRandomPlaceholder();
 	}
 
-	private setRandomPlaceholder(): void {
-		const placeholder = `Unicode search: ${this.getRandomCharacter().name}`;
+	private async setRandomPlaceholder(): Promise<void> {
+		const placeholder = `Unicode search: ${getRandomItem((await this.characterService.getAll())).name}`;
 		super.setPlaceholder(placeholder);
-	}
-
-	private getRandomCharacter(): Character {
-		const chars = this.characters;
-
-		const index: number = Math.floor(Math.random() * chars.length);
-		return chars[index];
-	}
-
-	private static getMostRecentUsages(characters: Partial<UsageInfo>[]): number[] {
-		return characters
-			.map(char => char.lastUsed)
-			.filter(timestamp => timestamp != null)
-			.map(timestamp => timestamp as number)
-			.sort((a, b) => inverse(compareNumbers(a, b)))
-			.slice(0, 3)
-			;
-	}
-
-	private static getAverageUseCount(characters: Partial<UsageInfo>[]): number {
-		const usageStats = characters
-			.map(char => char.useCount)
-			.filter(count => count != null)
-			.map(count => count as number)
-		;
-
-		const totalCount = usageStats.length;
-
-		if (totalCount == 0) {
-			return 0;
-		}
-
-		const sum = usageStats.reduce((sum, current) => sum + current, 0);
-		return sum / totalCount;
 	}
 
 }

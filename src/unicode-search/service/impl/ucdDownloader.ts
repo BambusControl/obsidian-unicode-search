@@ -12,7 +12,10 @@ type ParsedCharacter = {
 	generalCategory: string;
 };
 
-export class UnicodeCharacterDatabase implements CharacterDownloader {
+/**
+ * Unicode Character Database Downloader
+ */
+export class UCDDownloader implements CharacterDownloader {
 
 	private readonly config: ParseConfig = {
 		delimiter: ";",
@@ -22,7 +25,7 @@ export class UnicodeCharacterDatabase implements CharacterDownloader {
 		fastMode: true,
 	};
 
-    async fetchCharacters(): Promise<UnicodeCharacter[]> {
+    async download(): Promise<UnicodeCharacter[]> {
         const result = await request("https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt");
         return await this.transformToCharacters(result);
     }
@@ -40,8 +43,8 @@ export class UnicodeCharacterDatabase implements CharacterDownloader {
 						characterName: row[1],
 						generalCategory: row[2],
 					}))
-					.filter(char => UnicodeCharacterDatabase.charFilter(char))
-					.map(pch => UnicodeCharacterDatabase.intoUnicode(pch));
+					.filter(char => UCDDownloader.charFilter(char))
+					.map(pch => UCDDownloader.intoUnicode(pch));
 
 				resolve(unicodeCharacters);
 			};
@@ -57,9 +60,9 @@ export class UnicodeCharacterDatabase implements CharacterDownloader {
 	}
 
 	private static charFilter(char: ParsedCharacter): boolean {
-		return UnicodeCharacterDatabase.planeIncluded(char)
-			&& !UnicodeCharacterDatabase.categoryExcluded(char)
-			&& !UnicodeCharacterDatabase.nameIsLabelInfo(char)
+		return UCDDownloader.planeIncluded(char)
+			&& !UCDDownloader.categoryExcluded(char)
+			&& !UCDDownloader.nameIsLabelInfo(char)
 			;
 	}
 

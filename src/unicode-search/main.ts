@@ -1,11 +1,12 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {UsageTrackedStore} from "./service/impl/usageTrackedStore";
+import {UsageTrackedCharacterService} from "./service/impl/usageTrackedCharacterService";
 import {FuzzySearchModal} from "./components/fuzzySearchModal";
 import {PluginSaveDataStore} from "./service/impl/pluginSaveDataStore";
-import {SaveDataStore} from "./service/saveDataStore";
-import {UnicodeCharacterDatabase} from "./service/impl/unicodeCharacterDatabase";
+import {CharacterStore} from "./service/characterStore";
+import {UCDDownloader} from "./service/impl/ucdDownloader";
 import {SettingTab} from "./components/settingsTab"
 import {CharacterDownloader} from "./service/characterDownloader";
+import {MetadataStore} from "./service/metadataStore";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -19,10 +20,10 @@ export default class UnicodeSearchPlugin extends Plugin {
 	}
 
 	public override async onload(): Promise<void> {
-        const dataService = new PluginSaveDataStore(this);
-		const usageTrackedStorage = new UsageTrackedStore(dataService);
+        const dataStore = new PluginSaveDataStore(this);
+		const characterService = new UsageTrackedCharacterService(dataStore);
 
-		await UnicodeSearchPlugin.initializeData(dataService, new UnicodeCharacterDatabase());
+		await UnicodeSearchPlugin.initializeData(dataStore, dataStore, new UCDDownloader());
 
 		super.addCommand({
 			id: "search-unicode-chars",
@@ -32,28 +33,31 @@ export default class UnicodeSearchPlugin extends Plugin {
 				const modal = new FuzzySearchModal(
 					app,
 					editor,
-					dataService,
-					usageTrackedStorage,
+					characterService,
 				);
 				modal.open();
 				return true;
 			},
 		});
 
-        this.addSettingTab(new SettingTab(this.app, this));
+        this.addSettingTab(new SettingTab(this.app, this, characterService, dataStore));
 	}
 
-	private static async initializeData(dataService: SaveDataStore, ucdService: CharacterDownloader): Promise<void> {
-		const initialized = await dataService.isInitialized();
+	private static async initializeData(
+		saveDataStore: MetadataStore,
+		characterDataStore: CharacterStore,
+		ucdService: CharacterDownloader
+	): Promise<void> {
+		const initialized = await saveDataStore.isInitialized();
 
 		if (initialized) {
 			return;
 		}
 
-		const data = await ucdService.fetchCharacters();
+		const data = await ucdService.download();
 
-		await dataService.exportData(data);
-		await dataService.setAsInitialized();
+		await characterDataStore.saveCharacters(data);
+		await saveDataStore.setAsInitialized();
 	}
 
 }

@@ -22,9 +22,11 @@ test(
 		expect(compareUsageTrackedCharacters(
 			{
 				useCount: 1,
+                lastUsed: 0,
 			},
 			{
 				useCount: 0,
+                lastUsed: 0,
 			}
 		)).toBe(-1)
 	}

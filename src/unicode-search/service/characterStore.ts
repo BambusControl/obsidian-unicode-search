@@ -1,7 +1,9 @@
-import {CharacterKeyType, UsageTrackedCharacter} from "../../libraries/types/character";
+import {Character, PartialCharacter} from "../../libraries/types/character";
 
 export interface CharacterStore {
-	getAll(): Promise<UsageTrackedCharacter[]>;
-
-	recordUsage(id: CharacterKeyType): Promise<void>;
+    getCharacters(): Promise<Character[]>;
+    saveCharacter(data: Character): Promise<void>;
+    putCharacter(data: PartialCharacter): Promise<void>;
+	saveCharacters(data: Character[]): Promise<void>;
+	putCharacters(data: PartialCharacter[]): Promise<void>;
 }

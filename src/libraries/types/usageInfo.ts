@@ -1,4 +1,4 @@
 export interface UsageInfo {
-    lastUsed?: number;
+    lastUsed: number;
     useCount: number;
 }
