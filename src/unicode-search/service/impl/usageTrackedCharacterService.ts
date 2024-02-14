@@ -38,18 +38,12 @@ export class UsageTrackedCharacterService implements CharacterService {
             .map(char => char as UsedCharacter);
     }
 
-	public async recordUsage(key: CharacterKey): Promise<UsedCharacter> {
-		const char = await this.getOne(key);
-
-        const usedChar: UsedCharacter = {
+	public recordUsage(key: CharacterKey): Promise<UsedCharacter> {
+		return this.characterStore.updateCharacter<UsedCharacter>(key, (char) => ({
             ...char,
             useCount: (char.useCount ?? 0) + 1,
             lastUsed: (new Date()).valueOf(),
-        }
-
-        // TODO: update
-		await this.characterStore.putCharacter(usedChar);
-        return usedChar;
+        }))
 	}
 
     public async getPinned(): Promise<PinnedCharacter[]> {

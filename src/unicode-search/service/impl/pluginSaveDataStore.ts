@@ -3,7 +3,7 @@ import {CharacterStore} from "../characterStore";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 import {SaveData} from "../../../libraries/types/data/saveData";
 import {isTypeSaveData} from "../../../libraries/types/data/isTypeSaveData";
-import {Character, CharacterKey} from "../../../libraries/types/character";
+import {Character, CharacterKey, CharacterTransform} from "../../../libraries/types/character";
 import {UserOptionStore} from "../userOptionStore";
 import { UserOptions } from "src/libraries/types/userOptions";
 import {MetadataStore} from "../metadataStore";
@@ -71,7 +71,10 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
         await this.saveDataToStorage({data: newChars});
 	}
 
-    public async updateCharacter(key: CharacterKey, map: (char: Character) => Character): Promise<Character> {
+    public async updateCharacter<Out>(
+        key: CharacterKey, apply: (char: Character) => Character & Out
+    ): Promise<Character & Out> {
+
         const currentChars = await this.getCharacters();
 
         const foundIndex = currentChars.findIndex(ch => ch.char === key)
@@ -82,7 +85,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
         }
 
         const newChars = currentChars;
-        const modifiedChar = map({... currentChars[foundIndex]});
+        const modifiedChar = apply({... currentChars[foundIndex]});
 
         newChars[foundIndex] = modifiedChar;
         await this.saveDataToStorage({data: newChars});
@@ -90,11 +93,14 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
         return modifiedChar;
     }
 
-    public async updateCharacters(mapppings: Map<CharacterKey, (char: Character) => Character>): Promise<Map<CharacterKey, Character>> {
-        const currentChars = await this.getCharacters();
-        const indexMappings = new Map<number, (char: Character) => Character>()
+    public async updateCharacters<Out>(
+        keyApplyMap: Map<CharacterKey, CharacterTransform<Out>>
+    ): Promise<Map<CharacterKey, Character & Out>> {
 
-        for (const [key, mapping] of mapppings) {
+        const currentChars = await this.getCharacters();
+        const indexMappings = new Map<number, CharacterTransform<Out>>()
+
+        for (const [key, mapping] of keyApplyMap) {
             const foundIndex = currentChars.findIndex(ch => ch.char === key)
             const found = foundIndex >= 0;
 
@@ -106,10 +112,10 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
         }
 
         const newChars = currentChars;
-        const modifiedChars = new Map<CharacterKey, Character>()
+        const modifiedChars = new Map<CharacterKey, Character & Out>()
 
         for (const [index, mapping] of indexMappings) {
-            const modifiedChar = mapping({...newChars[index]});
+            const modifiedChar = mapping({...currentChars[index]});
             newChars[index] = modifiedChar;
             modifiedChars.set(modifiedChar.char, modifiedChar)
         }

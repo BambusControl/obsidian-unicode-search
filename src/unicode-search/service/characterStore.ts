@@ -1,4 +1,4 @@
-import {Character, CharacterKey} from "../../libraries/types/character";
+import {Character, CharacterKey, CharacterTransform} from "../../libraries/types/character";
 
 export interface CharacterStore {
 
@@ -30,12 +30,14 @@ export interface CharacterStore {
      * @param key of the target character
      * @param apply transformation function
      */
-    updateCharacter(key: CharacterKey, apply: (char: Character) => Character): Promise<Character>;
+    updateCharacter<Out>(key: CharacterKey, apply: CharacterTransform<Out>): Promise<Character & Out>;
 
     /**
      * Modify existing characters.
      * @param keyApplyMap transformation functions for all target characters
      */
-    updateCharacters(keyApplyMap: Map<CharacterKey, (char: Character) => Character>): Promise<Map<CharacterKey, Character>>;
+    updateCharacters<Out>(
+        keyApplyMap: Map<CharacterKey, CharacterTransform<Out>>
+    ): Promise<Map<CharacterKey, Character & Out>>;
 
 }
