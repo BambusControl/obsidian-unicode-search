@@ -56,8 +56,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 
 		const data = await ucdService.download();
 
-		await characterDataStore.saveCharacters(data);
-		await saveDataStore.setAsInitialized();
+		await characterDataStore.initializeCharacters(data);
 	}
 
 }
