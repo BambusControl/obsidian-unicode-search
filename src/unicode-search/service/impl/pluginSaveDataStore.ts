@@ -23,7 +23,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 	private _store?: SaveData;
 
 	public constructor(
-		private readonly plugin: Plugin,
+		private readonly plugin: Pick<Plugin, "saveData" | "loadData">,
 	) {
 	}
 
