@@ -3,7 +3,7 @@ import {CharacterStore} from "../characterStore";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 import {SaveData} from "../../../libraries/types/data/saveData";
 import {isTypeSaveData} from "../../../libraries/types/data/isTypeSaveData";
-import {Character, CharacterKey, PartialCharacter} from "../../../libraries/types/character";
+import {Character, CharacterKey} from "../../../libraries/types/character";
 import {UserOptionStore} from "../userOptionStore";
 import { UserOptions } from "src/libraries/types/userOptions";
 import {MetadataStore} from "../metadataStore";
@@ -25,8 +25,6 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 	public constructor(
 		private readonly plugin: Plugin,
 	) {
-		// TODO: Since fetching is managed by this component's lifecycle, it should not be in its public interface.
-		this.getCharacters().then();
 	}
 
 	public async getCharacters(): Promise<Character[]> {

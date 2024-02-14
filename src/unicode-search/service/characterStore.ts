@@ -1,4 +1,4 @@
-import {Character, CharacterKey, PartialCharacter} from "../../libraries/types/character";
+import {Character, CharacterKey} from "../../libraries/types/character";
 
 export interface CharacterStore {
 
