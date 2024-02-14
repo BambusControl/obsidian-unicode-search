@@ -3,7 +3,7 @@ import {CharacterStore} from "../characterStore";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 import {SaveData} from "../../../libraries/types/data/saveData";
 import {isTypeSaveData} from "../../../libraries/types/data/isTypeSaveData";
-import {Character, PartialCharacter} from "../../../libraries/types/character";
+import {Character, CharacterKey, PartialCharacter} from "../../../libraries/types/character";
 import {UserOptionStore} from "../userOptionStore";
 import { UserOptions } from "src/libraries/types/userOptions";
 import {MetadataStore} from "../metadataStore";
@@ -70,6 +70,25 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
         await this.saveDataToStorage({data: newChars});
 	}
 
+    public async modifyCharacter(key: CharacterKey, map: (char: Character) => Character): Promise<Character> {
+        const currentChars = await this.getCharacters();
+
+        const foundIndex = currentChars.findIndex(ch => ch.char === key)
+        const found = foundIndex >= 0;
+
+        if (!found) {
+            throw new ObsidianUnicodeSearchError(`Cannot update non-existent character '${key}' to storage`);
+        }
+
+        const newChars = currentChars;
+        const modifiedChar = map({... currentChars[foundIndex]});
+
+        newChars[foundIndex] = modifiedChar;
+        await this.saveDataToStorage({data: newChars});
+
+        return modifiedChar;
+    }
+
 	public async saveCharacters(data: Character[]): Promise<void> {
         await this.saveDataToStorage({
             data: data,
@@ -102,6 +121,35 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
         const mergedCharacters = Array.from(oldChars.values());
 
         await this.saveDataToStorage({data: mergedCharacters});
+    }
+
+    public async modifyCharacters(mapppings: Map<CharacterKey, (char: Character) => Character>): Promise<Map<CharacterKey, Character>> {
+        const currentChars = await this.getCharacters();
+        const indexMappings = new Map<number, (char: Character) => Character>()
+
+        for (const [key, mapping] of mapppings) {
+            const foundIndex = currentChars.findIndex(ch => ch.char === key)
+            const found = foundIndex >= 0;
+
+            if (!found) {
+                throw new ObsidianUnicodeSearchError(`Cannot update non-existent character '${key}' to storage`);
+            }
+
+            indexMappings.set(foundIndex, mapping);
+        }
+
+        const newChars = currentChars;
+        const modifiedChars = new Map<CharacterKey, Character>()
+
+        for (const [index, mapping] of indexMappings) {
+            const modifiedChar = mapping({...newChars[index]});
+            newChars[index] = modifiedChar;
+            modifiedChars.set(modifiedChar.char, modifiedChar)
+        }
+
+        await this.saveDataToStorage({data: newChars});
+
+        return modifiedChars;
     }
 
 	public async isInitialized(): Promise<boolean> {

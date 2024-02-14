@@ -58,43 +58,35 @@ export class UsageTrackedCharacterService implements CharacterService {
     }
 
     public async pin(key: CharacterKey): Promise<PinnedCharacter> {
-		const char = await this.getOne(key);
-
-        if (char.pin != null) {
-			throw new ObsidianUnicodeSearchError(`Character '${key}' is already pinned.`);
-        }
-
-        const pinnedChar: PinnedCharacter = {
-            ...char,
-            pin: (await this.getPinned()).length + 1
-        };
-
-		await this.characterStore.putCharacter(pinnedChar);
-        return pinnedChar;
+        const pinNumber = (await this.getPinned()).length + 1;
+        const pinnedChar = await this.characterStore.modifyCharacter(key, (ch) => ({...ch, pin: pinNumber}));
+        return pinnedChar as PinnedCharacter;
     }
 
     public async unpin(key: CharacterKey): Promise<UnpinnedCharacter> {
-		const char = await this.getOne(key);
 
-        if (char.pin == null) {
-			throw new ObsidianUnicodeSearchError(`Character '${key}' is not pinned.`);
-        }
 
-        const pinnedChar = char as PinnedCharacter;
-        const {pin, ...unpinnedChar } = pinnedChar;
-
-        await this.characterStore.putCharacter(unpinnedChar);
-
-        const followingCharacters = (await this.getPinned())
-            .filter(ch => ch.pin > pinnedChar.pin)
-            .map(ch => ({
-                ...ch,
-                pin: ch.pin - 1
-            }));
-
-        await this.characterStore.putCharacters(followingCharacters);
-
-        return unpinnedChar;
+		// const char = await this.getOne(key);
+        //
+        // if (char.pin == null) {
+		// 	throw new ObsidianUnicodeSearchError(`Character '${key}' is not pinned.`);
+        // }
+        //
+        // const pinnedChar = char as PinnedCharacter;
+        // const {pin, ...unpinnedChar } = pinnedChar;
+        //
+        // await this.characterStore.putCharacter(unpinnedChar);
+        //
+        // const followingCharacters = (await this.getPinned())
+        //     .filter(ch => ch.pin > pinnedChar.pin)
+        //     .map(ch => ({
+        //         ...ch,
+        //         pin: ch.pin - 1
+        //     }));
+        //
+        // await this.characterStore.putCharacters(followingCharacters);
+        //
+        // return unpinnedChar;
     }
 }
 
