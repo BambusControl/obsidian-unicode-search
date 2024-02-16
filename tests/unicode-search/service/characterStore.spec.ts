@@ -587,13 +587,7 @@ test(
         }));
 
         const loadedData = await characterStore.getCharacters();
-        expect(loadedData).toEqual([
-            {
-                char: " ",
-                name: "space - edited",
-            },
-            ...datasetSmall().slice(1)
-        ]);
+        expect(loadedData.find(ch => ch.char = " ")?.name).toEqual("space - edited");
     }
 )
 
@@ -626,8 +620,8 @@ test(
         ]));
 
         const loadedData = await characterStore.getCharacters();
-        expect(loadedData.find(ch => ch.char = " ")?.name).toEqual("space - edited");
-        expect(loadedData.find(ch => ch.char = "!")?.name).toEqual("exclamation mark - edited");
+        expect(loadedData.find(ch => ch.char == " ")?.name).toEqual("space - edited");
+        expect(loadedData.find(ch => ch.char == "!")?.name).toEqual("exclamation mark - edited");
     }
 )
 

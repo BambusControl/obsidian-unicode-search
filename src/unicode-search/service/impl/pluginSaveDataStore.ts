@@ -32,7 +32,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 	}
 
 	public async initializeCharacters(data: Character[]): Promise<void> {
-        await this.saveDataToStorage({
+        await this.mergeToStorage({
 			meta: {
 				...INITALIZATION_STORE.meta,
 				initialized: true,
@@ -55,7 +55,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
             newChars.push(char);
         }
 
-        await this.saveDataToStorage({data: newChars});
+        await this.mergeToStorage({data: newChars});
 	}
 
 	public async placeCharacters(chars: Character[]): Promise<void> {
@@ -68,7 +68,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 
         const newChars = Array.from(currentChars.values());
 
-        await this.saveDataToStorage({data: newChars});
+        await this.mergeToStorage({data: newChars});
 	}
 
     public async updateCharacter<Out>(
@@ -88,7 +88,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
         const modifiedChar = apply({... currentChars[foundIndex]});
 
         newChars[foundIndex] = modifiedChar;
-        await this.saveDataToStorage({data: newChars});
+        await this.mergeToStorage({data: newChars});
 
         return modifiedChar;
     }
@@ -120,7 +120,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
             modifiedChars.set(modifiedChar.char, modifiedChar)
         }
 
-        await this.saveDataToStorage({data: newChars});
+        await this.mergeToStorage({data: newChars});
 
         return modifiedChars;
     }
@@ -138,7 +138,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 
 			newData.meta.version = INITALIZATION_STORE.meta.version;
 
-			await this.saveDataToStorage(newData)
+			await this.mergeToStorage(newData)
 		}
 
 		return meta.initialized;
@@ -150,7 +150,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 
 	public async saveUserOptions(userOptions: UserOptions): Promise<UserOptions> {
 		return (
-			await this.saveDataToStorage({
+			await this.mergeToStorage({
 				user: userOptions,
 			})
 		).user;
@@ -164,7 +164,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 		return this._store;
 	}
 
-	private async saveDataToStorage(data: Partial<SaveData>): Promise<SaveData> {
+	private async mergeToStorage(data: Partial<SaveData>): Promise<SaveData> {
 		const currentData = await this.getFromStorage();
 
 		const newData: SaveData = {
