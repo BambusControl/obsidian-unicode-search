@@ -3,7 +3,7 @@ import {CharacterStore} from "../characterStore";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 import {SaveData} from "../../../libraries/types/data/saveData";
 import {isTypeSaveData} from "../../../libraries/types/data/isTypeSaveData";
-import {Character, PartialCharacter} from "../../../libraries/types/character";
+import {Character, CharacterKey, CharacterTransform} from "../../../libraries/types/character";
 import {UserOptionStore} from "../userOptionStore";
 import { UserOptions } from "src/libraries/types/userOptions";
 import {MetadataStore} from "../metadataStore";
@@ -23,17 +23,25 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 	private _store?: SaveData;
 
 	public constructor(
-		private readonly plugin: Plugin,
+		private readonly plugin: Pick<Plugin, "saveData" | "loadData">,
 	) {
-		// TODO: Since fetching is managed by this component's lifecycle, it should not be in its public interface.
-		this.getCharacters().then();
 	}
 
 	public async getCharacters(): Promise<Character[]> {
 		return (await this.getFromStorage()).data;
 	}
 
-	public async saveCharacter(char: Character): Promise<void> {
+	public async initializeCharacters(data: Character[]): Promise<void> {
+        await this.mergeToStorage({
+			meta: {
+				...INITALIZATION_STORE.meta,
+				initialized: true,
+			},
+            data: data,
+        })
+	}
+
+	public async placeCharacter(char: Character): Promise<void> {
 		const currentChars = await this.getCharacters();
 
         const foundIndex = currentChars.findIndex(ch => ch.char === char.char)
@@ -47,61 +55,74 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
             newChars.push(char);
         }
 
-        await this.saveDataToStorage({data: newChars});
+        await this.mergeToStorage({data: newChars});
 	}
 
-	public async putCharacter(char: PartialCharacter): Promise<void> {
-		const currentChars = await this.getCharacters();
+	public async placeCharacters(chars: Character[]): Promise<void> {
+        const currentChars = new Map((await this.getCharacters()).map(v => [v.char, v]));
+        const changedChars = new Map(chars.map(v => [v.char, v]));
 
-        const foundIndex = currentChars.findIndex(ch => ch.char === char.char)
+        for (const [key, char] of changedChars.entries()) {
+            currentChars.set(key, char);
+        }
+
+        const newChars = Array.from(currentChars.values());
+
+        await this.mergeToStorage({data: newChars});
+	}
+
+    public async updateCharacter<Out>(
+        key: CharacterKey, apply: (char: Character) => Character & Out
+    ): Promise<Character & Out> {
+
+        const currentChars = await this.getCharacters();
+
+        const foundIndex = currentChars.findIndex(ch => ch.char === key)
         const found = foundIndex >= 0;
 
+        if (!found) {
+            throw new ObsidianUnicodeSearchError(`Cannot update non-existent character '${key}' to storage`);
+        }
+
         const newChars = currentChars;
+        const modifiedChar = apply({... currentChars[foundIndex]});
 
-        if (found) {
-            newChars[foundIndex] = {
-                ...newChars[foundIndex],
-                ...char,
-            } as Character;
-        } else {
-            throw new ObsidianUnicodeSearchError(`Cannot save non-existent character '${char.char}' to storage`);
+        newChars[foundIndex] = modifiedChar;
+        await this.mergeToStorage({data: newChars});
+
+        return modifiedChar;
+    }
+
+    public async updateCharacters<Out>(
+        keyApplyMap: Map<CharacterKey, CharacterTransform<Out>>
+    ): Promise<Map<CharacterKey, Character & Out>> {
+
+        const currentChars = await this.getCharacters();
+        const indexMappings = new Map<number, CharacterTransform<Out>>()
+
+        for (const [key, mapping] of keyApplyMap) {
+            const foundIndex = currentChars.findIndex(ch => ch.char === key)
+            const found = foundIndex >= 0;
+
+            if (!found) {
+                throw new ObsidianUnicodeSearchError(`Cannot update non-existent character '${key}' to storage`);
+            }
+
+            indexMappings.set(foundIndex, mapping);
         }
 
-        await this.saveDataToStorage({data: newChars});
-	}
+        const newChars = currentChars;
+        const modifiedChars = new Map<CharacterKey, Character & Out>()
 
-	public async saveCharacters(data: Character[]): Promise<void> {
-        await this.saveDataToStorage({
-            data: data,
-        })
-	}
-
-    public async putCharacters(chars: PartialCharacter[]): Promise<void> {
-        const oldChars = new Map((await this.getCharacters()).map(v => [v.char, v]));
-        const newChars = new Map(chars.map(v => [v.char, v]));
-
-        const oldKeys = Array.from(oldChars.keys());
-        const newKeys = Array.from(newChars.keys());
-
-        const missingKeys = newKeys.filter(newKey => !oldKeys.contains(newKey));
-
-        if (missingKeys.length > 0) {
-			throw new ObsidianUnicodeSearchError(`Cannot save non-existent characters '${missingKeys}' to storage`);
-		}
-
-        for (const [newKey, newChar] of newChars.entries()) {
-
-            const mergedChar = {
-                ...oldChars.get(newKey)!,
-                ...newChar,
-            } as Character;
-
-            oldChars.set(newKey, mergedChar);
+        for (const [index, mapping] of indexMappings) {
+            const modifiedChar = mapping({...currentChars[index]});
+            newChars[index] = modifiedChar;
+            modifiedChars.set(modifiedChar.char, modifiedChar)
         }
 
-        const mergedCharacters = Array.from(oldChars.values());
+        await this.mergeToStorage({data: newChars});
 
-        await this.saveDataToStorage({data: mergedCharacters});
+        return modifiedChars;
     }
 
 	public async isInitialized(): Promise<boolean> {
@@ -117,22 +138,22 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 
 			newData.meta.version = INITALIZATION_STORE.meta.version;
 
-			await this.saveDataToStorage(newData)
+			await this.mergeToStorage(newData)
 		}
 
 		return meta.initialized;
 	}
 
-	public async setAsInitialized(): Promise<void> {
-		const data = await this.getFromStorage();
+	public async getUserOptions(): Promise<UserOptions> {
+		return (await this.getFromStorage()).user;
+    }
 
-		await this.saveDataToStorage({
-			meta: {
-				...data.meta,
-				...INITALIZATION_STORE.meta,
-				initialized: true,
-			},
-		});
+	public async saveUserOptions(userOptions: UserOptions): Promise<UserOptions> {
+		return (
+			await this.mergeToStorage({
+				user: userOptions,
+			})
+		).user;
 	}
 
 	private async getFromStorage(): Promise<SaveData> {
@@ -143,7 +164,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 		return this._store;
 	}
 
-	private async saveDataToStorage(data: Partial<SaveData>): Promise<SaveData> {
+	private async mergeToStorage(data: Partial<SaveData>): Promise<SaveData> {
 		const currentData = await this.getFromStorage();
 
 		const newData: SaveData = {
@@ -173,18 +194,6 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 		}
 
 		return newData;
-	}
-
-	public async getUserOptions(): Promise<UserOptions> {
-		return (await this.getFromStorage()).user;
-    }
-
-	public async saveUserOptions(userOptions: UserOptions): Promise<UserOptions> {
-		return (
-			await this.saveDataToStorage({
-				user: userOptions,
-			})
-		).user;
 	}
 
 }
