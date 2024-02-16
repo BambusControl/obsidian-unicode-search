@@ -7,6 +7,7 @@ import {UCDDownloader} from "./service/impl/ucdDownloader";
 import {SettingTab} from "./components/settingsTab"
 import {CharacterDownloader} from "./service/characterDownloader";
 import {MetadataStore} from "./service/metadataStore";
+import {UCDAllDownloader} from "./service/impl/ucdAllDownloader";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -23,7 +24,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         const dataStore = new PluginSaveDataStore(this);
 		const characterService = new UsageTrackedCharacterService(dataStore);
 
-		await UnicodeSearchPlugin.initializeData(dataStore, dataStore, new UCDDownloader());
+		await UnicodeSearchPlugin.initializeData(dataStore, dataStore, new UCDAllDownloader());
 
 		super.addCommand({
 			id: "search-unicode-chars",
