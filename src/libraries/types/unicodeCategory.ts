@@ -1,4 +1,4 @@
-export enum UnicodeGeneralCategory {
+export enum UnicodeCategory {
     Letter = "L",
     Mark = "M",
     Number = "N",
@@ -60,22 +60,16 @@ export enum UnicodeSubcategoryOther {
     Surrogate = "Cs",
 }
 
-type UnicodeSubcategory = UnicodeSubcategoryLetter | UnicodeSubcategoryMark | UnicodeSubcategoryNumber |
+export type UnicodeSubcategory = UnicodeSubcategoryLetter | UnicodeSubcategoryMark | UnicodeSubcategoryNumber |
     UnicodeSubcategoryPunctuation | UnicodeSubcategorySymbol | UnicodeSubcategorySeparator |
     UnicodeSubcategoryOther
 
-export function unicodeSubcategory(generalCategory: UnicodeGeneralCategory):
-     UnicodeSubcategory
-{
-    const subcategoryMapping = {
-        [UnicodeGeneralCategory.Letter]: UnicodeSubcategoryLetter,
-        [UnicodeGeneralCategory.Mark]: UnicodeSubcategoryMark,
-        [UnicodeGeneralCategory.Number]: UnicodeSubcategoryNumber,
-        [UnicodeGeneralCategory.Punctuation]: UnicodeSubcategoryPunctuation,
-        [UnicodeGeneralCategory.Symbol]: UnicodeSubcategorySymbol,
-        [UnicodeGeneralCategory.Separator]: UnicodeSubcategorySeparator,
-        [UnicodeGeneralCategory.Other]: UnicodeSubcategoryOther,
-    };
-
-    return subcategoryMapping[generalCategory];
-}
+export const UNICODE_CATEGORIES_ALL: UnicodeSubcategory[] = [
+    ...Object.values(UnicodeSubcategoryLetter),
+    ...Object.values(UnicodeSubcategoryMark),
+    ...Object.values(UnicodeSubcategoryNumber),
+    ...Object.values(UnicodeSubcategoryPunctuation),
+    ...Object.values(UnicodeSubcategorySymbol),
+    ...Object.values(UnicodeSubcategorySeparator),
+    ...Object.values(UnicodeSubcategoryOther),
+];

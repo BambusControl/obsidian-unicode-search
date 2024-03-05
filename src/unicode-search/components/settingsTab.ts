@@ -5,6 +5,8 @@ import {UserOptions} from "../../libraries/types/userOptions";
 import {mostRecentlyUsed} from "../../libraries/helpers/mostRecentlyUsed";
 import {averageUseCount} from "../../libraries/helpers/averageUseCount";
 import {Character} from "../../libraries/types/character";
+import {UnicodeSubcategory} from "../../libraries/types/unicodeCategory";
+import {CharacterFilterOptions} from "../../libraries/types/characterFilterOptions";
 
 export class SettingTab extends PluginSettingTab {
 
@@ -24,6 +26,35 @@ export class SettingTab extends PluginSettingTab {
         this.userOptions = await this.userOptionStore.getUserOptions();
         const container = this.containerEl;
 
+        await this.displayFilterSettings(
+            container.createDiv({cls: "filter-settings"})
+        );
+
+        await this.displayPinSettings(
+            container.createDiv({cls: "pin-settings"})
+        );
+
+
+    }
+
+    private async displayFilterSettings(container: HTMLElement) {
+        container.createEl(
+            "h2",
+            {
+                text: "Character Filter",
+            },
+        )
+
+        container.createEl(
+            "p",
+            {
+                text: "Here you can filter the characters that are downloaded and shown in the search prompt."
+            }
+        )
+
+    }
+
+    private async displayPinSettings(container: HTMLElement) {
         container.createEl(
             "h2",
             {
@@ -45,7 +76,7 @@ export class SettingTab extends PluginSettingTab {
 
         recentsContainer
             .createEl("p")
-            .createEl("strong", { text: "Recently Used" });
+            .createEl("strong", {text: "Recently Used"});
 
         const usedCharacters = await this.characterService.getUsed();
         const recentlyUsed = mostRecentlyUsed(usedCharacters);
@@ -58,7 +89,7 @@ export class SettingTab extends PluginSettingTab {
 
         oftensContainer
             .createEl("p")
-            .createEl("strong", { text: "Most Often Used" });
+            .createEl("strong", {text: "Most Often Used"});
 
         const avgUseCount = averageUseCount(usedCharacters)
         const oftenUsed = usedCharacters.filter(char => char.useCount > avgUseCount)
@@ -89,6 +120,22 @@ export class SettingTab extends PluginSettingTab {
                    await (value ? this.characterService.pin : this.characterService.unpin).call(this.characterService, character.char)
                )
             )
+    }
+
+    private static addCharacterFilterToggle(container: HTMLElement, userOptionsStore: UserOptionStore, subcategory: UnicodeSubcategory) {
+        // userOptionsStore.getCharacterSubcategory()
+
+        new Setting(container)
+            .setName(subcategory)
+            /*.addToggle(input => input
+               .setValue(character.pin != null)
+               // Weird `this` referencing
+               // Here you have to define the `this` argument, otherwise it will call `pin` or `unpin` on `undefined`.
+               // .onChange(value => (value ? this.characterService.pin : this.characterService.unpin)(char))
+               .onChange(async (value) =>
+                   userOptionsStore.setCharacterSubcategory(subcategory)
+               )
+            )*/
     }
 
 }
