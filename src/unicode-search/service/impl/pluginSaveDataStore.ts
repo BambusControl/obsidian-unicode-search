@@ -3,11 +3,10 @@ import {CharacterStore} from "../characterStore";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 import {SaveData} from "../../../libraries/types/data/saveData";
 import {isTypeSaveData} from "../../../libraries/types/data/isTypeSaveData";
-import {Character, PartialCharacter, CharacterKey, CharacterTransform} from "../../../libraries/types/character";
+import {Character, CharacterKey, CharacterTransform} from "../../../libraries/types/character";
 import {UserOptionStore} from "../userOptionStore";
 import {UserOptions} from "src/libraries/types/userOptions";
 import {MetadataStore} from "../metadataStore";
-import {CharacterFilterOptions} from "../../../libraries/types/characterFilterOptions";
 import {UNICODE_CATEGORIES_ALL, UnicodeSubcategory} from "../../../libraries/types/unicodeCategory";
 
 const INITALIZATION_STORE: SaveData = {
@@ -161,14 +160,32 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
         ).user;
     }
 
-    public async saveCharacterFilterOptions(filterOptions: CharacterFilterOptions): Promise<CharacterFilterOptions> {
-        /* TODO */
-        throw new Error("Method not implemented.");
+    public async getCharacterSubcategory(category: UnicodeSubcategory): Promise<boolean> {
+        const data = new Set((await this.getFromStorage()).user.characterFilter.unicodeSubcategories);
+        return data.has(category);
     }
 
-    public async setCharacterSubcategory(category: UnicodeSubcategory, set: boolean): Promise<CharacterFilterOptions> {
-        /* TODO */
-        throw new Error("Method not implemented.");
+    public async setCharacterSubcategory(category: UnicodeSubcategory, set: boolean): Promise<void> {
+        console.log("setCharacterSubcategory", category, set);
+        const datas = await this.getFromStorage();
+        const data = new Set(datas.user.characterFilter.unicodeSubcategories);
+
+        console.log({data})
+        if (set) {
+            data.add(category);
+        } else {
+            data.delete(category);
+        }
+        console.log({data})
+
+        /* Doesn't save the state correctly */
+        await this.saveUserOptions({
+            ...datas.user,
+            characterFilter: {
+                ...datas.user.characterFilter,
+                unicodeSubcategories: Array.from(data),
+            }
+        })
     }
 
     private async getFromStorage(): Promise<SaveData> {

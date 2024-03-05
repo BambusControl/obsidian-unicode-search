@@ -8,6 +8,6 @@ import {UnicodeSubcategory} from "../../libraries/types/unicodeCategory";
 export interface UserOptionStore {
     getUserOptions(): Promise<UserOptions>
     saveUserOptions(userOptions: UserOptions): Promise<UserOptions>
-    saveCharacterFilterOptions(filterOptions: CharacterFilterOptions): Promise<CharacterFilterOptions>
-    setCharacterSubcategory(category: UnicodeSubcategory, set: boolean): Promise<CharacterFilterOptions>
+    getCharacterSubcategory(category: UnicodeSubcategory): Promise<boolean>
+    setCharacterSubcategory(category: UnicodeSubcategory, set: boolean): Promise<void>
 }

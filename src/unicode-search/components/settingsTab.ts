@@ -5,8 +5,11 @@ import {UserOptions} from "../../libraries/types/userOptions";
 import {mostRecentlyUsed} from "../../libraries/helpers/mostRecentlyUsed";
 import {averageUseCount} from "../../libraries/helpers/averageUseCount";
 import {Character} from "../../libraries/types/character";
-import {UnicodeSubcategory} from "../../libraries/types/unicodeCategory";
-import {CharacterFilterOptions} from "../../libraries/types/characterFilterOptions";
+import {
+    UNICODE_CATEGORIES_ALL,
+    UnicodeSubcategory,
+    UnicodeSubcategoryLetter
+} from "../../libraries/types/unicodeCategory";
 
 export class SettingTab extends PluginSettingTab {
 
@@ -33,8 +36,6 @@ export class SettingTab extends PluginSettingTab {
         await this.displayPinSettings(
             container.createDiv({cls: "pin-settings"})
         );
-
-
     }
 
     private async displayFilterSettings(container: HTMLElement) {
@@ -52,6 +53,9 @@ export class SettingTab extends PluginSettingTab {
             }
         )
 
+        for (const category of UNICODE_CATEGORIES_ALL) {
+            await SettingTab.addCharacterFilterToggle(container, this.userOptionStore, category);
+        }
     }
 
     private async displayPinSettings(container: HTMLElement) {
@@ -119,23 +123,22 @@ export class SettingTab extends PluginSettingTab {
                .onChange(async (value) =>
                    await (value ? this.characterService.pin : this.characterService.unpin).call(this.characterService, character.char)
                )
-            )
+            );
     }
 
-    private static addCharacterFilterToggle(container: HTMLElement, userOptionsStore: UserOptionStore, subcategory: UnicodeSubcategory) {
-        // userOptionsStore.getCharacterSubcategory()
+    private static async addCharacterFilterToggle(
+        container: HTMLElement,
+        userOptionsStore: UserOptionStore,
+        subcategory: UnicodeSubcategory
+    ) {
+        const curv = await userOptionsStore.getCharacterSubcategory(subcategory)
 
         new Setting(container)
             .setName(subcategory)
-            /*.addToggle(input => input
-               .setValue(character.pin != null)
-               // Weird `this` referencing
-               // Here you have to define the `this` argument, otherwise it will call `pin` or `unpin` on `undefined`.
-               // .onChange(value => (value ? this.characterService.pin : this.characterService.unpin)(char))
-               .onChange(async (value) =>
-                   userOptionsStore.setCharacterSubcategory(subcategory)
-               )
-            )*/
+            .addToggle(input => input
+               .setValue(curv)
+               .onChange((value) => userOptionsStore.setCharacterSubcategory(subcategory, value))
+            );
     }
 
 }
