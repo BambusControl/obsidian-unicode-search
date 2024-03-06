@@ -8,6 +8,7 @@ import {UserOptionStore} from "../userOptionStore";
 import {UserOptions} from "src/libraries/types/userOptions";
 import {MetadataStore} from "../metadataStore";
 import {UNICODE_CATEGORIES_ALL, UnicodeSubcategory} from "../../../libraries/types/unicodeCategory";
+import {Metadata} from "../../../libraries/types/data/metadata";
 
 const INITALIZATION_STORE: SaveData = {
     meta: {
@@ -177,6 +178,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 
         /* Doesn't save the state correctly */
 
+        /* TODO: refactor these */
         await this.saveUserOptions({
             ...userdata,
             characterFilter: {
@@ -184,6 +186,24 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
                 unicodeSubcategories: Array.from(subcategories),
             }
         })
+        await this._setInitialized(false);
+    }
+
+    private async _setInitialized(initialized: boolean): Promise<void> {
+        await this._mergeMetadata({
+            initialized: initialized,
+        });
+    }
+
+    private async _mergeMetadata(data: Partial<Metadata>): Promise<Metadata> {
+        const currentData = await this._getFromStorage();
+
+        return (await this._mergeToStorage({
+            meta: {
+                ...currentData.meta,
+                ...data,
+            }
+        })).meta;
     }
 
     private async _getFromStorage(): Promise<SaveData> {
