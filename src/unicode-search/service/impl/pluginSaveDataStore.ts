@@ -32,11 +32,11 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
     }
 
     public async getCharacters(): Promise<Character[]> {
-        return (await this.getFromStorage()).data;
+        return (await this._getFromStorage()).data;
     }
 
     public async initializeCharacters(data: Character[]): Promise<void> {
-        await this.mergeToStorage({
+        await this._mergeToStorage({
             meta: {
                 ...INITALIZATION_STORE.meta,
                 initialized: true,
@@ -59,7 +59,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
             newChars.push(char);
         }
 
-        await this.mergeToStorage({data: newChars});
+        await this._mergeToStorage({data: newChars});
     }
 
     public async placeCharacters(chars: Character[]): Promise<void> {
@@ -72,7 +72,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 
         const newChars = Array.from(currentChars.values());
 
-        await this.mergeToStorage({data: newChars});
+        await this._mergeToStorage({data: newChars});
     }
 
     public async updateCharacter<Out>(
@@ -92,7 +92,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
         const modifiedChar = apply({...currentChars[foundIndex]});
 
         newChars[foundIndex] = modifiedChar;
-        await this.mergeToStorage({data: newChars});
+        await this._mergeToStorage({data: newChars});
 
         return modifiedChar;
     }
@@ -124,13 +124,13 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
             modifiedChars.set(modifiedChar.char, modifiedChar)
         }
 
-        await this.mergeToStorage({data: newChars});
+        await this._mergeToStorage({data: newChars});
 
         return modifiedChars;
     }
 
     public async isInitialized(): Promise<boolean> {
-        const data = (await this.getFromStorage());
+        const data = (await this._getFromStorage());
         const meta = data.meta;
 
         // TODO: move data migration logic
@@ -142,53 +142,51 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
 
             newData.meta.version = INITALIZATION_STORE.meta.version;
 
-            await this.mergeToStorage(newData)
+            await this._mergeToStorage(newData)
         }
 
         return meta.initialized;
     }
 
     public async getUserOptions(): Promise<UserOptions> {
-        return (await this.getFromStorage()).user;
+        return (await this._getFromStorage()).user;
     }
 
     public async saveUserOptions(userOptions: UserOptions): Promise<UserOptions> {
         return (
-            await this.mergeToStorage({
+            await this._mergeToStorage({
                 user: userOptions,
             })
         ).user;
     }
 
     public async getCharacterSubcategory(category: UnicodeSubcategory): Promise<boolean> {
-        const data = new Set((await this.getFromStorage()).user.characterFilter.unicodeSubcategories);
+        const data = new Set((await this._getFromStorage()).user.characterFilter.unicodeSubcategories);
         return data.has(category);
     }
 
     public async setCharacterSubcategory(category: UnicodeSubcategory, set: boolean): Promise<void> {
-        console.log("setCharacterSubcategory", category, set);
-        const datas = await this.getFromStorage();
-        const data = new Set(datas.user.characterFilter.unicodeSubcategories);
+        const userdata = (await this._getFromStorage()).user;
+        const subcategories = new Set(userdata.characterFilter.unicodeSubcategories);
 
-        console.log({data})
         if (set) {
-            data.add(category);
+            subcategories.add(category);
         } else {
-            data.delete(category);
+            subcategories.delete(category);
         }
-        console.log({data})
 
         /* Doesn't save the state correctly */
+
         await this.saveUserOptions({
-            ...datas.user,
+            ...userdata,
             characterFilter: {
-                ...datas.user.characterFilter,
-                unicodeSubcategories: Array.from(data),
+                ...userdata.characterFilter,
+                unicodeSubcategories: Array.from(subcategories),
             }
         })
     }
 
-    private async getFromStorage(): Promise<SaveData> {
+    private async _getFromStorage(): Promise<SaveData> {
         if (this._store == null) {
             this._store = await this._loadTheData();
         }
@@ -196,8 +194,8 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
         return this._store;
     }
 
-    private async mergeToStorage(data: Partial<SaveData>): Promise<SaveData> {
-        const currentData = await this.getFromStorage();
+    private async _mergeToStorage(data: Partial<SaveData>): Promise<SaveData> {
+        const currentData = await this._getFromStorage();
 
         const newData: SaveData = {
             ...currentData,

@@ -13,8 +13,6 @@ import {
 
 export class SettingTab extends PluginSettingTab {
 
-    private userOptions: UserOptions | null = null
-
     constructor(
         app: App,
         plugin: Plugin,
@@ -26,7 +24,6 @@ export class SettingTab extends PluginSettingTab {
     }
 
     public override async display(): Promise<void> {
-        this.userOptions = await this.userOptionStore.getUserOptions();
         const container = this.containerEl;
 
         await this.displayFilterSettings(
@@ -101,15 +98,6 @@ export class SettingTab extends PluginSettingTab {
         for (const character of oftenUsed) {
             this.addPinCharacterToggle(oftensContainer, character);
         }
-    }
-
-    public override async hide(): Promise<void> {
-        if (this.userOptions == null) {
-            return;
-        }
-
-        await this.userOptionStore.saveUserOptions(this.userOptions);
-        this.containerEl.empty();
     }
 
     private addPinCharacterToggle(container: HTMLElement, character: Character) {
