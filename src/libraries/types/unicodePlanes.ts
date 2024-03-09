@@ -1,10 +1,8 @@
 import {UnicodePlane} from "./unicodePlane";
-import {UnicodePlaneNumber} from "./unicodePlaneNumber";
 
-export type UnicodePlanes = { [planeNumber in UnicodePlaneNumber]: UnicodePlane }
-
-export const UNICODE_PLANES: UnicodePlanes = {
-    0: {
+export const UNICODE_PLANES_ALL: UnicodePlane[] = [
+    {
+        planeNumber: 0,
         description: "Basic Multilingual Plane",
         range: {
             start: 0x0000,
@@ -1160,7 +1158,8 @@ export const UNICODE_PLANES: UnicodePlanes = {
                 description: "Specials",
             }]
     },
-    1: {
+    {
+        planeNumber: 1,
         description: "Supplementary Multilingual Plane",
         range: {
             start: 0x10000,
@@ -2227,7 +2226,8 @@ export const UNICODE_PLANES: UnicodePlanes = {
         ]
     },
 
-    2: {
+    {
+        planeNumber: 2,
         description: "Supplementary Ideographic Plane",
         range: {
             start: 0x20000,
@@ -2286,7 +2286,8 @@ export const UNICODE_PLANES: UnicodePlanes = {
             },
         ]
     },
-    3: {
+    {
+        planeNumber: 3,
         description: "Tertiary Ideographic Plane",
         range: {
             start: 0x30000,
@@ -2311,7 +2312,8 @@ export const UNICODE_PLANES: UnicodePlanes = {
         ]
     },
     /* Planes 4-13 are unassigned */
-    14: {
+    {
+        planeNumber: 14,
         description: "Supplementary Special-purpose Plane",
         range: {
             start: 0xE0000,
@@ -2335,7 +2337,8 @@ export const UNICODE_PLANES: UnicodePlanes = {
             },
         ]
     },
-    15: {
+    {
+        planeNumber: 15,
         description: "Supplementary Private Use Area-A",
         range: {
             start: 0xF0000,
@@ -2351,7 +2354,8 @@ export const UNICODE_PLANES: UnicodePlanes = {
             },
         ]
     },
-    16: {
+    {
+        planeNumber: 16,
         description: "Supplementary Private Use Area-B",
         range: {
             start: 0x100000,
@@ -2367,4 +2371,4 @@ export const UNICODE_PLANES: UnicodePlanes = {
             },
         ]
     },
-}
+]

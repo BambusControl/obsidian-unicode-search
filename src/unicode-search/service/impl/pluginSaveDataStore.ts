@@ -9,6 +9,7 @@ import {UserOptions} from "src/libraries/types/userOptions";
 import {MetadataStore} from "../metadataStore";
 import {UNICODE_CATEGORIES_ALL, UnicodeSubcategory} from "../../../libraries/types/unicodeCategory";
 import {Metadata} from "../../../libraries/types/data/metadata";
+import {UnicodePlaneNumber} from "../../../libraries/types/unicodePlaneNumber";
 
 const INITALIZATION_STORE: SaveData = {
     meta: {
@@ -18,6 +19,7 @@ const INITALIZATION_STORE: SaveData = {
     user: {
         characterFilter: {
             unicodeSubcategories: UNICODE_CATEGORIES_ALL,
+            unicodePlanes: [ 0, 1 ],
         }
     },
     data: [],
@@ -186,6 +188,36 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
                 unicodeSubcategories: Array.from(subcategories),
             }
         })
+        await this._setInitialized(false);
+    }
+
+
+    public async getCharacterPlane(planeNumber: UnicodePlaneNumber): Promise<boolean> {
+        const data = new Set((await this._getFromStorage()).user.characterFilter.unicodePlanes);
+        return data.has(planeNumber);
+    }
+
+    public async setCharacterPlane(planeNumber: UnicodePlaneNumber, set: boolean): Promise<void> {
+        const userdata = (await this._getFromStorage()).user;
+        const planes = new Set(userdata.characterFilter.unicodePlanes);
+
+        if (set) {
+            planes.add(planeNumber);
+        } else {
+            planes.delete(planeNumber);
+        }
+
+        /* Doesn't save the state correctly */
+
+        /* TODO: refactor these */
+        await this.saveUserOptions({
+            ...userdata,
+            characterFilter: {
+                ...userdata.characterFilter,
+                unicodePlanes: Array.from(planes),
+            }
+        })
+
         await this._setInitialized(false);
     }
 

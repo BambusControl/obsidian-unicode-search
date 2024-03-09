@@ -10,6 +10,9 @@ import {
     UnicodeSubcategory,
     UnicodeSubcategoryLetter
 } from "../../libraries/types/unicodeCategory";
+import {UNICODE_PLANES_ALL} from "../../libraries/types/unicodePlanes";
+import {UnicodePlane} from "../../libraries/types/unicodePlane";
+import {UnicodePlaneNumber} from "../../libraries/types/unicodePlaneNumber";
 
 export class SettingTab extends PluginSettingTab {
 
@@ -50,9 +53,16 @@ export class SettingTab extends PluginSettingTab {
             }
         )
 
-        for (const category of UNICODE_CATEGORIES_ALL) {
-            await SettingTab.addCharacterFilterToggle(container, this.userOptionStore, category);
+        for (const plane of UNICODE_PLANES_ALL) {
+            await SettingTab.addCharacterPlaneFilterToggle(container, this.userOptionStore, plane.planeNumber);
+            // for (const block in plane.blocks) {
+            //
+            // }
         }
+
+        // for (const category of UNICODE_CATEGORIES_ALL) {
+        //     await SettingTab.addCharacterSubcategoryFilterToggle(container, this.userOptionStore, category);
+        // }
     }
 
     private async displayPinSettings(container: HTMLElement) {
@@ -114,18 +124,33 @@ export class SettingTab extends PluginSettingTab {
             );
     }
 
-    private static async addCharacterFilterToggle(
+    private static async addCharacterSubcategoryFilterToggle(
         container: HTMLElement,
         userOptionsStore: UserOptionStore,
         subcategory: UnicodeSubcategory
     ) {
-        const curv = await userOptionsStore.getCharacterSubcategory(subcategory)
+        const categoryIncluded = await userOptionsStore.getCharacterSubcategory(subcategory)
 
         new Setting(container)
             .setName(subcategory)
             .addToggle(input => input
-               .setValue(curv)
+               .setValue(categoryIncluded)
                .onChange((value) => userOptionsStore.setCharacterSubcategory(subcategory, value))
+            );
+    }
+
+    private static async addCharacterPlaneFilterToggle(
+        container: HTMLElement,
+        userOptionsStore: UserOptionStore,
+        planeNumber: UnicodePlaneNumber
+    ) {
+        const planeIncluded = await userOptionsStore.getCharacterPlane(planeNumber)
+
+        new Setting(container)
+            .setName(planeNumber.toString())
+            .addToggle(input => input
+               .setValue(planeIncluded)
+               .onChange((value) => userOptionsStore.setCharacterPlane(planeNumber, value))
             );
     }
 
