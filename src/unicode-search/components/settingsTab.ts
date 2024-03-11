@@ -6,13 +6,13 @@ import {mostRecentlyUsed} from "../../libraries/helpers/mostRecentlyUsed";
 import {averageUseCount} from "../../libraries/helpers/averageUseCount";
 import {Character} from "../../libraries/types/character";
 import {
-    UNICODE_CATEGORIES_ALL,
-    UnicodeSubcategory,
-    UnicodeSubcategoryLetter
-} from "../../libraries/types/unicodeCategory";
-import {UNICODE_PLANES_ALL} from "../../libraries/types/unicodePlanes";
+    CharacterCategory,
+    CharacterCategoryLetter
+} from "../../libraries/data/characterCategory";
+import {UNICODE_PLANES_ALL} from "../../libraries/data/unicodePlanes";
 import {UnicodePlane} from "../../libraries/types/unicodePlane";
-import {UnicodePlaneNumber} from "../../libraries/types/unicodePlaneNumber";
+import {UnicodePlaneNumber} from "../../libraries/data/unicodePlaneNumber";
+import {UNICODE_CATEGORIES_ALL} from "../../libraries/data/unicodeCategories";
 
 export class SettingTab extends PluginSettingTab {
 
@@ -127,7 +127,7 @@ export class SettingTab extends PluginSettingTab {
     private static async addCharacterSubcategoryFilterToggle(
         container: HTMLElement,
         userOptionsStore: UserOptionStore,
-        subcategory: UnicodeSubcategory
+        subcategory: CharacterCategory
     ) {
         const categoryIncluded = await userOptionsStore.getCharacterSubcategory(subcategory)
 

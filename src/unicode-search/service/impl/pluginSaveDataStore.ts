@@ -2,14 +2,15 @@ import {Plugin} from "obsidian";
 import {CharacterStore} from "../characterStore";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 import {SaveData} from "../../../libraries/types/data/saveData";
-import {isTypeSaveData} from "../../../libraries/types/data/isTypeSaveData";
+import {isTypeSaveData} from "../../../libraries/helpers/isTypeSaveData";
 import {Character, CharacterKey, CharacterTransform} from "../../../libraries/types/character";
 import {UserOptionStore} from "../userOptionStore";
 import {UserOptions} from "src/libraries/types/userOptions";
 import {MetadataStore} from "../metadataStore";
-import {UNICODE_CATEGORIES_ALL, UnicodeSubcategory} from "../../../libraries/types/unicodeCategory";
+import {CharacterCategory} from "../../../libraries/data/characterCategory";
 import {Metadata} from "../../../libraries/types/data/metadata";
-import {UnicodePlaneNumber} from "../../../libraries/types/unicodePlaneNumber";
+import {UnicodePlaneNumber} from "../../../libraries/data/unicodePlaneNumber";
+import {UNICODE_CATEGORIES_ALL} from "../../../libraries/data/unicodeCategories";
 
 const INITALIZATION_STORE: SaveData = {
     meta: {
@@ -20,6 +21,8 @@ const INITALIZATION_STORE: SaveData = {
         characterFilter: {
             unicodeSubcategories: UNICODE_CATEGORIES_ALL,
             unicodePlanes: [ 0, 1 ],
+            unicodeBlock: [],
+            customRange: []
         }
     },
     data: [],
@@ -163,12 +166,12 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
         ).user;
     }
 
-    public async getCharacterSubcategory(category: UnicodeSubcategory): Promise<boolean> {
+    public async getCharacterSubcategory(category: CharacterCategory): Promise<boolean> {
         const data = new Set((await this._getFromStorage()).user.characterFilter.unicodeSubcategories);
         return data.has(category);
     }
 
-    public async setCharacterSubcategory(category: UnicodeSubcategory, set: boolean): Promise<void> {
+    public async setCharacterSubcategory(category: CharacterCategory, set: boolean): Promise<void> {
         const userdata = (await this._getFromStorage()).user;
         const subcategories = new Set(userdata.characterFilter.unicodeSubcategories);
 

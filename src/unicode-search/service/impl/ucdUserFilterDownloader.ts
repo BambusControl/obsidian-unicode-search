@@ -5,7 +5,7 @@ import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchErro
 import {CharacterDownloader} from "../characterDownloader";
 import {UserOptionStore} from "../userOptionStore";
 import {UserOptions} from "../../../libraries/types/userOptions";
-import {UnicodeSubcategory} from "../../../libraries/types/unicodeCategory";
+import {CharacterCategory} from "../../../libraries/data/characterCategory";
 
 type ParsedData = Array<string>;
 
@@ -105,7 +105,7 @@ export class UCDUserFilterDownloader implements CharacterDownloader {
     private static categoryIncluded(char: ParsedCharacter, userOptions: UserOptions): boolean {
         /* TODO [characterFilter]: User filter for unicode category. */
         const categories = userOptions.characterFilter.unicodeSubcategories;
-        return categories.contains(char.generalCategory as UnicodeSubcategory);
+        return categories.contains(char.generalCategory as CharacterCategory);
     }
 
     private static nameIsNotLabelInfo(char: ParsedCharacter): boolean {

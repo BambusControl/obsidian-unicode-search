@@ -1,7 +1,7 @@
 import {UnicodeBlock} from "./unicodeBlock";
 
 import {CodePointRange} from "./codePointRange";
-import {UnicodePlaneNumber} from "./unicodePlaneNumber";
+import {UnicodePlaneNumber} from "../data/unicodePlaneNumber";
 
 export interface UnicodePlane {
     planeNumber: UnicodePlaneNumber,

@@ -1,4 +1,4 @@
-import {SaveData} from "./saveData";
+import {SaveData} from "../types/data/saveData";
 import {isTypeMetadata} from "./isTypeMetadata";
 
 export function isTypeSaveData(object: any): object is SaveData {

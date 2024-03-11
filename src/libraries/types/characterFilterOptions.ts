@@ -1,5 +1,8 @@
-import {UnicodeCategory, UnicodeSubcategory, UnicodeSubcategoryLetter} from "./unicodeCategory";
-import {UnicodePlaneNumber} from "./unicodePlaneNumber";
+import {CharacterCategory, CharacterCategoryLetter} from "../data/characterCategory";
+import {UnicodePlaneNumber} from "../data/unicodePlaneNumber";
+import {UnicodeBlock} from "./unicodeBlock";
+import {CodePointRange} from "./codePointRange";
+import {CharacterClassifier} from "../data/characterClassifier";
 
 export interface CharacterFilterOptions {
     /**
@@ -10,6 +13,8 @@ export interface CharacterFilterOptions {
     /**
      * The unicode subcategories to include in the search prompt.
      */
-    unicodeSubcategories: UnicodeSubcategory[];
-    unicodePlanes: UnicodePlaneNumber[];
+    unicodeSubcategories: Array<CharacterCategory>;
+    unicodePlanes: Array<UnicodePlaneNumber>;
+    unicodeBlock: Array<UnicodeBlock["range"]>;
+    customRange: Array<CodePointRange>;
 }
