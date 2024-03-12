@@ -3,13 +3,13 @@ import {UnicodePlane} from "../types/unicodePlane";
 export const UNICODE_PLANE_0: UnicodePlane = {
     planeNumber: 0,
     description: "Basic Multilingual Plane",
-    range: {
+    interval: {
         start: 0x0000,
         end: 0xFFFF,
     },
     blocks: [
         {
-            range: {
+            interval: {
                 start: 0x0000,
                 end: 0x007F,
             },
@@ -17,7 +17,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0080,
                 end: 0x00FF,
             },
@@ -25,7 +25,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0100,
                 end: 0x017F,
             },
@@ -33,7 +33,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0180,
                 end: 0x024F,
             },
@@ -41,7 +41,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0250,
                 end: 0x02AF,
             },
@@ -49,7 +49,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x02B0,
                 end: 0x02FF,
             },
@@ -57,7 +57,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0300,
                 end: 0x036F,
             },
@@ -65,7 +65,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0370,
                 end: 0x03FF,
             },
@@ -73,7 +73,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0400,
                 end: 0x04FF,
             },
@@ -81,7 +81,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0500,
                 end: 0x052F,
             },
@@ -89,7 +89,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0530,
                 end: 0x058F,
             },
@@ -97,7 +97,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0590,
                 end: 0x05FF,
             },
@@ -105,7 +105,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0600,
                 end: 0x06FF,
             },
@@ -113,7 +113,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0700,
                 end: 0x074F,
             },
@@ -121,7 +121,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0750,
                 end: 0x077F,
             },
@@ -129,7 +129,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0780,
                 end: 0x07BF,
             },
@@ -137,7 +137,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x07C0,
                 end: 0x07FF,
             },
@@ -145,7 +145,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0800,
                 end: 0x083F,
             },
@@ -153,7 +153,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0840,
                 end: 0x085F,
             },
@@ -161,7 +161,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0860,
                 end: 0x086F,
             },
@@ -169,7 +169,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0870,
                 end: 0x089F,
             },
@@ -177,7 +177,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x08A0,
                 end: 0x08FF,
             },
@@ -185,7 +185,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0900,
                 end: 0x097F,
             },
@@ -193,7 +193,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0980,
                 end: 0x09FF,
             },
@@ -201,7 +201,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0A00,
                 end: 0x0A7F,
             },
@@ -209,7 +209,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0A80,
                 end: 0x0AFF,
             },
@@ -217,7 +217,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0B00,
                 end: 0x0B7F,
             },
@@ -225,7 +225,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0B80,
                 end: 0x0BFF,
             },
@@ -233,7 +233,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0C00,
                 end: 0x0C7F,
             },
@@ -241,7 +241,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0C80,
                 end: 0x0CFF,
             },
@@ -249,7 +249,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0D00,
                 end: 0x0D7F,
             },
@@ -257,7 +257,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0D80,
                 end: 0x0DFF,
             },
@@ -265,7 +265,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0E00,
                 end: 0x0E7F,
             },
@@ -273,7 +273,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0E80,
                 end: 0x0EFF,
             },
@@ -281,7 +281,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x0F00,
                 end: 0x0FFF,
             },
@@ -289,7 +289,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1000,
                 end: 0x109F,
             },
@@ -297,7 +297,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x10A0,
                 end: 0x10FF,
             },
@@ -305,7 +305,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1100,
                 end: 0x11FF,
             },
@@ -313,7 +313,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1200,
                 end: 0x137F,
             },
@@ -321,7 +321,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1380,
                 end: 0x139F,
             },
@@ -329,7 +329,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x13A0,
                 end: 0x13FF,
             },
@@ -337,7 +337,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1400,
                 end: 0x167F,
             },
@@ -345,7 +345,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1680,
                 end: 0x169F,
             },
@@ -353,7 +353,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x16A0,
                 end: 0x16FF,
             },
@@ -361,7 +361,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1700,
                 end: 0x171F,
             },
@@ -369,7 +369,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1720,
                 end: 0x173F,
             },
@@ -377,7 +377,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1740,
                 end: 0x175F,
             },
@@ -385,7 +385,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1760,
                 end: 0x177F,
             },
@@ -393,7 +393,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1780,
                 end: 0x17FF,
             },
@@ -401,7 +401,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1800,
                 end: 0x18AF,
             },
@@ -409,7 +409,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x18B0,
                 end: 0x18FF,
             },
@@ -417,7 +417,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1900,
                 end: 0x194F,
             },
@@ -425,7 +425,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1950,
                 end: 0x197F,
             },
@@ -433,7 +433,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1980,
                 end: 0x19DF,
             },
@@ -441,7 +441,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x19E0,
                 end: 0x19FF,
             },
@@ -449,7 +449,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1A00,
                 end: 0x1A1F,
             },
@@ -457,7 +457,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1A20,
                 end: 0x1AAF,
             },
@@ -465,7 +465,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1AB0,
                 end: 0x1AFF,
             },
@@ -473,7 +473,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1B00,
                 end: 0x1B7F,
             },
@@ -481,7 +481,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1B80,
                 end: 0x1BBF,
             },
@@ -489,7 +489,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1BC0,
                 end: 0x1BFF,
             },
@@ -497,7 +497,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1C00,
                 end: 0x1C4F,
             },
@@ -505,7 +505,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1C50,
                 end: 0x1C7F,
             },
@@ -513,7 +513,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1C80,
                 end: 0x1C8F,
             },
@@ -521,7 +521,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1C90,
                 end: 0x1CBF,
             },
@@ -529,7 +529,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1CC0,
                 end: 0x1CCF,
             },
@@ -537,7 +537,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1CD0,
                 end: 0x1CFF,
             },
@@ -545,7 +545,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1D00,
                 end: 0x1D7F,
             },
@@ -553,7 +553,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1D80,
                 end: 0x1DBF,
             },
@@ -561,7 +561,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1DC0,
                 end: 0x1DFF,
             },
@@ -569,7 +569,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1E00,
                 end: 0x1EFF,
             },
@@ -577,7 +577,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F00,
                 end: 0x1FFF,
             },
@@ -585,7 +585,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2000,
                 end: 0x206F,
             },
@@ -593,7 +593,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2070,
                 end: 0x209F,
             },
@@ -601,7 +601,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x20A0,
                 end: 0x20CF,
             },
@@ -609,7 +609,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x20D0,
                 end: 0x20FF,
             },
@@ -617,7 +617,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2100,
                 end: 0x214F,
             },
@@ -625,7 +625,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2150,
                 end: 0x218F,
             },
@@ -633,7 +633,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2190,
                 end: 0x21FF,
             },
@@ -641,7 +641,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2200,
                 end: 0x22FF,
             },
@@ -649,7 +649,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2300,
                 end: 0x23FF,
             },
@@ -657,7 +657,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2400,
                 end: 0x243F,
             },
@@ -665,7 +665,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2440,
                 end: 0x245F,
             },
@@ -673,7 +673,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2460,
                 end: 0x24FF,
             },
@@ -681,7 +681,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2500,
                 end: 0x257F,
             },
@@ -689,7 +689,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2580,
                 end: 0x259F,
             },
@@ -697,7 +697,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x25A0,
                 end: 0x25FF,
             },
@@ -705,7 +705,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2600,
                 end: 0x26FF,
             },
@@ -713,7 +713,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2700,
                 end: 0x27BF,
             },
@@ -721,7 +721,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x27C0,
                 end: 0x27EF,
             },
@@ -729,7 +729,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x27F0,
                 end: 0x27FF,
             },
@@ -737,7 +737,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2800,
                 end: 0x28FF,
             },
@@ -745,7 +745,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2900,
                 end: 0x297F,
             },
@@ -753,7 +753,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2980,
                 end: 0x29FF,
             },
@@ -761,7 +761,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2A00,
                 end: 0x2AFF,
             },
@@ -769,7 +769,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2B00,
                 end: 0x2BFF,
             },
@@ -777,7 +777,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2C00,
                 end: 0x2C5F,
             },
@@ -785,7 +785,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2C60,
                 end: 0x2C7F,
             },
@@ -793,7 +793,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2C80,
                 end: 0x2CFF,
             },
@@ -801,7 +801,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2D00,
                 end: 0x2D2F,
             },
@@ -809,7 +809,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2D30,
                 end: 0x2D7F,
             },
@@ -817,7 +817,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2D80,
                 end: 0x2DDF,
             },
@@ -825,7 +825,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2DE0,
                 end: 0x2DFF,
             },
@@ -833,7 +833,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2E00,
                 end: 0x2E7F,
             },
@@ -841,7 +841,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2E80,
                 end: 0x2EFF,
             },
@@ -849,7 +849,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2F00,
                 end: 0x2FDF,
             },
@@ -857,7 +857,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x2FF0,
                 end: 0x2FFF,
             },
@@ -865,7 +865,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x3000,
                 end: 0x303F,
             },
@@ -873,7 +873,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x3040,
                 end: 0x309F,
             },
@@ -881,7 +881,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x30A0,
                 end: 0x30FF,
             },
@@ -889,7 +889,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x3100,
                 end: 0x312F,
             },
@@ -897,7 +897,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x3130,
                 end: 0x318F,
             },
@@ -905,7 +905,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x3190,
                 end: 0x319F,
             },
@@ -913,7 +913,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x31A0,
                 end: 0x31BF,
             },
@@ -921,7 +921,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x31C0,
                 end: 0x31EF,
             },
@@ -929,7 +929,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x31F0,
                 end: 0x31FF,
             },
@@ -937,7 +937,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x3200,
                 end: 0x32FF,
             },
@@ -945,7 +945,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x3300,
                 end: 0x33FF,
             },
@@ -953,7 +953,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x3400,
                 end: 0x4DBF,
             },
@@ -961,7 +961,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x4DC0,
                 end: 0x4DFF,
             },
@@ -969,7 +969,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0x4E00,
                 end: 0x9FFF,
             },
@@ -977,7 +977,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA000,
                 end: 0xA48F,
             },
@@ -985,7 +985,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA490,
                 end: 0xA4CF,
             },
@@ -993,7 +993,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA4D0,
                 end: 0xA4FF,
             },
@@ -1001,7 +1001,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA500,
                 end: 0xA63F,
             },
@@ -1009,7 +1009,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA640,
                 end: 0xA69F,
             },
@@ -1017,7 +1017,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA6A0,
                 end: 0xA6FF,
             },
@@ -1025,7 +1025,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA700,
                 end: 0xA71F,
             },
@@ -1033,7 +1033,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA720,
                 end: 0xA7FF,
             },
@@ -1041,7 +1041,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA800,
                 end: 0xA82F,
             },
@@ -1049,7 +1049,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA830,
                 end: 0xA83F,
             },
@@ -1057,7 +1057,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA840,
                 end: 0xA87F,
             },
@@ -1065,7 +1065,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA880,
                 end: 0xA8DF,
             },
@@ -1073,7 +1073,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA8E0,
                 end: 0xA8FF,
             },
@@ -1081,7 +1081,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA900,
                 end: 0xA92F,
             },
@@ -1089,7 +1089,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA930,
                 end: 0xA95F,
             },
@@ -1097,7 +1097,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA960,
                 end: 0xA97F,
             },
@@ -1105,7 +1105,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA980,
                 end: 0xA9DF,
             },
@@ -1113,7 +1113,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xA9E0,
                 end: 0xA9FF,
             },
@@ -1121,7 +1121,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xAA00,
                 end: 0xAA5F,
             },
@@ -1129,7 +1129,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xAA60,
                 end: 0xAA7F,
             },
@@ -1137,7 +1137,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xAA80,
                 end: 0xAADF,
             },
@@ -1145,7 +1145,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xAAE0,
                 end: 0xAAFF,
             },
@@ -1153,7 +1153,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xAB00,
                 end: 0xAB2F,
             },
@@ -1161,7 +1161,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xAB30,
                 end: 0xAB6F,
             },
@@ -1169,7 +1169,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xAB70,
                 end: 0xABBF,
             },
@@ -1177,7 +1177,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xABC0,
                 end: 0xABFF,
             },
@@ -1185,7 +1185,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xAC00,
                 end: 0xD7AF,
             },
@@ -1193,7 +1193,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xD7B0,
                 end: 0xD7FF,
             },
@@ -1201,7 +1201,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xD800,
                 end: 0xDB7F,
             },
@@ -1209,7 +1209,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xDB80,
                 end: 0xDBFF,
             },
@@ -1217,7 +1217,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xDC00,
                 end: 0xDFFF,
             },
@@ -1225,7 +1225,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xE000,
                 end: 0xF8FF,
             },
@@ -1233,7 +1233,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xF900,
                 end: 0xFAFF,
             },
@@ -1241,7 +1241,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xFB00,
                 end: 0xFB4F,
             },
@@ -1249,7 +1249,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xFB50,
                 end: 0xFDFF,
             },
@@ -1257,7 +1257,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xFE00,
                 end: 0xFE0F,
             },
@@ -1265,7 +1265,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xFE10,
                 end: 0xFE1F,
             },
@@ -1273,7 +1273,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xFE20,
                 end: 0xFE2F,
             },
@@ -1281,7 +1281,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xFE30,
                 end: 0xFE4F,
             },
@@ -1289,7 +1289,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xFE50,
                 end: 0xFE6F,
             },
@@ -1297,7 +1297,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xFE70,
                 end: 0xFEFF,
             },
@@ -1305,7 +1305,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xFF00,
                 end: 0xFFEF,
             },
@@ -1313,7 +1313,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
             plane: 0,
         },
         {
-            range: {
+            interval: {
                 start: 0xFFF0,
                 end: 0xFFFF,
             },
@@ -1325,13 +1325,13 @@ export const UNICODE_PLANE_0: UnicodePlane = {
 export const UNICODE_PLANE_1: UnicodePlane = {
     planeNumber: 1,
     description: "Supplementary Multilingual Plane",
-    range: {
+    interval: {
         start: 0x10000,
         end: 0x1FFFF,
     },
     blocks: [
         {
-            range: {
+            interval: {
                 start: 0x10000,
                 end: 0x1007F,
             },
@@ -1339,7 +1339,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10080,
                 end: 0x100FF,
             },
@@ -1347,7 +1347,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10100,
                 end: 0x1013F,
             },
@@ -1355,7 +1355,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10140,
                 end: 0x1018F,
             },
@@ -1363,7 +1363,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10190,
                 end: 0x101CF,
             },
@@ -1371,7 +1371,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x101D0,
                 end: 0x101FF,
             },
@@ -1379,7 +1379,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10280,
                 end: 0x1029F,
             },
@@ -1387,7 +1387,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x102A0,
                 end: 0x102DF,
             },
@@ -1395,7 +1395,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x102E0,
                 end: 0x102FF,
             },
@@ -1403,7 +1403,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10300,
                 end: 0x1032F,
             },
@@ -1411,7 +1411,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10330,
                 end: 0x1034F,
             },
@@ -1419,7 +1419,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10350,
                 end: 0x1037F,
             },
@@ -1427,7 +1427,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10380,
                 end: 0x1039F,
             },
@@ -1435,7 +1435,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x103A0,
                 end: 0x103DF,
             },
@@ -1443,7 +1443,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10400,
                 end: 0x1044F,
             },
@@ -1451,7 +1451,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10450,
                 end: 0x1047F,
             },
@@ -1459,7 +1459,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10480,
                 end: 0x104AF,
             },
@@ -1467,7 +1467,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x104B0,
                 end: 0x104FF,
             },
@@ -1475,7 +1475,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10500,
                 end: 0x1052F,
             },
@@ -1483,7 +1483,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10530,
                 end: 0x1056F,
             },
@@ -1491,7 +1491,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10570,
                 end: 0x105BF,
             },
@@ -1499,7 +1499,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10600,
                 end: 0x1077F,
             },
@@ -1507,7 +1507,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10780,
                 end: 0x107BF,
             },
@@ -1515,7 +1515,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10800,
                 end: 0x1083F,
             },
@@ -1523,7 +1523,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10840,
                 end: 0x1085F,
             },
@@ -1531,7 +1531,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10860,
                 end: 0x1087F,
             },
@@ -1539,7 +1539,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10880,
                 end: 0x108AF,
             },
@@ -1547,7 +1547,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x108E0,
                 end: 0x108FF,
             },
@@ -1555,7 +1555,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10900,
                 end: 0x1091F,
             },
@@ -1563,7 +1563,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10920,
                 end: 0x1093F,
             },
@@ -1571,7 +1571,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10980,
                 end: 0x1099F,
             },
@@ -1579,7 +1579,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x109A0,
                 end: 0x109FF,
             },
@@ -1587,7 +1587,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10A00,
                 end: 0x10A5F,
             },
@@ -1595,7 +1595,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10A60,
                 end: 0x10A7F,
             },
@@ -1603,7 +1603,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10A80,
                 end: 0x10A9F,
             },
@@ -1611,7 +1611,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10AC0,
                 end: 0x10AFF,
             },
@@ -1619,7 +1619,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10B00,
                 end: 0x10B3F,
             },
@@ -1627,7 +1627,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10B40,
                 end: 0x10B5F,
             },
@@ -1635,7 +1635,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10B60,
                 end: 0x10B7F,
             },
@@ -1643,7 +1643,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10B80,
                 end: 0x10BAF,
             },
@@ -1651,7 +1651,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10C00,
                 end: 0x10C4F,
             },
@@ -1659,7 +1659,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10C80,
                 end: 0x10CFF,
             },
@@ -1667,7 +1667,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10D00,
                 end: 0x10D3F,
             },
@@ -1675,7 +1675,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10E60,
                 end: 0x10E7F,
             },
@@ -1683,7 +1683,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10E80,
                 end: 0x10EBF,
             },
@@ -1691,7 +1691,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10EC0,
                 end: 0x10EFF,
             },
@@ -1699,7 +1699,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10F00,
                 end: 0x10F2F,
             },
@@ -1707,7 +1707,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10F30,
                 end: 0x10F6F,
             },
@@ -1715,7 +1715,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10F70,
                 end: 0x10FAF,
             },
@@ -1723,7 +1723,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10FB0,
                 end: 0x10FDF,
             },
@@ -1731,7 +1731,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x10FE0,
                 end: 0x10FFF,
             },
@@ -1739,7 +1739,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11000,
                 end: 0x1107F,
             },
@@ -1747,7 +1747,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11080,
                 end: 0x110CF,
             },
@@ -1755,7 +1755,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x110D0,
                 end: 0x110FF,
             },
@@ -1763,7 +1763,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11100,
                 end: 0x1114F,
             },
@@ -1771,7 +1771,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11150,
                 end: 0x1117F,
             },
@@ -1779,7 +1779,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11180,
                 end: 0x111DF,
             },
@@ -1787,7 +1787,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x111E0,
                 end: 0x111FF,
             },
@@ -1795,7 +1795,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11200,
                 end: 0x1124F,
             },
@@ -1803,7 +1803,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11280,
                 end: 0x112AF,
             },
@@ -1811,7 +1811,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x112B0,
                 end: 0x112FF,
             },
@@ -1819,7 +1819,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11300,
                 end: 0x1137F,
             },
@@ -1827,7 +1827,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11400,
                 end: 0x1147F,
             },
@@ -1835,7 +1835,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11480,
                 end: 0x114DF,
             },
@@ -1843,7 +1843,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11580,
                 end: 0x115FF,
             },
@@ -1851,7 +1851,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11600,
                 end: 0x1165F,
             },
@@ -1859,7 +1859,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11660,
                 end: 0x1167F,
             },
@@ -1867,7 +1867,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11680,
                 end: 0x116CF,
             },
@@ -1875,7 +1875,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11700,
                 end: 0x1174F,
             },
@@ -1883,7 +1883,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11800,
                 end: 0x1184F,
             },
@@ -1891,7 +1891,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x118A0,
                 end: 0x118FF,
             },
@@ -1899,7 +1899,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11900,
                 end: 0x1195F,
             },
@@ -1907,7 +1907,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x119A0,
                 end: 0x119FF,
             },
@@ -1915,7 +1915,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11A00,
                 end: 0x11A4F,
             },
@@ -1923,7 +1923,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11A50,
                 end: 0x11AAF,
             },
@@ -1931,7 +1931,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11AB0,
                 end: 0x11ABF,
             },
@@ -1939,7 +1939,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11AC0,
                 end: 0x11AFF,
             },
@@ -1947,7 +1947,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11B00,
                 end: 0x11B5F,
             },
@@ -1955,7 +1955,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11C00,
                 end: 0x11C6F,
             },
@@ -1963,7 +1963,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11C70,
                 end: 0x11CBF,
             },
@@ -1971,7 +1971,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11D00,
                 end: 0x11D5F,
             },
@@ -1979,7 +1979,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11D60,
                 end: 0x11DAF,
             },
@@ -1987,7 +1987,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11EE0,
                 end: 0x11EFF,
             },
@@ -1995,7 +1995,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11F00,
                 end: 0x11F5F,
             },
@@ -2003,7 +2003,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11FB0,
                 end: 0x11FBF,
             },
@@ -2011,7 +2011,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x11FC0,
                 end: 0x11FFF,
             },
@@ -2019,7 +2019,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x12000,
                 end: 0x123FF,
             },
@@ -2027,7 +2027,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x12400,
                 end: 0x1247F,
             },
@@ -2035,7 +2035,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x12480,
                 end: 0x1254F,
             },
@@ -2043,7 +2043,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x12F90,
                 end: 0x12FFF,
             },
@@ -2051,7 +2051,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x13000,
                 end: 0x1342F,
             },
@@ -2059,7 +2059,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x13430,
                 end: 0x1345F,
             },
@@ -2067,7 +2067,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x14400,
                 end: 0x1467F,
             },
@@ -2075,7 +2075,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x16800,
                 end: 0x16A3F,
             },
@@ -2083,7 +2083,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x16A40,
                 end: 0x16A6F,
             },
@@ -2091,7 +2091,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x16A70,
                 end: 0x16ACF,
             },
@@ -2099,7 +2099,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x16AD0,
                 end: 0x16AFF,
             },
@@ -2107,7 +2107,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x16B00,
                 end: 0x16B8F,
             },
@@ -2115,7 +2115,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x16E40,
                 end: 0x16E9F,
             },
@@ -2123,7 +2123,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x16F00,
                 end: 0x16F9F,
             },
@@ -2131,7 +2131,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x16FE0,
                 end: 0x16FFF,
             },
@@ -2139,7 +2139,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x17000,
                 end: 0x187FF,
             },
@@ -2147,7 +2147,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x18800,
                 end: 0x18AFF,
             },
@@ -2155,7 +2155,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x18B00,
                 end: 0x18CFF,
             },
@@ -2163,7 +2163,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x18D00,
                 end: 0x18D7F,
             },
@@ -2171,7 +2171,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1AFF0,
                 end: 0x1AFFF,
             },
@@ -2179,7 +2179,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1B000,
                 end: 0x1B0FF,
             },
@@ -2187,7 +2187,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1B100,
                 end: 0x1B12F,
             },
@@ -2195,7 +2195,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1B130,
                 end: 0x1B16F,
             },
@@ -2203,7 +2203,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1B170,
                 end: 0x1B2FF,
             },
@@ -2211,7 +2211,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1BC00,
                 end: 0x1BC9F,
             },
@@ -2219,7 +2219,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1BCA0,
                 end: 0x1BCAF,
             },
@@ -2227,7 +2227,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1CF00,
                 end: 0x1CFCF,
             },
@@ -2235,7 +2235,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1D000,
                 end: 0x1D0FF,
             },
@@ -2243,7 +2243,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1D100,
                 end: 0x1D1FF,
             },
@@ -2251,7 +2251,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1D200,
                 end: 0x1D24F,
             },
@@ -2259,7 +2259,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1D2C0,
                 end: 0x1D2DF,
             },
@@ -2267,7 +2267,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1D2E0,
                 end: 0x1D2FF,
             },
@@ -2275,7 +2275,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1D300,
                 end: 0x1D35F,
             },
@@ -2283,7 +2283,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1D360,
                 end: 0x1D37F,
             },
@@ -2291,7 +2291,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1D400,
                 end: 0x1D7FF,
             },
@@ -2299,7 +2299,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1D800,
                 end: 0x1DAAF,
             },
@@ -2307,7 +2307,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1DF00,
                 end: 0x1DFFF,
             },
@@ -2315,7 +2315,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1E000,
                 end: 0x1E02F,
             },
@@ -2323,7 +2323,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1E030,
                 end: 0x1E08F,
             },
@@ -2331,7 +2331,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1E100,
                 end: 0x1E14F,
             },
@@ -2339,7 +2339,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1E290,
                 end: 0x1E2BF,
             },
@@ -2347,7 +2347,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1E2C0,
                 end: 0x1E2FF,
             },
@@ -2355,7 +2355,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1E4D0,
                 end: 0x1E4FF,
             },
@@ -2363,7 +2363,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1E7E0,
                 end: 0x1E7FF,
             },
@@ -2371,7 +2371,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1E800,
                 end: 0x1E8DF,
             },
@@ -2379,7 +2379,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1E900,
                 end: 0x1E95F,
             },
@@ -2387,7 +2387,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1EC70,
                 end: 0x1ECBF,
             },
@@ -2395,7 +2395,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1ED00,
                 end: 0x1ED4F,
             },
@@ -2403,7 +2403,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1EE00,
                 end: 0x1EEFF,
             },
@@ -2411,7 +2411,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F000,
                 end: 0x1F02F,
             },
@@ -2419,7 +2419,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F030,
                 end: 0x1F09F,
             },
@@ -2427,7 +2427,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F0A0,
                 end: 0x1F0FF,
             },
@@ -2435,7 +2435,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F100,
                 end: 0x1F1FF,
             },
@@ -2443,7 +2443,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F200,
                 end: 0x1F2FF,
             },
@@ -2451,7 +2451,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F300,
                 end: 0x1F5FF,
             },
@@ -2459,7 +2459,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F600,
                 end: 0x1F64F,
             },
@@ -2467,7 +2467,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F650,
                 end: 0x1F67F,
             },
@@ -2475,7 +2475,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F680,
                 end: 0x1F6FF,
             },
@@ -2483,7 +2483,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F700,
                 end: 0x1F77F,
             },
@@ -2491,7 +2491,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F780,
                 end: 0x1F7FF,
             },
@@ -2499,7 +2499,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F800,
                 end: 0x1F8FF,
             },
@@ -2507,7 +2507,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1F900,
                 end: 0x1F9FF,
             },
@@ -2515,7 +2515,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1FA00,
                 end: 0x1FA6F,
             },
@@ -2523,7 +2523,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1FA70,
                 end: 0x1FAFF,
             },
@@ -2531,7 +2531,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
             plane: 1,
         },
         {
-            range: {
+            interval: {
                 start: 0x1FB00,
                 end: 0x1FBFF,
             },
@@ -2544,13 +2544,13 @@ export const UNICODE_PLANE_1: UnicodePlane = {
 export const UNICODE_PLANE_2: UnicodePlane = {
     planeNumber: 2,
     description: "Supplementary Ideographic Plane",
-    range: {
+    interval: {
         start: 0x20000,
         end: 0x2FFFF,
     },
     blocks: [
         {
-            range: {
+            interval: {
                 start: 0x20000,
                 end: 0x2A6DF,
             },
@@ -2558,7 +2558,7 @@ export const UNICODE_PLANE_2: UnicodePlane = {
             plane: 2,
         },
         {
-            range: {
+            interval: {
                 start: 0x2A700,
                 end: 0x2B73F,
             },
@@ -2566,7 +2566,7 @@ export const UNICODE_PLANE_2: UnicodePlane = {
             plane: 2,
         },
         {
-            range: {
+            interval: {
                 start: 0x2B740,
                 end: 0x2B81F,
             },
@@ -2574,7 +2574,7 @@ export const UNICODE_PLANE_2: UnicodePlane = {
             plane: 2,
         },
         {
-            range: {
+            interval: {
                 start: 0x2B820,
                 end: 0x2CEAF,
             },
@@ -2582,7 +2582,7 @@ export const UNICODE_PLANE_2: UnicodePlane = {
             plane: 2,
         },
         {
-            range: {
+            interval: {
                 start: 0x2CEB0,
                 end: 0x2EBEF,
             },
@@ -2590,7 +2590,7 @@ export const UNICODE_PLANE_2: UnicodePlane = {
             plane: 2,
         },
         {
-            range: {
+            interval: {
                 start: 0x2EBF0,
                 end: 0x2EE5F,
             },
@@ -2598,7 +2598,7 @@ export const UNICODE_PLANE_2: UnicodePlane = {
             plane: 2,
         },
         {
-            range: {
+            interval: {
                 start: 0x2F800,
                 end: 0x2FA1F,
             },
@@ -2611,13 +2611,13 @@ export const UNICODE_PLANE_2: UnicodePlane = {
 export const UNICODE_PLANE_3: UnicodePlane = {
     planeNumber: 3,
     description: "Tertiary Ideographic Plane",
-    range: {
+    interval: {
         start: 0x30000,
         end: 0x3FFFF,
     },
     blocks: [
         {
-            range: {
+            interval: {
                 start: 0x30000,
                 end: 0x3134F,
             },
@@ -2625,7 +2625,7 @@ export const UNICODE_PLANE_3: UnicodePlane = {
             plane: 3,
         },
         {
-            range: {
+            interval: {
                 start: 0x31350,
                 end: 0x323AF,
             },
@@ -2638,13 +2638,13 @@ export const UNICODE_PLANE_3: UnicodePlane = {
 export const UNICODE_PLANE_14: UnicodePlane = {
     planeNumber: 14,
     description: "Supplementary Special-purpose Plane",
-    range: {
+    interval: {
         start: 0xE0000,
         end: 0xEFFFF,
     },
     blocks: [
         {
-            range: {
+            interval: {
                 start: 0xE0000,
                 end: 0xE007F,
             },
@@ -2652,7 +2652,7 @@ export const UNICODE_PLANE_14: UnicodePlane = {
             plane: 14,
         },
         {
-            range: {
+            interval: {
                 start: 0xE0100,
                 end: 0xE01EF,
             },
@@ -2665,13 +2665,13 @@ export const UNICODE_PLANE_14: UnicodePlane = {
 export const UNICODE_PLANE_15: UnicodePlane = {
     planeNumber: 15,
     description: "Supplementary Private Use Area-A",
-    range: {
+    interval: {
         start: 0xF0000,
         end: 0xFFFFF,
     },
     blocks: [
         {
-            range: {
+            interval: {
                 start: 0xF0000,
                 end: 0xFFFFF,
             },
@@ -2684,13 +2684,13 @@ export const UNICODE_PLANE_15: UnicodePlane = {
 export const UNICODE_PLANE_16: UnicodePlane = {
     planeNumber: 16,
     description: "Supplementary Private Use Area-B",
-    range: {
+    interval: {
         start: 0x100000,
         end: 0x10FFFF,
     },
     blocks: [
         {
-            range: {
+            interval: {
                 start: 0x100000,
                 end: 0x10FFFF,
             },

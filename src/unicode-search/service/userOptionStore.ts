@@ -1,6 +1,7 @@
 import {UserOptions} from "../../libraries/types/userOptions";
 import {CharacterCategory} from "../../libraries/data/characterCategory";
 import {UnicodePlaneNumber} from "../../libraries/data/unicodePlaneNumber";
+import {ClosedIntervalEndpoint} from "../../libraries/types/codePointInterval";
 
 /**
  * Storage service for user settings of the plugin.
@@ -15,9 +16,9 @@ export interface UserOptionStore {
     getCharacterPlane(planeNumber: UnicodePlaneNumber): Promise<boolean>
     setCharacterPlane(planeNumber: UnicodePlaneNumber, set: boolean): Promise<void>
 
-    // getUnicodeBlock(category: UnicodeBlock): Promise<boolean>
-    // setUnicodeBlock(category: UnicodeBlock, set: boolean): Promise<void>
+    getCharacterBlock(blockStart: ClosedIntervalEndpoint): Promise<boolean>
+    setCharacterBlock(blockStart: ClosedIntervalEndpoint, set: boolean): Promise<void>
 
-    // getCharacterRange(category: CodePointRange): Promise<boolean>
-    // setCharacterRange(category: CodePointRange, set: boolean): Promise<void>
+    // getCharacterInterval(category: CodePointInterval): Promise<boolean>
+    // setCharacterInterval(category: CodePointInterval, set: boolean): Promise<void>
 }

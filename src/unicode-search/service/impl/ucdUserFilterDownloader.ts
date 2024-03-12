@@ -6,6 +6,7 @@ import {CharacterDownloader} from "../characterDownloader";
 import {UserOptionStore} from "../userOptionStore";
 import {UserOptions} from "../../../libraries/types/userOptions";
 import {CharacterCategory} from "../../../libraries/data/characterCategory";
+import {CharacterClassifier} from "../../../libraries/data/characterClassifier";
 
 type ParsedData = Array<string>;
 
@@ -70,15 +71,18 @@ export class UCDUserFilterDownloader implements CharacterDownloader {
     }
 
     private static charFilter(char: ParsedCharacter, userOptions: UserOptions): boolean {
-        return char != null
+        return (
+            char != null
             && char.characterName != null
             && char.singleCodePoint != null
             && char.generalCategory != null
-            && UCDUserFilterDownloader.planeIncluded(char)
-            && UCDUserFilterDownloader.blockIncluded(char)
-            && UCDUserFilterDownloader.categoryIncluded(char, userOptions)
-            && UCDUserFilterDownloader.nameIsNotLabelInfo(char)
-            ;
+        ) && (
+            UCDUserFilterDownloader.planeIncluded(char)
+            || UCDUserFilterDownloader.blockIncluded(char)
+            || UCDUserFilterDownloader.categoryIncluded(char, userOptions)
+        ) && !(
+            UCDUserFilterDownloader.charExcluded(char)
+        );
     }
 
     private static planeIncluded(char: ParsedCharacter): boolean {
@@ -108,10 +112,10 @@ export class UCDUserFilterDownloader implements CharacterDownloader {
         return categories.contains(char.generalCategory as CharacterCategory);
     }
 
-    private static nameIsNotLabelInfo(char: ParsedCharacter): boolean {
-        /* TODO [characterFilter]: Should label info filterable by user? */
-        return !(char.characterName.startsWith("<")
-            && char.characterName.endsWith(">"));
+    private static charExcluded(char: ParsedCharacter): boolean {
+        /* TODO [characterFilter]:: Exclusion criteria */
+        // Omit characters that are classified as "Other"
+        return char.generalCategory.startsWith(CharacterClassifier.Other)
     }
 
     private static intoUnicode(char: ParsedCharacter): UnicodeCharacter {

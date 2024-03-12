@@ -13,6 +13,9 @@ import {UNICODE_PLANES_ALL} from "../../libraries/data/unicodePlanes";
 import {UnicodePlane} from "../../libraries/types/unicodePlane";
 import {UnicodePlaneNumber} from "../../libraries/data/unicodePlaneNumber";
 import {UNICODE_CATEGORIES_ALL} from "../../libraries/data/unicodeCategories";
+import {UnicodeBlock} from "../../libraries/types/unicodeBlock";
+
+import {asHexadecimal} from "../../libraries/helpers/asHexadecimal";
 
 export class SettingTab extends PluginSettingTab {
 
@@ -54,10 +57,10 @@ export class SettingTab extends PluginSettingTab {
         )
 
         for (const plane of UNICODE_PLANES_ALL) {
-            await SettingTab.addCharacterPlaneFilterToggle(container, this.userOptionStore, plane.planeNumber);
-            // for (const block in plane.blocks) {
-            //
-            // }
+            await SettingTab.addCharacterPlaneFilterToggle(container, this.userOptionStore, plane);
+            for (const block of plane.blocks) {
+                await SettingTab.addCharacterBlockFilterToggle(container, this.userOptionStore, block);
+            }
         }
 
         // for (const category of UNICODE_CATEGORIES_ALL) {
@@ -142,15 +145,30 @@ export class SettingTab extends PluginSettingTab {
     private static async addCharacterPlaneFilterToggle(
         container: HTMLElement,
         userOptionsStore: UserOptionStore,
-        planeNumber: UnicodePlaneNumber
+        plane: Pick<UnicodePlane, "planeNumber" | "description" | "interval">
     ) {
-        const planeIncluded = await userOptionsStore.getCharacterPlane(planeNumber)
+        const planeIncluded = await userOptionsStore.getCharacterPlane(plane.planeNumber);
 
         new Setting(container)
-            .setName(planeNumber.toString())
+            .setName(`${plane.planeNumber} [${asHexadecimal(plane.interval.start)}..${asHexadecimal(plane.interval.end)}]: ${plane.description}`)
             .addToggle(input => input
                .setValue(planeIncluded)
-               .onChange((value) => userOptionsStore.setCharacterPlane(planeNumber, value))
+               .onChange((value) => userOptionsStore.setCharacterPlane(plane.planeNumber, value))
+            );
+    }
+
+    private static async addCharacterBlockFilterToggle(
+        container: HTMLElement,
+        userOptionsStore: UserOptionStore,
+        block: UnicodeBlock
+    ) {
+        const blockIncluded = await userOptionsStore.getCharacterBlock(block.interval.start)
+
+        new Setting(container)
+            .setName(`[${asHexadecimal(block.interval.start)}..${asHexadecimal(block.interval.end)}] ${block.description}`)
+            .addToggle(input => input
+               .setValue(blockIncluded)
+               .onChange((value) => userOptionsStore.setCharacterBlock(block.interval.start, value))
             );
     }
 

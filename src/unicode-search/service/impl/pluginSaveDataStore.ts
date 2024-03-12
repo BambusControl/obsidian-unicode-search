@@ -11,6 +11,7 @@ import {CharacterCategory} from "../../../libraries/data/characterCategory";
 import {Metadata} from "../../../libraries/types/data/metadata";
 import {UnicodePlaneNumber} from "../../../libraries/data/unicodePlaneNumber";
 import {UNICODE_CATEGORIES_ALL} from "../../../libraries/data/unicodeCategories";
+import {ClosedIntervalEndpoint} from "../../../libraries/types/codePointInterval";
 
 const INITALIZATION_STORE: SaveData = {
     meta: {
@@ -21,8 +22,8 @@ const INITALIZATION_STORE: SaveData = {
         characterFilter: {
             unicodeSubcategories: UNICODE_CATEGORIES_ALL,
             unicodePlanes: [ 0, 1 ],
-            unicodeBlock: [],
-            customRange: []
+            unicodeBlocks: [],
+            customIntervals: []
         }
     },
     data: [],
@@ -194,7 +195,6 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
         await this._setInitialized(false);
     }
 
-
     public async getCharacterPlane(planeNumber: UnicodePlaneNumber): Promise<boolean> {
         const data = new Set((await this._getFromStorage()).user.characterFilter.unicodePlanes);
         return data.has(planeNumber);
@@ -218,6 +218,35 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
             characterFilter: {
                 ...userdata.characterFilter,
                 unicodePlanes: Array.from(planes),
+            }
+        })
+
+        await this._setInitialized(false);
+    }
+
+    public async getCharacterBlock(blockStart: ClosedIntervalEndpoint): Promise<boolean> {
+        const data = new Set((await this._getFromStorage()).user.characterFilter.unicodeBlocks);
+        return data.has(blockStart);
+    }
+
+    public async setCharacterBlock(blockStart: ClosedIntervalEndpoint, set: boolean): Promise<void> {
+        const userdata = (await this._getFromStorage()).user;
+        const planes = new Set(userdata.characterFilter.unicodeBlocks);
+
+        if (set) {
+            planes.add(blockStart);
+        } else {
+            planes.delete(blockStart);
+        }
+
+        /* Doesn't save the state correctly */
+
+        /* TODO: refactor these */
+        await this.saveUserOptions({
+            ...userdata,
+            characterFilter: {
+                ...userdata.characterFilter,
+                unicodeBlocks: Array.from(planes),
             }
         })
 

@@ -1,7 +1,7 @@
 import {CharacterCategory, CharacterCategoryLetter} from "../data/characterCategory";
 import {UnicodePlaneNumber} from "../data/unicodePlaneNumber";
 import {UnicodeBlock} from "./unicodeBlock";
-import {CodePointRange} from "./codePointRange";
+import {ClosedIntervalEndpoint, CodePointInterval} from "./codePointInterval";
 import {CharacterClassifier} from "../data/characterClassifier";
 
 export interface CharacterFilterOptions {
@@ -15,6 +15,6 @@ export interface CharacterFilterOptions {
      */
     unicodeSubcategories: Array<CharacterCategory>;
     unicodePlanes: Array<UnicodePlaneNumber>;
-    unicodeBlock: Array<UnicodeBlock["range"]>;
-    customRange: Array<CodePointRange>;
+    unicodeBlocks: Array<ClosedIntervalEndpoint>;
+    customIntervals: Array<CodePointInterval>;
 }
