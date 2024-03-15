@@ -3,6 +3,7 @@ import {UnicodePlane} from "../types/unicodePlane";
 export const UNICODE_PLANE_0: UnicodePlane = {
     planeNumber: 0,
     description: "Basic Multilingual Plane",
+    abbreviation: "BMP",
     interval: {
         start: 0x0000,
         end: 0xFFFF,
@@ -1325,6 +1326,7 @@ export const UNICODE_PLANE_0: UnicodePlane = {
 export const UNICODE_PLANE_1: UnicodePlane = {
     planeNumber: 1,
     description: "Supplementary Multilingual Plane",
+    abbreviation: "SMP",
     interval: {
         start: 0x10000,
         end: 0x1FFFF,
@@ -2544,6 +2546,7 @@ export const UNICODE_PLANE_1: UnicodePlane = {
 export const UNICODE_PLANE_2: UnicodePlane = {
     planeNumber: 2,
     description: "Supplementary Ideographic Plane",
+    abbreviation: "SIP",
     interval: {
         start: 0x20000,
         end: 0x2FFFF,
@@ -2611,6 +2614,7 @@ export const UNICODE_PLANE_2: UnicodePlane = {
 export const UNICODE_PLANE_3: UnicodePlane = {
     planeNumber: 3,
     description: "Tertiary Ideographic Plane",
+    abbreviation: "TIP",
     interval: {
         start: 0x30000,
         end: 0x3FFFF,
@@ -2638,6 +2642,7 @@ export const UNICODE_PLANE_3: UnicodePlane = {
 export const UNICODE_PLANE_14: UnicodePlane = {
     planeNumber: 14,
     description: "Supplementary Special-purpose Plane",
+    abbreviation: "SSP",
     interval: {
         start: 0xE0000,
         end: 0xEFFFF,
@@ -2665,6 +2670,7 @@ export const UNICODE_PLANE_14: UnicodePlane = {
 export const UNICODE_PLANE_15: UnicodePlane = {
     planeNumber: 15,
     description: "Supplementary Private Use Area-A",
+    abbreviation: "SPUA-A",
     interval: {
         start: 0xF0000,
         end: 0xFFFFF,
@@ -2684,6 +2690,7 @@ export const UNICODE_PLANE_15: UnicodePlane = {
 export const UNICODE_PLANE_16: UnicodePlane = {
     planeNumber: 16,
     description: "Supplementary Private Use Area-B",
+    abbreviation: "SPUA-B",
     interval: {
         start: 0x100000,
         end: 0x10FFFF,

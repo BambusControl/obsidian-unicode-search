@@ -35,31 +35,34 @@ export class SettingTab extends PluginSettingTab {
         await this.displayFilterSettings(
             container.createDiv({cls: "filter-settings"})
         );
-
-        await this.displayPinSettings(
-            container.createDiv({cls: "pin-settings"})
-        );
     }
 
     private async displayFilterSettings(container: HTMLElement) {
-        container.createEl(
-            "h2",
-            {
-                text: "Character Filter",
-            },
-        )
+        new Setting(container)
+            .setHeading()
+            .setName("Character Filter")
+            .setDesc("Here you can filter the characters that are downloaded and shown in the search prompt.")
+        ;
 
-        container.createEl(
-            "p",
-            {
-                text: "Here you can filter the characters that are downloaded and shown in the search prompt."
-            }
-        )
+        const planesContainer = container.createDiv()
 
         for (const plane of UNICODE_PLANES_ALL) {
-            await SettingTab.addCharacterPlaneFilterToggle(container, this.userOptionStore, plane);
+            const planeContainer = planesContainer.createDiv("plane-container");
+
+            new Setting(planeContainer)
+                .setHeading()
+                .setName(`${plane.planeNumber}: ${plane.abbreviation}`)
+                .setDesc(createFragment(fragment => {
+                    fragment.appendText(plane.description)
+                    fragment.createEl("br")
+                    fragment.appendText(`[${asHexadecimal(plane.interval.start)}..${asHexadecimal(plane.interval.end)}]`)
+                }))
+            ;
+
+            const blocksContainer = planeContainer.createDiv({cls: "blocks-grid"});
+
             for (const block of plane.blocks) {
-                await SettingTab.addCharacterBlockFilterToggle(container, this.userOptionStore, block);
+                await SettingTab.addCharacterBlockFilterToggle(blocksContainer, this.userOptionStore, block);
             }
         }
 
@@ -162,10 +165,12 @@ export class SettingTab extends PluginSettingTab {
         userOptionsStore: UserOptionStore,
         block: UnicodeBlock
     ) {
+        /* TODO: redo more effectively, we always get a plane worth of blocks */
         const blockIncluded = await userOptionsStore.getCharacterBlock(block.interval.start)
 
         new Setting(container)
-            .setName(`[${asHexadecimal(block.interval.start)}..${asHexadecimal(block.interval.end)}] ${block.description}`)
+            .setName(block.description)
+            .setDesc(`[${asHexadecimal(block.interval.start)}..${asHexadecimal(block.interval.end)}]`)
             .addToggle(input => input
                .setValue(blockIncluded)
                .onChange((value) => userOptionsStore.setCharacterBlock(block.interval.start, value))
