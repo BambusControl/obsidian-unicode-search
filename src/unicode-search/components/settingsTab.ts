@@ -65,10 +65,6 @@ export class SettingTab extends PluginSettingTab {
                 await SettingTab.addCharacterBlockFilterToggle(blocksContainer, this.userOptionStore, block);
             }
         }
-
-        // for (const category of UNICODE_CATEGORIES_ALL) {
-        //     await SettingTab.addCharacterSubcategoryFilterToggle(container, this.userOptionStore, category);
-        // }
     }
 
     private async displayPinSettings(container: HTMLElement) {

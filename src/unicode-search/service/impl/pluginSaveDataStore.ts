@@ -12,6 +12,7 @@ import {Metadata} from "../../../libraries/types/data/metadata";
 import {UnicodePlaneNumber} from "../../../libraries/data/unicodePlaneNumber";
 import {UNICODE_CATEGORIES_ALL} from "../../../libraries/data/unicodeCategories";
 import {ClosedIntervalEndpoint} from "../../../libraries/types/codePointInterval";
+import {UNICODE_PLANE_0, UNICODE_PLANE_1} from "../../../libraries/data/unicodePlanes";
 
 const INITALIZATION_STORE: SaveData = {
     meta: {
@@ -20,10 +21,21 @@ const INITALIZATION_STORE: SaveData = {
     },
     user: {
         characterFilter: {
-            unicodeSubcategories: UNICODE_CATEGORIES_ALL,
-            unicodePlanes: [ 0, 1 ],
-            unicodeBlocks: [],
-            customIntervals: []
+            categories: UNICODE_CATEGORIES_ALL,
+            unicodePlanes: [
+                {
+                    plane: {
+                        ...UNICODE_PLANE_0.interval
+                    },
+                    select: "ALL"
+                },
+                {
+                    plane: {
+                        ...UNICODE_PLANE_1.interval
+                    },
+                    select: "ALL"
+                },
+            ],
         }
     },
     data: [],
@@ -168,13 +180,13 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
     }
 
     public async getCharacterSubcategory(category: CharacterCategory): Promise<boolean> {
-        const data = new Set((await this._getFromStorage()).user.characterFilter.unicodeSubcategories);
+        const data = new Set((await this._getFromStorage()).user.characterFilter.categories);
         return data.has(category);
     }
 
     public async setCharacterSubcategory(category: CharacterCategory, set: boolean): Promise<void> {
         const userdata = (await this._getFromStorage()).user;
-        const subcategories = new Set(userdata.characterFilter.unicodeSubcategories);
+        const subcategories = new Set(userdata.characterFilter.categories);
 
         if (set) {
             subcategories.add(category);
@@ -189,7 +201,7 @@ export class PluginSaveDataStore implements MetadataStore, CharacterStore, UserO
             ...userdata,
             characterFilter: {
                 ...userdata.characterFilter,
-                unicodeSubcategories: Array.from(subcategories),
+                categories: Array.from(subcategories),
             }
         })
         await this._setInitialized(false);

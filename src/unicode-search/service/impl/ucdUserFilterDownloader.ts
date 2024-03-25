@@ -108,7 +108,7 @@ export class UCDUserFilterDownloader implements CharacterDownloader {
 
     private static categoryIncluded(char: ParsedCharacter, userOptions: UserOptions): boolean {
         /* TODO [characterFilter]: User filter for unicode category. */
-        const categories = userOptions.characterFilter.unicodeSubcategories;
+        const categories = userOptions.characterFilter.categories;
         return categories.contains(char.generalCategory as CharacterCategory);
     }
 
