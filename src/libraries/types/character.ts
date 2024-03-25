@@ -15,3 +15,4 @@ export type PinnedCharacter = Character & PinInfo;
 export type UnpinnedCharacter = UnicodeCharacter & Partial<UsageInfo>;
 
 export type CharacterKey = UnicodeCharacter["char"];
+export type Characters = Array<Character>

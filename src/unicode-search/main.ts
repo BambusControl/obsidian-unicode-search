@@ -3,11 +3,12 @@ import {UsageTrackedCharacterService} from "./service/impl/usageTrackedCharacter
 import {FuzzySearchModal} from "./components/fuzzySearchModal";
 import {PluginSaveDataStore} from "./service/impl/pluginSaveDataStore";
 import {CharacterStore} from "./service/characterStore";
-import {UCDDownloader} from "./service/impl/ucdDownloader";
 import {SettingTab} from "./components/settingsTab"
 import {CharacterDownloader} from "./service/characterDownloader";
 import {MetadataStore} from "./service/metadataStore";
 import {UCDUserFilterDownloader} from "./service/impl/ucdUserFilterDownloader";
+import {PluginCharacterStore} from "./service/impl/pluginCharacterStore";
+import {PluginOptionsStore} from "./service/impl/pluginOptionsStore";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -22,10 +23,11 @@ export default class UnicodeSearchPlugin extends Plugin {
 
 	public override async onload(): Promise<void> {
         const dataStore = new PluginSaveDataStore(this);
-		const characterService = new UsageTrackedCharacterService(dataStore);
-        const downloader = new UCDUserFilterDownloader(dataStore);
+        const characterStore = new PluginCharacterStore(dataStore);
+        const characterService = new UsageTrackedCharacterService(characterStore);
+        const downloader = new UCDUserFilterDownloader(new PluginOptionsStore(dataStore));
 
-		await UnicodeSearchPlugin.initializeData(dataStore, dataStore, downloader);
+		await UnicodeSearchPlugin.initializeData(dataStore, characterStore, downloader);
 
 		super.addCommand({
 			id: "search-unicode-chars",

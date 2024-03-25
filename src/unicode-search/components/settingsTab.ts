@@ -1,18 +1,10 @@
 import {App, Plugin, PluginSettingTab, Setting} from "obsidian";
 import {CharacterService} from "../service/characterService";
-import {UserOptionStore} from "../service/userOptionStore";
-import {UserOptions} from "../../libraries/types/userOptions";
+import {OptionsStore} from "../service/optionsStore";
 import {mostRecentlyUsed} from "../../libraries/helpers/mostRecentlyUsed";
 import {averageUseCount} from "../../libraries/helpers/averageUseCount";
 import {Character} from "../../libraries/types/character";
-import {
-    CharacterCategory,
-    CharacterCategoryLetter
-} from "../../libraries/data/characterCategory";
 import {UNICODE_PLANES_ALL} from "../../libraries/data/unicodePlanes";
-import {UnicodePlane} from "../../libraries/types/unicodePlane";
-import {UnicodePlaneNumber} from "../../libraries/data/unicodePlaneNumber";
-import {UNICODE_CATEGORIES_ALL} from "../../libraries/data/unicodeCategories";
 import {UnicodeBlock} from "../../libraries/types/unicodeBlock";
 
 import {asHexadecimal} from "../../libraries/helpers/asHexadecimal";
@@ -23,7 +15,7 @@ export class SettingTab extends PluginSettingTab {
         app: App,
         plugin: Plugin,
         private readonly characterService: CharacterService,
-        private readonly userOptionStore: UserOptionStore
+        private readonly userOptionStore: OptionsStore
     ) {
         super(app, plugin);
         this.containerEl.addClass("plugin", "unicode-search", "setting-tab")
@@ -126,42 +118,12 @@ export class SettingTab extends PluginSettingTab {
             );
     }
 
-    private static async addCharacterSubcategoryFilterToggle(
-        container: HTMLElement,
-        userOptionsStore: UserOptionStore,
-        subcategory: CharacterCategory
-    ) {
-        const categoryIncluded = await userOptionsStore.getCharacterSubcategory(subcategory)
-
-        new Setting(container)
-            .setName(subcategory)
-            .addToggle(input => input
-               .setValue(categoryIncluded)
-               .onChange((value) => userOptionsStore.setCharacterSubcategory(subcategory, value))
-            );
-    }
-
-    private static async addCharacterPlaneFilterToggle(
-        container: HTMLElement,
-        userOptionsStore: UserOptionStore,
-        plane: Pick<UnicodePlane, "planeNumber" | "description" | "interval">
-    ) {
-        const planeIncluded = await userOptionsStore.getCharacterPlane(plane.planeNumber);
-
-        new Setting(container)
-            .setName(`${plane.planeNumber} [${asHexadecimal(plane.interval.start)}..${asHexadecimal(plane.interval.end)}]: ${plane.description}`)
-            .addToggle(input => input
-               .setValue(planeIncluded)
-               .onChange((value) => userOptionsStore.setCharacterPlane(plane.planeNumber, value))
-            );
-    }
-
     private static async addCharacterBlockFilterToggle(
         container: HTMLElement,
-        userOptionsStore: UserOptionStore,
+        userOptionsStore: OptionsStore,
         block: UnicodeBlock
     ) {
-        /* TODO: redo more effectively, we always get a plane worth of blocks */
+        /* Low: try to redo more effectively, we always get a plane worth of blocks */
         const blockIncluded = await userOptionsStore.getCharacterBlock(block.interval.start)
 
         new Setting(container)

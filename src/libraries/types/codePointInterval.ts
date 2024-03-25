@@ -1,6 +1,9 @@
-export type ClosedIntervalEndpoint = number;
+export type CodePoint = number;
 
+/**
+ * Represents a closed interval/range of Unicode Code Points
+ */
 export interface CodePointInterval {
-    start: ClosedIntervalEndpoint,
-    end: ClosedIntervalEndpoint,
+    start: CodePoint,
+    end: CodePoint,
 }

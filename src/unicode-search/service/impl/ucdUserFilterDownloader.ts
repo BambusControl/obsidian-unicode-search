@@ -3,7 +3,7 @@ import {UnicodeCharacter} from "../../../libraries/types/unicodeCharacter";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 import {CharacterDownloader} from "../characterDownloader";
-import {UserOptionStore} from "../userOptionStore";
+import {OptionsStore} from "../optionsStore";
 import {UserOptions} from "../../../libraries/types/userOptions";
 import {CharacterCategory} from "../../../libraries/data/characterCategory";
 import {CharacterClassifier} from "../../../libraries/data/characterClassifier";
@@ -31,7 +31,7 @@ export class UCDUserFilterDownloader implements CharacterDownloader {
 
 
     public constructor(
-        private readonly userOptionStore: UserOptionStore,
+        private readonly userOptionStore: OptionsStore,
     ) {
     }
 
