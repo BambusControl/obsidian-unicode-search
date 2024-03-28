@@ -4,9 +4,9 @@ import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 import {CharacterDownloader} from "../characterDownloader";
 import {OptionsStore} from "../optionsStore";
-import {UserOptions} from "../../../libraries/types/userOptions";
 import {CharacterCategory} from "../../../libraries/data/characterCategory";
 import {CharacterClassifier} from "../../../libraries/data/characterClassifier";
+import {CharacterFilterOptions} from "../../../libraries/types/characterFilterOptions";
 
 type ParsedData = Array<string>;
 
@@ -36,12 +36,12 @@ export class UCDUserFilterDownloader implements CharacterDownloader {
     }
 
     public async download(): Promise<UnicodeCharacter[]> {
-        const userOptions = await this.userOptionStore.getUserOptions();
+        const characterFilter = await this.userOptionStore.getCharacterFilters();
         const unicodeData = await request("https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt");
-        return await this.transformToCharacters(unicodeData, userOptions);
+        return await this.transformToCharacters(unicodeData, characterFilter);
     }
 
-    private transformToCharacters(csvString: string, userOptions: UserOptions): Promise<UnicodeCharacter[]> {
+    private transformToCharacters(csvString: string, characterFilter: CharacterFilterOptions): Promise<UnicodeCharacter[]> {
         return new Promise((resolve, reject) => {
             const completeFn = (results: ParseResult<ParsedData>): void => {
                 if (results.errors.length !== 0) {
@@ -54,7 +54,7 @@ export class UCDUserFilterDownloader implements CharacterDownloader {
                         characterName: row[1],
                         generalCategory: row[2],
                     }))
-                    .filter(char => UCDUserFilterDownloader.charFilter(char, userOptions))
+                    .filter(char => UCDUserFilterDownloader.charFilter(char, characterFilter))
                     .map(pch => UCDUserFilterDownloader.intoUnicode(pch));
 
                 resolve(unicodeCharacters);
@@ -70,7 +70,7 @@ export class UCDUserFilterDownloader implements CharacterDownloader {
         });
     }
 
-    private static charFilter(char: ParsedCharacter, userOptions: UserOptions): boolean {
+    private static charFilter(char: ParsedCharacter, characterFilter: CharacterFilterOptions): boolean {
         return (
             char != null
             && char.characterName != null
@@ -79,7 +79,7 @@ export class UCDUserFilterDownloader implements CharacterDownloader {
         ) && (
             UCDUserFilterDownloader.planeIncluded(char)
             || UCDUserFilterDownloader.blockIncluded(char)
-            || UCDUserFilterDownloader.categoryIncluded(char, userOptions)
+            || UCDUserFilterDownloader.categoryIncluded(char, characterFilter)
         ) && !(
             UCDUserFilterDownloader.charExcluded(char)
         );
@@ -106,9 +106,9 @@ export class UCDUserFilterDownloader implements CharacterDownloader {
         return true;
     }
 
-    private static categoryIncluded(char: ParsedCharacter, userOptions: UserOptions): boolean {
+    private static categoryIncluded(char: ParsedCharacter, characterFilter: CharacterFilterOptions): boolean {
         /* TODO [characterFilter]: User filter for unicode category. */
-        const categories = userOptions.characterFilter.categories;
+        const categories = characterFilter.categories;
         return categories.contains(char.generalCategory as CharacterCategory);
     }
 

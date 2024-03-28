@@ -25,7 +25,8 @@ export default class UnicodeSearchPlugin extends Plugin {
         const dataStore = new PluginSaveDataStore(this);
         const characterStore = new PluginCharacterStore(dataStore);
         const characterService = new UsageTrackedCharacterService(characterStore);
-        const downloader = new UCDUserFilterDownloader(new PluginOptionsStore(dataStore));
+        const optionsStore = new PluginOptionsStore(dataStore);
+        const downloader = new UCDUserFilterDownloader(optionsStore);
 
 		await UnicodeSearchPlugin.initializeData(dataStore, characterStore, downloader);
 
@@ -44,7 +45,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 			},
 		});
 
-        this.addSettingTab(new SettingTab(this.app, this, characterService, dataStore));
+        this.addSettingTab(new SettingTab(this.app, this, characterService, optionsStore));
 	}
 
 	private static async initializeData(

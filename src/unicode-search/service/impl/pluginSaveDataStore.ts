@@ -81,7 +81,7 @@ export class PluginSaveDataStore implements RootDataStore, MetadataStore {
 
     public async flagToReinitialize(): Promise<void> {
         await this._mergeMetadata({
-            initialized: initialized,
+            initialized: false,
         });
     }
 

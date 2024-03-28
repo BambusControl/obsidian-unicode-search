@@ -120,18 +120,18 @@ export class SettingTab extends PluginSettingTab {
 
     private static async addCharacterBlockFilterToggle(
         container: HTMLElement,
-        userOptionsStore: OptionsStore,
+        options: OptionsStore,
         block: UnicodeBlock
     ) {
         /* Low: try to redo more effectively, we always get a plane worth of blocks */
-        const blockIncluded = await userOptionsStore.getCharacterBlock(block.interval.start)
+        const blockIncluded = await options.getCharacterBlock(block.interval.start)
 
         new Setting(container)
             .setName(block.description)
             .setDesc(`[${asHexadecimal(block.interval.start)}..${asHexadecimal(block.interval.end)}]`)
             .addToggle(input => input
                .setValue(blockIncluded)
-               .onChange((value) => userOptionsStore.setCharacterBlock(block.interval.start, value))
+               .onChange((value) => options.setCharacterBlock(block.interval.start, value))
             );
     }
 

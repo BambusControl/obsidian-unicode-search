@@ -4,6 +4,8 @@ import {MetadataStore} from "../metadataStore";
 import {CodePoint, CodePointInterval} from "../../../libraries/types/codePointInterval";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
 import {UnicodePlaneFilter} from "../../../libraries/types/unicodePlaneFilter";
+import {codePointIn} from "../../../libraries/helpers/codePointIn";
+import {CharacterFilterOptions} from "../../../libraries/types/characterFilterOptions";
 
 export class PluginOptionsStore implements OptionsStore {
 
@@ -12,8 +14,12 @@ export class PluginOptionsStore implements OptionsStore {
     ) {
     }
 
+    public async getCharacterFilters(): Promise<CharacterFilterOptions> {
+        return (await this.store.getUserOptions()).characterFilter
+    }
+
     public async allBlocksIncluded(plane: CodePointInterval): Promise<boolean> {
-        const unicodePlanes = (await this.store.getUserOptions()).characterFilter.unicodePlanes;
+        const unicodePlanes = (await this.getCharacterFilters()).unicodePlanes;
 
         return unicodePlanes
             .filter(p => p.select === "ALL")
@@ -46,7 +52,15 @@ export class PluginOptionsStore implements OptionsStore {
     }
 
     public async getCharacterBlock(blockStart: CodePoint): Promise<boolean> {
-        throw new ObsidianUnicodeSearchError("Not implemented");
+        const unicodePlanes = (await this.getCharacterFilters()).unicodePlanes;
+        const plane = unicodePlanes.find(p => codePointIn(blockStart, p.plane))
+
+        if (plane == null) {
+            return false;
+        }
+
+        return plane.select === "ALL"
+            || plane.select.some(b => b.block.start === blockStart)
     }
 
     public async setCharacterBlock(blockStart: CodePoint, set: boolean): Promise<void> {

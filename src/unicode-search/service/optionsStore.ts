@@ -1,9 +1,12 @@
 import {CodePoint, CodePointInterval} from "../../libraries/types/codePointInterval";
+import {CharacterFilterOptions} from "../../libraries/types/characterFilterOptions";
 
 /**
  * Storage service for user settings of the plugin.
  */
 export interface OptionsStore {
+    getCharacterFilters(): Promise<CharacterFilterOptions>
+
     allBlocksIncluded(plane: CodePointInterval): Promise<boolean>
     includeAllBlocks(plane: CodePointInterval, set: boolean): Promise<void>
 
