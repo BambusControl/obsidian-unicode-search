@@ -16,6 +16,7 @@ export interface QCodePointAttribute {
 }
 
 export type QUnicodeMap<T> = Map<QCodePoint, T>
+export type QUnicodeData = QUnicodeMap<QCodePointAttribute>
 
 export interface QUnicodeCodePointWithAttributes {
     /**

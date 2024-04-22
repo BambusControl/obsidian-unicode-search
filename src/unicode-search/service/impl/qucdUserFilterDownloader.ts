@@ -1,14 +1,16 @@
 import {request} from "obsidian";
-import {UnicodeCharacter} from "../../../libraries/types/unicodeCharacter";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
 import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
-import {CharacterDownloader} from "../characterDownloader";
-import {OptionsStore} from "../optionsStore";
-import {CharacterCategory} from "../../../libraries/data/characterCategory";
+import {QCharacterDownloader} from "../characterDownloader";
 import {CharacterClassifier} from "../../../libraries/data/characterClassifier";
-import {CharacterFilterOptions} from "../../../libraries/types/characterFilterOptions";
 
-import {QCodePointAttribute} from "../../../libraries/types/data/QCodePointAttribute";
+import {
+    QCodePoint,
+    QCodePointAttribute,
+    QUnicodeData
+} from "../../../libraries/types/data/QCodePointAttribute";
+import {QtOptionsStore} from "../qOptionsStore";
+import {QFilter} from "../../../libraries/types/data/QSaveData";
 
 type ParsedData = Array<string>;
 
@@ -18,7 +20,7 @@ type ParsedCharacter = {
     classifier: string;
 };
 
-export class QUCDUserFilterDownloader implements CharacterDownloader {
+export class QUCDUserFilterDownloader implements QCharacterDownloader {
 
     private readonly config: ParseConfig = {
         delimiter: ";",
@@ -29,18 +31,27 @@ export class QUCDUserFilterDownloader implements CharacterDownloader {
     };
 
     public constructor(
-        private readonly userOptionStore: OptionsStore,
+        private readonly optionsStore: QtOptionsStore,
     ) {
     }
 
-    public async download(): Promise<UnicodeCharacter[]> {
-        const characterFilter = await this.userOptionStore.getCharacterFilters();
+    public async download(): Promise<QUnicodeData> {
+        /* TODO [Character download filter]
+        * await this.optionsStore.getCharacterFilters();
+        */
+        const characterFilter = {
+            categories: {},
+            planes: {
+                blocks: {}
+            }
+        } as QFilter
+
         const unicodeVersion = "14.0.0"
-        const unicodeData = await request(`https://www.unicode.org/Public/UCD/${unicodeVersion}/ucd/UnicodeData.txt`);
+        const unicodeData = await request(`https://www.unicode.org/Public/${unicodeVersion}/ucd/UnicodeData.txt`);
         return await this.transformToCharacters(unicodeData, characterFilter);
     }
 
-    private transformToCharacters(csvString: string, characterFilter: CharacterFilterOptions): Promise<UnicodeCharacter[]> {
+    private transformToCharacters(csvString: string, characterFilter: QFilter): Promise<QUnicodeData> {
         return new Promise((resolve, reject) => {
             const completeFn = (results: ParseResult<ParsedData>): void => {
                 if (results.errors.length !== 0) {
@@ -56,7 +67,7 @@ export class QUCDUserFilterDownloader implements CharacterDownloader {
                     .filter(char => QUCDUserFilterDownloader.charFilter(char, characterFilter))
                     .map(pch => QUCDUserFilterDownloader.intoUnicode(pch));
 
-                resolve(unicodeCharacters);
+                resolve(new Map(unicodeCharacters));
             };
 
             const configuration: ParseWorkerConfig<ParsedData> = {
@@ -69,7 +80,7 @@ export class QUCDUserFilterDownloader implements CharacterDownloader {
         });
     }
 
-    private static charFilter(char: ParsedCharacter, characterFilter: CharacterFilterOptions): boolean {
+    private static charFilter(char: ParsedCharacter, characterFilter: QFilter): boolean {
         return (
             char != null
             && char.characterName != null
@@ -105,10 +116,13 @@ export class QUCDUserFilterDownloader implements CharacterDownloader {
         return true;
     }
 
-    private static categoryIncluded(char: ParsedCharacter, characterFilter: CharacterFilterOptions): boolean {
-        /* TODO [characterFilter]: User filter for unicode category. */
-        const categories = characterFilter.categories;
-        return categories.contains(char.classifier as CharacterCategory);
+    private static categoryIncluded(char: ParsedCharacter, characterFilter: QFilter): boolean {
+        /* TODO [characterFilter]: User filter for unicode category.
+        *
+        * const categories = characterFilter.categories;
+        * return categories.contains(char.classifier as CharacterCategory);
+        */
+        return true;
     }
 
     private static charExcluded(char: ParsedCharacter): boolean {
@@ -117,12 +131,14 @@ export class QUCDUserFilterDownloader implements CharacterDownloader {
         return char.classifier.startsWith(CharacterClassifier.Other)
     }
 
-    private static intoUnicode(char: ParsedCharacter): QCodePointAttribute {
-        return {
-            char: String.fromCodePoint(parseInt(char.singleCodePoint, 16)),
-            name: char.characterName.toLowerCase(),
-            classifier: char.classifier
-        };
+    private static intoUnicode(char: ParsedCharacter): readonly [QCodePoint, QCodePointAttribute] {
+        return [
+            String.fromCodePoint(parseInt(char.singleCodePoint, 16)),
+            {
+                name: char.characterName.toLowerCase(),
+                classifier: char.classifier
+            } as QCodePointAttribute
+        ];
     }
 
 }

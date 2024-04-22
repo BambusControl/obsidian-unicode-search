@@ -1,14 +1,10 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {UsageTrackedCharacterService} from "./service/impl/usageTrackedCharacterService";
-import {FuzzySearchModal} from "./components/fuzzySearchModal";
-import {PluginSaveDataStore} from "./service/impl/pluginSaveDataStore";
-import {CharacterStore} from "./service/characterStore";
-import {SettingTab} from "./components/settingsTab"
-import {CharacterDownloader} from "./service/characterDownloader";
-import {MetadataStore} from "./service/metadataStore";
-import {UCDUserFilterDownloader} from "./service/impl/ucdUserFilterDownloader";
-import {PluginCharacterStore} from "./service/impl/pluginCharacterStore";
-import {PluginOptionsStore} from "./service/impl/pluginOptionsStore";
+import {QCharacterDownloader} from "./service/characterDownloader";
+import {QUCDUserFilterDownloader} from "./service/impl/qucdUserFilterDownloader";
+import {QCodePointStore, QtCodePointStore} from "./service/QCodePointStore";
+import {QtRootDataStore} from "./service/qRootDataStore";
+import {QtOptionsStore} from "./service/qOptionsStore";
+import {QMetadataStore} from "./service/QMetadataStore";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -22,15 +18,15 @@ export default class UnicodeSearchPlugin extends Plugin {
 	}
 
 	public override async onload(): Promise<void> {
-        const dataStore = new PluginSaveDataStore(this);
-        const characterStore = new PluginCharacterStore(dataStore);
-        const characterService = new UsageTrackedCharacterService(characterStore);
-        const optionsStore = new PluginOptionsStore(dataStore);
-        const downloader = new UCDUserFilterDownloader(optionsStore);
+        const dataStore = new QtRootDataStore(this);
+        const characterStore = new QtCodePointStore(dataStore);
+        // const characterService = new UsageTrackedCharacterService(characterStore);
+        const optionsStore = new QtOptionsStore(dataStore);
+        const downloader = new QUCDUserFilterDownloader(optionsStore);
 
 		await UnicodeSearchPlugin.initializeData(dataStore, characterStore, downloader);
 
-		super.addCommand({
+		/*super.addCommand({
 			id: "search-unicode-chars",
 			name: "Search Unicode characters",
 
@@ -45,15 +41,15 @@ export default class UnicodeSearchPlugin extends Plugin {
 			},
 		});
 
-        this.addSettingTab(new SettingTab(this.app, this, characterService, optionsStore));
+        this.addSettingTab(new SettingTab(this.app, this, characterService, optionsStore));*/
 	}
 
 	private static async initializeData(
-		saveDataStore: MetadataStore,
-		characterDataStore: CharacterStore,
-		ucdService: CharacterDownloader
+		metadataStore: QMetadataStore,
+		characterDataStore: QCodePointStore,
+		ucdService: QCharacterDownloader
 	): Promise<void> {
-		const initialized = await saveDataStore.isInitialized();
+		const initialized = await metadataStore.isInitialized();
 
 		if (initialized) {
 			return;
@@ -62,10 +58,12 @@ export default class UnicodeSearchPlugin extends Plugin {
         console.log("[1/3] Downloading UCD data");
 		const data = await ucdService.download();
 
+        // console.log({data})
+
         console.log("[2/3] Initializing character data")
 		await characterDataStore.initializeCharacters(data);
 
-        console.log("[3/3] Initialized!")
+        // console.log("[3/3] Initialized!")
 	}
 
 }
