@@ -1,6 +1,6 @@
 import {request} from "obsidian";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
-import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
+import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {QCharacterDownloader} from "../characterDownloader";
 import {CharacterClassifier} from "../../../libraries/data/characterClassifier";
 
@@ -55,7 +55,7 @@ export class QUCDUserFilterDownloader implements QCharacterDownloader {
         return new Promise((resolve, reject) => {
             const completeFn = (results: ParseResult<ParsedData>): void => {
                 if (results.errors.length !== 0) {
-                    reject(new ObsidianUnicodeSearchError("Error while parsing data from Unicode Character Database"));
+                    reject(new UnicodeSearchError("Error while parsing data from Unicode Character Database"));
                 }
 
                 const unicodeCharacters = results.data

@@ -1,6 +1,6 @@
 import {QUnicodeData} from "../../libraries/types/data/QCodePointAttribute";
 import {QRootDataStore} from "./qRootDataStore";
-import {ObsidianUnicodeSearchError} from "../errors/obsidianUnicodeSearchError";
+import {UnicodeSearchError} from "../errors/unicodeSearchError";
 
 export interface QCodePointStore {
 
@@ -17,16 +17,16 @@ export interface QCodePointStore {
 }
 
 export class QtCodePointStore implements QCodePointStore {
-    public constructor(
-        private readonly store: QRootDataStore
-    ) {
+
+    constructor(private readonly store: QRootDataStore) {
     }
 
     getCharacters(): Promise<QUnicodeData> {
-        throw new ObsidianUnicodeSearchError("Not implemented");
+        throw new UnicodeSearchError("Not implemented");
     }
 
     initializeCharacters(characters: QUnicodeData): Promise<void> {
-        throw new ObsidianUnicodeSearchError("Not implemented");
+        return this.store.overwriteUnicodeData(characters);
     }
+
 }

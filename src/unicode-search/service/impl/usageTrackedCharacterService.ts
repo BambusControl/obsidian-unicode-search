@@ -1,4 +1,4 @@
-import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
+import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 
 import {CharacterService} from "../characterService";
 import {CharacterStore} from "../characterStore";
@@ -22,7 +22,7 @@ export class UsageTrackedCharacterService implements CharacterService {
         const char = characters.find(char => char.char === key);
 
 		if (char == null) {
-			throw new ObsidianUnicodeSearchError(`No character '${key}' exists.`);
+			throw new UnicodeSearchError(`No character '${key}' exists.`);
 		}
 
         return char;
@@ -63,13 +63,13 @@ export class UsageTrackedCharacterService implements CharacterService {
         const foundIndex = pinnedChars.findIndex(ch => ch.char == key)
 
         if (foundIndex < 0) {
-			throw new ObsidianUnicodeSearchError(`No character '${key}' exists.`);
+			throw new UnicodeSearchError(`No character '${key}' exists.`);
 		}
 
 		const char = pinnedChars[foundIndex];
 
         if (char.pin == null) {
-			throw new ObsidianUnicodeSearchError(`Character '${key}' is not pinned.`);
+			throw new UnicodeSearchError(`Character '${key}' is not pinned.`);
         }
 
         const {pin, ...unpinnedChar} = char;

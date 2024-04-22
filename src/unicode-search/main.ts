@@ -58,7 +58,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         console.log("[1/3] Downloading UCD data");
 		const data = await ucdService.download();
 
-        // console.log({data})
+        console.log({data})
 
         console.log("[2/3] Initializing character data")
 		await characterDataStore.initializeCharacters(data);

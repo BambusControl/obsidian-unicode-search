@@ -1,7 +1,7 @@
 import {request} from "obsidian";
 import {UnicodeCharacter} from "../../../libraries/types/unicodeCharacter";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
-import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
+import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {CharacterDownloader} from "../characterDownloader";
 import {OptionsStore} from "../optionsStore";
 import {CharacterCategory} from "../../../libraries/data/characterCategory";
@@ -45,7 +45,7 @@ export class UCDUserFilterDownloader implements CharacterDownloader {
         return new Promise((resolve, reject) => {
             const completeFn = (results: ParseResult<ParsedData>): void => {
                 if (results.errors.length !== 0) {
-                    reject(new ObsidianUnicodeSearchError("Error while parsing data from Unicode Character Database"));
+                    reject(new UnicodeSearchError("Error while parsing data from Unicode Character Database"));
                 }
 
                 const unicodeCharacters = results.data

@@ -2,7 +2,7 @@ import {OptionsStore} from "../optionsStore";
 import {RootDataStore} from "../rootDataStore";
 import {MetadataStore} from "../metadataStore";
 import {CodePoint, CodePointInterval} from "../../../libraries/types/codePointInterval";
-import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
+import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {UnicodePlaneFilter} from "../../../libraries/types/unicodePlaneFilter";
 import {codePointIn} from "../../../libraries/helpers/codePointIn";
 import {CharacterFilterOptions} from "../../../libraries/types/characterFilterOptions";
@@ -64,7 +64,7 @@ export class PluginOptionsStore implements OptionsStore {
     }
 
     public async setCharacterBlock(blockStart: CodePoint, set: boolean): Promise<void> {
-        throw new ObsidianUnicodeSearchError("Not implemented");
+        throw new UnicodeSearchError("Not implemented");
     }
 
 

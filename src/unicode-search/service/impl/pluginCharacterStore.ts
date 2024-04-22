@@ -1,7 +1,7 @@
 import {CharacterStore} from "../characterStore";
 import {RootDataStore} from "../rootDataStore";
 import {Character, CharacterKey, CharacterTransform} from "../../../libraries/types/character";
-import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
+import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 
 export class PluginCharacterStore implements CharacterStore {
 
@@ -58,7 +58,7 @@ export class PluginCharacterStore implements CharacterStore {
         const found = foundIndex >= 0;
 
         if (!found) {
-            throw new ObsidianUnicodeSearchError(`Cannot update non-existent character '${key}' to storage`);
+            throw new UnicodeSearchError(`Cannot update non-existent character '${key}' to storage`);
         }
 
         const newChars = currentChars;
@@ -82,7 +82,7 @@ export class PluginCharacterStore implements CharacterStore {
             const found = foundIndex >= 0;
 
             if (!found) {
-                throw new ObsidianUnicodeSearchError(`Cannot update non-existent character '${key}' to storage`);
+                throw new UnicodeSearchError(`Cannot update non-existent character '${key}' to storage`);
             }
 
             indexMappings.set(foundIndex, mapping);

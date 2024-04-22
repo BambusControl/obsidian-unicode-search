@@ -1,5 +1,5 @@
 import {Plugin} from "obsidian";
-import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
+import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {SaveData} from "../../../libraries/types/data/saveData";
 import {isTypeSaveData} from "../../../libraries/helpers/isTypeSaveData";
 import {UserOptions} from "src/libraries/types/userOptions";
@@ -138,7 +138,7 @@ export class PluginSaveDataStore implements RootDataStore, MetadataStore {
             : {...INITALIZATION_STORE};
 
         if (newData == null) {
-            throw new ObsidianUnicodeSearchError("Cannot import plugin data. The file is not valid!");
+            throw new UnicodeSearchError("Cannot import plugin data. The file is not valid!");
         }
 
         if (!dataLoaded) {
