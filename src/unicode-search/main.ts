@@ -1,5 +1,4 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {QCharacterDownloader} from "./service/characterDownloader";
 import {QUCDUserFilterDownloader} from "./service/impl/qucdUserFilterDownloader";
 import {QCodePointStore} from "./service/QCodePointStore";
 import {QtOptionsStore} from "./service/qOptionsStore";
@@ -8,6 +7,7 @@ import {QtRootDataStore} from "./service/qtRootDataStore";
 import {QtCodePointStore} from "./service/QtCodePointStore";
 
 import {QCodePointData} from "../libraries/types/data/QCodePointData";
+import {QCharacterDownloader} from "./service/QCharacterDownloader";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -59,17 +59,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 		}
 
         console.log("[1/3] Downloading UCD data");
-		// const data = await ucdService.download();
-
-        const data: QCodePointData = [
-            {
-                codePoint: "=",
-                name: "equals sign",
-                classifier: "Sm",
-            }
-        ];
-
-        // console.log({data})
+		const data = await ucdService.download();
 
         console.log("[2/3] Initializing character data")
 		await characterDataStore.initializeCodePoints(data);

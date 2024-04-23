@@ -1,17 +1,12 @@
 import {request} from "obsidian";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
-import {QCharacterDownloader} from "../characterDownloader";
 import {CharacterClassifier} from "../../../libraries/data/characterClassifier";
-
-import {
-    QCodePointAttribute
-} from "../../../libraries/types/data/QCodePointAttribute";
 import {QtOptionsStore} from "../qOptionsStore";
-
 import {QFilter} from "../../../libraries/types/data/QFilter";
-import {QCodePoint} from "../../../libraries/types/data/QCodePoint";
 import {QCodePointData} from "../../../libraries/types/data/QCodePointData";
+import {QCharacterDownloader} from "../QCharacterDownloader";
+import {QUnicodeCodePointWithAttributes} from "../../../libraries/types/data/QUnicodeCodePointWithAttributes";
 
 type ParsedData = Array<string>;
 
@@ -68,7 +63,7 @@ export class QUCDUserFilterDownloader implements QCharacterDownloader {
                     .filter(char => QUCDUserFilterDownloader.charFilter(char, characterFilter))
                     .map(pch => QUCDUserFilterDownloader.intoUnicode(pch));
 
-                resolve(new Map(unicodeCharacters));
+                resolve(unicodeCharacters);
             };
 
             const configuration: ParseWorkerConfig<ParsedData> = {
@@ -132,14 +127,12 @@ export class QUCDUserFilterDownloader implements QCharacterDownloader {
         return char.classifier.startsWith(CharacterClassifier.Other)
     }
 
-    private static intoUnicode(char: ParsedCharacter): readonly [QCodePoint, QCodePointAttribute] {
-        return [
-            String.fromCodePoint(parseInt(char.singleCodePoint, 16)),
-            {
-                name: char.characterName.toLowerCase(),
-                classifier: char.classifier
-            } as QCodePointAttribute
-        ];
+    private static intoUnicode(char: ParsedCharacter): QUnicodeCodePointWithAttributes {
+        return {
+            codePoint: String.fromCodePoint(parseInt(char.singleCodePoint, 16)),
+            name: char.characterName.toLowerCase(),
+            classifier: char.classifier
+        };
     }
 
 }

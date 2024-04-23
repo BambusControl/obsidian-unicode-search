@@ -13,4 +13,3 @@ export interface OptionsStore {
     getCharacterBlock(blockStart: CodePoint): Promise<boolean>
     setCharacterBlock(blockStart: CodePoint, set: boolean): Promise<void>
 }
-
