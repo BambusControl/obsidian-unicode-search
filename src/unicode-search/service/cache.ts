@@ -29,6 +29,7 @@ export class Cache<T> {
             throw new UnicodeSearchError("Refuse to persist a null value");
         }
 
+        console.debug("Persisting", {value: this.value})
         await this.persistCallback(this.value);
         return this.value;
     }

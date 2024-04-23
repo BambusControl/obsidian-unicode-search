@@ -1,10 +1,11 @@
 import {App, Plugin, PluginManifest} from "obsidian";
 import {QCharacterDownloader} from "./service/characterDownloader";
 import {QUCDUserFilterDownloader} from "./service/impl/qucdUserFilterDownloader";
-import {QCodePointStore, QtCodePointStore} from "./service/QCodePointStore";
-import {QtRootDataStore} from "./service/qRootDataStore";
+import {QCodePointStore} from "./service/QCodePointStore";
 import {QtOptionsStore} from "./service/qOptionsStore";
 import {QMetadataStore} from "./service/QMetadataStore";
+import {QtRootDataStore} from "./service/qtRootDataStore";
+import {QtCodePointStore} from "./service/QtCodePointStore";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -56,14 +57,22 @@ export default class UnicodeSearchPlugin extends Plugin {
 		}
 
         console.log("[1/3] Downloading UCD data");
-		const data = await ucdService.download();
+		// const data = await ucdService.download();
 
-        console.log({data})
+        const data = new Map([
+            ["=", {
+                "name": "equals sign",
+                "classifier": "Sm"
+            }]
+        ])
 
+        // console.log({data})
+
+        /* TODO [NEXT]: Check if it works and saves stuff */
         console.log("[2/3] Initializing character data")
-		await characterDataStore.initializeCharacters(data);
+		await characterDataStore.initializeCodePoints(data);
 
-        // console.log("[3/3] Initialized!")
+        console.log("[3/3] Initialized!")
 	}
 
 }

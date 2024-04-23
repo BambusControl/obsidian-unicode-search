@@ -2,7 +2,7 @@ import {QCodePointAttribute, QUnicodeMap} from "./QCodePointAttribute";
 
 export interface QSaveData {
     settings: QSettings;
-    user: QUser;
+    usage: QUser;
     unicode: QUnicode;
 }
 
