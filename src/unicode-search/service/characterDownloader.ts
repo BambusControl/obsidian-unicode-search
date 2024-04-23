@@ -1,10 +1,11 @@
 import {UnicodeCharacter} from "../../libraries/types/unicodeCharacter";
-import {QUnicodeData} from "../../libraries/types/data/QCodePointAttribute";
+
+import {QCodePointData} from "../../libraries/types/data/QCodePointData";
 
 export interface CharacterDownloader {
     download(): Promise<UnicodeCharacter[]>;
 }
 
 export interface QCharacterDownloader {
-    download(): Promise<QUnicodeData>;
+    download(): Promise<QCodePointData>;
 }

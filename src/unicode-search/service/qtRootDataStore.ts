@@ -1,10 +1,13 @@
 import {QMetadataStore} from "./QMetadataStore";
 import {Cache} from "./cache";
-import {QSaveData, QSettings, QUnicode, QUser} from "../../libraries/types/data/QSaveData";
+import {QSaveData} from "../../libraries/types/data/QSaveData";
 import {QPluginDataLoader} from "./QPluginDataLoader";
 import {qImportData} from "./qImportData";
 import {UnicodeSearchError} from "../errors/unicodeSearchError";
 import {QRootDataStore} from "./qRootDataStore";
+import {QSettings} from "../../libraries/types/data/QSettings";
+import {QUser} from "../../libraries/types/data/QUser";
+import {QUnicode} from "../../libraries/types/data/QUnicode";
 
 export class QtRootDataStore implements QRootDataStore, QMetadataStore {
 

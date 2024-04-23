@@ -1,4 +1,6 @@
-import {QSettings, QUnicode, QUser} from "../../libraries/types/data/QSaveData";
+import {QSettings} from "../../libraries/types/data/QSettings";
+import {QUser} from "../../libraries/types/data/QUser";
+import {QUnicode} from "../../libraries/types/data/QUnicode";
 
 export interface QRootDataStore {
     getUnicode(): Promise<QUnicode>

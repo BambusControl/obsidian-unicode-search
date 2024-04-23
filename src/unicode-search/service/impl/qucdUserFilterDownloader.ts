@@ -5,12 +5,13 @@ import {QCharacterDownloader} from "../characterDownloader";
 import {CharacterClassifier} from "../../../libraries/data/characterClassifier";
 
 import {
-    QCodePoint,
-    QCodePointAttribute,
-    QUnicodeData
+    QCodePointAttribute
 } from "../../../libraries/types/data/QCodePointAttribute";
 import {QtOptionsStore} from "../qOptionsStore";
-import {QFilter} from "../../../libraries/types/data/QSaveData";
+
+import {QFilter} from "../../../libraries/types/data/QFilter";
+import {QCodePoint} from "../../../libraries/types/data/QCodePoint";
+import {QCodePointData} from "../../../libraries/types/data/QCodePointData";
 
 type ParsedData = Array<string>;
 
@@ -35,7 +36,7 @@ export class QUCDUserFilterDownloader implements QCharacterDownloader {
     ) {
     }
 
-    public async download(): Promise<QUnicodeData> {
+    public async download(): Promise<QCodePointData> {
         /* TODO [Character download filter]
         * await this.optionsStore.getCharacterFilters();
         */
@@ -51,7 +52,7 @@ export class QUCDUserFilterDownloader implements QCharacterDownloader {
         return await this.transformToCharacters(unicodeData, characterFilter);
     }
 
-    private transformToCharacters(csvString: string, characterFilter: QFilter): Promise<QUnicodeData> {
+    private transformToCharacters(csvString: string, characterFilter: QFilter): Promise<QCodePointData> {
         return new Promise((resolve, reject) => {
             const completeFn = (results: ParseResult<ParsedData>): void => {
                 if (results.errors.length !== 0) {

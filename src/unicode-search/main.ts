@@ -7,6 +7,8 @@ import {QMetadataStore} from "./service/QMetadataStore";
 import {QtRootDataStore} from "./service/qtRootDataStore";
 import {QtCodePointStore} from "./service/QtCodePointStore";
 
+import {QCodePointData} from "../libraries/types/data/QCodePointData";
+
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
 export default class UnicodeSearchPlugin extends Plugin {
@@ -59,16 +61,16 @@ export default class UnicodeSearchPlugin extends Plugin {
         console.log("[1/3] Downloading UCD data");
 		// const data = await ucdService.download();
 
-        const data = new Map([
-            ["=", {
-                "name": "equals sign",
-                "classifier": "Sm"
-            }]
-        ])
+        const data: QCodePointData = [
+            {
+                codePoint: "=",
+                name: "equals sign",
+                classifier: "Sm",
+            }
+        ];
 
         // console.log({data})
 
-        /* TODO [NEXT]: Check if it works and saves stuff */
         console.log("[2/3] Initializing character data")
 		await characterDataStore.initializeCodePoints(data);
 

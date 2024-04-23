@@ -1,5 +1,7 @@
-import {QSaveData, QUserCodepointData} from "../../libraries/types/data/QSaveData";
-import {QCodePoint, QCodePointAttribute} from "../../libraries/types/data/QCodePointAttribute";
+import {QSaveData} from "../../libraries/types/data/QSaveData";
+import {QCodePointAttribute} from "../../libraries/types/data/QCodePointAttribute";
+import {QUserCodepointData} from "../../libraries/types/data/QUserCodepointData";
+import {QCodePoint} from "../../libraries/types/data/QCodePoint";
 
 export function qInitializationStore(): QSaveData {
     return {
