@@ -1,17 +1,13 @@
 import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
 
 import * as console from "console";
-import {CharacterMatch, NONE_RESULT, QCharacterMatch} from "./characterMetadata";
+import {NONE_RESULT, QCharacterMatch} from "./characterMetadata";
 import {
-	ELEMENT_FREQUENT,
-	ELEMENT_RECENT,
 	INSERT_CHAR_INSTRUCTION,
 	INSTRUCTION_DISMISS,
 	NAVIGATE_INSTRUCTION
 } from "./visualElements";
-import {qToHexadecimal, toHexadecimal} from "../../libraries/helpers/toHexadecimal";
-import {mostRecentlyUsed, qMostRecentlyUsed} from "../../libraries/helpers/mostRecentlyUsed";
-import {averageUseCount, qAverageUseCount} from "../../libraries/helpers/averageUseCount";
+import {qToHexadecimal} from "../../libraries/helpers/toHexadecimal";
 import {getRandomItem} from "../../libraries/helpers/getRandomItem";
 import {QCharacterService} from "../service/QCharacterService";
 
@@ -35,12 +31,13 @@ export class QFuzzySearchModal extends SuggestModal<QCharacterMatch> {
 	}
 
     public override async getSuggestions(query: string): Promise<QCharacterMatch[]> {
-		const isHexSafe = query.length <= 4 && !query.contains(" ")
+        console.count("QFuzzySearchModal.getSuggestions")
+        const isHexSafe = query.length <= 4 && !query.contains(" ")
 
 		const codepointSearch = isHexSafe ? prepareSimpleSearch(query) : ((text: string) => null);
 		const fuzzyNameSearch = prepareFuzzySearch(query);
 
-		return (await this.characterService.getAll())
+		return (await this.characterService.getSorted())
 			.map(character => ({
 				item: character,
 				match: {
@@ -61,7 +58,7 @@ export class QFuzzySearchModal extends SuggestModal<QCharacterMatch> {
 			)
 	}
 
-	public override async renderSuggestion(item: QCharacterMatch, container: HTMLElement): Promise<void> {
+    public override async renderSuggestion(item: QCharacterMatch, container: HTMLElement): Promise<void> {
 		const char = item.item;
 
 		container.addClass("plugin", "unicode-search", "result-item")
@@ -94,24 +91,11 @@ export class QFuzzySearchModal extends SuggestModal<QCharacterMatch> {
 			cls: "detail",
 		});
 
-        const usedCharacters = (await this.characterService.getUsed());
-		const mostRecentCutoff = qMostRecentlyUsed(usedCharacters).last()?.lastUsed ?? 0;
-		const averageUsageCount = qAverageUseCount(usedCharacters);
-
-		const showLastUsed = char.lastUsed != null && char.lastUsed >= mostRecentCutoff;
-		const showUseCount = char.useCount != null && char.useCount > averageUsageCount;
-
 		const attributes = detail.createDiv({
 			cls: "attributes",
 		});
 
-		if (showLastUsed) {
-			attributes.createDiv(ELEMENT_RECENT);
-		}
-
-		if (showUseCount) {
-			attributes.createDiv(ELEMENT_FREQUENT);
-		}
+        // NEXT: Sorting, with usage data; prioritize used characters, merge with the rest for search.
 	}
 
 	public override onChooseSuggestion(item: QCharacterMatch, evt: MouseEvent | KeyboardEvent): void {
@@ -127,7 +111,7 @@ export class QFuzzySearchModal extends SuggestModal<QCharacterMatch> {
 	}
 
 	private async setRandomPlaceholder(): Promise<void> {
-		const placeholder = `Unicode search: ${getRandomItem((await this.characterService.getAll())).name}`;
+		const placeholder = `Unicode search: ${getRandomItem((await this.characterService.getAllCharacters())).name}`;
 		super.setPlaceholder(placeholder);
 	}
 

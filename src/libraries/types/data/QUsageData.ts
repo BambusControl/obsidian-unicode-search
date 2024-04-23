@@ -1,4 +1,4 @@
-import {QUserCodepointData} from "./QUserCodepointData";
 import {QCodePointKey} from "./QCodePointKey";
+import {QUsageInfo} from "../qUsageInfo";
 
-export type QUsageData = QCodePointKey & QUserCodepointData
+export type QUsageData = QCodePointKey & QUsageInfo

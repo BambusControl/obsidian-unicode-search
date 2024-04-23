@@ -1,11 +1,10 @@
 import {QRootDataStore} from "./qRootDataStore";
 import {QUsageStore} from "./QUsageStore";
-import {QCharacter, QCharacterKey, QCharacterTransform} from "../../libraries/types/qCharacter";
+import {QCharacterKey, QUsedCharacter} from "../../libraries/types/qCharacter";
 import {QCodePointStore} from "./QCodePointStore";
-import {UnicodeSearchError} from "../errors/unicodeSearchError";
 import {QUsageData} from "../../libraries/types/data/QUsageData";
-import {QSaveData} from "../../libraries/types/data/QSaveData";
 import {QUsage} from "../../libraries/types/data/QUsage";
+import {QUsageInfo} from "../../libraries/types/qUsageInfo";
 
 export class QtUsageStore implements QUsageStore {
 
@@ -15,39 +14,34 @@ export class QtUsageStore implements QUsageStore {
     ) {
     }
 
-    async updateCharacter<Out>(
+    async updateCharacter(
         key: QCharacterKey,
-        apply: (char: QUsageData) => QUsageData & Out
-    ): Promise<QUsageData & Out>
+        apply: (char: QUsageInfo) => QUsageInfo
+    ): Promise<QUsageData>
     {
-        const currentUsage = (await this.store.getUsage()).codepoints;
+        const data = await this.getData();
 
-        let foundIndex = currentUsage.findIndex(ch => ch.codePoint === key)
-        let found = foundIndex >= 0;
+        const foundIndex = data.findIndex(ch => ch.codePoint === key)
+        const index = foundIndex < 0 ? 0 : foundIndex;
 
-        if (!found) {
-            const currentChars = await this.codePointStore.getCharacters();
+        const modifiedUsage = apply({...data[index]});
 
-            foundIndex = currentChars.findIndex(ch => ch.codePoint === key)
-            found = foundIndex >= 0;
-        }
+        data[index] = {
+            ...modifiedUsage,
+            codePoint: key,
+        };
 
-        if (!found) {
-            throw new UnicodeSearchError(`Cannot update non-existent character '${key}' to storage`);
-        }
+        await this.overwriteUsageData(data)
 
-        const newUsage = currentUsage;
-        const modifiedUsage = apply({...currentUsage[foundIndex]});
-
-        newUsage[foundIndex] = modifiedUsage;
-
-        await this.overwriteUsageData(newUsage)
-
-        return modifiedUsage;
+        return data[index];
     }
 
-    private async getUsageData(): Promise<QUsage> {
-        return {...await this.store.getUsage()}
+    async getUsed(): Promise<QUsageData[]> {
+        return (await this.getData()).filter(char => char.useCount > 0);
+    }
+
+    private async getData(): Promise<QUsageData[]> {
+        return (await this.store.getUsage()).codepoints;
     }
 
     private async overwriteUsageData(data: QUsageData[]): Promise<QUsageData[]> {

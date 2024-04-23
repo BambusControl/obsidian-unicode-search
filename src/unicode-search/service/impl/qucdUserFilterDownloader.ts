@@ -9,7 +9,7 @@ import {QSettingsStore} from "../QSettingsStore";
 import {mergeIntervals} from "../../../libraries/helpers/mergeIntervals";
 import {CodePointInterval} from "../../../libraries/types/codePointInterval";
 import {codePointIn} from "../../../libraries/helpers/codePointIn";
-import {CharacterCategory} from "../../../libraries/data/characterCategory";
+import {CharacterCategory, CharacterCategoryType} from "../../../libraries/data/characterCategory";
 
 export class QUCDUserFilterDownloader implements QCharacterDownloader {
 
@@ -42,10 +42,10 @@ export class QUCDUserFilterDownloader implements QCharacterDownloader {
             .flatMap(p => p.blocks)
             .filter(b => b.included));
 
-        /* TODO [next]: classifiers is undefined*/
         const includedCategories = filter.classifiers
             .flatMap(p => p.categories)
-            .filter(c => c.included);
+            .filter(c => c.included)
+            .map(c => c.category);
 
         return parsed.filter(char =>
             !containsNullValues(char)
@@ -105,7 +105,7 @@ function includedInBlocks(character: Pick<ParsedCharacter, "codePoint">, include
     );
 }
 
-function categoryIncluded(character: Pick<ParsedCharacter, "category">, includedCategories: Array<CharacterCategory>): boolean {
+function categoryIncluded(character: Pick<ParsedCharacter, "category">, includedCategories: Array<CharacterCategoryType>): boolean {
     return includedCategories.some(
         (category) => character.category === category
     );

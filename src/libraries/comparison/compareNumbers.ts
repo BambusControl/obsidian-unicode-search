@@ -19,3 +19,13 @@ export function compareDates(left: Date, right: Date): Order {
 		? Order.Smaller
 		: Order.Greater;
 }
+
+export function compareStrings(left: string, right: string): Order {
+	if (left == right) {
+		return Order.Equal;
+	}
+
+	return left < right
+		? Order.Smaller
+		: Order.Greater;
+}

@@ -9,6 +9,7 @@ export type QPartialCharacter = Partial<QCharacter> & Pick<QCharacter, "codePoin
 export type QCharacterTransform<Out> = (char: QCharacter) => QCharacter & Out
 
 export type QUsedCharacter = QCharacter & QUsageInfo;
+export type QMaybeUsedCharacter = QCharacter | (QCharacter & QUsageInfo);
 
 export type QCharacterKey = QCharacter["codePoint"];
 export type QCharacters = Array<QCharacter>

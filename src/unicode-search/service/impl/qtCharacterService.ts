@@ -1,12 +1,14 @@
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {
     QCharacter,
-    QCharacterKey,
+    QCharacterKey, QMaybeUsedCharacter,
     QUsedCharacter
 } from "../../../libraries/types/qCharacter";
 import {QCodePointStore} from "../QCodePointStore";
 import {QCharacterService} from "../QCharacterService";
 import {QUsageStore} from "../QUsageStore";
+import {QUsageInfo} from "../../../libraries/types/qUsageInfo";
+import {qCompareCharacters} from "../../../libraries/comparison/compareCharacters";
 
 export class QtCharacterService implements QCharacterService {
 
@@ -17,7 +19,7 @@ export class QtCharacterService implements QCharacterService {
 	}
 
     public async getOne(key: QCharacterKey): Promise<QCharacter> {
-        const characters = await this.getAll();
+        const characters = await this.getAllCharacters();
         const char = characters.find(char => char.codePoint === key);
 
 		if (char == null) {
@@ -27,20 +29,46 @@ export class QtCharacterService implements QCharacterService {
         return char;
     }
 
-	public getAll(): Promise<QCharacter[]> {
+	public getAllCharacters(): Promise<QCharacter[]> {
         return this.codePointStore.getCharacters();
 	}
 
     public async getUsed(): Promise<QUsedCharacter[]> {
-        return (await this.getAll())
-            .filter(char => char.useCount != null && char.lastUsed != null)
-            .map(char => char as QUsedCharacter);
+        const allCharacters = await this.getAllCharacters();
+        const usedCharacters = await this.usageStore.getUsed();
+        const usedKeys = usedCharacters.map(ch => ch.codePoint);
+
+        return allCharacters
+            .filter(ch => usedKeys.contains(ch.codePoint))
+            .map(character => ({
+                ...usedCharacters.find(usage => usage.codePoint === character.codePoint)!,
+                ...character,
+            }));
     }
 
-	public recordUsage(key: QCharacterKey): Promise<QUsedCharacter> {
+    public async getSorted(): Promise<QMaybeUsedCharacter[]> {
+        const allCharacters = await this.getAllCharacters();
+        const usedCharacters = await this.usageStore.getUsed();
+
+        const maybeUsedChars = allCharacters
+            .map(character => ({
+                ...usedCharacters.find(usage => usage.codePoint === character.codePoint),
+                ...character,
+            }))
+            .sort((a, b) => qCompareCharacters(a, b))
+        ;
+
+        return maybeUsedChars;
+
+        /*const mostRecent = qMostRecentlyUsed(usedCharacters).last();
+        const mostRecentCutoff = mostRecent == null ? 0 : new Date(mostRecent.lastUsed).valueOf();
+		const averageUsageCount = qAverageUseCount(usedCharacters);*/
+    }
+
+	public recordUsage(key: QCharacterKey): Promise<QUsageInfo> {
         const timestamp = (new Date()).toJSON()
 
-		return this.usageStore.updateCharacter<QUsedCharacter>(key, (current) => ({
+		return this.usageStore.updateCharacter(key, (current) => ({
             ...current,
             firstUsed: current.firstUsed ?? timestamp,
             lastUsed: timestamp,
