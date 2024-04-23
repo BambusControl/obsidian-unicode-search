@@ -8,8 +8,8 @@ export class QtCodePointStore implements QCodePointStore {
     constructor(private readonly store: QRootDataStore) {
     }
 
-    getCharacters(): Promise<QCodePointData> {
-        throw new UnicodeSearchError("Not implemented");
+    async getCharacters(): Promise<QCodePointData> {
+        return (await this.store.getUnicode()).codepoints;
     }
 
     async initializeCodePoints(codePoints: QCodePointData): Promise<void> {

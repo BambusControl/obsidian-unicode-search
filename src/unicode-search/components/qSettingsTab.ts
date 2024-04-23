@@ -16,7 +16,7 @@ export class QSettingTab extends PluginSettingTab {
     constructor(
         app: App,
         plugin: Plugin,
-        private readonly usageService: QCharacterService,
+        private readonly characterService: QCharacterService,
         private readonly settingsStore: QSettingsStore
     ) {
         super(app, plugin);

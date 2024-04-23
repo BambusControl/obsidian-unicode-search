@@ -49,6 +49,7 @@ export enum CharacterCategoryOther {
     Surrogate = "Cs",
 }
 
+// NEXT
 export type CharacterCategory
     = CharacterCategoryLetter
     | CharacterCategoryMark

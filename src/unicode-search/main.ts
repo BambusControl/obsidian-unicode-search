@@ -10,6 +10,9 @@ import {qInitializationStore} from "./service/qInitializationStore";
 import {QSettingTab} from "./components/qSettingsTab";
 import {UsageTrackedCharacterService} from "./service/impl/usageTrackedCharacterService";
 import {QtCharacterService} from "./service/impl/qtCharacterService";
+import {QtUsageStore} from "./service/QtUsageStore";
+import {FuzzySearchModal} from "./components/fuzzySearchModal";
+import {QFuzzySearchModal} from "./components/qFuzzySearchModal";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -29,7 +32,8 @@ export default class UnicodeSearchPlugin extends Plugin {
         console.info("Creating services");
         const dataStore = new QtRootDataStore(this);
         const codePointStore = new QtCodePointStore(dataStore);
-        const characterService = new QtCharacterService(codePointStore);
+        const usageStore = new QtUsageStore(dataStore, codePointStore)
+        const characterService = new QtCharacterService(codePointStore, usageStore);
         const optionsStore = new QtSettingsStore(dataStore);
         const downloader = new QUCDUserFilterDownloader(optionsStore);
 
@@ -38,12 +42,12 @@ export default class UnicodeSearchPlugin extends Plugin {
         console.groupEnd();
 
         console.info("Adding UI elements");
-        /*super.addCommand({
+        super.addCommand({
             id: "search-unicode-chars",
             name: "Search Unicode characters",
 
             editorCallback: editor => {
-                const modal = new FuzzySearchModal(
+                const modal = new QFuzzySearchModal(
                     app,
                     editor,
                     characterService,
@@ -51,9 +55,9 @@ export default class UnicodeSearchPlugin extends Plugin {
                 modal.open();
                 return true;
             },
-        });*/
+        });
 
-        this.addSettingTab(new QSettingTab(this.app, this, usage, optionsStore));
+        this.addSettingTab(new QSettingTab(this.app, this, characterService, optionsStore));
         console.timeEnd("Unicode Search load time")
         console.groupEnd();
     }
