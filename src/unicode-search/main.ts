@@ -1,16 +1,16 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {QUCDUserFilterDownloader} from "./service/impl/qucdUserFilterDownloader";
-import {QCodePointStore} from "./service/QCodePointStore";
+import {UCDUserFilterDownloader} from "./service/impl/qucdUserFilterDownloader";
+import {CodepointStore} from "./service/QCodepointStore";
 import {QtRootDataStore} from "./service/impl/qtRootDataStore";
-import {QtCodePointStore} from "./service/impl/QtCodePointStore";
-import {QCharacterDownloader} from "./service/QCharacterDownloader";
+import {QtCodepointStore} from "./service/impl/QtCodepointStore";
+import {CharacterDownloader} from "./service/QCharacterDownloader";
 import {QtSettingsStore} from "./service/impl/QtSettingsStore";
-import {QRootDataStore} from "./service/qRootDataStore";
-import {qInitializationStore} from "./service/qInitializationStore";
-import {QSettingTab} from "./components/qSettingsTab";
+import {RootDataStore} from "./service/qRootDataStore";
+import {initializationData} from "./service/initializationData";
+import {SettingTab} from "./components/qSettingsTab";
 import {QtCharacterService} from "./service/impl/qtCharacterService";
 import {QtUsageStore} from "./service/impl/QtUsageStore";
-import {QFuzzySearchModal} from "./components/qFuzzySearchModal";
+import {FuzzySearchModal} from "./components/qFuzzySearchModal";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -29,14 +29,14 @@ export default class UnicodeSearchPlugin extends Plugin {
 
         console.info("Creating services");
         const dataStore = new QtRootDataStore(this);
-        const codePointStore = new QtCodePointStore(dataStore);
-        const usageStore = new QtUsageStore(dataStore, codePointStore)
-        const characterService = new QtCharacterService(codePointStore, usageStore);
+        const codepointStore = new QtCodepointStore(dataStore);
+        const usageStore = new QtUsageStore(dataStore, codepointStore)
+        const characterService = new QtCharacterService(codepointStore, usageStore);
         const optionsStore = new QtSettingsStore(dataStore);
-        const downloader = new QUCDUserFilterDownloader(optionsStore);
+        const downloader = new UCDUserFilterDownloader(optionsStore);
 
         console.group("Initializing local data");
-        await UnicodeSearchPlugin.initializeData(dataStore, codePointStore, downloader);
+        await UnicodeSearchPlugin.initializeData(dataStore, codepointStore, downloader);
         console.groupEnd();
 
         console.info("Adding UI elements");
@@ -45,7 +45,7 @@ export default class UnicodeSearchPlugin extends Plugin {
             name: "Search Unicode characters",
 
             editorCallback: editor => {
-                const modal = new QFuzzySearchModal(
+                const modal = new FuzzySearchModal(
                     app,
                     editor,
                     characterService,
@@ -55,15 +55,15 @@ export default class UnicodeSearchPlugin extends Plugin {
             },
         });
 
-        this.addSettingTab(new QSettingTab(this.app, this, characterService, optionsStore));
+        this.addSettingTab(new SettingTab(this.app, this, characterService, optionsStore));
         console.timeEnd("Unicode Search load time")
         console.groupEnd();
     }
 
     private static async initializeData(
-        dataStore: QRootDataStore,
-        characterDataStore: QCodePointStore,
-        ucdService: QCharacterDownloader
+        dataStore: RootDataStore,
+        characterDataStore: CodepointStore,
+        ucdService: CharacterDownloader
     ): Promise<void> {
         if (await dataStore.isInitialized()) {
             console.info("Plugin data already initialized");
@@ -74,7 +74,7 @@ export default class UnicodeSearchPlugin extends Plugin {
             console.info("Settings initialization");
 
             await dataStore.saveSettings({
-                ...qInitializationStore().settings,
+                ...initializationData().settings,
                 initialized: true,
             });
         }
@@ -84,14 +84,14 @@ export default class UnicodeSearchPlugin extends Plugin {
             const data = await ucdService.download();
 
             console.info("Saving code point data");
-            await characterDataStore.initializeCodePoints(data);
+            await characterDataStore.initializeCodepoints(data);
         }
 
         if (!(await dataStore.getUsage()).initialized) {
             console.info("Usage initialization");
 
             await dataStore.saveUsage({
-                ...qInitializationStore().usage,
+                ...initializationData().usage,
                 initialized: true,
             });
         }

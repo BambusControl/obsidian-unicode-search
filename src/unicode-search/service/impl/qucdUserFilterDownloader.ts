@@ -2,16 +2,16 @@ import {request} from "obsidian";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {CharacterClassifier} from "../../../libraries/data/characterClassifier";
-import {QCodePointData} from "../../../libraries/types/data/QCodePointData";
-import {QCharacterDownloader} from "../QCharacterDownloader";
-import {QUnicodeCodePointWithAttributes} from "../../../libraries/types/data/QUnicodeCodePointWithAttributes";
-import {QSettingsStore} from "../QSettingsStore";
+import {CodepointData} from "../../../libraries/types/data/QCodepointData";
+import {CharacterDownloader} from "../QCharacterDownloader";
+import {UnicodeCodepointWithAttributes} from "../../../libraries/types/data/QUnicodeCodepointWithAttributes";
+import {SettingsStore} from "../QSettingsStore";
 import {mergeIntervals} from "../../../libraries/helpers/mergeIntervals";
-import {CodePointInterval} from "../../../libraries/types/codePointInterval";
-import {codePointIn} from "../../../libraries/helpers/codePointIn";
-import {CharacterCategory, CharacterCategoryType} from "../../../libraries/data/characterCategory";
+import {CodepointInterval} from "../../../libraries/types/codePointInterval";
+import {codepointIn} from "../../../libraries/helpers/codePointIn";
+import {CharacterCategoryType} from "../../../libraries/data/characterCategory";
 
-export class QUCDUserFilterDownloader implements QCharacterDownloader {
+export class UCDUserFilterDownloader implements CharacterDownloader {
 
     private readonly config: ParseConfig = {
         delimiter: ";",
@@ -22,17 +22,17 @@ export class QUCDUserFilterDownloader implements QCharacterDownloader {
     };
 
     public constructor(
-        private readonly settingsStore: QSettingsStore,
+        private readonly settingsStore: SettingsStore,
     ) {
     }
 
-    public async download(): Promise<QCodePointData> {
+    public async download(): Promise<CodepointData> {
         const unicodeVersion = "14.0.0"
         const unicodeData = await request(`https://www.unicode.org/Public/${unicodeVersion}/ucd/UnicodeData.txt`);
 
         const parsed = await this.transformToCharacters(unicodeData);
         const filtered = await this.filterCharacters(parsed);
-        return filtered.map(intoUnicodeCodePoint);
+        return filtered.map(intoUnicodeCodepoint);
     }
 
     private async filterCharacters(parsed: ParsedCharacter[]): Promise<ParsedCharacter[]> {
@@ -64,7 +64,7 @@ export class QUCDUserFilterDownloader implements QCharacterDownloader {
 
                 const parsedCharacters = results.data
                     .map((row): ParsedCharacter => ({
-                        codePoint: parseInt(row[0], 16),
+                        codepoint: parseInt(row[0], 16),
                         name: row[1],
                         category: row[2],
                     }))
@@ -87,7 +87,7 @@ export class QUCDUserFilterDownloader implements QCharacterDownloader {
 type ParsedData = Array<string>;
 
 type ParsedCharacter = {
-    codePoint: number;
+    codepoint: number;
     name: string;
     category: string;
 };
@@ -95,13 +95,13 @@ type ParsedCharacter = {
 function containsNullValues(char: Partial<ParsedCharacter>): boolean {
     return char == null
         || char.name == null
-        || char.codePoint == null
+        || char.codepoint == null
         || char.category == null
 }
 
-function includedInBlocks(character: Pick<ParsedCharacter, "codePoint">, includedBlocks: Array<CodePointInterval>): boolean {
+function includedInBlocks(character: Pick<ParsedCharacter, "codepoint">, includedBlocks: Array<CodepointInterval>): boolean {
     return includedBlocks.some(
-        (block) => codePointIn(character.codePoint, block)
+        (block) => codepointIn(character.codepoint, block)
     );
 }
 
@@ -117,9 +117,9 @@ function characterExcluded(character: ParsedCharacter): boolean {
     return character.category.startsWith(CharacterClassifier.Other);
 }
 
-function intoUnicodeCodePoint(char: ParsedCharacter): QUnicodeCodePointWithAttributes {
+function intoUnicodeCodepoint(char: ParsedCharacter): UnicodeCodepointWithAttributes {
     return {
-        codePoint: String.fromCodePoint(char.codePoint),
+        codepoint: String.fromCodepoint(char.codepoint),
         name: char.name.toLowerCase(),
         category: char.category
     };

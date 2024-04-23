@@ -1,5 +1,5 @@
-import {QCodePointData} from "../../libraries/types/data/QCodePointData";
+import {CodepointData} from "../../libraries/types/data/QCodepointData";
 
-export interface QCharacterDownloader {
-    download(): Promise<QCodePointData>;
+export interface CharacterDownloader {
+    download(): Promise<CodepointData>;
 }

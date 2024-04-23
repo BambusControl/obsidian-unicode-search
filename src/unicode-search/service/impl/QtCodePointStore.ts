@@ -1,21 +1,20 @@
-import {QRootDataStore} from "../qRootDataStore";
-import {UnicodeSearchError} from "../../errors/unicodeSearchError";
-import {QCodePointStore} from "../QCodePointStore";
-import {QCodePointData} from "../../../libraries/types/data/QCodePointData";
+import {RootDataStore} from "../qRootDataStore";
+import {CodepointStore} from "../QCodepointStore";
+import {CodepointData} from "../../../libraries/types/data/QCodepointData";
 
-export class QtCodePointStore implements QCodePointStore {
+export class QtCodepointStore implements CodepointStore {
 
-    constructor(private readonly store: QRootDataStore) {
+    constructor(private readonly store: RootDataStore) {
     }
 
-    async getCharacters(): Promise<QCodePointData> {
+    async getCharacters(): Promise<CodepointData> {
         return (await this.store.getUnicode()).codepoints;
     }
 
-    async initializeCodePoints(codePoints: QCodePointData): Promise<void> {
+    async initializeCodepoints(codepoints: CodepointData): Promise<void> {
         await this.store.overwriteUnicode({
             initialized: true,
-            codepoints: codePoints,
+            codepoints: codepoints,
         });
     }
 

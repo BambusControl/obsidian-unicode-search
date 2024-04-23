@@ -3,16 +3,16 @@ import {UNICODE_PLANES_ALL} from "../../libraries/data/unicodePlanes";
 import {UnicodeBlock} from "../../libraries/types/unicodeBlock";
 
 import {asHexadecimal} from "../../libraries/helpers/asHexadecimal";
-import {QCharacterService} from "../service/QCharacterService";
-import {QSettingsStore} from "../service/QSettingsStore";
+import {CharacterService} from "../service/QCharacterService";
+import {SettingsStore} from "../service/QSettingsStore";
 
-export class QSettingTab extends PluginSettingTab {
+export class SettingTab extends PluginSettingTab {
 
     constructor(
         app: App,
         plugin: Plugin,
-        private readonly characterService: QCharacterService,
-        private readonly settingsStore: QSettingsStore
+        private readonly characterService: CharacterService,
+        private readonly settingsStore: SettingsStore
     ) {
         super(app, plugin);
         this.containerEl.addClass("plugin", "unicode-search", "setting-tab")
@@ -51,14 +51,14 @@ export class QSettingTab extends PluginSettingTab {
             const blocksContainer = planeContainer.createDiv({cls: "blocks-grid"});
 
             for (const block of plane.blocks) {
-                await QSettingTab.addCharacterBlockFilterToggle(blocksContainer, this.settingsStore, block);
+                await SettingTab.addCharacterBlockFilterToggle(blocksContainer, this.settingsStore, block);
             }
         }
     }
 
     private static async addCharacterBlockFilterToggle(
         container: HTMLElement,
-        options: QSettingsStore,
+        options: SettingsStore,
         block: UnicodeBlock
     ) {
         /* Low: try to redo more effectively, we always get a plane worth of blocks */

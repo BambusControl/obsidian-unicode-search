@@ -1,15 +1,15 @@
-import {QCodePointData} from "../../libraries/types/data/QCodePointData";
+import {CodepointData} from "../../libraries/types/data/QCodepointData";
 
-export interface QCodePointStore {
+export interface CodepointStore {
 
     /**
      * Retrieve all characters.
      */
-    getCharacters(): Promise<QCodePointData>;
+    getCharacters(): Promise<CodepointData>;
 
     /**
      * Replace the current set of characters completely.
-     * @param codePoints
+     * @param codepoints
      */
-    initializeCodePoints(codePoints: QCodePointData): Promise<void>;
+    initializeCodepoints(codepoints: CodepointData): Promise<void>;
 }

@@ -1,9 +1,9 @@
-export type CodePoint = number;
+export type Codepoint = number;
 
 /**
  * Represents a closed interval/range of Unicode Code Points
  */
-export interface CodePointInterval {
-    start: CodePoint,
-    end: CodePoint,
+export interface CodepointInterval {
+    start: Codepoint,
+    end: Codepoint,
 }

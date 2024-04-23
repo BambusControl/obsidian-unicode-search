@@ -1,4 +1,4 @@
-import {QCodePointKey} from "./QCodePointKey";
-import {QCodePointAttribute} from "./QCodePointAttribute";
+import {CodepointKey} from "./QCodepointKey";
+import {CodepointAttribute} from "./QCodepointAttribute";
 
-export type QUnicodeCodePointWithAttributes = QCodePointKey & QCodePointAttribute
+export type UnicodeCodepointWithAttributes = CodepointKey & CodepointAttribute

@@ -1,11 +1,11 @@
-import {CodePointInterval} from "../types/codePointInterval";
+import {CodepointInterval} from "../types/codePointInterval";
 
 /**
- * @param codePointIntervals
+ * @param codepointIntervals
  * @see https://www.geeksforgeeks.org/merging-intervals/
  */
-export function mergeIntervals(codePointIntervals: Array<CodePointInterval>): Array<CodePointInterval> {
-    const intervals = Array.from(codePointIntervals)
+export function mergeIntervals(codepointIntervals: Array<CodepointInterval>): Array<CodepointInterval> {
+    const intervals = Array.from(codepointIntervals)
 
     /* Sort intervals in increasing order of start time */
     intervals.sort((a, b) => a.start - b.start);

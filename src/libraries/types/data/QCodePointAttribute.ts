@@ -1,4 +1,4 @@
-export interface QCodePointAttribute {
+export interface CodepointAttribute {
     /**
      * Unicode provided description of the character
      */

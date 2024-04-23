@@ -1,8 +1,8 @@
 import {SearchResult} from "obsidian";
-import {QCharacter} from "../../libraries/types/qCharacter";
+import {Character} from "../../libraries/types/qCharacter";
 
-export type QCharacterMatch = {
-    item: QCharacter,
+export type CharacterMatch = {
+    item: Character,
     match: {
         codepoint: SearchResult,
         name: SearchResult,

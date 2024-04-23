@@ -1,13 +1,13 @@
-import {QFilter} from "../../libraries/types/data/QFilter";
-import {CodePoint, CodePointInterval} from "../../libraries/types/codePointInterval";
+import {Filter} from "../../libraries/types/data/QFilter";
+import {Codepoint, CodepointInterval} from "../../libraries/types/codePointInterval";
 
-export interface QSettingsStore {
-    getFilter(): Promise<QFilter>
+export interface SettingsStore {
+    getFilter(): Promise<Filter>
 
     // NEXT
-    allBlocksIncluded(plane: CodePointInterval): Promise<boolean>
-    includeAllBlocks(plane: CodePointInterval, set: boolean): Promise<void>
+    allBlocksIncluded(plane: CodepointInterval): Promise<boolean>
+    includeAllBlocks(plane: CodepointInterval, set: boolean): Promise<void>
 
-    getCharacterBlock(blockStart: CodePoint): Promise<boolean>
-    setCharacterBlock(blockStart: CodePoint, set: boolean): Promise<void>
+    getCharacterBlock(blockStart: Codepoint): Promise<boolean>
+    setCharacterBlock(blockStart: Codepoint, set: boolean): Promise<void>
 }

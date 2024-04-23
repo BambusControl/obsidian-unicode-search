@@ -1,19 +1,19 @@
-import {QSettings} from "../../libraries/types/data/QSettings";
-import {QUsage} from "../../libraries/types/data/QUsage";
-import {QUnicode} from "../../libraries/types/data/QUnicode";
+import {Settings} from "../../libraries/types/data/QSettings";
+import {Usage} from "../../libraries/types/data/QUsage";
+import {Unicode} from "../../libraries/types/data/QUnicode";
 import {SaveDataVersion} from "../../libraries/types/data/saveDataVersion";
 
-export interface QRootDataStore {
+export interface RootDataStore {
     isInitialized(): Promise<boolean>;
     setInitialized(value: boolean): Promise<void>
     getVersion(): Promise<SaveDataVersion>;
 
-    getUnicode(): Promise<QUnicode>
-    overwriteUnicode(data: QUnicode): Promise<QUnicode>
+    getUnicode(): Promise<Unicode>
+    overwriteUnicode(data: Unicode): Promise<Unicode>
 
-    getSettings(): Promise<QSettings>
-    saveSettings(settings: QSettings): Promise<QSettings>
+    getSettings(): Promise<Settings>
+    saveSettings(settings: Settings): Promise<Settings>
 
-    getUsage(): Promise<QUsage>
-    saveUsage(usage: QUsage): Promise<QUsage>
+    getUsage(): Promise<Usage>
+    saveUsage(usage: Usage): Promise<Usage>
 }

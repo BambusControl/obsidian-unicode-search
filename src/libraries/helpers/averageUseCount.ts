@@ -1,7 +1,6 @@
-import {UsageInfo} from "../types/usageInfo";
-import {QUsageInfo} from "../types/qUsageInfo";
+import {UsageInfo} from "../types/qUsageInfo";
 
-export function qAverageUseCount(items: QUsageInfo[]): number {
+export function averageUseCount(items: UsageInfo[]): number {
     const result = items.reduce(
         (acc, item) => ({
             totalUses: acc.totalUses + item.useCount,

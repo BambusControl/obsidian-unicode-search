@@ -1,7 +1,7 @@
-import {QSaveData} from "../../libraries/types/data/QSaveData";
+import {SaveData} from "../../libraries/types/data/QSaveData";
 import {UNICODE_PLANE_0, UNICODE_PLANE_1} from "../../libraries/data/unicodePlanes";
 
-export function qInitializationStore(): QSaveData {
+export function initializationData(): SaveData {
     return {
         initialized: false,
         version: "0.5.0-NEXT",

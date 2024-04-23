@@ -1,22 +1,22 @@
 import {Cache} from "../../../libraries/cache";
-import {QSaveData} from "../../../libraries/types/data/QSaveData";
-import {QPluginDataLoader} from "../QPluginDataLoader";
-import {qImportData} from "../qImportData";
-import {QRootDataStore} from "../qRootDataStore";
-import {QSettings} from "../../../libraries/types/data/QSettings";
-import {QUsage} from "../../../libraries/types/data/QUsage";
-import {QUnicode} from "../../../libraries/types/data/QUnicode";
+import {SaveData} from "../../../libraries/types/data/QSaveData";
+import {PluginDataLoader} from "../QPluginDataLoader";
+import {importData} from "../importData";
+import {RootDataStore} from "../qRootDataStore";
+import {Settings} from "../../../libraries/types/data/QSettings";
+import {Usage} from "../../../libraries/types/data/QUsage";
+import {Unicode} from "../../../libraries/types/data/QUnicode";
 import {SaveDataVersion} from "../../../libraries/types/data/saveDataVersion";
 
-export class QtRootDataStore implements QRootDataStore {
+export class QtRootDataStore implements RootDataStore {
 
-    private storedData: Cache<QSaveData>;
+    private storedData: Cache<SaveData>;
 
     constructor(
-        readonly dataLoader: QPluginDataLoader,
+        readonly dataLoader: PluginDataLoader,
     ) {
         this.storedData = new Cache(
-            () => qImportData(dataLoader),
+            () => importData(dataLoader),
             (data) => {
                 console.count("Unicode Search saving to storage")
                 return dataLoader.saveData(data);
@@ -43,11 +43,11 @@ export class QtRootDataStore implements QRootDataStore {
         return (await this.storedData.get()).version;
     }
 
-    async getUnicode(): Promise<QUnicode> {
+    async getUnicode(): Promise<Unicode> {
         return (await this.storedData.get()).unicode;
     }
 
-    async overwriteUnicode(data: QUnicode): Promise<QUnicode> {
+    async overwriteUnicode(data: Unicode): Promise<Unicode> {
         const mergedData = await this.mergeData({
             unicode: data,
         })
@@ -55,11 +55,11 @@ export class QtRootDataStore implements QRootDataStore {
         return mergedData.unicode;
     }
 
-    async getSettings(): Promise<QSettings> {
+    async getSettings(): Promise<Settings> {
         return (await this.storedData.get()).settings;
     }
 
-    async saveSettings(settings: QSettings): Promise<QSettings> {
+    async saveSettings(settings: Settings): Promise<Settings> {
         const mergedData = await this.mergeData({
             settings: settings,
         })
@@ -67,11 +67,11 @@ export class QtRootDataStore implements QRootDataStore {
         return mergedData.settings;
     }
 
-    async getUsage(): Promise<QUsage> {
+    async getUsage(): Promise<Usage> {
         return (await this.storedData.get()).usage;
     }
 
-    async saveUsage(usage: QUsage): Promise<QUsage> {
+    async saveUsage(usage: Usage): Promise<Usage> {
         const mergedData = await this.mergeData({
             usage: usage,
         })
@@ -79,7 +79,7 @@ export class QtRootDataStore implements QRootDataStore {
         return mergedData.usage;
     }
 
-    private async mergeData(data: Partial<QSaveData>): Promise<QSaveData> {
+    private async mergeData(data: Partial<SaveData>): Promise<SaveData> {
         const storedData = await this.storedData.get();
 
         const newData = {

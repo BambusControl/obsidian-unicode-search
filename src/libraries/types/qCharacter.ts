@@ -1,15 +1,12 @@
-import {QUnicodeCodePointWithAttributes} from "./data/QUnicodeCodePointWithAttributes";
-import {QUsageInfo} from "./qUsageInfo";
+import {UnicodeCodepointWithAttributes} from "./data/QUnicodeCodepointWithAttributes";
+import {UsageInfo} from "./qUsageInfo";
 
 /**
  * Base representation of a character
  */
-export type QCharacter = QUnicodeCodePointWithAttributes & Partial<QUsageInfo>;
-export type QPartialCharacter = Partial<QCharacter> & Pick<QCharacter, "codePoint">;
-export type QCharacterTransform<Out> = (char: QCharacter) => QCharacter & Out
+export type Character = UnicodeCodepointWithAttributes & Partial<UsageInfo>;
 
-export type QUsedCharacter = QCharacter & QUsageInfo;
-export type QMaybeUsedCharacter = QCharacter | (QCharacter & QUsageInfo);
+export type UsedCharacter = Character & UsageInfo;
+export type MaybeUsedCharacter = Character | (Character & UsageInfo);
 
-export type QCharacterKey = QCharacter["codePoint"];
-export type QCharacters = Array<QCharacter>
+export type CharacterKey = Character["codepoint"];

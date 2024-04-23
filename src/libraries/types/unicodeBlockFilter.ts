@@ -1,5 +1,5 @@
-import {CodePointInterval} from "./codePointInterval";
+import {CodepointInterval} from "./codePointInterval";
 
 export interface UnicodeBlockFilter {
-    block: CodePointInterval;
+    block: CodepointInterval;
 }

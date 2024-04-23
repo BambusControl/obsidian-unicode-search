@@ -1,3 +1,3 @@
-import {QUnicodeCodePointWithAttributes} from "./QUnicodeCodePointWithAttributes";
+import {UnicodeCodepointWithAttributes} from "./QUnicodeCodepointWithAttributes";
 
-export type QCodePointData = Array<QUnicodeCodePointWithAttributes>
+export type CodepointData = Array<UnicodeCodepointWithAttributes>

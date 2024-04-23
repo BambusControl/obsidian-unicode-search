@@ -1,6 +1,6 @@
-import {QFilter} from "./QFilter";
+import {Filter} from "./QFilter";
 
-export interface QSettings {
+export interface Settings {
     initialized: boolean;
-    filter: QFilter;
+    filter: Filter;
 }

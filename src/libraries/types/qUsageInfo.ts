@@ -1,4 +1,4 @@
-export interface QUsageInfo {
+export interface UsageInfo {
     firstUsed: string;
     lastUsed: string;
     useCount: number;

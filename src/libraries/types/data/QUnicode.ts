@@ -1,6 +1,6 @@
-import {QCodePointData} from "./QCodePointData";
+import {CodepointData} from "./QCodepointData";
 
-export interface QUnicode {
+export interface Unicode {
     initialized: boolean;
-    codepoints: QCodePointData
+    codepoints: CodepointData
 }

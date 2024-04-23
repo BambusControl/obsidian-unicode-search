@@ -1,22 +1,22 @@
 import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
 
 import * as console from "console";
-import {NONE_RESULT, QCharacterMatch} from "./QCharacterMatch";
+import {NONE_RESULT, CharacterMatch} from "./QCharacterMatch";
 import {
 	INSERT_CHAR_INSTRUCTION,
 	INSTRUCTION_DISMISS,
 	NAVIGATE_INSTRUCTION
 } from "./visualElements";
-import {qToHexadecimal} from "../../libraries/helpers/toHexadecimal";
+import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
 import {getRandomItem} from "../../libraries/helpers/getRandomItem";
-import {QCharacterService} from "../service/QCharacterService";
+import {CharacterService} from "../service/QCharacterService";
 
-export class QFuzzySearchModal extends SuggestModal<QCharacterMatch> {
+export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 
 	public constructor(
 		app: App,
 		private readonly editor: Editor,
-		private readonly characterService: QCharacterService,
+		private readonly characterService: CharacterService,
 	) {
 		super(app);
 
@@ -30,7 +30,7 @@ export class QFuzzySearchModal extends SuggestModal<QCharacterMatch> {
 		this.setRandomPlaceholder().then();
 	}
 
-    public override async getSuggestions(query: string): Promise<QCharacterMatch[]> {
+    public override async getSuggestions(query: string): Promise<CharacterMatch[]> {
         console.count("QFuzzySearchModal.getSuggestions")
         const isHexSafe = query.length <= 4 && !query.contains(" ")
 
@@ -41,7 +41,7 @@ export class QFuzzySearchModal extends SuggestModal<QCharacterMatch> {
 			.map(character => ({
 				item: character,
 				match: {
-					codepoint: codepointSearch(qToHexadecimal(character)),
+					codepoint: codepointSearch(toHexadecimal(character)),
 					name: fuzzyNameSearch(character.name)
 				}
 			}))
@@ -50,7 +50,7 @@ export class QFuzzySearchModal extends SuggestModal<QCharacterMatch> {
 				/* Fill with empty result, so that we don't have to deal with null values */
 				result.match.name ??= NONE_RESULT
 				result.match.codepoint ??= NONE_RESULT
-				return result as QCharacterMatch
+				return result as CharacterMatch
 			})
 			.sort((l, r) =>
 				/* Matches are scored with negative values up to 0, with 0 meaning full match for fuzzy search */
@@ -58,7 +58,7 @@ export class QFuzzySearchModal extends SuggestModal<QCharacterMatch> {
 			)
 	}
 
-    public override async renderSuggestion(item: QCharacterMatch, container: HTMLElement): Promise<void> {
+    public override async renderSuggestion(item: CharacterMatch, container: HTMLElement): Promise<void> {
 		const char = item.item;
 
 		container.addClass("plugin", "unicode-search", "result-item")
@@ -66,7 +66,7 @@ export class QFuzzySearchModal extends SuggestModal<QCharacterMatch> {
 		container.createDiv({
 			cls: "character-preview",
 		}).createSpan({
-			text: char.codePoint,
+			text: char.codepoint,
 		});
 
 		const matches = container.createDiv({
@@ -84,7 +84,7 @@ export class QFuzzySearchModal extends SuggestModal<QCharacterMatch> {
 				cls: "character-codepoint",
 			});
 
-			renderMatches(codepoint, qToHexadecimal(item.item), item.match.codepoint.matches);
+			renderMatches(codepoint, toHexadecimal(item.item), item.match.codepoint.matches);
 		}
 
 		const detail = container.createDiv({
@@ -98,11 +98,11 @@ export class QFuzzySearchModal extends SuggestModal<QCharacterMatch> {
         // NEXT: Sorting, with usage data; prioritize used characters, merge with the rest for search.
 	}
 
-	public override onChooseSuggestion(item: QCharacterMatch, evt: MouseEvent | KeyboardEvent): void {
-		this.editor.replaceSelection(item.item.codePoint);
+	public override onChooseSuggestion(item: CharacterMatch, evt: MouseEvent | KeyboardEvent): void {
+		this.editor.replaceSelection(item.item.codepoint);
 
 		// I don't want to await this, its more of a side effect
-		this.characterService.recordUsage(item.item.codePoint)
+		this.characterService.recordUsage(item.item.codepoint)
             .then(undefined, (error) => console.error("Failed to record character usage", {err: error}));
 	}
 

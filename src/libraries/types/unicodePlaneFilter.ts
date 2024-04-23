@@ -1,8 +1,8 @@
-import {CodePointInterval} from "./codePointInterval";
+import {CodepointInterval} from "./codePointInterval";
 
 import {UnicodeBlockFilter} from "./unicodeBlockFilter";
 
 export interface UnicodePlaneFilter {
-    plane: CodePointInterval;
+    plane: CodepointInterval;
     select: "ALL" | Array<UnicodeBlockFilter>;
 }
