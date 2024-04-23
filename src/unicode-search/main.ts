@@ -1,17 +1,15 @@
 import {App, Plugin, PluginManifest} from "obsidian";
 import {QUCDUserFilterDownloader} from "./service/impl/qucdUserFilterDownloader";
 import {QCodePointStore} from "./service/QCodePointStore";
-import {QtRootDataStore} from "./service/qtRootDataStore";
-import {QtCodePointStore} from "./service/QtCodePointStore";
+import {QtRootDataStore} from "./service/impl/qtRootDataStore";
+import {QtCodePointStore} from "./service/impl/QtCodePointStore";
 import {QCharacterDownloader} from "./service/QCharacterDownloader";
-import {QtSettingsStore} from "./service/QtSettingsStore";
+import {QtSettingsStore} from "./service/impl/QtSettingsStore";
 import {QRootDataStore} from "./service/qRootDataStore";
 import {qInitializationStore} from "./service/qInitializationStore";
 import {QSettingTab} from "./components/qSettingsTab";
-import {UsageTrackedCharacterService} from "./service/impl/usageTrackedCharacterService";
 import {QtCharacterService} from "./service/impl/qtCharacterService";
-import {QtUsageStore} from "./service/QtUsageStore";
-import {FuzzySearchModal} from "./components/fuzzySearchModal";
+import {QtUsageStore} from "./service/impl/QtUsageStore";
 import {QFuzzySearchModal} from "./components/qFuzzySearchModal";
 
 /* Used by Obsidian */

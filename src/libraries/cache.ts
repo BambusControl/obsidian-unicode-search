@@ -1,4 +1,4 @@
-import {UnicodeSearchError} from "../errors/unicodeSearchError";
+import {UnicodeSearchError} from "../unicode-search/errors/unicodeSearchError";
 
 export class Cache<T> {
     private value?: T

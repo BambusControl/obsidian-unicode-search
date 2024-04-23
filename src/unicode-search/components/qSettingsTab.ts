@@ -1,9 +1,4 @@
 import {App, Plugin, PluginSettingTab, Setting} from "obsidian";
-import {CharacterService} from "../service/characterService";
-import {OptionsStore} from "../service/optionsStore";
-import {mostRecentlyUsed} from "../../libraries/helpers/mostRecentlyUsed";
-import {averageUseCount} from "../../libraries/helpers/averageUseCount";
-import {Character} from "../../libraries/types/character";
 import {UNICODE_PLANES_ALL} from "../../libraries/data/unicodePlanes";
 import {UnicodeBlock} from "../../libraries/types/unicodeBlock";
 

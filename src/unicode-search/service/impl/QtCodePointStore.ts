@@ -1,7 +1,7 @@
-import {QRootDataStore} from "./qRootDataStore";
-import {UnicodeSearchError} from "../errors/unicodeSearchError";
-import {QCodePointStore} from "./QCodePointStore";
-import {QCodePointData} from "../../libraries/types/data/QCodePointData";
+import {QRootDataStore} from "../qRootDataStore";
+import {UnicodeSearchError} from "../../errors/unicodeSearchError";
+import {QCodePointStore} from "../QCodePointStore";
+import {QCodePointData} from "../../../libraries/types/data/QCodePointData";
 
 export class QtCodePointStore implements QCodePointStore {
 

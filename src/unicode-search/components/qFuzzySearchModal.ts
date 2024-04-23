@@ -1,7 +1,7 @@
 import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
 
 import * as console from "console";
-import {NONE_RESULT, QCharacterMatch} from "./characterMetadata";
+import {NONE_RESULT, QCharacterMatch} from "./QCharacterMatch";
 import {
 	INSERT_CHAR_INSTRUCTION,
 	INSTRUCTION_DISMISS,

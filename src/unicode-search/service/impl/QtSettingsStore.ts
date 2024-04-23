@@ -1,8 +1,8 @@
-import {QRootDataStore} from "./qRootDataStore";
-import {QSettingsStore} from "./QSettingsStore";
-import {QFilter} from "../../libraries/types/data/QFilter";
-import {CodePoint, CodePointInterval} from "../../libraries/types/codePointInterval";
-import {UnicodeSearchError} from "../errors/unicodeSearchError";
+import {QRootDataStore} from "../qRootDataStore";
+import {QSettingsStore} from "../QSettingsStore";
+import {QFilter} from "../../../libraries/types/data/QFilter";
+import {CodePoint, CodePointInterval} from "../../../libraries/types/codePointInterval";
+import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 
 export class QtSettingsStore implements QSettingsStore {
 

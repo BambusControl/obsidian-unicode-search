@@ -1,10 +1,10 @@
-import {QRootDataStore} from "./qRootDataStore";
-import {QUsageStore} from "./QUsageStore";
-import {QCharacterKey, QUsedCharacter} from "../../libraries/types/qCharacter";
-import {QCodePointStore} from "./QCodePointStore";
-import {QUsageData} from "../../libraries/types/data/QUsageData";
-import {QUsage} from "../../libraries/types/data/QUsage";
-import {QUsageInfo} from "../../libraries/types/qUsageInfo";
+import {QRootDataStore} from "../qRootDataStore";
+import {QUsageStore} from "../QUsageStore";
+import {QCharacterKey, QUsedCharacter} from "../../../libraries/types/qCharacter";
+import {QCodePointStore} from "../QCodePointStore";
+import {QUsageData} from "../../../libraries/types/data/QUsageData";
+import {QUsage} from "../../../libraries/types/data/QUsage";
+import {QUsageInfo} from "../../../libraries/types/qUsageInfo";
 
 export class QtUsageStore implements QUsageStore {
 

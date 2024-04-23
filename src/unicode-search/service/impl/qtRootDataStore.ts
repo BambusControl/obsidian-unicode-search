@@ -1,12 +1,12 @@
-import {Cache} from "./cache";
-import {QSaveData} from "../../libraries/types/data/QSaveData";
-import {QPluginDataLoader} from "./QPluginDataLoader";
-import {qImportData} from "./qImportData";
-import {QRootDataStore} from "./qRootDataStore";
-import {QSettings} from "../../libraries/types/data/QSettings";
-import {QUsage} from "../../libraries/types/data/QUsage";
-import {QUnicode} from "../../libraries/types/data/QUnicode";
-import {SaveDataVersion} from "../../libraries/types/data/saveDataVersion";
+import {Cache} from "../../../libraries/cache";
+import {QSaveData} from "../../../libraries/types/data/QSaveData";
+import {QPluginDataLoader} from "../QPluginDataLoader";
+import {qImportData} from "../qImportData";
+import {QRootDataStore} from "../qRootDataStore";
+import {QSettings} from "../../../libraries/types/data/QSettings";
+import {QUsage} from "../../../libraries/types/data/QUsage";
+import {QUnicode} from "../../../libraries/types/data/QUnicode";
+import {SaveDataVersion} from "../../../libraries/types/data/saveDataVersion";
 
 export class QtRootDataStore implements QRootDataStore {
 
