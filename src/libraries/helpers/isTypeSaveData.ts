@@ -1,7 +1,7 @@
-import {SaveData} from "../types/data/QSaveData";
-import {Settings} from "../types/data/QSettings";
-import {Unicode} from "../types/data/QUnicode";
-import {Usage} from "../types/data/QUsage";
+import {SaveData} from "../types/savedata/saveData";
+import {SettingsData} from "../types/savedata/settingsData";
+import {UnicodeData} from "../types/savedata/unicodeData";
+import {UsageData} from "../types/savedata/usageData";
 
 export function isTypeSaveData(object: Partial<SaveData>): object is SaveData {
     return object != null
@@ -16,14 +16,14 @@ export function isTypeSaveData(object: Partial<SaveData>): object is SaveData {
         ;
 }
 
-function isTypeSettings(object: Partial<Settings>): object is Settings {
+function isTypeSettings(object: Partial<SettingsData>): object is SettingsData {
     return "initialized" in object;
 }
 
-function isTypeUnicode(object: Partial<Unicode>): object is Unicode {
+function isTypeUnicode(object: Partial<UnicodeData>): object is UnicodeData {
     return "initialized" in object;
 }
 
-function isTypeUsage(object: Partial<Usage>): object is Usage {
+function isTypeUsage(object: Partial<UsageData>): object is UsageData {
     return "initialized" in object;
 }

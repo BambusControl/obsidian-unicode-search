@@ -1,16 +1,17 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {UCDUserFilterDownloader} from "./service/impl/qucdUserFilterDownloader";
-import {CodepointStore} from "./service/QCodepointStore";
-import {QtRootDataStore} from "./service/impl/qtRootDataStore";
-import {QtCodepointStore} from "./service/impl/QtCodepointStore";
-import {CharacterDownloader} from "./service/QCharacterDownloader";
-import {QtSettingsStore} from "./service/impl/QtSettingsStore";
-import {RootDataStore} from "./service/qRootDataStore";
-import {initializationData} from "./service/initializationData";
-import {SettingTab} from "./components/qSettingsTab";
-import {QtCharacterService} from "./service/impl/qtCharacterService";
-import {QtUsageStore} from "./service/impl/QtUsageStore";
-import {FuzzySearchModal} from "./components/qFuzzySearchModal";
+import {UcdUserFilterDownloader} from "./service/impl/ucdUserFilterDownloader";
+import {CodepointStore} from "./service/codePointStore";
+import {RootPluginDataStorage} from "./service/impl/rootPluginDataStorage";
+import {CodepointStorage} from "./service/impl/codepointStorage";
+import {CharacterDownloader} from "./service/characterDownloader";
+import {settingsStorage} from "./service/impl/settingsStorage";
+import {RootDataStore} from "./service/rootDataStore";
+import {initializationData} from "../libraries/data/initializationData";
+import {SettingTab} from "./components/settingTab";
+import {UsageCharacterService} from "./service/impl/usageCharacterService";
+import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
+
+import {FuzzySearchModal} from "./components/fuzzySearchModal";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -28,12 +29,12 @@ export default class UnicodeSearchPlugin extends Plugin {
         console.time("Unicode Search load time")
 
         console.info("Creating services");
-        const dataStore = new QtRootDataStore(this);
-        const codepointStore = new QtCodepointStore(dataStore);
-        const usageStore = new QtUsageStore(dataStore, codepointStore)
-        const characterService = new QtCharacterService(codepointStore, usageStore);
-        const optionsStore = new QtSettingsStore(dataStore);
-        const downloader = new UCDUserFilterDownloader(optionsStore);
+        const dataStore = new RootPluginDataStorage(this);
+        const codepointStore = new CodepointStorage(dataStore);
+        const usageStore = new CodepointUsageStorage(dataStore, codepointStore)
+        const characterService = new UsageCharacterService(codepointStore, usageStore);
+        const optionsStore = new settingsStorage(dataStore);
+        const downloader = new UcdUserFilterDownloader(optionsStore);
 
         console.group("Initializing local data");
         await UnicodeSearchPlugin.initializeData(dataStore, codepointStore, downloader);

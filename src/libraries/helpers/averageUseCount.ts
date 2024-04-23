@@ -1,4 +1,4 @@
-import {UsageInfo} from "../types/qUsageInfo";
+import {UsageInfo} from "../types/savedata/usageData";
 
 export function averageUseCount(items: UsageInfo[]): number {
     const result = items.reduce(

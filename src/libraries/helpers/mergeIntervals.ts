@@ -1,4 +1,4 @@
-import {CodepointInterval} from "../types/codePointInterval";
+import {CodepointInterval} from "../types/codepoint/codepointInterval";
 
 /**
  * @param codepointIntervals

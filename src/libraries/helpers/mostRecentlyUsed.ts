@@ -1,7 +1,8 @@
 import {inverse} from "../order/inverse";
 import {compareDates} from "../comparison/compareNumbers";
 import {DEFAULT_RECENT_CHARACTER_COUNT} from "../../unicode-search/config/default";
-import {UsageInfo} from "../types/qUsageInfo";
+
+import {UsageInfo} from "../types/savedata/usageData";
 
 export function mostRecentlyUsed<T extends UsageInfo>(
     items: T[],
