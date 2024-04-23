@@ -2,19 +2,14 @@ import {request} from "obsidian";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {CharacterClassifier} from "../../../libraries/data/characterClassifier";
-import {QtOptionsStore} from "../qOptionsStore";
-import {QFilter} from "../../../libraries/types/data/QFilter";
 import {QCodePointData} from "../../../libraries/types/data/QCodePointData";
 import {QCharacterDownloader} from "../QCharacterDownloader";
 import {QUnicodeCodePointWithAttributes} from "../../../libraries/types/data/QUnicodeCodePointWithAttributes";
-
-type ParsedData = Array<string>;
-
-type ParsedCharacter = {
-    singleCodePoint: string;
-    characterName: string;
-    classifier: string;
-};
+import {QSettingsStore} from "../QSettingsStore";
+import {mergeIntervals} from "../../../libraries/helpers/mergeIntervals";
+import {CodePointInterval} from "../../../libraries/types/codePointInterval";
+import {codePointIn} from "../../../libraries/helpers/codePointIn";
+import {CharacterCategory} from "../../../libraries/data/characterCategory";
 
 export class QUCDUserFilterDownloader implements QCharacterDownloader {
 
@@ -27,43 +22,53 @@ export class QUCDUserFilterDownloader implements QCharacterDownloader {
     };
 
     public constructor(
-        private readonly optionsStore: QtOptionsStore,
+        private readonly settingsStore: QSettingsStore,
     ) {
     }
 
     public async download(): Promise<QCodePointData> {
-        /* TODO [Character download filter]
-        * await this.optionsStore.getCharacterFilters();
-        */
-        const characterFilter = {
-            categories: {},
-            planes: {
-                blocks: {}
-            }
-        } as QFilter
-
         const unicodeVersion = "14.0.0"
         const unicodeData = await request(`https://www.unicode.org/Public/${unicodeVersion}/ucd/UnicodeData.txt`);
-        return await this.transformToCharacters(unicodeData, characterFilter);
+
+        const parsed = await this.transformToCharacters(unicodeData);
+        const filtered = await this.filterCharacters(parsed);
+        return filtered.map(intoUnicodeCodePoint);
     }
 
-    private transformToCharacters(csvString: string, characterFilter: QFilter): Promise<QCodePointData> {
+    private async filterCharacters(parsed: ParsedCharacter[]): Promise<ParsedCharacter[]> {
+        const filter = await this.settingsStore.getFilter()
+
+        const includedBlocks = mergeIntervals(filter.planes
+            .flatMap(p => p.blocks)
+            .filter(b => b.included));
+
+        const includedCategories = filter.classifiers
+            .flatMap(p => p.categories)
+            .filter(c => c.included);
+
+        return parsed.filter(char =>
+            !containsNullValues(char)
+            && includedInBlocks(char, includedBlocks)
+            && categoryIncluded(char, includedCategories)
+            && !characterExcluded(char)
+        );
+    }
+
+    private transformToCharacters(csvString: string): Promise<ParsedCharacter[]> {
         return new Promise((resolve, reject) => {
             const completeFn = (results: ParseResult<ParsedData>): void => {
                 if (results.errors.length !== 0) {
                     reject(new UnicodeSearchError("Error while parsing data from Unicode Character Database"));
                 }
 
-                const unicodeCharacters = results.data
+                const parsedCharacters = results.data
                     .map((row): ParsedCharacter => ({
-                        singleCodePoint: row[0],
-                        characterName: row[1],
-                        classifier: row[2],
+                        codePoint: parseInt(row[0], 16),
+                        name: row[1],
+                        category: row[2],
                     }))
-                    .filter(char => QUCDUserFilterDownloader.charFilter(char, characterFilter))
-                    .map(pch => QUCDUserFilterDownloader.intoUnicode(pch));
 
-                resolve(unicodeCharacters);
+                resolve(parsedCharacters);
             };
 
             const configuration: ParseWorkerConfig<ParsedData> = {
@@ -76,63 +81,45 @@ export class QUCDUserFilterDownloader implements QCharacterDownloader {
         });
     }
 
-    private static charFilter(char: ParsedCharacter, characterFilter: QFilter): boolean {
-        return (
-            char != null
-            && char.characterName != null
-            && char.singleCodePoint != null
-            && char.classifier != null
-        ) && (
-            QUCDUserFilterDownloader.planeIncluded(char)
-            || QUCDUserFilterDownloader.blockIncluded(char)
-            || QUCDUserFilterDownloader.categoryIncluded(char, characterFilter)
-        ) && !(
-            QUCDUserFilterDownloader.charExcluded(char)
-        );
-    }
+}
 
-    private static planeIncluded(char: ParsedCharacter): boolean {
-        /* TODO [characterFilter]: User filter for unicode plane.
-        * Planes are made up of blocks.
-        */
-        return true;
-    }
+type ParsedData = Array<string>;
 
-    private static blockIncluded(char: ParsedCharacter): boolean {
-        /* TODO [characterFilter]: User filter for unicode plane.
-        * Planes have blocks - they don't overlap - I've no clue where to get their names.
-        */
-        return true;
-    }
+type ParsedCharacter = {
+    codePoint: number;
+    name: string;
+    category: string;
+};
 
-    private static scriptIncluded(char: ParsedCharacter): boolean {
-        /* TODO [characterFilter]: User filter for unicode plane.
-        * Scripts are sets of characters - are they sets of blocks?
-        */
-        return true;
-    }
+function containsNullValues(char: Partial<ParsedCharacter>): boolean {
+    return char == null
+        || char.name == null
+        || char.codePoint == null
+        || char.category == null
+}
 
-    private static categoryIncluded(char: ParsedCharacter, characterFilter: QFilter): boolean {
-        /* TODO [characterFilter]: User filter for unicode category.
-        *
-        * const categories = characterFilter.categories;
-        * return categories.contains(char.classifier as CharacterCategory);
-        */
-        return true;
-    }
+function includedInBlocks(character: Pick<ParsedCharacter, "codePoint">, includedBlocks: Array<CodePointInterval>): boolean {
+    return includedBlocks.some(
+        (block) => codePointIn(character.codePoint, block)
+    );
+}
 
-    private static charExcluded(char: ParsedCharacter): boolean {
-        /* TODO [characterFilter]:: Exclusion criteria */
-        // Omit characters that are classified as "Other"
-        return char.classifier.startsWith(CharacterClassifier.Other)
-    }
+function categoryIncluded(character: Pick<ParsedCharacter, "category">, includedCategories: Array<CharacterCategory>): boolean {
+    return includedCategories.some(
+        (category) => character.category === category
+    );
+}
 
-    private static intoUnicode(char: ParsedCharacter): QUnicodeCodePointWithAttributes {
-        return {
-            codePoint: String.fromCodePoint(parseInt(char.singleCodePoint, 16)),
-            name: char.characterName.toLowerCase(),
-            classifier: char.classifier
-        };
-    }
+function characterExcluded(character: ParsedCharacter): boolean {
+    /* TODO [characterFilter]:: Exclusion criteria */
+    // Omit characters that are classified as "Other"
+    return character.category.startsWith(CharacterClassifier.Other);
+}
 
+function intoUnicodeCodePoint(char: ParsedCharacter): QUnicodeCodePointWithAttributes {
+    return {
+        codePoint: String.fromCodePoint(char.codePoint),
+        name: char.name.toLowerCase(),
+        category: char.category
+    };
 }

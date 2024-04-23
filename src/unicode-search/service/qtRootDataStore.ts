@@ -72,17 +72,10 @@ export class QtRootDataStore implements QRootDataStore, QMetadataStore {
     private async mergeData(data: Partial<QSaveData>): Promise<QSaveData> {
         const storedData = await this.storedData.get();
 
-
         const newData = {
             ...storedData,
             ...data
         };
-
-        console.debug({
-            storedData: storedData,
-            data: data,
-            newData: newData,
-        })
 
         this.storedData.set(newData);
         return await this.storedData.persist();

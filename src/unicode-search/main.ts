@@ -1,13 +1,13 @@
 import {App, Plugin, PluginManifest} from "obsidian";
 import {QUCDUserFilterDownloader} from "./service/impl/qucdUserFilterDownloader";
 import {QCodePointStore} from "./service/QCodePointStore";
-import {QtOptionsStore} from "./service/qOptionsStore";
 import {QMetadataStore} from "./service/QMetadataStore";
 import {QtRootDataStore} from "./service/qtRootDataStore";
 import {QtCodePointStore} from "./service/QtCodePointStore";
 
 import {QCodePointData} from "../libraries/types/data/QCodePointData";
 import {QCharacterDownloader} from "./service/QCharacterDownloader";
+import {QtSettingsStore} from "./service/QtSettingsStore";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -24,7 +24,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         const dataStore = new QtRootDataStore(this);
         const characterStore = new QtCodePointStore(dataStore);
         // const characterService = new UsageTrackedCharacterService(characterStore);
-        const optionsStore = new QtOptionsStore(dataStore);
+        const optionsStore = new QtSettingsStore(dataStore);
         const downloader = new QUCDUserFilterDownloader(optionsStore);
 
 		await UnicodeSearchPlugin.initializeData(dataStore, characterStore, downloader);

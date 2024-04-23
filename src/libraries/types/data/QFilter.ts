@@ -1,16 +1,22 @@
+import {CodePointInterval} from "../codePointInterval";
+import {InclusionFlag} from "./InclusionFlag";
+import {CharacterCategory} from "../../data/characterCategory";
+import {CharacterClassifier} from "../../data/characterClassifier";
+
 export interface QFilter {
-    /* Shape of Unicode Character Data */
-    planes: QPlaneFilter;
-    categories: QCategoryFilter;
+    planes: Array<QPlaneFilter>;
+    classifiers: Array<QClassifierFilter>;
 }
 
-
-export interface QPlaneFilter {
-    blocks: QBlockFilter;
+export interface QPlaneFilter extends CodePointInterval {
+    blocks: Array<QBlockFilter>;
 }
 
-export interface QBlockFilter {
+export type QBlockFilter = CodePointInterval & InclusionFlag;
+
+export interface QClassifierFilter {
+    classifier: CharacterClassifier
+    categories: Array<QCategoryFilter>
 }
 
-export interface QCategoryFilter {
-}
+export type QCategoryFilter = CharacterCategory & InclusionFlag;

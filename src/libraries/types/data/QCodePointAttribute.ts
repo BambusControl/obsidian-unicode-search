@@ -3,5 +3,5 @@ export interface QCodePointAttribute {
      * Unicode provided description of the character
      */
     name: string;
-    classifier: string;
+    category: string;
 }
