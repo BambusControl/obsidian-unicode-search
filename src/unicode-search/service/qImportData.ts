@@ -1,23 +1,21 @@
 import {Plugin} from "obsidian";
 import {QSaveData} from "../../libraries/types/data/QSaveData";
 import {qInitializationStore} from "./qInitializationStore";
-import {UnicodeSearchError} from "../errors/unicodeSearchError";
+import {qIsTypeSaveData} from "../../libraries/helpers/qIsTypeSaveData";
 
 export async function qImportData(
     dataLoader: Pick<Plugin, "loadData">,
 ): Promise<QSaveData> {
-    const externalData = await dataLoader.loadData();
-    /* TODO: SAVE DATA TYPE CHECK */
-    const dataLoaded = externalData != null /*&& isTypeSaveData(externalData)*/;
+    const localData = await dataLoader.loadData();
 
-    const newData: QSaveData = dataLoaded
-        ? externalData
-        : {...qInitializationStore()};
+    const dataLoaded = qIsTypeSaveData(localData);
 
-    if (newData == null) {
-        /* TODO: I don't think this can ever happen... */
-        throw new UnicodeSearchError("Cannot import plugin data. The file is not valid!");
+
+    if (dataLoaded) {
+        console.log("Data skeleton already present");
+        return localData;
     }
 
-    return newData;
+    console.log("Creating data skeleton");
+    return {...qInitializationStore()};
 }

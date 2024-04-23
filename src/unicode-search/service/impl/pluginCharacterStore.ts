@@ -14,8 +14,8 @@ export class PluginCharacterStore implements CharacterStore {
         return this.store.getCharacterData()
     }
 
-    public initializeCharacters(data: Character[]): Promise<void> {
-        return this.store.initializeCharacterData(data)
+    public async initializeCharacters(data: Character[]): Promise<void> {
+        await this.store.initializeCharacterData(data)
     }
 
     public async placeCharacter(char: Character): Promise<void> {

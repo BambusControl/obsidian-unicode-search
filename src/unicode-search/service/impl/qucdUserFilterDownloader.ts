@@ -42,6 +42,7 @@ export class QUCDUserFilterDownloader implements QCharacterDownloader {
             .flatMap(p => p.blocks)
             .filter(b => b.included));
 
+        /* TODO [next]: classifiers is undefined*/
         const includedCategories = filter.classifiers
             .flatMap(p => p.categories)
             .filter(c => c.included);

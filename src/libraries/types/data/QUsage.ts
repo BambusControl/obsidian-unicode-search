@@ -1,5 +1,6 @@
 import {QUsageData} from "./QUsageData";
 
-export interface QUser {
+export interface QUsage {
+    initialized: boolean;
     codepoints: Array<QUsageData>
 }

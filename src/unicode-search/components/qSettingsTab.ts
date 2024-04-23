@@ -8,7 +8,7 @@ import {UNICODE_PLANES_ALL} from "../../libraries/data/unicodePlanes";
 import {UnicodeBlock} from "../../libraries/types/unicodeBlock";
 
 import {asHexadecimal} from "../../libraries/helpers/asHexadecimal";
-import {QUsageService} from "../service/QUsageService";
+import {QCharacterService} from "../service/QCharacterService";
 import {QSettingsStore} from "../service/QSettingsStore";
 
 export class QSettingTab extends PluginSettingTab {
@@ -16,7 +16,7 @@ export class QSettingTab extends PluginSettingTab {
     constructor(
         app: App,
         plugin: Plugin,
-        private readonly usageService: QUsageService,
+        private readonly usageService: QCharacterService,
         private readonly settingsStore: QSettingsStore
     ) {
         super(app, plugin);

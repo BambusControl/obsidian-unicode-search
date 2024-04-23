@@ -14,6 +14,7 @@ export class QtCodePointStore implements QCodePointStore {
 
     async initializeCodePoints(codePoints: QCodePointData): Promise<void> {
         await this.store.overwriteUnicode({
+            initialized: true,
             codepoints: codePoints,
         });
     }

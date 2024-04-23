@@ -1,9 +1,13 @@
 import {QSettings} from "./QSettings";
-import {QUser} from "./QUser";
+import {QUsage} from "./QUsage";
 import {QUnicode} from "./QUnicode";
+import {SaveDataVersion} from "./saveDataVersion";
 
 export interface QSaveData {
+    version: SaveDataVersion;
+    initialized: boolean;
+
     settings: QSettings;
-    usage: QUser;
     unicode: QUnicode;
+    usage: QUsage;
 }

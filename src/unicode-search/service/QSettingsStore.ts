@@ -1,4 +1,3 @@
-import {CodePoint, CodePointInterval} from "../../libraries/types/codePointInterval";
 import {QFilter} from "../../libraries/types/data/QFilter";
 
 export interface QSettingsStore {

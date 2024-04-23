@@ -1,15 +1,14 @@
-import {QMetadataStore} from "./QMetadataStore";
 import {Cache} from "./cache";
 import {QSaveData} from "../../libraries/types/data/QSaveData";
 import {QPluginDataLoader} from "./QPluginDataLoader";
 import {qImportData} from "./qImportData";
-import {UnicodeSearchError} from "../errors/unicodeSearchError";
 import {QRootDataStore} from "./qRootDataStore";
 import {QSettings} from "../../libraries/types/data/QSettings";
-import {QUser} from "../../libraries/types/data/QUser";
+import {QUsage} from "../../libraries/types/data/QUsage";
 import {QUnicode} from "../../libraries/types/data/QUnicode";
+import {SaveDataVersion} from "../../libraries/types/data/saveDataVersion";
 
-export class QtRootDataStore implements QRootDataStore, QMetadataStore {
+export class QtRootDataStore implements QRootDataStore {
 
     private storedData: Cache<QSaveData>;
 
@@ -18,10 +17,31 @@ export class QtRootDataStore implements QRootDataStore, QMetadataStore {
     ) {
         this.storedData = new Cache(
             () => qImportData(dataLoader),
-            (data) => dataLoader.saveData(data)
+            (data) => {
+                console.count("Unicode Search saving to storage")
+                return dataLoader.saveData(data);
+            }
         );
     }
 
+    async isInitialized(): Promise<boolean> {
+        const data = await this.storedData.get();
+        return data.initialized
+            && data.settings.initialized
+            && data.unicode.initialized
+            && data.usage.initialized
+        ;
+    }
+
+    async setInitialized(value: boolean): Promise<void> {
+        await this.mergeData({
+            initialized: value
+        })
+    }
+
+    async getVersion(): Promise<SaveDataVersion> {
+        return (await this.storedData.get()).version;
+    }
 
     async getUnicode(): Promise<QUnicode> {
         return (await this.storedData.get()).unicode;
@@ -47,26 +67,16 @@ export class QtRootDataStore implements QRootDataStore, QMetadataStore {
         return mergedData.settings;
     }
 
-    async getUsage(): Promise<QUser> {
+    async getUsage(): Promise<QUsage> {
         return (await this.storedData.get()).usage;
     }
 
-    async saveUsage(usage: QUser): Promise<QUser> {
+    async saveUsage(usage: QUsage): Promise<QUsage> {
         const mergedData = await this.mergeData({
             usage: usage,
         })
 
         return mergedData.usage;
-    }
-
-    isInitialized(): Promise<boolean> {
-        /* TODO [metadatastore] */
-        return Promise.resolve(false);
-    }
-
-    async saveToStorage(): Promise<void> {
-        /* TODO: Is explicit saving needed? */
-        await this.storedData.persist();
     }
 
     private async mergeData(data: Partial<QSaveData>): Promise<QSaveData> {
