@@ -71,14 +71,14 @@ export class SettingTab extends PluginSettingTab {
         block: UnicodeBlock
     ) {
         /* Low: try to redo more effectively, we always get a plane worth of blocks */
-        const blockIncluded = await options.getCharacterBlock(block.interval.start)
+        const blockIncluded = await options.getCharacterBlock(block.interval)
 
         new Setting(container)
             .setName(block.description)
             .setDesc(createFragment(fragment => SettingTab.codepointFragment(fragment, block.interval)))
             .addToggle(input => input
                 .setValue(blockIncluded)
-                .onChange((value) => options.setCharacterBlock(block.interval.start, value))
+                .onChange((value) => options.setCharacterBlock(block.interval, value))
             );
     }
 

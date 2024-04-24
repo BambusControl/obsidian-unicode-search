@@ -10,6 +10,6 @@ export interface SettingsStore {
     allBlocksIncluded(plane: CodepointInterval): Promise<boolean>
     includeAllBlocks(plane: CodepointInterval, set: boolean): Promise<void>
 
-    getCharacterBlock(blockStart: Codepoint): Promise<boolean>
-    setCharacterBlock(blockStart: Codepoint, set: boolean): Promise<void>
+    getCharacterBlock(block: CodepointInterval): Promise<boolean>
+    setCharacterBlock(block: CodepointInterval, set: boolean): Promise<void>
 }
