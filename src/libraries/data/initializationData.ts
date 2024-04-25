@@ -1,5 +1,5 @@
 import {SaveData} from "../types/savedata/saveData";
-import {UNICODE_PLANE_0, UNICODE_PLANE_1} from "./unicodePlanes";
+import {UNICODE_PLANES_ALL} from "./unicodePlanes";
 
 export function initializationData(): SaveData {
     return {
@@ -8,22 +8,13 @@ export function initializationData(): SaveData {
         settings: {
             initialized: false,
             filter: {
-                planes: [
-                    {
-                        ...UNICODE_PLANE_0.interval,
-                        blocks: UNICODE_PLANE_0.blocks.map(b => ({
-                            ...b.interval,
-                            included: true
-                        }))
-                    },
-                    {
-                        ...UNICODE_PLANE_1.interval,
-                        blocks: UNICODE_PLANE_1.blocks.map(b => ({
-                            ...b.interval,
-                            included: true
-                        }))
-                    },
-                ],
+                planes: UNICODE_PLANES_ALL.map(plane => ({
+                    ...plane.interval,
+                    blocks: plane.blocks.map(block => ({
+                        ...block.interval,
+                        included: plane.planeNumber === 0
+                    }))
+                })),
                 classifiers: [
                     {
                         classifier: "L",
@@ -63,17 +54,17 @@ export function initializationData(): SaveData {
                             {
                                 category: "Mc",
                                 name: "SpacingCombining",
-                                included: true
+                                included: false
                             },
                             {
                                 category: "Me",
                                 name: "Enclosing",
-                                included: true
+                                included: false
                             },
                             {
                                 category: "Mn",
                                 name: "NonSpacing",
-                                included: true
+                                included: false
                             },
                         ]
                     },
@@ -219,7 +210,6 @@ export function initializationData(): SaveData {
                     },
                 ]
             }
-            /* TODO [NEXT]: All Unicode Planes and Blocks */
         },
         usage: {
             initialized: false,

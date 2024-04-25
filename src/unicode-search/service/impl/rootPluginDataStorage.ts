@@ -54,11 +54,21 @@ export class RootPluginDataStorage implements RootDataStore {
         return mergedData.unicode;
     }
 
+    async setInitializedUnicode(value: boolean): Promise<void> {
+        const data = await this.getUnicode()
+        const mergedData: UnicodeData = {
+            ...data,
+            initialized: value,
+        }
+
+        await this.overwriteUnicode(mergedData);
+    }
+
     async getSettings(): Promise<SettingsData> {
         return (await this.storedData.get()).settings;
     }
 
-    async saveSettings(settings: SettingsData): Promise<SettingsData> {
+    async overwriteSettings(settings: SettingsData): Promise<SettingsData> {
         const mergedData = await this.mergeData({
             settings: settings,
         })
@@ -66,16 +76,36 @@ export class RootPluginDataStorage implements RootDataStore {
         return mergedData.settings;
     }
 
+    async setInitializedSettings(value: boolean): Promise<void> {
+        const data = await this.getSettings()
+        const mergedData: SettingsData = {
+            ...data,
+            initialized: value,
+        }
+
+        await this.overwriteSettings(mergedData);
+    }
+
     async getUsage(): Promise<UsageData> {
         return (await this.storedData.get()).usage;
     }
 
-    async saveUsage(usage: UsageData): Promise<UsageData> {
+    async overwriteUsage(usage: UsageData): Promise<UsageData> {
         const mergedData = await this.mergeData({
             usage: usage,
         })
 
         return mergedData.usage;
+    }
+
+    async setInitializedUsage(value: boolean): Promise<void> {
+        const data = await this.getUsage()
+        const mergedData: UsageData = {
+            ...data,
+            initialized: value,
+        }
+
+        await this.overwriteUsage(mergedData);
     }
 
     private async mergeData(data: Partial<SaveData>): Promise<SaveData> {

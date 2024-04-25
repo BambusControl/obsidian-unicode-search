@@ -11,10 +11,13 @@ export interface RootDataStore {
 
     getUnicode(): Promise<UnicodeData>
     overwriteUnicode(data: UnicodeData): Promise<UnicodeData>
+    setInitializedUnicode(value: boolean): Promise<void>
 
     getSettings(): Promise<SettingsData>
-    saveSettings(settings: SettingsData): Promise<SettingsData>
+    overwriteSettings(settings: SettingsData): Promise<SettingsData>
+    setInitializedSettings(value: boolean): Promise<void>
 
     getUsage(): Promise<UsageData>
-    saveUsage(usage: UsageData): Promise<UsageData>
+    overwriteUsage(usage: UsageData): Promise<UsageData>
+    setInitializedUsage(value: boolean): Promise<void>
 }

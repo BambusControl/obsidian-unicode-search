@@ -56,6 +56,6 @@ export class CodepointUsageStorage implements UsageStore {
             ...data
         };
 
-        return await this.store.saveUsage(newData);
+        return await this.store.overwriteUsage(newData);
     }
 }

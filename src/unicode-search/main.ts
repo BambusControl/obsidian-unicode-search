@@ -74,7 +74,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         if (!(await dataStore.getSettings()).initialized) {
             console.info("Settings initialization");
 
-            await dataStore.saveSettings({
+            await dataStore.overwriteSettings({
                 ...initializationData().settings,
                 initialized: true,
             });
@@ -91,7 +91,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         if (!(await dataStore.getUsage()).initialized) {
             console.info("Usage initialization");
 
-            await dataStore.saveUsage({
+            await dataStore.overwriteUsage({
                 ...initializationData().usage,
                 initialized: true,
             });

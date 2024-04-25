@@ -1,6 +1,6 @@
 import {RootDataStore} from "../rootDataStore";
 import {SettingsStore} from "../settingsStore";
-import {BlockFilter, FilterData, PlaneFilter} from "../../../libraries/types/savedata/filterData";
+import {BlockFilter, FilterData} from "../../../libraries/types/savedata/filterData";
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {CodepointInterval} from "../../../libraries/types/codepoint/codepointInterval";
 import {intervalsEqual} from "../../../libraries/helpers/compareIntervals";
@@ -15,21 +15,12 @@ export class settingsStorage implements SettingsStore {
         return (await this.store.getSettings()).filter
     }
 
-    allBlocksIncluded(plane: CodepointInterval): Promise<boolean> {
-        throw new UnicodeSearchError("Not implemented");
-    }
-
-    includeAllBlocks(plane: CodepointInterval, set: boolean): Promise<void> {
-        throw new UnicodeSearchError("Not implemented");
-    }
-
     async getCharacterBlock(block: CodepointInterval): Promise<boolean> {
         return (await this.getBlockFilters())
             .some(blockFilter => blockFilter.included && intervalsEqual(blockFilter, block));
     }
 
     async setCharacterBlock(block: CodepointInterval, set: boolean): Promise<void> {
-        // NEXT reset the unicode data
         const settings = await this.store.getSettings();
         const planeIndex = settings.filter.planes.findIndex(pf => intervalWithin(pf, block));
 
@@ -44,8 +35,9 @@ export class settingsStorage implements SettingsStore {
         }
 
         settings.filter.planes[planeIndex].blocks[blockIndex].included = set;
+        settings.initialized = false;
 
-        await this.store.saveSettings(settings);
+        await this.store.overwriteSettings(settings);
     }
 
     private async getBlockFilters(): Promise<BlockFilter[]> {
