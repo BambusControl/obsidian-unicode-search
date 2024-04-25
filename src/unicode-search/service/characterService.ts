@@ -6,6 +6,6 @@ export interface CharacterService {
 	getOne(key: CharacterKey): Promise<Character>;
     getAllCharacters(): Promise<Character[]>;
     getUsed(): Promise<UsedCharacter[]>;
-    getSorted(): Promise<MaybeUsedCharacter[]>;
+    getAll(): Promise<MaybeUsedCharacter[]>;
 	recordUsage(key: CharacterKey): Promise<UsageInfo>;
 }

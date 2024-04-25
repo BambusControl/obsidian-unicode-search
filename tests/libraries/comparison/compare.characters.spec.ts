@@ -1,9 +1,9 @@
-import {compareCharacters} from "../../../src/libraries/comparison/compareCharacters";
+import {compareUsedCharacters} from "../../../src/libraries/comparison/compareUsedCharacters";
 
 test(
     "character with name `a` is before character with name `b`",
     () => {
-        expect(compareCharacters(
+        expect(compareUsedCharacters(
             {
                 char: " ",
                 name: "a"
@@ -19,7 +19,7 @@ test(
 test(
     "character with `use` is before character without",
     () => {
-        expect(compareCharacters(
+        expect(compareUsedCharacters(
             {
                 char: " ",
                 name: "b",
@@ -37,7 +37,7 @@ test(
 test(
     "characters with same `name` and `use` are equal",
     () => {
-        expect(compareCharacters(
+        expect(compareUsedCharacters(
             {
                 char: " ",
                 name: "name",

@@ -1,9 +1,13 @@
 import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
-import {CharacterMatch, NONE_RESULT} from "./characterMatch";
+import {CharacterMatch, CharacterMaybeMatch} from "./characterMatch";
 import {CharacterService} from "../service/characterService";
 import {INSERT_CHAR_INSTRUCTION, INSTRUCTION_DISMISS, NAVIGATE_INSTRUCTION} from "./visualElements";
 import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
 import {getRandomItem} from "../../libraries/helpers/getRandomItem";
+import {CharacterKey, MaybeUsedCharacter} from "../../libraries/types/codepoint/character";
+import {compareCharacterMatches} from "../../libraries/comparison/compareCharacterMatches";
+import {fillNullMatchScores} from "../../libraries/comparison/fillNullMatchScores";
+import {fillNullCharacterMatchScores} from "../../libraries/comparison/fillNullCharacterMatchScores";
 
 export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 
@@ -25,31 +29,44 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
     }
 
     public override async getSuggestions(query: string): Promise<CharacterMatch[]> {
-        console.count("QFuzzySearchModal.getSuggestions")
-        const isHexSafe = query.length <= 4 && !query.contains(" ")
+        const allCharacters = await this.characterService.getAll();
+
+        const queryEmpty = query == null || query.length < 1;
+        const isHexSafe = query.length <= 4 && !query.contains(" ");
 
         const codepointSearch = isHexSafe ? prepareSimpleSearch(query) : ((text: string) => null);
         const fuzzyNameSearch = prepareFuzzySearch(query);
 
-        return (await this.characterService.getSorted())
-            .map(character => ({
-                item: character,
-                match: {
-                    codepoint: codepointSearch(toHexadecimal(character)),
-                    name: fuzzyNameSearch(character.name)
-                }
-            }))
-            .filter(result => result.match.name != null || result.match.codepoint != null)
-            .map(result => {
-                /* Fill with empty result, so that we don't have to deal with null values */
-                result.match.name ??= NONE_RESULT
-                result.match.codepoint ??= NONE_RESULT
-                return result as CharacterMatch
-            })
-            .sort((l, r) =>
-                /* Matches are scored with negative values up to 0, with 0 meaning full match for fuzzy search */
-                (r.match.codepoint.score - l.match.codepoint.score) + (r.match.name.score - l.match.name.score)
-            )
+        const toNullMatch = (character: MaybeUsedCharacter): CharacterMaybeMatch => ({
+            item: character,
+            match: {
+                codepoint: null,
+                name: null
+            }
+        });
+
+        const toSearchQueryMatch = (character: MaybeUsedCharacter): CharacterMaybeMatch => ({
+            item: character,
+            match: {
+                codepoint: codepointSearch(toHexadecimal(character)),
+                name: fuzzyNameSearch(character.name)
+            }
+        });
+
+        const matchedNameOrCodepoint = (match: CharacterMatch | CharacterMaybeMatch) => match.match.name != null || match.match.codepoint != null;
+
+        const prepared = queryEmpty
+            ? allCharacters
+                .map(toNullMatch)
+            : allCharacters
+                .map(toSearchQueryMatch)
+                .filter(matchedNameOrCodepoint);
+
+        return prepared
+            .sort(compareCharacterMatches)
+            .map(fillNullCharacterMatchScores);
+
+        /* TODO [NEXT]: REFACTOR */
     }
 
     public override async renderSuggestion(item: CharacterMatch, container: HTMLElement): Promise<void> {

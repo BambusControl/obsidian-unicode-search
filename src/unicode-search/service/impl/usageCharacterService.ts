@@ -7,7 +7,7 @@ import {
 import {CodepointStore} from "../codePointStore";
 import {CharacterService} from "../characterService";
 import {UsageStore} from "../usageStore";
-import {compareCharacters} from "../../../libraries/comparison/compareCharacters";
+import {compareUsedCharacters} from "../../../libraries/comparison/compareUsedCharacters";
 import {UsageInfo} from "../../../libraries/types/savedata/usageData";
 
 export class UsageCharacterService implements CharacterService {
@@ -46,23 +46,14 @@ export class UsageCharacterService implements CharacterService {
             }));
     }
 
-    public async getSorted(): Promise<MaybeUsedCharacter[]> {
+    public async getAll(): Promise<MaybeUsedCharacter[]> {
         const allCharacters = await this.getAllCharacters();
         const usedCharacters = await this.usageStore.getUsed();
 
-        const maybeUsedChars = allCharacters
-            .map(character => ({
-                ...usedCharacters.find(usage => usage.codepoint === character.codepoint),
-                ...character,
-            }))
-            .sort((a, b) => compareCharacters(a, b))
-        ;
-
-        return maybeUsedChars;
-
-        /*const mostRecent = qMostRecentlyUsed(usedCharacters).last();
-        const mostRecentCutoff = mostRecent == null ? 0 : new Date(mostRecent.lastUsed).valueOf();
-		const averageUsageCount = qAverageUseCount(usedCharacters);*/
+        return allCharacters.map(character => ({
+            ...usedCharacters.find(usage => usage.codepoint === character.codepoint),
+            ...character,
+        }));
     }
 
 	public recordUsage(key: CharacterKey): Promise<UsageInfo> {

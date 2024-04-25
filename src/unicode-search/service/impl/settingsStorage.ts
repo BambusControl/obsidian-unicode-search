@@ -3,7 +3,7 @@ import {SettingsStore} from "../settingsStore";
 import {BlockFilter, FilterData} from "../../../libraries/types/savedata/filterData";
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {CodepointInterval} from "../../../libraries/types/codepoint/codepointInterval";
-import {intervalsEqual} from "../../../libraries/helpers/compareIntervals";
+import {intervalsEqual} from "../../../libraries/helpers/intervalsEqual";
 import {intervalWithin} from "../../../libraries/helpers/intervalWithin";
 
 export class settingsStorage implements SettingsStore {
