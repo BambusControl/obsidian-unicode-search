@@ -16,10 +16,7 @@ export class RootPluginDataStorage implements RootDataStore {
     ) {
         this.storedData = new Cache(
             () => importData(dataLoader),
-            (data) => {
-                console.count("Unicode Search saving to storage")
-                return dataLoader.saveData(data);
-            }
+            (data) => dataLoader.saveData(data)
         );
     }
 

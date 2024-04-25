@@ -4,10 +4,9 @@ import {CharacterService} from "../service/characterService";
 import {INSERT_CHAR_INSTRUCTION, INSTRUCTION_DISMISS, NAVIGATE_INSTRUCTION} from "./visualElements";
 import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
 import {getRandomItem} from "../../libraries/helpers/getRandomItem";
-import {CharacterKey, MaybeUsedCharacter} from "../../libraries/types/codepoint/character";
-import {compareCharacterMatches} from "../../libraries/comparison/compareCharacterMatches";
-import {fillNullMatchScores} from "../../libraries/comparison/fillNullMatchScores";
+import {MaybeUsedCharacter} from "../../libraries/types/codepoint/character";
 import {fillNullCharacterMatchScores} from "../../libraries/comparison/fillNullCharacterMatchScores";
+import {compareCharacterMatches} from "../../libraries/comparison/compareCharacterMatches";
 
 export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 
@@ -72,7 +71,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
     public override async renderSuggestion(item: CharacterMatch, container: HTMLElement): Promise<void> {
         const char = item.item;
 
-        container.addClass("plugin", "unicode-search", "result-item")
+        container.addClass("plugin", "unicode-search", "result-item");
 
         container.createDiv({
             cls: "character-preview",
@@ -82,13 +81,13 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 
         const matches = container.createDiv({
             cls: "character-match",
-        })
+        });
 
         const text = matches.createDiv({
             cls: "character-name",
         });
 
-        renderMatches(text, item.item.name, item.match.name.matches)
+        renderMatches(text, item.item.name, item.match.name.matches);
 
         if (item.match.codepoint.matches.length > 0) {
             const codepoint = matches.createDiv({

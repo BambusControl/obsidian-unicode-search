@@ -6,7 +6,7 @@ import {CodepointInterval} from "../../../libraries/types/codepoint/codepointInt
 import {intervalsEqual} from "../../../libraries/helpers/intervalsEqual";
 import {intervalWithin} from "../../../libraries/helpers/intervalWithin";
 
-export class settingsStorage implements SettingsStore {
+export class SettingsStorage implements SettingsStore {
 
     constructor(private readonly store: RootDataStore) {
     }

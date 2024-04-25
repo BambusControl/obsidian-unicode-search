@@ -5,7 +5,6 @@ import {UnicodeBlock} from "../../libraries/types/unicodeBlock";
 import {asHexadecimal} from "../../libraries/helpers/asHexadecimal";
 import {CharacterService} from "../service/characterService";
 import {SettingsStore} from "../service/settingsStore";
-import {UnicodeSearchError} from "../errors/unicodeSearchError";
 import {CodepointInterval} from "../../libraries/types/codepoint/codepointInterval";
 import {UnicodePlane} from "../../libraries/types/unicodePlane";
 
@@ -40,7 +39,7 @@ export class SettingTab extends PluginSettingTab {
             .setName("Character Filter")
             .setDesc("Here you can filter the characters that are downloaded and shown in the search prompt.");
 
-        const planesContainer = container.createDiv({cls: "planes-container"})
+        const planesContainer = container.createDiv({cls: "planes-container"});
 
         for (const plane of UNICODE_PLANES_ALL) {
             await this.addCharacterPlaneFilters(planesContainer, plane);
@@ -71,7 +70,7 @@ export class SettingTab extends PluginSettingTab {
         block: UnicodeBlock
     ) {
         /* Low: try to redo more effectively, we always get a plane worth of blocks */
-        const blockIncluded = await options.getCharacterBlock(block.interval)
+        const blockIncluded = await options.getCharacterBlock(block.interval);
 
         new Setting(container)
             .setName(block.description)
@@ -85,7 +84,7 @@ export class SettingTab extends PluginSettingTab {
     private static codepointFragment(parent: DocumentFragment, interval: CodepointInterval): DocumentFragment {
         parent
             .createSpan({cls: "character-codepoint",})
-            .setText(`${asHexadecimal(interval.start)}－${asHexadecimal(interval.end)}`)
+            .setText(`${asHexadecimal(interval.start)}－${asHexadecimal(interval.end)}`);
 
         return parent;
     }

@@ -26,7 +26,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
     }
 
     public async download(): Promise<Codepoints> {
-        const unicodeVersion = "14.0.0"
+        const unicodeVersion = "14.0.0";
         const unicodeData = await request(`https://www.unicode.org/Public/${unicodeVersion}/ucd/UnicodeData.txt`);
 
         const parsed = await this.transformToCharacters(unicodeData);
@@ -35,7 +35,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
     }
 
     private async filterCharacters(parsed: ParsedCharacter[]): Promise<ParsedCharacter[]> {
-        const filter = await this.settingsStore.getFilter()
+        const filter = await this.settingsStore.getFilter();
 
         const includedBlocks = mergeIntervals(filter.planes
             .flatMap(p => p.blocks)
@@ -66,7 +66,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
                         codepoint: parseInt(row[0], 16),
                         name: row[1],
                         category: row[2],
-                    }))
+                    }));
 
                 resolve(parsedCharacters);
             };

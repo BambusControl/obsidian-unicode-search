@@ -4,7 +4,7 @@ import {CodepointStore} from "./service/codePointStore";
 import {RootPluginDataStorage} from "./service/impl/rootPluginDataStorage";
 import {CodepointStorage} from "./service/impl/codepointStorage";
 import {CharacterDownloader} from "./service/characterDownloader";
-import {settingsStorage} from "./service/impl/settingsStorage";
+import {SettingsStorage} from "./service/impl/settingsStorage";
 import {RootDataStore} from "./service/rootDataStore";
 import {initializationData} from "../libraries/data/initializationData";
 import {SettingTab} from "./components/settingTab";
@@ -33,7 +33,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         const codepointStore = new CodepointStorage(dataStore);
         const usageStore = new CodepointUsageStorage(dataStore, codepointStore)
         const characterService = new UsageCharacterService(codepointStore, usageStore);
-        const optionsStore = new settingsStorage(dataStore);
+        const optionsStore = new SettingsStorage(dataStore);
         const downloader = new UcdUserFilterDownloader(optionsStore);
 
         console.group("Initializing local data");

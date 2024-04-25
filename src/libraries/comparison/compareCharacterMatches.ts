@@ -6,7 +6,7 @@ import {compareUsedCharacters} from "./compareUsedCharacters";
 export function compareCharacterMatches(left: CharacterMaybeMatch, right: CharacterMaybeMatch): Order {
     const matchComparison = compareMaybeMatches(left.match, right.match);
 
-    if (matchComparison == Order.Equal) {
+    if (matchComparison === Order.Equal) {
         return compareUsedCharacters(left.item, right.item);
     }
 

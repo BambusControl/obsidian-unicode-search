@@ -1,14 +1,13 @@
 import {UnicodeSearchError} from "../../unicode-search/errors/unicodeSearchError";
 
 export class Cache<T> {
-    private value?: T
+    private value?: T;
 
     constructor(
         private readonly getCallback: () => Promise<T>,
         private readonly persistCallback: (value: T) => Promise<void>,
         initialValue?: T
     ) {
-        this.getCallback = getCallback;
         this.value = initialValue;
     }
 

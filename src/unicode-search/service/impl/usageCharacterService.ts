@@ -7,7 +7,6 @@ import {
 import {CodepointStore} from "../codePointStore";
 import {CharacterService} from "../characterService";
 import {UsageStore} from "../usageStore";
-import {compareUsedCharacters} from "../../../libraries/comparison/compareUsedCharacters";
 import {UsageInfo} from "../../../libraries/types/savedata/usageData";
 
 export class UsageCharacterService implements CharacterService {
@@ -57,7 +56,7 @@ export class UsageCharacterService implements CharacterService {
     }
 
 	public recordUsage(key: CharacterKey): Promise<UsageInfo> {
-        const timestamp = (new Date()).toJSON()
+        const timestamp = (new Date()).toJSON();
 
 		return this.usageStore.updateCharacter(key, (current) => ({
             ...current,

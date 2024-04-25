@@ -14,7 +14,7 @@ export function compareUsageTrackedCharacters(left: UsageInfo, right: UsageInfo)
 		(l, r) => compareDates(l, r),
 	);
 
-	if (lastUsedComparison != Order.Equal) {
+	if (lastUsedComparison !== Order.Equal) {
 		return lastUsedComparison;
 	}
 
