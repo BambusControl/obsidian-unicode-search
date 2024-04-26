@@ -7,8 +7,7 @@ import {
 import {CodepointStore} from "../codePointStore";
 import {CharacterService} from "../characterService";
 import {UsageStore} from "../usageStore";
-import {ParsedUsageInfo, UsageInfo} from "../../../libraries/types/savedata/usageData";
-import {parseUsageInfo} from "../../../libraries/helpers/parseUsageInfo";
+import {ParsedUsageInfo} from "../../../libraries/types/savedata/usageData";
 
 export class UsageCharacterService implements CharacterService {
 

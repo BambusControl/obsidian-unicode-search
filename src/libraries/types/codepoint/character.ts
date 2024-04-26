@@ -1,5 +1,5 @@
 import {UnicodeCodepoint} from "./codepoint";
-import {ParsedUsageInfo, UsageInfo} from "../savedata/usageData";
+import {ParsedUsageInfo} from "../savedata/usageData";
 
 /**
  * Base representation of a character

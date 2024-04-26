@@ -1,1 +1,0 @@
-export const DEFAULT_RECENT_CHARACTER_COUNT = 3;

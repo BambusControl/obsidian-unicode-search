@@ -1,15 +1,19 @@
 import {Order} from "../order/order";
 import {compareNullable} from "./compareNullable";
-import {compareUsageTrackedCharacters} from "./compareUsageTrackedCharacters";
+import {compareUsageInfo} from "./compareUsageInfo";
 import {MaybeUsedCharacter, UsedCharacter} from "../types/codepoint/character";
 import {compareNumbers} from "./compareNumbers";
-import {ParsedUsageInfo, UsageInfo} from "../types/savedata/usageData";
+import {isUsedCharacter} from "../helpers/isUsedCharacter";
+
+function toUsedCharacter(character: MaybeUsedCharacter): UsedCharacter | null {
+    return (isUsedCharacter(character) ? character : null) as UsedCharacter | null;
+}
 
 export function compareUsedCharacters(left: MaybeUsedCharacter, right: MaybeUsedCharacter): Order {
 	const order = compareNullable(
-		left as UsedCharacter,
-        right as UsedCharacter,
-		(l, r) => compareUsageTrackedCharacters(l, r),
+        toUsedCharacter(left),
+        toUsedCharacter(right),
+		compareUsageInfo,
 	);
 
 	if (order !== Order.Equal) {

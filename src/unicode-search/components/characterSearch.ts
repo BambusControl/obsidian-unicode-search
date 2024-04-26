@@ -1,5 +1,5 @@
 import {SearchResult} from "obsidian";
-import {Character} from "../../libraries/types/codepoint/character";
+import {Character, MaybeUsedCharacter} from "../../libraries/types/codepoint/character";
 
 export type CharacterSearch<T> = {
     item: Character & T,
@@ -25,3 +25,6 @@ export const NONE_RESULT: SearchResult = {
     score: 0,
     matches: []
 }
+
+export type UsedCharacterSearch = CharacterSearch<MaybeUsedCharacter>;
+export type MaybeUsedCharacterMatch = CharacterMaybeMatch<MaybeUsedCharacter>;

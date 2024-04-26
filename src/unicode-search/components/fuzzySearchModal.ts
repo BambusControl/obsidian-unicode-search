@@ -1,5 +1,5 @@
-import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
-import {CharacterMaybeMatch, CharacterSearch} from "./characterSearch";
+import {App, Editor, renderMatches, SuggestModal} from "obsidian";
+import {UsedCharacterSearch} from "./characterSearch";
 import {CharacterService} from "../service/characterService";
 import {
     ELEMENT_FREQUENT,
@@ -10,7 +10,6 @@ import {
 } from "./visualElements";
 import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
 import {getRandomItem} from "../../libraries/helpers/getRandomItem";
-import {MaybeUsedCharacter, UsedCharacter} from "../../libraries/types/codepoint/character";
 import {fillNullCharacterMatchScores} from "../../libraries/comparison/fillNullCharacterMatchScores";
 import {compareCharacterMatches} from "../../libraries/comparison/compareCharacterMatches";
 import {ReadCache} from "../../libraries/types/readCache";
@@ -18,9 +17,9 @@ import {mostRecentUses} from "../../libraries/helpers/mostRecentUses";
 import {averageUseCount} from "../../libraries/helpers/averageUseCount";
 import {UsageDisplayStatistics} from "../../libraries/types/usageDisplayStatistics";
 import {ParsedUsageInfo} from "../../libraries/types/savedata/usageData";
-
-type UsedCharacterSearch = CharacterSearch<MaybeUsedCharacter>;
-type MaybeUsedCharacterMatch = CharacterMaybeMatch<MaybeUsedCharacter>;
+import {toNullMatch} from "../../libraries/helpers/toNullMatch";
+import {toSearchQueryMatch} from "../../libraries/helpers/toSearchQueryMatch";
+import {matchedNameOrCodepoint} from "../../libraries/helpers/matchedNameOrCodepoint";
 
 export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
     private usageStatistics: ReadCache<UsageDisplayStatistics>;
@@ -43,8 +42,9 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
 
         this.usageStatistics = new ReadCache(async () => {
             const usedCharacters = await characterService.getUsed();
+            console.log({mru: mostRecentUses(usedCharacters, 3)})
             return {
-                topThirdRecentlyUsed: mostRecentUses(usedCharacters).last() ?? new Date(0),
+                topThirdRecentlyUsed: mostRecentUses(usedCharacters, 3).last() ?? new Date(0),
                 averageUseCount: averageUseCount(usedCharacters),
             } as UsageDisplayStatistics;
         })
@@ -52,43 +52,18 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
 
     public override async getSuggestions(query: string): Promise<UsedCharacterSearch[]> {
         const allCharacters = await this.characterService.getAll();
-
         const queryEmpty = query == null || query.length < 1;
-        const isHexSafe = query.length <= 4 && !query.contains(" ");
-
-        const codepointSearch = isHexSafe ? prepareSimpleSearch(query) : ((text: string) => null);
-        const fuzzyNameSearch = prepareFuzzySearch(query);
-
-        const toNullMatch = (character: MaybeUsedCharacter): MaybeUsedCharacterMatch => ({
-            item: character,
-            match: {
-                codepoint: null,
-                name: null
-            }
-        });
-
-        const toSearchQueryMatch = (character: MaybeUsedCharacter): MaybeUsedCharacterMatch => ({
-            item: character,
-            match: {
-                codepoint: codepointSearch(toHexadecimal(character)),
-                name: fuzzyNameSearch(character.name)
-            }
-        });
-
-        const matchedNameOrCodepoint = (match: UsedCharacterSearch | MaybeUsedCharacterMatch) => match.match.name != null || match.match.codepoint != null;
 
         const prepared = queryEmpty
             ? allCharacters
                 .map(toNullMatch)
             : allCharacters
-                .map(toSearchQueryMatch)
+                .map(toSearchQueryMatch(query))
                 .filter(matchedNameOrCodepoint);
 
         return prepared
             .sort(compareCharacterMatches)
             .map(fillNullCharacterMatchScores);
-
-        /* TODO [NEXT]: REFACTOR */
     }
 
     public override async renderSuggestion(item: UsedCharacterSearch, container: HTMLElement): Promise<void> {
@@ -131,6 +106,22 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
 		const showLastUsed = maybeUsedChar.lastUsed != null && maybeUsedChar.lastUsed >= usageStats.topThirdRecentlyUsed;
 		const showUseCount = maybeUsedChar.useCount != null && maybeUsedChar.useCount >= usageStats.averageUseCount;
 
+        if (maybeUsedChar.useCount != null) {
+            console.log({
+                char: maybeUsedChar.codepoint,
+                last: {
+                    char: maybeUsedChar.lastUsed,
+                    stat: usageStats.topThirdRecentlyUsed,
+                    show: showLastUsed,
+                },
+                count: {
+                    char: maybeUsedChar.useCount,
+                    stat: usageStats.averageUseCount,
+                    show: showUseCount,
+                },
+            })
+        }
+
 		const attributes = detail.createDiv({
 			cls: "attributes",
 		});
@@ -142,8 +133,6 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
 		if (showUseCount) {
 			attributes.createDiv(ELEMENT_FREQUENT);
 		}
-
-        /* TODO [NEXT]: Sorting, with usage data; prioritize used characters, merge with the rest for search. */
     }
 
     public override onChooseSuggestion(item: UsedCharacterSearch, evt: MouseEvent | KeyboardEvent): void {

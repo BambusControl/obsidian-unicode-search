@@ -4,10 +4,8 @@ import {CharacterKey} from "../../../libraries/types/codepoint/character";
 import {CodepointStore} from "../codePointStore";
 import {
     CodepointParsedUsage,
-    CodepointUsage,
     ParsedUsageInfo,
-    UsageData,
-    UsageInfo
+    UsageData
 } from "../../../libraries/types/savedata/usageData";
 import {parseUsageInfo} from "../../../libraries/helpers/parseUsageInfo";
 import {serializeUsageInfo} from "../../../libraries/helpers/serializeUsageInfo";
