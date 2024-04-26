@@ -42,9 +42,8 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
 
         this.usageStatistics = new ReadCache(async () => {
             const usedCharacters = await characterService.getUsed();
-            console.log({mru: mostRecentUses(usedCharacters, 3)})
             return {
-                topThirdRecentlyUsed: mostRecentUses(usedCharacters, 3).last() ?? new Date(0),
+                topThirdRecentlyUsed: mostRecentUses(usedCharacters).slice(0, 3).last() ?? new Date(0),
                 averageUseCount: averageUseCount(usedCharacters),
             } as UsageDisplayStatistics;
         })
@@ -61,8 +60,9 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
                 .map(toSearchQueryMatch(query))
                 .filter(matchedNameOrCodepoint);
 
+        const recencyCutoff = (await this.usageStatistics.getValue()).topThirdRecentlyUsed;
         return prepared
-            .sort(compareCharacterMatches)
+            .sort((l, r) => compareCharacterMatches(l, r, recencyCutoff))
             .map(fillNullCharacterMatchScores);
     }
 
@@ -105,22 +105,6 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
         const maybeUsedChar = char as Partial<ParsedUsageInfo>
 		const showLastUsed = maybeUsedChar.lastUsed != null && maybeUsedChar.lastUsed >= usageStats.topThirdRecentlyUsed;
 		const showUseCount = maybeUsedChar.useCount != null && maybeUsedChar.useCount >= usageStats.averageUseCount;
-
-        if (maybeUsedChar.useCount != null) {
-            console.log({
-                char: maybeUsedChar.codepoint,
-                last: {
-                    char: maybeUsedChar.lastUsed,
-                    stat: usageStats.topThirdRecentlyUsed,
-                    show: showLastUsed,
-                },
-                count: {
-                    char: maybeUsedChar.useCount,
-                    stat: usageStats.averageUseCount,
-                    show: showUseCount,
-                },
-            })
-        }
 
 		const attributes = detail.createDiv({
 			cls: "attributes",

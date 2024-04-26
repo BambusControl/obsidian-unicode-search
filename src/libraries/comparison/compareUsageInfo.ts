@@ -4,21 +4,23 @@ import {compareNumbers} from "./compareNumbers";
 
 import {ParsedUsageInfo} from "../types/savedata/usageData";
 import {compareDates} from "./compareDates";
+import {compareNullable} from "./compareNullable";
 
-export function compareUsageInfo(left: ParsedUsageInfo, right: ParsedUsageInfo): Order {
-	if (!(left.lastUsed == null && right.lastUsed == null) && (left.lastUsed == null || right.lastUsed == null)) {
-        console.log({
-            left,
-            right
-        })
-    }
-
+export function compareUsageInfo(
+    left: ParsedUsageInfo,
+    right: ParsedUsageInfo,
+    recencyCutoff: Date,
+): Order {
     // We want the most recently used to be first.
-	const lastUsedComparison = inverse(compareDates(left.lastUsed, right.lastUsed));
+    const lastUsedComparison = compareNullable(
+        left.lastUsed < recencyCutoff ? null : left.lastUsed,
+        right.lastUsed < recencyCutoff ? null : right.lastUsed,
+        (l, r) => inverse(compareDates(l, r))
+    );
 
-	if (lastUsedComparison !== Order.Equal) {
-		return lastUsedComparison;
-	}
+    if (lastUsedComparison !== Order.Equal) {
+        return lastUsedComparison;
+    }
 
 	// We want the most used to be before the less used.
 	return inverse(compareNumbers(left.useCount, right.useCount));

@@ -9,11 +9,15 @@ function toUsedCharacter(character: MaybeUsedCharacter): UsedCharacter | null {
     return (isUsedCharacter(character) ? character : null) as UsedCharacter | null;
 }
 
-export function compareUsedCharacters(left: MaybeUsedCharacter, right: MaybeUsedCharacter): Order {
+export function compareUsedCharacters(
+    left: MaybeUsedCharacter,
+    right: MaybeUsedCharacter,
+    recencyCutoff: Date,
+): Order {
 	const order = compareNullable(
         toUsedCharacter(left),
         toUsedCharacter(right),
-		compareUsageInfo,
+        (l, r) => compareUsageInfo(l, r, recencyCutoff),
 	);
 
 	if (order !== Order.Equal) {
