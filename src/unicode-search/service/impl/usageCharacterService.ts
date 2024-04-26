@@ -7,7 +7,8 @@ import {
 import {CodepointStore} from "../codePointStore";
 import {CharacterService} from "../characterService";
 import {UsageStore} from "../usageStore";
-import {UsageInfo} from "../../../libraries/types/savedata/usageData";
+import {ParsedUsageInfo, UsageInfo} from "../../../libraries/types/savedata/usageData";
+import {parseUsageInfo} from "../../../libraries/helpers/parseUsageInfo";
 
 export class UsageCharacterService implements CharacterService {
 
@@ -55,14 +56,14 @@ export class UsageCharacterService implements CharacterService {
         }));
     }
 
-	public recordUsage(key: CharacterKey): Promise<UsageInfo> {
-        const timestamp = (new Date()).toJSON();
+	public recordUsage(key: CharacterKey): Promise<ParsedUsageInfo> {
+        const timestamp = new Date();
 
 		return this.usageStore.updateCharacter(key, (current) => ({
             ...current,
-            firstUsed: current.firstUsed ?? timestamp,
+            firstUsed: current?.firstUsed ?? timestamp,
             lastUsed: timestamp,
-            useCount: (current.useCount ?? 0) + 1,
+            useCount: (current?.useCount ?? 0) + 1,
         }))
 	}
 }

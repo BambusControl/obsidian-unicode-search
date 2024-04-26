@@ -3,14 +3,16 @@ import {inverse} from "../order/inverse";
 import {compareNullable} from "./compareNullable";
 import {compareNumbers} from "./compareNumbers";
 
-import {UsageInfo} from "../types/savedata/usageData";
+import {ParsedUsageInfo, UsageInfo} from "../types/savedata/usageData";
 import {compareDates} from "./compareDates";
+import {parseDateString} from "../helpers/parseDateString";
+import {compose} from "./compose";
 
-export function compareUsageTrackedCharacters(left: UsageInfo, right: UsageInfo): Order {
+export function compareUsageTrackedCharacters(left: ParsedUsageInfo, right: ParsedUsageInfo): Order {
 	// We want the most recently used to be first.
 	const lastUsedComparison = compareNullable(
-		left.lastUsed == null ? null : new Date(left.lastUsed),
-		right.lastUsed == null ? null : new Date(right.lastUsed),
+        left.lastUsed,
+        right.lastUsed,
 		(l, r) => compareDates(l, r),
 	);
 

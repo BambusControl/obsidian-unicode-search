@@ -1,6 +1,6 @@
 import {UnicodeSearchError} from "../../unicode-search/errors/unicodeSearchError";
 
-export class Cache<T> {
+export class PersistCache<T> {
     private value?: T;
 
     constructor(

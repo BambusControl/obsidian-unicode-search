@@ -1,22 +1,22 @@
 import {SearchResult} from "obsidian";
 import {Character} from "../../libraries/types/codepoint/character";
 
-export type CharacterMatch = {
-    item: Character,
-    match: Match,
+export type CharacterSearch<T> = {
+    item: Character & T,
+    match: CharacterSearchMatch,
 }
 
-export type CharacterMaybeMatch = {
-    item: Character,
-    match: MaybeMatch,
+export type CharacterMaybeMatch<T> = {
+    item: Character & T,
+    match: CharacterSearchMaybeMatch,
 }
 
-export type Match = {
+export type CharacterSearchMatch = {
     codepoint: SearchResult,
     name: SearchResult,
 }
 
-export type MaybeMatch = {
+export type CharacterSearchMaybeMatch = {
     codepoint: SearchResult | null | undefined,
     name: SearchResult | null | undefined,
 }

@@ -1,6 +1,6 @@
-import {UsageInfo} from "../types/savedata/usageData";
+import {UsageCount} from "../types/savedata/usageData";
 
-export function averageUseCount(items: UsageInfo[]): number {
+export function averageUseCount(items: UsageCount[]): number {
     const result = items.reduce(
         (acc, item) => ({
             totalUses: acc.totalUses + item.useCount,

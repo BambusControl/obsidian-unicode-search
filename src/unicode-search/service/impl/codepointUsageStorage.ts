@@ -2,7 +2,15 @@ import {RootDataStore} from "../rootDataStore";
 import {UsageStore} from "../usageStore";
 import {CharacterKey} from "../../../libraries/types/codepoint/character";
 import {CodepointStore} from "../codePointStore";
-import {CodepointUsage, UsageData, UsageInfo} from "../../../libraries/types/savedata/usageData";
+import {
+    CodepointParsedUsage,
+    CodepointUsage,
+    ParsedUsageInfo,
+    UsageData,
+    UsageInfo
+} from "../../../libraries/types/savedata/usageData";
+import {parseUsageInfo} from "../../../libraries/helpers/parseUsageInfo";
+import {serializeUsageInfo} from "../../../libraries/helpers/serializeUsageInfo";
 
 export class CodepointUsageStorage implements UsageStore {
 
@@ -14,38 +22,43 @@ export class CodepointUsageStorage implements UsageStore {
 
     async updateCharacter(
         key: CharacterKey,
-        apply: (char: UsageInfo) => UsageInfo
-    ): Promise<CodepointUsage>
+        apply: (char?: ParsedUsageInfo) => ParsedUsageInfo
+    ): Promise<CodepointParsedUsage>
     {
-        const data = await this.getData();
+        const data = await this.getUsed();
 
         const foundIndex = data.findIndex(ch => ch.codepoint === key)
-        const index = foundIndex < 0 ? 0 : foundIndex;
+        const found = foundIndex >= 0;
+        const index = found ? foundIndex : 0;
 
-        const modifiedUsage = apply({...data[index]});
-
-        data[index] = {
-            ...modifiedUsage,
+        const modifiedUsage = {
+            ...apply(found ? {...data[index]} : undefined),
             codepoint: key,
         };
+
+        if (found) {
+            data[foundIndex] = modifiedUsage
+        } else {
+            data.unshift(modifiedUsage)
+        }
 
         await this.overwriteUsageData(data)
 
         return data[index];
     }
 
-    async getUsed(): Promise<CodepointUsage[]> {
-        return (await this.getData()).filter(char => char.useCount > 0);
+    async getUsed(): Promise<CodepointParsedUsage[]> {
+        return (await this.store.getUsage())
+            .codepoints
+            .map(parseUsageInfo)
     }
 
-    private async getData(): Promise<CodepointUsage[]> {
-        return (await this.store.getUsage()).codepoints;
-    }
+    private async overwriteUsageData(data: CodepointParsedUsage[]): Promise<CodepointParsedUsage[]> {
+        const newData = await this.mergeUsage({
+            codepoints: data.map(serializeUsageInfo),
+        });
 
-    private async overwriteUsageData(data: CodepointUsage[]): Promise<CodepointUsage[]> {
-        return (await this.mergeUsage({
-            codepoints: data
-        })).codepoints
+        return newData.codepoints.map(parseUsageInfo)
     }
 
     private async mergeUsage(data: Partial<UsageData>): Promise<UsageData> {

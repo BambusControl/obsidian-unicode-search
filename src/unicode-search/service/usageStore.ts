@@ -1,7 +1,7 @@
 import {CharacterKey} from "../../libraries/types/codepoint/character";
-import {CodepointUsage, UsageInfo} from "../../libraries/types/savedata/usageData";
+import {CodepointParsedUsage, ParsedUsageInfo, UsageInfo} from "../../libraries/types/savedata/usageData";
 
 export interface UsageStore {
-    updateCharacter(key: CharacterKey, apply: (char: UsageInfo) => UsageInfo): Promise<CodepointUsage>;
-    getUsed(): Promise<CodepointUsage[]>;
+    updateCharacter(key: CharacterKey, apply: (char?: ParsedUsageInfo) => ParsedUsageInfo): Promise<CodepointParsedUsage>;
+    getUsed(): Promise<CodepointParsedUsage[]>;
 }

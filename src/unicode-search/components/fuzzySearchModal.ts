@@ -1,14 +1,29 @@
 import {App, Editor, prepareFuzzySearch, prepareSimpleSearch, renderMatches, SuggestModal} from "obsidian";
-import {CharacterMatch, CharacterMaybeMatch} from "./characterMatch";
+import {CharacterMaybeMatch, CharacterSearch} from "./characterSearch";
 import {CharacterService} from "../service/characterService";
-import {INSERT_CHAR_INSTRUCTION, INSTRUCTION_DISMISS, NAVIGATE_INSTRUCTION} from "./visualElements";
+import {
+    ELEMENT_FREQUENT,
+    ELEMENT_RECENT,
+    INSERT_CHAR_INSTRUCTION,
+    INSTRUCTION_DISMISS,
+    NAVIGATE_INSTRUCTION
+} from "./visualElements";
 import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
 import {getRandomItem} from "../../libraries/helpers/getRandomItem";
-import {MaybeUsedCharacter} from "../../libraries/types/codepoint/character";
+import {MaybeUsedCharacter, UsedCharacter} from "../../libraries/types/codepoint/character";
 import {fillNullCharacterMatchScores} from "../../libraries/comparison/fillNullCharacterMatchScores";
 import {compareCharacterMatches} from "../../libraries/comparison/compareCharacterMatches";
+import {ReadCache} from "../../libraries/types/readCache";
+import {mostRecentUses} from "../../libraries/helpers/mostRecentUses";
+import {averageUseCount} from "../../libraries/helpers/averageUseCount";
+import {UsageDisplayStatistics} from "../../libraries/types/usageDisplayStatistics";
+import {ParsedUsageInfo} from "../../libraries/types/savedata/usageData";
 
-export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
+type UsedCharacterSearch = CharacterSearch<MaybeUsedCharacter>;
+type MaybeUsedCharacterMatch = CharacterMaybeMatch<MaybeUsedCharacter>;
+
+export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
+    private usageStatistics: ReadCache<UsageDisplayStatistics>;
 
     public constructor(
         app: App,
@@ -25,9 +40,17 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
 
         // Purposefully ignored result
         this.setRandomPlaceholder().then();
+
+        this.usageStatistics = new ReadCache(async () => {
+            const usedCharacters = await characterService.getUsed();
+            return {
+                topThirdRecentlyUsed: mostRecentUses(usedCharacters).last() ?? new Date(0),
+                averageUseCount: averageUseCount(usedCharacters),
+            } as UsageDisplayStatistics;
+        })
     }
 
-    public override async getSuggestions(query: string): Promise<CharacterMatch[]> {
+    public override async getSuggestions(query: string): Promise<UsedCharacterSearch[]> {
         const allCharacters = await this.characterService.getAll();
 
         const queryEmpty = query == null || query.length < 1;
@@ -36,7 +59,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
         const codepointSearch = isHexSafe ? prepareSimpleSearch(query) : ((text: string) => null);
         const fuzzyNameSearch = prepareFuzzySearch(query);
 
-        const toNullMatch = (character: MaybeUsedCharacter): CharacterMaybeMatch => ({
+        const toNullMatch = (character: MaybeUsedCharacter): MaybeUsedCharacterMatch => ({
             item: character,
             match: {
                 codepoint: null,
@@ -44,7 +67,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
             }
         });
 
-        const toSearchQueryMatch = (character: MaybeUsedCharacter): CharacterMaybeMatch => ({
+        const toSearchQueryMatch = (character: MaybeUsedCharacter): MaybeUsedCharacterMatch => ({
             item: character,
             match: {
                 codepoint: codepointSearch(toHexadecimal(character)),
@@ -52,7 +75,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
             }
         });
 
-        const matchedNameOrCodepoint = (match: CharacterMatch | CharacterMaybeMatch) => match.match.name != null || match.match.codepoint != null;
+        const matchedNameOrCodepoint = (match: UsedCharacterSearch | MaybeUsedCharacterMatch) => match.match.name != null || match.match.codepoint != null;
 
         const prepared = queryEmpty
             ? allCharacters
@@ -68,7 +91,7 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
         /* TODO [NEXT]: REFACTOR */
     }
 
-    public override async renderSuggestion(item: CharacterMatch, container: HTMLElement): Promise<void> {
+    public override async renderSuggestion(item: UsedCharacterSearch, container: HTMLElement): Promise<void> {
         const char = item.item;
 
         container.addClass("plugin", "unicode-search", "result-item");
@@ -101,14 +124,29 @@ export class FuzzySearchModal extends SuggestModal<CharacterMatch> {
             cls: "detail",
         });
 
-        const attributes = detail.createDiv({
-            cls: "attributes",
-        });
+        const usageStats = await this.usageStatistics.getValue();
+
+        /* The type hinting doesn't work, and shows as an error in the IDE (or the type is wrong) */
+        const maybeUsedChar = char as Partial<ParsedUsageInfo>
+		const showLastUsed = maybeUsedChar.lastUsed != null && maybeUsedChar.lastUsed >= usageStats.topThirdRecentlyUsed;
+		const showUseCount = maybeUsedChar.useCount != null && maybeUsedChar.useCount >= usageStats.averageUseCount;
+
+		const attributes = detail.createDiv({
+			cls: "attributes",
+		});
+
+		if (showLastUsed) {
+			attributes.createDiv(ELEMENT_RECENT);
+		}
+
+		if (showUseCount) {
+			attributes.createDiv(ELEMENT_FREQUENT);
+		}
 
         /* TODO [NEXT]: Sorting, with usage data; prioritize used characters, merge with the rest for search. */
     }
 
-    public override onChooseSuggestion(item: CharacterMatch, evt: MouseEvent | KeyboardEvent): void {
+    public override onChooseSuggestion(item: UsedCharacterSearch, evt: MouseEvent | KeyboardEvent): void {
         this.editor.replaceSelection(item.item.codepoint);
 
         // I don't want to await this, its more of a side effect

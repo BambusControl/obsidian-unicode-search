@@ -1,4 +1,4 @@
-import {Cache} from "../../../libraries/types/cache";
+import {PersistCache} from "../../../libraries/types/persistCache";
 import {SaveData, SaveDataVersion} from "../../../libraries/types/savedata/saveData";
 import {PluginDataLoader} from "../../../libraries/types/pluginDataLoader";
 import {importData} from "../../../libraries/helpers/importData";
@@ -9,12 +9,12 @@ import {UnicodeData} from "../../../libraries/types/savedata/unicodeData";
 
 export class RootPluginDataStorage implements RootDataStore {
 
-    private storedData: Cache<SaveData>;
+    private storedData: PersistCache<SaveData>;
 
     constructor(
         readonly dataLoader: PluginDataLoader,
     ) {
-        this.storedData = new Cache(
+        this.storedData = new PersistCache(
             () => importData(dataLoader),
             (data) => dataLoader.saveData(data)
         );

@@ -1,9 +1,9 @@
-import {CharacterMaybeMatch} from "../../unicode-search/components/characterMatch";
+import {CharacterMaybeMatch} from "../../unicode-search/components/characterSearch";
 import {Order} from "../order/order";
 import {compareMaybeMatches} from "./compareMaybeMatches";
 import {compareUsedCharacters} from "./compareUsedCharacters";
 
-export function compareCharacterMatches(left: CharacterMaybeMatch, right: CharacterMaybeMatch): Order {
+export function compareCharacterMatches<T>(left: CharacterMaybeMatch<T>, right: CharacterMaybeMatch<T>): Order {
     const matchComparison = compareMaybeMatches(left.match, right.match);
 
     if (matchComparison === Order.Equal) {
