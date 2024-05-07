@@ -16,6 +16,7 @@ export interface RootDataStore {
     getSettings(): Promise<SettingsData>
     overwriteSettings(settings: SettingsData): Promise<SettingsData>
     setInitializedSettings(value: boolean): Promise<void>
+    setFilterSatisfied(value: boolean): Promise<void>
 
     getUsage(): Promise<UsageData>
     overwriteUsage(usage: UsageData): Promise<UsageData>

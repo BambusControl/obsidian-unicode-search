@@ -7,6 +7,7 @@ export function initializationData(): SaveData {
         version: "0.5.0-NEXT",
         settings: {
             initialized: false,
+            modified: false,
             filter: {
                 planes: UNICODE_PLANES_ALL.map(plane => ({
                     ...plane.interval,
@@ -15,194 +16,194 @@ export function initializationData(): SaveData {
                         included: plane.planeNumber === 0
                     }))
                 })),
-                classifiers: [
+                categoryGroups: [
                     {
-                        classifier: "L",
+                        abbreviation: "L",
                         name: "Letter",
                         categories: [
                             {
-                                category: "Ll",
+                                abbreviation: "Ll",
                                 name: "Lowercase",
                                 included: true
                             },
                             {
-                                category: "Lm",
+                                abbreviation: "Lm",
                                 name: "Modifier",
                                 included: true
                             },
                             {
-                                category: "Lt",
+                                abbreviation: "Lt",
                                 name: "Titlecase",
                                 included: true
                             },
                             {
-                                category: "Lu",
+                                abbreviation: "Lu",
                                 name: "Uppercase",
                                 included: true
                             },
                             {
-                                category: "Lo",
+                                abbreviation: "Lo",
                                 name: "Other",
                                 included: true
                             },
                         ]
                     },
                     {
-                        classifier: "M",
+                        abbreviation: "M",
                         name: "Mark",
                         categories: [
                             {
-                                category: "Mc",
+                                abbreviation: "Mc",
                                 name: "SpacingCombining",
                                 included: false
                             },
                             {
-                                category: "Me",
+                                abbreviation: "Me",
                                 name: "Enclosing",
                                 included: false
                             },
                             {
-                                category: "Mn",
+                                abbreviation: "Mn",
                                 name: "NonSpacing",
                                 included: false
                             },
                         ]
                     },
                     {
-                        classifier: "N",
+                        abbreviation: "N",
                         name: "Number",
                         categories: [
                             {
-                                category: "Nd",
+                                abbreviation: "Nd",
                                 name: "DecimalDigit",
                                 included: true
                             },
                             {
-                                category: "Nl",
+                                abbreviation: "Nl",
                                 name: "Letter",
                                 included: true
                             },
                             {
-                                category: "No",
+                                abbreviation: "No",
                                 name: "Other",
                                 included: true
                             },
                         ]
                     },
                     {
-                        classifier: "P",
+                        abbreviation: "P",
                         name: "Punctuation",
                         categories: [
                             {
-                                category: "Pc",
+                                abbreviation: "Pc",
                                 name: "Connector",
                                 included: true
                             },
                             {
-                                category: "Pd",
+                                abbreviation: "Pd",
                                 name: "Dash",
                                 included: true
                             },
                             {
-                                category: "Pi",
+                                abbreviation: "Pi",
                                 name: "InitialQuote",
                                 included: true
                             },
                             {
-                                category: "Pf",
+                                abbreviation: "Pf",
                                 name: "FinalQuote",
                                 included: true
                             },
                             {
-                                category: "Ps",
+                                abbreviation: "Ps",
                                 name: "Open",
                                 included: true
                             },
                             {
-                                category: "Pe",
+                                abbreviation: "Pe",
                                 name: "Close",
                                 included: true
                             },
                             {
-                                category: "Po",
+                                abbreviation: "Po",
                                 name: "Other",
                                 included: true
                             },
                         ]
                     },
                     {
-                        classifier: "S",
+                        abbreviation: "S",
                         name: "Symbol",
                         categories: [
                             {
-                                category: "Sc",
+                                abbreviation: "Sc",
                                 name: "Currency",
                                 included: true
                             },
                             {
-                                category: "Sk",
+                                abbreviation: "Sk",
                                 name: "Modifier",
                                 included: true
                             },
                             {
-                                category: "Sm",
+                                abbreviation: "Sm",
                                 name: "Math",
                                 included: true
                             },
                             {
-                                category: "So",
+                                abbreviation: "So",
                                 name: "Other",
                                 included: true
                             },
                         ]
                     },
                     {
-                        classifier: "Z",
+                        abbreviation: "Z",
                         name: "Separator",
                         categories: [
                             {
-                                category: "Zl",
+                                abbreviation: "Zl",
                                 name: "Line",
                                 included: true
                             },
                             {
-                                category: "Zp",
+                                abbreviation: "Zp",
                                 name: "Paragraph",
                                 included: true
                             },
                             {
-                                category: "Zs",
+                                abbreviation: "Zs",
                                 name: "Space",
                                 included: true
                             },
                         ]
                     },
                     {
-                        classifier: "C",
+                        abbreviation: "C",
                         name: "Other",
                         categories: [
                             {
-                                category: "Cc",
+                                abbreviation: "Cc",
                                 name: "Control",
                                 included: false
                             },
                             {
-                                category: "Cf",
+                                abbreviation: "Cf",
                                 name: "Format",
                                 included: false
                             },
                             {
-                                category: "Cn",
+                                abbreviation: "Cn",
                                 name: "NotAssigned",
                                 included: false
                             },
                             {
-                                category: "Co",
+                                abbreviation: "Co",
                                 name: "PrivateUse",
                                 included: false
                             },
                             {
-                                category: "Cs",
+                                abbreviation: "Cs",
                                 name: "Surrogate",
                                 included: false
                             },

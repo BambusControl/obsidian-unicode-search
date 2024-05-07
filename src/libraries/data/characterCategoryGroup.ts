@@ -1,4 +1,4 @@
-export enum CharacterClassifier {
+export enum CharacterCategoryGroup {
     Letter = "L",
     Mark = "M",
     Number = "N",
@@ -8,4 +8,4 @@ export enum CharacterClassifier {
     Other = "C",
 }
 
-export type CharacterClassifierType = "L" | "M" | "N" | "P" | "S" | "Z" | "C"
+export type CharacterCategoryGroupType = "L" | "M" | "N" | "P" | "S" | "Z" | "C"

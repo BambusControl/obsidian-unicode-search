@@ -24,6 +24,7 @@ export class RootPluginDataStorage implements RootDataStore {
         const data = await this.storedData.get();
         return data.initialized
             && data.settings.initialized
+            && !data.settings.modified
             && data.unicode.initialized
             && data.usage.initialized
         ;
@@ -32,7 +33,7 @@ export class RootPluginDataStorage implements RootDataStore {
     async setInitialized(value: boolean): Promise<void> {
         await this.mergeData({
             initialized: value
-        })
+        });
     }
 
     async getVersion(): Promise<SaveDataVersion> {
@@ -46,7 +47,7 @@ export class RootPluginDataStorage implements RootDataStore {
     async overwriteUnicode(data: UnicodeData): Promise<UnicodeData> {
         const mergedData = await this.mergeData({
             unicode: data,
-        })
+        });
 
         return mergedData.unicode;
     }
@@ -56,7 +57,7 @@ export class RootPluginDataStorage implements RootDataStore {
         const mergedData: UnicodeData = {
             ...data,
             initialized: value,
-        }
+        };
 
         await this.overwriteUnicode(mergedData);
     }
@@ -68,17 +69,27 @@ export class RootPluginDataStorage implements RootDataStore {
     async overwriteSettings(settings: SettingsData): Promise<SettingsData> {
         const mergedData = await this.mergeData({
             settings: settings,
-        })
+        });
 
         return mergedData.settings;
     }
 
     async setInitializedSettings(value: boolean): Promise<void> {
-        const data = await this.getSettings()
+        const data = await this.getSettings();
         const mergedData: SettingsData = {
             ...data,
             initialized: value,
-        }
+        };
+
+        await this.overwriteSettings(mergedData);
+    }
+
+    async setFilterSatisfied(value: boolean): Promise<void> {
+        const data = await this.getSettings();
+        const mergedData: SettingsData = {
+            ...data,
+            modified: !value,
+        };
 
         await this.overwriteSettings(mergedData);
     }
@@ -90,17 +101,17 @@ export class RootPluginDataStorage implements RootDataStore {
     async overwriteUsage(usage: UsageData): Promise<UsageData> {
         const mergedData = await this.mergeData({
             usage: usage,
-        })
+        });
 
         return mergedData.usage;
     }
 
     async setInitializedUsage(value: boolean): Promise<void> {
-        const data = await this.getUsage()
+        const data = await this.getUsage();
         const mergedData: UsageData = {
             ...data,
             initialized: value,
-        }
+        };
 
         await this.overwriteUsage(mergedData);
     }

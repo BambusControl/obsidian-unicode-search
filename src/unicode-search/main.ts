@@ -26,12 +26,12 @@ export default class UnicodeSearchPlugin extends Plugin {
 
     public override async onload(): Promise<void> {
         console.group("Loading Unicode Search plugin");
-        console.time("Unicode Search load time")
+        console.time("Unicode Search load time");
 
         console.info("Creating services");
         const dataStore = new RootPluginDataStorage(this);
         const codepointStore = new CodepointStorage(dataStore);
-        const usageStore = new CodepointUsageStorage(dataStore, codepointStore)
+        const usageStore = new CodepointUsageStorage(dataStore, codepointStore);
         const characterService = new UsageCharacterService(codepointStore, usageStore);
         const optionsStore = new SettingsStorage(dataStore);
         const downloader = new UcdUserFilterDownloader(optionsStore);
@@ -57,7 +57,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         });
 
         this.addSettingTab(new SettingTab(this.app, this, characterService, optionsStore));
-        console.timeEnd("Unicode Search load time")
+        console.timeEnd("Unicode Search load time");
         console.groupEnd();
     }
 
@@ -80,12 +80,17 @@ export default class UnicodeSearchPlugin extends Plugin {
             });
         }
 
-        if (!(await dataStore.getUnicode()).initialized) {
-            console.info("Downloading UCD");
+        const charactersInitialized = (await dataStore.getUnicode()).initialized;
+        const filterModified = (await dataStore.getSettings()).modified;
+
+        if (!charactersInitialized || filterModified) {
+            console.info( filterModified ? "Downloading UCD, character filter changed." : "Downloading UCD");
+
             const data = await ucdService.download();
 
             console.info("Saving code point data");
             await characterDataStore.initializeCodepoints(data);
+            await dataStore.setFilterSatisfied(true);
         }
 
         if (!(await dataStore.getUsage()).initialized) {
@@ -97,7 +102,7 @@ export default class UnicodeSearchPlugin extends Plugin {
             });
         }
 
-        console.info("Flagging local data as initialized")
+        console.info("Flagging local data as initialized");
         await dataStore.setInitialized(true);
     }
 

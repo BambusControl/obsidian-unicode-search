@@ -1,7 +1,7 @@
 import {request} from "obsidian";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
-import {CharacterClassifier} from "../../../libraries/data/characterClassifier";
+import {CharacterCategoryGroup} from "../../../libraries/data/characterCategoryGroup";
 import {Codepoints, UnicodeCodepoint} from "../../../libraries/types/codepoint/codepoint";
 import {CharacterDownloader} from "../characterDownloader";
 import {SettingsStore} from "../settingsStore";
@@ -41,10 +41,10 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
             .flatMap(p => p.blocks)
             .filter(b => b.included));
 
-        const includedCategories = filter.classifiers
+        const includedCategories = filter.categoryGroups
             .flatMap(p => p.categories)
             .filter(c => c.included)
-            .map(c => c.category);
+            .map(c => c.abbreviation);
 
         return parsed.filter(char =>
             !containsNullValues(char)
@@ -113,7 +113,7 @@ function categoryIncluded(character: Pick<ParsedCharacter, "category">, included
 function characterExcluded(character: ParsedCharacter): boolean {
     /* TODO [characterFilter]:: Exclusion criteria */
     // Omit characters that are classified as "Other"
-    return character.category.startsWith(CharacterClassifier.Other);
+    return character.category.startsWith(CharacterCategoryGroup.Other);
 }
 
 function intoUnicodeCodepoint(char: ParsedCharacter): UnicodeCodepoint {

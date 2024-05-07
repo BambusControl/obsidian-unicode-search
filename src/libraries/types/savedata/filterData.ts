@@ -1,11 +1,11 @@
 import {CodepointInterval} from "../codepoint/codepointInterval";
 import {InclusionFlag} from "../inclusionFlag";
 import {CharacterCategoryType} from "../../data/characterCategory";
-import {CharacterClassifierType} from "../../data/characterClassifier";
+import {CharacterCategoryGroupType} from "../../data/characterCategoryGroup";
 
 export interface FilterData {
     planes: Array<PlaneFilter>;
-    classifiers: Array<ClassifierFilter>;
+    categoryGroups: Array<CategoryGroupFilter>;
 }
 
 export interface PlaneFilter extends CodepointInterval {
@@ -14,14 +14,14 @@ export interface PlaneFilter extends CodepointInterval {
 
 export type BlockFilter = CodepointInterval & InclusionFlag;
 
-export interface ClassifierFilter {
-    classifier: CharacterClassifierType;
+export interface CategoryGroupFilter {
+    abbreviation: CharacterCategoryGroupType;
     name: string;
     categories: Array<CategoryFilter>;
 }
 
 export interface CategoryFilter extends InclusionFlag {
-    category: CharacterCategoryType;
+    abbreviation: CharacterCategoryType;
     name: string;
 }
 
