@@ -81,6 +81,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         }
 
         const charactersInitialized = (await dataStore.getUnicode()).initialized;
+        /* TODO [NEXT]: Reinitialize characters after filter change */
         const filterModified = (await dataStore.getSettings()).modified;
 
         if (!charactersInitialized || filterModified) {

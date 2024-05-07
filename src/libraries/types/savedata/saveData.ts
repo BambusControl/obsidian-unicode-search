@@ -2,6 +2,8 @@ import {SettingsData} from "./settingsData";
 import {UsageData} from "./usageData";
 import {UnicodeData} from "./unicodeData";
 
+/* TODO [NEXT]: Export JSON Schema with updated version */
+/* TODO [NEXT]: Update comments for JSON Schema */
 export interface SaveData {
     version: SaveDataVersion;
     initialized: boolean;
@@ -20,6 +22,7 @@ export interface SaveData {
 export type SaveDataVersion
     = "0.4.0"
     | "0.5.0"
-    | "0.5.0-NEXT"
+    /* TODO [NEXT]: Update Version */
+    | "0.6.0-NEXT"
     // Update only if save data schema changed
     ;
