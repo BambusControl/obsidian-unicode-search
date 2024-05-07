@@ -1,6 +1,7 @@
-import {Character} from "../types/character";
+import {asHexadecimal} from "./asHexadecimal";
+import {Character} from "../types/codepoint/character";
 
 export function toHexadecimal(character: Character): string {
     /* Characters are expected to always have a single character */
-    return character.char.codePointAt(0)!.toString(16).padStart(4, "0");
+    return asHexadecimal(character.codepoint.codePointAt(0)!);
 }

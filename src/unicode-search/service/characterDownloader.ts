@@ -1,5 +1,5 @@
-import {UnicodeCharacter} from "../../libraries/types/unicodeCharacter";
+import {Codepoints} from "../../libraries/types/codepoint/codepoint";
 
 export interface CharacterDownloader {
-    download(): Promise<UnicodeCharacter[]>;
+    download(): Promise<Codepoints>;
 }
