@@ -9,12 +9,11 @@ export function toSearchQueryMatch(query: string) {
     const codepointSearch = isHexSafe ? prepareSimpleSearch(query) : ((text: string) => null);
     const fuzzyNameSearch = prepareFuzzySearch(query);
 
-    const toSearchQueryMatch = (character: MaybeUsedCharacter): MaybeUsedCharacterMatch => ({
+    return (character: MaybeUsedCharacter): MaybeUsedCharacterMatch => ({
         item: character,
         match: {
             codepoint: codepointSearch(toHexadecimal(character)),
             name: fuzzyNameSearch(character.name)
         }
     });
-    return toSearchQueryMatch;
 }

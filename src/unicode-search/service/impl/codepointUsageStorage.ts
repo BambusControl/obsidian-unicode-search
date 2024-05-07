@@ -14,7 +14,6 @@ export class CodepointUsageStorage implements UsageStore {
 
     constructor(
         private readonly store: RootDataStore,
-        private readonly codepointStore: CodepointStore,
     ) {
     }
 
@@ -25,7 +24,7 @@ export class CodepointUsageStorage implements UsageStore {
     {
         const data = await this.getUsed();
 
-        const foundIndex = data.findIndex(ch => ch.codepoint === key)
+        const foundIndex = data.findIndex(ch => ch.codepoint === key);
         const found = foundIndex >= 0;
         const index = found ? foundIndex : 0;
 

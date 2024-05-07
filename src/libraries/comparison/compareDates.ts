@@ -1,11 +1,13 @@
 import {Order} from "../order/order";
 
 export function compareDates(left: Date, right: Date): Order {
-    if (left === right) {
-        return Order.Equal;
+    if (left < right) {
+        return Order.Smaller;
     }
 
-    return left < right
-        ? Order.Smaller
-        : Order.Greater;
+    if (left > right) {
+        return Order.Greater;
+    }
+
+    return Order.Equal;
 }

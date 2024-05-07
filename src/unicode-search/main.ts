@@ -31,7 +31,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         console.info("Creating services");
         const dataStore = new RootPluginDataStorage(this);
         const codepointStore = new CodepointStorage(dataStore);
-        const usageStore = new CodepointUsageStorage(dataStore, codepointStore);
+        const usageStore = new CodepointUsageStorage(dataStore);
         const characterService = new UsageCharacterService(codepointStore, usageStore);
         const optionsStore = new SettingsStorage(dataStore);
         const downloader = new UcdUserFilterDownloader(optionsStore);
