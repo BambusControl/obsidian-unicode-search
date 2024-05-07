@@ -7,3 +7,5 @@ export enum CharacterClassifier {
     Separator = "Z",
     Other = "C",
 }
+
+export type CharacterClassifierType = "L" | "M" | "N" | "P" | "S" | "Z" | "C"

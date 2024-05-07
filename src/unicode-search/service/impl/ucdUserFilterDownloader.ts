@@ -1,25 +1,16 @@
 import {request} from "obsidian";
-import {UnicodeCharacter} from "../../../libraries/types/unicodeCharacter";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
-import {ObsidianUnicodeSearchError} from "../../errors/obsidianUnicodeSearchError";
-import {CharacterDownloader} from "../characterDownloader";
-import {OptionsStore} from "../optionsStore";
-import {CharacterCategory} from "../../../libraries/data/characterCategory";
+import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {CharacterClassifier} from "../../../libraries/data/characterClassifier";
-import {CharacterFilterOptions} from "../../../libraries/types/characterFilterOptions";
+import {Codepoints, UnicodeCodepoint} from "../../../libraries/types/codepoint/codepoint";
+import {CharacterDownloader} from "../characterDownloader";
+import {SettingsStore} from "../settingsStore";
+import {mergeIntervals} from "../../../libraries/helpers/mergeIntervals";
+import {codepointIn} from "../../../libraries/helpers/codePointIn";
+import {CharacterCategoryType} from "../../../libraries/data/characterCategory";
+import {CodepointInterval} from "../../../libraries/types/codepoint/codepointInterval";
 
-type ParsedData = Array<string>;
-
-type ParsedCharacter = {
-    singleCodePoint: string;
-    characterName: string;
-    generalCategory: string;
-};
-
-/**
- * Unicode Character Database Downloader
- */
-export class UCDUserFilterDownloader implements CharacterDownloader {
+export class UcdUserFilterDownloader implements CharacterDownloader {
 
     private readonly config: ParseConfig = {
         delimiter: ";",
@@ -29,35 +20,55 @@ export class UCDUserFilterDownloader implements CharacterDownloader {
         fastMode: true,
     };
 
-
     public constructor(
-        private readonly userOptionStore: OptionsStore,
+        private readonly settingsStore: SettingsStore,
     ) {
     }
 
-    public async download(): Promise<UnicodeCharacter[]> {
-        const characterFilter = await this.userOptionStore.getCharacterFilters();
-        const unicodeData = await request("https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt");
-        return await this.transformToCharacters(unicodeData, characterFilter);
+    public async download(): Promise<Codepoints> {
+        const unicodeVersion = "14.0.0";
+        const unicodeData = await request(`https://www.unicode.org/Public/${unicodeVersion}/ucd/UnicodeData.txt`);
+
+        const parsed = await this.transformToCharacters(unicodeData);
+        const filtered = await this.filterCharacters(parsed);
+        return filtered.map(intoUnicodeCodepoint);
     }
 
-    private transformToCharacters(csvString: string, characterFilter: CharacterFilterOptions): Promise<UnicodeCharacter[]> {
+    private async filterCharacters(parsed: ParsedCharacter[]): Promise<ParsedCharacter[]> {
+        const filter = await this.settingsStore.getFilter();
+
+        const includedBlocks = mergeIntervals(filter.planes
+            .flatMap(p => p.blocks)
+            .filter(b => b.included));
+
+        const includedCategories = filter.classifiers
+            .flatMap(p => p.categories)
+            .filter(c => c.included)
+            .map(c => c.category);
+
+        return parsed.filter(char =>
+            !containsNullValues(char)
+            && includedInBlocks(char, includedBlocks)
+            && categoryIncluded(char, includedCategories)
+            && !characterExcluded(char)
+        );
+    }
+
+    private transformToCharacters(csvString: string): Promise<ParsedCharacter[]> {
         return new Promise((resolve, reject) => {
             const completeFn = (results: ParseResult<ParsedData>): void => {
                 if (results.errors.length !== 0) {
-                    reject(new ObsidianUnicodeSearchError("Error while parsing data from Unicode Character Database"));
+                    reject(new UnicodeSearchError("Error while parsing data from Unicode Character Database"));
                 }
 
-                const unicodeCharacters = results.data
+                const parsedCharacters = results.data
                     .map((row): ParsedCharacter => ({
-                        singleCodePoint: row[0],
-                        characterName: row[1],
-                        generalCategory: row[2],
-                    }))
-                    .filter(char => UCDUserFilterDownloader.charFilter(char, characterFilter))
-                    .map(pch => UCDUserFilterDownloader.intoUnicode(pch));
+                        codepoint: parseInt(row[0], 16),
+                        name: row[1],
+                        category: row[2],
+                    }));
 
-                resolve(unicodeCharacters);
+                resolve(parsedCharacters);
             };
 
             const configuration: ParseWorkerConfig<ParsedData> = {
@@ -70,59 +81,45 @@ export class UCDUserFilterDownloader implements CharacterDownloader {
         });
     }
 
-    private static charFilter(char: ParsedCharacter, characterFilter: CharacterFilterOptions): boolean {
-        return (
-            char != null
-            && char.characterName != null
-            && char.singleCodePoint != null
-            && char.generalCategory != null
-        ) && (
-            UCDUserFilterDownloader.planeIncluded(char)
-            || UCDUserFilterDownloader.blockIncluded(char)
-            || UCDUserFilterDownloader.categoryIncluded(char, characterFilter)
-        ) && !(
-            UCDUserFilterDownloader.charExcluded(char)
-        );
-    }
+}
 
-    private static planeIncluded(char: ParsedCharacter): boolean {
-        /* TODO [characterFilter]: User filter for unicode plane.
-        * Planes are made up of blocks.
-        */
-        return true;
-    }
+type ParsedData = Array<string>;
 
-    private static blockIncluded(char: ParsedCharacter): boolean {
-        /* TODO [characterFilter]: User filter for unicode plane.
-        * Planes have blocks - they don't overlap - I've no clue where to get their names.
-        */
-        return true;
-    }
+type ParsedCharacter = {
+    codepoint: number;
+    name: string;
+    category: string;
+};
 
-    private static scriptIncluded(char: ParsedCharacter): boolean {
-        /* TODO [characterFilter]: User filter for unicode plane.
-        * Scripts are sets of characters - are they sets of blocks?
-        */
-        return true;
-    }
+function containsNullValues(char: Partial<ParsedCharacter>): boolean {
+    return char == null
+        || char.name == null
+        || char.codepoint == null
+        || char.category == null
+}
 
-    private static categoryIncluded(char: ParsedCharacter, characterFilter: CharacterFilterOptions): boolean {
-        /* TODO [characterFilter]: User filter for unicode category. */
-        const categories = characterFilter.categories;
-        return categories.contains(char.generalCategory as CharacterCategory);
-    }
+function includedInBlocks(character: Pick<ParsedCharacter, "codepoint">, includedBlocks: Array<CodepointInterval>): boolean {
+    return includedBlocks.some(
+        (block) => codepointIn(character.codepoint, block)
+    );
+}
 
-    private static charExcluded(char: ParsedCharacter): boolean {
-        /* TODO [characterFilter]:: Exclusion criteria */
-        // Omit characters that are classified as "Other"
-        return char.generalCategory.startsWith(CharacterClassifier.Other)
-    }
+function categoryIncluded(character: Pick<ParsedCharacter, "category">, includedCategories: Array<CharacterCategoryType>): boolean {
+    return includedCategories.some(
+        (category) => character.category === category
+    );
+}
 
-    private static intoUnicode(char: ParsedCharacter): UnicodeCharacter {
-        return {
-            char: String.fromCodePoint(parseInt(char.singleCodePoint, 16)),
-            name: char.characterName.toLowerCase(),
-        };
-    }
+function characterExcluded(character: ParsedCharacter): boolean {
+    /* TODO [characterFilter]:: Exclusion criteria */
+    // Omit characters that are classified as "Other"
+    return character.category.startsWith(CharacterClassifier.Other);
+}
 
+function intoUnicodeCodepoint(char: ParsedCharacter): UnicodeCodepoint {
+    return {
+        codepoint: String.fromCodePoint(char.codepoint),
+        name: char.name.toLowerCase(),
+        category: char.category
+    };
 }

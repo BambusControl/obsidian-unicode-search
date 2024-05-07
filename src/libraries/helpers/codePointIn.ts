@@ -1,6 +1,7 @@
-import {CodePoint, CodePointInterval} from "../types/codePointInterval";
+import {Codepoint} from "../types/codepoint/codepoint";
+import {CodepointInterval} from "../types/codepoint/codepointInterval";
 
-export function codePointIn(codePoint: CodePoint, interval: CodePointInterval): boolean {
-    return codePoint >= interval.start
-        && codePoint <= interval.end;
+export function codepointIn(codepoint: Codepoint, interval: CodepointInterval): boolean {
+    return codepoint >= interval.start
+        && codepoint <= interval.end;
 }

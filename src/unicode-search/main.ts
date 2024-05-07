@@ -1,71 +1,104 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {UsageTrackedCharacterService} from "./service/impl/usageTrackedCharacterService";
-import {FuzzySearchModal} from "./components/fuzzySearchModal";
-import {PluginSaveDataStore} from "./service/impl/pluginSaveDataStore";
-import {CharacterStore} from "./service/characterStore";
-import {SettingTab} from "./components/settingsTab"
+import {UcdUserFilterDownloader} from "./service/impl/ucdUserFilterDownloader";
+import {CodepointStore} from "./service/codePointStore";
+import {RootPluginDataStorage} from "./service/impl/rootPluginDataStorage";
+import {CodepointStorage} from "./service/impl/codepointStorage";
 import {CharacterDownloader} from "./service/characterDownloader";
-import {MetadataStore} from "./service/metadataStore";
-import {UCDUserFilterDownloader} from "./service/impl/ucdUserFilterDownloader";
-import {PluginCharacterStore} from "./service/impl/pluginCharacterStore";
-import {PluginOptionsStore} from "./service/impl/pluginOptionsStore";
+import {SettingsStorage} from "./service/impl/settingsStorage";
+import {RootDataStore} from "./service/rootDataStore";
+import {initializationData} from "../libraries/data/initializationData";
+import {SettingTab} from "./components/settingTab";
+import {UsageCharacterService} from "./service/impl/usageCharacterService";
+import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
+
+import {FuzzySearchModal} from "./components/fuzzySearchModal";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
 export default class UnicodeSearchPlugin extends Plugin {
 
-	public constructor(
-		app: App,
-		manifest: PluginManifest,
-	) {
-		super(app, manifest);
-	}
+    public constructor(
+        app: App,
+        manifest: PluginManifest,
+    ) {
+        super(app, manifest);
+    }
 
-	public override async onload(): Promise<void> {
-        const dataStore = new PluginSaveDataStore(this);
-        const characterStore = new PluginCharacterStore(dataStore);
-        const characterService = new UsageTrackedCharacterService(characterStore);
-        const optionsStore = new PluginOptionsStore(dataStore);
-        const downloader = new UCDUserFilterDownloader(optionsStore);
+    public override async onload(): Promise<void> {
+        console.group("Loading Unicode Search plugin");
+        console.time("Unicode Search load time")
 
-		await UnicodeSearchPlugin.initializeData(dataStore, characterStore, downloader);
+        console.info("Creating services");
+        const dataStore = new RootPluginDataStorage(this);
+        const codepointStore = new CodepointStorage(dataStore);
+        const usageStore = new CodepointUsageStorage(dataStore, codepointStore)
+        const characterService = new UsageCharacterService(codepointStore, usageStore);
+        const optionsStore = new SettingsStorage(dataStore);
+        const downloader = new UcdUserFilterDownloader(optionsStore);
 
-		super.addCommand({
-			id: "search-unicode-chars",
-			name: "Search Unicode characters",
+        console.group("Initializing local data");
+        await UnicodeSearchPlugin.initializeData(dataStore, codepointStore, downloader);
+        console.groupEnd();
 
-			editorCallback: editor => {
-				const modal = new FuzzySearchModal(
-					app,
-					editor,
-					characterService,
-				);
-				modal.open();
-				return true;
-			},
-		});
+        console.info("Adding UI elements");
+        super.addCommand({
+            id: "search-unicode-chars",
+            name: "Search Unicode characters",
+
+            editorCallback: editor => {
+                const modal = new FuzzySearchModal(
+                    app,
+                    editor,
+                    characterService,
+                );
+                modal.open();
+                return true;
+            },
+        });
 
         this.addSettingTab(new SettingTab(this.app, this, characterService, optionsStore));
-	}
+        console.timeEnd("Unicode Search load time")
+        console.groupEnd();
+    }
 
-	private static async initializeData(
-		saveDataStore: MetadataStore,
-		characterDataStore: CharacterStore,
-		ucdService: CharacterDownloader
-	): Promise<void> {
-		const initialized = await saveDataStore.isInitialized();
+    private static async initializeData(
+        dataStore: RootDataStore,
+        characterDataStore: CodepointStore,
+        ucdService: CharacterDownloader
+    ): Promise<void> {
+        if (await dataStore.isInitialized()) {
+            console.info("Plugin data already initialized");
+            return;
+        }
 
-		if (initialized) {
-			return;
-		}
+        if (!(await dataStore.getSettings()).initialized) {
+            console.info("Settings initialization");
 
-        console.log("[1/3] Downloading UCD data");
-		const data = await ucdService.download();
+            await dataStore.overwriteSettings({
+                ...initializationData().settings,
+                initialized: true,
+            });
+        }
 
-        console.log("[2/3] Initializing character data")
-		await characterDataStore.initializeCharacters(data);
+        if (!(await dataStore.getUnicode()).initialized) {
+            console.info("Downloading UCD");
+            const data = await ucdService.download();
 
-        console.log("[3/3] Initialized!")
-	}
+            console.info("Saving code point data");
+            await characterDataStore.initializeCodepoints(data);
+        }
+
+        if (!(await dataStore.getUsage()).initialized) {
+            console.info("Usage initialization");
+
+            await dataStore.overwriteUsage({
+                ...initializationData().usage,
+                initialized: true,
+            });
+        }
+
+        console.info("Flagging local data as initialized")
+        await dataStore.setInitialized(true);
+    }
 
 }

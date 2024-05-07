@@ -2716,4 +2716,4 @@ export const UNICODE_PLANES_ALL: UnicodePlane[] = [
     UNICODE_PLANE_14,
     UNICODE_PLANE_15,
     UNICODE_PLANE_16,
-]
+];

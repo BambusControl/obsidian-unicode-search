@@ -57,3 +57,12 @@ export type CharacterCategory
     | CharacterCategorySymbol
     | CharacterCategorySeparator
     | CharacterCategoryOther
+
+export type CharacterCategoryType =
+    "Ll" | "Lm" | "Lt" | "Lu" | "Lo"
+    | "Mc" | "Me" | "Mn"
+    | "Nd" | "Nl" | "No"
+    | "Pc" | "Pd" | "Pi" | "Pf" | "Ps" | "Pe" | "Po"
+    | "Sc" | "Sk" | "Sm" | "So"
+    | "Zl" | "Zp" | "Zs"
+    | "Cc" | "Cf" | "Cn" | "Co" | "Cs"

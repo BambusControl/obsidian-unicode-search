@@ -1,10 +1,23 @@
-import {UserOptions} from "../../libraries/types/userOptions";
-import {Characters} from "../../libraries/types/character";
+import {SettingsData} from "../../libraries/types/savedata/settingsData";
+import {UsageData} from "../../libraries/types/savedata/usageData";
+import {UnicodeData} from "../../libraries/types/savedata/unicodeData";
+
+import {SaveDataVersion} from "../../libraries/types/savedata/saveData";
 
 export interface RootDataStore {
-    getCharacterData(): Promise<Characters>
-    initializeCharacterData(characters: Characters): Promise<Characters>
+    isInitialized(): Promise<boolean>;
+    setInitialized(value: boolean): Promise<void>
+    getVersion(): Promise<SaveDataVersion>;
 
-    getUserOptions(): Promise<UserOptions>
-    saveUserOptions(userOptions: UserOptions): Promise<UserOptions>
+    getUnicode(): Promise<UnicodeData>
+    overwriteUnicode(data: UnicodeData): Promise<UnicodeData>
+    setInitializedUnicode(value: boolean): Promise<void>
+
+    getSettings(): Promise<SettingsData>
+    overwriteSettings(settings: SettingsData): Promise<SettingsData>
+    setInitializedSettings(value: boolean): Promise<void>
+
+    getUsage(): Promise<UsageData>
+    overwriteUsage(usage: UsageData): Promise<UsageData>
+    setInitializedUsage(value: boolean): Promise<void>
 }

@@ -1,9 +1,9 @@
-import {compareUsageTrackedCharacters} from "../../../src/libraries/comparison/compareUsageTrackedCharacters";
+import {compareUsageInfo} from "../../../src/libraries/comparison/compareUsageInfo";
 
 test(
 	"later use is before sooner use",
 	() => {
-		expect(compareUsageTrackedCharacters(
+		expect(compareUsageInfo(
 			{
 				lastUsed: 1,
 				useCount: 1,
@@ -19,7 +19,7 @@ test(
 test(
 	"one use is before zero uses",
 	() => {
-		expect(compareUsageTrackedCharacters(
+		expect(compareUsageInfo(
 			{
 				useCount: 1,
                 lastUsed: 0,

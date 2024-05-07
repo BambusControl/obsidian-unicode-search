@@ -1,12 +1,11 @@
 import {UnicodeBlock} from "./unicodeBlock";
-
-import {CodePointInterval} from "./codePointInterval";
 import {UnicodePlaneNumber} from "../data/unicodePlaneNumber";
+import {CodepointInterval} from "./codepoint/codepointInterval";
 
 export interface UnicodePlane {
     planeNumber: UnicodePlaneNumber,
     description: string,
     abbreviation: string,
-    interval: CodePointInterval,
+    interval: CodepointInterval,
     blocks: UnicodeBlock[],
 }

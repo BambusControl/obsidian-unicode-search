@@ -1,5 +1,7 @@
 import {toHexadecimal} from "../../../src/libraries/helpers/toHexadecimal";
 
+/* TODO [NEXT]: Tests */
+
 test(
     "character `b` is `0062`",
     () => {
