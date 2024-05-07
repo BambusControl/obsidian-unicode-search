@@ -66,3 +66,5 @@ export type CharacterCategoryType =
     | "Sc" | "Sk" | "Sm" | "So"
     | "Zl" | "Zp" | "Zs"
     | "Cc" | "Cf" | "Cn" | "Co" | "Cs"
+
+export type CharacterCategoryGroupType = "L" | "M" | "N" | "P" | "S" | "Z" | "C";

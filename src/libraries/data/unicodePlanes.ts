@@ -1,4 +1,4 @@
-import {UnicodePlane} from "../types/unicodePlane";
+import {UnicodePlane} from "../types/unicode/unicodePlane";
 
 export const UNICODE_PLANE_0: UnicodePlane = {
     planeNumber: 0,

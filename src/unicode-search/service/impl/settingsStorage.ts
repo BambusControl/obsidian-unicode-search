@@ -5,6 +5,8 @@ import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {CodepointInterval} from "../../../libraries/types/codepoint/codepointInterval";
 import {intervalsEqual} from "../../../libraries/helpers/intervalsEqual";
 import {intervalWithin} from "../../../libraries/helpers/intervalWithin";
+import {set} from "immutable";
+import {CharacterCategoryType} from "../../../libraries/data/characterCategory";
 
 export class SettingsStorage implements SettingsStore {
 
@@ -38,6 +40,15 @@ export class SettingsStorage implements SettingsStore {
         settings.initialized = false;
 
         await this.store.overwriteSettings(settings);
+    }
+
+    async getCharacterCategory(category: CharacterCategoryType): Promise<boolean> {
+        /* TODO */
+        return true;
+    }
+
+    async setCharacterCategory(category: CharacterCategoryType, set: boolean): Promise<void> {
+        throw new UnicodeSearchError("Not implemented!")
     }
 
     private async getBlockFilters(): Promise<BlockFilter[]> {
