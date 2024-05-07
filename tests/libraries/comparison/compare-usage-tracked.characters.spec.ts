@@ -6,12 +6,12 @@ test(
 		expect(compareUsageInfo(
 			{
 				firstUsed: new Date(0),
-				lastUsed: new Date(0),
+				lastUsed: new Date(2),
 				useCount: 1,
 			},
 			{
 				firstUsed: new Date(0),
-				lastUsed: new Date(0),
+				lastUsed: new Date(1),
 				useCount: 1,
 			},
             new Date(0),
