@@ -1,57 +1,69 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {UsageTrackedStorage} from "./service/storage/usage-tracked.storage";
-import {FuzzySearchModal} from "./components/fuzzy-search.modal";
-import {PluginDataService} from "./service/plugin-data.service";
-import {StatTrackedStorage} from "./service/storage/stat-tracked.storage";
-import {DataService} from "./service/data.service";
-import {DataAccess} from "./service/data.access";
-import {UcdService} from "./service/ucd.service";
+import {UcdUserFilterDownloader} from "./service/impl/ucdUserFilterDownloader";
+import {RootPluginDataStorage} from "./service/impl/rootPluginDataStorage";
+import {CodepointStorage} from "./service/impl/codepointStorage";
+import {SettingsStorage} from "./service/impl/settingsStorage";
+import {SettingTab} from "./components/settingTab";
+import {UsageCharacterService} from "./service/impl/usageCharacterService";
+import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
+
+import {FuzzySearchModal} from "./components/fuzzySearchModal";
+import {NewDataInitializer} from "./service/impl/newDataInitializer";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
 export default class UnicodeSearchPlugin extends Plugin {
 
-	public constructor(
-		app: App,
-		manifest: PluginManifest,
-	) {
-		super(app, manifest);
-	}
+    public constructor(
+        app: App,
+        manifest: PluginManifest,
+    ) {
+        super(app, manifest);
+    }
 
-	public override async onload(): Promise<void> {
-		const dataService = new PluginDataService(this);
-		const usageTrackedStorage = new UsageTrackedStorage(dataService);
+    public override async onload(): Promise<void> {
+        console.group("Loading Unicode Search plugin");
+        console.time("Unicode Search load time");
 
-		await UnicodeSearchPlugin.initializeData(dataService, new UcdService());
+        console.info("Creating services");
 
-		super.addCommand({
-			id: "search-unicode-chars",
-			name: "Search Unicode characters",
+        const dataStore = new RootPluginDataStorage(this);
+        const codepointStore = new CodepointStorage(dataStore);
+        const usageStore = new CodepointUsageStorage(dataStore);
+        const characterService = new UsageCharacterService(codepointStore, usageStore);
+        const optionsStore = new SettingsStorage(dataStore);
+        const downloader = new UcdUserFilterDownloader(optionsStore);
+        const initializer = new NewDataInitializer(dataStore, codepointStore, downloader);
 
-			editorCallback: editor => {
-				const modal = new FuzzySearchModal(
-					app,
-					editor,
-					dataService,
-					usageTrackedStorage,
-				);
-				modal.open();
-				return true;
-			},
-		});
-	}
+        await initializer.initializeData();
 
-	private static async initializeData(dataService: DataService, ucdService: UcdService): Promise<void> {
-		const initialized = await dataService.isInitialized();
+        console.info("Adding UI elements");
 
-		if (initialized) {
-			return;
-		}
+        super.addCommand({
+            id: "search-unicode-chars",
+            name: "Search Unicode characters",
 
-		const data = await ucdService.fetchCharacters();
+            editorCallback: editor => {
+                const modal = new FuzzySearchModal(
+                    app,
+                    editor,
+                    characterService,
+                );
+                modal.open();
+                return true;
+            },
+        });
 
-		await dataService.exportData(data);
-		await dataService.setAsInitialized();
-	}
+        this.addSettingTab(new SettingTab(
+            this.app,
+            this,
+            characterService,
+            optionsStore,
+            initializer,
+        ));
+
+        console.timeEnd("Unicode Search load time");
+        console.groupEnd();
+    }
 
 }

@@ -1,7 +1,7 @@
 {
 	"id": "unicode-search",
 	"name": "Unicode Search",
-	"version": "0.5.0",
+	"version": "0.6.0",
 	"minAppVersion": "0.15.0",
 	"description": "Search and insert Unicode characters into your editor",
 	"author": "BambusControl",

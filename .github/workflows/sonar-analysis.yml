@@ -1,0 +1,36 @@
+name: Sonar Analysis
+
+on:
+  push:
+
+jobs:
+
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v3
+        with:
+          # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
+
+      - name: Use node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: NPM Install
+        run: |
+          npm clean-install
+
+      - name: Test with coverage
+        run: |
+          npx jest --coverage
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
