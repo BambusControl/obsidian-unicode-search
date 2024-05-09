@@ -2,12 +2,12 @@ import {RootDataStore} from "../rootDataStore";
 import {UsageStore} from "../usageStore";
 import {CharacterKey} from "../../../libraries/types/codepoint/character";
 import {
-    CodepointParsedUsage,
-    ParsedUsageInfo,
     UsageData
 } from "../../../libraries/types/savedata/usageData";
 import {parseUsageInfo} from "../../../libraries/helpers/parseUsageInfo";
 import {serializeUsageInfo} from "../../../libraries/helpers/serializeUsageInfo";
+import {CodepointParsedUsage} from "../../../libraries/types/savedata/codepoint";
+import {ParsedUsageInfo} from "../../../libraries/types/savedata/parsedUsageInfo";
 
 export class CodepointUsageStorage implements UsageStore {
 

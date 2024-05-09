@@ -2,9 +2,10 @@ import {Order} from "../order/order";
 import {inverse} from "../order/inverse";
 import {compareNumbers} from "./compareNumbers";
 
-import {ParsedUsageInfo} from "../types/savedata/usageData";
 import {compareDates} from "./compareDates";
 import {compareNullable} from "./compareNullable";
+
+import {ParsedUsageInfo} from "../types/savedata/parsedUsageInfo";
 
 export function compareUsageInfo(
     left: ParsedUsageInfo,

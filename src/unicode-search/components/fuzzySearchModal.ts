@@ -16,10 +16,11 @@ import {ReadCache} from "../../libraries/types/readCache";
 import {mostRecentUses} from "../../libraries/helpers/mostRecentUses";
 import {averageUseCount} from "../../libraries/helpers/averageUseCount";
 import {UsageDisplayStatistics} from "../../libraries/types/usageDisplayStatistics";
-import {ParsedUsageInfo} from "../../libraries/types/savedata/usageData";
 import {toNullMatch} from "../../libraries/helpers/toNullMatch";
 import {toSearchQueryMatch} from "../../libraries/helpers/toSearchQueryMatch";
 import {matchedNameOrCodepoint} from "../../libraries/helpers/matchedNameOrCodepoint";
+
+import {ParsedUsageInfo} from "../../libraries/types/savedata/parsedUsageInfo";
 
 export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
     private usageStatistics: ReadCache<UsageDisplayStatistics>;

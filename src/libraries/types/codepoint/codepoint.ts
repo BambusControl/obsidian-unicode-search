@@ -5,6 +5,4 @@ export type Char = string
 export type Codepoint = number;
 
 export type UnicodeCodepoint = CodepointKey & CodepointAttribute
-export type Codepoints = Array<UnicodeCodepoint>
-
-
+export type UnicodeCodepoints = Array<UnicodeCodepoint>

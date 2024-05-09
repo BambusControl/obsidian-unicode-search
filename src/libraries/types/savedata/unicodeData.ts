@@ -1,6 +1,9 @@
-import {Codepoints} from "../codepoint/codepoint";
+import {UnicodeCodepoints} from "../codepoint/codepoint";
+import {Initializable} from "./initializable";
 
-export interface UnicodeData {
-    initialized: boolean;
-    codepoints: Codepoints
+/**
+ * Imported Unicode Character Database data.
+ */
+export interface UnicodeData extends Initializable {
+    codepoints: UnicodeCodepoints
 }

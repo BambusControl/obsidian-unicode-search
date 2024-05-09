@@ -1,12 +1,10 @@
 import {SettingsData} from "./settingsData";
 import {UsageData} from "./usageData";
 import {UnicodeData} from "./unicodeData";
+import {Initializable} from "./initializable";
 
-/* TODO [NEXT]: Export JSON Schema with updated version */
-/* TODO [NEXT]: Update comments for JSON Schema */
-export interface SaveData {
+export interface SaveData extends Initializable {
     version: SaveDataVersion;
-    initialized: boolean;
 
     settings: SettingsData;
     unicode: UnicodeData;

@@ -1,6 +1,7 @@
-import {UsageDate} from "../types/savedata/usageData";
 import {compareDates} from "../comparison/compareDates";
 import {inverse} from "../order/inverse";
+
+import {UsageDate} from "../types/savedata/parsedUsageInfo";
 
 export function mostRecentUses(items: UsageDate[]): Array<Date> {
     return items.slice()
