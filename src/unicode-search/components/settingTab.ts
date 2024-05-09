@@ -25,7 +25,7 @@ export class SettingTab extends PluginSettingTab {
         this.containerEl.addClass("plugin", "unicode-search", "setting-tab")
     }
 
-    public override async display(): Promise<void> {
+    override async display(): Promise<void> {
         if (this.rendered) {
             return;
         }
@@ -45,6 +45,10 @@ export class SettingTab extends PluginSettingTab {
         await this.displayFilterSettings(container);
 
         this.rendered = true;
+    }
+
+    override async hide(): Promise<void> {
+
     }
 
     private async displayFilterSettings(container: HTMLElement) {

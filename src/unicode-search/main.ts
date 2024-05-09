@@ -12,6 +12,7 @@ import {UsageCharacterService} from "./service/impl/usageCharacterService";
 import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
 
 import {FuzzySearchModal} from "./components/fuzzySearchModal";
+import {NewDataInitializer} from "./service/impl/newDataInitializer";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -29,18 +30,19 @@ export default class UnicodeSearchPlugin extends Plugin {
         console.time("Unicode Search load time");
 
         console.info("Creating services");
+
         const dataStore = new RootPluginDataStorage(this);
         const codepointStore = new CodepointStorage(dataStore);
         const usageStore = new CodepointUsageStorage(dataStore);
         const characterService = new UsageCharacterService(codepointStore, usageStore);
         const optionsStore = new SettingsStorage(dataStore);
         const downloader = new UcdUserFilterDownloader(optionsStore);
+        const initializer = new NewDataInitializer(dataStore, codepointStore, downloader);
 
-        console.group("Initializing local data");
-        await UnicodeSearchPlugin.initializeData(dataStore, codepointStore, downloader);
-        console.groupEnd();
+        await initializer.initializeData();
 
         console.info("Adding UI elements");
+
         super.addCommand({
             id: "search-unicode-chars",
             name: "Search Unicode characters",
@@ -57,54 +59,9 @@ export default class UnicodeSearchPlugin extends Plugin {
         });
 
         this.addSettingTab(new SettingTab(this.app, this, characterService, optionsStore));
+
         console.timeEnd("Unicode Search load time");
         console.groupEnd();
-    }
-
-    private static async initializeData(
-        dataStore: RootDataStore,
-        characterDataStore: CodepointStore,
-        ucdService: CharacterDownloader
-    ): Promise<void> {
-        if (await dataStore.isInitialized()) {
-            console.info("Plugin data already initialized");
-            return;
-        }
-
-        if (!(await dataStore.getSettings()).initialized) {
-            console.info("Settings initialization");
-
-            await dataStore.overwriteSettings({
-                ...initializationData().settings,
-                initialized: true,
-            });
-        }
-
-        const charactersInitialized = (await dataStore.getUnicode()).initialized;
-        /* TODO [NEXT]: Reinitialize characters after filter change */
-        const filterModified = (await dataStore.getSettings()).modified;
-
-        if (!charactersInitialized || filterModified) {
-            console.info( filterModified ? "Downloading UCD, character filter changed." : "Downloading UCD");
-
-            const data = await ucdService.download();
-
-            console.info("Saving code point data");
-            await characterDataStore.initializeCodepoints(data);
-            await dataStore.setFilterSatisfied(true);
-        }
-
-        if (!(await dataStore.getUsage()).initialized) {
-            console.info("Usage initialization");
-
-            await dataStore.overwriteUsage({
-                ...initializationData().usage,
-                initialized: true,
-            });
-        }
-
-        console.info("Flagging local data as initialized");
-        await dataStore.setInitialized(true);
     }
 
 }
