@@ -4,7 +4,7 @@ import {UNICODE_PLANES_ALL} from "./unicodePlanes";
 export function initializationData(): SaveData {
     return {
         initialized: false,
-        version: "0.5.0-NEXT",
+        version: "0.6.0-NEXT",
         settings: {
             initialized: false,
             modified: false,
