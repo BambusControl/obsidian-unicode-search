@@ -6,7 +6,7 @@ import {compareNumbers} from "./compareNumbers";
 import {isUsedCharacter} from "../helpers/isUsedCharacter";
 
 function toUsedCharacter(character: MaybeUsedCharacter): UsedCharacter | null {
-    return (isUsedCharacter(character) ? character : null) as UsedCharacter | null;
+    return isUsedCharacter(character) ? character : null;
 }
 
 export function compareUsedCharacters(

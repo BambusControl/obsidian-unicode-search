@@ -1,4 +1,4 @@
-import {SaveData} from "../types/savedata/saveData";
+import {CURRENT_VERSION, SaveData} from "../types/savedata/saveData";
 import {UNICODE_PLANES_ALL} from "./unicodePlanes";
 import {UNICODE_CHARACTER_CATEGORIES} from "./unicodeCharacterCategories";
 import {UnicodePlaneNumber} from "./unicodePlaneNumber";
@@ -33,7 +33,7 @@ const DATA_DEFAULTS: InclusionDefaults = {
 export function initializationData(): SaveData {
     return {
         initialized: false,
-        version: "0.6.0-NEXT",
+        version: CURRENT_VERSION,
         settings: {
             initialized: false,
             modified: false,

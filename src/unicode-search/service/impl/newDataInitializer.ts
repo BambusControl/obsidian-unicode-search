@@ -24,6 +24,14 @@ export class NewDataInitializer implements DataInitializer {
             return;
         }
 
+        if (!await this.dataStore.isCurrentVersion()) {
+            console.log("Plugin and Data version mismatch, reinitializing")
+            await this.dataStore.setInitialized(false);
+            await this.dataStore.setInitializedSettings(false);
+            await this.dataStore.setInitializedUnicode(false);
+            await this.dataStore.setInitializedUsage(false);
+        }
+
         await this.initializeSettings();
         await this.initializeUnicode();
         await this.initializeUsage();
@@ -36,6 +44,7 @@ export class NewDataInitializer implements DataInitializer {
         const usageInitialized = (await this.dataStore.getUsage()).initialized;
 
         if (usageInitialized) {
+            console.info("Usage data already initialized");
             return;
         }
 
@@ -52,6 +61,7 @@ export class NewDataInitializer implements DataInitializer {
         const filterModified = (await this.dataStore.getSettings()).modified;
 
         if (charactersInitialized && !filterModified) {
+            console.info("Unicode code point data already initialized");
             return;
         }
 
@@ -59,7 +69,7 @@ export class NewDataInitializer implements DataInitializer {
 
         const data = await this.ucdService.download();
 
-        console.info("Saving code point data");
+        console.info("Saving Unicode code point data");
 
         await this.characterDataStore.initializeCodepoints(data);
         await this.dataStore.setFilterSatisfied(true);
@@ -69,6 +79,7 @@ export class NewDataInitializer implements DataInitializer {
         const settingsInitialized = (await this.dataStore.getSettings()).initialized;
 
         if (settingsInitialized) {
+            console.info("Settings data already initialized");
             return;
         }
 

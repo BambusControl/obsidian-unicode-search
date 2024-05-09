@@ -1,5 +1,5 @@
 import {PersistCache} from "../../../libraries/types/persistCache";
-import {SaveData, SaveDataVersion} from "../../../libraries/types/savedata/saveData";
+import {CURRENT_VERSION, SaveData} from "../../../libraries/types/savedata/saveData";
 import {PluginDataLoader} from "../../../libraries/types/pluginDataLoader";
 import {importData} from "../../../libraries/helpers/importData";
 import {RootDataStore} from "../rootDataStore";
@@ -23,6 +23,7 @@ export class RootPluginDataStorage implements RootDataStore {
     async isInitialized(): Promise<boolean> {
         const data = await this.storedData.get();
         return data.initialized
+            && data.version === CURRENT_VERSION
             && data.settings.initialized
             && !data.settings.modified
             && data.unicode.initialized
@@ -32,12 +33,15 @@ export class RootPluginDataStorage implements RootDataStore {
 
     async setInitialized(value: boolean): Promise<void> {
         await this.mergeData({
-            initialized: value
+            initialized: value,
         });
     }
 
-    async getVersion(): Promise<SaveDataVersion> {
-        return (await this.storedData.get()).version;
+    async isCurrentVersion(): Promise<boolean> {
+        const saveDataVersion = (await this.storedData.get()).version;
+        console.info(`Plugin version: ${CURRENT_VERSION}`);
+        console.info(`Data version: ${saveDataVersion}`);
+        return saveDataVersion === CURRENT_VERSION;
     }
 
     async getUnicode(): Promise<UnicodeData> {
@@ -119,9 +123,10 @@ export class RootPluginDataStorage implements RootDataStore {
     private async mergeData(data: Partial<SaveData>): Promise<SaveData> {
         const storedData = await this.storedData.get();
 
-        const newData = {
+        const newData: SaveData = {
             ...storedData,
-            ...data
+            ...data,
+            version: data.initialized ? CURRENT_VERSION : storedData.version,
         };
 
         this.storedData.set(newData);

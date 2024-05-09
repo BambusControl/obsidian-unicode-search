@@ -24,3 +24,6 @@ export type SaveDataVersion
     | "0.6.0-NEXT"
     // Update only if save data schema changed
     ;
+
+export const CURRENT_VERSION: SaveDataVersion = "0.6.0-NEXT"
+
