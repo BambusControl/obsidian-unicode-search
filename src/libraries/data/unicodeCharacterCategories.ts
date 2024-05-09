@@ -7,31 +7,31 @@ export const UNICODE_CHARACTER_CATEGORIES: UnicodeGeneralCategoryGroup[] = [
         categories: [
             {
                 abbreviation: "Lu",
-                name: "Uppercase_Letter",
+                name: "Uppercase Letter",
                 description: "an uppercase letter",
             },
 
             {
                 abbreviation: "Ll",
-                name: "Lowercase_Letter",
+                name: "Lowercase Letter",
                 description: "a lowercase letter",
             },
 
             {
                 abbreviation: "Lt",
-                name: "Titlecase_Letter",
+                name: "Titlecase Letter",
                 description: "a digraph encoded as a single character, with first part uppercase",
             },
 
             {
                 abbreviation: "Lm",
-                name: "Modifier_Letter",
+                name: "Modifier Letter",
                 description: "a modifier letter",
             },
 
             {
                 abbreviation: "Lo",
-                name: "Other_Letter",
+                name: "Other Letter",
                 description: "other letters, including syllables and ideographs",
             },
         ]
@@ -42,19 +42,19 @@ export const UNICODE_CHARACTER_CATEGORIES: UnicodeGeneralCategoryGroup[] = [
         categories: [
             {
                 abbreviation: "Mn",
-                name: "Nonspacing_Mark",
+                name: "Nonspacing Mark",
                 description: "a nonspacing combining mark (zero advance width)",
             },
 
             {
                 abbreviation: "Mc",
-                name: "Spacing_Mark",
+                name: "Spacing Mark",
                 description: "a spacing combining mark (positive advance width)",
             },
 
             {
                 abbreviation: "Me",
-                name: "Enclosing_Mark",
+                name: "Enclosing Mark",
                 description: "an enclosing combining mark",
             },
         ],
@@ -66,19 +66,19 @@ export const UNICODE_CHARACTER_CATEGORIES: UnicodeGeneralCategoryGroup[] = [
         categories: [
             {
                 abbreviation: "Nd",
-                name: "Decimal_Number",
+                name: "Decimal Number",
                 description: "a decimal digit",
             },
 
             {
                 abbreviation: "Nl",
-                name: "Letter_Number",
+                name: "Letter Number",
                 description: "a letterlike numeric character",
             },
 
             {
                 abbreviation: "No",
-                name: "Other_Number",
+                name: "Other Number",
                 description: "a numeric character of other type",
             },
         ]
@@ -89,43 +89,43 @@ export const UNICODE_CHARACTER_CATEGORIES: UnicodeGeneralCategoryGroup[] = [
         categories: [
             {
                 abbreviation: "Pc",
-                name: "Connector_Punctuation",
+                name: "Connector Punctuation",
                 description: "a connecting punctuation mark, like a tie",
             },
 
             {
                 abbreviation: "Pd",
-                name: "Dash_Punctuation",
+                name: "Dash Punctuation",
                 description: "a dash or hyphen punctuation mark",
             },
 
             {
                 abbreviation: "Ps",
-                name: "Open_Punctuation",
+                name: "Open Punctuation",
                 description: "an opening punctuation mark (of a pair)",
             },
 
             {
                 abbreviation: "Pe",
-                name: "Close_Punctuation",
+                name: "Close Punctuation",
                 description: "a closing punctuation mark (of a pair)",
             },
 
             {
                 abbreviation: "Pi",
-                name: "Initial_Punctuation",
+                name: "Initial Punctuation",
                 description: "an initial quotation mark",
             },
 
             {
                 abbreviation: "Pf",
-                name: "Final_Punctuation",
+                name: "Final Punctuation",
                 description: "a final quotation mark",
             },
 
             {
                 abbreviation: "Po",
-                name: "Other_Punctuation",
+                name: "Other Punctuation",
                 description: "a punctuation mark of other type",
             },
         ]
@@ -136,24 +136,24 @@ export const UNICODE_CHARACTER_CATEGORIES: UnicodeGeneralCategoryGroup[] = [
         categories: [
             {
                 abbreviation: "Sm",
-                name: "Math_Symbol",
+                name: "Math Symbol",
                 description: "a symbol of mathematical use",
             },
 
             {
                 abbreviation: "Sc",
-                name: "Currency_Symbol",
+                name: "Currency Symbol",
                 description: "a currency sign",
             },
 
             {
                 abbreviation: "Sk",
-                name: "Modifier_Symbol",
+                name: "Modifier Symbol",
                 description: "a non-letterlike modifier symbol",
             },
             {
                 abbreviation: "So",
-                name: "Other_Symbol",
+                name: "Other Symbol",
                 description: "a symbol of other type",
             },
         ]
@@ -165,19 +165,19 @@ export const UNICODE_CHARACTER_CATEGORIES: UnicodeGeneralCategoryGroup[] = [
         categories: [
             {
                 abbreviation: "Zs",
-                name: "Space_Separator",
+                name: "Space Separator",
                 description: "a space character (of various non-zero widths)",
             },
 
             {
                 abbreviation: "Zl",
-                name: "Line_Separator",
+                name: "Line Separator",
                 description: "U+2028 LINE SEPARATOR only",
             },
 
             {
                 abbreviation: "Zp",
-                name: "Paragraph_Separator",
+                name: "Paragraph Separator",
                 description: "U+2029 PARAGRAPH SEPARATOR only",
             },
         ]
@@ -206,7 +206,7 @@ export const UNICODE_CHARACTER_CATEGORIES: UnicodeGeneralCategoryGroup[] = [
 
             {
                 abbreviation: "Co",
-                name: "Private_Use",
+                name: "Private Use",
                 description: "a private-use character",
             },
 

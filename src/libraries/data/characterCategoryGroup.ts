@@ -8,4 +8,4 @@ export enum CharacterCategoryGroup {
     Other = "C",
 }
 
-export type CharacterCategoryGroupType = "L" | "M" | "N" | "P" | "S" | "Z" | "C"
+export type CharacterCategoryGroupType = "L" | "M" | "N" | "P" | "S" | "Z" | "C";

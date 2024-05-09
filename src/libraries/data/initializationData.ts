@@ -1,5 +1,35 @@
 import {SaveData} from "../types/savedata/saveData";
 import {UNICODE_PLANES_ALL} from "./unicodePlanes";
+import {UNICODE_CHARACTER_CATEGORIES} from "./unicodeCharacterCategories";
+import {UnicodePlaneNumber} from "./unicodePlaneNumber";
+import {CharacterCategoryType} from "./characterCategory";
+import {CharacterCategoryGroupType} from "./characterCategoryGroup";
+
+type InclusionDefaults = {
+    planes: UnicodePlaneNumber[],
+    categories: CharacterCategoryGroupType[],
+};
+
+const DATA_DEFAULTS: InclusionDefaults = {
+    planes: [
+        0,
+        // 1,
+        // 2,
+        // 3,
+        // 14,
+        // 15,
+        // 16
+    ],
+    categories: [
+        "L",
+        // "M",
+        "N",
+        "P",
+        "S",
+        // "Z",
+        // "C",
+    ],
+}
 
 export function initializationData(): SaveData {
     return {
@@ -13,203 +43,16 @@ export function initializationData(): SaveData {
                     ...plane.interval,
                     blocks: plane.blocks.map(block => ({
                         ...block.interval,
-                        included: plane.planeNumber === 0
+                        included: DATA_DEFAULTS.planes.includes(plane.planeNumber),
                     }))
                 })),
-                categoryGroups: [
-                    {
-                        abbreviation: "L",
-                        name: "Letter",
-                        categories: [
-                            {
-                                abbreviation: "Ll",
-                                name: "Lowercase",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Lm",
-                                name: "Modifier",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Lt",
-                                name: "Titlecase",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Lu",
-                                name: "Uppercase",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Lo",
-                                name: "Other",
-                                included: true
-                            },
-                        ]
-                    },
-                    {
-                        abbreviation: "M",
-                        name: "Mark",
-                        categories: [
-                            {
-                                abbreviation: "Mc",
-                                name: "SpacingCombining",
-                                included: false
-                            },
-                            {
-                                abbreviation: "Me",
-                                name: "Enclosing",
-                                included: false
-                            },
-                            {
-                                abbreviation: "Mn",
-                                name: "NonSpacing",
-                                included: false
-                            },
-                        ]
-                    },
-                    {
-                        abbreviation: "N",
-                        name: "Number",
-                        categories: [
-                            {
-                                abbreviation: "Nd",
-                                name: "DecimalDigit",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Nl",
-                                name: "Letter",
-                                included: true
-                            },
-                            {
-                                abbreviation: "No",
-                                name: "Other",
-                                included: true
-                            },
-                        ]
-                    },
-                    {
-                        abbreviation: "P",
-                        name: "Punctuation",
-                        categories: [
-                            {
-                                abbreviation: "Pc",
-                                name: "Connector",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Pd",
-                                name: "Dash",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Pi",
-                                name: "InitialQuote",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Pf",
-                                name: "FinalQuote",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Ps",
-                                name: "Open",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Pe",
-                                name: "Close",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Po",
-                                name: "Other",
-                                included: true
-                            },
-                        ]
-                    },
-                    {
-                        abbreviation: "S",
-                        name: "Symbol",
-                        categories: [
-                            {
-                                abbreviation: "Sc",
-                                name: "Currency",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Sk",
-                                name: "Modifier",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Sm",
-                                name: "Math",
-                                included: true
-                            },
-                            {
-                                abbreviation: "So",
-                                name: "Other",
-                                included: true
-                            },
-                        ]
-                    },
-                    {
-                        abbreviation: "Z",
-                        name: "Separator",
-                        categories: [
-                            {
-                                abbreviation: "Zl",
-                                name: "Line",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Zp",
-                                name: "Paragraph",
-                                included: true
-                            },
-                            {
-                                abbreviation: "Zs",
-                                name: "Space",
-                                included: true
-                            },
-                        ]
-                    },
-                    {
-                        abbreviation: "C",
-                        name: "Other",
-                        categories: [
-                            {
-                                abbreviation: "Cc",
-                                name: "Control",
-                                included: false
-                            },
-                            {
-                                abbreviation: "Cf",
-                                name: "Format",
-                                included: false
-                            },
-                            {
-                                abbreviation: "Cn",
-                                name: "NotAssigned",
-                                included: false
-                            },
-                            {
-                                abbreviation: "Co",
-                                name: "PrivateUse",
-                                included: false
-                            },
-                            {
-                                abbreviation: "Cs",
-                                name: "Surrogate",
-                                included: false
-                            },
-                        ]
-                    },
-                ]
+                categoryGroups: UNICODE_CHARACTER_CATEGORIES.map(group => ({
+                    abbreviation: group.abbreviation,
+                    categories: group.categories.map(category => ({
+                        abbreviation: category.abbreviation,
+                        included: DATA_DEFAULTS.categories.includes(group.abbreviation),
+                    }))
+                })),
             }
         },
         usage: {

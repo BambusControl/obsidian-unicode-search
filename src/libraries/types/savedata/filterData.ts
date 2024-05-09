@@ -16,12 +16,10 @@ export type BlockFilter = CodepointInterval & InclusionFlag;
 
 export interface CategoryGroupFilter {
     abbreviation: CharacterCategoryGroupType;
-    name: string;
     categories: Array<CategoryFilter>;
 }
 
 export interface CategoryFilter extends InclusionFlag {
     abbreviation: CharacterCategoryType;
-    name: string;
 }
 
