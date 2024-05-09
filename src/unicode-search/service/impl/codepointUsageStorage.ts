@@ -1,7 +1,6 @@
 import {RootDataStore} from "../rootDataStore";
 import {UsageStore} from "../usageStore";
 import {CharacterKey} from "../../../libraries/types/codepoint/character";
-import {CodepointStore} from "../codePointStore";
 import {
     CodepointParsedUsage,
     ParsedUsageInfo,

@@ -1,5 +1,4 @@
-import {CharacterCategoryGroupType} from "../../data/characterCategory";
-
+import {CharacterCategoryGroupType} from "../../data/characterCategoryGroup";
 import {UnicodeGeneralCategory} from "./unicodeGeneralCategory";
 
 export type UnicodeGeneralCategoryGroup = {

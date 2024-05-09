@@ -2,7 +2,6 @@ import {SaveData} from "../types/savedata/saveData";
 import {UNICODE_PLANES_ALL} from "./unicodePlanes";
 import {UNICODE_CHARACTER_CATEGORIES} from "./unicodeCharacterCategories";
 import {UnicodePlaneNumber} from "./unicodePlaneNumber";
-import {CharacterCategoryType} from "./characterCategory";
 import {CharacterCategoryGroupType} from "./characterCategoryGroup";
 
 type InclusionDefaults = {

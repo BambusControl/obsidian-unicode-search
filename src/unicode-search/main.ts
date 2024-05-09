@@ -1,12 +1,8 @@
 import {App, Plugin, PluginManifest} from "obsidian";
 import {UcdUserFilterDownloader} from "./service/impl/ucdUserFilterDownloader";
-import {CodepointStore} from "./service/codePointStore";
 import {RootPluginDataStorage} from "./service/impl/rootPluginDataStorage";
 import {CodepointStorage} from "./service/impl/codepointStorage";
-import {CharacterDownloader} from "./service/characterDownloader";
 import {SettingsStorage} from "./service/impl/settingsStorage";
-import {RootDataStore} from "./service/rootDataStore";
-import {initializationData} from "../libraries/data/initializationData";
 import {SettingTab} from "./components/settingTab";
 import {UsageCharacterService} from "./service/impl/usageCharacterService";
 import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
