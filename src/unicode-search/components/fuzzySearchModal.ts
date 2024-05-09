@@ -66,8 +66,8 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
             .map(fillNullCharacterMatchScores);
     }
 
-    public override async renderSuggestion(item: UsedCharacterSearch, container: HTMLElement): Promise<void> {
-        const char = item.item;
+    public override async renderSuggestion(search: UsedCharacterSearch, container: HTMLElement): Promise<void> {
+        const char = search.item;
 
         container.addClass("plugin", "unicode-search", "result-item");
 
@@ -85,14 +85,14 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
             cls: "character-name",
         });
 
-        renderMatches(text, item.item.name, item.match.name.matches);
+        renderMatches(text, char.name, search.match.name.matches);
 
-        if (item.match.codepoint.matches.length > 0) {
+        if (search.match.codepoint.matches.length > 0) {
             const codepoint = matches.createDiv({
                 cls: "character-codepoint",
             });
 
-            renderMatches(codepoint, toHexadecimal(item.item), item.match.codepoint.matches);
+            renderMatches(codepoint, toHexadecimal(char), search.match.codepoint.matches);
         }
 
         const detail = container.createDiv({
@@ -119,12 +119,14 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
 		}
     }
 
-    public override onChooseSuggestion(item: UsedCharacterSearch, evt: MouseEvent | KeyboardEvent): void {
-        this.editor.replaceSelection(item.item.codepoint);
+    public override async onChooseSuggestion(search: UsedCharacterSearch, evt: MouseEvent | KeyboardEvent): Promise<void> {
+        this.editor.replaceSelection(search.item.codepoint);
 
-        // I don't want to await this, its more of a side effect
-        this.characterService.recordUsage(item.item.codepoint)
-            .then(undefined, (error) => console.error("Failed to record character usage", {err: error}));
+        try {
+            await this.characterService.recordUsage(search.item.codepoint);
+        } catch (error) {
+            console.error("Failed to record character usage", {err: error});
+        }
     }
 
     public override async onNoSuggestion(): Promise<void> {
@@ -132,8 +134,8 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
     }
 
     private async setRandomPlaceholder(): Promise<void> {
-        const placeholder = `Unicode search: ${getRandomItem((await this.characterService.getAllCharacters())).name}`;
-        super.setPlaceholder(placeholder);
+        const randomCharacterName = getRandomItem((await this.characterService.getAllCharacters())).name;
+        super.setPlaceholder(`Unicode search: ${randomCharacterName}`);
     }
 
 }

@@ -58,7 +58,13 @@ export default class UnicodeSearchPlugin extends Plugin {
             },
         });
 
-        this.addSettingTab(new SettingTab(this.app, this, characterService, optionsStore));
+        this.addSettingTab(new SettingTab(
+            this.app,
+            this,
+            characterService,
+            optionsStore,
+            initializer,
+        ));
 
         console.timeEnd("Unicode Search load time");
         console.groupEnd();

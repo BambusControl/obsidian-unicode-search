@@ -10,6 +10,7 @@ import {UnicodePlane} from "../../libraries/types/unicode/unicodePlane";
 import {UNICODE_CHARACTER_CATEGORIES} from "../../libraries/data/unicodeCharacterCategories";
 import {UnicodeGeneralCategoryGroup} from "../../libraries/types/unicode/unicodeGeneralCategoryGroup";
 import {UnicodeGeneralCategory} from "../../libraries/types/unicode/unicodeGeneralCategory";
+import {DataInitializer} from "../service/dataInitializer";
 
 export class SettingTab extends PluginSettingTab {
 
@@ -19,7 +20,8 @@ export class SettingTab extends PluginSettingTab {
         app: App,
         plugin: Plugin,
         private readonly characterService: CharacterService,
-        private readonly settingsStore: SettingsStore
+        private readonly settingsStore: SettingsStore,
+        private readonly initializer: DataInitializer,
     ) {
         super(app, plugin);
         this.containerEl.addClass("plugin", "unicode-search", "setting-tab")
@@ -47,8 +49,8 @@ export class SettingTab extends PluginSettingTab {
         this.rendered = true;
     }
 
-    override async hide(): Promise<void> {
-
+    override hide(): Promise<void> {
+        return this.initializer.initializeData();
     }
 
     private async displayFilterSettings(container: HTMLElement) {
