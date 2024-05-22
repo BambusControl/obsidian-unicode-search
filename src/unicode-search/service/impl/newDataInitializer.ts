@@ -13,19 +13,19 @@ export class NewDataInitializer implements DataInitializer {
     }
 
     async initializeData(): Promise<void> {
-        console.group("Initializing local data");
+        DEVELOPMENT: console.group("Initializing local data");
         await this.initializeAll();
-        console.groupEnd();
+        DEVELOPMENT: console.groupEnd();
     }
 
     private async initializeAll() {
         if (await this.dataStore.isInitialized()) {
-            console.info("Plugin data already initialized");
+            DEVELOPMENT: console.info("Plugin data already initialized");
             return;
         }
 
         if (!await this.dataStore.isCurrentVersion()) {
-            console.log("Plugin and Data version mismatch, reinitializing")
+            DEVELOPMENT: console.log("Plugin and Data version mismatch, reinitializing")
             await this.dataStore.setInitialized(false);
             await this.dataStore.setInitializedSettings(false);
             await this.dataStore.setInitializedUnicode(false);
@@ -36,7 +36,7 @@ export class NewDataInitializer implements DataInitializer {
         await this.initializeUnicode();
         await this.initializeUsage();
 
-        console.info("Flagging local data as initialized");
+        DEVELOPMENT: console.info("Flagging local data as initialized");
         await this.dataStore.setInitialized(true);
     }
 
@@ -44,11 +44,11 @@ export class NewDataInitializer implements DataInitializer {
         const usageInitialized = (await this.dataStore.getUsage()).initialized;
 
         if (usageInitialized) {
-            console.info("Usage data already initialized");
+            DEVELOPMENT: console.info("Usage data already initialized");
             return;
         }
 
-        console.info("Usage initialization");
+        DEVELOPMENT: console.info("Usage initialization");
 
         await this.dataStore.overwriteUsage({
             ...initializationData().usage,
@@ -61,15 +61,15 @@ export class NewDataInitializer implements DataInitializer {
         const filterModified = (await this.dataStore.getSettings()).modified;
 
         if (charactersInitialized && !filterModified) {
-            console.info("Unicode code point data already initialized");
+            DEVELOPMENT: console.info("Unicode code point data already initialized");
             return;
         }
 
-        console.info(filterModified ? "Downloading UCD, character filter changed." : "Downloading UCD");
+        DEVELOPMENT: console.info(filterModified ? "Downloading UCD, character filter changed." : "Downloading UCD");
 
         const data = await this.ucdService.download();
 
-        console.info("Saving Unicode code point data");
+        DEVELOPMENT: console.info("Saving Unicode code point data");
 
         await this.characterDataStore.initializeCodepoints(data);
         await this.dataStore.setFilterSatisfied(true);
@@ -79,11 +79,11 @@ export class NewDataInitializer implements DataInitializer {
         const settingsInitialized = (await this.dataStore.getSettings()).initialized;
 
         if (settingsInitialized) {
-            console.info("Settings data already initialized");
+            DEVELOPMENT: console.info("Settings data already initialized");
             return;
         }
 
-        console.info("Settings initialization");
+        DEVELOPMENT: console.info("Settings initialization");
 
         await this.dataStore.overwriteSettings({
             ...initializationData().settings,
