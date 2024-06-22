@@ -22,10 +22,10 @@ export default class UnicodeSearchPlugin extends Plugin {
     }
 
     public override async onload(): Promise<void> {
-        DEVELOPMENT: console.group("Loading Unicode Search plugin");
-        DEVELOPMENT: console.time("Unicode Search load time");
+        console.group("Loading Unicode Search plugin");
+        console.time("Unicode Search load time");
 
-        DEVELOPMENT: console.info("Creating services");
+        console.info("Creating services");
 
         const dataStore = new RootPluginDataStorage(this);
         const codepointStore = new CodepointStorage(dataStore);
@@ -37,7 +37,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 
         await initializer.initializeData();
 
-        DEVELOPMENT: console.info("Adding UI elements");
+        console.info("Adding UI elements");
 
         super.addCommand({
             id: "search-unicode-chars",
@@ -62,8 +62,8 @@ export default class UnicodeSearchPlugin extends Plugin {
             initializer,
         ));
 
-        DEVELOPMENT: console.timeEnd("Unicode Search load time");
-        DEVELOPMENT: console.groupEnd();
+        console.timeEnd("Unicode Search load time");
+        console.groupEnd();
     }
 
 }

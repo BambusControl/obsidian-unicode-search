@@ -39,8 +39,8 @@ export class RootPluginDataStorage implements RootDataStore {
 
     async isCurrentVersion(): Promise<boolean> {
         const saveDataVersion = (await this.storedData.get()).version;
-        DEVELOPMENT: console.info(`Plugin version: ${CURRENT_VERSION}`);
-        DEVELOPMENT: console.info(`Data version: ${saveDataVersion}`);
+        console.info(`Plugin version: ${CURRENT_VERSION}`);
+        console.info(`Data version: ${saveDataVersion}`);
         return saveDataVersion === CURRENT_VERSION;
     }
 

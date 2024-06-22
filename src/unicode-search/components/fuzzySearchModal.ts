@@ -135,7 +135,7 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
     }
 
     private async setRandomPlaceholder(): Promise<void> {
-        const randomCharacterName = getRandomItem((await this.characterService.getAllCharacters())).name;
+        const randomCharacterName = getRandomItem(await this.characterService.getAllCharacters()).name;
         super.setPlaceholder(`Unicode search: ${randomCharacterName}`);
     }
 

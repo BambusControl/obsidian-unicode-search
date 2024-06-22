@@ -13,6 +13,7 @@ Mobile is also supported!
 The plugin adds a command for searching unicode characters.
 Make sure to add a hotkey, like <kbd>Ctrl + Shift + O</kbd> for the command in the settings for Obsidian.
 
+
 ![Search command preview](./assets/command.png)
 
 Just describe the character you're searching for
