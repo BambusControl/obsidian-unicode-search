@@ -20,8 +20,8 @@ export interface SaveData extends Initializable {
 export type SaveDataVersion
     = "0.4.0"
     | "0.5.0"
-    | "0.6.0-NEXT"
+    | "0.6.0"
     // Update only if save data schema changed
     ;
 
-export const CURRENT_VERSION: SaveDataVersion = "0.6.0-NEXT";
+export const CURRENT_VERSION: SaveDataVersion = "0.6.0";
