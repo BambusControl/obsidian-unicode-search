@@ -43,6 +43,7 @@ const buildOptions = {
 			style: prodBuild ? "compressed" : "expanded",
 		}),
 	],
+    drop: prodBuild ? ["console"] : []
 };
 
 try {
