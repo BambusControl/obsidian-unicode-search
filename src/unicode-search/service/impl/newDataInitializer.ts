@@ -3,12 +3,14 @@ import {CodepointStore} from "../codePointStore";
 import {CharacterDownloader} from "../characterDownloader";
 import {DataInitializer} from "../dataInitializer";
 import {initializationData} from "../../../libraries/data/initializationData";
+import { FavoritesStore } from "../favoritesStore";
 
 export class NewDataInitializer implements DataInitializer {
     constructor(
         private readonly dataStore: RootDataStore,
         private readonly characterDataStore: CodepointStore,
-        private readonly ucdService: CharacterDownloader
+        private readonly ucdService: CharacterDownloader,
+        private readonly favoritesStore: FavoritesStore
     ) {
     }
 
@@ -30,11 +32,13 @@ export class NewDataInitializer implements DataInitializer {
             await this.dataStore.setInitializedSettings(false);
             await this.dataStore.setInitializedUnicode(false);
             await this.dataStore.setInitializedUsage(false);
+            await this.dataStore.setInitializedFavorites(false);
         }
 
         await this.initializeSettings();
         await this.initializeUnicode();
         await this.initializeUsage();
+        await this.initializeFavorites();
 
         console.info("Flagging local data as initialized");
         await this.dataStore.setInitialized(true);
@@ -87,6 +91,22 @@ export class NewDataInitializer implements DataInitializer {
 
         await this.dataStore.overwriteSettings({
             ...initializationData().settings,
+            initialized: true,
+        });
+    }
+
+    private async initializeFavorites() {
+        const favoritesInitialized = (await this.dataStore.getFavorites()).initialized;
+
+        if (favoritesInitialized) {
+            console.info("Favorites data already initialized");
+            return;
+        }
+
+        console.info("Favorites initialization");
+
+        await this.dataStore.overwriteFavorites({
+            codepoints: [],
             initialized: true,
         });
     }

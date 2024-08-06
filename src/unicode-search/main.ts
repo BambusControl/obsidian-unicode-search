@@ -9,6 +9,7 @@ import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
 
 import {FuzzySearchModal} from "./components/fuzzySearchModal";
 import {NewDataInitializer} from "./service/impl/newDataInitializer";
+import { CodepointFavoritesStorage } from "./service/impl/codepointFavoritesStorage";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -30,10 +31,11 @@ export default class UnicodeSearchPlugin extends Plugin {
         const dataStore = new RootPluginDataStorage(this);
         const codepointStore = new CodepointStorage(dataStore);
         const usageStore = new CodepointUsageStorage(dataStore);
+        const favoritesStore = new CodepointFavoritesStorage(dataStore);
         const characterService = new UsageCharacterService(codepointStore, usageStore);
         const optionsStore = new SettingsStorage(dataStore);
         const downloader = new UcdUserFilterDownloader(optionsStore);
-        const initializer = new NewDataInitializer(dataStore, codepointStore, downloader);
+        const initializer = new NewDataInitializer(dataStore, codepointStore, downloader, favoritesStore); // Add favoritesStore
 
         await initializer.initializeData();
 
