@@ -1,5 +1,5 @@
 import {App, Editor, renderMatches, SuggestModal} from "obsidian";
-import {UsedCharacterSearch} from "./characterSearch";
+import {MetaCharacterSearchResult} from "./characterSearch";
 import {CharacterService} from "../service/characterService";
 import {
     ELEMENT_FREQUENT,
@@ -21,8 +21,9 @@ import {toSearchQueryMatch} from "../../libraries/helpers/toSearchQueryMatch";
 import {matchedNameOrCodepoint} from "../../libraries/helpers/matchedNameOrCodepoint";
 
 import {ParsedUsageInfo} from "../../libraries/types/savedata/parsedUsageInfo";
+import { ParsedFavoriteInfo } from "src/libraries/types/savedata/parsedFavoriteInfo";
 
-export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
+export class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
     private usageStatistics: ReadCache<UsageDisplayStatistics>;
 
     public constructor(
@@ -50,7 +51,8 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
         })
     }
 
-    public override async getSuggestions(query: string): Promise<UsedCharacterSearch[]> {
+    public override async getSuggestions(query: string): Promise<MetaCharacterSearchResult[]> {
+        /* TODO add favorites to suggestion order calculation=*/
         const allCharacters = await this.characterService.getAll();
         const queryEmpty = query == null || query.length < 1;
 
@@ -67,8 +69,8 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
             .map(fillNullCharacterMatchScores);
     }
 
-    public override async renderSuggestion(search: UsedCharacterSearch, container: HTMLElement): Promise<void> {
-        const char = search.item;
+    public override async renderSuggestion(search: MetaCharacterSearchResult, container: HTMLElement): Promise<void> {
+        const char = search.character;
 
         container.addClass("plugin", "unicode-search", "result-item");
 
@@ -118,13 +120,20 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
 		if (showUseCount) {
 			attributes.createDiv(ELEMENT_FREQUENT);
 		}
+
+		const maybeFavoriteChar = char as Partial<ParsedFavoriteInfo>;
+		const showFavorite = maybeFavoriteChar.hotkey != null && maybeFavoriteChar.hotkey;
+
+		if (showFavorite) {
+			attributes.createDiv("favorite");
+		}
     }
 
-    public override async onChooseSuggestion(search: UsedCharacterSearch, evt: MouseEvent | KeyboardEvent): Promise<void> {
-        this.editor.replaceSelection(search.item.codepoint);
+    public override async onChooseSuggestion(search: MetaCharacterSearchResult, evt: MouseEvent | KeyboardEvent): Promise<void> {
+        this.editor.replaceSelection(search.character.codepoint);
 
         try {
-            await this.characterService.recordUsage(search.item.codepoint);
+            await this.characterService.recordUsage(search.character.codepoint);
         } catch (error) {
             console.error("Failed to record character usage", {err: error});
         }

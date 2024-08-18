@@ -1,30 +1,25 @@
 import {SearchResult} from "obsidian";
-import {Character, MaybeUsedCharacter} from "../../libraries/types/codepoint/character";
+import {Character, MetadataCharacter} from "../../libraries/types/codepoint/character";
+import {CharacterSearchAttributes} from "./characterSearchAttributes";
+import {Maybe} from "../../libraries/types/maybe";
 
-export type CharacterSearch<T> = {
-    item: Character & T,
-    match: CharacterSearchMatch,
-}
+/**
+ * Evaluation of the strength of a match from a search
+ */
+export type SearchMatchResult = SearchResult;
 
-export type CharacterMaybeMatch<T> = {
-    item: Character & T,
-    match: CharacterSearchMaybeMatch,
-}
-
-export type CharacterSearchMatch = {
-    codepoint: SearchResult,
-    name: SearchResult,
-}
-
-export type CharacterSearchMaybeMatch = {
-    codepoint: SearchResult | null | undefined,
-    name: SearchResult | null | undefined,
-}
-
-export const NONE_RESULT: SearchResult = {
+export const NONE_RESULT: SearchMatchResult = {
     score: 0,
     matches: []
 }
 
-export type UsedCharacterSearch = CharacterSearch<MaybeUsedCharacter>;
-export type MaybeUsedCharacterMatch = CharacterMaybeMatch<MaybeUsedCharacter>;
+/**
+ * Search result of a single character match
+ */
+export type CharacterSearchResult<CharacterType, AttributeMatchType> = {
+    character: Character & CharacterType,
+    match: CharacterSearchAttributes<AttributeMatchType>,
+}
+
+export type MetaCharacterSearchResult = CharacterSearchResult<MetadataCharacter, SearchMatchResult>;
+export type MaybeMetaCharacterSearchResult = CharacterSearchResult<MetadataCharacter, Maybe<SearchMatchResult>>;
