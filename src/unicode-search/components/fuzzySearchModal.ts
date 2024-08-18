@@ -58,14 +58,16 @@ export class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
 
         const prepared = queryEmpty
             ? allCharacters
+                .slice(0, this.limit)
                 .map(toNullMatch)
             : allCharacters
                 .map(toSearchQueryMatch(query))
                 .filter(matchedNameOrCodepoint);
 
-        const recencyCutoff = (await this.usageStatistics.getValue()).topThirdRecentlyUsed;
+        const recencyCutoff = (await this.usageStatistics.get()).topThirdRecentlyUsed;
         return prepared
             .sort((l, r) => compareCharacterMatches(l, r, recencyCutoff))
+            .slice(0, this.limit)
             .map(fillNullCharacterMatchScores);
     }
 
@@ -102,7 +104,7 @@ export class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
             cls: "detail",
         });
 
-        const usageStats = await this.usageStatistics.getValue();
+        const usageStats = await this.usageStatistics.get();
 
         /* The type hinting doesn't work, and shows as an error in the IDE (or the type is wrong) */
         const maybeUsedChar = char as Partial<ParsedUsageInfo>

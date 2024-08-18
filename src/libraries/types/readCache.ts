@@ -8,15 +8,11 @@ export class ReadCache<T> {
         this.value = initialValue;
     }
 
-    async getValue(): Promise<T> {
+    async get(): Promise<T> {
         if (this.value == null) {
             this.value = await this.getCallback();
         }
 
         return this.value;
-    }
-
-    setValue(value: T) {
-        this.value = value
     }
 }
