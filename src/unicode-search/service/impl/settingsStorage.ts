@@ -75,4 +75,15 @@ export class SettingsStorage implements SettingsStore {
         return (await this.getFilter()).categoryGroups
             .flatMap(group => group.categories);
     }
+
+    async getCustomCharacter(index: 1 | 2 | 3): Promise<string> {
+        const settings = await this.store.getSettings();
+        return settings[`customCharacter${index}`] || '';
+    }
+
+    async setCustomCharacter(index: 1 | 2 | 3, character: string): Promise<void> {
+        const settings = await this.store.getSettings();
+        settings[`customCharacter${index}`] = character;
+        await this.store.overwriteSettings(settings);
+    }
 }

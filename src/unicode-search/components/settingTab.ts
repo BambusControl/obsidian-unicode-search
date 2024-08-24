@@ -45,6 +45,7 @@ export class SettingTab extends PluginSettingTab {
         ;
 
         await this.displayFilterSettings(container);
+        await this.addCustomCharacterSettings(container);
 
         this.rendered = true;
     }
@@ -160,6 +161,26 @@ export class SettingTab extends PluginSettingTab {
             .setText(`${asHexadecimal(interval.start)}－${asHexadecimal(interval.end)}`);
 
         return parent;
+    }
+
+    private async addCustomCharacterSettings(container: HTMLElement) {
+        new Setting(container)
+            .setHeading()
+            .setName("Favorite Characters")
+            .setDesc("Here you can add custom characters which are toggled by Obsidian hotkeys");
+
+        for (let i = 1; i <= 3; i++) {
+            const character = await this.settingsStore.getCustomCharacter(i as 1 | 2 | 3);
+            new Setting(container)
+                .setName(`Favorite Character ${i}`)
+                .setDesc(`Select a Unicode character for hotkey ${i}`)
+                .addText(text => text
+                    .setValue(character)
+                    .onChange(async (value) => {
+                        await this.settingsStore.setCustomCharacter(i as 1 | 2 | 3, value);
+                    })
+                );
+        }
     }
 
 }
