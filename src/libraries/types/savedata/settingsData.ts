@@ -10,4 +10,7 @@ export interface SettingsData extends Initializable {
      */
     modified: boolean;
     filter: FilterData;
+    customCharacter1: string;
+    customCharacter2: string;
+    customCharacter3: string;
 }

@@ -10,4 +10,7 @@ export interface SettingsStore {
 
     getCharacterCategory(category: CharacterCategoryType): Promise<boolean>
     setCharacterCategory(category: CharacterCategoryType, set: boolean): Promise<void>
+
+    getCustomCharacter(index: 1 | 2 | 3): Promise<string>
+    setCustomCharacter(index: 1 | 2 | 3, value: string): Promise<void>
 }

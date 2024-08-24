@@ -13,12 +13,16 @@ import {NewDataInitializer} from "./service/impl/newDataInitializer";
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
 export default class UnicodeSearchPlugin extends Plugin {
+    private settingsStore: SettingsStorage;
+    private characterService: UsageCharacterService;
 
     public constructor(
         app: App,
         manifest: PluginManifest,
     ) {
         super(app, manifest);
+        this.settingsStore = {} as SettingsStorage;
+        this.characterService = {} as UsageCharacterService;
     }
 
     public override async onload(): Promise<void> {
@@ -62,8 +66,29 @@ export default class UnicodeSearchPlugin extends Plugin {
             initializer,
         ));
 
+        this.settingsStore = optionsStore;
+        this.characterService = characterService;
+
+        this.addCustomCharacterCommands();
+
         console.timeEnd("Unicode Search load time");
         console.groupEnd();
+    }
+
+    private addCustomCharacterCommands() {
+        for (let i = 1; i <= 3; i++) {
+            this.addCommand({
+                id: `insert-custom-character-${i}`,
+                name: `Insert Custom Character ${i}`,
+                editorCallback: async (editor) => {
+                    const character = await this.settingsStore.getCustomCharacter(i as 1 | 2 | 3);
+                    if (character) {
+                        editor.replaceSelection(character);
+                        await this.characterService.recordUsage(character);
+                    }
+                }
+            });
+        }
     }
 
 }
