@@ -4,7 +4,7 @@ import {RootPluginDataStorage} from "./service/impl/rootPluginDataStorage";
 import {CodepointStorage} from "./service/impl/codepointStorage";
 import {SettingsStorage} from "./service/impl/settingsStorage";
 import {SettingTab} from "./components/settingTab";
-import {UsageCharacterService} from "./service/impl/usageCharacterService";
+import {UserCharacterService} from "./service/impl/userCharacterService";
 import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
 
 import {FuzzySearchModal} from "./components/fuzzySearchModal";
@@ -32,7 +32,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         const codepointStore = new CodepointStorage(dataStore);
         const usageStore = new CodepointUsageStorage(dataStore);
         const favoritesStore = new CodepointFavoritesStorage(dataStore);
-        const characterService = new UsageCharacterService(codepointStore, usageStore);
+        const characterService = new UserCharacterService(codepointStore, usageStore, favoritesStore);
         const optionsStore = new SettingsStorage(dataStore);
         const downloader = new UcdUserFilterDownloader(optionsStore);
         const initializer = new NewDataInitializer(dataStore, codepointStore, downloader, favoritesStore);

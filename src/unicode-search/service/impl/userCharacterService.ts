@@ -10,12 +10,14 @@ import {UsageStore} from "../usageStore";
 
 
 import {ParsedUsageInfo} from "../../../libraries/types/savedata/parsedUsageInfo";
+import {FavoritesStore} from "../favoritesStore";
 
-export class UsageCharacterService implements CharacterService {
+export class UserCharacterService implements CharacterService {
 
 	public constructor(
         private readonly codepointStore: CodepointStore,
         private readonly usageStore: UsageStore,
+        private readonly favoritesStore: FavoritesStore,
 	) {
 	}
 
@@ -49,9 +51,11 @@ export class UsageCharacterService implements CharacterService {
 
     public async getAll(): Promise<MaybeUsedCharacter[]> {
         const allCharacters = await this.getAllCharacters();
+        const favoriteCharacters = await this.favoritesStore.getFavorites();
         const usedCharacters = await this.usageStore.getUsed();
 
         return allCharacters.map(character => ({
+            ...favoriteCharacters.find(fav => fav.codepoint === character.codepoint),
             ...usedCharacters.find(usage => usage.codepoint === character.codepoint),
             ...character,
         }));

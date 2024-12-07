@@ -9,17 +9,17 @@ export function compareCharacters(
     right: MetadataCharacter,
     recencyCutoff: Date,
 ): Order {
+    const usedComparison = compareUsedCharacters(left, right, recencyCutoff);
+
+    if (usedComparison !== Order.Equal) {
+        return usedComparison;
+    }
+
     const favoriteComparison = compareFavoriteCharacters(left, right);
 
     if (favoriteComparison !== Order.Equal) {
         console.log("favoriteComparison", left, favoriteComparison, right);
         return favoriteComparison;
-    }
-
-    const usedComparison = compareUsedCharacters(left, right, recencyCutoff);
-
-    if (usedComparison !== Order.Equal) {
-        return usedComparison;
     }
 
     return compareCodepoints(left, right);

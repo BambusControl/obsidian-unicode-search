@@ -2,6 +2,7 @@ import {App, Editor, renderMatches, SuggestModal} from "obsidian";
 import {MetaCharacterSearchResult} from "./characterSearch";
 import {CharacterService} from "../service/characterService";
 import {
+    ELEMENT_FAVORITE,
     ELEMENT_FREQUENT,
     ELEMENT_RECENT,
     INSERT_CHAR_INSTRUCTION,
@@ -52,7 +53,6 @@ export class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
     }
 
     public override async getSuggestions(query: string): Promise<MetaCharacterSearchResult[]> {
-        /* TODO add favorites to suggestion order calculation */
         const allCharacters = (await this.characterService.getAll());
         const queryEmpty = query == null || query.length < 1;
 
@@ -92,43 +92,41 @@ export class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
 
         renderMatches(text, char.name, search.match.name.matches);
 
-        if (search.match.codepoint.matches.length > 0) {
-            const codepoint = matches.createDiv({
-                cls: "character-codepoint",
-            });
+        const codepoint = matches.createDiv({
+            cls: "character-codepoint",
+        });
 
-            renderMatches(codepoint, toHexadecimal(char), search.match.codepoint.matches);
-        }
+        renderMatches(codepoint, toHexadecimal(char), search.match.codepoint.matches);
 
         const detail = container.createDiv({
             cls: "detail",
         });
 
-        const usageStats = await this.usageStatistics.get();
-
-        /* The type hinting doesn't work, and shows as an error in the IDE (or the type is wrong) */
-        const maybeUsedChar = char as Partial<ParsedUsageInfo>
-		const showLastUsed = maybeUsedChar.lastUsed != null && maybeUsedChar.lastUsed >= usageStats.topThirdRecentlyUsed;
-		const showUseCount = maybeUsedChar.useCount != null && maybeUsedChar.useCount >= usageStats.averageUseCount;
-
 		const attributes = detail.createDiv({
 			cls: "attributes",
 		});
-
-		if (showLastUsed) {
-			attributes.createDiv(ELEMENT_RECENT);
-		}
-
-		if (showUseCount) {
-			attributes.createDiv(ELEMENT_FREQUENT);
-		}
 
 		const maybeFavoriteChar = char as Partial<ParsedFavoriteInfo>;
 		const showFavorite = maybeFavoriteChar.hotkey != null && maybeFavoriteChar.hotkey;
 
 		if (showFavorite) {
-			attributes.createDiv("favorite");
-		}
+			attributes.createDiv(ELEMENT_FAVORITE);
+		} else {
+            const usageStats = await this.usageStatistics.get();
+
+            /* The type hinting doesn't work, and shows as an error in the IDE (or the type is wrong) */
+            const maybeUsedChar = char as Partial<ParsedUsageInfo>
+            const showLastUsed = maybeUsedChar.lastUsed != null && maybeUsedChar.lastUsed >= usageStats.topThirdRecentlyUsed;
+            const showUseCount = maybeUsedChar.useCount != null && maybeUsedChar.useCount >= usageStats.averageUseCount;
+
+            if (showLastUsed) {
+                attributes.createDiv(ELEMENT_RECENT);
+            }
+
+            if (showUseCount) {
+                attributes.createDiv(ELEMENT_FREQUENT);
+            }
+        }
     }
 
     public override async onChooseSuggestion(search: MetaCharacterSearchResult, evt: MouseEvent | KeyboardEvent): Promise<void> {
