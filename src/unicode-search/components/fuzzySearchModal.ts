@@ -52,19 +52,19 @@ export class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
     }
 
     public override async getSuggestions(query: string): Promise<MetaCharacterSearchResult[]> {
-        /* TODO add favorites to suggestion order calculation=*/
-        const allCharacters = await this.characterService.getAll();
+        /* TODO add favorites to suggestion order calculation */
+        const allCharacters = (await this.characterService.getAll());
         const queryEmpty = query == null || query.length < 1;
 
         const prepared = queryEmpty
             ? allCharacters
-                .slice(0, this.limit)
                 .map(toNullMatch)
             : allCharacters
                 .map(toSearchQueryMatch(query))
                 .filter(matchedNameOrCodepoint);
 
         const recencyCutoff = (await this.usageStatistics.get()).topThirdRecentlyUsed;
+
         return prepared
             .sort((l, r) => compareCharacterMatches(l, r, recencyCutoff))
             .slice(0, this.limit)

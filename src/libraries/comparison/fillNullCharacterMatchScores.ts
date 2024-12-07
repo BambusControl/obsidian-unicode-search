@@ -1,9 +1,12 @@
-import {CharacterSearchResult, CharacterSearchMaybeMatch} from "../../unicode-search/components/characterSearch";
-import {fillNullMatchScores} from "./fillNullMatchScores";
+import {
+    MaybeMetaCharacterSearchResult,
+    MetaCharacterSearchResult
+} from "../../unicode-search/components/characterSearch";
+import {fillNullSearchMatchScores} from "./fillNullSearchMatchScores";
 
-export function fillNullCharacterMatchScores<T>(characterMatch: CharacterSearchMaybeMatch<T>): CharacterSearchResult<T> {
+export function fillNullCharacterMatchScores(characterMatch: MaybeMetaCharacterSearchResult): MetaCharacterSearchResult {
     return {
         ...characterMatch,
-        match: fillNullMatchScores(characterMatch.match),
+        match: fillNullSearchMatchScores(characterMatch.match),
     };
 }

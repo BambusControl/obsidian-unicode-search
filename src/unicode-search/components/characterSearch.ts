@@ -23,3 +23,5 @@ export type CharacterSearchResult<CharacterType, AttributeMatchType> = {
 
 export type MetaCharacterSearchResult = CharacterSearchResult<MetadataCharacter, SearchMatchResult>;
 export type MaybeMetaCharacterSearchResult = CharacterSearchResult<MetadataCharacter, Maybe<SearchMatchResult>>;
+export type MaybeSearchMatchAttributes = CharacterSearchAttributes<Maybe<SearchMatchResult>>;
+export type SearchMatchAttributes = CharacterSearchAttributes<SearchMatchResult>;
