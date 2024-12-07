@@ -106,7 +106,7 @@ export class NewDataInitializer implements DataInitializer {
         console.info("Favorites initialization");
 
         await this.dataStore.overwriteFavorites({
-            codepoints: [],
+            ...initializationData().favorites,
             initialized: true,
         });
     }

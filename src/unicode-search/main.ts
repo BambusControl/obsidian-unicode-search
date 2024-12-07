@@ -35,7 +35,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         const characterService = new UsageCharacterService(codepointStore, usageStore);
         const optionsStore = new SettingsStorage(dataStore);
         const downloader = new UcdUserFilterDownloader(optionsStore);
-        const initializer = new NewDataInitializer(dataStore, codepointStore, downloader, favoritesStore); // Add favoritesStore
+        const initializer = new NewDataInitializer(dataStore, codepointStore, downloader, favoritesStore);
 
         await initializer.initializeData();
 
