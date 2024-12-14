@@ -16,7 +16,7 @@ export class CodepointUsageStorage implements UsageStore {
     ) {
     }
 
-    async updateCharacter(
+    async upsert(
         key: CharacterKey,
         apply: (char?: ParsedUsageInfo) => ParsedUsageInfo
     ): Promise<CodepointParsedUsage>
@@ -27,15 +27,15 @@ export class CodepointUsageStorage implements UsageStore {
         const found = foundIndex >= 0;
         const index = found ? foundIndex : 0;
 
-        const modifiedUsage = {
+        const modified = {
             ...apply(found ? {...data[index]} : undefined),
             codepoint: key,
         };
 
         if (found) {
-            data[foundIndex] = modifiedUsage
+            data[foundIndex] = modified
         } else {
-            data.unshift(modifiedUsage)
+            data.unshift(modified)
         }
 
         await this.overwriteUsageData(data)

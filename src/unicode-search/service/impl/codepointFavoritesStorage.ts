@@ -1,17 +1,76 @@
 import { RootDataStore } from "../rootDataStore";
 import { FavoritesStore } from "../favoritesStore";
-import { CharacterKey } from "../../../libraries/types/codepoint/character";
-import { CodepointFavorite, CodepointParsedFavorite } from "../../../libraries/types/savedata/codepoint";
+import {Character, CharacterKey} from "../../../libraries/types/codepoint/character";
+import {
+    CodepointFavorite,
+    CodepointParsedFavorite,
+    CodepointParsedUsage
+} from "../../../libraries/types/savedata/codepoint";
 import { FavoriteInfo } from "../../../libraries/types/savedata/favoriteInfo";
 import { ParsedFavoriteInfo } from "../../../libraries/types/savedata/parsedFavoriteInfo";
 import { FavoritesData } from "src/libraries/types/savedata/favoritesData";
 import { serializeFavoriteInfo } from "../../../libraries/helpers/serializeFavoriteInfo";
+import {ParsedUsageInfo} from "../../../libraries/types/savedata/parsedUsageInfo";
+import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 
 export class CodepointFavoritesStorage implements FavoritesStore {
 
     constructor(
         private readonly store: RootDataStore,
     ) {
+    }
+
+    async upsert(
+        key: CharacterKey,
+        apply: (char?: ParsedFavoriteInfo) => ParsedFavoriteInfo
+    ): Promise<CodepointParsedFavorite>
+    {
+        const data = await this.getFavorites();
+
+        const foundIndex = data.findIndex(ch => ch.codepoint === key);
+        const found = foundIndex >= 0;
+        const index = found ? foundIndex : 0;
+
+        const modified = {
+            ...apply(found ? {...data[index]} : undefined),
+            codepoint: key,
+        };
+
+        if (found) {
+            data[foundIndex] = modified
+        } else {
+            data.unshift(modified)
+        }
+
+        await this.overwriteFavoritesData(data)
+
+        return data[index];
+    }
+
+    async update(
+        key: CharacterKey,
+        apply: (char: ParsedFavoriteInfo) => Partial<ParsedFavoriteInfo>
+    ): Promise<CodepointParsedFavorite>
+    {
+        const data = await this.getFavorites();
+
+        const foundIndex = data.findIndex(ch => ch.codepoint === key);
+
+        if (foundIndex < 0) {
+            throw new UnicodeSearchError(`No character '${key}' exists in favorites.`);
+        }
+
+        const modified = {
+            ...data[foundIndex],
+            ...apply({...data[foundIndex]}),
+            codepoint: key,
+        } as CodepointParsedFavorite;
+
+        data[foundIndex] = modified
+
+        await this.overwriteFavoritesData(data)
+
+        return data[foundIndex];
     }
 
     async addFavorite(key: CharacterKey): Promise<void> {

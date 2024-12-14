@@ -8,9 +8,7 @@ import { FavoritesStore } from "../favoritesStore";
 export class NewDataInitializer implements DataInitializer {
     constructor(
         private readonly dataStore: RootDataStore,
-        private readonly characterDataStore: CodepointStore,
         private readonly ucdService: CharacterDownloader,
-        private readonly favoritesStore: FavoritesStore
     ) {
     }
 
@@ -71,11 +69,15 @@ export class NewDataInitializer implements DataInitializer {
 
         console.info(filterModified ? "Downloading UCD, character filter changed." : "Downloading UCD");
 
-        const data = await this.ucdService.download();
+        const codepoints = await this.ucdService.download();
 
         console.info("Saving Unicode code point data");
 
-        await this.characterDataStore.initializeCodepoints(data);
+        await this.dataStore.overwriteUnicode({
+            initialized: true,
+            codepoints: codepoints,
+        });
+
         await this.dataStore.setFilterSatisfied(true);
     }
 

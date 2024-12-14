@@ -11,6 +11,7 @@ import {UNICODE_CHARACTER_CATEGORIES} from "../../libraries/data/unicodeCharacte
 import {UnicodeGeneralCategoryGroup} from "../../libraries/types/unicode/unicodeGeneralCategoryGroup";
 import {UnicodeGeneralCategory} from "../../libraries/types/unicode/unicodeGeneralCategory";
 import {DataInitializer} from "../service/dataInitializer";
+import {FavoritesStore} from "../service/favoritesStore";
 
 export class SettingTab extends PluginSettingTab {
 
@@ -20,6 +21,7 @@ export class SettingTab extends PluginSettingTab {
         app: App,
         plugin: Plugin,
         private readonly characterService: CharacterService,
+        private readonly favoritesStore: FavoritesStore,
         private readonly settingsStore: SettingsStore,
         private readonly initializer: DataInitializer,
     ) {
@@ -34,6 +36,54 @@ export class SettingTab extends PluginSettingTab {
 
         const container = this.containerEl.createDiv({cls: "filter-settings"});
 
+        await this.displayFavoritesSettings(container);
+        await this.displayFilterSettings(container);
+
+        this.rendered = true;
+    }
+
+    override hide(): Promise<void> {
+        return this.initializer.initializeData();
+    }
+
+    private async displayFavoritesSettings(container: HTMLElement) {
+        new Setting(container)
+            .setHeading()
+            .setName("Manage Favorite Characters")
+            .setDesc(
+                "Select your favorite characters to be displayed in the plugin's search results"
+            )
+        ;
+
+        const favorites = await this.characterService.getFavorites();
+
+        for (const character of favorites) {
+            new Setting(container)
+                .setName(character.codepoint)
+                .setDesc(character.added.toDateString())
+                .addToggle(toggle => toggle
+                    .setValue(character.hotkey)
+                    .onChange(enabled => this.favoritesStore.update(
+                        character.codepoint,
+                        () => ({
+                            hotkey: enabled
+                        })
+                    ))
+                    /* TODO: Register command with enabling of the hotkey */
+                )
+                .addButton(button => button
+                    .setTooltip("Remove from favorites")
+                    .setIcon("trash")
+                    .onClick(async () => {
+                        await this.favoritesStore.removeFavorite(character.codepoint);
+                        /* TODO: remove the row */
+                    })
+                )
+            ;
+        }
+    }
+
+    private async displayFilterSettings(container: HTMLElement) {
         new Setting(container)
             .setHeading()
             .setName("Unicode Character Filters")
@@ -44,20 +94,8 @@ export class SettingTab extends PluginSettingTab {
             )
         ;
 
-        await this.displayFilterSettings(container);
-
-        this.rendered = true;
-    }
-
-    override hide(): Promise<void> {
-        return this.initializer.initializeData();
-    }
-
-    private async displayFilterSettings(container: HTMLElement) {
         new Setting(container)
-            .setHeading()
             .setName("General Categories")
-            .setDesc("Include or exclude any Unicode general character categories.")
             .addToggle(toggle => toggle
                 .setValue(false)
                 .onChange(visible => categoryFilterDiv.toggleClass("hidden", !visible))
@@ -71,9 +109,7 @@ export class SettingTab extends PluginSettingTab {
         }
 
         new Setting(container)
-            .setHeading()
             .setName("Planes and Blocks")
-            .setDesc("Include or exclude of any Unicode blocks.")
             .addToggle(toggle => toggle
                 .setValue(false)
                 .onChange(visible => planesFilterDiv.toggleClass("hidden", !visible))

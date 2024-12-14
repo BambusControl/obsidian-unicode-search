@@ -1,7 +1,7 @@
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {
     Character,
-    CharacterKey, MaybeUsedCharacter,
+    CharacterKey, FavoriteCharacter, MaybeUsedCharacter,
     UsedCharacter
 } from "../../../libraries/types/codepoint/character";
 import {CodepointStore} from "../codePointStore";
@@ -49,6 +49,19 @@ export class UserCharacterService implements CharacterService {
             }));
     }
 
+    public async getFavorites(): Promise<FavoriteCharacter[]> {
+        const allCharacters = await this.getAllCharacters();
+        const favorite = await this.favoritesStore.getFavorites();
+        const favoriteKeys = favorite.map(ch => ch.codepoint);
+
+        return allCharacters
+            .filter(ch => favoriteKeys.contains(ch.codepoint))
+            .map(character => ({
+                ...favorite.find(usage => usage.codepoint === character.codepoint)!,
+                ...character,
+            }));
+    }
+
     public async getAll(): Promise<MaybeUsedCharacter[]> {
         const allCharacters = await this.getAllCharacters();
         const favoriteCharacters = await this.favoritesStore.getFavorites();
@@ -64,7 +77,7 @@ export class UserCharacterService implements CharacterService {
 	public recordUsage(key: CharacterKey): Promise<ParsedUsageInfo> {
         const timestamp = new Date();
 
-		return this.usageStore.updateCharacter(key, (current) => ({
+		return this.usageStore.upsert(key, (current) => ({
             ...current,
             firstUsed: current?.firstUsed ?? timestamp,
             lastUsed: timestamp,
