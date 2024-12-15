@@ -2,8 +2,6 @@ import {FavoriteCharacter, MaybeFavoriteCharacter, MaybeUsedCharacter} from "../
 import {isFavoriteCharacter} from "../helpers/isFavoriteCharacter";
 import {Order} from "../order/order";
 import {compareNullable} from "./compareNullable";
-import {compareUsageInfo} from "./compareUsageInfo";
-import {compareNumbers} from "./compareNumbers";
 import {compareFavoriteInfo} from "./compareFavoriteInfo";
 
 function toFavoriteCharacter(character: MaybeUsedCharacter): FavoriteCharacter | null {

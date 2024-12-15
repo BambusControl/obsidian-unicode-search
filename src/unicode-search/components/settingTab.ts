@@ -12,6 +12,12 @@ import {UnicodeGeneralCategoryGroup} from "../../libraries/types/unicode/unicode
 import {UnicodeGeneralCategory} from "../../libraries/types/unicode/unicodeGeneralCategory";
 import {DataInitializer} from "../service/dataInitializer";
 import {FavoritesStore} from "../service/favoritesStore";
+import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
+import {Character} from "../../libraries/types/codepoint/character";
+import {mostRecentUses} from "../../libraries/helpers/mostRecentUses";
+import {averageUseCount} from "../../libraries/helpers/averageUseCount";
+import {UsageDisplayStatistics} from "../../libraries/types/usageDisplayStatistics";
+import {compareUsedCharacters} from "../../libraries/comparison/compareUsedCharacters";
 
 export class SettingTab extends PluginSettingTab {
 
@@ -19,14 +25,14 @@ export class SettingTab extends PluginSettingTab {
 
     constructor(
         app: App,
-        plugin: Plugin,
+        private readonly plugin: Plugin,
         private readonly characterService: CharacterService,
         private readonly favoritesStore: FavoritesStore,
         private readonly settingsStore: SettingsStore,
         private readonly initializer: DataInitializer,
     ) {
         super(app, plugin);
-        this.containerEl.addClass("plugin", "unicode-search", "setting-tab")
+        this.containerEl.addClass("plugin", "unicode-search", "setting-tab");
     }
 
     override async display(): Promise<void> {
@@ -47,6 +53,7 @@ export class SettingTab extends PluginSettingTab {
     }
 
     private async displayFavoritesSettings(container: HTMLElement) {
+        /* TODO next: Split favorites into two sections: 1) for adding, and 2) for managing */
         new Setting(container)
             .setHeading()
             .setName("Manage Favorite Characters")
@@ -58,29 +65,80 @@ export class SettingTab extends PluginSettingTab {
         const favorites = await this.characterService.getFavorites();
 
         for (const character of favorites) {
-            new Setting(container)
+            const setting = new Setting(container);
+
+            setting
                 .setName(character.codepoint)
                 .setDesc(character.added.toDateString())
                 .addToggle(toggle => toggle
                     .setValue(character.hotkey)
-                    .onChange(enabled => this.favoritesStore.update(
-                        character.codepoint,
-                        () => ({
-                            hotkey: enabled
-                        })
-                    ))
-                    /* TODO: Register command with enabling of the hotkey */
+                    .onChange(enabled => this.toggleHotkeyCommand(character, enabled))
                 )
                 .addButton(button => button
                     .setTooltip("Remove from favorites")
                     .setIcon("trash")
                     .onClick(async () => {
                         await this.favoritesStore.removeFavorite(character.codepoint);
-                        /* TODO: remove the row */
+                        setting.settingEl.hide()
                     })
                 )
             ;
         }
+
+        /* TODO: extract usage statistics calculation from search modal and favorites management */
+        const usedCharacters = await this.characterService.getUsed();
+        const usageStats = {
+            topThirdRecentlyUsed: mostRecentUses(usedCharacters).slice(0, 3).last() ?? new Date(0),
+            averageUseCount: averageUseCount(usedCharacters),
+        } as UsageDisplayStatistics;
+
+        const suggestions = usedCharacters
+            .filter(suggestion => !favorites.some(favorite => favorite.codepoint === suggestion.codepoint))
+            .sort((l, r) => compareUsedCharacters(l, r, usageStats.topThirdRecentlyUsed))
+            .slice(0, 4)
+        ;
+
+        for (const character of suggestions) {
+            const setting = new Setting(container);
+
+            setting
+                .setName(character.codepoint)
+                // .setDesc(character.added.toDateString())
+                .addToggle(toggle => toggle
+                    .setDisabled(true)
+                    // .setValue(character.hotkey)
+                    // .onChange(enabled => this.toggleHotkeyCommand(character, enabled))
+                )
+                .addButton(button => button
+                    .setTooltip("Add to favorites")
+                    .setIcon("star")
+                    .onClick(async () => {
+                        await this.favoritesStore.addFavorite(character.codepoint);
+                        // setting.settingEl.hide();
+                    })
+                )
+            ;
+        }
+
+    }
+
+    private async toggleHotkeyCommand(character: Character, enabled: boolean): Promise<void> {
+        const insertCharId = `insert-${toHexadecimal(character)}`;
+
+        if (enabled) {
+            this.plugin.addCommand({
+                id: insertCharId,
+                name: `Insert '${character.codepoint}'`,
+                editorCallback: editor => {
+                    editor.replaceSelection(character.codepoint);
+                    return true;
+                },
+            })
+        } else {
+            this.plugin.removeCommand(insertCharId);
+        }
+
+        await this.favoritesStore.update(character.codepoint, () => ({hotkey: enabled}));
     }
 
     private async displayFilterSettings(container: HTMLElement) {

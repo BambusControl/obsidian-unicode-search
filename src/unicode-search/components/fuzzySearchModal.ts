@@ -25,7 +25,7 @@ import {ParsedUsageInfo} from "../../libraries/types/savedata/parsedUsageInfo";
 import { ParsedFavoriteInfo } from "src/libraries/types/savedata/parsedFavoriteInfo";
 
 export class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
-    private usageStatistics: ReadCache<UsageDisplayStatistics>;
+    private readonly usageStatistics: ReadCache<UsageDisplayStatistics>;
 
     public constructor(
         app: App,
@@ -49,7 +49,7 @@ export class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
                 topThirdRecentlyUsed: mostRecentUses(usedCharacters).slice(0, 3).last() ?? new Date(0),
                 averageUseCount: averageUseCount(usedCharacters),
             } as UsageDisplayStatistics;
-        })
+        });
     }
 
     public override async getSuggestions(query: string): Promise<MetaCharacterSearchResult[]> {

@@ -3,7 +3,6 @@ import {UnicodeCodepoint} from "./codepoint";
 
 import {ParsedUsageInfo} from "../savedata/parsedUsageInfo";
 import {ParsedFavoriteInfo} from "../savedata/parsedFavoriteInfo";
-import {FavoriteInfo} from "../savedata/favoriteInfo";
 
 /**
  * Base representation of a character

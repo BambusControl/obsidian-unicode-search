@@ -37,6 +37,8 @@ export default class UnicodeSearchPlugin extends Plugin {
         const downloader = new UcdUserFilterDownloader(optionsStore);
         const initializer = new NewDataInitializer(dataStore, downloader);
 
+        /* TODO: Loading user data needs to add char insert commands */
+
         await initializer.initializeData();
 
         console.info("Adding UI elements");

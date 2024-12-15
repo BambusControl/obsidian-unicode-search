@@ -1,16 +1,12 @@
 import { RootDataStore } from "../rootDataStore";
 import { FavoritesStore } from "../favoritesStore";
-import {Character, CharacterKey} from "../../../libraries/types/codepoint/character";
+import {CharacterKey} from "../../../libraries/types/codepoint/character";
 import {
-    CodepointFavorite,
-    CodepointParsedFavorite,
-    CodepointParsedUsage
+    CodepointParsedFavorite
 } from "../../../libraries/types/savedata/codepoint";
-import { FavoriteInfo } from "../../../libraries/types/savedata/favoriteInfo";
 import { ParsedFavoriteInfo } from "../../../libraries/types/savedata/parsedFavoriteInfo";
 import { FavoritesData } from "src/libraries/types/savedata/favoritesData";
 import { serializeFavoriteInfo } from "../../../libraries/helpers/serializeFavoriteInfo";
-import {ParsedUsageInfo} from "../../../libraries/types/savedata/parsedUsageInfo";
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 
 export class CodepointFavoritesStorage implements FavoritesStore {
@@ -77,6 +73,8 @@ export class CodepointFavoritesStorage implements FavoritesStore {
         const favorites = await this.getFavorites();
         const isFavorite = favorites.some(fav => fav.codepoint === key);
 
+        console.log(`Adding favorite ${key} isFavorite: ${isFavorite}`);
+
         if (!isFavorite) {
             const newFavorite: CodepointParsedFavorite = {
                 codepoint: key,
@@ -89,6 +87,8 @@ export class CodepointFavoritesStorage implements FavoritesStore {
     }
 
     async removeFavorite(key: CharacterKey): Promise<void> {
+        console.log(`Removing favorite ${key}`);
+
         let favorites = await this.getFavorites();
         favorites = favorites.filter(fav => fav.codepoint !== key);
         await this.overwriteFavoritesData(favorites);

@@ -1,9 +1,7 @@
 import {ParsedFavoriteInfo} from "../types/savedata/parsedFavoriteInfo";
 import {Order} from "../order/order";
-import {compareNullable} from "./compareNullable";
 import {inverse} from "../order/inverse";
 import {compareDates} from "./compareDates";
-import {compareNumbers} from "./compareNumbers";
 
 export function compareFavoriteInfo(
     left: ParsedFavoriteInfo,

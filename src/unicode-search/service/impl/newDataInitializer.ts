@@ -1,9 +1,7 @@
 import {RootDataStore} from "../rootDataStore";
-import {CodepointStore} from "../codePointStore";
 import {CharacterDownloader} from "../characterDownloader";
 import {DataInitializer} from "../dataInitializer";
 import {initializationData} from "../../../libraries/data/initializationData";
-import { FavoritesStore } from "../favoritesStore";
 
 export class NewDataInitializer implements DataInitializer {
     constructor(
