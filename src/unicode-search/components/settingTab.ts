@@ -13,7 +13,7 @@ import {UnicodeGeneralCategory} from "../../libraries/types/unicode/unicodeGener
 import {DataInitializer} from "../service/dataInitializer";
 import {FavoritesStore} from "../service/favoritesStore";
 import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
-import {Character} from "../../libraries/types/codepoint/character";
+import {Character, FavoriteCharacter} from "../../libraries/types/codepoint/character";
 import {mostRecentUses} from "../../libraries/helpers/mostRecentUses";
 import {averageUseCount} from "../../libraries/helpers/averageUseCount";
 import {UsageDisplayStatistics} from "../../libraries/types/usageDisplayStatistics";
@@ -53,19 +53,86 @@ export class SettingTab extends PluginSettingTab {
     }
 
     private async displayFavoritesSettings(container: HTMLElement) {
-        /* TODO next: Split favorites into two sections: 1) for adding, and 2) for managing */
         new Setting(container)
             .setHeading()
-            .setName("Manage Favorite Characters")
+            .setName("Favorite Characters")
             .setDesc(
                 "Select your favorite characters to be displayed in the plugin's search results"
             )
         ;
 
+        const favorites = await this.displayModifyFavorites(container);
+
+        await this.displayAddFavorites(container, favorites);
+
+    }
+
+    private async displayAddFavorites(container: HTMLElement, favorites: FavoriteCharacter[]) {
+        new Setting(container)
+            .setName("Add Character to Favorites")
+            .setClass("group-control")
+            .addToggle(toggle => toggle
+                .setValue(false)
+                .onChange(visible => addFavoritesContainer.toggleClass("hidden", !visible))
+            )
+        ;
+
+        const addFavoritesContainer = container.createDiv({cls: ["group-container", "hidden"]});
+        const recommendedCharactersContainer = addFavoritesContainer.createDiv({cls: "item-container"});
+
+        /* TODO: extract usage statistics calculation from search modal and favorites management */
+        const usedCharacters = await this.characterService.getUsed();
+        const usageStats = {
+            topThirdRecentlyUsed: mostRecentUses(usedCharacters).slice(0, 3).last() ?? new Date(0),
+            averageUseCount: averageUseCount(usedCharacters),
+        } as UsageDisplayStatistics;
+
+        const suggestions = usedCharacters
+            .filter(suggestion => !favorites.some(favorite => favorite.codepoint === suggestion.codepoint))
+            .sort((l, r) => compareUsedCharacters(l, r, usageStats.topThirdRecentlyUsed))
+            .slice(0, 4)
+        ;
+
+        for (const character of suggestions) {
+            const setting = new Setting(recommendedCharactersContainer);
+
+            setting
+                .setName(character.codepoint)
+                // .setDesc(character.added.toDateString())
+                .addToggle(toggle => toggle
+                        .setDisabled(true)
+                    // .setValue(character.hotkey)
+                    // .onChange(enabled => this.toggleHotkeyCommand(character, enabled))
+                )
+                .addButton(button => button
+                    .setTooltip("Add to favorites")
+                    .setIcon("star")
+                    .onClick(async () => {
+                        await this.favoritesStore.addFavorite(character.codepoint);
+                        // setting.settingEl.hide();
+                    })
+                )
+            ;
+        }
+    }
+
+    private async displayModifyFavorites(container: HTMLElement) {
+        new Setting(container)
+            .setName("Modify or Remove Favorite Character")
+            .setClass("group-control")
+            .addToggle(toggle => toggle
+                .setValue(false)
+                .onChange(visible => manageFavoritesContainer.toggleClass("hidden", !visible))
+            )
+        ;
+
+        const manageFavoritesContainer = container.createDiv({cls: ["group-container", "hidden"]});
+        const favoriteCharactersContainer = manageFavoritesContainer.createDiv({cls: "item-container"});
+
         const favorites = await this.characterService.getFavorites();
 
         for (const character of favorites) {
-            const setting = new Setting(container);
+            const setting = new Setting(favoriteCharactersContainer);
 
             setting
                 .setName(character.codepoint)
@@ -84,42 +151,7 @@ export class SettingTab extends PluginSettingTab {
                 )
             ;
         }
-
-        /* TODO: extract usage statistics calculation from search modal and favorites management */
-        const usedCharacters = await this.characterService.getUsed();
-        const usageStats = {
-            topThirdRecentlyUsed: mostRecentUses(usedCharacters).slice(0, 3).last() ?? new Date(0),
-            averageUseCount: averageUseCount(usedCharacters),
-        } as UsageDisplayStatistics;
-
-        const suggestions = usedCharacters
-            .filter(suggestion => !favorites.some(favorite => favorite.codepoint === suggestion.codepoint))
-            .sort((l, r) => compareUsedCharacters(l, r, usageStats.topThirdRecentlyUsed))
-            .slice(0, 4)
-        ;
-
-        for (const character of suggestions) {
-            const setting = new Setting(container);
-
-            setting
-                .setName(character.codepoint)
-                // .setDesc(character.added.toDateString())
-                .addToggle(toggle => toggle
-                    .setDisabled(true)
-                    // .setValue(character.hotkey)
-                    // .onChange(enabled => this.toggleHotkeyCommand(character, enabled))
-                )
-                .addButton(button => button
-                    .setTooltip("Add to favorites")
-                    .setIcon("star")
-                    .onClick(async () => {
-                        await this.favoritesStore.addFavorite(character.codepoint);
-                        // setting.settingEl.hide();
-                    })
-                )
-            ;
-        }
-
+        return favorites;
     }
 
     private async toggleHotkeyCommand(character: Character, enabled: boolean): Promise<void> {
@@ -154,6 +186,7 @@ export class SettingTab extends PluginSettingTab {
 
         new Setting(container)
             .setName("General Categories")
+            .setClass("group-control")
             .addToggle(toggle => toggle
                 .setValue(false)
                 .onChange(visible => categoryFilterDiv.toggleClass("hidden", !visible))
@@ -168,6 +201,7 @@ export class SettingTab extends PluginSettingTab {
 
         new Setting(container)
             .setName("Planes and Blocks")
+            .setClass("group-control")
             .addToggle(toggle => toggle
                 .setValue(false)
                 .onChange(visible => planesFilterDiv.toggleClass("hidden", !visible))

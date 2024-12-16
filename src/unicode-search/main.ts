@@ -49,7 +49,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 
             editorCallback: editor => {
                 const modal = new FuzzySearchModal(
-                    app,
+                    this.app,
                     editor,
                     characterService,
                 );

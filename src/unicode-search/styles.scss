@@ -94,6 +94,55 @@
     }
 
     &.setting-tab {
+        .group-control {
+            .checkbox-container {
+                font-size: calc(var(--font-smallest) * 0.9);
+
+                --toggle-thumb-height: 1.5em;
+                --toggle-thumb-width: var(--toggle-thumb-height);
+                --toggle-width: calc(4em + var(--toggle-thumb-height));
+
+                border-radius: calc(var(--checkbox-radius) * .5);
+                background-color: var(--background-modifier-border-hover);
+
+                transition: background-color 0.15s ease-in-out, outline 0.15s ease-in-out, border 0.15s ease-in-out, opacity 0.15s ease-in-out,
+                            color 0.15s ease-in-out, outline 0.15s ease-in-out, border 0.15s ease-in-out, opacity 0.15s ease-in-out;
+                ;
+
+                &:before {
+                    opacity: 100%;
+                    color: var(--text-muted);
+                    padding: 0 .5em;
+                    line-height: 1.85em;
+                    text-transform: uppercase;
+
+                    content: "show";
+                    text-align: end;
+                }
+
+                &:after {
+                    border-radius: calc(var(--checkbox-radius) * .5);
+                    background-color: var(--text-muted);
+                }
+
+                &.is-enabled {
+                    background-color: var(--background-modifier-border-hover);
+
+                    &:before {
+                        content: "hide";
+                        text-align: start;
+                    }
+
+                    &:after {
+                        background-color: var(--interactive-accent);
+                    }
+                }
+
+
+            }
+        }
+
+
         .group-container {
             gap: 1em;
             flex-direction: column;
