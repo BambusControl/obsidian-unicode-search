@@ -215,6 +215,46 @@
             }
         }
 
+        @media (min-width: 40em) {
+            .character-list .setting-item {
+                &:first-child {
+                    padding-top: 0;
+                }
+
+                &:last-child {
+                    padding-bottom: 0;
+                }
+
+                & > .setting-item-info {
+                    display: inline-flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: start;
+                    align-items: center;
+                    gap: 1em;
+
+                    & > .setting-item-name {
+                        font-size: 1.5em;
+                        width: 1.75em;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    & > .setting-item-description {
+                        padding-top: 0;
+                        letter-spacing: 0.025em;
+                        text-transform: capitalize;
+                    }
+                }
+
+                & > .setting-item-control {
+                    flex-grow: 0;
+                }
+            }
+        }
+
         .monospace {
             color: var(--code-normal);
             font-family: var(--font-monospace);
