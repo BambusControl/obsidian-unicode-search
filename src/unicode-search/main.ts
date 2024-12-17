@@ -10,6 +10,7 @@ import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
 import {FuzzySearchModal} from "./components/fuzzySearchModal";
 import {NewDataInitializer} from "./service/impl/newDataInitializer";
 import { CodepointFavoritesStorage } from "./service/impl/codepointFavoritesStorage";
+import {Commander} from "./service/impl/commander";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -37,26 +38,13 @@ export default class UnicodeSearchPlugin extends Plugin {
         const downloader = new UcdUserFilterDownloader(optionsStore);
         const initializer = new NewDataInitializer(dataStore, downloader);
 
-        /* TODO: Loading user data needs to add char insert commands */
-
         await initializer.initializeData();
 
         console.info("Adding UI elements");
 
-        super.addCommand({
-            id: "search-unicode-chars",
-            name: "Search Unicode characters",
-
-            editorCallback: editor => {
-                const modal = new FuzzySearchModal(
-                    this.app,
-                    editor,
-                    characterService,
-                );
-                modal.open();
-                return true;
-            },
-        });
+        const commandAdder = new Commander(this);
+        commandAdder.addModal(characterService)
+        await commandAdder.addFavorites(favoritesStore);
 
         this.addSettingTab(new SettingTab(
             this.app,
