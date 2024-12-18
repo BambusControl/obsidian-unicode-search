@@ -24,6 +24,8 @@ export default class UnicodeSearchPlugin extends Plugin {
     }
 
     public override async onload(): Promise<void> {
+        /* TODO [last]: Cleanup the codebase -- make it intuitive */
+
         console.group("Loading Unicode Search plugin");
         console.time("Unicode Search load time");
 

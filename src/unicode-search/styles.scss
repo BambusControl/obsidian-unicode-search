@@ -166,14 +166,17 @@
             padding: .5em .75em;
             background-color: var(--background-primary-alt);
 
-            > .setting-item.setting-item-heading {
+            & > .setting-item.setting-item-heading {
+
+                &:first-child {
+                    padding-top: 0;
+                }
 
                 @media (min-width: 40em) {
                     margin: .75em 0;
                 }
 
                 & > .setting-item-info {
-                    flex-grow: 1;
 
                     & > .setting-item-name {
                         display: flex;
@@ -182,10 +185,6 @@
                         justify-content: space-between;
                         align-items: center;
                     }
-                }
-
-                & > .setting-item-control {
-                    flex-grow: 0;
                 }
             }
         }
@@ -215,15 +214,19 @@
             }
         }
 
+        .character-list.no-first {
+            & > .setting-item {
+                padding: 0.75em 0;
+                border-top: 1px solid var(--background-modifier-border);
+            }
+        }
+
+        .character-list.new {
+            flex-direction: column-reverse;
+        }
+
         @media (min-width: 40em) {
             .character-list .setting-item {
-                &:first-child {
-                    padding-top: 0;
-                }
-
-                &:last-child {
-                    padding-bottom: 0;
-                }
 
                 & > .setting-item-info {
                     display: inline-flex;
@@ -276,4 +279,50 @@
             }
         }
     }
+
+    & .setting-item {
+        &.focus-control {
+
+            & > .setting-item-info {
+                width: 0;
+            }
+
+            & > .setting-item-control {
+                flex-grow: 1;
+
+                & > input:only-child {
+                    width: 100%;
+                }
+
+            }
+
+        }
+
+        &.codepoint-interval {
+
+            & > .setting-item-info {
+                flex-grow: 1;
+            }
+
+            & > .setting-item-control {
+                flex-grow: 0;
+            }
+
+        }
+
+        &.prompt-input {
+            & input {
+                width: 100%;
+                padding: var(--size-4-3);
+                padding-inline-end: var(--size-4-6);
+                background-color: var(--background-primary);
+                font-size: var(--font-ui-medium);
+                border: none;
+                height: var(--prompt-input-height);
+                border-radius: 0;
+                border-bottom: 1px solid var(--background-secondary);
+            }
+        }
+    }
+
 }

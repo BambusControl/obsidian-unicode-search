@@ -4,6 +4,7 @@ import {toHexadecimal} from "../../../libraries/helpers/toHexadecimal";
 import {CodepointKey} from "../../../libraries/types/codepoint/codepointKey";
 import {FuzzySearchModal} from "../../components/fuzzySearchModal";
 import {CharacterService} from "../characterService";
+import {InsertCharacterModal} from "../../components/insertCharacterModal";
 
 export class Commander {
     constructor(
@@ -17,10 +18,10 @@ export class Commander {
             name: "Search Unicode characters",
 
             editorCallback: editor => {
-                const modal = new FuzzySearchModal(
+                const modal = new InsertCharacterModal(
                     this.plugin.app,
-                    editor,
                     characters,
+                    editor,
                 );
                 modal.open();
                 return true;

@@ -1,4 +1,4 @@
-import {App, Editor, renderMatches, SuggestModal} from "obsidian";
+import {App, Editor, Instruction, renderMatches, SuggestModal} from "obsidian";
 import {MetaCharacterSearchResult} from "./characterSearch";
 import {CharacterService} from "../service/characterService";
 import {
@@ -23,20 +23,22 @@ import {matchedNameOrCodepoint} from "../../libraries/helpers/matchedNameOrCodep
 
 import {ParsedUsageInfo} from "../../libraries/types/savedata/parsedUsageInfo";
 import { ParsedFavoriteInfo } from "src/libraries/types/savedata/parsedFavoriteInfo";
+import {isFavoriteCharacter} from "../../libraries/helpers/isFavoriteCharacter";
 
-export class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
+export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
     private readonly usageStatistics: ReadCache<UsageDisplayStatistics>;
 
-    public constructor(
+    protected constructor(
         app: App,
-        private readonly editor: Editor,
-        private readonly characterService: CharacterService,
+        protected readonly characterService: CharacterService,
+        chooseCharacter: Instruction,
+
     ) {
         super(app);
 
         super.setInstructions([
             NAVIGATE_INSTRUCTION,
-            INSERT_CHAR_INSTRUCTION,
+            chooseCharacter,
             INSTRUCTION_DISMISS,
         ]);
 
@@ -106,10 +108,7 @@ export class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
 			cls: "attributes",
 		});
 
-		const maybeFavoriteChar = char as Partial<ParsedFavoriteInfo>;
-		const showFavorite = maybeFavoriteChar.hotkey != null && maybeFavoriteChar.hotkey;
-
-		if (showFavorite) {
+		if (isFavoriteCharacter(char)) {
 			attributes.createDiv(ELEMENT_FAVORITE);
 		} else {
             const usageStats = await this.usageStatistics.get();
@@ -129,15 +128,15 @@ export class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
         }
     }
 
-    public override async onChooseSuggestion(search: MetaCharacterSearchResult, evt: MouseEvent | KeyboardEvent): Promise<void> {
-        this.editor.replaceSelection(search.character.codepoint);
-
-        try {
-            await this.characterService.recordUsage(search.character.codepoint);
-        } catch (error) {
-            console.error("Failed to record character usage", {err: error});
-        }
-    }
+    // public override async onChooseSuggestion(search: MetaCharacterSearchResult, evt: MouseEvent | KeyboardEvent): Promise<void> {
+    //     this.editor.replaceSelection(search.character.codepoint);
+    //
+    //     try {
+    //         await this.characterService.recordUsage(search.character.codepoint);
+    //     } catch (error) {
+    //         console.error("Failed to record character usage", {err: error});
+    //     }
+    // }
 
     public override async onNoSuggestion(): Promise<void> {
         await this.setRandomPlaceholder();

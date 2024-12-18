@@ -1,4 +1,4 @@
-import {App, Plugin, PluginSettingTab, Setting} from "obsidian";
+import {App, FuzzySuggestModal, Plugin, PluginSettingTab, PopoverSuggest, Scope, Setting} from "obsidian";
 import {UNICODE_PLANES_ALL} from "../../libraries/data/unicodePlanes";
 import {UnicodeBlock} from "../../libraries/types/unicode/unicodeBlock";
 
@@ -18,6 +18,8 @@ import {mostRecentUses} from "../../libraries/helpers/mostRecentUses";
 import {averageUseCount} from "../../libraries/helpers/averageUseCount";
 import {UsageDisplayStatistics} from "../../libraries/types/usageDisplayStatistics";
 import {compareUsedCharacters} from "../../libraries/comparison/compareUsedCharacters";
+import {PickCharacterModal} from "./pickCharacterModal";
+import {ParsedFavoriteInfo} from "../../libraries/types/savedata/parsedFavoriteInfo";
 
 export class SettingTab extends PluginSettingTab {
 
@@ -42,14 +44,16 @@ export class SettingTab extends PluginSettingTab {
 
         const container = this.containerEl.createDiv({cls: "filter-settings"});
 
-        await this.displayFavoritesSettings(container);
         await this.displayFilterSettings(container);
+        await this.displayFavoritesSettings(container);
 
         this.rendered = true;
     }
 
-    override hide(): Promise<void> {
-        return this.initializer.initializeData();
+    override async hide(): Promise<void> {
+        await this.initializer.initializeData();
+        this.containerEl.empty();
+        this.rendered = false;
     }
 
     private async displayFavoritesSettings(container: HTMLElement) {
@@ -59,17 +63,6 @@ export class SettingTab extends PluginSettingTab {
             .setDesc(
                 "Select your favorite characters to be displayed in the plugin's search results"
             )
-        ;
-
-        const favorites = await this.characterService.getFavorites();
-
-        await this.displayModifyFavorites(container, favorites);
-        await this.displayAddFavorites(container, favorites);
-    }
-
-    private async displayModifyFavorites(container: HTMLElement, favorites: FavoriteCharacter[]) {
-        new Setting(container)
-            .setName("Modify Favorite Characters")
             .setClass("group-control")
             .addToggle(toggle => toggle
                 .setValue(false)
@@ -77,75 +70,62 @@ export class SettingTab extends PluginSettingTab {
             )
         ;
 
+        const favorites = await this.characterService.getFavorites();
+
         const manageFavoritesContainer = container.createDiv({cls: ["group-container", "hidden"]});
-        const favoriteCharactersContainer = manageFavoritesContainer.createDiv({cls: ["item-container", "character-list"]});
+        const itemContainer = manageFavoritesContainer.createDiv({cls: ["item-container"]});
+        const newCharacterList = itemContainer.createDiv({cls: ["character-list", "new"]});
+        const characterList = itemContainer.createDiv({cls: ["character-list", "no-first"]});
+
+        new Setting(newCharacterList)
+            .setName("")
+            .setDesc("")
+            .addButton(btn => {
+                btn.setIcon("plus")
+                btn.onClick(async _ => {
+                    const char = await PickCharacterModal.open(this.plugin.app, this.characterService);
+
+                    if (char == null) {
+                        return;
+                    }
+
+                    const isAlreadyFavorite = favorites.some(fav => fav.codepoint === char.codepoint);
+                    if (isAlreadyFavorite) {
+                        return;
+                    }
+
+                    const favorite = await this.favoritesStore.addFavorite(char.codepoint);
+                    const favoriteChar = {...favorite, ...char};
+                    this.displayFavoriteChar(newCharacterList, favoriteChar)
+                })
+            })
+        ;
 
         for (const character of favorites) {
-            const setting = new Setting(favoriteCharactersContainer);
-
-            setting
-                .setName(character.codepoint)
-                .setDesc(character.name)
-                .addToggle(toggle => toggle
-                    .setTooltip("Add insert command to Obsidian")
-                    .setValue(character.hotkey)
-                    .onChange(enabled => this.toggleHotkeyCommand(character, enabled))
-                )
-                .addButton(button => button
-                    .setIcon("trash")
-                    .setTooltip("Remove from favorites")
-                    .onClick(() => {
-                        setting.settingEl.hide()
-                        return this.favoritesStore.removeFavorite(character.codepoint);
-                    })
-                )
-            ;
+            this.displayFavoriteChar(characterList, character);
         }
     }
 
-    private async displayAddFavorites(container: HTMLElement, favorites: FavoriteCharacter[]) {
-        /* TODO NEXT: search favorites the same way as the search modal */
+    private displayFavoriteChar(container: HTMLElement, character: FavoriteCharacter) {
+        const setting = new Setting(container);
 
-        new Setting(container)
-            .setName("Add Character to Favorites")
-            .setClass("group-control")
+        setting
+            .setName(character.codepoint)
+            .setDesc(character.name)
             .addToggle(toggle => toggle
-                .setValue(false)
-                .onChange(visible => addFavoritesContainer.toggleClass("hidden", !visible))
+                .setTooltip("Add insert command to Obsidian")
+                .setValue(character.hotkey)
+                .onChange(enabled => this.toggleHotkeyCommand(character, enabled))
+            )
+            .addButton(button => button
+                .setIcon("trash")
+                .setTooltip("Remove from favorites")
+                .onClick(() => {
+                    setting.settingEl.hide()
+                    return this.favoritesStore.removeFavorite(character.codepoint);
+                })
             )
         ;
-
-        const addFavoritesContainer = container.createDiv({cls: ["group-container", "hidden"]});
-        const recommendedCharactersContainer = addFavoritesContainer.createDiv({cls: ["item-container", "character-list"]});
-
-        const usedCharacters = await this.characterService.getUsed();
-        const usageStats = {
-            topThirdRecentlyUsed: mostRecentUses(usedCharacters).slice(0, 3).last() ?? new Date(0),
-            averageUseCount: averageUseCount(usedCharacters),
-        } as UsageDisplayStatistics;
-
-        const suggestions = usedCharacters
-            .filter(suggestion => !favorites.some(favorite => favorite.codepoint === suggestion.codepoint))
-            .sort((l, r) => compareUsedCharacters(l, r, usageStats.topThirdRecentlyUsed))
-            .slice(0, 4)
-        ;
-
-        for (const character of suggestions) {
-            const setting = new Setting(recommendedCharactersContainer);
-
-            setting
-                .setName(character.codepoint)
-                .setDesc(character.name)
-                .addButton(button => button
-                    .setIcon("star")
-                    .setTooltip("Add to favorites")
-                    .onClick(() => {
-                        setting.settingEl.hide();
-                        return this.favoritesStore.addFavorite(character.codepoint);
-                    })
-                )
-            ;
-        }
     }
 
     private async toggleHotkeyCommand(character: Character, enabled: boolean): Promise<void> {
@@ -229,6 +209,7 @@ export class SettingTab extends PluginSettingTab {
 
         new Setting(planeContainer)
             .setHeading()
+            .setClass("codepoint-interval")
             .setName(createFragment(fragment => {
                 fragment.createSpan().appendText(plane.description);
                 SettingTab.codepointFragment(fragment, plane.interval)

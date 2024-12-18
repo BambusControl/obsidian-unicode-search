@@ -69,21 +69,24 @@ export class CodepointFavoritesStorage implements FavoritesStore {
         return data[foundIndex];
     }
 
-    async addFavorite(key: CharacterKey): Promise<void> {
+    async addFavorite(key: CharacterKey): Promise<CodepointParsedFavorite> {
         const favorites = await this.getFavorites();
-        const isFavorite = favorites.some(fav => fav.codepoint === key);
+        const foundFavorite = favorites.find(fav => fav.codepoint === key);
 
-        console.log(`Adding favorite ${key} isFavorite: ${isFavorite}`);
-
-        if (!isFavorite) {
-            const newFavorite: CodepointParsedFavorite = {
-                codepoint: key,
-                added: new Date(),
-                hotkey: false
-            };
-            favorites.unshift(newFavorite);
-            await this.overwriteFavoritesData(favorites);
+        if (foundFavorite != null) {
+            return foundFavorite;
         }
+
+        const newFavorite: CodepointParsedFavorite = {
+            codepoint: key,
+            added: new Date(),
+            hotkey: false
+        };
+
+        favorites.unshift(newFavorite);
+        await this.overwriteFavoritesData(favorites);
+
+        return newFavorite;
     }
 
     async removeFavorite(key: CharacterKey): Promise<void> {

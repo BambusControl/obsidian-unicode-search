@@ -6,7 +6,7 @@ export interface FavoritesStore {
     update(key: CharacterKey, apply: (char: ParsedFavoriteInfo) => Partial<ParsedFavoriteInfo>): Promise<CodepointParsedFavorite>;
     getFavorites(): Promise<CodepointParsedFavorite[]>;
     /* Maybe replace with upsert*/
-    addFavorite(key: CharacterKey): Promise<void>;
+    addFavorite(key: CharacterKey): Promise<CodepointParsedFavorite>;
     removeFavorite(key: CharacterKey): Promise<void>;
 
 
