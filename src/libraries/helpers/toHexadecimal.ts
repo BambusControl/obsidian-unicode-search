@@ -1,7 +1,7 @@
 import {asHexadecimal} from "./asHexadecimal";
-import {Character} from "../types/codepoint/character";
+import {CodepointKey} from "../types/codepoint/codepointKey";
 
-export function toHexadecimal(character: Character): string {
+export function toHexadecimal(character: CodepointKey): string {
     /* Characters are expected to always have a single character */
     return asHexadecimal(character.codepoint.codePointAt(0)!);
 }

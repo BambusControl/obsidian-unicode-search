@@ -6,6 +6,7 @@ import {RootDataStore} from "../rootDataStore";
 import {SettingsData} from "../../../libraries/types/savedata/settingsData";
 import {UsageData} from "../../../libraries/types/savedata/usageData";
 import {UnicodeData} from "../../../libraries/types/savedata/unicodeData";
+import {FavoritesData} from "../../../libraries/types/savedata/favoritesData";
 
 export class RootPluginDataStorage implements RootDataStore {
 
@@ -118,6 +119,28 @@ export class RootPluginDataStorage implements RootDataStore {
         };
 
         await this.overwriteUsage(mergedData);
+    }
+
+    async getFavorites(): Promise<FavoritesData> {
+        return (await this.storedData.get()).favorites;
+    }
+
+    async overwriteFavorites(favorites: FavoritesData): Promise<FavoritesData> {
+        const mergedData = await this.mergeData({
+            favorites: favorites,
+        });
+
+        return mergedData.favorites;
+    }
+
+    async setInitializedFavorites(value: boolean): Promise<void> {
+        const data = await this.getFavorites();
+        const mergedData: FavoritesData = {
+            ...data,
+            initialized: value,
+        };
+
+        await this.overwriteFavorites(mergedData);
     }
 
     private async mergeData(data: Partial<SaveData>): Promise<SaveData> {

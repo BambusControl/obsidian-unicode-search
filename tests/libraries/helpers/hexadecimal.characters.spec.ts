@@ -5,8 +5,6 @@ test(
     () => {
         expect(toHexadecimal({
             codepoint: "b",
-            name: "latin small letter b",
-            category: "Ll"
         })).toBe("0062")
     }
 )

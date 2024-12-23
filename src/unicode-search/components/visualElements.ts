@@ -26,3 +26,9 @@ export const ELEMENT_FREQUENT: DomElementInfo = {
 	text: "↺",
 	title: "used frequently",
 };
+
+export const ELEMENT_FAVORITE: DomElementInfo = {
+	cls: "icon inline-description favorite",
+	text: "☆",
+	title: "favorite",
+};

@@ -7,3 +7,4 @@ import {CodepointUsage} from "./codepoint";
 export interface UsageData extends Initializable {
     codepoints: Array<CodepointUsage>
 }
+

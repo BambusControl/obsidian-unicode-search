@@ -1,4 +1,4 @@
-import {App, Plugin, PluginSettingTab, Setting} from "obsidian";
+import {App, FuzzySuggestModal, Plugin, PluginSettingTab, PopoverSuggest, Scope, Setting} from "obsidian";
 import {UNICODE_PLANES_ALL} from "../../libraries/data/unicodePlanes";
 import {UnicodeBlock} from "../../libraries/types/unicode/unicodeBlock";
 
@@ -11,20 +11,35 @@ import {UNICODE_CHARACTER_CATEGORIES} from "../../libraries/data/unicodeCharacte
 import {UnicodeGeneralCategoryGroup} from "../../libraries/types/unicode/unicodeGeneralCategoryGroup";
 import {UnicodeGeneralCategory} from "../../libraries/types/unicode/unicodeGeneralCategory";
 import {DataInitializer} from "../service/dataInitializer";
+import {FavoritesStore} from "../service/favoritesStore";
+import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
+import {Character, FavoriteCharacter} from "../../libraries/types/codepoint/character";
+import {mostRecentUses} from "../../libraries/helpers/mostRecentUses";
+import {averageUseCount} from "../../libraries/helpers/averageUseCount";
+import {UsageDisplayStatistics} from "../../libraries/types/usageDisplayStatistics";
+import {compareUsedCharacters} from "../../libraries/comparison/compareUsedCharacters";
+import {PickCharacterModal} from "./pickCharacterModal";
+import {ParsedFavoriteInfo} from "../../libraries/types/savedata/parsedFavoriteInfo";
 
 export class SettingTab extends PluginSettingTab {
+    /* TODO [non-func]: Make settings code easier to comprehend
+     * Try using svelte for nicer UI component code.
+     * Also, the naming is confusing.
+     * Don't forget about the CSS styles too.
+     */
 
     private rendered = false;
 
     constructor(
         app: App,
-        plugin: Plugin,
+        private readonly plugin: Plugin,
         private readonly characterService: CharacterService,
+        private readonly favoritesStore: FavoritesStore,
         private readonly settingsStore: SettingsStore,
         private readonly initializer: DataInitializer,
     ) {
         super(app, plugin);
-        this.containerEl.addClass("plugin", "unicode-search", "setting-tab")
+        this.containerEl.addClass("plugin", "unicode-search", "setting-tab");
     }
 
     override async display(): Promise<void> {
@@ -32,8 +47,113 @@ export class SettingTab extends PluginSettingTab {
             return;
         }
 
-        const container = this.containerEl.createDiv({cls: "filter-settings"});
+        const filterSettings = this.containerEl.createDiv({cls: "filter-settings"});
+        await this.displayFilterSettings(filterSettings);
 
+        const favoriteSettings = this.containerEl.createDiv({cls: "favorite-settings"});
+        await this.displayFavoritesSettings(favoriteSettings);
+
+        this.rendered = true;
+    }
+
+    override async hide(): Promise<void> {
+        await this.initializer.initializeData();
+        this.containerEl.empty();
+        this.rendered = false;
+    }
+
+    private async displayFavoritesSettings(container: HTMLElement) {
+        new Setting(container)
+            .setHeading()
+            .setName("Favorite Characters")
+            .setDesc(
+                "Select your favorite characters to be displayed in the plugin's search results"
+            )
+            .setClass("group-control")
+            .addToggle(toggle => toggle
+                .setValue(false)
+                .onChange(visible => manageFavoritesContainer.toggleClass("hidden", !visible))
+            )
+        ;
+
+        const favorites = await this.characterService.getFavorites();
+
+        const manageFavoritesContainer = container.createDiv({cls: ["group-container", "hidden"]});
+        const itemContainer = manageFavoritesContainer.createDiv({cls: ["item-container"]});
+        const newCharacterList = itemContainer.createDiv({cls: ["character-list", "new"]});
+        const characterList = itemContainer.createDiv({cls: ["character-list", "no-first"]});
+
+        new Setting(newCharacterList)
+            .setName("")
+            .setDesc("")
+            .addButton(btn => {
+                btn.setIcon("plus")
+                btn.onClick(async _ => {
+                    const char = await PickCharacterModal.open(this.plugin.app, this.characterService);
+
+                    if (char == null) {
+                        return;
+                    }
+
+                    const isAlreadyFavorite = favorites.some(fav => fav.codepoint === char.codepoint);
+                    if (isAlreadyFavorite) {
+                        return;
+                    }
+
+                    const favorite = await this.favoritesStore.addFavorite(char.codepoint);
+                    const favoriteChar = {...favorite, ...char};
+                    this.displayFavoriteChar(newCharacterList, favoriteChar)
+                })
+            })
+        ;
+
+        for (const character of favorites) {
+            this.displayFavoriteChar(characterList, character);
+        }
+    }
+
+    private displayFavoriteChar(container: HTMLElement, character: FavoriteCharacter) {
+        const setting = new Setting(container);
+
+        setting
+            .setName(character.codepoint)
+            .setDesc(character.name)
+            .addToggle(toggle => toggle
+                .setTooltip("Add insert command to Obsidian")
+                .setValue(character.hotkey)
+                .onChange(enabled => this.toggleHotkeyCommand(character, enabled))
+            )
+            .addButton(button => button
+                .setIcon("trash")
+                .setTooltip("Remove from favorites")
+                .onClick(() => {
+                    setting.settingEl.hide()
+                    return this.favoritesStore.removeFavorite(character.codepoint);
+                })
+            )
+        ;
+    }
+
+    private async toggleHotkeyCommand(character: Character, enabled: boolean): Promise<void> {
+        const insertCharId = `insert-${toHexadecimal(character)}`;
+
+        if (enabled) {
+            this.plugin.addCommand({
+                id: insertCharId,
+                name: `Insert '${character.codepoint}'`,
+                editorCallback: editor => {
+                    editor.replaceSelection(character.codepoint);
+                    return true;
+                },
+            })
+        } else {
+            this.plugin.removeCommand(insertCharId);
+        }
+
+        await this.favoritesStore.update(character.codepoint, () => ({hotkey: enabled}));
+    }
+
+    private async displayFilterSettings(container: HTMLElement) {
         new Setting(container)
             .setHeading()
             .setName("Unicode Character Filters")
@@ -44,20 +164,9 @@ export class SettingTab extends PluginSettingTab {
             )
         ;
 
-        await this.displayFilterSettings(container);
-
-        this.rendered = true;
-    }
-
-    override hide(): Promise<void> {
-        return this.initializer.initializeData();
-    }
-
-    private async displayFilterSettings(container: HTMLElement) {
         new Setting(container)
-            .setHeading()
             .setName("General Categories")
-            .setDesc("Include or exclude any Unicode general character categories.")
+            .setClass("group-control")
             .addToggle(toggle => toggle
                 .setValue(false)
                 .onChange(visible => categoryFilterDiv.toggleClass("hidden", !visible))
@@ -71,9 +180,8 @@ export class SettingTab extends PluginSettingTab {
         }
 
         new Setting(container)
-            .setHeading()
             .setName("Planes and Blocks")
-            .setDesc("Include or exclude of any Unicode blocks.")
+            .setClass("group-control")
             .addToggle(toggle => toggle
                 .setValue(false)
                 .onChange(visible => planesFilterDiv.toggleClass("hidden", !visible))
@@ -107,6 +215,7 @@ export class SettingTab extends PluginSettingTab {
 
         new Setting(planeContainer)
             .setHeading()
+            .setClass("codepoint-interval")
             .setName(createFragment(fragment => {
                 fragment.createSpan().appendText(plane.description);
                 SettingTab.codepointFragment(fragment, plane.interval)

@@ -61,6 +61,10 @@ export function initializationData(): SaveData {
         unicode: {
             initialized: false,
             codepoints: []
+        },
+        favorites: {
+            initialized: false,
+            codepoints: []
         }
     }
 }

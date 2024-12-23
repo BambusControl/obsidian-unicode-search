@@ -4,15 +4,21 @@ import {RootPluginDataStorage} from "./service/impl/rootPluginDataStorage";
 import {CodepointStorage} from "./service/impl/codepointStorage";
 import {SettingsStorage} from "./service/impl/settingsStorage";
 import {SettingTab} from "./components/settingTab";
-import {UsageCharacterService} from "./service/impl/usageCharacterService";
+import {UserCharacterService} from "./service/impl/userCharacterService";
 import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
 
 import {FuzzySearchModal} from "./components/fuzzySearchModal";
 import {NewDataInitializer} from "./service/impl/newDataInitializer";
+import { CodepointFavoritesStorage } from "./service/impl/codepointFavoritesStorage";
+import {Commander} from "./service/impl/commander";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
 export default class UnicodeSearchPlugin extends Plugin {
+    /* TODO [non-func]: Cleanup the codebase -- make it intuitive
+     * There's a bunch of unnecessary classes and extraneous generalizations.
+     * Add docs to the necessary parts.
+     */
 
     public constructor(
         app: App,
@@ -30,34 +36,25 @@ export default class UnicodeSearchPlugin extends Plugin {
         const dataStore = new RootPluginDataStorage(this);
         const codepointStore = new CodepointStorage(dataStore);
         const usageStore = new CodepointUsageStorage(dataStore);
-        const characterService = new UsageCharacterService(codepointStore, usageStore);
+        const favoritesStore = new CodepointFavoritesStorage(dataStore);
+        const characterService = new UserCharacterService(codepointStore, usageStore, favoritesStore);
         const optionsStore = new SettingsStorage(dataStore);
         const downloader = new UcdUserFilterDownloader(optionsStore);
-        const initializer = new NewDataInitializer(dataStore, codepointStore, downloader);
+        const initializer = new NewDataInitializer(dataStore, downloader);
 
         await initializer.initializeData();
 
         console.info("Adding UI elements");
 
-        super.addCommand({
-            id: "search-unicode-chars",
-            name: "Search Unicode characters",
-
-            editorCallback: editor => {
-                const modal = new FuzzySearchModal(
-                    app,
-                    editor,
-                    characterService,
-                );
-                modal.open();
-                return true;
-            },
-        });
+        const commandAdder = new Commander(this);
+        commandAdder.addModal(characterService)
+        await commandAdder.addFavorites(favoritesStore);
 
         this.addSettingTab(new SettingTab(
             this.app,
             this,
             characterService,
+            favoritesStore,
             optionsStore,
             initializer,
         ));

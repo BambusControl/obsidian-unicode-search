@@ -1,6 +1,7 @@
 import {SettingsData} from "../../libraries/types/savedata/settingsData";
 import {UsageData} from "../../libraries/types/savedata/usageData";
 import {UnicodeData} from "../../libraries/types/savedata/unicodeData";
+import {FavoritesData} from "../../libraries/types/savedata/favoritesData";
 
 export interface RootDataStore {
     isInitialized(): Promise<boolean>;
@@ -19,4 +20,8 @@ export interface RootDataStore {
     getUsage(): Promise<UsageData>
     overwriteUsage(usage: UsageData): Promise<UsageData>
     setInitializedUsage(value: boolean): Promise<void>
+
+    getFavorites(): Promise<FavoritesData>
+    overwriteFavorites(favorites: FavoritesData): Promise<FavoritesData>
+    setInitializedFavorites(value: boolean): Promise<void>
 }

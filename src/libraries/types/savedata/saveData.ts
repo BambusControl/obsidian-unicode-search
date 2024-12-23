@@ -2,6 +2,7 @@ import {SettingsData} from "./settingsData";
 import {UsageData} from "./usageData";
 import {UnicodeData} from "./unicodeData";
 import {Initializable} from "./initializable";
+import {FavoritesData} from "./favoritesData";
 
 export interface SaveData extends Initializable {
     version: SaveDataVersion;
@@ -9,6 +10,7 @@ export interface SaveData extends Initializable {
     settings: SettingsData;
     unicode: UnicodeData;
     usage: UsageData;
+    favorites: FavoritesData;
 }
 
 /**
@@ -21,7 +23,8 @@ export type SaveDataVersion
     = "0.4.0"
     | "0.5.0"
     | "0.6.0"
+    | "0.6.1-NEXT"
     // Update only if save data schema changed
     ;
 
-export const CURRENT_VERSION: SaveDataVersion = "0.6.0";
+export const CURRENT_VERSION: SaveDataVersion = "0.6.1-NEXT";

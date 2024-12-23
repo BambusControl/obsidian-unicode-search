@@ -1,9 +1,9 @@
 import {MaybeUsedCharacter} from "../types/codepoint/character";
-import {MaybeUsedCharacterMatch} from "../../unicode-search/components/characterSearch";
+import {MaybeMetaCharacterSearchResult} from "../../unicode-search/components/characterSearch";
 
-export function toNullMatch(character: MaybeUsedCharacter): MaybeUsedCharacterMatch {
+export function toNullMatch(character: MaybeUsedCharacter): MaybeMetaCharacterSearchResult {
     return {
-        item: character,
+        character: character,
         match: {
             codepoint: null,
             name: null
