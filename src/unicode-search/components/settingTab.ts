@@ -47,11 +47,8 @@ export class SettingTab extends PluginSettingTab {
             return;
         }
 
-        const filterSettings = this.containerEl.createDiv({cls: "filter-settings"});
-        await this.displayFilterSettings(filterSettings);
-
-        const favoriteSettings = this.containerEl.createDiv({cls: "favorite-settings"});
-        await this.displayFavoritesSettings(favoriteSettings);
+        await this.displayFilterSettings(this.containerEl);
+        await this.displayFavoritesSettings(this.containerEl);
 
         this.rendered = true;
     }
@@ -67,7 +64,8 @@ export class SettingTab extends PluginSettingTab {
             .setHeading()
             .setName("Favorite Characters")
             .setDesc(
-                "Select your favorite characters to be displayed in the plugin's search results"
+                "Manage your favorite characters which will be displayed in the plugin's search results. " +
+                "You can also enable them as a hotkey, making them available as a command in Obsidian."
             )
             .setClass("group-control")
             .addToggle(toggle => toggle

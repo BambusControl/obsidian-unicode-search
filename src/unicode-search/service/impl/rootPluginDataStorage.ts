@@ -29,6 +29,7 @@ export class RootPluginDataStorage implements RootDataStore {
             && !data.settings.modified
             && data.unicode.initialized
             && data.usage.initialized
+            && data.favorites.initialized
         ;
     }
 
