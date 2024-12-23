@@ -22,6 +22,11 @@ import {PickCharacterModal} from "./pickCharacterModal";
 import {ParsedFavoriteInfo} from "../../libraries/types/savedata/parsedFavoriteInfo";
 
 export class SettingTab extends PluginSettingTab {
+    /* TODO [non-func]: Make settings code easier to comprehend
+     * Try using svelte for nicer UI component code.
+     * Also, the naming is confusing.
+     * Don't forget about the CSS styles too.
+     */
 
     private rendered = false;
 
@@ -41,7 +46,6 @@ export class SettingTab extends PluginSettingTab {
         if (this.rendered) {
             return;
         }
-
 
         const filterSettings = this.containerEl.createDiv({cls: "filter-settings"});
         await this.displayFilterSettings(filterSettings);

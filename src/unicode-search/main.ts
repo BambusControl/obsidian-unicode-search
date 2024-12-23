@@ -15,6 +15,10 @@ import {Commander} from "./service/impl/commander";
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
 export default class UnicodeSearchPlugin extends Plugin {
+    /* TODO [non-func]: Cleanup the codebase -- make it intuitive
+     * There's a bunch of unnecessary classes and extraneous generalizations.
+     * Add docs to the necessary parts.
+     */
 
     public constructor(
         app: App,
@@ -24,8 +28,6 @@ export default class UnicodeSearchPlugin extends Plugin {
     }
 
     public override async onload(): Promise<void> {
-        /* TODO [last]: Cleanup the codebase -- make it intuitive */
-
         console.group("Loading Unicode Search plugin");
         console.time("Unicode Search load time");
 

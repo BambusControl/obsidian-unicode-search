@@ -26,6 +26,11 @@ import { ParsedFavoriteInfo } from "src/libraries/types/savedata/parsedFavoriteI
 import {isFavoriteCharacter} from "../../libraries/helpers/isFavoriteCharacter";
 
 export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
+    /* TODO [non-func]: Extract the functionalities needed for inserting/picking characters
+     * Picking characters needs to have a filter for chars too.
+     * The inheritance used here is very messy, use composition instead.
+     */
+
     private readonly usageStatistics: ReadCache<UsageDisplayStatistics>;
 
     protected constructor(
