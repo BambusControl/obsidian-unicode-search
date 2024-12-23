@@ -2,6 +2,8 @@
 
 ![Obsidian Downloads](https://img.shields.io/badge/dynamic/json?label=downloads&query=%24%5B%22unicode-search%22%5D%5B%22downloads%22%5D&url=https%3A%2F%2Fraw.githubusercontent.com%2Fobsidianmd%2Fobsidian-releases%2Fmaster%2Fcommunity-plugin-stats.json&logo=obsidian&color=8b6cef&logoColor=8b6cef&labelColor=f1f2f3&logoWidth=20&style=for-the-badge)
 
+> See [what's new](https://github.com/BambusControl/obsidian-unicode-search/releases)!
+
 Search the [Unicode Character Database](https://www.unicode.org/ucd/) index
 and insert any character into your editor.
 Mobile is also supported!
