@@ -23,6 +23,12 @@ export class NewDataInitializer implements DataInitializer {
         }
 
         if (!await this.dataStore.isCurrentVersion()) {
+            /* TODO [before-next-release]: Save data version update deletes user data
+             * Create a recursive save data structure, where data will be initialized when all the leafs are.
+             * Each section has version number and initialization status---see `Initializable`.
+             * The main initializer runs all sub-initializers, and they collectively handle data mapping to new versions.
+             * Each section will need an implemented update function from version X to version Y.
+             */
             console.log("Plugin and Data version mismatch, reinitializing")
             await this.dataStore.setInitialized(false);
             await this.dataStore.setInitializedSettings(false);

@@ -22,6 +22,12 @@ These are my notes on the development of the plugin.
 
 ## Development Diary
 
+### 23. December 2023
+
+Before releasing the new feature, I have to fix the user save data implementation.
+Now it deletes their data when a new version of the plugin is loaded.
+So, it would forget the favorite characters after an update.
+
 ### 19. December 2024
 
 This small plugin became a bit too elaborately written.
