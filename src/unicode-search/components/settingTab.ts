@@ -42,10 +42,12 @@ export class SettingTab extends PluginSettingTab {
             return;
         }
 
-        const container = this.containerEl.createDiv({cls: "filter-settings"});
 
-        await this.displayFilterSettings(container);
-        await this.displayFavoritesSettings(container);
+        const filterSettings = this.containerEl.createDiv({cls: "filter-settings"});
+        await this.displayFilterSettings(filterSettings);
+
+        const favoriteSettings = this.containerEl.createDiv({cls: "favorite-settings"});
+        await this.displayFavoritesSettings(favoriteSettings);
 
         this.rendered = true;
     }

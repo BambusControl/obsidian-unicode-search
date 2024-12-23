@@ -142,7 +142,6 @@
             }
         }
 
-
         .group-container {
             gap: 1em;
             flex-direction: column;
@@ -278,9 +277,8 @@
                 color: var(--text-normal);
             }
         }
-    }
 
-    & .setting-item {
+        .setting-item {
         &.focus-control {
 
             & > .setting-item-info {
@@ -324,5 +322,13 @@
             }
         }
     }
+
+        .favorite-settings .setting-item-control {
+            button:not(.clickable-icon) {
+                width: revert;
+            }
+        }
+    }
+
 
 }
