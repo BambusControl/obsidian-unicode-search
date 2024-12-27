@@ -1,10 +1,9 @@
 # Normalize line endings to LF.
 * text eol=lf
-
 # Ensure the following are treated as binary.
-*.gif   binary
+*.gif filter=lfs diff=lfs merge=lfs -text
 *.jar   binary
 *.jpeg  binary
 *.jpg   binary
-*.png   binary
+*.png filter=lfs diff=lfs merge=lfs -text
 *.vsd   binary
