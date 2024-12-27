@@ -1,29 +1,27 @@
-import {App, Editor, Instruction, renderMatches, SuggestModal} from "obsidian";
+import {App, Instruction, renderMatches, SuggestModal} from "obsidian";
 import {MetaCharacterSearchResult} from "./characterSearch";
 import {CharacterService} from "../service/characterService";
 import {
     ELEMENT_FAVORITE,
     ELEMENT_FREQUENT,
     ELEMENT_RECENT,
-    INSERT_CHAR_INSTRUCTION,
     INSTRUCTION_DISMISS,
     NAVIGATE_INSTRUCTION
 } from "./visualElements";
-import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
-import {getRandomItem} from "../../libraries/helpers/getRandomItem";
+import {toHexadecimal} from "../../libraries/helpers/oud/toHexadecimal";
+import {getRandomItem} from "../../libraries/helpers/oud/getRandomItem";
 import {fillNullCharacterMatchScores} from "../../libraries/comparison/fillNullCharacterMatchScores";
 import {compareCharacterMatches} from "../../libraries/comparison/compareCharacterMatches";
 import {ReadCache} from "../../libraries/types/readCache";
-import {mostRecentUses} from "../../libraries/helpers/mostRecentUses";
-import {averageUseCount} from "../../libraries/helpers/averageUseCount";
+import {mostRecentUses} from "../../libraries/helpers/oud/mostRecentUses";
+import {averageUseCount} from "../../libraries/helpers/oud/averageUseCount";
 import {UsageDisplayStatistics} from "../../libraries/types/usageDisplayStatistics";
-import {toNullMatch} from "../../libraries/helpers/toNullMatch";
-import {toSearchQueryMatch} from "../../libraries/helpers/toSearchQueryMatch";
-import {matchedNameOrCodepoint} from "../../libraries/helpers/matchedNameOrCodepoint";
+import {toNullMatch} from "../../libraries/helpers/oud/toNullMatch";
+import {toSearchQueryMatch} from "../../libraries/helpers/oud/toSearchQueryMatch";
+import {matchedNameOrCodepoint} from "../../libraries/helpers/oud/matchedNameOrCodepoint";
 
-import {ParsedUsageInfo} from "../../libraries/types/savedata/parsedUsageInfo";
-import { ParsedFavoriteInfo } from "src/libraries/types/savedata/parsedFavoriteInfo";
-import {isFavoriteCharacter} from "../../libraries/helpers/isFavoriteCharacter";
+import {ParsedUsageInfo} from "../../libraries/types/savedata/oud/parsedUsageInfo";
+import {isFavoriteCharacter} from "../../libraries/helpers/oud/isFavoriteCharacter";
 
 export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
     /* TODO [non-func]: Extract the functionalities needed for inserting/picking characters

@@ -3,10 +3,10 @@ import { FavoritesStore } from "../favoritesStore";
 import {CharacterKey} from "../../../libraries/types/codepoint/character";
 import {
     CodepointParsedFavorite
-} from "../../../libraries/types/savedata/codepoint";
-import { ParsedFavoriteInfo } from "../../../libraries/types/savedata/parsedFavoriteInfo";
-import { FavoritesData } from "src/libraries/types/savedata/favoritesData";
-import { serializeFavoriteInfo } from "../../../libraries/helpers/serializeFavoriteInfo";
+} from "../../../libraries/types/savedata/oud/codepoint";
+import { ParsedFavoriteInfo } from "../../../libraries/types/savedata/oud/parsedFavoriteInfo";
+import { FavoritesData } from "src/libraries/types/savedata/oud/favoritesData";
+import { serializeFavoriteInfo } from "../../../libraries/helpers/oud/serializeFavoriteInfo";
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 
 export class CodepointFavoritesStorage implements FavoritesStore {

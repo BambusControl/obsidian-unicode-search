@@ -1,5 +1,5 @@
 import {FavoriteCharacter, MaybeFavoriteCharacter, MaybeUsedCharacter} from "../types/codepoint/character";
-import {isFavoriteCharacter} from "../helpers/isFavoriteCharacter";
+import {isFavoriteCharacter} from "../helpers/oud/isFavoriteCharacter";
 import {Order} from "../order/order";
 import {compareNullable} from "./compareNullable";
 import {compareFavoriteInfo} from "./compareFavoriteInfo";

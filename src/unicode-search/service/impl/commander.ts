@@ -1,8 +1,7 @@
 import {Plugin} from "obsidian";
 import {FavoritesStore} from "../favoritesStore";
-import {toHexadecimal} from "../../../libraries/helpers/toHexadecimal";
+import {toHexadecimal} from "../../../libraries/helpers/oud/toHexadecimal";
 import {CodepointKey} from "../../../libraries/types/codepoint/codepointKey";
-import {FuzzySearchModal} from "../../components/fuzzySearchModal";
 import {CharacterService} from "../characterService";
 import {InsertCharacterModal} from "../../components/insertCharacterModal";
 

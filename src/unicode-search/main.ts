@@ -7,7 +7,6 @@ import {SettingTab} from "./components/settingTab";
 import {UserCharacterService} from "./service/impl/userCharacterService";
 import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
 
-import {FuzzySearchModal} from "./components/fuzzySearchModal";
 import {NewDataInitializer} from "./service/impl/newDataInitializer";
 import { CodepointFavoritesStorage } from "./service/impl/codepointFavoritesStorage";
 import {Commander} from "./service/impl/commander";

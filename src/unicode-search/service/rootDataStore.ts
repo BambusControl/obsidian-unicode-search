@@ -1,7 +1,7 @@
-import {SettingsData} from "../../libraries/types/savedata/settingsData";
-import {UsageData} from "../../libraries/types/savedata/usageData";
-import {UnicodeData} from "../../libraries/types/savedata/unicodeData";
-import {FavoritesData} from "../../libraries/types/savedata/favoritesData";
+import {SettingsData} from "../../libraries/types/savedata/oud/settingsData";
+import {UsageData} from "../../libraries/types/savedata/oud/usageData";
+import {UnicodeData} from "../../libraries/types/savedata/oud/unicodeData";
+import {FavoritesData} from "../../libraries/types/savedata/oud/favoritesData";
 
 export interface RootDataStore {
     isInitialized(): Promise<boolean>;

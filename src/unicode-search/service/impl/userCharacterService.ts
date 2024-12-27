@@ -9,7 +9,7 @@ import {CharacterService} from "../characterService";
 import {UsageStore} from "../usageStore";
 
 
-import {ParsedUsageInfo} from "../../../libraries/types/savedata/parsedUsageInfo";
+import {ParsedUsageInfo} from "../../../libraries/types/savedata/oud/parsedUsageInfo";
 import {FavoritesStore} from "../favoritesStore";
 
 export class UserCharacterService implements CharacterService {

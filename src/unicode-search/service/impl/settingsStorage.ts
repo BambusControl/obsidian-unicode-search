@@ -1,18 +1,18 @@
 import {RootDataStore} from "../rootDataStore";
 import {SettingsStore} from "../settingsStore";
-import {BlockFilter, CategoryFilter, FilterData} from "../../../libraries/types/savedata/filterData";
+import {BlockFilter, CategoryFilter, UnicodeFilter} from "../../../libraries/types/savedata/oud/unicodeFilter";
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {CodepointInterval} from "../../../libraries/types/codepoint/codepointInterval";
-import {intervalsEqual} from "../../../libraries/helpers/intervalsEqual";
-import {intervalWithin} from "../../../libraries/helpers/intervalWithin";
-import {CharacterCategoryType} from "../../../libraries/data/characterCategory";
+import {intervalsEqual} from "../../../libraries/helpers/oud/intervalsEqual";
+import {intervalWithin} from "../../../libraries/helpers/oud/intervalWithin";
+import {CharacterCategoryType} from "../../../libraries/data/oud/characterCategory";
 
 export class SettingsStorage implements SettingsStore {
 
     constructor(private readonly store: RootDataStore) {
     }
 
-    async getFilter(): Promise<FilterData> {
+    async getFilter(): Promise<UnicodeFilter> {
         return (await this.store.getSettings()).filter
     }
 

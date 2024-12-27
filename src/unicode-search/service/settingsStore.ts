@@ -1,9 +1,9 @@
-import {FilterData} from "../../libraries/types/savedata/filterData";
+import {UnicodeFilter} from "../../libraries/types/savedata/oud/unicodeFilter";
 import {CodepointInterval} from "../../libraries/types/codepoint/codepointInterval";
-import {CharacterCategoryType} from "../../libraries/data/characterCategory";
+import {CharacterCategoryType} from "../../libraries/data/oud/characterCategory";
 
 export interface SettingsStore {
-    getFilter(): Promise<FilterData>
+    getFilter(): Promise<UnicodeFilter>
 
     getCharacterBlock(block: CodepointInterval): Promise<boolean>
     setCharacterBlock(block: CodepointInterval, set: boolean): Promise<void>

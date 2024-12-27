@@ -5,7 +5,7 @@ import {compareNumbers} from "./compareNumbers";
 import {compareDates} from "./compareDates";
 import {compareNullable} from "./compareNullable";
 
-import {ParsedUsageInfo} from "../types/savedata/parsedUsageInfo";
+import {ParsedUsageInfo} from "../types/savedata/oud/parsedUsageInfo";
 
 export function compareUsageInfo(
     left: ParsedUsageInfo,

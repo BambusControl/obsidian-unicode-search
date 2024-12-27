@@ -1,4 +1,4 @@
-import {UnicodePlaneNumber} from "../../data/unicodePlaneNumber";
+import {UnicodePlaneNumber} from "../../data/oud/unicodePlaneNumber";
 
 import {CodepointInterval} from "../codepoint/codepointInterval";
 

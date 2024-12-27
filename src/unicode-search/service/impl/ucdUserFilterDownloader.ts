@@ -4,9 +4,9 @@ import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {UnicodeCodepoints, UnicodeCodepoint} from "../../../libraries/types/codepoint/codepoint";
 import {CharacterDownloader} from "../characterDownloader";
 import {SettingsStore} from "../settingsStore";
-import {mergeIntervals} from "../../../libraries/helpers/mergeIntervals";
-import {codepointIn} from "../../../libraries/helpers/codePointIn";
-import {CharacterCategoryType} from "../../../libraries/data/characterCategory";
+import {mergeIntervals} from "../../../libraries/helpers/oud/mergeIntervals";
+import {codepointIn} from "../../../libraries/helpers/oud/codePointIn";
+import {CharacterCategoryType} from "../../../libraries/data/oud/characterCategory";
 import {CodepointInterval} from "../../../libraries/types/codepoint/codepointInterval";
 
 export class UcdUserFilterDownloader implements CharacterDownloader {

@@ -1,25 +1,20 @@
-import {App, FuzzySuggestModal, Plugin, PluginSettingTab, PopoverSuggest, Scope, Setting} from "obsidian";
-import {UNICODE_PLANES_ALL} from "../../libraries/data/unicodePlanes";
+import {App, Plugin, PluginSettingTab, Setting} from "obsidian";
+import {UNICODE_PLANES_ALL} from "../../libraries/data/oud/unicodePlanes";
 import {UnicodeBlock} from "../../libraries/types/unicode/unicodeBlock";
 
-import {asHexadecimal} from "../../libraries/helpers/asHexadecimal";
+import {asHexadecimal} from "../../libraries/helpers/oud/asHexadecimal";
 import {CharacterService} from "../service/characterService";
 import {SettingsStore} from "../service/settingsStore";
 import {CodepointInterval} from "../../libraries/types/codepoint/codepointInterval";
 import {UnicodePlane} from "../../libraries/types/unicode/unicodePlane";
-import {UNICODE_CHARACTER_CATEGORIES} from "../../libraries/data/unicodeCharacterCategories";
+import {UNICODE_CHARACTER_CATEGORIES} from "../../libraries/data/oud/unicodeCharacterCategories";
 import {UnicodeGeneralCategoryGroup} from "../../libraries/types/unicode/unicodeGeneralCategoryGroup";
 import {UnicodeGeneralCategory} from "../../libraries/types/unicode/unicodeGeneralCategory";
 import {DataInitializer} from "../service/dataInitializer";
 import {FavoritesStore} from "../service/favoritesStore";
-import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
+import {toHexadecimal} from "../../libraries/helpers/oud/toHexadecimal";
 import {Character, FavoriteCharacter} from "../../libraries/types/codepoint/character";
-import {mostRecentUses} from "../../libraries/helpers/mostRecentUses";
-import {averageUseCount} from "../../libraries/helpers/averageUseCount";
-import {UsageDisplayStatistics} from "../../libraries/types/usageDisplayStatistics";
-import {compareUsedCharacters} from "../../libraries/comparison/compareUsedCharacters";
 import {PickCharacterModal} from "./pickCharacterModal";
-import {ParsedFavoriteInfo} from "../../libraries/types/savedata/parsedFavoriteInfo";
 
 export class SettingTab extends PluginSettingTab {
     /* TODO [non-func]: Make settings code easier to comprehend

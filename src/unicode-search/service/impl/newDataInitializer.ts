@@ -1,7 +1,7 @@
 import {RootDataStore} from "../rootDataStore";
 import {CharacterDownloader} from "../characterDownloader";
 import {DataInitializer} from "../dataInitializer";
-import {initializationData} from "../../../libraries/data/initializationData";
+import {initializationData} from "../../../libraries/data/oud/initializationData";
 
 export class NewDataInitializer implements DataInitializer {
     constructor(
