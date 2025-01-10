@@ -20,7 +20,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "papaparse": "^5"
+    "papaparse": "^5.5.1"
   },
   "devDependencies": {
     "@types/jest": "^29",
