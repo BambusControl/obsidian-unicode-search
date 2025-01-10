@@ -32,74 +32,42 @@ const DATA_DEFAULTS: InclusionDefaults = {
     ],
 }
 
-export function initializationData(): SaveData {
+export function bambusInitialization(): Bambus {
     return {
         initialized: false,
         version: CURRENT_VERSION,
-        settings: {
-            initialized: false,
-            modified: false,
-            filter: {
-                planes: UNICODE_PLANES_ALL.map(plane => ({
-                    ...plane.interval,
-                    blocks: plane.blocks.map(block => ({
-                        ...block.interval,
-                        included: DATA_DEFAULTS.planes.includes(plane.planeNumber),
-                    }))
-                })),
-                categoryGroups: UNICODE_CHARACTER_CATEGORIES.map(group => ({
-                    abbreviation: group.abbreviation,
-                    categories: group.categories.map(category => ({
-                        abbreviation: category.abbreviation,
-                        included: DATA_DEFAULTS.categories.includes(group.abbreviation),
-                    }))
-                })),
-            }
-        },
-        usage: {
-            initialized: false,
-            codepoints: []
-        },
-        unicode: {
-            initialized: false,
-            codepoints: []
-        },
-        favorites: {
-            initialized: false,
-            codepoints: []
-        }
     }
 }
 
-function bambusInitialization(): Bambus {
+/* TODO REMOVE */
+function filterInitializationData() {
     return {
-        initialized: false,
-        version: CURRENT_VERSION,
-    }
+        ...bambusInitialization(),
+
+        modified: false,
+        unicode: {
+            planes: UNICODE_PLANES_ALL.map(plane => ({
+                ...plane.interval,
+                blocks: plane.blocks.map(block => ({
+                    ...block.interval,
+                    included: DATA_DEFAULTS.planes.includes(plane.planeNumber),
+                }))
+            })),
+            categoryGroups: UNICODE_CHARACTER_CATEGORIES.map(group => ({
+                abbreviation: group.abbreviation,
+                categories: group.categories.map(category => ({
+                    abbreviation: category.abbreviation,
+                    included: DATA_DEFAULTS.categories.includes(group.abbreviation),
+                }))
+            })),
+        }
+    };
 }
 
 export function initializationDataNew(): SaveDataNew {
     return {
-        settings: {
-            ...bambusInitialization(),
-
-            modified: false,
-            filter: {
-                planes: UNICODE_PLANES_ALL.map(plane => ({
-                    ...plane.interval,
-                    blocks: plane.blocks.map(block => ({
-                        ...block.interval,
-                        included: DATA_DEFAULTS.planes.includes(plane.planeNumber),
-                    }))
-                })),
-                categoryGroups: UNICODE_CHARACTER_CATEGORIES.map(group => ({
-                    abbreviation: group.abbreviation,
-                    categories: group.categories.map(category => ({
-                        abbreviation: category.abbreviation,
-                        included: DATA_DEFAULTS.categories.includes(group.abbreviation),
-                    }))
-                })),
-            }
+        filter: {
+            ...filterInitializationData()
         },
         usage: {
             ...bambusInitialization(),

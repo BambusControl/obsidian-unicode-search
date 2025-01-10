@@ -4,7 +4,7 @@ import {UsageDataNew} from "./usageDataNew";
 import {FavoritesDataNew} from "./favoritesDataNew";
 
 export interface SaveDataNew {
-    settings: FilterDataNew;
+    filter: FilterDataNew;
     unicode: UnicodeDataNew;
     usage: UsageDataNew;
     favorites: FavoritesDataNew;
