@@ -6,23 +6,50 @@ import {UnicodePlaneNumber} from "../../../libraries/data/oud/unicodePlaneNumber
 import {CharacterCategoryGroupType} from "../../../libraries/data/oud/characterCategoryGroup";
 import {CURRENT_VERSION} from "../../../libraries/types/savedata/oud/saveData";
 import {FilterDataNew} from "../../../libraries/types/savedata/nieuw/filterDataNew";
-import {PluginDataLoader} from "../../../libraries/types/pluginDataLoader";
+import {
+    isTypeBambus,
+    isTypeFilterDataNew,
+    isTypeSaveDataNewSkeleton
+} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
+import {SaveDataNewSkeleton} from "../../../libraries/types/savedata/nieuw/saveDataNew";
 
 export class FilterDataManager implements DataPartManager<FilterDataNew> {
-    async initSkeleton(): Promise<FilterDataNew> {
-        return {
-            initialized: false,
-            version: CURRENT_VERSION,
-            modified: false,
-            unicode: {
-                planes: [],
-                categoryGroups: []
+    async initSkeleton(loadedData: any): Promise<FilterDataNew> {
+        return isTypeFilterDataNew(loadedData)
+            ? loadedData
+            : {
+                initialized: false,
+                version: CURRENT_VERSION,
+                modified: false,
+                unicode: {
+                    planes: [],
+                    categoryGroups: [],
+                },
             }
-        }
     }
 
     initData(): Promise<FilterDataNew> {
-        throw new Error("Method not implemented.");
+        return {
+            initialized: true,
+            version: CURRENT_VERSION,
+            modified: false,
+            unicode: {
+                planes: UNICODE_PLANES_ALL.map(plane => ({
+                    ...plane.interval,
+                    blocks: plane.blocks.map(block => ({
+                        ...block.interval,
+                        included: DATA_DEFAULTS.planes.includes(plane.planeNumber),
+                    }))
+                })),
+                categoryGroups: UNICODE_CHARACTER_CATEGORIES.map(group => ({
+                    abbreviation: group.abbreviation,
+                    categories: group.categories.map(category => ({
+                        abbreviation: category.abbreviation,
+                        included: DATA_DEFAULTS.categories.includes(group.abbreviation),
+                    }))
+                })),
+            }
+        }
     }
 
     updateData(): Promise<FilterDataNew> {
@@ -34,31 +61,6 @@ export class FilterDataManager implements DataPartManager<FilterDataNew> {
     }
 
 }
-
-function filterInitializationData() {
-    return {
-        ...bambusInitialization(),
-
-        modified: false,
-        unicode: {
-            planes: UNICODE_PLANES_ALL.map(plane => ({
-                ...plane.interval,
-                blocks: plane.blocks.map(block => ({
-                    ...block.interval,
-                    included: DATA_DEFAULTS.planes.includes(plane.planeNumber),
-                }))
-            })),
-            categoryGroups: UNICODE_CHARACTER_CATEGORIES.map(group => ({
-                abbreviation: group.abbreviation,
-                categories: group.categories.map(category => ({
-                    abbreviation: category.abbreviation,
-                    included: DATA_DEFAULTS.categories.includes(group.abbreviation),
-                }))
-            })),
-        }
-    };
-}
-
 
 type InclusionDefaults = {
     planes: UnicodePlaneNumber[],
@@ -85,3 +87,4 @@ const DATA_DEFAULTS: InclusionDefaults = {
         // "C",
     ],
 }
+
