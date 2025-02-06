@@ -10,6 +10,7 @@ import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
 import {NewDataInitializer} from "./service/impl/newDataInitializer";
 import { CodepointFavoritesStorage } from "./service/impl/codepointFavoritesStorage";
 import {Commander} from "./service/impl/commander";
+import {RootDataManager} from "./service/nieuw/rootDataManager";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -32,6 +33,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 
         console.info("Creating services");
 
+        const dataStoreNew = new RootDataManager(this);
         const dataStore = new RootPluginDataStorage(this);
         const codepointStore = new CodepointStorage(dataStore);
         const usageStore = new CodepointUsageStorage(dataStore);

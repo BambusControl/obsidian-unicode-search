@@ -1,19 +1,23 @@
 import {DataPartManager} from "./dataPartManager";
 import {UNICODE_PLANES_ALL} from "../../../libraries/data/oud/unicodePlanes";
 import {UNICODE_CHARACTER_CATEGORIES} from "../../../libraries/data/oud/unicodeCharacterCategories";
-import {bambusInitialization} from "../../../libraries/data/nieuw/initializationDataNew";
 import {UnicodePlaneNumber} from "../../../libraries/data/oud/unicodePlaneNumber";
 import {CharacterCategoryGroupType} from "../../../libraries/data/oud/characterCategoryGroup";
-import {CURRENT_VERSION} from "../../../libraries/types/savedata/oud/saveData";
+import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveData";
 import {FilterDataNew} from "../../../libraries/types/savedata/nieuw/filterDataNew";
 import {
-    isTypeBambus,
-    isTypeFilterDataNew,
-    isTypeSaveDataNewSkeleton
+    isTypeFilterDataNew
 } from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
-import {SaveDataNewSkeleton} from "../../../libraries/types/savedata/nieuw/saveDataNew";
+import { SaveDataNew } from "src/libraries/types/savedata/nieuw/saveDataNew";
 
 export class FilterDataManager implements DataPartManager<FilterDataNew> {
+    private readonly dataVersions1 = new Set<SaveDataVersion>(
+        ["0.4.0"
+            , "0.5.0"
+            , "0.6.0"
+            , "0.6.1-NEXT"
+        ]);
+
     async initSkeleton(loadedData: any): Promise<FilterDataNew> {
         return isTypeFilterDataNew(loadedData)
             ? loadedData
@@ -25,11 +29,16 @@ export class FilterDataManager implements DataPartManager<FilterDataNew> {
                     planes: [],
                     categoryGroups: [],
                 },
-            }
+            };
     }
 
-    initData(): Promise<FilterDataNew> {
+    async initData(dataSkeleton: FilterDataNew): Promise<FilterDataNew> {
+        if (dataSkeleton.initialized) {
+            return dataSkeleton;
+        }
+
         return {
+            ...dataSkeleton,
             initialized: true,
             version: CURRENT_VERSION,
             modified: false,
@@ -52,12 +61,13 @@ export class FilterDataManager implements DataPartManager<FilterDataNew> {
         }
     }
 
-    updateData(): Promise<FilterDataNew> {
-        throw new Error("Method not implemented.");
-    }
+    async updateData(parsedData: FilterDataNew): Promise<FilterDataNew> {
+        if (this.dataVersions1.has(parsedData.version)) {
+            return parsedData;
+        }
 
-    verifyData(): Promise<boolean> {
-        throw new Error("Method not implemented.");
+        // No data version
+        return parsedData;
     }
 
 }
