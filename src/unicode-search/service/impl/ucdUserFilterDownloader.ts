@@ -1,7 +1,7 @@
 import {request} from "obsidian";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
-import {UnicodeCodepoints, UnicodeCodepoint} from "../../../libraries/types/codepoint/codepoint";
+import {UnicodeCodepoint} from "../../../libraries/types/codepoint/codepoint";
 import {CharacterDownloader} from "../characterDownloader";
 import {SettingsStore} from "../settingsStore";
 import {mergeIntervals} from "../../../libraries/helpers/oud/mergeIntervals";
@@ -24,7 +24,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
     ) {
     }
 
-    public async download(): Promise<UnicodeCodepoints> {
+    public async download(): Promise<UnicodeCodepoint[]> {
         const unicodeVersion = "14.0.0";
         const unicodeData = await request(`https://www.unicode.org/Public/${unicodeVersion}/ucd/UnicodeData.txt`);
 

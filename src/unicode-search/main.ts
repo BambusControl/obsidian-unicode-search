@@ -7,10 +7,17 @@ import {SettingTab} from "./components/settingTab";
 import {UserCharacterService} from "./service/impl/userCharacterService";
 import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
 
-import {NewDataInitializer} from "./service/impl/newDataInitializer";
 import { CodepointFavoritesStorage } from "./service/impl/codepointFavoritesStorage";
 import {Commander} from "./service/impl/commander";
 import {RootDataManager} from "./service/nieuw/rootDataManager";
+import {FilterDataManager} from "./service/nieuw/filterDataManager";
+import {UnicodeDataManager} from "./service/nieuw/unicodeDataManager";
+import {UsageDataManager} from "./service/nieuw/usageDataManager";
+import {FavoritesDataManager} from "./service/nieuw/favoritesDataManager";
+import {PersistCache} from "../libraries/types/persistCache";
+import {importData} from "../libraries/helpers/oud/importData";
+import {SaveData} from "../libraries/types/savedata/oud/saveData";
+import {SaveDataNew, SaveDataNewSkeleton} from "../libraries/types/savedata/nieuw/saveDataNew";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -33,17 +40,36 @@ export default class UnicodeSearchPlugin extends Plugin {
 
         console.info("Creating services");
 
-        const dataStoreNew = new RootDataManager(this);
-        const dataStore = new RootPluginDataStorage(this);
+        const dataLoader = new PersistCache(
+            () => importData(this),
+            (data) => this.saveData(data)
+        );
+
+        /* TODO [next]: migrate the save data structure for datastore */
+
+        const dataStore = new RootPluginDataStorage(dataLoader as PersistCache<SaveData>);
         const codepointStore = new CodepointStorage(dataStore);
         const usageStore = new CodepointUsageStorage(dataStore);
         const favoritesStore = new CodepointFavoritesStorage(dataStore);
         const characterService = new UserCharacterService(codepointStore, usageStore, favoritesStore);
         const optionsStore = new SettingsStorage(dataStore);
-        const downloader = new UcdUserFilterDownloader(optionsStore);
-        const initializer = new NewDataInitializer(dataStore, downloader);
 
-        await initializer.initializeData();
+        const downloader = new UcdUserFilterDownloader(optionsStore);
+
+        const filterDm = new FilterDataManager();
+        const unicodeDm = new UnicodeDataManager(downloader);
+        const usageDm = new UsageDataManager();
+        const favoritesDm = new FavoritesDataManager();
+
+        const dataManager = new RootDataManager(
+            dataLoader as PersistCache<SaveDataNew | SaveDataNewSkeleton>,
+            filterDm,
+            unicodeDm,
+            usageDm,
+            favoritesDm,
+        );
+
+        await dataManager.initializeData();
 
         console.info("Adding UI elements");
 
@@ -57,7 +83,7 @@ export default class UnicodeSearchPlugin extends Plugin {
             characterService,
             favoritesStore,
             optionsStore,
-            initializer,
+            dataManager,
         ));
 
         console.timeEnd("Unicode Search load time");

@@ -2,6 +2,7 @@ import {DataPartManager} from "./dataPartManager";
 import {UnicodeDataNew} from "../../../libraries/types/savedata/nieuw/unicodeDataNew";
 import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveData";
 import {isTypeFavoritesDataNew, isTypeUnicodeDataNew} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
+import {CharacterDownloader} from "../characterDownloader";
 
 export class UnicodeDataManager implements DataPartManager<UnicodeDataNew> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
@@ -10,6 +11,11 @@ export class UnicodeDataManager implements DataPartManager<UnicodeDataNew> {
     , "0.6.0"
     , "0.6.1-NEXT"
     ])
+
+    constructor(
+        private readonly ucdService: CharacterDownloader,
+    ) {
+    }
 
     async initSkeleton(loadedData: any): Promise<UnicodeDataNew> {
         return isTypeUnicodeDataNew(loadedData)
@@ -22,16 +28,24 @@ export class UnicodeDataManager implements DataPartManager<UnicodeDataNew> {
     }
 
     async initData(dataSkeleton: UnicodeDataNew): Promise<UnicodeDataNew> {
+        /* TODO: Check if filter was modified?? */
         if (dataSkeleton.initialized) {
+            console.info("Unicode code point data already initialized");
             return dataSkeleton;
         }
 
-        /* TODO: should this fetch the unicode data? */
+        console.info("Downloading character database");
+
+        const codepoints = await this.ucdService.download();
+
+        /* TODO: Satisfy filter through downloading?? */
+        //await this.dataStore.setFilterSatisfied(true);
+
         return {
             ...dataSkeleton,
             initialized: true,
             version: CURRENT_VERSION,
-            codepoints: [],
+            codepoints: codepoints,
         };
     }
 

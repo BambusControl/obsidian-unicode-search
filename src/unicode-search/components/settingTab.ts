@@ -10,7 +10,7 @@ import {UnicodePlane} from "../../libraries/types/unicode/unicodePlane";
 import {UNICODE_CHARACTER_CATEGORIES} from "../../libraries/data/oud/unicodeCharacterCategories";
 import {UnicodeGeneralCategoryGroup} from "../../libraries/types/unicode/unicodeGeneralCategoryGroup";
 import {UnicodeGeneralCategory} from "../../libraries/types/unicode/unicodeGeneralCategory";
-import {DataInitializer} from "../service/dataInitializer";
+import {DataManager} from "../service/dataManager";
 import {FavoritesStore} from "../service/favoritesStore";
 import {toHexadecimal} from "../../libraries/helpers/oud/toHexadecimal";
 import {Character, FavoriteCharacter} from "../../libraries/types/codepoint/character";
@@ -31,7 +31,7 @@ export class SettingTab extends PluginSettingTab {
         private readonly characterService: CharacterService,
         private readonly favoritesStore: FavoritesStore,
         private readonly settingsStore: SettingsStore,
-        private readonly initializer: DataInitializer,
+        private readonly initializer: DataManager,
     ) {
         super(app, plugin);
         this.containerEl.addClass("plugin", "unicode-search", "setting-tab");
@@ -109,6 +109,7 @@ export class SettingTab extends PluginSettingTab {
         const setting = new Setting(container);
 
         setting
+            .setClass("favorite-control")
             .setName(character.codepoint)
             .setDesc(character.name)
             .addToggle(toggle => toggle

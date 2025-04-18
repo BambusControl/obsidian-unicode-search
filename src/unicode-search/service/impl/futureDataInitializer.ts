@@ -1,6 +1,6 @@
-import {DataInitializer} from "../dataInitializer";
+import {DataManager} from "../dataManager";
 
-export class FutureDataInitializer implements DataInitializer {
+export class FutureDataInitializer implements DataManager {
     async initializeData(): Promise<void> {
         console.group("Initializing local data");
         await this.initializeAll();

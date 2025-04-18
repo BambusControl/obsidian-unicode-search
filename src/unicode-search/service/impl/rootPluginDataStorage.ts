@@ -10,40 +10,10 @@ import {FavoritesData} from "../../../libraries/types/savedata/oud/favoritesData
 
 export class RootPluginDataStorage implements RootDataStore {
 
-    private storedData: PersistCache<SaveData>;
 
     constructor(
-        readonly dataLoader: PluginDataLoader,
+        private readonly storedData: PersistCache<SaveData>,
     ) {
-        this.storedData = new PersistCache(
-            () => importData(dataLoader),
-            (data) => dataLoader.saveData(data)
-        );
-    }
-
-    async isInitialized(): Promise<boolean> {
-        const data = await this.storedData.get();
-        return data.initialized
-            && data.version === CURRENT_VERSION
-            && data.settings.initialized
-            && !data.settings.modified
-            && data.unicode.initialized
-            && data.usage.initialized
-            && data.favorites.initialized
-        ;
-    }
-
-    async setInitialized(value: boolean): Promise<void> {
-        await this.mergeData({
-            initialized: value,
-        });
-    }
-
-    async isCurrentVersion(): Promise<boolean> {
-        const saveDataVersion = (await this.storedData.get()).version;
-        console.info(`Plugin version: ${CURRENT_VERSION}`);
-        console.info(`Data version: ${saveDataVersion}`);
-        return saveDataVersion === CURRENT_VERSION;
     }
 
     async getUnicode(): Promise<UnicodeData> {
@@ -58,16 +28,6 @@ export class RootPluginDataStorage implements RootDataStore {
         return mergedData.unicode;
     }
 
-    async setInitializedUnicode(value: boolean): Promise<void> {
-        const data = await this.getUnicode()
-        const mergedData: UnicodeData = {
-            ...data,
-            initialized: value,
-        };
-
-        await this.overwriteUnicode(mergedData);
-    }
-
     async getSettings(): Promise<SettingsData> {
         return (await this.storedData.get()).settings;
     }
@@ -78,26 +38,6 @@ export class RootPluginDataStorage implements RootDataStore {
         });
 
         return mergedData.settings;
-    }
-
-    async setInitializedSettings(value: boolean): Promise<void> {
-        const data = await this.getSettings();
-        const mergedData: SettingsData = {
-            ...data,
-            initialized: value,
-        };
-
-        await this.overwriteSettings(mergedData);
-    }
-
-    async setFilterSatisfied(value: boolean): Promise<void> {
-        const data = await this.getSettings();
-        const mergedData: SettingsData = {
-            ...data,
-            modified: !value,
-        };
-
-        await this.overwriteSettings(mergedData);
     }
 
     async getUsage(): Promise<UsageData> {
@@ -112,16 +52,6 @@ export class RootPluginDataStorage implements RootDataStore {
         return mergedData.usage;
     }
 
-    async setInitializedUsage(value: boolean): Promise<void> {
-        const data = await this.getUsage();
-        const mergedData: UsageData = {
-            ...data,
-            initialized: value,
-        };
-
-        await this.overwriteUsage(mergedData);
-    }
-
     async getFavorites(): Promise<FavoritesData> {
         return (await this.storedData.get()).favorites;
     }
@@ -132,16 +62,6 @@ export class RootPluginDataStorage implements RootDataStore {
         });
 
         return mergedData.favorites;
-    }
-
-    async setInitializedFavorites(value: boolean): Promise<void> {
-        const data = await this.getFavorites();
-        const mergedData: FavoritesData = {
-            ...data,
-            initialized: value,
-        };
-
-        await this.overwriteFavorites(mergedData);
     }
 
     private async mergeData(data: Partial<SaveData>): Promise<SaveData> {

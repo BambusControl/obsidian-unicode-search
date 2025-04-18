@@ -1,15 +1,15 @@
-import {UnicodeCodepoints} from "../../libraries/types/codepoint/codepoint";
+import {UnicodeCodepoint} from "../../libraries/types/codepoint/codepoint";
 
 export interface CodepointStore {
 
     /**
      * Retrieve all characters.
      */
-    getCodepoints(): Promise<UnicodeCodepoints>;
+    getCodepoints(): Promise<UnicodeCodepoint[]>;
 
     /**
      * Replace the current set of characters completely.
      * @param codepoints
      */
-    initializeCodepoints(codepoints: UnicodeCodepoints): Promise<void>;
+    initializeCodepoints(codepoints: UnicodeCodepoint[]): Promise<void>;
 }

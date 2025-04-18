@@ -1,17 +1,17 @@
 import {RootDataStore} from "../rootDataStore";
 import {CodepointStore} from "../codePointStore";
-import {UnicodeCodepoints} from "../../../libraries/types/codepoint/codepoint";
+import {UnicodeCodepoint} from "../../../libraries/types/codepoint/codepoint";
 
 export class CodepointStorage implements CodepointStore {
 
     constructor(private readonly store: RootDataStore) {
     }
 
-    async getCodepoints(): Promise<UnicodeCodepoints> {
+    async getCodepoints(): Promise<UnicodeCodepoint[]> {
         return (await this.store.getUnicode()).codepoints;
     }
 
-    async initializeCodepoints(codepoints: UnicodeCodepoints): Promise<void> {
+    async initializeCodepoints(codepoints: UnicodeCodepoint[]): Promise<void> {
         await this.store.overwriteUnicode({
             initialized: true,
             codepoints: codepoints,

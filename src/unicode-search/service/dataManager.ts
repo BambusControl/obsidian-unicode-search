@@ -1,3 +1,3 @@
-export interface DataInitializer {
+export interface DataManager {
     initializeData(): Promise<void>;
 }

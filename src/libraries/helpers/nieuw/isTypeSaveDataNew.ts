@@ -1,5 +1,5 @@
 import {SaveDataNew, SaveDataNewSkeleton} from "../../types/savedata/nieuw/saveDataNew";
-import {Bambus} from "../../types/savedata/nieuw/bambus";
+import {Bambus, InitializedBambus} from "../../types/savedata/nieuw/bambus";
 import {FilterDataNew} from "../../types/savedata/nieuw/filterDataNew";
 import {FavoritesDataNew} from "../../types/savedata/nieuw/favoritesDataNew";
 import {UnicodeDataNew} from "../../types/savedata/nieuw/unicodeDataNew";
@@ -29,8 +29,15 @@ export function isTypeSaveDataNewSkeleton(object: any): object is SaveDataNewSke
 }
 
 export function isTypeBambus(object: any): object is Bambus {
-    return "initialized" in object
+    return object != null
+        && "initialized" in object
         && "version" in object
+        ;
+}
+
+export function isTypeInitializedBambus(object: any): object is InitializedBambus {
+    return isTypeBambus(object)
+        && object.initialized === true
         ;
 }
 

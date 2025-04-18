@@ -2,10 +2,12 @@ import {Plugin} from "obsidian";
 import {SaveData} from "../../types/savedata/oud/saveData";
 import {initializationData} from "../../data/oud/initializationData";
 import {isTypeSaveData} from "./isTypeSaveData";
+import {SaveDataNew} from "../../types/savedata/nieuw/saveDataNew";
 
 export async function importData(
     dataLoader: Pick<Plugin, "loadData">,
-): Promise<SaveData> {
+): Promise<SaveData | SaveDataNew> {
+    /* TODO: redo this crap */
     const localData = await dataLoader.loadData();
     const dataLoaded = isTypeSaveData(localData);
 
