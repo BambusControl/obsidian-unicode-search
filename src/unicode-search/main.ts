@@ -1,13 +1,8 @@
 import {App, Plugin, PluginManifest} from "obsidian";
 import {UcdUserFilterDownloader} from "./service/impl/ucdUserFilterDownloader";
-import {RootPluginDataStorage} from "./service/impl/rootPluginDataStorage";
-import {CodepointStorage} from "./service/impl/codepointStorage";
-import {SettingsStorage} from "./service/impl/settingsStorage";
 import {SettingTab} from "./components/settingTab";
 import {UserCharacterService} from "./service/impl/userCharacterService";
-import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
 
-import { CodepointFavoritesStorage } from "./service/impl/codepointFavoritesStorage";
 import {Commander} from "./service/impl/commander";
 import {RootDataManager} from "./service/nieuw/rootDataManager";
 import {FilterDataManager} from "./service/nieuw/filterDataManager";
@@ -15,9 +10,12 @@ import {UnicodeDataManager} from "./service/nieuw/unicodeDataManager";
 import {UsageDataManager} from "./service/nieuw/usageDataManager";
 import {FavoritesDataManager} from "./service/nieuw/favoritesDataManager";
 import {PersistCache} from "../libraries/types/persistCache";
-import {importData} from "../libraries/helpers/oud/importData";
-import {SaveData} from "../libraries/types/savedata/oud/saveData";
 import {SaveDataNew, SaveDataNewSkeleton} from "../libraries/types/savedata/nieuw/saveDataNew";
+import {RootPluginDataStorageNew} from "./service/nieuw/rootPluginDataStorageNew";
+import {CodepointStorageNew} from "./service/nieuw/codepointStorageNew";
+import {CodepointUsageStorageNew} from "./service/nieuw/codepointUsageStorageNew";
+import {CodepointFavoritesStorageNew} from "./service/nieuw/codepointFavoritesStorageNew";
+import {FilterStorageNew} from "./service/nieuw/filterStorageNew";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -41,18 +39,18 @@ export default class UnicodeSearchPlugin extends Plugin {
         console.info("Creating services");
 
         const dataLoader = new PersistCache(
-            () => importData(this),
+            () => this.loadData(),
             (data) => this.saveData(data)
         );
 
         /* TODO [next]: migrate the save data structure for datastore */
 
-        const dataStore = new RootPluginDataStorage(dataLoader as PersistCache<SaveData>);
-        const codepointStore = new CodepointStorage(dataStore);
-        const usageStore = new CodepointUsageStorage(dataStore);
-        const favoritesStore = new CodepointFavoritesStorage(dataStore);
+        const dataStore = new RootPluginDataStorageNew(dataLoader);
+        const codepointStore = new CodepointStorageNew(dataStore);
+        const usageStore = new CodepointUsageStorageNew(dataStore);
+        const favoritesStore = new CodepointFavoritesStorageNew(dataStore);
         const characterService = new UserCharacterService(codepointStore, usageStore, favoritesStore);
-        const optionsStore = new SettingsStorage(dataStore);
+        const optionsStore = new FilterStorageNew(dataStore);
 
         const downloader = new UcdUserFilterDownloader(optionsStore);
 

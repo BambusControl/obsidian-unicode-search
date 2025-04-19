@@ -8,7 +8,6 @@ import {FilterDataNew} from "../../../libraries/types/savedata/nieuw/filterDataN
 import {
     isTypeFilterDataNew
 } from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
-import { SaveDataNew } from "src/libraries/types/savedata/nieuw/saveDataNew";
 
 export class FilterDataManager implements DataPartManager<FilterDataNew> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(

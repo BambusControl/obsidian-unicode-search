@@ -1,4 +1,3 @@
-import {PluginDataLoader} from "../../../libraries/types/pluginDataLoader";
 import {FilterDataManager} from "./filterDataManager";
 import {PersistCache} from "../../../libraries/types/persistCache";
 import {SaveDataNew, SaveDataNewSkeleton} from "../../../libraries/types/savedata/nieuw/saveDataNew";
@@ -7,7 +6,6 @@ import {UsageDataManager} from "./usageDataManager";
 import {FavoritesDataManager} from "./favoritesDataManager";
 import {isTypeSaveDataNewSkeleton} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
 import {DataManager} from "../dataManager";
-import {SaveData} from "../../../libraries/types/savedata/oud/saveData";
 
 export class RootDataManager implements DataManager {
     constructor(
@@ -24,26 +22,33 @@ export class RootDataManager implements DataManager {
         const loadedData: any = await this.storedData.get();
 
         /* Do we have something? */
-        console.info("Skeleton initialization")
+        console.group("Skeleton initialization")
+        console.info({loadedData});
         const skeleton = await this.initSkeleton(loadedData);
+        console.groupEnd();
 
-        console.info("Data initialization")
+        console.group("Data initialization")
+        console.info({skeleton});
         /* Does the skeleton have data? */
         const initializedData = await this.initData(skeleton);
+        console.groupEnd();
 
-        console.info("Data update")
+        console.group("Data update")
+        console.info({initializedData});
         /* Is the data up to date with the latest data version? */
         const upToDateData = await this.updateData(initializedData);
+        console.groupEnd();
 
-        console.info("Persisting data")
-        console.info({upToDateData})
-
+        console.group("Persisting data")
+        console.info({upToDateData});
         this.storedData.set(upToDateData);
         await this.storedData.persist();
+        console.groupEnd();
     }
 
     private async initSkeleton(loadedData: any): Promise<SaveDataNew> {
         const dataLoaded = isTypeSaveDataNewSkeleton(loadedData);
+        console.info({dataLoaded})
         const dataSkeleton: SaveDataNewSkeleton = dataLoaded
             ? loadedData
             : {

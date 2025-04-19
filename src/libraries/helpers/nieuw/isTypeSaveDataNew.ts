@@ -6,28 +6,24 @@ import {UnicodeDataNew} from "../../types/savedata/nieuw/unicodeDataNew";
 import {UnicodeFilter} from "../../types/savedata/oud/unicodeFilter";
 import {UsageDataNew} from "../../types/savedata/nieuw/usageDataNew";
 
-export function isTypeSaveDataNew(object: any): object is SaveDataNew {
-    return object != null
-        && "settings" in object
-        && isTypeBambus(object.settings ?? {})
-        && "usage" in object
-        && isTypeBambus(object.usage ?? {})
-        && "unicode" in object
-        && isTypeBambus(object.unicode ?? {})
-        ;
-}
 
 export function isTypeSaveDataNewSkeleton(object: any): object is SaveDataNewSkeleton {
     return object != null
-        && "settings" in object
-        && object.settings == null
-        && "usage" in object
-        && object.usage == null
+        && "filter" in object
         && "unicode" in object
-        && object.unicode == null
+        && "usage" in object
+        && "favorites" in object
         ;
 }
 
+export function isTypeSaveDataNew(object: any): object is SaveDataNew {
+    return isTypeSaveDataNewSkeleton(object)
+        && isTypeBambus(object.filter ?? {})
+        && isTypeBambus(object.usage ?? {})
+        && isTypeBambus(object.unicode ?? {})
+        && isTypeBambus(object.favorites ?? {})
+        ;
+}
 export function isTypeBambus(object: any): object is Bambus {
     return object != null
         && "initialized" in object

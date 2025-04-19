@@ -3,8 +3,6 @@ import {UNICODE_PLANES_ALL} from "./unicodePlanes";
 import {UNICODE_CHARACTER_CATEGORIES} from "./unicodeCharacterCategories";
 import {UnicodePlaneNumber} from "./unicodePlaneNumber";
 import {CharacterCategoryGroupType} from "./characterCategoryGroup";
-import {Bambus} from "../../types/savedata/nieuw/bambus";
-import {SaveDataNew} from "../../types/savedata/nieuw/saveDataNew";
 
 type InclusionDefaults = {
     planes: UnicodePlaneNumber[],

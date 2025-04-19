@@ -162,7 +162,7 @@
                     line-height: 1.85em;
                     text-transform: uppercase;
 
-                    content: "kb";
+                    content: "INSERT";
                     text-align: end;
                 }
 
@@ -175,7 +175,7 @@
                     background-color: var(--background-modifier-border-hover);
 
                     &:before {
-                        content: "x";
+                        content: "DEL";
                         text-align: start;
                     }
 

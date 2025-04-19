@@ -1,6 +1,5 @@
 import {DataPartManager} from "./dataPartManager";
 import {FavoritesDataNew} from "../../../libraries/types/savedata/nieuw/favoritesDataNew";
-import {initializationData} from "../../../libraries/data/oud/initializationData";
 import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveData";
 import {isTypeFavoritesDataNew} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
 

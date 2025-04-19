@@ -1,7 +1,7 @@
 import {DataPartManager} from "./dataPartManager";
 import {UnicodeDataNew} from "../../../libraries/types/savedata/nieuw/unicodeDataNew";
 import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveData";
-import {isTypeFavoritesDataNew, isTypeUnicodeDataNew} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
+import {isTypeUnicodeDataNew} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
 import {CharacterDownloader} from "../characterDownloader";
 
 export class UnicodeDataManager implements DataPartManager<UnicodeDataNew> {
@@ -29,6 +29,9 @@ export class UnicodeDataManager implements DataPartManager<UnicodeDataNew> {
 
     async initData(dataSkeleton: UnicodeDataNew): Promise<UnicodeDataNew> {
         /* TODO: Check if filter was modified?? */
+        console.info({dataSkeleton})
+        console.info(dataSkeleton.initialized)
+
         if (dataSkeleton.initialized) {
             console.info("Unicode code point data already initialized");
             return dataSkeleton;

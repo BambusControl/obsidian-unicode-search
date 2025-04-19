@@ -2,7 +2,6 @@ import {FilterDataNew} from "./filterDataNew";
 import {UnicodeDataNew} from "./unicodeDataNew";
 import {UsageDataNew} from "./usageDataNew";
 import {FavoritesDataNew} from "./favoritesDataNew";
-import {Bambus} from "./bambus";
 
 export interface SaveDataNew {
     filter: FilterDataNew;
@@ -12,8 +11,8 @@ export interface SaveDataNew {
 }
 
 export interface SaveDataNewSkeleton {
-    filter: null;
-    unicode: null;
-    usage: null;
-    favorites: null;
+    filter: any;
+    unicode: any;
+    usage: any;
+    favorites: any;
 }
