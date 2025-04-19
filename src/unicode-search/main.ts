@@ -16,6 +16,7 @@ import {CodepointStorageNew} from "./service/nieuw/codepointStorageNew";
 import {CodepointUsageStorageNew} from "./service/nieuw/codepointUsageStorageNew";
 import {CodepointFavoritesStorageNew} from "./service/nieuw/codepointFavoritesStorageNew";
 import {FilterStorageNew} from "./service/nieuw/filterStorageNew";
+import {MetaDataManager} from "./service/nieuw/metaDataManager";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -43,8 +44,6 @@ export default class UnicodeSearchPlugin extends Plugin {
             (data) => this.saveData(data)
         );
 
-        /* TODO [next]: migrate the save data structure for datastore */
-
         const dataStore = new RootPluginDataStorageNew(dataLoader);
         const codepointStore = new CodepointStorageNew(dataStore);
         const usageStore = new CodepointUsageStorageNew(dataStore);
@@ -54,6 +53,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 
         const downloader = new UcdUserFilterDownloader(optionsStore);
 
+        const metaDm = new MetaDataManager();
         const filterDm = new FilterDataManager();
         const unicodeDm = new UnicodeDataManager(downloader);
         const usageDm = new UsageDataManager();
@@ -61,6 +61,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 
         const dataManager = new RootDataManager(
             dataLoader as PersistCache<SaveDataNew | SaveDataNewSkeleton>,
+            metaDm,
             filterDm,
             unicodeDm,
             usageDm,

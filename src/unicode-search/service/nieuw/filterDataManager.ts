@@ -8,18 +8,19 @@ import {FilterDataNew} from "../../../libraries/types/savedata/nieuw/filterDataN
 import {
     isTypeFilterDataNew
 } from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
+import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaDataNew";
 
 export class FilterDataManager implements DataPartManager<FilterDataNew> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
-        ["0.4.0"
-            , "0.5.0"
-            , "0.6.0"
-            , "0.6.1-NEXT"
+        [ "0.4.0"
+        , "0.5.0"
+        , "0.6.0"
+        , "0.6.1-NEXT"
         ]);
 
-    async initSkeleton(loadedData: any): Promise<FilterDataNew> {
-        return isTypeFilterDataNew(loadedData)
-            ? loadedData
+    async initSkeleton(rawData: any): Promise<T> {
+        return isTypeFilterDataNew(rawData)
+            ? rawData
             : {
                 initialized: false,
                 version: CURRENT_VERSION,
@@ -31,7 +32,7 @@ export class FilterDataManager implements DataPartManager<FilterDataNew> {
             };
     }
 
-    async initData(dataSkeleton: FilterDataNew): Promise<FilterDataNew> {
+    async initData(dataSkeleton: T): Promise<T> {
         if (dataSkeleton.initialized) {
             return dataSkeleton;
         }
@@ -60,7 +61,7 @@ export class FilterDataManager implements DataPartManager<FilterDataNew> {
         }
     }
 
-    async updateData(parsedData: FilterDataNew): Promise<FilterDataNew> {
+    async updateData(parsedData: T, events: Set<DataEvent>): Promise<T> {
         if (this.dataVersions1.has(parsedData.version)) {
             return parsedData;
         }

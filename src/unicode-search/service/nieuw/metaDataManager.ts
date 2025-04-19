@@ -1,28 +1,27 @@
 import {DataPartManager} from "./dataPartManager";
-import {UsageDataNew} from "../../../libraries/types/savedata/nieuw/usageDataNew";
+import {DataEvent, MetaDataNew} from "../../../libraries/types/savedata/nieuw/metaDataNew";
 import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveData";
-import {isTypeUsageDataNew} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
-import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaDataNew";
+import {isTypeMetaDataNew} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
 
-export class UsageDataManager implements DataPartManager<UsageDataNew> {
+export class MetaDataManager implements DataPartManager<MetaDataNew> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
-    [ "0.4.0"
-    , "0.5.0"
-    , "0.6.0"
-    , "0.6.1-NEXT"
-    ])
+        ["0.4.0"
+        , "0.5.0"
+        , "0.6.0"
+        , "0.6.1-NEXT"
+        ]);
 
-    async initSkeleton(rawData: any): Promise<T> {
-        return isTypeUsageDataNew(rawData)
+    async initSkeleton(rawData: any): Promise<MetaDataNew> {
+        return isTypeMetaDataNew(rawData)
             ? rawData
             : {
                 initialized: false,
                 version: CURRENT_VERSION,
-                codepoints: [],
+                events: []
             };
     }
 
-    async initData(dataSkeleton: T): Promise<T> {
+    async initData(dataSkeleton: MetaDataNew): Promise<MetaDataNew> {
         if (dataSkeleton.initialized) {
             return dataSkeleton;
         }
@@ -31,16 +30,15 @@ export class UsageDataManager implements DataPartManager<UsageDataNew> {
             ...dataSkeleton,
             initialized: true,
             version: CURRENT_VERSION,
-            codepoints: [],
+            events: []
         };
     }
 
-    async updateData(parsedData: T, events: Set<DataEvent>): Promise<T> {
+    async updateData(parsedData: MetaDataNew, events: Set<DataEvent>): Promise<MetaDataNew> {
         if (this.dataVersions1.has(parsedData.version)) {
             return parsedData;
         }
 
-        // No data version
         return parsedData;
     }
 

@@ -6,10 +6,12 @@ import {UsageDataManager} from "./usageDataManager";
 import {FavoritesDataManager} from "./favoritesDataManager";
 import {isTypeSaveDataNewSkeleton} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
 import {DataManager} from "../dataManager";
+import {MetaDataManager} from "./metaDataManager";
 
 export class RootDataManager implements DataManager {
     constructor(
         private readonly storedData: PersistCache<SaveDataNew | SaveDataNewSkeleton>,
+        private readonly metaDm: MetaDataManager,
         private readonly filterDm: FilterDataManager,
         private readonly unicodeDm: UnicodeDataManager,
         private readonly usageDm: UsageDataManager,
@@ -22,24 +24,24 @@ export class RootDataManager implements DataManager {
         const loadedData: any = await this.storedData.get();
 
         /* Do we have something? */
-        console.group("Skeleton initialization")
+        console.group("Skeleton initialization");
         console.info({loadedData});
         const skeleton = await this.initSkeleton(loadedData);
         console.groupEnd();
 
-        console.group("Data initialization")
+        console.group("Data initialization");
         console.info({skeleton});
         /* Does the skeleton have data? */
         const initializedData = await this.initData(skeleton);
         console.groupEnd();
 
-        console.group("Data update")
+        console.group("Data update");
         console.info({initializedData});
         /* Is the data up to date with the latest data version? */
         const upToDateData = await this.updateData(initializedData);
         console.groupEnd();
 
-        console.group("Persisting data")
+        console.group("Persisting data");
         console.info({upToDateData});
         this.storedData.set(upToDateData);
         await this.storedData.persist();
@@ -48,17 +50,19 @@ export class RootDataManager implements DataManager {
 
     private async initSkeleton(loadedData: any): Promise<SaveDataNew> {
         const dataLoaded = isTypeSaveDataNewSkeleton(loadedData);
-        console.info({dataLoaded})
+        console.info({dataLoaded});
         const dataSkeleton: SaveDataNewSkeleton = dataLoaded
             ? loadedData
             : {
+                meta: null,
                 filter: null,
                 usage: null,
                 unicode: null,
                 favorites: null,
             };
 
-        const [filterSkeleton, unicodeSkeleton, usageSkeleton, favoritesSkeleton] = await Promise.all([
+        const [metaSkeleton, filterSkeleton, unicodeSkeleton, usageSkeleton, favoritesSkeleton] = await Promise.all([
+            this.metaDm.initSkeleton(dataSkeleton.meta),
             this.filterDm.initSkeleton(dataSkeleton.filter),
             this.unicodeDm.initSkeleton(dataSkeleton.unicode),
             this.usageDm.initSkeleton(dataSkeleton.usage),
@@ -66,6 +70,7 @@ export class RootDataManager implements DataManager {
         ]);
 
         return {
+            meta: metaSkeleton,
             filter: filterSkeleton,
             usage: usageSkeleton,
             unicode: unicodeSkeleton,
@@ -74,7 +79,8 @@ export class RootDataManager implements DataManager {
     }
 
     private async initData(skeleton: SaveDataNew): Promise<SaveDataNew> {
-        const [filterData, unicodeData, usageData, favoritesData] = await Promise.all([
+        const [metaData, filterData, unicodeData, usageData, favoritesData] = await Promise.all([
+            this.metaDm.initData(skeleton.meta),
             this.filterDm.initData(skeleton.filter),
             this.unicodeDm.initData(skeleton.unicode),
             this.usageDm.initData(skeleton.usage),
@@ -82,6 +88,7 @@ export class RootDataManager implements DataManager {
         ]);
 
         return {
+            meta: metaData,
             filter: filterData,
             unicode: unicodeData,
             usage: usageData,
@@ -90,14 +97,18 @@ export class RootDataManager implements DataManager {
     }
 
     private async updateData(initializedData: SaveDataNew): Promise<SaveDataNew> {
+        const metaData = await this.metaDm.updateData(initializedData.meta, new Set([]));
+        const events = new Set(metaData.events);
+
         const [filterData, unicodeData, usageData, favoritesData] = await Promise.all([
-            this.filterDm.updateData(initializedData.filter),
-            this.unicodeDm.updateData(initializedData.unicode),
-            this.usageDm.updateData(initializedData.usage),
-            this.favoritesDm.updateData(initializedData.favorites)
+            this.filterDm.updateData(initializedData.filter, events),
+            this.unicodeDm.updateData(initializedData.unicode, events),
+            this.usageDm.updateData(initializedData.usage, events),
+            this.favoritesDm.updateData(initializedData.favorites, events)
         ]);
 
         return {
+            meta: metaData,
             filter: filterData,
             unicode: unicodeData,
             usage: usageData,

@@ -5,10 +5,12 @@ import {FavoritesDataNew} from "../../types/savedata/nieuw/favoritesDataNew";
 import {UnicodeDataNew} from "../../types/savedata/nieuw/unicodeDataNew";
 import {UnicodeFilter} from "../../types/savedata/oud/unicodeFilter";
 import {UsageDataNew} from "../../types/savedata/nieuw/usageDataNew";
+import {MetaDataNew} from "../../types/savedata/nieuw/metaDataNew";
 
 
 export function isTypeSaveDataNewSkeleton(object: any): object is SaveDataNewSkeleton {
     return object != null
+        && "meta" in object
         && "filter" in object
         && "unicode" in object
         && "usage" in object
@@ -18,6 +20,7 @@ export function isTypeSaveDataNewSkeleton(object: any): object is SaveDataNewSke
 
 export function isTypeSaveDataNew(object: any): object is SaveDataNew {
     return isTypeSaveDataNewSkeleton(object)
+        && isTypeBambus(object.meta ?? {})
         && isTypeBambus(object.filter ?? {})
         && isTypeBambus(object.usage ?? {})
         && isTypeBambus(object.unicode ?? {})
@@ -37,6 +40,11 @@ export function isTypeInitializedBambus(object: any): object is InitializedBambu
         ;
 }
 
+export function isTypeMetaDataNew(object: any): object is MetaDataNew {
+    return isTypeBambus(object)
+        && "events" in object
+        ;
+}
 export function isTypeFilterDataNew(object: any): object is FilterDataNew {
     return isTypeBambus(object)
         && "modified" in object

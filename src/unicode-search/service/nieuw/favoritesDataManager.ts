@@ -2,6 +2,7 @@ import {DataPartManager} from "./dataPartManager";
 import {FavoritesDataNew} from "../../../libraries/types/savedata/nieuw/favoritesDataNew";
 import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveData";
 import {isTypeFavoritesDataNew} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
+import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaDataNew";
 
 export class FavoritesDataManager implements DataPartManager<FavoritesDataNew> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
@@ -11,9 +12,9 @@ export class FavoritesDataManager implements DataPartManager<FavoritesDataNew> {
     , "0.6.1-NEXT"
     ])
 
-    async initSkeleton(loadedData: any): Promise<FavoritesDataNew> {
-        return isTypeFavoritesDataNew(loadedData)
-            ? loadedData
+    async initSkeleton(rawData: any): Promise<T> {
+        return isTypeFavoritesDataNew(rawData)
+            ? rawData
             : {
                 initialized: false,
                 version: CURRENT_VERSION,
@@ -21,7 +22,7 @@ export class FavoritesDataManager implements DataPartManager<FavoritesDataNew> {
             };
     }
 
-    async initData(dataSkeleton: FavoritesDataNew): Promise<FavoritesDataNew> {
+    async initData(dataSkeleton: T): Promise<T> {
         if (dataSkeleton.initialized) {
             return dataSkeleton;
         }
@@ -34,7 +35,7 @@ export class FavoritesDataManager implements DataPartManager<FavoritesDataNew> {
         };
     }
 
-    async updateData(parsedData: FavoritesDataNew): Promise<FavoritesDataNew> {
+    async updateData(parsedData: T, events: Set<DataEvent>): Promise<T> {
         if (this.dataVersions1.has(parsedData.version)) {
             return parsedData;
         }
