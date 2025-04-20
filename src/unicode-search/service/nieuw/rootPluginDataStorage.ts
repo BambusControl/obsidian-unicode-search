@@ -5,12 +5,25 @@ import {UnicodeFragment} from "../../../libraries/types/savedata/nieuw/unicodeFr
 import {UsageFragment} from "../../../libraries/types/savedata/nieuw/usageFragment";
 import {FavoritesFragment} from "../../../libraries/types/savedata/nieuw/favoritesFragment";
 import {RootDataStore} from "../rootDataStore";
+import {MetaFragment} from "../../../libraries/types/savedata/nieuw/metaFragment";
 
 export class RootPluginDataStorage implements RootDataStore {
 
     constructor(
         private readonly storedData: PersistCache<SaveData>,
     ) {
+    }
+
+    async getMeta(): Promise<MetaFragment> {
+        return (await this.storedData.get()).meta;
+    }
+
+    async overwriteMeta(data: MetaFragment): Promise<MetaFragment> {
+        const mergedData = await this.mergeData({
+            meta: data,
+        });
+
+        return mergedData.meta;
     }
 
     async getUnicode(): Promise<UnicodeFragment> {

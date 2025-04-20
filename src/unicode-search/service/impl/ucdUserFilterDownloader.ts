@@ -3,7 +3,7 @@ import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {UnicodeCodepoint} from "../../../libraries/types/codepoint/codepoint";
 import {CharacterDownloader} from "../characterDownloader";
-import {SettingsStore} from "../settingsStore";
+import {FilterStore} from "../filterStore";
 import {mergeIntervals} from "../../../libraries/helpers/oud/mergeIntervals";
 import {codepointIn} from "../../../libraries/helpers/oud/codePointIn";
 import {CharacterCategoryType} from "../../../libraries/data/oud/characterCategory";
@@ -20,7 +20,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
     };
 
     public constructor(
-        private readonly settingsStore: SettingsStore,
+        private readonly filterStore: FilterStore,
     ) {
     }
 
@@ -34,7 +34,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
     }
 
     private async filterCharacters(parsed: ParsedCharacter[]): Promise<ParsedCharacter[]> {
-        const filter = await this.settingsStore.getFilter();
+        const filter = await this.filterStore.getFilter();
 
         const includedBlocks = mergeIntervals(filter.planes
             .flatMap(p => p.blocks)

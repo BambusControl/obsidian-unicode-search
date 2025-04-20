@@ -2,7 +2,7 @@ import {UnicodeFilter} from "../../libraries/types/savedata/oud/unicodeFilter";
 import {CodepointInterval} from "../../libraries/types/codepoint/codepointInterval";
 import {CharacterCategoryType} from "../../libraries/data/oud/characterCategory";
 
-export interface SettingsStore {
+export interface FilterStore {
     getFilter(): Promise<UnicodeFilter>
 
     getCharacterBlock(block: CodepointInterval): Promise<boolean>

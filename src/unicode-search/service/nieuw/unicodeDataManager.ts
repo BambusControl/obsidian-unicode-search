@@ -1,9 +1,7 @@
 import {DataFragmentManager} from "./dataFragmentManager";
 import {UnicodeFragment} from "../../../libraries/types/savedata/nieuw/unicodeFragment";
-import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
-import {
-    isCodepointKey
-} from "../../../libraries/helpers/nieuw/isTypeSaveData";
+import {SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
+import {isCodepointKey} from "../../../libraries/helpers/nieuw/isTypeSaveData";
 import {CharacterDownloader} from "../characterDownloader";
 import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaFragment";
 import {DataFragment} from "../../../libraries/types/savedata/nieuw/dataFragment";
@@ -22,33 +20,36 @@ export class UnicodeDataManager implements DataFragmentManager<UnicodeFragment> 
     ) {
     }
 
-    async initData(fragment: DataFragment): Promise<UnicodeFragment> {
-        /* TODO [NEXT]: Check if filter was modified?? */
+    initData(fragment: DataFragment): UnicodeFragment {
         if (fragment.initialized && isUnicodeFragment(fragment)) {
-            console.info("Unicode code point data already initialized");
             return fragment;
         }
-
-        /* TODO [NEXT]: downloading should be done from an event! */
-        console.info("Downloading character database");
-
-        const codepoints = await this.ucdService.download();
-
-        /* TODO: Satisfy filter through downloading?? */
-        //await this.dataStore.setFilterSatisfied(true);
 
         return {
             ...fragment,
             initialized: true,
-            version: CURRENT_VERSION,
-            codepoints: codepoints,
+            codepoints: [],
         };
     }
 
     async updateData(fragment: UnicodeFragment, events: Set<DataEvent>): Promise<UnicodeFragment> {
-        const data = this.updateByVersion(fragment);
-        /* TODO [NEXT]: downloading should be done from an event! */
-        return data;
+        const updatedData = this.updateByVersion(fragment);
+
+        if (!events.has(DataEvent.DownloadCharacters)) {
+            console.info("Character database up to date");
+            return updatedData;
+        }
+
+        console.info("Downloading character database");
+        const codepoints = await this.ucdService.download();
+
+        /* Yeah, we modify the input parameter */
+        events.delete(DataEvent.DownloadCharacters);
+
+        return {
+            ...updatedData,
+            codepoints: codepoints,
+        };
     }
 
     private updateByVersion(data: UnicodeFragment): UnicodeFragment {

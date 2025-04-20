@@ -4,7 +4,7 @@ import {UnicodeBlock} from "../../libraries/types/unicode/unicodeBlock";
 
 import {asHexadecimal} from "../../libraries/helpers/oud/asHexadecimal";
 import {CharacterService} from "../service/characterService";
-import {SettingsStore} from "../service/settingsStore";
+import {FilterStore} from "../service/filterStore";
 import {CodepointInterval} from "../../libraries/types/codepoint/codepointInterval";
 import {UnicodePlane} from "../../libraries/types/unicode/unicodePlane";
 import {UNICODE_CHARACTER_CATEGORIES} from "../../libraries/data/oud/unicodeCharacterCategories";
@@ -30,7 +30,7 @@ export class SettingTab extends PluginSettingTab {
         private readonly plugin: Plugin,
         private readonly characterService: CharacterService,
         private readonly favoritesStore: FavoritesStore,
-        private readonly settingsStore: SettingsStore,
+        private readonly settingsStore: FilterStore,
         private readonly initializer: DataManager,
     ) {
         super(app, plugin);
@@ -225,7 +225,7 @@ export class SettingTab extends PluginSettingTab {
 
     private static async addCharacterBlockFilterToggle(
         container: HTMLElement,
-        options: SettingsStore,
+        options: FilterStore,
         block: UnicodeBlock
     ) {
         /* Low: try to redo more effectively, we always get a plane worth of blocks */
@@ -242,7 +242,7 @@ export class SettingTab extends PluginSettingTab {
 
     private static async addCharacterCategoryFilterToggle(
         container: HTMLElement,
-        options: SettingsStore,
+        options: FilterStore,
         category: UnicodeGeneralCategory
     ) {
         /* Low: try to redo more effectively, we always get a plane worth of blocks */

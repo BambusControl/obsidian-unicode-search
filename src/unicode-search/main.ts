@@ -16,6 +16,7 @@ import {CodepointUsageStorage} from "./service/nieuw/codepointUsageStorage";
 import {CodepointFavoritesStorage} from "./service/nieuw/codepointFavoritesStorage";
 import {FilterStorage} from "./service/nieuw/filterStorage";
 import {MetaDataManager} from "./service/nieuw/metaDataManager";
+import {MetaStorage} from "./service/nieuw/metaStorage";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -43,14 +44,17 @@ export default class UnicodeSearchPlugin extends Plugin {
             (data) => this.saveData(data)
         );
 
+        /* TODO [NEXT]: Data stores duplicate access to data */
         const dataStore = new RootPluginDataStorage(dataLoader);
+        const metaStore = new MetaStorage(dataStore);
         const codepointStore = new CodepointStorage(dataStore);
         const usageStore = new CodepointUsageStorage(dataStore);
         const favoritesStore = new CodepointFavoritesStorage(dataStore);
         const characterService = new UserCharacterService(codepointStore, usageStore, favoritesStore);
-        const optionsStore = new FilterStorage(dataStore);
+        const filterStore = new FilterStorage(dataStore, metaStore);
 
-        const downloader = new UcdUserFilterDownloader(optionsStore);
+        /* TODO: Downloader needs filter data, but is before update of char mng. */
+        const downloader = new UcdUserFilterDownloader(filterStore);
 
         const metaDm = new MetaDataManager();
         const filterDm = new FilterDataManager();
@@ -80,7 +84,7 @@ export default class UnicodeSearchPlugin extends Plugin {
             this,
             characterService,
             favoritesStore,
-            optionsStore,
+            filterStore,
             dataManager,
         ));
 

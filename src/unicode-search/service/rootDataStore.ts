@@ -2,8 +2,12 @@ import {UnicodeFragment} from "../../libraries/types/savedata/nieuw/unicodeFragm
 import {FilterFragment} from "../../libraries/types/savedata/nieuw/filterFragment";
 import {UsageFragment} from "../../libraries/types/savedata/nieuw/usageFragment";
 import {FavoritesFragment} from "../../libraries/types/savedata/nieuw/favoritesFragment";
+import {MetaFragment} from "../../libraries/types/savedata/nieuw/metaFragment";
 
 export interface RootDataStore {
+    getMeta(): Promise<MetaFragment>
+    overwriteMeta(data: MetaFragment): Promise<MetaFragment>
+
     getUnicode(): Promise<UnicodeFragment>
     overwriteUnicode(data: UnicodeFragment): Promise<UnicodeFragment>
 

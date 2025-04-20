@@ -32,49 +32,40 @@ export class RootDataManager implements DataManager {
         const loadedData: any = await this.storedData.get();
 
         /* First, make sure the data is well-shaped */
-        console.group("Data shape check");
-        console.info({loadedData});
+        console.info("Data shape check");
         const shapedData = RootDataManager.shapeLoadedData(loadedData);
-        console.groupEnd();
 
         /* Full initialization of meta-data, because other fragments need to process its events */
         console.group("Meta initialization");
-        console.info({shapedData});
         const loadedDataWithMeta = await this.initMeta(shapedData);
         console.groupEnd();
 
         /* Now we let each data fragment handle initialization of its data if needed */
-        console.group("Save data initialization");
-        console.info({loadedDataWithMeta})
+        console.info("Save data initialization");
         const initializedData = await this.initData(loadedDataWithMeta);
-        console.groupEnd();
 
         /* Each data fragment can update its data if needed */
         console.group("Data update");
-        console.info({initializedData});
         const upToDateData = await this.updateData(initializedData);
         console.groupEnd();
 
         /* Finally, persist the data */
-        console.group("Persisting data");
-        console.info({upToDateData});
+        console.info("Persisting data");
         this.storedData.set(upToDateData);
         await this.storedData.persist();
-        console.groupEnd();
     }
 
     private async initMeta(fragments: SaveDataOf<DataFragment>): Promise<MetaSaveDataFragments> {
         /* Does the skeleton have data? */
-        console.group("Data initialization", {data: fragments.meta});
-        const initializedMeta = await this.metaDm.initData(fragments.meta);
-        console.groupEnd();
+        console.info("Data initialization", {data: fragments.meta});
+        const initializedMeta = this.metaDm.initData(fragments.meta);
 
-        console.group("Data update", {initializedMeta});
+        console.info("Data update", {data: initializedMeta});
         /* Is the data up to date with the latest data version? */
         const upToDateMeta = await this.metaDm.updateData(initializedMeta, new Set([]));
-        console.groupEnd();
 
         /* Check and create the shape of save-data if missing */
+        console.info("Data shape check", {data: upToDateMeta});
         return {
             ...fragments,
             meta: upToDateMeta,
@@ -82,12 +73,10 @@ export class RootDataManager implements DataManager {
     }
 
     private async initData(fragments: MetaSaveDataFragments): Promise<SaveData> {
-        const [filterData, unicodeData, usageData, favoritesData] = await Promise.all([
-            this.filterDm.initData(fragments.filter),
-            this.unicodeDm.initData(fragments.unicode),
-            this.usageDm.initData(fragments.usage),
-            this.favoritesDm.initData(fragments.favorites)
-        ]);
+        const filterData = this.filterDm.initData(fragments.filter);
+        const unicodeData = this.unicodeDm.initData(fragments.unicode);
+        const usageData = this.usageDm.initData(fragments.usage);
+        const favoritesData = this.favoritesDm.initData(fragments.favorites);
 
         return {
             ...fragments,
@@ -102,14 +91,16 @@ export class RootDataManager implements DataManager {
         /* We load the meta-data first, to be able to process events like re-downloading of characters etc. */
         const metaData = await this.metaDm.updateData(initializedData.meta, new Set([]));
         const events = new Set(metaData.events);
+        console.info("Events to process", events);
 
         /* All the other updates see the events, and handle them accordingly */
-        const [filterData, unicodeData, usageData, favoritesData] = await Promise.all([
-            this.filterDm.updateData(initializedData.filter, events),
-            this.unicodeDm.updateData(initializedData.unicode, events),
-            this.usageDm.updateData(initializedData.usage, events),
-            this.favoritesDm.updateData(initializedData.favorites, events)
-        ]);
+        const filterData = await this.filterDm.updateData(initializedData.filter, events);
+        const unicodeData = await this.unicodeDm.updateData(initializedData.unicode, events);
+        const usageData = await this.usageDm.updateData(initializedData.usage, events);
+        const favoritesData = await this.favoritesDm.updateData(initializedData.favorites, events);
+
+        console.info("Unprocessed events", events);
+        metaData.events = Array.from(events);
 
         return {
             meta: metaData,

@@ -1,6 +1,6 @@
 import {DataFragmentManager} from "./dataFragmentManager";
 import {UsageFragment} from "../../../libraries/types/savedata/nieuw/usageFragment";
-import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
+import {SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
 import {isCodepointKey} from "../../../libraries/helpers/nieuw/isTypeSaveData";
 import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaFragment";
 import {DataFragment} from "../../../libraries/types/savedata/nieuw/dataFragment";
@@ -14,7 +14,7 @@ export class UsageDataManager implements DataFragmentManager<UsageFragment> {
     , "0.6.1-NEXT"
     ])
 
-    async initData(fragment: DataFragment): Promise<UsageFragment> {
+    initData(fragment: DataFragment): UsageFragment {
         if (fragment.initialized && isUsageFragment(fragment)) {
             return fragment;
         }
@@ -22,7 +22,6 @@ export class UsageDataManager implements DataFragmentManager<UsageFragment> {
         return {
             ...fragment,
             initialized: true,
-            version: CURRENT_VERSION,
             codepoints: [],
         };
     }

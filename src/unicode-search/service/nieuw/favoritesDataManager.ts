@@ -1,6 +1,6 @@
 import {DataFragmentManager} from "./dataFragmentManager";
 import {FavoritesFragment} from "../../../libraries/types/savedata/nieuw/favoritesFragment";
-import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
+import {SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
 import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaFragment";
 import {DataFragment} from "../../../libraries/types/savedata/nieuw/dataFragment";
 
@@ -12,7 +12,7 @@ export class FavoritesDataManager implements DataFragmentManager<FavoritesFragme
     , "0.6.1-NEXT"
     ])
 
-    async initData(fragment: DataFragment): Promise<FavoritesFragment> {
+    initData(fragment: DataFragment): FavoritesFragment {
         if (fragment.initialized && isFavoritesFragment(fragment)) {
             return fragment;
         }
@@ -20,7 +20,6 @@ export class FavoritesDataManager implements DataFragmentManager<FavoritesFragme
         return {
             ...fragment,
             initialized: true,
-            version: CURRENT_VERSION,
             codepoints: [],
         };
     }

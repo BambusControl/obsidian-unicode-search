@@ -11,7 +11,7 @@ export interface DataFragmentManager<Fragment extends DataFragment> {
      * @param fragment to be populated with default values
      * @returns the initialized data with defaults applied
      */
-    initData(fragment: DataFragment): Promise<Fragment>;
+    initData(fragment: DataFragment): Fragment;
 
     /**
      * Migrates data between different versions when the data structure changes.

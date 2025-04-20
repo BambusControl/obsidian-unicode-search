@@ -11,17 +11,12 @@ export interface MetaFragment extends DataFragment {
 }
 
 /**
- * Valid event names related to data operations.
- */
-const DATA_EVENTS =
-    [ "character filter changed"
-    ];
-
-/**
  * An event, which communicates information between data parts
  */
-export type DataEvent = typeof DATA_EVENTS[number];
+export enum DataEvent {
+    DownloadCharacters = "download_characters",
+}
 
 export function isDataEvent(object: any): object is DataEvent {
-    return DATA_EVENTS.includes(object);
+    return Object.values(DataEvent).includes(object);
 }

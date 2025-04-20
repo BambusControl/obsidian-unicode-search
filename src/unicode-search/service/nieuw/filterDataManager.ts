@@ -3,7 +3,7 @@ import {UNICODE_PLANES_ALL} from "../../../libraries/data/oud/unicodePlanes";
 import {UNICODE_CHARACTER_CATEGORIES} from "../../../libraries/data/oud/unicodeCharacterCategories";
 import {UnicodePlaneNumber} from "../../../libraries/data/oud/unicodePlaneNumber";
 import {CharacterCategoryGroupType} from "../../../libraries/data/oud/characterCategoryGroup";
-import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
+import {SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
 import {FilterFragment} from "../../../libraries/types/savedata/nieuw/filterFragment";
 import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaFragment";
 import {DataFragment} from "../../../libraries/types/savedata/nieuw/dataFragment";
@@ -17,7 +17,7 @@ export class FilterDataManager implements DataFragmentManager<FilterFragment> {
         , "0.6.1-NEXT"
         ]);
 
-    async initData(fragment: DataFragment): Promise<FilterFragment> {
+    initData(fragment: DataFragment): FilterFragment {
         if (fragment.initialized && isFilterFragment(fragment)) {
             return fragment;
         }
@@ -25,8 +25,6 @@ export class FilterDataManager implements DataFragmentManager<FilterFragment> {
         return {
             ...fragment,
             initialized: true,
-            version: CURRENT_VERSION,
-            modified: false,
             unicode: {
                 planes: UNICODE_PLANES_ALL.map(plane => ({
                     ...plane.interval,

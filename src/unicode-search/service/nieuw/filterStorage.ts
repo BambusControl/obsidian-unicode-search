@@ -1,4 +1,4 @@
-import {SettingsStore} from "../settingsStore";
+import {FilterStore} from "../filterStore";
 import {BlockFilter, CategoryFilter, UnicodeFilter} from "../../../libraries/types/savedata/oud/unicodeFilter";
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
 import {CodepointInterval} from "../../../libraries/types/codepoint/codepointInterval";
@@ -6,10 +6,15 @@ import {intervalsEqual} from "../../../libraries/helpers/oud/intervalsEqual";
 import {intervalWithin} from "../../../libraries/helpers/oud/intervalWithin";
 import {CharacterCategoryType} from "../../../libraries/data/oud/characterCategory";
 import {RootDataStore} from "../rootDataStore";
+import {MetaStorage} from "./metaStorage";
+import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaFragment";
 
-export class FilterStorage implements SettingsStore {
+export class FilterStorage implements FilterStore {
 
-    constructor(private readonly store: RootDataStore) {
+    constructor(
+        private readonly store: RootDataStore,
+        private readonly meta: MetaStorage,
+    ) {
     }
 
     async getFilter(): Promise<UnicodeFilter> {
@@ -36,7 +41,7 @@ export class FilterStorage implements SettingsStore {
         }
 
         filter.unicode.planes[planeIndex].blocks[blockIndex].included = set;
-        filter.modified = true;
+        await this.meta.request(DataEvent.DownloadCharacters);
 
         await this.store.overwriteFilter(filter);
     }
@@ -61,7 +66,7 @@ export class FilterStorage implements SettingsStore {
         }
 
         filter.unicode.categoryGroups[groupIndex].categories[categoryIndex].included = set;
-        filter.modified = true;
+        await this.meta.request(DataEvent.DownloadCharacters);
 
         await this.store.overwriteFilter(filter);
     }

@@ -10,7 +10,7 @@ export class MetaDataManager implements DataFragmentManager<MetaFragment> {
         , "0.6.1-NEXT"
         ]);
 
-    async initData(fragment: DataFragment): Promise<MetaFragment> {
+    initData(fragment: DataFragment): MetaFragment {
         if (fragment.initialized && isMetaFragment(fragment)) {
             return fragment;
         }
@@ -36,6 +36,6 @@ function isMetaFragment(fragment: DataFragment): fragment is MetaFragment {
     return "events" in fragment
         && fragment.events != null
         && Array.isArray(fragment.events)
-        && fragment.events.every(isDataEvent)
+        && fragment.events.every(e => isDataEvent(e))
         ;
 }
