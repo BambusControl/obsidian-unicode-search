@@ -1,10 +1,10 @@
-import {DataPartManager} from "./dataPartManager";
-import {UsageDataNew} from "../../../libraries/types/savedata/nieuw/usageDataNew";
-import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveData";
-import {isTypeUsageDataNew} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
-import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaDataNew";
+import {DataFragmentManager} from "./dataFragmentManager";
+import {UsageFragment} from "../../../libraries/types/savedata/nieuw/usageFragment";
+import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
+import {isTypeUsageFragment} from "../../../libraries/helpers/nieuw/isTypeSaveData";
+import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaFragment";
 
-export class UsageDataManager implements DataPartManager<UsageDataNew> {
+export class UsageDataManager implements DataFragmentManager<UsageFragment> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
     [ "0.4.0"
     , "0.5.0"
@@ -12,8 +12,8 @@ export class UsageDataManager implements DataPartManager<UsageDataNew> {
     , "0.6.1-NEXT"
     ])
 
-    async initSkeleton(rawData: any): Promise<T> {
-        return isTypeUsageDataNew(rawData)
+    async initSkeleton(rawData: any): Promise<UsageFragment> {
+        return isTypeUsageFragment(rawData)
             ? rawData
             : {
                 initialized: false,
@@ -22,7 +22,7 @@ export class UsageDataManager implements DataPartManager<UsageDataNew> {
             };
     }
 
-    async initData(dataSkeleton: T): Promise<T> {
+    async initData(dataSkeleton: UsageFragment): Promise<UsageFragment> {
         if (dataSkeleton.initialized) {
             return dataSkeleton;
         }
@@ -35,7 +35,7 @@ export class UsageDataManager implements DataPartManager<UsageDataNew> {
         };
     }
 
-    async updateData(parsedData: T, events: Set<DataEvent>): Promise<T> {
+    async updateData(parsedData: UsageFragment, events: Set<DataEvent>): Promise<UsageFragment> {
         if (this.dataVersions1.has(parsedData.version)) {
             return parsedData;
         }

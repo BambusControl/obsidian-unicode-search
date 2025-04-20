@@ -6,13 +6,13 @@ import {
 import { ParsedFavoriteInfo } from "../../../libraries/types/savedata/oud/parsedFavoriteInfo";
 import { serializeFavoriteInfo } from "../../../libraries/helpers/oud/serializeFavoriteInfo";
 import {UnicodeSearchError} from "../../errors/unicodeSearchError";
-import {RootDataStoreNew} from "../rootDataStoreNew";
-import {FavoritesDataNew} from "../../../libraries/types/savedata/nieuw/favoritesDataNew";
+import {RootDataStore} from "../rootDataStore";
+import {FavoritesFragment} from "../../../libraries/types/savedata/nieuw/favoritesFragment";
 
-export class CodepointFavoritesStorageNew implements FavoritesStore {
+export class CodepointFavoritesStorage implements FavoritesStore {
 
     constructor(
-        private readonly store: RootDataStoreNew,
+        private readonly store: RootDataStore,
     ) {
     }
 
@@ -112,7 +112,7 @@ export class CodepointFavoritesStorageNew implements FavoritesStore {
         await this.store.overwriteFavorites(newData);
     }
 
-    private async mergeFavorites(data: Partial<FavoritesDataNew>): Promise<FavoritesDataNew> {
+    private async mergeFavorites(data: Partial<FavoritesFragment>): Promise<FavoritesFragment> {
         const storedData = await this.store.getFavorites();
 
         const newData = {

@@ -1,24 +1,23 @@
 import {PersistCache} from "../../../libraries/types/persistCache";
-import {CURRENT_VERSION, SaveData} from "../../../libraries/types/savedata/oud/saveData";
+import {SaveData} from "../../../libraries/types/savedata/nieuw/saveData";
+import {FilterFragment} from "../../../libraries/types/savedata/nieuw/filterFragment";
+import {UnicodeFragment} from "../../../libraries/types/savedata/nieuw/unicodeFragment";
+import {UsageFragment} from "../../../libraries/types/savedata/nieuw/usageFragment";
+import {FavoritesFragment} from "../../../libraries/types/savedata/nieuw/favoritesFragment";
 import {RootDataStore} from "../rootDataStore";
-import {SettingsData} from "../../../libraries/types/savedata/oud/settingsData";
-import {UsageData} from "../../../libraries/types/savedata/oud/usageData";
-import {UnicodeData} from "../../../libraries/types/savedata/oud/unicodeData";
-import {FavoritesData} from "../../../libraries/types/savedata/oud/favoritesData";
 
 export class RootPluginDataStorage implements RootDataStore {
-
 
     constructor(
         private readonly storedData: PersistCache<SaveData>,
     ) {
     }
 
-    async getUnicode(): Promise<UnicodeData> {
+    async getUnicode(): Promise<UnicodeFragment> {
         return (await this.storedData.get()).unicode;
     }
 
-    async overwriteUnicode(data: UnicodeData): Promise<UnicodeData> {
+    async overwriteUnicode(data: UnicodeFragment): Promise<UnicodeFragment> {
         const mergedData = await this.mergeData({
             unicode: data,
         });
@@ -26,23 +25,23 @@ export class RootPluginDataStorage implements RootDataStore {
         return mergedData.unicode;
     }
 
-    async getSettings(): Promise<SettingsData> {
-        return (await this.storedData.get()).settings;
+    async getFilter(): Promise<FilterFragment> {
+        return (await this.storedData.get()).filter
     }
 
-    async overwriteSettings(settings: SettingsData): Promise<SettingsData> {
+    async overwriteFilter(filter: FilterFragment): Promise<FilterFragment> {
         const mergedData = await this.mergeData({
-            settings: settings,
+            filter: filter,
         });
 
-        return mergedData.settings;
+        return mergedData.filter;
     }
 
-    async getUsage(): Promise<UsageData> {
+    async getUsage(): Promise<UsageFragment> {
         return (await this.storedData.get()).usage;
     }
 
-    async overwriteUsage(usage: UsageData): Promise<UsageData> {
+    async overwriteUsage(usage: UsageFragment): Promise<UsageFragment> {
         const mergedData = await this.mergeData({
             usage: usage,
         });
@@ -50,11 +49,11 @@ export class RootPluginDataStorage implements RootDataStore {
         return mergedData.usage;
     }
 
-    async getFavorites(): Promise<FavoritesData> {
+    async getFavorites(): Promise<FavoritesFragment> {
         return (await this.storedData.get()).favorites;
     }
 
-    async overwriteFavorites(favorites: FavoritesData): Promise<FavoritesData> {
+    async overwriteFavorites(favorites: FavoritesFragment): Promise<FavoritesFragment> {
         const mergedData = await this.mergeData({
             favorites: favorites,
         });
@@ -68,7 +67,6 @@ export class RootPluginDataStorage implements RootDataStore {
         const newData: SaveData = {
             ...storedData,
             ...data,
-            version: data.initialized ? CURRENT_VERSION : storedData.version,
         };
 
         this.storedData.set(newData);

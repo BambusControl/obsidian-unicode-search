@@ -1,9 +1,9 @@
-import {Bambus} from "./bambus";
+import {DataFragment} from "./dataFragment";
 
 /**
  * Meta information for the datastore
  */
-export interface MetaDataNew extends Bambus {
+export interface MetaFragment extends DataFragment {
     /**
      * A collection of unique data events.
      */

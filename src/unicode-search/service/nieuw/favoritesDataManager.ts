@@ -1,10 +1,10 @@
-import {DataPartManager} from "./dataPartManager";
-import {FavoritesDataNew} from "../../../libraries/types/savedata/nieuw/favoritesDataNew";
-import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveData";
-import {isTypeFavoritesDataNew} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
-import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaDataNew";
+import {DataFragmentManager} from "./dataFragmentManager";
+import {FavoritesFragment} from "../../../libraries/types/savedata/nieuw/favoritesFragment";
+import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
+import {isTypeFavoritesFragment} from "../../../libraries/helpers/nieuw/isTypeSaveData";
+import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaFragment";
 
-export class FavoritesDataManager implements DataPartManager<FavoritesDataNew> {
+export class FavoritesDataManager implements DataFragmentManager<FavoritesFragment> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
     [ "0.4.0"
     , "0.5.0"
@@ -12,8 +12,8 @@ export class FavoritesDataManager implements DataPartManager<FavoritesDataNew> {
     , "0.6.1-NEXT"
     ])
 
-    async initSkeleton(rawData: any): Promise<T> {
-        return isTypeFavoritesDataNew(rawData)
+    async initSkeleton(rawData: any): Promise<FavoritesFragment> {
+        return isTypeFavoritesFragment(rawData)
             ? rawData
             : {
                 initialized: false,
@@ -22,7 +22,7 @@ export class FavoritesDataManager implements DataPartManager<FavoritesDataNew> {
             };
     }
 
-    async initData(dataSkeleton: T): Promise<T> {
+    async initData(dataSkeleton: FavoritesFragment): Promise<FavoritesFragment> {
         if (dataSkeleton.initialized) {
             return dataSkeleton;
         }
@@ -35,7 +35,7 @@ export class FavoritesDataManager implements DataPartManager<FavoritesDataNew> {
         };
     }
 
-    async updateData(parsedData: T, events: Set<DataEvent>): Promise<T> {
+    async updateData(parsedData: FavoritesFragment, events: Set<DataEvent>): Promise<FavoritesFragment> {
         if (this.dataVersions1.has(parsedData.version)) {
             return parsedData;
         }

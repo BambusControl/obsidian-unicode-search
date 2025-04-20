@@ -1,16 +1,16 @@
-import {DataPartManager} from "./dataPartManager";
+import {DataFragmentManager} from "./dataFragmentManager";
 import {UNICODE_PLANES_ALL} from "../../../libraries/data/oud/unicodePlanes";
 import {UNICODE_CHARACTER_CATEGORIES} from "../../../libraries/data/oud/unicodeCharacterCategories";
 import {UnicodePlaneNumber} from "../../../libraries/data/oud/unicodePlaneNumber";
 import {CharacterCategoryGroupType} from "../../../libraries/data/oud/characterCategoryGroup";
-import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveData";
-import {FilterDataNew} from "../../../libraries/types/savedata/nieuw/filterDataNew";
+import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
+import {FilterFragment} from "../../../libraries/types/savedata/nieuw/filterFragment";
 import {
-    isTypeFilterDataNew
-} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
-import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaDataNew";
+    isTypeFilterFragment
+} from "../../../libraries/helpers/nieuw/isTypeSaveData";
+import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaFragment";
 
-export class FilterDataManager implements DataPartManager<FilterDataNew> {
+export class FilterDataManager implements DataFragmentManager<FilterFragment> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
         [ "0.4.0"
         , "0.5.0"
@@ -18,8 +18,8 @@ export class FilterDataManager implements DataPartManager<FilterDataNew> {
         , "0.6.1-NEXT"
         ]);
 
-    async initSkeleton(rawData: any): Promise<T> {
-        return isTypeFilterDataNew(rawData)
+    async initSkeleton(rawData: any): Promise<FilterFragment> {
+        return isTypeFilterFragment(rawData)
             ? rawData
             : {
                 initialized: false,
@@ -32,7 +32,7 @@ export class FilterDataManager implements DataPartManager<FilterDataNew> {
             };
     }
 
-    async initData(dataSkeleton: T): Promise<T> {
+    async initData(dataSkeleton: FilterFragment): Promise<FilterFragment> {
         if (dataSkeleton.initialized) {
             return dataSkeleton;
         }
@@ -61,7 +61,7 @@ export class FilterDataManager implements DataPartManager<FilterDataNew> {
         }
     }
 
-    async updateData(parsedData: T, events: Set<DataEvent>): Promise<T> {
+    async updateData(parsedData: FilterFragment, events: Set<DataEvent>): Promise<FilterFragment> {
         if (this.dataVersions1.has(parsedData.version)) {
             return parsedData;
         }

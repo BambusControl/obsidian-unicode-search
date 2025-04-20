@@ -1,11 +1,11 @@
-import {DataPartManager} from "./dataPartManager";
-import {UnicodeDataNew} from "../../../libraries/types/savedata/nieuw/unicodeDataNew";
-import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveData";
-import {isTypeUnicodeDataNew} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
+import {DataFragmentManager} from "./dataFragmentManager";
+import {UnicodeFragment} from "../../../libraries/types/savedata/nieuw/unicodeFragment";
+import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
+import {isTypeUnicodeFragment} from "../../../libraries/helpers/nieuw/isTypeSaveData";
 import {CharacterDownloader} from "../characterDownloader";
-import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaDataNew";
+import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaFragment";
 
-export class UnicodeDataManager implements DataPartManager<UnicodeDataNew> {
+export class UnicodeDataManager implements DataFragmentManager<UnicodeFragment> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
     [ "0.4.0"
     , "0.5.0"
@@ -18,8 +18,8 @@ export class UnicodeDataManager implements DataPartManager<UnicodeDataNew> {
     ) {
     }
 
-    async initSkeleton(rawData: any): Promise<T> {
-        return isTypeUnicodeDataNew(rawData)
+    async initSkeleton(rawData: any): Promise<UnicodeFragment> {
+        return isTypeUnicodeFragment(rawData)
             ? rawData
             : {
                 initialized: false,
@@ -28,7 +28,7 @@ export class UnicodeDataManager implements DataPartManager<UnicodeDataNew> {
             };
     }
 
-    async initData(dataSkeleton: T): Promise<T> {
+    async initData(dataSkeleton: UnicodeFragment): Promise<UnicodeFragment> {
         /* TODO: Check if filter was modified?? */
         console.info({dataSkeleton})
         console.info(dataSkeleton.initialized)
@@ -53,7 +53,7 @@ export class UnicodeDataManager implements DataPartManager<UnicodeDataNew> {
         };
     }
 
-    async updateData(parsedData: T, events: Set<DataEvent>): Promise<T> {
+    async updateData(parsedData: UnicodeFragment, events: Set<DataEvent>): Promise<UnicodeFragment> {
         const data = this.updateByVersion(parsedData);
 
 
@@ -61,7 +61,7 @@ export class UnicodeDataManager implements DataPartManager<UnicodeDataNew> {
         return data;
     }
 
-    private updateByVersion(data: UnicodeDataNew): UnicodeDataNew {
+    private updateByVersion(data: UnicodeFragment): UnicodeFragment {
         if (this.dataVersions1.has(data.version)) {
             return data;
         }

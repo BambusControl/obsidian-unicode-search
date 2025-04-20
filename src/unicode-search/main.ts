@@ -10,12 +10,11 @@ import {UnicodeDataManager} from "./service/nieuw/unicodeDataManager";
 import {UsageDataManager} from "./service/nieuw/usageDataManager";
 import {FavoritesDataManager} from "./service/nieuw/favoritesDataManager";
 import {PersistCache} from "../libraries/types/persistCache";
-import {SaveDataNew, SaveDataNewSkeleton} from "../libraries/types/savedata/nieuw/saveDataNew";
-import {RootPluginDataStorageNew} from "./service/nieuw/rootPluginDataStorageNew";
-import {CodepointStorageNew} from "./service/nieuw/codepointStorageNew";
-import {CodepointUsageStorageNew} from "./service/nieuw/codepointUsageStorageNew";
-import {CodepointFavoritesStorageNew} from "./service/nieuw/codepointFavoritesStorageNew";
-import {FilterStorageNew} from "./service/nieuw/filterStorageNew";
+import {RootPluginDataStorage} from "./service/nieuw/rootPluginDataStorage";
+import {CodepointStorage} from "./service/nieuw/codepointStorage";
+import {CodepointUsageStorage} from "./service/nieuw/codepointUsageStorage";
+import {CodepointFavoritesStorage} from "./service/nieuw/codepointFavoritesStorage";
+import {FilterStorage} from "./service/nieuw/filterStorage";
 import {MetaDataManager} from "./service/nieuw/metaDataManager";
 
 /* Used by Obsidian */
@@ -44,12 +43,12 @@ export default class UnicodeSearchPlugin extends Plugin {
             (data) => this.saveData(data)
         );
 
-        const dataStore = new RootPluginDataStorageNew(dataLoader);
-        const codepointStore = new CodepointStorageNew(dataStore);
-        const usageStore = new CodepointUsageStorageNew(dataStore);
-        const favoritesStore = new CodepointFavoritesStorageNew(dataStore);
+        const dataStore = new RootPluginDataStorage(dataLoader);
+        const codepointStore = new CodepointStorage(dataStore);
+        const usageStore = new CodepointUsageStorage(dataStore);
+        const favoritesStore = new CodepointFavoritesStorage(dataStore);
         const characterService = new UserCharacterService(codepointStore, usageStore, favoritesStore);
-        const optionsStore = new FilterStorageNew(dataStore);
+        const optionsStore = new FilterStorage(dataStore);
 
         const downloader = new UcdUserFilterDownloader(optionsStore);
 
@@ -60,7 +59,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         const favoritesDm = new FavoritesDataManager();
 
         const dataManager = new RootDataManager(
-            dataLoader as PersistCache<SaveDataNew | SaveDataNewSkeleton>,
+            dataLoader,
             metaDm,
             filterDm,
             unicodeDm,

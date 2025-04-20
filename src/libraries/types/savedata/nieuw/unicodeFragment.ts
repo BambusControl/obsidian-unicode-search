@@ -1,9 +1,9 @@
-import {Bambus} from "./bambus";
+import {DataFragment} from "./dataFragment";
 import {UnicodeCodepoint} from "../../codepoint/codepoint";
 
 /**
  * Imported Unicode Character Database data.
  */
-export interface UnicodeDataNew extends Bambus {
+export interface UnicodeFragment extends DataFragment {
     codepoints: UnicodeCodepoint[]
 }

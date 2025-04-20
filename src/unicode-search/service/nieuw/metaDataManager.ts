@@ -1,9 +1,9 @@
-import {DataPartManager} from "./dataPartManager";
-import {DataEvent, MetaDataNew} from "../../../libraries/types/savedata/nieuw/metaDataNew";
-import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveData";
-import {isTypeMetaDataNew} from "../../../libraries/helpers/nieuw/isTypeSaveDataNew";
+import {DataFragmentManager} from "./dataFragmentManager";
+import {DataEvent, MetaFragment} from "../../../libraries/types/savedata/nieuw/metaFragment";
+import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
+import {isTypeMetaFragment} from "../../../libraries/helpers/nieuw/isTypeSaveData";
 
-export class MetaDataManager implements DataPartManager<MetaDataNew> {
+export class MetaDataManager implements DataFragmentManager<MetaFragment> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
         ["0.4.0"
         , "0.5.0"
@@ -11,8 +11,8 @@ export class MetaDataManager implements DataPartManager<MetaDataNew> {
         , "0.6.1-NEXT"
         ]);
 
-    async initSkeleton(rawData: any): Promise<MetaDataNew> {
-        return isTypeMetaDataNew(rawData)
+    async initSkeleton(rawData: any): Promise<MetaFragment> {
+        return isTypeMetaFragment(rawData)
             ? rawData
             : {
                 initialized: false,
@@ -21,7 +21,7 @@ export class MetaDataManager implements DataPartManager<MetaDataNew> {
             };
     }
 
-    async initData(dataSkeleton: MetaDataNew): Promise<MetaDataNew> {
+    async initData(dataSkeleton: MetaFragment): Promise<MetaFragment> {
         if (dataSkeleton.initialized) {
             return dataSkeleton;
         }
@@ -34,7 +34,7 @@ export class MetaDataManager implements DataPartManager<MetaDataNew> {
         };
     }
 
-    async updateData(parsedData: MetaDataNew, events: Set<DataEvent>): Promise<MetaDataNew> {
+    async updateData(parsedData: MetaFragment, _: Set<DataEvent>): Promise<MetaFragment> {
         if (this.dataVersions1.has(parsedData.version)) {
             return parsedData;
         }

@@ -7,12 +7,12 @@ import {parseUsageInfo} from "../../../libraries/helpers/oud/parseUsageInfo";
 import {serializeUsageInfo} from "../../../libraries/helpers/oud/serializeUsageInfo";
 import {CodepointParsedUsage} from "../../../libraries/types/savedata/oud/codepoint";
 import {ParsedUsageInfo} from "../../../libraries/types/savedata/oud/parsedUsageInfo";
-import {RootDataStoreNew} from "../rootDataStoreNew";
+import {RootDataStore} from "../rootDataStore";
 
-export class CodepointUsageStorageNew implements UsageStore {
+export class CodepointUsageStorage implements UsageStore {
 
     constructor(
-        private readonly store: RootDataStoreNew,
+        private readonly store: RootDataStore,
     ) {
     }
 

@@ -1,6 +1,6 @@
-import {RootDataStore} from "../rootDataStore";
 import {CodepointStore} from "../codePointStore";
 import {UnicodeCodepoint} from "../../../libraries/types/codepoint/codepoint";
+import {RootDataStore} from "../rootDataStore";
 
 export class CodepointStorage implements CodepointStore {
 
@@ -9,13 +9,6 @@ export class CodepointStorage implements CodepointStore {
 
     async getCodepoints(): Promise<UnicodeCodepoint[]> {
         return (await this.store.getUnicode()).codepoints;
-    }
-
-    async initializeCodepoints(codepoints: UnicodeCodepoint[]): Promise<void> {
-        await this.store.overwriteUnicode({
-            initialized: true,
-            codepoints: codepoints,
-        });
     }
 
 }

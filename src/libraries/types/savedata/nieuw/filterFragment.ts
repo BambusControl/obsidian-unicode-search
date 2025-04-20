@@ -1,10 +1,10 @@
-import {Bambus} from "./bambus";
+import {DataFragment} from "./dataFragment";
 import {UnicodeFilter} from "../oud/unicodeFilter";
 
 /**
  * User saved character filters.
  */
-export interface FilterDataNew extends Bambus {
+export interface FilterFragment extends DataFragment {
     /**
      * Whether the filter has been modified and reinitialization is needed.
      */

@@ -1,3 +1,5 @@
+//noinspection JSUnusedGlobalSymbols
+
 export enum CharacterCategoryLetter {
     Lowercase = "Ll",
     Modifier = "Lm",

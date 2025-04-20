@@ -1,18 +1,18 @@
-import {SettingsData} from "../../libraries/types/savedata/oud/settingsData";
-import {UsageData} from "../../libraries/types/savedata/oud/usageData";
-import {UnicodeData} from "../../libraries/types/savedata/oud/unicodeData";
-import {FavoritesData} from "../../libraries/types/savedata/oud/favoritesData";
+import {UnicodeFragment} from "../../libraries/types/savedata/nieuw/unicodeFragment";
+import {FilterFragment} from "../../libraries/types/savedata/nieuw/filterFragment";
+import {UsageFragment} from "../../libraries/types/savedata/nieuw/usageFragment";
+import {FavoritesFragment} from "../../libraries/types/savedata/nieuw/favoritesFragment";
 
 export interface RootDataStore {
-    getUnicode(): Promise<UnicodeData>
-    overwriteUnicode(data: UnicodeData): Promise<UnicodeData>
+    getUnicode(): Promise<UnicodeFragment>
+    overwriteUnicode(data: UnicodeFragment): Promise<UnicodeFragment>
 
-    getSettings(): Promise<SettingsData>
-    overwriteSettings(settings: SettingsData): Promise<SettingsData>
+    getFilter(): Promise<FilterFragment>
+    overwriteFilter(settings: FilterFragment): Promise<FilterFragment>
 
-    getUsage(): Promise<UsageData>
-    overwriteUsage(usage: UsageData): Promise<UsageData>
+    getUsage(): Promise<UsageFragment>
+    overwriteUsage(usage: UsageFragment): Promise<UsageFragment>
 
-    getFavorites(): Promise<FavoritesData>
-    overwriteFavorites(favorites: FavoritesData): Promise<FavoritesData>
+    getFavorites(): Promise<FavoritesFragment>
+    overwriteFavorites(favorites: FavoritesFragment): Promise<FavoritesFragment>
 }
