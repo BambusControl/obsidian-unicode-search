@@ -1,7 +1,6 @@
 import {DataFragmentManager} from "./dataFragmentManager";
-import {DataEvent, MetaFragment} from "../../../libraries/types/savedata/nieuw/metaFragment";
-import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
-import {isTypeMetaFragment} from "../../../libraries/helpers/nieuw/isTypeSaveData";
+import {DataEvent, isDataEvent, MetaFragment} from "../../../libraries/types/savedata/nieuw/metaFragment";
+import {SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";import {DataFragment} from "../../../libraries/types/savedata/nieuw/dataFragment";
 
 export class MetaDataManager implements DataFragmentManager<MetaFragment> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
@@ -11,35 +10,32 @@ export class MetaDataManager implements DataFragmentManager<MetaFragment> {
         , "0.6.1-NEXT"
         ]);
 
-    async initSkeleton(rawData: any): Promise<MetaFragment> {
-        return isTypeMetaFragment(rawData)
-            ? rawData
-            : {
-                initialized: false,
-                version: CURRENT_VERSION,
-                events: []
-            };
-    }
-
-    async initData(dataSkeleton: MetaFragment): Promise<MetaFragment> {
-        if (dataSkeleton.initialized) {
-            return dataSkeleton;
+    async initData(fragment: DataFragment): Promise<MetaFragment> {
+        if (fragment.initialized && isMetaFragment(fragment)) {
+            return fragment;
         }
 
         return {
-            ...dataSkeleton,
+            ...fragment,
             initialized: true,
-            version: CURRENT_VERSION,
             events: []
         };
     }
 
-    async updateData(parsedData: MetaFragment, _: Set<DataEvent>): Promise<MetaFragment> {
-        if (this.dataVersions1.has(parsedData.version)) {
-            return parsedData;
+    async updateData(fragment: MetaFragment, events: Set<DataEvent>): Promise<MetaFragment> {
+        if (this.dataVersions1.has(fragment.version)) {
+            return fragment;
         }
 
-        return parsedData;
+        return fragment;
     }
 
+}
+
+function isMetaFragment(fragment: DataFragment): fragment is MetaFragment {
+    return "events" in fragment
+        && fragment.events != null
+        && Array.isArray(fragment.events)
+        && fragment.events.every(isDataEvent)
+        ;
 }

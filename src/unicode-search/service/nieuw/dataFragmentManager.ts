@@ -8,17 +8,17 @@ import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaFragment";
 export interface DataFragmentManager<Fragment extends DataFragment> {
     /**
      * Initializes the data structure with default/empty values.
-     * @param dataSkeleton to be populated with default values
+     * @param fragment to be populated with default values
      * @returns the initialized data with defaults applied
      */
-    initData(dataSkeleton: DataFragment): Promise<Fragment>;
+    initData(fragment: DataFragment): Promise<Fragment>;
 
     /**
      * Migrates data between different versions when the data structure changes.
      * Handles both structural changes and data transformations.
-     * @param parsedData to be updated to the current version
+     * @param fragment to be updated to the current version
      * @param events to be handled by the updater
      * @returns the updated data
      */
-    updateData(parsedData: Fragment, events: Set<DataEvent>): Promise<Fragment>;
+    updateData(fragment: Fragment, events: Set<DataEvent>): Promise<Fragment>;
 }

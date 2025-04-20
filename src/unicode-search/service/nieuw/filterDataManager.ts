@@ -5,10 +5,9 @@ import {UnicodePlaneNumber} from "../../../libraries/data/oud/unicodePlaneNumber
 import {CharacterCategoryGroupType} from "../../../libraries/data/oud/characterCategoryGroup";
 import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
 import {FilterFragment} from "../../../libraries/types/savedata/nieuw/filterFragment";
-import {
-    isTypeFilterFragment
-} from "../../../libraries/helpers/nieuw/isTypeSaveData";
 import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaFragment";
+import {DataFragment} from "../../../libraries/types/savedata/nieuw/dataFragment";
+import {UnicodeFilter} from "../../../libraries/types/savedata/oud/unicodeFilter";
 
 export class FilterDataManager implements DataFragmentManager<FilterFragment> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
@@ -18,27 +17,13 @@ export class FilterDataManager implements DataFragmentManager<FilterFragment> {
         , "0.6.1-NEXT"
         ]);
 
-    async initSkeleton(rawData: any): Promise<FilterFragment> {
-        return isTypeFilterFragment(rawData)
-            ? rawData
-            : {
-                initialized: false,
-                version: CURRENT_VERSION,
-                modified: false,
-                unicode: {
-                    planes: [],
-                    categoryGroups: [],
-                },
-            };
-    }
-
-    async initData(dataSkeleton: FilterFragment): Promise<FilterFragment> {
-        if (dataSkeleton.initialized) {
-            return dataSkeleton;
+    async initData(fragment: DataFragment): Promise<FilterFragment> {
+        if (fragment.initialized && isFilterFragment(fragment)) {
+            return fragment;
         }
 
         return {
-            ...dataSkeleton,
+            ...fragment,
             initialized: true,
             version: CURRENT_VERSION,
             modified: false,
@@ -61,13 +46,13 @@ export class FilterDataManager implements DataFragmentManager<FilterFragment> {
         }
     }
 
-    async updateData(parsedData: FilterFragment, events: Set<DataEvent>): Promise<FilterFragment> {
-        if (this.dataVersions1.has(parsedData.version)) {
-            return parsedData;
+    async updateData(fragment: FilterFragment, events: Set<DataEvent>): Promise<FilterFragment> {
+        if (this.dataVersions1.has(fragment.version)) {
+            return fragment;
         }
 
         // No data version
-        return parsedData;
+        return fragment;
     }
 
 }
@@ -98,3 +83,17 @@ const DATA_DEFAULTS: InclusionDefaults = {
     ],
 }
 
+function isFilterFragment(object: DataFragment): object is FilterFragment {
+    return "modified" in object
+        && "unicode" in object
+        && isUnicodeFilter(object.unicode)
+        ;
+}
+
+function isUnicodeFilter(object: any): object is UnicodeFilter {
+    return "planes" in object
+        && Array.isArray(object.planes)
+        && "categoryGroups" in object
+        && Array.isArray(object.categoryGroups)
+        ;
+}

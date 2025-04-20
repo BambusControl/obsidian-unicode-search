@@ -1,9 +1,13 @@
 import {DataFragmentManager} from "./dataFragmentManager";
 import {UnicodeFragment} from "../../../libraries/types/savedata/nieuw/unicodeFragment";
 import {CURRENT_VERSION, SaveDataVersion} from "../../../libraries/types/savedata/oud/saveDataVersion";
-import {isTypeUnicodeFragment} from "../../../libraries/helpers/nieuw/isTypeSaveData";
+import {
+    isCodepointKey
+} from "../../../libraries/helpers/nieuw/isTypeSaveData";
 import {CharacterDownloader} from "../characterDownloader";
 import {DataEvent} from "../../../libraries/types/savedata/nieuw/metaFragment";
+import {DataFragment} from "../../../libraries/types/savedata/nieuw/dataFragment";
+import {UnicodeCodepoint} from "../../../libraries/types/codepoint/codepoint";
 
 export class UnicodeDataManager implements DataFragmentManager<UnicodeFragment> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
@@ -18,26 +22,14 @@ export class UnicodeDataManager implements DataFragmentManager<UnicodeFragment> 
     ) {
     }
 
-    async initSkeleton(rawData: any): Promise<UnicodeFragment> {
-        return isTypeUnicodeFragment(rawData)
-            ? rawData
-            : {
-                initialized: false,
-                version: CURRENT_VERSION,
-                codepoints: [],
-            };
-    }
-
-    async initData(dataSkeleton: UnicodeFragment): Promise<UnicodeFragment> {
-        /* TODO: Check if filter was modified?? */
-        console.info({dataSkeleton})
-        console.info(dataSkeleton.initialized)
-
-        if (dataSkeleton.initialized) {
+    async initData(fragment: DataFragment): Promise<UnicodeFragment> {
+        /* TODO [NEXT]: Check if filter was modified?? */
+        if (fragment.initialized && isUnicodeFragment(fragment)) {
             console.info("Unicode code point data already initialized");
-            return dataSkeleton;
+            return fragment;
         }
 
+        /* TODO [NEXT]: downloading should be done from an event! */
         console.info("Downloading character database");
 
         const codepoints = await this.ucdService.download();
@@ -46,18 +38,16 @@ export class UnicodeDataManager implements DataFragmentManager<UnicodeFragment> 
         //await this.dataStore.setFilterSatisfied(true);
 
         return {
-            ...dataSkeleton,
+            ...fragment,
             initialized: true,
             version: CURRENT_VERSION,
             codepoints: codepoints,
         };
     }
 
-    async updateData(parsedData: UnicodeFragment, events: Set<DataEvent>): Promise<UnicodeFragment> {
-        const data = this.updateByVersion(parsedData);
-
-
-
+    async updateData(fragment: UnicodeFragment, events: Set<DataEvent>): Promise<UnicodeFragment> {
+        const data = this.updateByVersion(fragment);
+        /* TODO [NEXT]: downloading should be done from an event! */
         return data;
     }
 
@@ -70,3 +60,25 @@ export class UnicodeDataManager implements DataFragmentManager<UnicodeFragment> 
         return data;
     }
 }
+
+export function isUnicodeFragment(fragment: DataFragment): fragment is UnicodeFragment {
+    return "codepoints" in fragment
+        && fragment.codepoints != null
+        && Array.isArray(fragment.codepoints)
+        && fragment.codepoints.every(isUnicodeCodepoint)
+        ;
+}
+
+function isUnicodeCodepoint(object: any): object is UnicodeCodepoint {
+    return isCodepointKey(object)
+
+        && "name" in object
+        && object.name != null
+        && typeof object.name === "string"
+
+        && "category" in object
+        && object.category != null
+        && typeof object.category === "string"
+        ;
+}
+

@@ -1,4 +1,4 @@
-import {CurrentSaveDataVersion, SaveDataVersion} from "../oud/saveDataVersion";
+import {SaveDataVersion} from "../oud/saveDataVersion";
 
 /* TODO [docs] */
 export interface DataFragment {
@@ -6,12 +6,3 @@ export interface DataFragment {
     version: SaveDataVersion;
 }
 
-export interface InitializedDataFragment extends DataFragment {
-    initialized: true;
-    version: CurrentSaveDataVersion;
-}
-
-export interface UninitializedDataFragment extends DataFragment {
-    initialized: false;
-    version: CurrentSaveDataVersion;
-}

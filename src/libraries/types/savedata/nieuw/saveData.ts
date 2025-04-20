@@ -20,18 +20,3 @@ export interface SaveData {
     favorites: FavoritesFragment;
 }
 
-export interface SaveDataMeta {
-    meta: MetaFragment;
-    filter: any;
-    unicode: any;
-    usage: any;
-    favorites: any;
-}
-
-export interface SaveDataSkeleton {
-    meta: any;
-    filter: any;
-    unicode: any;
-    usage: any;
-    favorites: any;
-}
