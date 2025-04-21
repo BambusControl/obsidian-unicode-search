@@ -1,4 +1,4 @@
-import {CharacterCategoryType} from "../../data/oud/characterCategory";
+import {CharacterCategoryType} from "../../data/characterCategory";
 
 export type UnicodeGeneralCategory = {
     abbreviation: CharacterCategoryType,

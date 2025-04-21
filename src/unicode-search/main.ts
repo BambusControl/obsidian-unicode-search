@@ -1,22 +1,22 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {UcdUserFilterDownloader} from "./service/impl/ucdUserFilterDownloader";
+import {UcdUserFilterDownloader} from "./service/ucdUserFilterDownloader";
 import {SettingTab} from "./components/settingTab";
-import {UserCharacterService} from "./service/impl/userCharacterService";
+import {UserCharacterService} from "./service/userCharacterService";
 
-import {Commander} from "./service/impl/commander";
-import {RootDataManager} from "./service/nieuw/rootDataManager";
-import {FilterDataManager} from "./service/nieuw/filterDataManager";
-import {UnicodeDataManager} from "./service/nieuw/unicodeDataManager";
-import {UsageDataManager} from "./service/nieuw/usageDataManager";
-import {FavoritesDataManager} from "./service/nieuw/favoritesDataManager";
+import {Commander} from "./service/commander";
+import {RootDataManager} from "./service/rootDataManager";
+import {FilterDataManager} from "./service/filterDataManager";
+import {UnicodeDataManager} from "./service/unicodeDataManager";
+import {UsageDataManager} from "./service/usageDataManager";
+import {FavoritesDataManager} from "./service/favoritesDataManager";
 import {PersistCache} from "../libraries/types/persistCache";
-import {RootPluginDataStorage} from "./service/nieuw/rootPluginDataStorage";
-import {CodepointStorage} from "./service/nieuw/codepointStorage";
-import {CodepointUsageStorage} from "./service/nieuw/codepointUsageStorage";
-import {CodepointFavoritesStorage} from "./service/nieuw/codepointFavoritesStorage";
-import {FilterStorage} from "./service/nieuw/filterStorage";
-import {MetaDataManager} from "./service/nieuw/metaDataManager";
-import {MetaStorage} from "./service/nieuw/metaStorage";
+import {RootPluginDataStorage} from "./service/rootPluginDataStorage";
+import {CodepointStorage} from "./service/codepointStorage";
+import {CodepointUsageStorage} from "./service/codepointUsageStorage";
+import {CodepointFavoritesStorage} from "./service/codepointFavoritesStorage";
+import {FilterStorage} from "./service/filterStorage";
+import {MetaDataManager} from "./service/metaDataManager";
+import {MetaStorage} from "./service/metaStorage";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols

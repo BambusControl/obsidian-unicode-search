@@ -7,7 +7,7 @@ import {
 } from "../../libraries/types/codepoint/character";
 
 
-import {ParsedUsageInfo} from "../../libraries/types/savedata/oud/parsedUsageInfo";
+import {ParsedUsageInfo} from "../../libraries/types/savedata/parsedUsageInfo";
 
 export interface CharacterService {
 	getOne(key: CharacterKey): Promise<Character>;

@@ -1,18 +1,18 @@
 import {App, Plugin, PluginSettingTab, Setting} from "obsidian";
-import {UNICODE_PLANES_ALL} from "../../libraries/data/oud/unicodePlanes";
+import {UNICODE_PLANES_ALL} from "../../libraries/data/unicodePlanes";
 import {UnicodeBlock} from "../../libraries/types/unicode/unicodeBlock";
 
-import {asHexadecimal} from "../../libraries/helpers/oud/asHexadecimal";
+import {asHexadecimal} from "../../libraries/helpers/asHexadecimal";
 import {CharacterService} from "../service/characterService";
 import {FilterStore} from "../service/filterStore";
 import {CodepointInterval} from "../../libraries/types/codepoint/codepointInterval";
 import {UnicodePlane} from "../../libraries/types/unicode/unicodePlane";
-import {UNICODE_CHARACTER_CATEGORIES} from "../../libraries/data/oud/unicodeCharacterCategories";
+import {UNICODE_CHARACTER_CATEGORIES} from "../../libraries/data/unicodeCharacterCategories";
 import {UnicodeGeneralCategoryGroup} from "../../libraries/types/unicode/unicodeGeneralCategoryGroup";
 import {UnicodeGeneralCategory} from "../../libraries/types/unicode/unicodeGeneralCategory";
 import {DataManager} from "../service/dataManager";
 import {FavoritesStore} from "../service/favoritesStore";
-import {toHexadecimal} from "../../libraries/helpers/oud/toHexadecimal";
+import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
 import {Character, FavoriteCharacter} from "../../libraries/types/codepoint/character";
 import {PickCharacterModal} from "./pickCharacterModal";
 

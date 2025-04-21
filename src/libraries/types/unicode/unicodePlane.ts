@@ -1,5 +1,5 @@
 import {UnicodeBlock} from "./unicodeBlock";
-import {UnicodePlaneNumber} from "../../data/oud/unicodePlaneNumber";
+import {UnicodePlaneNumber} from "../../data/unicodePlaneNumber";
 import {CodepointInterval} from "../codepoint/codepointInterval";
 
 export interface UnicodePlane {

@@ -1,4 +1,4 @@
-import {ParsedFavoriteInfo} from "../types/savedata/oud/parsedFavoriteInfo";
+import {ParsedFavoriteInfo} from "../types/savedata/parsedFavoriteInfo";
 import {Order} from "../order/order";
 import {inverse} from "../order/inverse";
 import {compareDates} from "./compareDates";

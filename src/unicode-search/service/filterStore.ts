@@ -1,6 +1,6 @@
-import {UnicodeFilter} from "../../libraries/types/savedata/oud/unicodeFilter";
+import {UnicodeFilter} from "../../libraries/types/savedata/unicodeFilter";
 import {CodepointInterval} from "../../libraries/types/codepoint/codepointInterval";
-import {CharacterCategoryType} from "../../libraries/data/oud/characterCategory";
+import {CharacterCategoryType} from "../../libraries/data/characterCategory";
 
 export interface FilterStore {
     getFilter(): Promise<UnicodeFilter>

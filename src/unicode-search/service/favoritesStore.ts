@@ -1,6 +1,6 @@
 import { CharacterKey } from "../../libraries/types/codepoint/character";
-import {CodepointParsedFavorite} from "../../libraries/types/savedata/oud/codepoint";
-import {ParsedFavoriteInfo} from "../../libraries/types/savedata/oud/parsedFavoriteInfo";
+import {CodepointParsedFavorite} from "../../libraries/types/savedata/codepoint";
+import {ParsedFavoriteInfo} from "../../libraries/types/savedata/parsedFavoriteInfo";
 
 export interface FavoritesStore {
     update(key: CharacterKey, apply: (char: ParsedFavoriteInfo) => Partial<ParsedFavoriteInfo>): Promise<CodepointParsedFavorite>;

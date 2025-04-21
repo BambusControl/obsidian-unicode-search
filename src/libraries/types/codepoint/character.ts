@@ -1,8 +1,8 @@
 import {UnicodeCodepoint} from "./codepoint";
 
 
-import {ParsedUsageInfo} from "../savedata/oud/parsedUsageInfo";
-import {ParsedFavoriteInfo} from "../savedata/oud/parsedFavoriteInfo";
+import {ParsedUsageInfo} from "../savedata/parsedUsageInfo";
+import {ParsedFavoriteInfo} from "../savedata/parsedFavoriteInfo";
 
 /**
  * Base representation of a character

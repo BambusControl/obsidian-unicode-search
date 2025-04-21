@@ -8,20 +8,20 @@ import {
     INSTRUCTION_DISMISS,
     NAVIGATE_INSTRUCTION
 } from "./visualElements";
-import {toHexadecimal} from "../../libraries/helpers/oud/toHexadecimal";
-import {getRandomItem} from "../../libraries/helpers/oud/getRandomItem";
+import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
+import {getRandomItem} from "../../libraries/helpers/getRandomItem";
 import {fillNullCharacterMatchScores} from "../../libraries/comparison/fillNullCharacterMatchScores";
 import {compareCharacterMatches} from "../../libraries/comparison/compareCharacterMatches";
 import {ReadCache} from "../../libraries/types/readCache";
-import {mostRecentUses} from "../../libraries/helpers/oud/mostRecentUses";
-import {averageUseCount} from "../../libraries/helpers/oud/averageUseCount";
+import {mostRecentUses} from "../../libraries/helpers/mostRecentUses";
+import {averageUseCount} from "../../libraries/helpers/averageUseCount";
 import {UsageDisplayStatistics} from "../../libraries/types/usageDisplayStatistics";
-import {toNullMatch} from "../../libraries/helpers/oud/toNullMatch";
-import {toSearchQueryMatch} from "../../libraries/helpers/oud/toSearchQueryMatch";
-import {matchedNameOrCodepoint} from "../../libraries/helpers/oud/matchedNameOrCodepoint";
+import {toNullMatch} from "../../libraries/helpers/toNullMatch";
+import {toSearchQueryMatch} from "../../libraries/helpers/toSearchQueryMatch";
+import {matchedNameOrCodepoint} from "../../libraries/helpers/matchedNameOrCodepoint";
 
-import {ParsedUsageInfo} from "../../libraries/types/savedata/oud/parsedUsageInfo";
-import {isFavoriteCharacter} from "../../libraries/helpers/oud/isFavoriteCharacter";
+import {ParsedUsageInfo} from "../../libraries/types/savedata/parsedUsageInfo";
+import {isFavoriteCharacter} from "../../libraries/helpers/isFavoriteCharacter";
 
 export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
     /* TODO [non-func]: Extract the functionalities needed for inserting/picking characters

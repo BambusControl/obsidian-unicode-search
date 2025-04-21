@@ -1,8 +1,8 @@
-import {UnicodeFragment} from "../../libraries/types/savedata/nieuw/unicodeFragment";
-import {FilterFragment} from "../../libraries/types/savedata/nieuw/filterFragment";
-import {UsageFragment} from "../../libraries/types/savedata/nieuw/usageFragment";
-import {FavoritesFragment} from "../../libraries/types/savedata/nieuw/favoritesFragment";
-import {MetaFragment} from "../../libraries/types/savedata/nieuw/metaFragment";
+import {UnicodeFragment} from "../../libraries/types/savedata/unicodeFragment";
+import {FilterFragment} from "../../libraries/types/savedata/filterFragment";
+import {UsageFragment} from "../../libraries/types/savedata/usageFragment";
+import {FavoritesFragment} from "../../libraries/types/savedata/favoritesFragment";
+import {MetaFragment} from "../../libraries/types/savedata/metaFragment";
 
 export interface RootDataStore {
     getMeta(): Promise<MetaFragment>
