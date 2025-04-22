@@ -1,4 +1,6 @@
 .plugin.unicode-search {
+    --custom-checkbox-radius-modifier: 1;
+
     &.result-item {
         display: flex;
         gap: 1em;
@@ -102,7 +104,7 @@
                 --toggle-thumb-width: var(--toggle-thumb-height);
                 --toggle-width: calc(4em + var(--toggle-thumb-height));
 
-                border-radius: calc(var(--checkbox-radius) * .5);
+                border-radius: calc(var(--checkbox-radius) * var(--custom-checkbox-radius-modifier));
                 background-color: var(--background-modifier-border-hover);
 
                 transition: background-color 0.15s ease-in-out, outline 0.15s ease-in-out, border 0.15s ease-in-out, opacity 0.15s ease-in-out,
@@ -121,7 +123,7 @@
                 }
 
                 &:after {
-                    border-radius: calc(var(--checkbox-radius) * .5);
+                    border-radius: calc(var(--checkbox-radius) * var(--custom-checkbox-radius-modifier));
                     background-color: var(--text-muted);
                 }
 
@@ -148,7 +150,7 @@
                 --toggle-thumb-width: var(--toggle-thumb-height);
                 --toggle-width: calc(4em + var(--toggle-thumb-height));
 
-                border-radius: calc(var(--checkbox-radius) * .5);
+                border-radius: calc(var(--checkbox-radius) * var(--custom-checkbox-radius-modifier));
                 background-color: var(--background-modifier-border-hover);
 
                 transition: background-color 0.15s ease-in-out, outline 0.15s ease-in-out, border 0.15s ease-in-out, opacity 0.15s ease-in-out,
@@ -167,7 +169,7 @@
                 }
 
                 &:after {
-                    border-radius: calc(var(--checkbox-radius) * .5);
+                    border-radius: calc(var(--checkbox-radius) * var(--custom-checkbox-radius-modifier));
                     background-color: var(--text-muted);
                 }
 
@@ -209,7 +211,7 @@
             padding: .5em .75em;
             background-color: var(--background-primary-alt);
 
-            & > .setting-item.setting-item-heading {
+            .setting-item.setting-item-heading {
 
                 &:first-child {
                     padding-top: 0;

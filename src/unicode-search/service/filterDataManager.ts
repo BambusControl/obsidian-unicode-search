@@ -3,24 +3,20 @@ import {UNICODE_PLANES_ALL} from "../../libraries/data/unicodePlanes";
 import {UNICODE_CHARACTER_CATEGORIES} from "../../libraries/data/unicodeCharacterCategories";
 import {UnicodePlaneNumber} from "../../libraries/data/unicodePlaneNumber";
 import {CharacterCategoryGroupType} from "../../libraries/data/characterCategoryGroup";
-import {SaveDataVersion} from "../../libraries/types/savedata/saveDataVersion";
+import {SaveDataVersion} from "../../libraries/types/savedata/version";
 import {FilterFragment} from "../../libraries/types/savedata/filterFragment";
 import {DataEvent} from "../../libraries/types/savedata/metaFragment";
 import {DataFragment} from "../../libraries/types/savedata/dataFragment";
 import {UnicodeFilter} from "../../libraries/types/savedata/unicodeFilter";
 
 export class FilterDataManager implements DataFragmentManager<FilterFragment> {
-    private readonly dataVersions1 = new Set<SaveDataVersion>(
-        [ "0.4.0"
-        , "0.5.0"
-        , "0.6.0"
-        , "0.6.1-NEXT"
-        ]);
 
     initData(fragment: DataFragment): FilterFragment {
         if (fragment.initialized && isFilterFragment(fragment)) {
             return fragment;
         }
+
+        console.info("Initializing filter");
 
         return {
             ...fragment,
@@ -44,12 +40,8 @@ export class FilterDataManager implements DataFragmentManager<FilterFragment> {
         }
     }
 
-    async updateData(fragment: FilterFragment, events: Set<DataEvent>): Promise<FilterFragment> {
-        if (this.dataVersions1.has(fragment.version)) {
-            return fragment;
-        }
-
-        // No data version
+    async updateData(fragment: FilterFragment, _: Set<DataEvent>): Promise<FilterFragment> {
+        /* No-op yet */
         return fragment;
     }
 

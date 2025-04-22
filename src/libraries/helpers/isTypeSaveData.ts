@@ -13,8 +13,8 @@ export function isCodepointKey(object: any): object is CodepointKey {
     return object != null
         && "codepoint" in object
         && isChar(object.codepoint);
-}
 
+}
 export function isChar(object: any): object is Char {
     return object != null
         && typeof object === "string"

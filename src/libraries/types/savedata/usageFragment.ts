@@ -1,9 +1,12 @@
 import {DataFragment} from "./dataFragment";
-import {CodepointUsage} from "../codepoint/extension";
+import {RawCodepointUse} from "../codepoint/extension";
 
 /**
- * Users usage data of the plugin.
+ * User generated usage data
  */
-export interface UsageFragment extends DataFragment {
-    codepoints: Array<CodepointUsage>
+export interface CharacterUseFragment extends DataFragment {
+    /**
+     * Statistics of the individual codepoint usage
+     */
+    codepoints: RawCodepointUse[]
 }

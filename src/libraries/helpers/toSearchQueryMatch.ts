@@ -6,7 +6,7 @@ import {toHexadecimal} from "./toHexadecimal";
 export function toSearchQueryMatch(query: string) {
     const isHexSafe = query.length <= 4 && !query.contains(" ");
 
-    const codepointSearch = isHexSafe ? prepareSimpleSearch(query) : ((text: string) => null);
+    const codepointSearch = isHexSafe ? prepareSimpleSearch(query) : ((_: string) => null);
     const fuzzyNameSearch = prepareFuzzySearch(query);
 
     return (character: MaybeUsedCharacter): MaybeMetaCharacterSearchResult => ({

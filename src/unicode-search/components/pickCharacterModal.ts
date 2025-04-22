@@ -25,7 +25,7 @@ export class PickCharacterModal extends FuzzySearchModal {
         })
     }
 
-    override onChooseSuggestion(search: MetaCharacterSearchResult, evt: MouseEvent | KeyboardEvent) {
+    override onChooseSuggestion(_: MetaCharacterSearchResult, __: MouseEvent | KeyboardEvent) {
         /*
          * Intentionally left blank
          * The `onClose` fires before `onChooseSuggestion`, so we have to override the `selectSuggestion` which calls both of them

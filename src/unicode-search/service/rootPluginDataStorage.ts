@@ -2,7 +2,7 @@ import {PersistCache} from "../../libraries/types/persistCache";
 import {SaveData} from "../../libraries/types/savedata/saveData";
 import {FilterFragment} from "../../libraries/types/savedata/filterFragment";
 import {UnicodeFragment} from "../../libraries/types/savedata/unicodeFragment";
-import {UsageFragment} from "../../libraries/types/savedata/usageFragment";
+import {CharacterUseFragment} from "../../libraries/types/savedata/usageFragment";
 import {FavoritesFragment} from "../../libraries/types/savedata/favoritesFragment";
 import {RootDataStore} from "./rootDataStore";
 import {MetaFragment} from "../../libraries/types/savedata/metaFragment";
@@ -27,15 +27,15 @@ export class RootPluginDataStorage implements RootDataStore {
     }
 
     async getUnicode(): Promise<UnicodeFragment> {
-        return (await this.storedData.get()).unicode;
+        return (await this.storedData.get()).characters;
     }
 
     async overwriteUnicode(data: UnicodeFragment): Promise<UnicodeFragment> {
         const mergedData = await this.mergeData({
-            unicode: data,
+            characters: data,
         });
 
-        return mergedData.unicode;
+        return mergedData.characters;
     }
 
     async getFilter(): Promise<FilterFragment> {
@@ -50,11 +50,11 @@ export class RootPluginDataStorage implements RootDataStore {
         return mergedData.filter;
     }
 
-    async getUsage(): Promise<UsageFragment> {
+    async getUsage(): Promise<CharacterUseFragment> {
         return (await this.storedData.get()).usage;
     }
 
-    async overwriteUsage(usage: UsageFragment): Promise<UsageFragment> {
+    async overwriteUsage(usage: CharacterUseFragment): Promise<CharacterUseFragment> {
         const mergedData = await this.mergeData({
             usage: usage,
         });

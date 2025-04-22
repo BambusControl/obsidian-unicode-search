@@ -21,7 +21,7 @@ import {toSearchQueryMatch} from "../../libraries/helpers/toSearchQueryMatch";
 import {matchedNameOrCodepoint} from "../../libraries/helpers/matchedNameOrCodepoint";
 
 import {isFavoriteCharacter} from "../../libraries/helpers/isFavoriteCharacter";
-import {ParsedUsageInfo} from "../../libraries/types/savedata/usageInfo";
+import {UsageInfo} from "../../libraries/types/savedata/usageInfo";
 
 export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
     /* TODO [non-func]: Extract the functionalities needed for inserting/picking characters
@@ -124,7 +124,7 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
             const usageStats = await this.usageStatistics.get();
 
             /* The type hinting doesn't work, and shows as an error in the IDE (or the type is wrong) */
-            const maybeUsedChar = char as Partial<ParsedUsageInfo>
+            const maybeUsedChar = char as Partial<UsageInfo>
             const showLastUsed = maybeUsedChar.lastUsed != null && maybeUsedChar.lastUsed >= usageStats.topThirdRecentlyUsed;
             const showUseCount = maybeUsedChar.useCount != null && maybeUsedChar.useCount >= usageStats.averageUseCount;
 

@@ -1,6 +1,7 @@
 import {DataFragmentManager} from "./dataFragmentManager";
 import {DataEvent, isDataEvent, MetaFragment} from "../../libraries/types/savedata/metaFragment";
-import {SaveDataVersion} from "../../libraries/types/savedata/saveDataVersion";import {DataFragment} from "../../libraries/types/savedata/dataFragment";
+import {CURRENT_PLUGIN_VERSION, SaveDataVersion} from "../../libraries/types/savedata/version";
+import {DataFragment} from "../../libraries/types/savedata/dataFragment";
 
 export class MetaDataManager implements DataFragmentManager<MetaFragment> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
@@ -15,18 +16,18 @@ export class MetaDataManager implements DataFragmentManager<MetaFragment> {
             return fragment;
         }
 
+        console.info("Initializing metadata");
+
         return {
             ...fragment,
+            pluginVersion: CURRENT_PLUGIN_VERSION,
             initialized: true,
-            events: []
+            events: [],
         };
     }
 
-    async updateData(fragment: MetaFragment, events: Set<DataEvent>): Promise<MetaFragment> {
-        if (this.dataVersions1.has(fragment.version)) {
-            return fragment;
-        }
-
+    async updateData(fragment: MetaFragment, _: Set<DataEvent>): Promise<MetaFragment> {
+        /* No-op yet */
         return fragment;
     }
 

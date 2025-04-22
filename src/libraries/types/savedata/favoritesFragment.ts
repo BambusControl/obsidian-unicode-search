@@ -1,11 +1,12 @@
 import {DataFragment} from "./dataFragment";
-
-
-import {CodepointFavorite} from "../codepoint/extension";
+import {RawCodepointFavorite} from "../codepoint/extension";
 
 /**
- * Users favorite codepoints data of the plugin.
+ * Users favorite codepoints
  */
 export interface FavoritesFragment extends DataFragment {
-    codepoints: Array<CodepointFavorite>
+    /**
+     * List of favorite codepoints
+     */
+    codepoints: RawCodepointFavorite[]
 }

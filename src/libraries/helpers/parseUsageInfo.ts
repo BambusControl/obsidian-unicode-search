@@ -1,6 +1,6 @@
-import {ParsedUsageInfo, UsageInfo} from "../types/savedata/usageInfo";
+import {UsageInfo, RawUsageInfo} from "../types/savedata/usageInfo";
 
-export function parseUsageInfo<T>(value: T & UsageInfo): T & ParsedUsageInfo {
+export function parseUsageInfo<T>(value: T & RawUsageInfo): T & UsageInfo {
     return {
         ...value,
         lastUsed: new Date(value.lastUsed),

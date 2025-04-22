@@ -1,6 +1,6 @@
 import {DataFragmentManager} from "./dataFragmentManager";
 import {UnicodeFragment} from "../../libraries/types/savedata/unicodeFragment";
-import {SaveDataVersion} from "../../libraries/types/savedata/saveDataVersion";
+import {SaveDataVersion} from "../../libraries/types/savedata/version";
 import {isCodepointKey} from "../../libraries/helpers/isTypeSaveData";
 import {CharacterDownloader} from "./characterDownloader";
 import {DataEvent} from "../../libraries/types/savedata/metaFragment";
@@ -25,6 +25,8 @@ export class UnicodeDataManager implements DataFragmentManager<UnicodeFragment> 
             return fragment;
         }
 
+        console.info("Initializing characters");
+
         return {
             ...fragment,
             initialized: true,
@@ -34,9 +36,10 @@ export class UnicodeDataManager implements DataFragmentManager<UnicodeFragment> 
 
     async updateData(fragment: UnicodeFragment, events: Set<DataEvent>): Promise<UnicodeFragment> {
         const updatedData = this.updateByVersion(fragment);
+        const downloadRequested = events.has(DataEvent.DownloadCharacters);
+        const emptyCharacterSet = fragment.codepoints.length < 1;
 
-        if (!events.has(DataEvent.DownloadCharacters)) {
-            console.info("Character database up to date");
+        if (!(downloadRequested || emptyCharacterSet)) {
             return updatedData;
         }
 
@@ -52,13 +55,9 @@ export class UnicodeDataManager implements DataFragmentManager<UnicodeFragment> 
         };
     }
 
-    private updateByVersion(data: UnicodeFragment): UnicodeFragment {
-        if (this.dataVersions1.has(data.version)) {
-            return data;
-        }
-
-        // No data version
-        return data;
+    private updateByVersion(fragment: UnicodeFragment): UnicodeFragment {
+        /* No-op yet */
+        return fragment;
     }
 }
 

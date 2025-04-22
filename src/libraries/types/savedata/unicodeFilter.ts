@@ -3,23 +3,36 @@ import {CharacterCategoryType} from "../../data/characterCategory";
 import {CharacterCategoryGroupType} from "../../data/characterCategoryGroup";
 
 /**
- * User filter data for Unicode characters.
+ * User set filter data for Unicode characters.
  */
 export interface UnicodeFilter {
-    planes: Array<PlaneFilter>;
-    categoryGroups: Array<CategoryGroupFilter>;
+    /**
+     * Filter criteria for planes of Unicode characters
+     */
+    planes: PlaneFilter[];
+
+    /**
+     * Filter criteria for category groups of Unicode characters
+     */
+    categoryGroups: CategoryGroupFilter[];
 }
 
 /**
  * Unicode Plane of Unicode Blocks
  */
 export interface PlaneFilter extends CodepointInterval {
-    blocks: Array<BlockFilter>;
+    /**
+     * Filter criteria for blocks of Unicode characters
+     */
+    blocks: BlockFilter[];
 }
 
+/**
+ * A flag indicating whether a character is included in search or not
+ */
 export interface InclusionFlag {
     /**
-     * Indicates whether a character is included in search or not.
+     * Indicates whether a character is included in search or not
      */
     included: boolean;
 }
@@ -30,7 +43,7 @@ export interface InclusionFlag {
 export type BlockFilter = CodepointInterval & InclusionFlag;
 
 /**
- * Unicode Category Groups
+ * Filters for a group of categories.
  */
 export interface CategoryGroupFilter {
     /**
@@ -43,11 +56,11 @@ export interface CategoryGroupFilter {
     /**
      * Categories which belong to the group.
      */
-    categories: Array<CategoryFilter>;
+    categories: CategoryFilter[];
 }
 
 /**
- * Unicode Categories
+ * Filter for a single category.
  */
 export interface CategoryFilter extends InclusionFlag {
     /**
@@ -57,4 +70,3 @@ export interface CategoryFilter extends InclusionFlag {
      */
     abbreviation: CharacterCategoryType;
 }
-

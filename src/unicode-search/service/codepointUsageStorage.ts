@@ -3,10 +3,10 @@ import {CharacterKey} from "../../libraries/types/codepoint/character";
 import {parseUsageInfo} from "../../libraries/helpers/parseUsageInfo";
 import {serializeUsageInfo} from "../../libraries/helpers/serializeUsageInfo";
 import {RootDataStore} from "./rootDataStore";
-import {UsageFragment} from "../../libraries/types/savedata/usageFragment";
+import {CharacterUseFragment} from "../../libraries/types/savedata/usageFragment";
 
-import {CodepointParsedUsage} from "../../libraries/types/codepoint/extension";
-import {ParsedUsageInfo} from "../../libraries/types/savedata/usageInfo";
+import {CodepointUse} from "../../libraries/types/codepoint/extension";
+import {UsageInfo} from "../../libraries/types/savedata/usageInfo";
 
 export class CodepointUsageStorage implements UsageStore {
 
@@ -17,8 +17,8 @@ export class CodepointUsageStorage implements UsageStore {
 
     async upsert(
         key: CharacterKey,
-        apply: (char?: ParsedUsageInfo) => ParsedUsageInfo
-    ): Promise<CodepointParsedUsage>
+        apply: (char?: UsageInfo) => UsageInfo
+    ): Promise<CodepointUse>
     {
         const data = await this.getUsed();
 
@@ -42,13 +42,13 @@ export class CodepointUsageStorage implements UsageStore {
         return data[index];
     }
 
-    async getUsed(): Promise<CodepointParsedUsage[]> {
+    async getUsed(): Promise<CodepointUse[]> {
         return (await this.store.getUsage())
             .codepoints
             .map(parseUsageInfo)
     }
 
-    private async overwriteUsageData(data: CodepointParsedUsage[]): Promise<CodepointParsedUsage[]> {
+    private async overwriteUsageData(data: CodepointUse[]): Promise<CodepointUse[]> {
         const newData = await this.mergeUsage({
             codepoints: data.map(serializeUsageInfo),
         });
@@ -56,7 +56,7 @@ export class CodepointUsageStorage implements UsageStore {
         return newData.codepoints.map(parseUsageInfo)
     }
 
-    private async mergeUsage(data: Partial<UsageFragment>): Promise<UsageFragment> {
+    private async mergeUsage(data: Partial<CharacterUseFragment>): Promise<CharacterUseFragment> {
         const storedData = await this.store.getUsage();
 
         const newData = {

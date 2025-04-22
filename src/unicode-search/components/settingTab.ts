@@ -78,7 +78,7 @@ export class SettingTab extends PluginSettingTab {
 
         new Setting(newCharacterList)
             .setName("")
-            .setDesc("")
+            .setDesc("Add a new favorite character")
             .addButton(btn => {
                 btn.setIcon("plus")
                 btn.onClick(async _ => {

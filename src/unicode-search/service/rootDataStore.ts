@@ -1,6 +1,6 @@
 import {UnicodeFragment} from "../../libraries/types/savedata/unicodeFragment";
 import {FilterFragment} from "../../libraries/types/savedata/filterFragment";
-import {UsageFragment} from "../../libraries/types/savedata/usageFragment";
+import {CharacterUseFragment} from "../../libraries/types/savedata/usageFragment";
 import {FavoritesFragment} from "../../libraries/types/savedata/favoritesFragment";
 import {MetaFragment} from "../../libraries/types/savedata/metaFragment";
 
@@ -14,8 +14,8 @@ export interface RootDataStore {
     getFilter(): Promise<FilterFragment>
     overwriteFilter(settings: FilterFragment): Promise<FilterFragment>
 
-    getUsage(): Promise<UsageFragment>
-    overwriteUsage(usage: UsageFragment): Promise<UsageFragment>
+    getUsage(): Promise<CharacterUseFragment>
+    overwriteUsage(usage: CharacterUseFragment): Promise<CharacterUseFragment>
 
     getFavorites(): Promise<FavoritesFragment>
     overwriteFavorites(favorites: FavoritesFragment): Promise<FavoritesFragment>

@@ -1,14 +1,14 @@
 import {DataFragmentManager} from "./dataFragmentManager";
-import {UsageFragment} from "../../libraries/types/savedata/usageFragment";
-import {SaveDataVersion} from "../../libraries/types/savedata/saveDataVersion";
+import {CharacterUseFragment} from "../../libraries/types/savedata/usageFragment";
+import {SaveDataVersion} from "../../libraries/types/savedata/version";
 import {isCodepointKey} from "../../libraries/helpers/isTypeSaveData";
 import {DataEvent} from "../../libraries/types/savedata/metaFragment";
 import {DataFragment} from "../../libraries/types/savedata/dataFragment";
 
 
-import {CodepointUsage} from "../../libraries/types/codepoint/extension";
+import {RawCodepointUse} from "../../libraries/types/codepoint/extension";
 
-export class UsageDataManager implements DataFragmentManager<UsageFragment> {
+export class UsageDataManager implements DataFragmentManager<CharacterUseFragment> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(
     [ "0.4.0"
     , "0.5.0"
@@ -16,10 +16,12 @@ export class UsageDataManager implements DataFragmentManager<UsageFragment> {
     , "0.6.1-NEXT"
     ])
 
-    initData(fragment: DataFragment): UsageFragment {
+    initData(fragment: DataFragment): CharacterUseFragment {
         if (fragment.initialized && isUsageFragment(fragment)) {
             return fragment;
         }
+
+        console.info("Initializing usage");
 
         return {
             ...fragment,
@@ -28,18 +30,14 @@ export class UsageDataManager implements DataFragmentManager<UsageFragment> {
         };
     }
 
-    async updateData(fragment: UsageFragment, events: Set<DataEvent>): Promise<UsageFragment> {
-        if (this.dataVersions1.has(fragment.version)) {
-            return fragment;
-        }
-
-        // No data version
+    async updateData(fragment: CharacterUseFragment, _: Set<DataEvent>): Promise<CharacterUseFragment> {
+        /* No-op yet */
         return fragment;
     }
 
 }
 
-function isUsageFragment(fragment: DataFragment): fragment is UsageFragment {
+function isUsageFragment(fragment: DataFragment): fragment is CharacterUseFragment {
     return "codepoints" in fragment
         && fragment.codepoints != null
         && Array.isArray(fragment.codepoints)
@@ -47,7 +45,7 @@ function isUsageFragment(fragment: DataFragment): fragment is UsageFragment {
         ;
 }
 
-function isCodepointUsage(object: any): object is CodepointUsage {
+function isCodepointUsage(object: any): object is RawCodepointUse {
     return isCodepointKey(object)
 
         && "firstUsed" in object
@@ -62,4 +60,3 @@ function isCodepointUsage(object: any): object is CodepointUsage {
         && object.useCount != null
         && typeof object.useCount === "number"
 }
-

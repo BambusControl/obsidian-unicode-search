@@ -11,7 +11,7 @@ import {isTypeDataFragment} from "../../libraries/helpers/isTypeSaveData";
 import {DataManager} from "./dataManager";
 import {MetaDataManager} from "./metaDataManager";
 import {DataFragment} from "../../libraries/types/savedata/dataFragment";
-import {CURRENT_VERSION, SaveDataVersion} from "../../libraries/types/savedata/saveDataVersion";
+import {CURRENT_DATA_VERSION} from "../../libraries/types/savedata/version";
 import {MetaFragment} from "../../libraries/types/savedata/metaFragment";
 import {isInitialSaveData} from "../../libraries/types/savedata/initialSaveData";
 
@@ -31,7 +31,7 @@ export class RootDataManager implements DataManager {
     async initializeData(): Promise<void> {
         console.group("Save data initialization");
         /* We don't know what we will load */
-        const loadedData: any = await this.storedData.get();
+        const loadedData: any = (await this.storedData.get()) ?? {};
 
         /* First, migrate data from initial release */
         const migratedData = RootDataManager.initialMigration(loadedData);
@@ -43,8 +43,12 @@ export class RootDataManager implements DataManager {
         const loadedDataWithMeta = await this.initMeta(shapedData);
 
         /* Now we let each data fragment handle initialization of its data if needed */
-        console.info("Initializing data");
+        console.group("Initializing data");
         const initializedData = this.initData(loadedDataWithMeta);
+        console.groupEnd();
+
+        /* After this, each data fragment manager can request fragments data */
+        this.storedData.set(initializedData);
 
         /* Each data fragment can update its data if needed */
         console.group("Updating data");
@@ -74,14 +78,14 @@ export class RootDataManager implements DataManager {
 
     private initData(fragments: MetaSaveDataFragments): SaveData {
         const filterData = this.filterDm.initData(fragments.filter);
-        const unicodeData = this.unicodeDm.initData(fragments.unicode);
+        const unicodeData = this.unicodeDm.initData(fragments.characters);
         const usageData = this.usageDm.initData(fragments.usage);
         const favoritesData = this.favoritesDm.initData(fragments.favorites);
 
         return {
             ...fragments,
             filter: filterData,
-            unicode: unicodeData,
+            characters: unicodeData,
             usage: usageData,
             favorites: favoritesData,
         };
@@ -95,7 +99,7 @@ export class RootDataManager implements DataManager {
 
         /* All the other updates see the events, and handle them accordingly */
         const filterData = await this.filterDm.updateData(initializedData.filter, events);
-        const unicodeData = await this.unicodeDm.updateData(initializedData.unicode, events);
+        const unicodeData = await this.unicodeDm.updateData(initializedData.characters, events);
         const usageData = await this.usageDm.updateData(initializedData.usage, events);
         const favoritesData = await this.favoritesDm.updateData(initializedData.favorites, events);
 
@@ -105,7 +109,7 @@ export class RootDataManager implements DataManager {
         return {
             meta: metaData,
             filter: filterData,
-            unicode: unicodeData,
+            characters: unicodeData,
             usage: usageData,
             favorites: favoritesData,
         };
@@ -119,7 +123,7 @@ export class RootDataManager implements DataManager {
             meta: RootDataManager.createFragment(loadedData.meta),
             filter: RootDataManager.createFragment(loadedData.filter),
             usage: RootDataManager.createFragment(loadedData.usage),
-            unicode: RootDataManager.createFragment(loadedData.unicode),
+            characters: RootDataManager.createFragment(loadedData.characters),
             favorites: RootDataManager.createFragment(loadedData.favorites),
         };
     }
@@ -129,7 +133,7 @@ export class RootDataManager implements DataManager {
             ? dataPart
             : {
                 initialized: false,
-                version: CURRENT_VERSION,
+                version: CURRENT_DATA_VERSION,
             };
     }
 
@@ -137,7 +141,7 @@ export class RootDataManager implements DataManager {
      * Migration of data created before the save-data update
      * Only data version of "0.6.0" is migrated
      */
-    private static initialMigration(loadedData: any): Pick<SaveData, "filter" | "usage" | "unicode"> {
+    private static initialMigration(loadedData: any): Pick<SaveData, "filter" | "usage" | "characters"> {
         const shouldMigrate = isInitialSaveData(loadedData)
             && loadedData.initialized
             && loadedData.version === "0.6.0";
@@ -158,11 +162,10 @@ export class RootDataManager implements DataManager {
                 version: loadedData.version,
                 ...loadedData.usage
             },
-            unicode: {
+            characters: {
                 version: loadedData.version,
                 ...loadedData.unicode
             },
         }
     }
 }
-

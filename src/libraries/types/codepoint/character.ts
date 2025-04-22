@@ -3,14 +3,14 @@ import {UnicodeCodepoint} from "./unicode";
 
 
 import {ParsedFavoriteInfo} from "../savedata/favoriteInfo";
-import {ParsedUsageInfo} from "../savedata/usageInfo";
+import {UsageInfo} from "../savedata/usageInfo";
 
 /**
  * Base representation of a character
  */
 export type Character = UnicodeCodepoint;
 
-export type UsedCharacter = Character & ParsedUsageInfo;
+export type UsedCharacter = Character & UsageInfo;
 export type MaybeUsedCharacter = Character | UsedCharacter;
 
 export type FavoriteCharacter = Character & ParsedFavoriteInfo;

@@ -1,4 +1,4 @@
-import {SaveDataVersion} from "./saveDataVersion";
+import {SaveDataVersion} from "./version";
 
 /**
  * Top level fragment of self-standing save data

@@ -1,11 +1,11 @@
-import { FavoritesStore } from "./favoritesStore";
+import {FavoritesStore} from "./favoritesStore";
 import {CharacterKey} from "../../libraries/types/codepoint/character";
-import { serializeFavoriteInfo } from "../../libraries/helpers/serializeFavoriteInfo";
+import {serializeFavoriteInfo} from "../../libraries/helpers/serializeFavoriteInfo";
 import {UnicodeSearchError} from "../errors/unicodeSearchError";
 import {RootDataStore} from "./rootDataStore";
 import {FavoritesFragment} from "../../libraries/types/savedata/favoritesFragment";
 
-import {CodepointParsedFavorite} from "../../libraries/types/codepoint/extension";
+import {CodepointFavorite} from "../../libraries/types/codepoint/extension";
 import {ParsedFavoriteInfo} from "../../libraries/types/savedata/favoriteInfo";
 
 export class CodepointFavoritesStorage implements FavoritesStore {
@@ -18,8 +18,7 @@ export class CodepointFavoritesStorage implements FavoritesStore {
     async upsert(
         key: CharacterKey,
         apply: (char?: ParsedFavoriteInfo) => ParsedFavoriteInfo
-    ): Promise<CodepointParsedFavorite>
-    {
+    ): Promise<CodepointFavorite> {
         const data = await this.getFavorites();
 
         const foundIndex = data.findIndex(ch => ch.codepoint === key);
@@ -32,12 +31,12 @@ export class CodepointFavoritesStorage implements FavoritesStore {
         };
 
         if (found) {
-            data[foundIndex] = modified
+            data[foundIndex] = modified;
         } else {
-            data.unshift(modified)
+            data.unshift(modified);
         }
 
-        await this.overwriteFavoritesData(data)
+        await this.overwriteFavoritesData(data);
 
         return data[index];
     }
@@ -45,8 +44,7 @@ export class CodepointFavoritesStorage implements FavoritesStore {
     async update(
         key: CharacterKey,
         apply: (char: ParsedFavoriteInfo) => Partial<ParsedFavoriteInfo>
-    ): Promise<CodepointParsedFavorite>
-    {
+    ): Promise<CodepointFavorite> {
         const data = await this.getFavorites();
 
         const foundIndex = data.findIndex(ch => ch.codepoint === key);
@@ -55,20 +53,18 @@ export class CodepointFavoritesStorage implements FavoritesStore {
             throw new UnicodeSearchError(`No character '${key}' exists in favorites.`);
         }
 
-        const modified = {
+        data[foundIndex] = {
             ...data[foundIndex],
             ...apply({...data[foundIndex]}),
             codepoint: key,
-        } as CodepointParsedFavorite;
+        } as CodepointFavorite;
 
-        data[foundIndex] = modified
-
-        await this.overwriteFavoritesData(data)
+        await this.overwriteFavoritesData(data);
 
         return data[foundIndex];
     }
 
-    async addFavorite(key: CharacterKey): Promise<CodepointParsedFavorite> {
+    async addFavorite(key: CharacterKey): Promise<CodepointFavorite> {
         const favorites = await this.getFavorites();
         const foundFavorite = favorites.find(fav => fav.codepoint === key);
 
@@ -76,7 +72,7 @@ export class CodepointFavoritesStorage implements FavoritesStore {
             return foundFavorite;
         }
 
-        const newFavorite: CodepointParsedFavorite = {
+        const newFavorite: CodepointFavorite = {
             codepoint: key,
             added: new Date(),
             hotkey: false
@@ -96,14 +92,14 @@ export class CodepointFavoritesStorage implements FavoritesStore {
         await this.overwriteFavoritesData(favorites);
     }
 
-    async getFavorites(): Promise<CodepointParsedFavorite[]> {
+    async getFavorites(): Promise<CodepointFavorite[]> {
         return (await this.store.getFavorites()).codepoints.map(fav => ({
             ...fav,
             added: new Date(fav.added),
         }));
     }
 
-    private async overwriteFavoritesData(data: CodepointParsedFavorite[]): Promise<void> {
+    private async overwriteFavoritesData(data: CodepointFavorite[]): Promise<void> {
         const newData = await this.mergeFavorites({
             codepoints: data.map(serializeFavoriteInfo),
         });

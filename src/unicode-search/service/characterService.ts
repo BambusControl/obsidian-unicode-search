@@ -7,7 +7,7 @@ import {
 } from "../../libraries/types/codepoint/character";
 
 
-import {ParsedUsageInfo} from "../../libraries/types/savedata/usageInfo";
+import {UsageInfo} from "../../libraries/types/savedata/usageInfo";
 
 export interface CharacterService {
 	getOne(key: CharacterKey): Promise<Character>;
@@ -15,5 +15,5 @@ export interface CharacterService {
     getUsed(): Promise<UsedCharacter[]>;
     getFavorites(): Promise<FavoriteCharacter[]>;
     getAll(): Promise<MaybeUsedCharacter[]>;
-	recordUsage(key: CharacterKey): Promise<ParsedUsageInfo>;
+	recordUsage(key: CharacterKey): Promise<UsageInfo>;
 }

@@ -13,7 +13,7 @@ export class InsertCharacterModal extends FuzzySearchModal {
         super(app, characterService, INSERT_CHAR_INSTRUCTION);
     }
 
-    public override async onChooseSuggestion(search: MetaCharacterSearchResult, evt: MouseEvent | KeyboardEvent): Promise<void> {
+    public override async onChooseSuggestion(search: MetaCharacterSearchResult, _: MouseEvent | KeyboardEvent): Promise<void> {
         this.editor.replaceSelection(search.character.codepoint);
 
         try {

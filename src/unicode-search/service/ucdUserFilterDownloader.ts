@@ -81,7 +81,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
 
 }
 
-type ParsedData = Array<string>;
+type ParsedData = string[];
 
 type ParsedCharacter = {
     codepoint: number;
@@ -96,13 +96,13 @@ function containsNullValues(char: Partial<ParsedCharacter>): boolean {
         || char.category == null
 }
 
-function includedInBlocks(character: Pick<ParsedCharacter, "codepoint">, includedBlocks: Array<CodepointInterval>): boolean {
+function includedInBlocks(character: Pick<ParsedCharacter, "codepoint">, includedBlocks: CodepointInterval[]): boolean {
     return includedBlocks.some(
         (block) => codepointIn(character.codepoint, block)
     );
 }
 
-function categoryIncluded(character: Pick<ParsedCharacter, "category">, includedCategories: Array<CharacterCategoryType>): boolean {
+function categoryIncluded(character: Pick<ParsedCharacter, "category">, includedCategories: CharacterCategoryType[]): boolean {
     return includedCategories.some(
         (category) => character.category === category
     );

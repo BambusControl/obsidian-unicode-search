@@ -10,7 +10,7 @@ import {UsageStore} from "./usageStore";
 
 
 import {FavoritesStore} from "./favoritesStore";
-import {ParsedUsageInfo} from "../../libraries/types/savedata/usageInfo";
+import {UsageInfo} from "../../libraries/types/savedata/usageInfo";
 
 export class UserCharacterService implements CharacterService {
 
@@ -74,7 +74,7 @@ export class UserCharacterService implements CharacterService {
         }));
     }
 
-	public recordUsage(key: CharacterKey): Promise<ParsedUsageInfo> {
+	public recordUsage(key: CharacterKey): Promise<UsageInfo> {
         const timestamp = new Date();
 
 		return this.usageStore.upsert(key, (current) => ({
@@ -85,4 +85,3 @@ export class UserCharacterService implements CharacterService {
         }))
 	}
 }
-
