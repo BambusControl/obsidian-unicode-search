@@ -16,11 +16,12 @@ export type PluginVersion
     | "0.6.0"
     | "0.6.1"
     | "0.7.0"
+    | "0.7.0-NEXT"
     // Update every release only if plugin version changed
     ;
 
-export type CurrentPluginVersion = "0.7.0" & PluginVersion;
-export const CURRENT_PLUGIN_VERSION: CurrentPluginVersion = "0.7.0";
+export type CurrentPluginVersion = "0.7.0-NEXT" & PluginVersion;
+export const CURRENT_PLUGIN_VERSION: CurrentPluginVersion = "0.7.0-NEXT";
 
 /**
  * Version of the save data schema.
@@ -36,8 +37,9 @@ export type SaveDataVersion = PluginVersion &
     | "0.5.0"
     | "0.6.0"
     | "0.7.0"
+    | "0.7.0-NEXT"
     // Update only if save data schema changed
     );
 
-export type CurrentSaveDataVersion = "0.7.0" & SaveDataVersion;
-export const CURRENT_DATA_VERSION: CurrentPluginVersion = "0.7.0";
+export type CurrentSaveDataVersion = "0.7.0-NEXT" & SaveDataVersion;
+export const CURRENT_DATA_VERSION: CurrentPluginVersion = "0.7.0-NEXT";
