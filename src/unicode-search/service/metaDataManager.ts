@@ -4,13 +4,6 @@ import {CURRENT_PLUGIN_VERSION, SaveDataVersion} from "../../libraries/types/sav
 import {DataFragment} from "../../libraries/types/savedata/dataFragment";
 
 export class MetaDataManager implements DataFragmentManager<MetaFragment> {
-    private readonly dataVersions1 = new Set<SaveDataVersion>(
-        ["0.4.0"
-        , "0.5.0"
-        , "0.6.0"
-        , "0.6.1-NEXT"
-        ]);
-
     initData(fragment: DataFragment): MetaFragment {
         if (fragment.initialized && isMetaFragment(fragment)) {
             return fragment;

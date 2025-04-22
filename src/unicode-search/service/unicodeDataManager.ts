@@ -8,13 +8,6 @@ import {DataFragment} from "../../libraries/types/savedata/dataFragment";
 import {UnicodeCodepoint} from "../../libraries/types/codepoint/unicode";
 
 export class UnicodeDataManager implements DataFragmentManager<UnicodeFragment> {
-    private readonly dataVersions1 = new Set<SaveDataVersion>(
-    [ "0.4.0"
-    , "0.5.0"
-    , "0.6.0"
-    , "0.6.1-NEXT"
-    ])
-
     constructor(
         private readonly ucdService: CharacterDownloader,
     ) {

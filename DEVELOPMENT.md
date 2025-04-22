@@ -22,7 +22,12 @@ These are my notes on the development of the plugin.
 
 ## Development Diary
 
-### 23. December 2023
+### 22. April 2025
+
+The save data rework is kind-of done.
+Still, there is overlap between fetching and initializing data which I want to look at later.
+
+### 23. December 2024
 
 Before releasing the new feature, I have to fix the user save data implementation.
 Now it deletes their data when a new version of the plugin is loaded.
