@@ -1,4 +1,4 @@
-import {UnicodeCodepoint} from "../types/codepoint/codepoint";
+import {UnicodeCodepoint} from "../types/codepoint/unicode";
 import {Order} from "../order/order";
 import {compareNumbers} from "./compareNumbers";
 

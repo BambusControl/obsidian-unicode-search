@@ -1,5 +1,5 @@
 import {DataFragment} from "./dataFragment";
-import {CodepointUsage} from "./codepoint";
+import {CodepointUsage} from "../codepoint/extension";
 
 /**
  * Users usage data of the plugin.

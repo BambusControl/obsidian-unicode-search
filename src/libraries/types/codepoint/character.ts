@@ -1,8 +1,9 @@
-import {UnicodeCodepoint} from "./codepoint";
+import {UnicodeCodepoint} from "./unicode";
 
 
-import {ParsedUsageInfo} from "../savedata/parsedUsageInfo";
-import {ParsedFavoriteInfo} from "../savedata/parsedFavoriteInfo";
+
+import {ParsedFavoriteInfo} from "../savedata/favoriteInfo";
+import {ParsedUsageInfo} from "../savedata/usageInfo";
 
 /**
  * Base representation of a character

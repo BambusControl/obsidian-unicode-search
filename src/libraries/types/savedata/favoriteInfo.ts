@@ -5,3 +5,7 @@ export interface FavoriteInfo {
     hotkey: boolean;
 }
 
+export interface ParsedFavoriteInfo {
+    added: Date;
+    hotkey: boolean;
+}

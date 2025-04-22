@@ -1,4 +1,4 @@
-import {UnicodeCodepoint} from "../../libraries/types/codepoint/codepoint";
+import {UnicodeCodepoint} from "../../libraries/types/codepoint/unicode";
 
 export interface CodepointStore {
 

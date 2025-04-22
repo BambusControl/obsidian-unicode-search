@@ -1,13 +1,12 @@
 import {UsageStore} from "./usageStore";
 import {CharacterKey} from "../../libraries/types/codepoint/character";
-import {
-    UsageData
-} from "../../libraries/types/savedata/usageData";
 import {parseUsageInfo} from "../../libraries/helpers/parseUsageInfo";
 import {serializeUsageInfo} from "../../libraries/helpers/serializeUsageInfo";
-import {CodepointParsedUsage} from "../../libraries/types/savedata/codepoint";
-import {ParsedUsageInfo} from "../../libraries/types/savedata/parsedUsageInfo";
 import {RootDataStore} from "./rootDataStore";
+import {UsageFragment} from "../../libraries/types/savedata/usageFragment";
+
+import {CodepointParsedUsage} from "../../libraries/types/codepoint/extension";
+import {ParsedUsageInfo} from "../../libraries/types/savedata/usageInfo";
 
 export class CodepointUsageStorage implements UsageStore {
 
@@ -57,7 +56,7 @@ export class CodepointUsageStorage implements UsageStore {
         return newData.codepoints.map(parseUsageInfo)
     }
 
-    private async mergeUsage(data: Partial<UsageData>): Promise<UsageData> {
+    private async mergeUsage(data: Partial<UsageFragment>): Promise<UsageFragment> {
         const storedData = await this.store.getUsage();
 
         const newData = {

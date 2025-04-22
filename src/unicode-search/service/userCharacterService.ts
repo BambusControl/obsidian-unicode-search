@@ -9,8 +9,8 @@ import {CharacterService} from "./characterService";
 import {UsageStore} from "./usageStore";
 
 
-import {ParsedUsageInfo} from "../../libraries/types/savedata/parsedUsageInfo";
 import {FavoritesStore} from "./favoritesStore";
+import {ParsedUsageInfo} from "../../libraries/types/savedata/usageInfo";
 
 export class UserCharacterService implements CharacterService {
 

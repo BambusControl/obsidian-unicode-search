@@ -1,4 +1,4 @@
-import {Codepoint} from "../types/codepoint/codepoint";
+import {Codepoint} from "../types/codepoint/unicode";
 import {CodepointInterval} from "../types/codepoint/codepointInterval";
 
 export function codepointIn(codepoint: Codepoint, interval: CodepointInterval): boolean {

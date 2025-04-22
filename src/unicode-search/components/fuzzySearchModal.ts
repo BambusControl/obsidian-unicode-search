@@ -20,8 +20,8 @@ import {toNullMatch} from "../../libraries/helpers/toNullMatch";
 import {toSearchQueryMatch} from "../../libraries/helpers/toSearchQueryMatch";
 import {matchedNameOrCodepoint} from "../../libraries/helpers/matchedNameOrCodepoint";
 
-import {ParsedUsageInfo} from "../../libraries/types/savedata/parsedUsageInfo";
 import {isFavoriteCharacter} from "../../libraries/helpers/isFavoriteCharacter";
+import {ParsedUsageInfo} from "../../libraries/types/savedata/usageInfo";
 
 export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
     /* TODO [non-func]: Extract the functionalities needed for inserting/picking characters

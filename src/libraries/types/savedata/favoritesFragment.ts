@@ -1,5 +1,7 @@
 import {DataFragment} from "./dataFragment";
-import {CodepointFavorite} from "./codepoint";
+
+
+import {CodepointFavorite} from "../codepoint/extension";
 
 /**
  * Users favorite codepoints data of the plugin.

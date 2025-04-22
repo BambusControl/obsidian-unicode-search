@@ -1,9 +1,9 @@
 import {Plugin} from "obsidian";
 import {FavoritesStore} from "./favoritesStore";
 import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
-import {CodepointKey} from "../../libraries/types/codepoint/codepointKey";
 import {CharacterService} from "./characterService";
 import {InsertCharacterModal} from "../components/insertCharacterModal";
+import {CodepointKey} from "../../libraries/types/codepoint/unicode";
 
 export class Commander {
     constructor(

@@ -4,7 +4,9 @@ import {SaveDataVersion} from "../../libraries/types/savedata/saveDataVersion";
 import {isCodepointKey} from "../../libraries/helpers/isTypeSaveData";
 import {DataEvent} from "../../libraries/types/savedata/metaFragment";
 import {DataFragment} from "../../libraries/types/savedata/dataFragment";
-import {CodepointUsage} from "../../libraries/types/savedata/codepoint";
+
+
+import {CodepointUsage} from "../../libraries/types/codepoint/extension";
 
 export class UsageDataManager implements DataFragmentManager<UsageFragment> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(

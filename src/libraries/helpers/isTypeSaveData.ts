@@ -1,6 +1,5 @@
 import {DataFragment} from "../types/savedata/dataFragment";
-import {CodepointKey} from "../types/codepoint/codepointKey";
-import {Char} from "../types/codepoint/codepoint";
+import {Char, CodepointKey} from "../types/codepoint/unicode";
 
 
 export function isTypeDataFragment(object: any): object is DataFragment {

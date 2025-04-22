@@ -5,7 +5,7 @@ import {isCodepointKey} from "../../libraries/helpers/isTypeSaveData";
 import {CharacterDownloader} from "./characterDownloader";
 import {DataEvent} from "../../libraries/types/savedata/metaFragment";
 import {DataFragment} from "../../libraries/types/savedata/dataFragment";
-import {UnicodeCodepoint} from "../../libraries/types/codepoint/codepoint";
+import {UnicodeCodepoint} from "../../libraries/types/codepoint/unicode";
 
 export class UnicodeDataManager implements DataFragmentManager<UnicodeFragment> {
     private readonly dataVersions1 = new Set<SaveDataVersion>(

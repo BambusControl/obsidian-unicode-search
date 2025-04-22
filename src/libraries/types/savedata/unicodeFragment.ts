@@ -1,5 +1,5 @@
 import {DataFragment} from "./dataFragment";
-import {UnicodeCodepoint} from "../codepoint/codepoint";
+import {UnicodeCodepoint} from "../codepoint/unicode";
 
 /**
  * Imported Unicode Character Database data.

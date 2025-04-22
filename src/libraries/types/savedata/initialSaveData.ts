@@ -1,10 +1,10 @@
 import {SaveDataVersion} from "./saveDataVersion";
 import {CategoryFilter, CategoryGroupFilter, PlaneFilter, UnicodeFilter} from "./unicodeFilter";
-import {Char, UnicodeCodepoint} from "../codepoint/codepoint";
-import {CodepointUsage} from "./codepoint";
+import {Char, UnicodeCodepoint} from "../codepoint/unicode";
 import {CharacterCategoryGroupType} from "../../data/characterCategoryGroup";
 import {CharacterCategoryType} from "../../data/characterCategory";
 import {DateString} from "./usageInfo";
+import {CodepointUsage} from "../codepoint/extension";
 
 export interface InitialSaveData {
     initialized: boolean;

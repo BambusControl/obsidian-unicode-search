@@ -1,5 +1,4 @@
 import {CodepointInterval} from "../codepoint/codepointInterval";
-import {InclusionFlag} from "../inclusionFlag";
 import {CharacterCategoryType} from "../../data/characterCategory";
 import {CharacterCategoryGroupType} from "../../data/characterCategoryGroup";
 
@@ -16,6 +15,13 @@ export interface UnicodeFilter {
  */
 export interface PlaneFilter extends CodepointInterval {
     blocks: Array<BlockFilter>;
+}
+
+export interface InclusionFlag {
+    /**
+     * Indicates whether a character is included in search or not.
+     */
+    included: boolean;
 }
 
 /**

@@ -1,7 +1,7 @@
 import {request} from "obsidian";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
 import {UnicodeSearchError} from "../errors/unicodeSearchError";
-import {UnicodeCodepoint} from "../../libraries/types/codepoint/codepoint";
+import {UnicodeCodepoint} from "../../libraries/types/codepoint/unicode";
 import {CharacterDownloader} from "./characterDownloader";
 import {FilterStore} from "./filterStore";
 import {mergeIntervals} from "../../libraries/helpers/mergeIntervals";

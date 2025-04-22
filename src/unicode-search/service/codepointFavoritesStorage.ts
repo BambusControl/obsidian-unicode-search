@@ -1,13 +1,12 @@
 import { FavoritesStore } from "./favoritesStore";
 import {CharacterKey} from "../../libraries/types/codepoint/character";
-import {
-    CodepointParsedFavorite
-} from "../../libraries/types/savedata/codepoint";
-import { ParsedFavoriteInfo } from "../../libraries/types/savedata/parsedFavoriteInfo";
 import { serializeFavoriteInfo } from "../../libraries/helpers/serializeFavoriteInfo";
 import {UnicodeSearchError} from "../errors/unicodeSearchError";
 import {RootDataStore} from "./rootDataStore";
 import {FavoritesFragment} from "../../libraries/types/savedata/favoritesFragment";
+
+import {CodepointParsedFavorite} from "../../libraries/types/codepoint/extension";
+import {ParsedFavoriteInfo} from "../../libraries/types/savedata/favoriteInfo";
 
 export class CodepointFavoritesStorage implements FavoritesStore {
 
