@@ -1,27 +1,27 @@
 {
-    "$id": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json",
+    "$id": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "BlockFilter": {
             "allOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/CodepointInterval"
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/CodepointInterval"
                 },
                 {
-                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/InclusionFlag"
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/InclusionFlag"
                 }
             ],
             "description": "Block of Unicode Codepoints"
         },
         "CategoryFilter": {
-            "description": "Unicode Categories",
+            "description": "Filter for a single category.",
             "properties": {
                 "abbreviation": {
-                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/CharacterCategoryType",
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/CharacterCategoryType",
                     "description": "Two letter abbreviation of the category."
                 },
                 "included": {
-                    "description": "Indicates whether a character is included in search or not.",
+                    "description": "Indicates whether a character is included in search or not",
                     "type": "boolean"
                 }
             },
@@ -32,16 +32,16 @@
             "type": "object"
         },
         "CategoryGroupFilter": {
-            "description": "Unicode Category Groups",
+            "description": "Filters for a group of categories.",
             "properties": {
                 "abbreviation": {
-                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/CharacterCategoryGroupType",
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/CharacterCategoryGroupType",
                     "description": "Single letter abbreviation of the category group."
                 },
                 "categories": {
                     "description": "Categories which belong to the group.",
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/CategoryFilter"
+                        "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/CategoryFilter"
                     },
                     "type": "array"
                 }
@@ -99,7 +99,32 @@
             ],
             "type": "string"
         },
+        "CharacterUseFragment": {
+            "description": "User generated usage data",
+            "properties": {
+                "codepoints": {
+                    "description": "Statistics of the individual codepoint usage",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/RawCodepointUse"
+                    },
+                    "type": "array"
+                },
+                "initialized": {
+                    "type": "boolean"
+                },
+                "version": {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/SaveDataVersion"
+                }
+            },
+            "required": [
+                "codepoints",
+                "initialized",
+                "version"
+            ],
+            "type": "object"
+        },
         "CodepointAttribute": {
+            "description": "General attributes of a Unicode codepoint",
             "properties": {
                 "category": {
                     "description": "Unicode category of the character",
@@ -133,6 +158,7 @@
             "type": "object"
         },
         "CodepointKey": {
+            "description": "Universally used key for a Unicode codepoint",
             "properties": {
                 "codepoint": {
                     "description": "A single character defined by a Unicode code point",
@@ -146,43 +172,74 @@
             ],
             "type": "object"
         },
-        "CodepointUsage": {
-            "allOf": [
-                {
-                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/CodepointKey"
-                },
-                {
-                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/UsageInfo"
-                }
-            ]
-        },
-        "FilterData": {
-            "description": "User filter data for Unicode characters.",
+        "FavoriteInfo": {
+            "description": "Raw favorite information, as stored in save data",
             "properties": {
-                "categoryGroups": {
-                    "items": {
-                        "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/CategoryGroupFilter"
-                    },
-                    "type": "array"
+                "added": {
+                    "description": "Date when the codepoint was added to favorites",
+                    "type": "string"
                 },
-                "planes": {
-                    "items": {
-                        "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/PlaneFilter"
-                    },
-                    "type": "array"
+                "hotkey": {
+                    "description": "Whether the codepoint has a hotkey command",
+                    "type": "boolean"
                 }
             },
             "required": [
-                "categoryGroups",
-                "planes"
+                "added",
+                "hotkey"
+            ],
+            "type": "object"
+        },
+        "FavoritesFragment": {
+            "description": "Users favorite codepoints",
+            "properties": {
+                "codepoints": {
+                    "description": "List of favorite codepoints",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/RawCodepointFavorite"
+                    },
+                    "type": "array"
+                },
+                "initialized": {
+                    "type": "boolean"
+                },
+                "version": {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/SaveDataVersion"
+                }
+            },
+            "required": [
+                "codepoints",
+                "initialized",
+                "version"
+            ],
+            "type": "object"
+        },
+        "FilterFragment": {
+            "description": "User saved character filters",
+            "properties": {
+                "initialized": {
+                    "type": "boolean"
+                },
+                "unicode": {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/UnicodeFilter",
+                    "description": "Filter criteria for Unicode characters"
+                },
+                "version": {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/SaveDataVersion"
+                }
+            },
+            "required": [
+                "initialized",
+                "unicode",
+                "version"
             ],
             "type": "object"
         },
         "InclusionFlag": {
-            "description": "Indicates whether a character is included in search or not.",
+            "description": "A flag indicating whether a character is included in search or not",
             "properties": {
                 "included": {
-                    "description": "Indicates whether a character is included in search or not.",
+                    "description": "Indicates whether a character is included in search or not",
                     "type": "boolean"
                 }
             },
@@ -191,12 +248,43 @@
             ],
             "type": "object"
         },
+        "MetaFragment": {
+            "description": "Meta information for the datastore",
+            "properties": {
+                "events": {
+                    "description": "A collection of unique data events.",
+                    "items": {
+                        "const": "download_characters",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "initialized": {
+                    "type": "boolean"
+                },
+                "pluginVersion": {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/PluginVersion",
+                    "description": "Latest used version of the plugin which used this data"
+                },
+                "version": {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/SaveDataVersion"
+                }
+            },
+            "required": [
+                "events",
+                "initialized",
+                "pluginVersion",
+                "version"
+            ],
+            "type": "object"
+        },
         "PlaneFilter": {
             "description": "Unicode Plane of Unicode Blocks",
             "properties": {
                 "blocks": {
+                    "description": "Filter criteria for blocks of Unicode characters",
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/BlockFilter"
+                        "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/BlockFilter"
                     },
                     "type": "array"
                 },
@@ -214,94 +302,54 @@
             ],
             "type": "object"
         },
-        "SaveDataVersion": {
-            "description": "Version of the save data schema.\n\nMust comply with RegEx:\n```^[0-9]+\\\\.[0-9]+\\\\.[0-9]+(?:-[A-Z]+)?$```",
+        "PluginVersion": {
+            "description": "Version of the plugin.\n\nMust comply with RegEx:\n```^[0-9]+\\\\.[0-9]+\\\\.[0-9]+(?:-[A-Z]+)?$```",
             "enum": [
+                "0.2.0",
+                "0.2.1",
+                "0.2.2",
+                "0.2.3",
+                "0.3.0",
                 "0.4.0",
+                "0.4.1",
                 "0.5.0",
-                "0.6.0"
+                "0.6.0",
+                "0.6.1",
+                "0.7.0"
             ],
             "type": "string"
         },
-        "SettingsData": {
-            "description": "User saved settings.",
-            "properties": {
-                "filter": {
-                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/FilterData"
-                },
-                "initialized": {
-                    "description": "Whether the object has been initialized.",
-                    "type": "boolean"
-                },
-                "modified": {
-                    "description": "Whether the settings have been modified and reinitialization is needed.",
-                    "type": "boolean"
-                }
-            },
-            "required": [
-                "filter",
-                "initialized",
-                "modified"
-            ],
-            "type": "object"
-        },
-        "UnicodeCodepoint": {
+        "RawCodepointFavorite": {
             "allOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/CodepointKey"
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/CodepointKey"
                 },
                 {
-                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/CodepointAttribute"
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/FavoriteInfo"
                 }
-            ]
-        },
-        "UnicodeData": {
-            "description": "Imported Unicode Character Database data.",
-            "properties": {
-                "codepoints": {
-                    "items": {
-                        "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/UnicodeCodepoint"
-                    },
-                    "type": "array"
-                },
-                "initialized": {
-                    "description": "Whether the object has been initialized.",
-                    "type": "boolean"
-                }
-            },
-            "required": [
-                "codepoints",
-                "initialized"
             ],
-            "type": "object"
+            "description": "Favorite infor of a specific codepoint as stored in save data"
         },
-        "UsageData": {
-            "description": "Users usage data of the plugin.",
-            "properties": {
-                "codepoints": {
-                    "items": {
-                        "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/CodepointUsage"
-                    },
-                    "type": "array"
+        "RawCodepointUse": {
+            "allOf": [
+                {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/CodepointKey"
                 },
-                "initialized": {
-                    "description": "Whether the object has been initialized.",
-                    "type": "boolean"
+                {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/RawUsageInfo"
                 }
-            },
-            "required": [
-                "codepoints",
-                "initialized"
             ],
-            "type": "object"
+            "description": "Usage information of a specific codepoint as stored in save data"
         },
-        "UsageInfo": {
-            "description": "Raw usage information, as stored in save data.",
+        "RawUsageInfo": {
+            "description": "Raw usage information, as stored in save data",
             "properties": {
                 "firstUsed": {
+                    "description": "Alias to hint that a string is a date string",
                     "type": "string"
                 },
                 "lastUsed": {
+                    "description": "Alias to hint that a string is a date string",
                     "type": "string"
                 },
                 "useCount": {
@@ -314,32 +362,106 @@
                 "useCount"
             ],
             "type": "object"
+        },
+        "SaveDataVersion": {
+            "description": "Version of the save data schema.\n\nMust comply with RegEx:\n```^[0-9]+\\\\.[0-9]+\\\\.[0-9]+(?:-[A-Z]+)?$```\n\nThe version of the save data schema is independent of the plugin version",
+            "enum": [
+                "0.4.0",
+                "0.5.0",
+                "0.6.0",
+                "0.7.0"
+            ],
+            "type": "string"
+        },
+        "UnicodeCodepoint": {
+            "allOf": [
+                {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/CodepointKey"
+                },
+                {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/CodepointAttribute"
+                }
+            ],
+            "description": "Unicode codepoint representation throughout the plugin"
+        },
+        "UnicodeFilter": {
+            "description": "User set filter data for Unicode characters.",
+            "properties": {
+                "categoryGroups": {
+                    "description": "Filter criteria for category groups of Unicode characters",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/CategoryGroupFilter"
+                    },
+                    "type": "array"
+                },
+                "planes": {
+                    "description": "Filter criteria for planes of Unicode characters",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/PlaneFilter"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "categoryGroups",
+                "planes"
+            ],
+            "type": "object"
+        },
+        "UnicodeFragment": {
+            "description": "Downloaded Unicode Character Database",
+            "properties": {
+                "codepoints": {
+                    "description": "Codepoints downloaded from the Unicode Character Database",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/UnicodeCodepoint"
+                    },
+                    "type": "array"
+                },
+                "initialized": {
+                    "type": "boolean"
+                },
+                "version": {
+                    "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/SaveDataVersion"
+                }
+            },
+            "required": [
+                "codepoints",
+                "initialized",
+                "version"
+            ],
+            "type": "object"
         }
     },
+    "description": "Structure of `data.json`, where each fragment is a self-managed data fragment",
     "properties": {
-        "initialized": {
-            "description": "Whether the object has been initialized.",
-            "type": "boolean"
+        "characters": {
+            "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/UnicodeFragment",
+            "description": "Local character database"
         },
-        "settings": {
-            "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/SettingsData"
+        "favorites": {
+            "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/FavoritesFragment",
+            "description": "Favorites saved manually by the user"
         },
-        "unicode": {
-            "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/UnicodeData"
+        "filter": {
+            "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/FilterFragment",
+            "description": "Filtering of downloaded/displayed codepoints"
+        },
+        "meta": {
+            "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/MetaFragment",
+            "description": "Metadata information about the save data itself"
         },
         "usage": {
-            "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/UsageData"
-        },
-        "version": {
-            "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.6.1/resources/save-data-schema.json#/definitions/SaveDataVersion"
+            "$ref": "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json#/definitions/CharacterUseFragment",
+            "description": "Usage information generated by the user"
         }
     },
     "required": [
-        "initialized",
-        "settings",
-        "unicode",
-        "usage",
-        "version"
+        "characters",
+        "favorites",
+        "filter",
+        "meta",
+        "usage"
     ],
     "type": "object"
 }

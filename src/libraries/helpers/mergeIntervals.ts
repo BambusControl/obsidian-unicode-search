@@ -4,7 +4,7 @@ import {CodepointInterval} from "../types/codepoint/codepointInterval";
  * @param codepointIntervals
  * @see https://www.geeksforgeeks.org/merging-intervals/
  */
-export function mergeIntervals(codepointIntervals: Array<CodepointInterval>): Array<CodepointInterval> {
+export function mergeIntervals(codepointIntervals: CodepointInterval[]): CodepointInterval[] {
     const intervals = Array.from(codepointIntervals);
 
     /* Sort intervals in increasing order of start time */

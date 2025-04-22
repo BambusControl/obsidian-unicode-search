@@ -1,22 +1,22 @@
-import {SettingsData} from "../../libraries/types/savedata/settingsData";
-import {UsageData} from "../../libraries/types/savedata/usageData";
-import {UnicodeData} from "../../libraries/types/savedata/unicodeData";
+import {UnicodeFragment} from "../../libraries/types/savedata/unicodeFragment";
+import {FilterFragment} from "../../libraries/types/savedata/filterFragment";
+import {CharacterUseFragment} from "../../libraries/types/savedata/usageFragment";
+import {FavoritesFragment} from "../../libraries/types/savedata/favoritesFragment";
+import {MetaFragment} from "../../libraries/types/savedata/metaFragment";
 
 export interface RootDataStore {
-    isInitialized(): Promise<boolean>;
-    setInitialized(value: boolean): Promise<void>
-    isCurrentVersion(): Promise<boolean>;
+    getMeta(): Promise<MetaFragment>
+    overwriteMeta(data: MetaFragment): Promise<MetaFragment>
 
-    getUnicode(): Promise<UnicodeData>
-    overwriteUnicode(data: UnicodeData): Promise<UnicodeData>
-    setInitializedUnicode(value: boolean): Promise<void>
+    getUnicode(): Promise<UnicodeFragment>
+    overwriteUnicode(data: UnicodeFragment): Promise<UnicodeFragment>
 
-    getSettings(): Promise<SettingsData>
-    overwriteSettings(settings: SettingsData): Promise<SettingsData>
-    setInitializedSettings(value: boolean): Promise<void>
-    setFilterSatisfied(value: boolean): Promise<void>
+    getFilter(): Promise<FilterFragment>
+    overwriteFilter(settings: FilterFragment): Promise<FilterFragment>
 
-    getUsage(): Promise<UsageData>
-    overwriteUsage(usage: UsageData): Promise<UsageData>
-    setInitializedUsage(value: boolean): Promise<void>
+    getUsage(): Promise<CharacterUseFragment>
+    overwriteUsage(usage: CharacterUseFragment): Promise<CharacterUseFragment>
+
+    getFavorites(): Promise<FavoritesFragment>
+    overwriteFavorites(favorites: FavoritesFragment): Promise<FavoritesFragment>
 }

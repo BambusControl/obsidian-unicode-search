@@ -1,4 +1,4 @@
-import {Codepoint} from "./codepoint";
+import {Codepoint} from "./unicode";
 
 /**
  * Represents a closed interval/range of Unicode Code Points

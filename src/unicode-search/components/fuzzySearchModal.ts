@@ -1,10 +1,10 @@
-import {App, Editor, renderMatches, SuggestModal} from "obsidian";
-import {UsedCharacterSearch} from "./characterSearch";
+import {App, Instruction, renderMatches, SuggestModal} from "obsidian";
+import {MetaCharacterSearchResult} from "./characterSearch";
 import {CharacterService} from "../service/characterService";
 import {
+    ELEMENT_FAVORITE,
     ELEMENT_FREQUENT,
     ELEMENT_RECENT,
-    INSERT_CHAR_INSTRUCTION,
     INSTRUCTION_DISMISS,
     NAVIGATE_INSTRUCTION
 } from "./visualElements";
@@ -20,21 +20,28 @@ import {toNullMatch} from "../../libraries/helpers/toNullMatch";
 import {toSearchQueryMatch} from "../../libraries/helpers/toSearchQueryMatch";
 import {matchedNameOrCodepoint} from "../../libraries/helpers/matchedNameOrCodepoint";
 
-import {ParsedUsageInfo} from "../../libraries/types/savedata/parsedUsageInfo";
+import {isFavoriteCharacter} from "../../libraries/helpers/isFavoriteCharacter";
+import {UsageInfo} from "../../libraries/types/savedata/usageInfo";
 
-export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
-    private usageStatistics: ReadCache<UsageDisplayStatistics>;
+export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
+    /* TODO [non-func]: Extract the functionalities needed for inserting/picking characters
+     * Picking characters needs to have a filter for chars too.
+     * The inheritance used here is very messy, use composition instead.
+     */
 
-    public constructor(
+    private readonly usageStatistics: ReadCache<UsageDisplayStatistics>;
+
+    protected constructor(
         app: App,
-        private readonly editor: Editor,
-        private readonly characterService: CharacterService,
+        protected readonly characterService: CharacterService,
+        chooseCharacter: Instruction,
+
     ) {
         super(app);
 
         super.setInstructions([
             NAVIGATE_INSTRUCTION,
-            INSERT_CHAR_INSTRUCTION,
+            chooseCharacter,
             INSTRUCTION_DISMISS,
         ]);
 
@@ -47,11 +54,11 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
                 topThirdRecentlyUsed: mostRecentUses(usedCharacters).slice(0, 3).last() ?? new Date(0),
                 averageUseCount: averageUseCount(usedCharacters),
             } as UsageDisplayStatistics;
-        })
+        });
     }
 
-    public override async getSuggestions(query: string): Promise<UsedCharacterSearch[]> {
-        const allCharacters = await this.characterService.getAll();
+    public override async getSuggestions(query: string): Promise<MetaCharacterSearchResult[]> {
+        const allCharacters = (await this.characterService.getAll());
         const queryEmpty = query == null || query.length < 1;
 
         const prepared = queryEmpty
@@ -61,14 +68,16 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
                 .map(toSearchQueryMatch(query))
                 .filter(matchedNameOrCodepoint);
 
-        const recencyCutoff = (await this.usageStatistics.getValue()).topThirdRecentlyUsed;
+        const recencyCutoff = (await this.usageStatistics.get()).topThirdRecentlyUsed;
+
         return prepared
             .sort((l, r) => compareCharacterMatches(l, r, recencyCutoff))
+            .slice(0, this.limit)
             .map(fillNullCharacterMatchScores);
     }
 
-    public override async renderSuggestion(search: UsedCharacterSearch, container: HTMLElement): Promise<void> {
-        const char = search.item;
+    public override async renderSuggestion(search: MetaCharacterSearchResult, container: HTMLElement): Promise<void> {
+        const char = search.character;
 
         container.addClass("plugin", "unicode-search", "result-item");
 
@@ -88,45 +97,44 @@ export class FuzzySearchModal extends SuggestModal<UsedCharacterSearch> {
 
         renderMatches(text, char.name, search.match.name.matches);
 
-        if (search.match.codepoint.matches.length > 0) {
-            const codepoint = matches.createDiv({
-                cls: "character-codepoint",
-            });
+        /* TODO [ui][?]: We can show the character category in search results */
+        /* const category = matches.createDiv({
+            cls: "character-category",
+        }).createSpan({
+            text: char.category,
+        }); */
 
-            renderMatches(codepoint, toHexadecimal(char), search.match.codepoint.matches);
-        }
+        const codepoint = matches.createDiv({
+            cls: "character-codepoint",
+        });
+
+        renderMatches(codepoint, toHexadecimal(char), search.match.codepoint.matches);
 
         const detail = container.createDiv({
             cls: "detail",
         });
 
-        const usageStats = await this.usageStatistics.getValue();
-
-        /* The type hinting doesn't work, and shows as an error in the IDE (or the type is wrong) */
-        const maybeUsedChar = char as Partial<ParsedUsageInfo>
-		const showLastUsed = maybeUsedChar.lastUsed != null && maybeUsedChar.lastUsed >= usageStats.topThirdRecentlyUsed;
-		const showUseCount = maybeUsedChar.useCount != null && maybeUsedChar.useCount >= usageStats.averageUseCount;
-
 		const attributes = detail.createDiv({
 			cls: "attributes",
 		});
 
-		if (showLastUsed) {
-			attributes.createDiv(ELEMENT_RECENT);
-		}
+		if (isFavoriteCharacter(char)) {
+			attributes.createDiv(ELEMENT_FAVORITE);
+		} else {
+            const usageStats = await this.usageStatistics.get();
 
-		if (showUseCount) {
-			attributes.createDiv(ELEMENT_FREQUENT);
-		}
-    }
+            /* The type hinting doesn't work, and shows as an error in the IDE (or the type is wrong) */
+            const maybeUsedChar = char as Partial<UsageInfo>
+            const showLastUsed = maybeUsedChar.lastUsed != null && maybeUsedChar.lastUsed >= usageStats.topThirdRecentlyUsed;
+            const showUseCount = maybeUsedChar.useCount != null && maybeUsedChar.useCount >= usageStats.averageUseCount;
 
-    public override async onChooseSuggestion(search: UsedCharacterSearch, evt: MouseEvent | KeyboardEvent): Promise<void> {
-        this.editor.replaceSelection(search.item.codepoint);
+            if (showLastUsed) {
+                attributes.createDiv(ELEMENT_RECENT);
+            }
 
-        try {
-            await this.characterService.recordUsage(search.item.codepoint);
-        } catch (error) {
-            console.error("Failed to record character usage", {err: error});
+            if (showUseCount) {
+                attributes.createDiv(ELEMENT_FREQUENT);
+            }
         }
     }
 

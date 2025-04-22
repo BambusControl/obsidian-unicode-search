@@ -1,3 +1,5 @@
+//noinspection JSUnusedGlobalSymbols
+
 export enum CharacterCategoryGroup {
     Letter = "L",
     Mark = "M",

@@ -5,11 +5,12 @@ import {compareNumbers} from "./compareNumbers";
 import {compareDates} from "./compareDates";
 import {compareNullable} from "./compareNullable";
 
-import {ParsedUsageInfo} from "../types/savedata/parsedUsageInfo";
+
+import {UsageInfo} from "../types/savedata/usageInfo";
 
 export function compareUsageInfo(
-    left: ParsedUsageInfo,
-    right: ParsedUsageInfo,
+    left: UsageInfo,
+    right: UsageInfo,
     recencyCutoff: Date,
 ): Order {
     // We want the most recently used to be first.

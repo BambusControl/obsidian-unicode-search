@@ -1,4 +1,6 @@
 .plugin.unicode-search {
+    --custom-checkbox-radius-modifier: 1;
+
     &.result-item {
         display: flex;
         gap: 1em;
@@ -33,18 +35,17 @@
                 align-items: center;
             }
 
-            & > .character-codepoint {
-                color: var(--code-normal);
-                font-family: var(--font-monospace);
-                font-size: var(--code-size);
-                letter-spacing: 0.055em;
-                text-transform: uppercase;
+            & > .character-name {
+                letter-spacing: 0.025em;
+                text-transform: capitalize;
+            }
 
-                @media (min-width: 40em) {
-                    border-radius: var(--radius-s);
-                    background-color: var(--code-background);
-                    padding: 0.1em 0.3em;
-                }
+            & > .character-codepoint {
+                color: var(--icon-color);
+                font-family: var(--font-monospace), monospace;
+                font-size: 0.7em;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
 
                 &::before {
                     content: "U+";
@@ -62,15 +63,20 @@
             flex-direction: row;
             justify-content: flex-end;
             align-items: center;
-            gap: .5em;
 
             & > .attributes {
                 display: flex;
                 flex-direction: column;
+                flex-wrap: wrap;
                 justify-content: center;
                 align-items: center;
+                align-content: center;
                 font-size: var(--font-smallest);
                 width: 1.25em;
+
+                & > .favorite {
+                    font-size: 1.25em;
+                }
             }
         }
     }
@@ -87,10 +93,101 @@
                 color: var(--interactive-accent-hover);
             }
         }
-
     }
 
     &.setting-tab {
+        .group-control {
+            .checkbox-container {
+                font-size: calc(var(--font-smallest) * 0.9);
+
+                --toggle-thumb-height: 1.5em;
+                --toggle-thumb-width: var(--toggle-thumb-height);
+                --toggle-width: calc(4em + var(--toggle-thumb-height));
+
+                border-radius: calc(var(--checkbox-radius) * var(--custom-checkbox-radius-modifier));
+                background-color: var(--background-modifier-border-hover);
+
+                transition: background-color 0.15s ease-in-out, outline 0.15s ease-in-out, border 0.15s ease-in-out, opacity 0.15s ease-in-out,
+                            color 0.15s ease-in-out, outline 0.15s ease-in-out, border 0.15s ease-in-out, opacity 0.15s ease-in-out;
+                ;
+
+                &:before {
+                    opacity: 100%;
+                    color: var(--text-muted);
+                    padding: 0 .5em;
+                    line-height: 1.85em;
+                    text-transform: uppercase;
+
+                    content: "show";
+                    text-align: end;
+                }
+
+                &:after {
+                    border-radius: calc(var(--checkbox-radius) * var(--custom-checkbox-radius-modifier));
+                    background-color: var(--text-muted);
+                }
+
+                &.is-enabled {
+                    background-color: var(--background-modifier-border-hover);
+
+                    &:before {
+                        content: "hide";
+                        text-align: start;
+                    }
+
+                    &:after {
+                        background-color: var(--interactive-accent);
+                    }
+                }
+            }
+        }
+
+        .favorite-control {
+            .checkbox-container {
+                font-size: calc(var(--font-smallest) * 0.9);
+
+                --toggle-thumb-height: 1.5em;
+                --toggle-thumb-width: var(--toggle-thumb-height);
+                --toggle-width: calc(4em + var(--toggle-thumb-height));
+
+                border-radius: calc(var(--checkbox-radius) * var(--custom-checkbox-radius-modifier));
+                background-color: var(--background-modifier-border-hover);
+
+                transition: background-color 0.15s ease-in-out, outline 0.15s ease-in-out, border 0.15s ease-in-out, opacity 0.15s ease-in-out,
+                            color 0.15s ease-in-out, outline 0.15s ease-in-out, border 0.15s ease-in-out, opacity 0.15s ease-in-out;
+                ;
+
+                &:before {
+                    opacity: 100%;
+                    color: var(--text-muted);
+                    padding: 0 .5em;
+                    line-height: 1.85em;
+                    text-transform: uppercase;
+
+                    content: "INSERT";
+                    text-align: end;
+                }
+
+                &:after {
+                    border-radius: calc(var(--checkbox-radius) * var(--custom-checkbox-radius-modifier));
+                    background-color: var(--text-muted);
+                }
+
+                &.is-enabled {
+                    background-color: var(--background-modifier-border-hover);
+
+                    &:before {
+                        content: "DEL";
+                        text-align: start;
+                    }
+
+                    &:after {
+                        background-color: var(--interactive-accent);
+                    }
+                }
+            }
+        }
+
         .group-container {
             gap: 1em;
             flex-direction: column;
@@ -114,14 +211,17 @@
             padding: .5em .75em;
             background-color: var(--background-primary-alt);
 
-            > .setting-item.setting-item-heading {
+            .setting-item.setting-item-heading {
+
+                &:first-child {
+                    padding-top: 0;
+                }
 
                 @media (min-width: 40em) {
                     margin: .75em 0;
                 }
 
                 & > .setting-item-info {
-                    flex-grow: 1;
 
                     & > .setting-item-name {
                         display: flex;
@@ -130,10 +230,6 @@
                         justify-content: space-between;
                         align-items: center;
                     }
-                }
-
-                & > .setting-item-control {
-                    flex-grow: 0;
                 }
             }
         }
@@ -163,6 +259,50 @@
             }
         }
 
+        .character-list.no-first {
+            & > .setting-item {
+                padding: 0.75em 0;
+                border-top: 1px solid var(--background-modifier-border);
+            }
+        }
+
+        .character-list.new {
+            flex-direction: column-reverse;
+        }
+
+        @media (min-width: 40em) {
+            .character-list .setting-item {
+
+                & > .setting-item-info {
+                    display: inline-flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: start;
+                    align-items: center;
+                    gap: 1em;
+
+                    & > .setting-item-name {
+                        font-size: 1.5em;
+                        width: 1.75em;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    & > .setting-item-description {
+                        padding-top: 0;
+                        letter-spacing: 0.025em;
+                        text-transform: capitalize;
+                    }
+                }
+
+                & > .setting-item-control {
+                    flex-grow: 0;
+                }
+            }
+        }
+
         .monospace {
             color: var(--code-normal);
             font-family: var(--font-monospace);
@@ -183,5 +323,58 @@
                 color: var(--text-normal);
             }
         }
+
+        .setting-item {
+        &.focus-control {
+
+            & > .setting-item-info {
+                width: 0;
+            }
+
+            & > .setting-item-control {
+                flex-grow: 1;
+
+                & > input:only-child {
+                    width: 100%;
+                }
+
+            }
+
+        }
+
+        &.codepoint-interval {
+
+            & > .setting-item-info {
+                flex-grow: 1;
+            }
+
+            & > .setting-item-control {
+                flex-grow: 0;
+            }
+
+        }
+
+        &.prompt-input {
+            & input {
+                width: 100%;
+                padding: var(--size-4-3);
+                padding-inline-end: var(--size-4-6);
+                background-color: var(--background-primary);
+                font-size: var(--font-ui-medium);
+                border: none;
+                height: var(--prompt-input-height);
+                border-radius: 0;
+                border-bottom: 1px solid var(--background-secondary);
+            }
+        }
     }
+
+        .favorite-settings .setting-item-control {
+            button:not(.clickable-icon) {
+                width: revert;
+            }
+        }
+    }
+
+
 }
