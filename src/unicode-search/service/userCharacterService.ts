@@ -1,16 +1,16 @@
-import {UnicodeSearchError} from "../../errors/unicodeSearchError";
+import {UnicodeSearchError} from "../errors/unicodeSearchError";
 import {
     Character,
     CharacterKey, FavoriteCharacter, MaybeUsedCharacter,
     UsedCharacter
-} from "../../../libraries/types/codepoint/character";
-import {CodepointStore} from "../codePointStore";
-import {CharacterService} from "../characterService";
-import {UsageStore} from "../usageStore";
+} from "../../libraries/types/codepoint/character";
+import {CodepointStore} from "./codePointStore";
+import {CharacterService} from "./characterService";
+import {UsageStore} from "./usageStore";
 
 
-import {ParsedUsageInfo} from "../../../libraries/types/savedata/parsedUsageInfo";
-import {FavoritesStore} from "../favoritesStore";
+import {ParsedUsageInfo} from "../../libraries/types/savedata/parsedUsageInfo";
+import {FavoritesStore} from "./favoritesStore";
 
 export class UserCharacterService implements CharacterService {
 

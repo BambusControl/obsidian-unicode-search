@@ -1,13 +1,13 @@
-import {RootDataStore} from "../rootDataStore";
-import {UsageStore} from "../usageStore";
-import {CharacterKey} from "../../../libraries/types/codepoint/character";
+import {UsageStore} from "./usageStore";
+import {CharacterKey} from "../../libraries/types/codepoint/character";
 import {
     UsageData
-} from "../../../libraries/types/savedata/usageData";
-import {parseUsageInfo} from "../../../libraries/helpers/parseUsageInfo";
-import {serializeUsageInfo} from "../../../libraries/helpers/serializeUsageInfo";
-import {CodepointParsedUsage} from "../../../libraries/types/savedata/codepoint";
-import {ParsedUsageInfo} from "../../../libraries/types/savedata/parsedUsageInfo";
+} from "../../libraries/types/savedata/usageData";
+import {parseUsageInfo} from "../../libraries/helpers/parseUsageInfo";
+import {serializeUsageInfo} from "../../libraries/helpers/serializeUsageInfo";
+import {CodepointParsedUsage} from "../../libraries/types/savedata/codepoint";
+import {ParsedUsageInfo} from "../../libraries/types/savedata/parsedUsageInfo";
+import {RootDataStore} from "./rootDataStore";
 
 export class CodepointUsageStorage implements UsageStore {
 

@@ -6,7 +6,7 @@ import {CharacterCategoryGroupType} from "../../data/characterCategoryGroup";
 /**
  * User filter data for Unicode characters.
  */
-export interface FilterData {
+export interface UnicodeFilter {
     planes: Array<PlaneFilter>;
     categoryGroups: Array<CategoryGroupFilter>;
 }

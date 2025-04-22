@@ -1,16 +1,22 @@
 import {App, Plugin, PluginManifest} from "obsidian";
-import {UcdUserFilterDownloader} from "./service/impl/ucdUserFilterDownloader";
-import {RootPluginDataStorage} from "./service/impl/rootPluginDataStorage";
-import {CodepointStorage} from "./service/impl/codepointStorage";
-import {SettingsStorage} from "./service/impl/settingsStorage";
+import {UcdUserFilterDownloader} from "./service/ucdUserFilterDownloader";
 import {SettingTab} from "./components/settingTab";
-import {UserCharacterService} from "./service/impl/userCharacterService";
-import {CodepointUsageStorage} from "./service/impl/codepointUsageStorage";
+import {UserCharacterService} from "./service/userCharacterService";
 
-import {FuzzySearchModal} from "./components/fuzzySearchModal";
-import {NewDataInitializer} from "./service/impl/newDataInitializer";
-import { CodepointFavoritesStorage } from "./service/impl/codepointFavoritesStorage";
-import {Commander} from "./service/impl/commander";
+import {Commander} from "./service/commander";
+import {RootDataManager} from "./service/rootDataManager";
+import {FilterDataManager} from "./service/filterDataManager";
+import {UnicodeDataManager} from "./service/unicodeDataManager";
+import {UsageDataManager} from "./service/usageDataManager";
+import {FavoritesDataManager} from "./service/favoritesDataManager";
+import {PersistCache} from "../libraries/types/persistCache";
+import {RootPluginDataStorage} from "./service/rootPluginDataStorage";
+import {CodepointStorage} from "./service/codepointStorage";
+import {CodepointUsageStorage} from "./service/codepointUsageStorage";
+import {CodepointFavoritesStorage} from "./service/codepointFavoritesStorage";
+import {FilterStorage} from "./service/filterStorage";
+import {MetaDataManager} from "./service/metaDataManager";
+import {MetaStorage} from "./service/metaStorage";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -33,16 +39,39 @@ export default class UnicodeSearchPlugin extends Plugin {
 
         console.info("Creating services");
 
-        const dataStore = new RootPluginDataStorage(this);
+        const dataLoader = new PersistCache(
+            () => this.loadData(),
+            (data) => this.saveData(data)
+        );
+
+        /* TODO [rework]: Data stores duplicate access to data */
+        const dataStore = new RootPluginDataStorage(dataLoader);
+        const metaStore = new MetaStorage(dataStore);
         const codepointStore = new CodepointStorage(dataStore);
         const usageStore = new CodepointUsageStorage(dataStore);
         const favoritesStore = new CodepointFavoritesStorage(dataStore);
         const characterService = new UserCharacterService(codepointStore, usageStore, favoritesStore);
-        const optionsStore = new SettingsStorage(dataStore);
-        const downloader = new UcdUserFilterDownloader(optionsStore);
-        const initializer = new NewDataInitializer(dataStore, downloader);
+        const filterStore = new FilterStorage(dataStore, metaStore);
 
-        await initializer.initializeData();
+        /* TODO [rework]: Downloader needs filter data, but is before update of char mng. */
+        const downloader = new UcdUserFilterDownloader(filterStore);
+
+        const metaDm = new MetaDataManager();
+        const filterDm = new FilterDataManager();
+        const unicodeDm = new UnicodeDataManager(downloader);
+        const usageDm = new UsageDataManager();
+        const favoritesDm = new FavoritesDataManager();
+
+        const dataManager = new RootDataManager(
+            dataLoader,
+            metaDm,
+            filterDm,
+            unicodeDm,
+            usageDm,
+            favoritesDm,
+        );
+
+        await dataManager.initializeData();
 
         console.info("Adding UI elements");
 
@@ -55,8 +84,8 @@ export default class UnicodeSearchPlugin extends Plugin {
             this,
             characterService,
             favoritesStore,
-            optionsStore,
-            initializer,
+            filterStore,
+            dataManager,
         ));
 
         console.timeEnd("Unicode Search load time");

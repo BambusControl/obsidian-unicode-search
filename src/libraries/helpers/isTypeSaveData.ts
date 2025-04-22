@@ -1,29 +1,23 @@
-import {SaveData} from "../types/savedata/saveData";
-import {SettingsData} from "../types/savedata/settingsData";
-import {UnicodeData} from "../types/savedata/unicodeData";
-import {UsageData} from "../types/savedata/usageData";
+import {DataFragment} from "../types/savedata/dataFragment";
+import {CodepointKey} from "../types/codepoint/codepointKey";
+import {Char} from "../types/codepoint/codepoint";
 
-export function isTypeSaveData(object: Partial<SaveData>): object is SaveData {
+
+export function isTypeDataFragment(object: any): object is DataFragment {
     return object != null
         && "initialized" in object
         && "version" in object
-        && "settings" in object
-        && isTypeSettings(object.settings ?? {})
-        && "usage" in object
-        && isTypeUsage(object.usage ?? {})
-        && "unicode" in object
-        && isTypeUnicode(object.unicode ?? {})
         ;
 }
 
-function isTypeSettings(object: Partial<SettingsData>): object is SettingsData {
-    return "initialized" in object;
+export function isCodepointKey(object: any): object is CodepointKey {
+    return object != null
+        && "codepoint" in object
+        && isChar(object.codepoint);
 }
 
-function isTypeUnicode(object: Partial<UnicodeData>): object is UnicodeData {
-    return "initialized" in object;
-}
-
-function isTypeUsage(object: Partial<UsageData>): object is UsageData {
-    return "initialized" in object;
+export function isChar(object: any): object is Char {
+    return object != null
+        && typeof object === "string"
+        && object.length === 1
 }

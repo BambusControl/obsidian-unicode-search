@@ -1,13 +1,13 @@
 import {request} from "obsidian";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
-import {UnicodeSearchError} from "../../errors/unicodeSearchError";
-import {UnicodeCodepoints, UnicodeCodepoint} from "../../../libraries/types/codepoint/codepoint";
-import {CharacterDownloader} from "../characterDownloader";
-import {SettingsStore} from "../settingsStore";
-import {mergeIntervals} from "../../../libraries/helpers/mergeIntervals";
-import {codepointIn} from "../../../libraries/helpers/codePointIn";
-import {CharacterCategoryType} from "../../../libraries/data/characterCategory";
-import {CodepointInterval} from "../../../libraries/types/codepoint/codepointInterval";
+import {UnicodeSearchError} from "../errors/unicodeSearchError";
+import {UnicodeCodepoint} from "../../libraries/types/codepoint/codepoint";
+import {CharacterDownloader} from "./characterDownloader";
+import {FilterStore} from "./filterStore";
+import {mergeIntervals} from "../../libraries/helpers/mergeIntervals";
+import {codepointIn} from "../../libraries/helpers/codePointIn";
+import {CharacterCategoryType} from "../../libraries/data/characterCategory";
+import {CodepointInterval} from "../../libraries/types/codepoint/codepointInterval";
 
 export class UcdUserFilterDownloader implements CharacterDownloader {
 
@@ -20,11 +20,11 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
     };
 
     public constructor(
-        private readonly settingsStore: SettingsStore,
+        private readonly filterStore: FilterStore,
     ) {
     }
 
-    public async download(): Promise<UnicodeCodepoints> {
+    public async download(): Promise<UnicodeCodepoint[]> {
         const unicodeVersion = "14.0.0";
         const unicodeData = await request(`https://www.unicode.org/Public/${unicodeVersion}/ucd/UnicodeData.txt`);
 
@@ -34,7 +34,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
     }
 
     private async filterCharacters(parsed: ParsedCharacter[]): Promise<ParsedCharacter[]> {
-        const filter = await this.settingsStore.getFilter();
+        const filter = await this.filterStore.getFilter();
 
         const includedBlocks = mergeIntervals(filter.planes
             .flatMap(p => p.blocks)

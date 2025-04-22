@@ -1,9 +1,9 @@
-import {Initializable} from "./initializable";
+import {DataFragment} from "./dataFragment";
 import {CodepointFavorite} from "./codepoint";
 
 /**
  * Users favorite codepoints data of the plugin.
  */
-export interface FavoritesData extends Initializable {
+export interface FavoritesFragment extends DataFragment {
     codepoints: Array<CodepointFavorite>
 }

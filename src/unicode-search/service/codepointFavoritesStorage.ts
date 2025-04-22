@@ -1,13 +1,13 @@
-import { RootDataStore } from "../rootDataStore";
-import { FavoritesStore } from "../favoritesStore";
-import {CharacterKey} from "../../../libraries/types/codepoint/character";
+import { FavoritesStore } from "./favoritesStore";
+import {CharacterKey} from "../../libraries/types/codepoint/character";
 import {
     CodepointParsedFavorite
-} from "../../../libraries/types/savedata/codepoint";
-import { ParsedFavoriteInfo } from "../../../libraries/types/savedata/parsedFavoriteInfo";
-import { FavoritesData } from "src/libraries/types/savedata/favoritesData";
-import { serializeFavoriteInfo } from "../../../libraries/helpers/serializeFavoriteInfo";
-import {UnicodeSearchError} from "../../errors/unicodeSearchError";
+} from "../../libraries/types/savedata/codepoint";
+import { ParsedFavoriteInfo } from "../../libraries/types/savedata/parsedFavoriteInfo";
+import { serializeFavoriteInfo } from "../../libraries/helpers/serializeFavoriteInfo";
+import {UnicodeSearchError} from "../errors/unicodeSearchError";
+import {RootDataStore} from "./rootDataStore";
+import {FavoritesFragment} from "../../libraries/types/savedata/favoritesFragment";
 
 export class CodepointFavoritesStorage implements FavoritesStore {
 
@@ -112,7 +112,7 @@ export class CodepointFavoritesStorage implements FavoritesStore {
         await this.store.overwriteFavorites(newData);
     }
 
-    private async mergeFavorites(data: Partial<FavoritesData>): Promise<FavoritesData> {
+    private async mergeFavorites(data: Partial<FavoritesFragment>): Promise<FavoritesFragment> {
         const storedData = await this.store.getFavorites();
 
         const newData = {

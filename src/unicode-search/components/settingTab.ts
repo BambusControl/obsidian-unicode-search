@@ -1,25 +1,20 @@
-import {App, FuzzySuggestModal, Plugin, PluginSettingTab, PopoverSuggest, Scope, Setting} from "obsidian";
+import {App, Plugin, PluginSettingTab, Setting} from "obsidian";
 import {UNICODE_PLANES_ALL} from "../../libraries/data/unicodePlanes";
 import {UnicodeBlock} from "../../libraries/types/unicode/unicodeBlock";
 
 import {asHexadecimal} from "../../libraries/helpers/asHexadecimal";
 import {CharacterService} from "../service/characterService";
-import {SettingsStore} from "../service/settingsStore";
+import {FilterStore} from "../service/filterStore";
 import {CodepointInterval} from "../../libraries/types/codepoint/codepointInterval";
 import {UnicodePlane} from "../../libraries/types/unicode/unicodePlane";
 import {UNICODE_CHARACTER_CATEGORIES} from "../../libraries/data/unicodeCharacterCategories";
 import {UnicodeGeneralCategoryGroup} from "../../libraries/types/unicode/unicodeGeneralCategoryGroup";
 import {UnicodeGeneralCategory} from "../../libraries/types/unicode/unicodeGeneralCategory";
-import {DataInitializer} from "../service/dataInitializer";
+import {DataManager} from "../service/dataManager";
 import {FavoritesStore} from "../service/favoritesStore";
 import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
 import {Character, FavoriteCharacter} from "../../libraries/types/codepoint/character";
-import {mostRecentUses} from "../../libraries/helpers/mostRecentUses";
-import {averageUseCount} from "../../libraries/helpers/averageUseCount";
-import {UsageDisplayStatistics} from "../../libraries/types/usageDisplayStatistics";
-import {compareUsedCharacters} from "../../libraries/comparison/compareUsedCharacters";
 import {PickCharacterModal} from "./pickCharacterModal";
-import {ParsedFavoriteInfo} from "../../libraries/types/savedata/parsedFavoriteInfo";
 
 export class SettingTab extends PluginSettingTab {
     /* TODO [non-func]: Make settings code easier to comprehend
@@ -35,8 +30,8 @@ export class SettingTab extends PluginSettingTab {
         private readonly plugin: Plugin,
         private readonly characterService: CharacterService,
         private readonly favoritesStore: FavoritesStore,
-        private readonly settingsStore: SettingsStore,
-        private readonly initializer: DataInitializer,
+        private readonly settingsStore: FilterStore,
+        private readonly initializer: DataManager,
     ) {
         super(app, plugin);
         this.containerEl.addClass("plugin", "unicode-search", "setting-tab");
@@ -114,6 +109,7 @@ export class SettingTab extends PluginSettingTab {
         const setting = new Setting(container);
 
         setting
+            .setClass("favorite-control")
             .setName(character.codepoint)
             .setDesc(character.name)
             .addToggle(toggle => toggle
@@ -229,7 +225,7 @@ export class SettingTab extends PluginSettingTab {
 
     private static async addCharacterBlockFilterToggle(
         container: HTMLElement,
-        options: SettingsStore,
+        options: FilterStore,
         block: UnicodeBlock
     ) {
         /* Low: try to redo more effectively, we always get a plane worth of blocks */
@@ -246,7 +242,7 @@ export class SettingTab extends PluginSettingTab {
 
     private static async addCharacterCategoryFilterToggle(
         container: HTMLElement,
-        options: SettingsStore,
+        options: FilterStore,
         category: UnicodeGeneralCategory
     ) {
         /* Low: try to redo more effectively, we always get a plane worth of blocks */

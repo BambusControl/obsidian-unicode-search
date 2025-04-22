@@ -1,6 +1,3 @@
-import {CURRENT_VERSION, SaveData} from "../types/savedata/saveData";
-import {UNICODE_PLANES_ALL} from "./unicodePlanes";
-import {UNICODE_CHARACTER_CATEGORIES} from "./unicodeCharacterCategories";
 import {UnicodePlaneNumber} from "./unicodePlaneNumber";
 import {CharacterCategoryGroupType} from "./characterCategoryGroup";
 
@@ -28,43 +25,4 @@ const DATA_DEFAULTS: InclusionDefaults = {
         // "Z",
         // "C",
     ],
-}
-
-export function initializationData(): SaveData {
-    return {
-        initialized: false,
-        version: CURRENT_VERSION,
-        settings: {
-            initialized: false,
-            modified: false,
-            filter: {
-                planes: UNICODE_PLANES_ALL.map(plane => ({
-                    ...plane.interval,
-                    blocks: plane.blocks.map(block => ({
-                        ...block.interval,
-                        included: DATA_DEFAULTS.planes.includes(plane.planeNumber),
-                    }))
-                })),
-                categoryGroups: UNICODE_CHARACTER_CATEGORIES.map(group => ({
-                    abbreviation: group.abbreviation,
-                    categories: group.categories.map(category => ({
-                        abbreviation: category.abbreviation,
-                        included: DATA_DEFAULTS.categories.includes(group.abbreviation),
-                    }))
-                })),
-            }
-        },
-        usage: {
-            initialized: false,
-            codepoints: []
-        },
-        unicode: {
-            initialized: false,
-            codepoints: []
-        },
-        favorites: {
-            initialized: false,
-            codepoints: []
-        }
-    }
 }
