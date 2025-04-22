@@ -97,6 +97,13 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
 
         renderMatches(text, char.name, search.match.name.matches);
 
+        /* TODO [ui][?]: We can show the character category in search results */
+        /* const category = matches.createDiv({
+            cls: "character-category",
+        }).createSpan({
+            text: char.category,
+        }); */
+
         const codepoint = matches.createDiv({
             cls: "character-codepoint",
         });
@@ -130,16 +137,6 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
             }
         }
     }
-
-    // public override async onChooseSuggestion(search: MetaCharacterSearchResult, evt: MouseEvent | KeyboardEvent): Promise<void> {
-    //     this.editor.replaceSelection(search.character.codepoint);
-    //
-    //     try {
-    //         await this.characterService.recordUsage(search.character.codepoint);
-    //     } catch (error) {
-    //         console.error("Failed to record character usage", {err: error});
-    //     }
-    // }
 
     public override async onNoSuggestion(): Promise<void> {
         await this.setRandomPlaceholder();

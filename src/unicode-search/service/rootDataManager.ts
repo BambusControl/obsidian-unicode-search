@@ -11,8 +11,9 @@ import {isTypeDataFragment} from "../../libraries/helpers/isTypeSaveData";
 import {DataManager} from "./dataManager";
 import {MetaDataManager} from "./metaDataManager";
 import {DataFragment} from "../../libraries/types/savedata/dataFragment";
-import {CURRENT_VERSION} from "../../libraries/types/savedata/saveDataVersion";
+import {CURRENT_VERSION, SaveDataVersion} from "../../libraries/types/savedata/saveDataVersion";
 import {MetaFragment} from "../../libraries/types/savedata/metaFragment";
+import {isInitialSaveData} from "../../libraries/types/savedata/initialSaveData";
 
 type MetaSaveDataFragments = Omit<SaveDataOf<DataFragment>, "meta"> & { meta: MetaFragment };
 
@@ -28,51 +29,50 @@ export class RootDataManager implements DataManager {
     }
 
     async initializeData(): Promise<void> {
+        console.group("Save data initialization");
         /* We don't know what we will load */
         const loadedData: any = await this.storedData.get();
 
-        /* First, make sure the data is well-shaped */
-        console.info("Data shape check");
-        const shapedData = RootDataManager.shapeLoadedData(loadedData);
+        /* First, migrate data from initial release */
+        const migratedData = RootDataManager.initialMigration(loadedData);
+
+        /* Make sure the data is well-shaped */
+        const shapedData = RootDataManager.shapeLoadedData(migratedData);
 
         /* Full initialization of meta-data, because other fragments need to process its events */
-        console.group("Meta initialization");
         const loadedDataWithMeta = await this.initMeta(shapedData);
-        console.groupEnd();
 
         /* Now we let each data fragment handle initialization of its data if needed */
-        console.info("Save data initialization");
-        const initializedData = await this.initData(loadedDataWithMeta);
+        console.info("Initializing data");
+        const initializedData = this.initData(loadedDataWithMeta);
 
         /* Each data fragment can update its data if needed */
-        console.group("Data update");
+        console.group("Updating data");
         const upToDateData = await this.updateData(initializedData);
         console.groupEnd();
 
         /* Finally, persist the data */
-        console.info("Persisting data");
+        console.info("Saving initialized data");
         this.storedData.set(upToDateData);
         await this.storedData.persist();
+        console.groupEnd();
     }
 
     private async initMeta(fragments: SaveDataOf<DataFragment>): Promise<MetaSaveDataFragments> {
         /* Does the skeleton have data? */
-        console.info("Data initialization", {data: fragments.meta});
         const initializedMeta = this.metaDm.initData(fragments.meta);
 
-        console.info("Data update", {data: initializedMeta});
         /* Is the data up to date with the latest data version? */
         const upToDateMeta = await this.metaDm.updateData(initializedMeta, new Set([]));
 
         /* Check and create the shape of save-data if missing */
-        console.info("Data shape check", {data: upToDateMeta});
         return {
             ...fragments,
             meta: upToDateMeta,
         };
     }
 
-    private async initData(fragments: MetaSaveDataFragments): Promise<SaveData> {
+    private initData(fragments: MetaSaveDataFragments): SaveData {
         const filterData = this.filterDm.initData(fragments.filter);
         const unicodeData = this.unicodeDm.initData(fragments.unicode);
         const usageData = this.usageDm.initData(fragments.usage);
@@ -112,7 +112,9 @@ export class RootDataManager implements DataManager {
     }
 
     private static shapeLoadedData(loadedData: any): SaveDataOf<DataFragment> {
-        /* Check and create the shape of save-data if missing */
+        /* Check and create the shape of save-data if missing
+         * Removing any element will remove it from save data
+         */
         return {
             meta: RootDataManager.createFragment(loadedData.meta),
             filter: RootDataManager.createFragment(loadedData.filter),
@@ -129,6 +131,38 @@ export class RootDataManager implements DataManager {
                 initialized: false,
                 version: CURRENT_VERSION,
             };
+    }
+
+    /**
+     * Migration of data created before the save-data update
+     * Only data version of "0.6.0" is migrated
+     */
+    private static initialMigration(loadedData: any): Pick<SaveData, "filter" | "usage" | "unicode"> {
+        const shouldMigrate = isInitialSaveData(loadedData)
+            && loadedData.initialized
+            && loadedData.version === "0.6.0";
+
+        if (!shouldMigrate) {
+            return loadedData;
+        }
+
+        console.info("Migrating from data version 0.6.0");
+
+        return {
+            filter: {
+                version: loadedData.version,
+                ...loadedData.settings,
+                unicode: loadedData.settings.filter,
+            },
+            usage: {
+                version: loadedData.version,
+                ...loadedData.usage
+            },
+            unicode: {
+                version: loadedData.version,
+                ...loadedData.unicode
+            },
+        }
     }
 }
 

@@ -44,7 +44,7 @@ export default class UnicodeSearchPlugin extends Plugin {
             (data) => this.saveData(data)
         );
 
-        /* TODO [NEXT]: Data stores duplicate access to data */
+        /* TODO [rework]: Data stores duplicate access to data */
         const dataStore = new RootPluginDataStorage(dataLoader);
         const metaStore = new MetaStorage(dataStore);
         const codepointStore = new CodepointStorage(dataStore);
@@ -53,7 +53,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         const characterService = new UserCharacterService(codepointStore, usageStore, favoritesStore);
         const filterStore = new FilterStorage(dataStore, metaStore);
 
-        /* TODO: Downloader needs filter data, but is before update of char mng. */
+        /* TODO [rework]: Downloader needs filter data, but is before update of char mng. */
         const downloader = new UcdUserFilterDownloader(filterStore);
 
         const metaDm = new MetaDataManager();

@@ -39,10 +39,10 @@
             }
 
             & > .character-codepoint {
-                color: var(--code-normal);
+                color: var(--icon-color);
                 font-family: var(--font-monospace), monospace;
                 font-size: 0.7em;
-                letter-spacing: 0.05em;
+                letter-spacing: 0.1em;
                 text-transform: uppercase;
 
                 &::before {
