@@ -74,8 +74,7 @@ const DATA_DEFAULTS: InclusionDefaults = {
 }
 
 function isFilterFragment(object: DataFragment): object is FilterFragment {
-    return "modified" in object
-        && "unicode" in object
+    return "unicode" in object
         && isUnicodeFilter(object.unicode)
         ;
 }

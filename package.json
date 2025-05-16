@@ -1,12 +1,12 @@
 {
   "name": "obsidian-unicode-search",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Obsidian plugin for searching Unicode characters.",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",
     "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
-    "export-schema": "typescript-json-schema --required --strictNullChecks --validationKeywords --ignoreErrors --refs --id https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.0/resources/save-data-schema.json --out ./resources/save-data-schema.json tsconfig.json SaveData",
+    "export-schema": "typescript-json-schema --required --strictNullChecks --validationKeywords --ignoreErrors --refs --id https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/0.7.1/resources/save-data-schema.json --out ./resources/save-data-schema.json tsconfig.json SaveData",
     "test": "jest"
   },
   "keywords": [
@@ -32,7 +32,7 @@
     "esbuild": "^0",
     "esbuild-sass-plugin": "^3",
     "jest": "^29",
-    "obsidian": "1.7.2",
+    "obsidian": "1.8.7",
     "ts-jest": "^29",
     "tslib": "^2",
     "typescript": "^5",

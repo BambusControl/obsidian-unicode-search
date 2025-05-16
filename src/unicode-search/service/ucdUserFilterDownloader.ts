@@ -1,4 +1,4 @@
-import {request} from "obsidian";
+import {getIcon, Notice, request, requestUrl} from "obsidian";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
 import {UnicodeSearchError} from "../errors/unicodeSearchError";
 import {UnicodeCodepoint} from "../../libraries/types/codepoint/unicode";
@@ -25,12 +25,43 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
     }
 
     public async download(): Promise<UnicodeCodepoint[]> {
+        /* NOTE: You must also push a GIT mirror of the UCD version to the `ucd-mirror` branch */
         const unicodeVersion = "14.0.0";
-        const unicodeData = await request(`https://www.unicode.org/Public/${unicodeVersion}/ucd/UnicodeData.txt`);
 
-        const parsed = await this.transformToCharacters(unicodeData);
+        let info = "Unicode Search: Character Database Update";
+        info += `\nUCD version ${unicodeVersion}`
+        const notice = new Notice(info, 0);
+
+        const sourceUcd = "https://www.unicode.org";
+        const sourceGit = "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/refs/heads/ucd-mirror"
+        const path = `Public/${unicodeVersion}/ucd/UnicodeData.txt`
+
+        let response = await requestUrl({url: `${sourceUcd}/${path}`, throw: false});
+
+        if (response.status != 200) {
+            info += `\n✗ Failed to download from Unicode: HTTP ${response.status}`;
+            notice.setMessage(info)
+
+            response = await requestUrl({url: `${sourceGit}/${path}`, throw: false});
+
+            if (response.status != 200) {
+                info += `\n✗ Failed to download from GIT: HTTP ${response.status}`;
+                notice.setMessage(info)
+                return [];
+            }
+        }
+
+        info = info + `\n✓ Successfully downloaded characters`;
+
+        const parsed = await this.transformToCharacters(response.text);
         const filtered = await this.filterCharacters(parsed);
-        return filtered.map(intoUnicodeCodepoint);
+        const unicode = filtered.map(intoUnicodeCodepoint);
+
+        info += `\n✱ Filtered ${unicode.length} out of ${parsed.length} total characters`;
+        notice.setMessage(info);
+        setTimeout(() => notice.hide(), 6 * 1000);
+
+        return unicode;
     }
 
     private async filterCharacters(parsed: ParsedCharacter[]): Promise<ParsedCharacter[]> {
