@@ -1,4 +1,4 @@
-import {getIcon, Notice, request, requestUrl} from "obsidian";
+import {Notice, requestUrl} from "obsidian";
 import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
 import {UnicodeSearchError} from "../errors/unicodeSearchError";
 import {UnicodeCodepoint} from "../../libraries/types/codepoint/unicode";
@@ -27,10 +27,11 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
     public async download(): Promise<UnicodeCodepoint[]> {
         /* NOTE: You must also push a GIT mirror of the UCD version to the `ucd-mirror` branch */
         const unicodeVersion = "14.0.0";
+        const noticeTimeMs = 4 * 1000;
 
         let info = "Unicode Search: Character Database Update";
-        info += `\nUCD version ${unicodeVersion}`
-        const notice = new Notice(info, 0);
+        info += `\n≻ UCD version ${unicodeVersion}`
+        const notice = new Notice(info, noticeTimeMs * 2);
 
         const sourceUcd = "https://www.unicode.org";
         const sourceGit = "https://raw.githubusercontent.com/BambusControl/obsidian-unicode-search/refs/heads/ucd-mirror"
@@ -59,7 +60,8 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
 
         info += `\n✱ Filtered ${unicode.length} out of ${parsed.length} total characters`;
         notice.setMessage(info);
-        setTimeout(() => notice.hide(), 6 * 1000);
+
+        setTimeout(() => notice.hide(), noticeTimeMs);
 
         return unicode;
     }
@@ -141,7 +143,7 @@ function categoryIncluded(character: Pick<ParsedCharacter, "category">, included
 
 function intoUnicodeCodepoint(char: ParsedCharacter): UnicodeCodepoint {
     return {
-        codepoint: String.fromCodePoint(char.codepoint),
+        codepoint: String.fromCodePoint(char.codepoint).normalize("NFC"),
         name: char.name.toLowerCase(),
         category: char.category
     };

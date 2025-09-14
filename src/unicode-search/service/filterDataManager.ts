@@ -3,7 +3,7 @@ import {UNICODE_PLANES_ALL} from "../../libraries/data/unicodePlanes";
 import {UNICODE_CHARACTER_CATEGORIES} from "../../libraries/data/unicodeCharacterCategories";
 import {UnicodePlaneNumber} from "../../libraries/data/unicodePlaneNumber";
 import {CharacterCategoryGroupType} from "../../libraries/data/characterCategoryGroup";
-import {SaveDataVersion} from "../../libraries/types/savedata/version";
+import {CURRENT_DATA_VERSION} from "../../libraries/types/savedata/version";
 import {FilterFragment} from "../../libraries/types/savedata/filterFragment";
 import {DataEvent} from "../../libraries/types/savedata/metaFragment";
 import {DataFragment} from "../../libraries/types/savedata/dataFragment";
@@ -21,6 +21,7 @@ export class FilterDataManager implements DataFragmentManager<FilterFragment> {
         return {
             ...fragment,
             initialized: true,
+            version: CURRENT_DATA_VERSION,
             unicode: {
                 planes: UNICODE_PLANES_ALL.map(plane => ({
                     ...plane.interval,

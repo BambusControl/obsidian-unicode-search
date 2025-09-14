@@ -1,6 +1,6 @@
 import {DataFragmentManager} from "./dataFragmentManager";
 import {DataEvent, isDataEvent, MetaFragment} from "../../libraries/types/savedata/metaFragment";
-import {CURRENT_PLUGIN_VERSION, SaveDataVersion} from "../../libraries/types/savedata/version";
+import {CURRENT_PLUGIN_VERSION} from "../../libraries/types/savedata/version";
 import {DataFragment} from "../../libraries/types/savedata/dataFragment";
 
 export class MetaDataManager implements DataFragmentManager<MetaFragment> {

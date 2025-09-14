@@ -33,7 +33,7 @@ export class RootDataManager implements DataManager {
         /* We don't know what we will load */
         const loadedData: any = (await this.storedData.get()) ?? {};
 
-        /* First, migrate data from initial release */
+        /* First, migrate data from the initial release */
         const migratedData = RootDataManager.initialMigration(loadedData);
 
         /* Make sure the data is well-shaped */
@@ -97,7 +97,7 @@ export class RootDataManager implements DataManager {
         const events = new Set(metaData.events);
         console.info("Events to process", events);
 
-        /* All the other updates see the events, and handle them accordingly */
+        /* All the other updates see the events and handle them accordingly */
         const filterData = await this.filterDm.updateData(initializedData.filter, events);
         const unicodeData = await this.unicodeDm.updateData(initializedData.characters, events);
         const usageData = await this.usageDm.updateData(initializedData.usage, events);

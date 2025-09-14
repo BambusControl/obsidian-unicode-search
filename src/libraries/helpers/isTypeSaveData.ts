@@ -15,8 +15,10 @@ export function isCodepointKey(object: any): object is CodepointKey {
         && isChar(object.codepoint);
 
 }
+
 export function isChar(object: any): object is Char {
     return object != null
         && typeof object === "string"
-        && object.length === 1
+        /* In the NCD form the database has a codepoint max length of two characters */
+        && object.length <=2
 }

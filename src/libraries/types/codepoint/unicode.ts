@@ -6,8 +6,8 @@ export type Codepoint = number;
  */
 export interface CodepointKey {
     /**
-     * A single character defined by a Unicode code point
-     * @maxLength 1
+     * A single Unicode code point character defined by its normalized NFC form
+     * @maxLength 2
      * @minLength 1
      */
     codepoint: Char;

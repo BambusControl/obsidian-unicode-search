@@ -1,6 +1,6 @@
 import {DataFragmentManager} from "./dataFragmentManager";
 import {FavoritesFragment} from "../../libraries/types/savedata/favoritesFragment";
-import {SaveDataVersion} from "../../libraries/types/savedata/version";
+import {CURRENT_DATA_VERSION} from "../../libraries/types/savedata/version";
 import {DataEvent} from "../../libraries/types/savedata/metaFragment";
 import {DataFragment} from "../../libraries/types/savedata/dataFragment";
 
@@ -15,6 +15,7 @@ export class FavoritesDataManager implements DataFragmentManager<FavoritesFragme
         return {
             ...fragment,
             initialized: true,
+            version: CURRENT_DATA_VERSION,
             codepoints: [],
         };
     }
