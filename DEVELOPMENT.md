@@ -22,6 +22,12 @@ These are my notes on the development of the plugin.
 
 ## Development Diary
 
+### 14. September 2025
+
+Unicode characters can be defined by multiple parts, which makes the string length in JavaScript larger than 1.
+The "NFC" normalization is now applied to the string, which makes the maximum length of the string equal to 2.
+I fixed it thanks to https://dietcode.io/p/unicode-normalization/.
+
 ### 22. April 2025
 
 The save data rework is kind-of done.

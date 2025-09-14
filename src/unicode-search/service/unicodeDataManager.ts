@@ -1,6 +1,6 @@
 import {DataFragmentManager} from "./dataFragmentManager";
 import {UnicodeFragment} from "../../libraries/types/savedata/unicodeFragment";
-import {SaveDataVersion} from "../../libraries/types/savedata/version";
+import {CURRENT_DATA_VERSION} from "../../libraries/types/savedata/version";
 import {isCodepointKey} from "../../libraries/helpers/isTypeSaveData";
 import {CharacterDownloader} from "./characterDownloader";
 import {DataEvent} from "../../libraries/types/savedata/metaFragment";
@@ -23,6 +23,7 @@ export class UnicodeDataManager implements DataFragmentManager<UnicodeFragment> 
         return {
             ...fragment,
             initialized: true,
+            version: CURRENT_DATA_VERSION,
             codepoints: [],
         };
     }
