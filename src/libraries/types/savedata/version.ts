@@ -19,11 +19,12 @@ export type PluginVersion
     | "0.7.1"
     | "0.7.2"
     | "0.7.3"
+    | "0.7.3-NEXT"
     // Update every release
     ;
 
-export type CurrentPluginVersion = "0.7.3" & PluginVersion;
-export const CURRENT_PLUGIN_VERSION: CurrentPluginVersion = "0.7.3";
+export type CurrentPluginVersion = "0.7.3-NEXT" & PluginVersion;
+export const CURRENT_PLUGIN_VERSION: CurrentPluginVersion = "0.7.3-NEXT";
 
 /**
  * Version of the save data schema.
