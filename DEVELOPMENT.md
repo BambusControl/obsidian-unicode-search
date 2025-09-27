@@ -22,11 +22,13 @@ These are my notes on the development of the plugin.
 
 ## Development Diary
 
-### 14. September 2025
+### 27. September 2025
 
 Unicode characters can be defined by multiple parts, which makes the string length in JavaScript larger than 1.
-The "NFC" normalization is now applied to the string, which makes the maximum length of the string equal to 2.
-I fixed it thanks to https://dietcode.io/p/unicode-normalization/.
+I thought the "NFC" normalization limited the string to a length of 2, but that is not the case.
+The character `U+FB2C` has a length of 3, see issue #15.
+The "NFC" normalization is still applied, but I don't believe it will guarantee any maximum length of the string.
+Fixed in part thanks to https://dietcode.io/p/unicode-normalization/.
 
 ### 22. April 2025
 
