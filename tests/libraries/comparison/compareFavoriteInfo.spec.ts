@@ -1,4 +1,4 @@
-import {compareFavoriteInfo} from "../../../src/libraries/comparison/compareFavoriteInfo";
+import {compareFavoriteInfo} from "src/libraries/comparison/compareFavoriteInfo";
 
 test(
 	"later added is before sooner added",

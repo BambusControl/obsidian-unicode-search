@@ -1,5 +1,5 @@
-import { intervalWithin } from "../../../src/libraries/helpers/intervalWithin";
-import { CodepointInterval } from "../../../src/libraries/types/codepoint/codepointInterval";
+import { intervalWithin } from "src/libraries/helpers/intervalWithin";
+import { CodepointInterval } from "src/libraries/types/codepoint/codepointInterval";
 
 describe("intervalWithin", () => {
     it("should return true when the inner interval is completely within the outer interval", () => {

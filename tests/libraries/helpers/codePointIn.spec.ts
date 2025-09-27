@@ -1,6 +1,6 @@
-import { codepointIn } from "../../../src/libraries/helpers/codePointIn";
-import { Codepoint } from "../../../src/libraries/types/codepoint/unicode";
-import { CodepointInterval } from "../../../src/libraries/types/codepoint/codepointInterval";
+import { codepointIn } from "src/libraries/helpers/codePointIn";
+import { Codepoint } from "src/libraries/types/codepoint/unicode";
+import { CodepointInterval } from "src/libraries/types/codepoint/codepointInterval";
 
 describe("codepointIn", () => {
     it("should return true when the codepoint is within the interval", () => {

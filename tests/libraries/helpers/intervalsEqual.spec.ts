@@ -1,5 +1,5 @@
-import {intervalsEqual} from "../../../src/libraries/helpers/intervalsEqual";
-import {CodepointInterval} from "../../../src/libraries/types/codepoint/codepointInterval";
+import {intervalsEqual} from "src/libraries/helpers/intervalsEqual";
+import {CodepointInterval} from "src/libraries/types/codepoint/codepointInterval";
 
 describe("intervalsEqual", () => {
     it("should return true for intervals with the same start and end", () => {
