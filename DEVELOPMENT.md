@@ -4,8 +4,10 @@ These are my notes on the development of the plugin.
 
 ## Release: How To
 
+**Important**: The version numbering scheme uses `CURRENT-NEXT` format (e.g., if releasing 0.7.3, the next development version is `0.7.3-NEXT`, not `0.7.4-NEXT`). This allows flexibility to decide whether the next release will be patch, minor, or major.
+
 1. From the `develop` branch, create a release branch `release/X.Y.Z`
-2. Go to [package.json](./package.json) and overwrite `X.Y.Z-NEXT` with new version throughout the whole project (double check if save data version needs to be updated)
+2. Go to [package.json](./package.json) and overwrite `X.Y.Z-NEXT` with new release version `X.Y.Z` throughout the whole project (double check if save data version needs to be updated)
 3. Update the [package-lock](./package-lock.json) file: `npm install`
 4. Export save data schema: `npm run export-schema`
 5. Run tests: `npm run test`
@@ -16,7 +18,7 @@ These are my notes on the development of the plugin.
 10. GitHub Actions will create a [release](https://github.com/BambusControl/obsidian-unicode-search/releases)
 11. Add release notes to the release
 12. Fast-forward the `develop` branch
-13. Go to [package.json](./package.json) and overwrite `X.Y.Z` with _next_ version `X.Y.Z-NEXT` throughout the whole project
+13. Go to [package.json](./package.json) and overwrite `X.Y.Z` with `X.Y.Z-NEXT` (same version + `-NEXT` suffix) throughout the whole project
 14. Update the [package-lock](./package-lock.json) file: `npm install`
 15. Commit as "Set version as `X.Y.Z-NEXT`" to the `develop` branch
 
@@ -26,7 +28,7 @@ These are my notes on the development of the plugin.
 
 Unicode characters can be defined by multiple parts, which makes the string length in JavaScript larger than 1.
 I thought the "NFC" normalization limited the string to a length of 2, but that is not the case.
-The character `U+FB2C` has a length of 3, see issue #15.
+The character [`U+FB2C`](https://www.compart.com/en/unicode/U+FB2C)  has a length of 3.
 The "NFC" normalization is still applied, but I don't believe it will guarantee any maximum length of the string.
 Fixed in part thanks to https://dietcode.io/p/unicode-normalization/.
 
