@@ -1,7 +1,9 @@
 import {UnicodeSearchError} from "../errors/unicodeSearchError";
 import {
     Character,
-    CharacterKey, FavoriteCharacter, MaybeUsedCharacter,
+    CharacterKey,
+    FavoriteCharacter,
+    MaybeUsedCharacter,
     UsedCharacter
 } from "../../libraries/types/codepoint/character";
 import {CodepointStore} from "./codePointStore";

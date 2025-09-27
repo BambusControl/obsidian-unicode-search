@@ -1,7 +1,6 @@
 import {UnicodeCodepoint} from "./unicode";
 
 
-
 import {ParsedFavoriteInfo} from "../savedata/favoriteInfo";
 import {UsageInfo} from "../savedata/usageInfo";
 

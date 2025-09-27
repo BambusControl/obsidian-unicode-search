@@ -1,4 +1,4 @@
-import {UsageInfo, RawUsageInfo} from "../types/savedata/usageInfo";
+import {RawUsageInfo, UsageInfo} from "../types/savedata/usageInfo";
 
 export function parseUsageInfo<T>(value: T & RawUsageInfo): T & UsageInfo {
     return {
