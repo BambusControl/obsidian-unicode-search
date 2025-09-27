@@ -1,4 +1,4 @@
-import {compareUsedCharacters} from "../../../src/libraries/comparison/compareUsedCharacters";
+import {compareUsedCharacters} from "src/libraries/comparison/compareUsedCharacters";
 
 test(
     "character with `use` is before character without",

@@ -1,5 +1,5 @@
-import { compareDates } from "../../../src/libraries/comparison/compareDates";
-import { Order } from "../../../src/libraries/order/order";
+import { compareDates } from "src/libraries/comparison/compareDates";
+import { Order } from "src/libraries/order/order";
 
 describe("compareDates", () => {
     it("should return Order.Smaller when the left date is earlier than the right date", () => {

@@ -1,4 +1,4 @@
-import {compareCodepoints} from "../../../src/libraries/comparison/compareCodepoints";
+import {compareCodepoints} from "src/libraries/comparison/compareCodepoints";
 
 test(
     "character with codepoint `a` is before character with codepoint `b`",

@@ -1,4 +1,4 @@
-import {compareUsageInfo} from "../../../src/libraries/comparison/compareUsageInfo";
+import {compareUsageInfo} from "src/libraries/comparison/compareUsageInfo";
 
 test(
 	"later use is before sooner use",

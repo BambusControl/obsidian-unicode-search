@@ -1,5 +1,5 @@
-import {CodepointInterval} from "../../../src/libraries/types/codepoint/codepointInterval";
-import {mergeIntervals} from "../../../src/libraries/helpers/mergeIntervals";
+import {CodepointInterval} from "src/libraries/types/codepoint/codepointInterval";
+import {mergeIntervals} from "src/libraries/helpers/mergeIntervals";
 
 describe("mergeIntervals", () => {
     it("should merge overlapping intervals", () => {

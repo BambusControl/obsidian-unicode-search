@@ -1,4 +1,4 @@
-import { CharacterKey } from "../../libraries/types/codepoint/character";
+import {CharacterKey} from "../../libraries/types/codepoint/character";
 
 import {CodepointFavorite} from "../../libraries/types/codepoint/extension";
 import {ParsedFavoriteInfo} from "../../libraries/types/savedata/favoriteInfo";

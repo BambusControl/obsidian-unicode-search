@@ -1,4 +1,4 @@
-import {compareFavoriteCharacters} from "../../../src/libraries/comparison/compareFavoriteCharacters";
+import {compareFavoriteCharacters} from "src/libraries/comparison/compareFavoriteCharacters";
 
 test(
     "character which is `favorite` is before character which is not",

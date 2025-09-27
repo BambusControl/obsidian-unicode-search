@@ -1,4 +1,4 @@
-import { averageUseCount } from "../../../src/libraries/helpers/averageUseCount";
+import { averageUseCount } from "src/libraries/helpers/averageUseCount";
 
 describe("averageUseCount", () => {
     it("should return 0 when the input array is empty", () => {

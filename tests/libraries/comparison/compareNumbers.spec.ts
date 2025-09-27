@@ -1,5 +1,5 @@
 import {expect, test} from "@jest/globals";
-import {compareNumbers} from "../../../src/libraries/comparison/compareNumbers";
+import {compareNumbers} from "src/libraries/comparison/compareNumbers";
 
 test(
     "one equals one",

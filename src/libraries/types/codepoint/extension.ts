@@ -1,5 +1,5 @@
 import {FavoriteInfo as RawFavoriteInfo, ParsedFavoriteInfo as FavoriteInfo} from "../savedata/favoriteInfo";
-import {UsageInfo as UseInfo, RawUsageInfo as RawUseInfo} from "../savedata/usageInfo";
+import {RawUsageInfo as RawUseInfo, UsageInfo as UseInfo} from "../savedata/usageInfo";
 import {CodepointKey} from "./unicode";
 
 /**

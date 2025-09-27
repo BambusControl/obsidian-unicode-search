@@ -3,7 +3,7 @@ import {UnicodeFragment} from "./unicodeFragment";
 import {CharacterUseFragment as UsageFragment} from "./usageFragment";
 import {FavoritesFragment} from "./favoritesFragment";
 import {MetaFragment} from "./metaFragment";
-import { DataFragment } from "./dataFragment";
+import {DataFragment} from "./dataFragment";
 
 /**
  * Generic structure of `data.json`

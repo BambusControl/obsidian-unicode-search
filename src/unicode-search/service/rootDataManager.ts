@@ -1,9 +1,6 @@
 import {FilterDataManager} from "./filterDataManager";
 import {PersistCache} from "../../libraries/types/persistCache";
-import {
-    SaveData,
-    SaveDataOf
-} from "../../libraries/types/savedata/saveData";
+import {SaveData, SaveDataOf} from "../../libraries/types/savedata/saveData";
 import {UnicodeDataManager} from "./unicodeDataManager";
 import {UsageDataManager} from "./usageDataManager";
 import {FavoritesDataManager} from "./favoritesDataManager";

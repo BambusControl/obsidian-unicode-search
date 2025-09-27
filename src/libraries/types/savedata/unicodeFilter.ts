@@ -64,7 +64,7 @@ export interface CategoryGroupFilter {
  */
 export interface CategoryFilter extends InclusionFlag {
     /**
-     * Two letter abbreviation of the category.
+     * Two-letter abbreviation of the category.
      * @maxLength 2
      * @minLength 2
      */

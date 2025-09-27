@@ -1,4 +1,8 @@
+/**
+ * Unicode code point character defined by its normalized NFC form
+ */
 export type Char = string
+
 export type Codepoint = number;
 
 /**
@@ -6,8 +10,7 @@ export type Codepoint = number;
  */
 export interface CodepointKey {
     /**
-     * A single Unicode code point character defined by its normalized NFC form
-     * @maxLength 2
+     * Unicode code point character defined by its normalized NFC form
      * @minLength 1
      */
     codepoint: Char;
@@ -18,7 +21,7 @@ export interface CodepointKey {
  */
 export interface CodepointAttribute {
     /**
-     * Unicode provided description of the character
+     * Unicode description of the character
      */
     name: string;
 
