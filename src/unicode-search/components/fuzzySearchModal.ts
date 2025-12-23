@@ -31,11 +31,10 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
 
     private readonly usageStatistics: ReadCache<UsageDisplayStatistics>;
 
-    protected constructor(
+    public constructor(
         app: App,
         protected readonly characterService: CharacterService,
         chooseCharacter: Instruction,
-
     ) {
         super(app);
 

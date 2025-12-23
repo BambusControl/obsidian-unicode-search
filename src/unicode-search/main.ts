@@ -17,6 +17,14 @@ import {CodepointFavoritesStorage} from "./service/codepointFavoritesStorage";
 import {FilterStorage} from "./service/filterStorage";
 import {MetaDataManager} from "./service/metaDataManager";
 import {MetaStorage} from "./service/metaStorage";
+import {Offer} from "obsidian-linkup";
+import {LinkUpApi} from "./linkUpApi";
+import {RootDataStore} from "./service/rootDataStore";
+import {CodepointStore} from "./service/codePointStore";
+import {UsageStore} from "./service/usageStore";
+import {FavoritesStore} from "./service/favoritesStore";
+import {CharacterService} from "./service/characterService";
+import {FilterStore} from "./service/filterStore";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -25,6 +33,13 @@ export default class UnicodeSearchPlugin extends Plugin {
      * There's a bunch of unnecessary classes and extraneous generalizations.
      * Add docs to the necessary parts.
      */
+    private dataStore!: RootDataStore;
+    private metaStore!: MetaStorage;
+    private codepointStore!: CodepointStore;
+    private usageStore!: UsageStore;
+    private favoritesStore!: FavoritesStore;
+    private characterService!: CharacterService;
+    private filterStore!: FilterStore;
 
     public constructor(
         app: App,
@@ -45,16 +60,16 @@ export default class UnicodeSearchPlugin extends Plugin {
         );
 
         /* TODO [rework]: Data stores duplicate access to data */
-        const dataStore = new RootPluginDataStorage(dataLoader);
-        const metaStore = new MetaStorage(dataStore);
-        const codepointStore = new CodepointStorage(dataStore);
-        const usageStore = new CodepointUsageStorage(dataStore);
-        const favoritesStore = new CodepointFavoritesStorage(dataStore);
-        const characterService = new UserCharacterService(codepointStore, usageStore, favoritesStore);
-        const filterStore = new FilterStorage(dataStore, metaStore);
+        this.dataStore = new RootPluginDataStorage(dataLoader);
+        this.metaStore = new MetaStorage(this.dataStore);
+        this.codepointStore = new CodepointStorage(this.dataStore);
+        this.usageStore = new CodepointUsageStorage(this.dataStore);
+        this.favoritesStore = new CodepointFavoritesStorage(this.dataStore);
+        this.characterService = new UserCharacterService(this.codepointStore, this.usageStore, this.favoritesStore);
+        this.filterStore = new FilterStorage(this.dataStore, this.metaStore);
 
         /* TODO [rework]: Downloader needs filter data, but is before update of char mng. */
-        const downloader = new UcdUserFilterDownloader(filterStore);
+        const downloader = new UcdUserFilterDownloader(this.filterStore);
 
         const metaDm = new MetaDataManager();
         const filterDm = new FilterDataManager();
@@ -76,20 +91,26 @@ export default class UnicodeSearchPlugin extends Plugin {
         console.info("Adding UI elements");
 
         const commandAdder = new Commander(this);
-        commandAdder.addModal(characterService)
-        await commandAdder.addFavorites(favoritesStore);
+        commandAdder.addModal(this.characterService)
+        await commandAdder.addFavorites(this.favoritesStore);
 
         this.addSettingTab(new SettingTab(
             this.app,
             this,
-            characterService,
-            favoritesStore,
-            filterStore,
+            this.characterService,
+            this.favoritesStore,
+            this.filterStore,
             dataManager,
         ));
 
         console.timeEnd("Unicode Search load time");
         console.groupEnd();
+        this.publishExternalApi();
     }
 
+    @Offer("unicode-search")
+    publishExternalApi(): any {
+        return new LinkUpApi(this.characterService);
+    }
 }
+

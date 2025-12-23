@@ -25,3 +25,4 @@ export class InsertCharacterModal extends FuzzySearchModal {
     }
 
 }
+
