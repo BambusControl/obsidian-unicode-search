@@ -22,6 +22,23 @@ These are my notes on the development of the plugin.
 14. Update the [package-lock](./package-lock.json) file: `npm install`
 15. Commit as "Set version as `X.Y.Z-NEXT`" to the `develop` branch
 
+## Features to Add
+
+- [ ] use IndexedDB
+  - Since the UCD is large, using JSON to filter add and manipulate characters is slow.
+  - IndexedDB should work anywhere, and there is even a library specifically for obsidian---see [Fevol/obsidian-database-library](https://github.com/Fevol/obsidian-database-library).
+  - It would greatly help with management of what groups and blocks are enabled, or even provide all characters out of the box.
+- [ ] missing characters search
+  - It is challenging for users to enable the specific character group and block required for their missing characters.
+  - They usually use third party websites, but even then it is difficult to find what they need in the settings (too many options).
+  - We could add a search functionality which automatically enables the necessary groups and blocks.
+  - We'd need to keep a second copy of the UCD, however, it would keep the editing speed good.
+- [ ] user created character names
+  - The UCD is provided by Unicode, however their names are not always very helpful.
+  - I want to ask users to create their own names, and from it create a new index for easier search.
+  - The index would serve as a secondary list of "keywords" used during search.
+  - The data can be used to create a dedicated website with an API for other developers.
+
 ## Development Diary
 
 ### 27. September 2025
