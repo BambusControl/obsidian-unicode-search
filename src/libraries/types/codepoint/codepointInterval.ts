@@ -1,9 +1,9 @@
-import {Codepoint} from "./unicode";
+import {CodepointLiteral} from "./unicode";
 
 /**
  * Represents a closed interval/range of Unicode Code Points
  */
 export interface CodepointInterval {
-    start: Codepoint,
-    end: Codepoint,
+    start: CodepointLiteral,
+    end: CodepointLiteral,
 }

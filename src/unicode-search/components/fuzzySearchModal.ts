@@ -84,7 +84,7 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
         container.createDiv({
             cls: "character-preview",
         }).createSpan({
-            text: char.codepoint,
+            text: char.literal,
         });
 
         const matches = container.createDiv({

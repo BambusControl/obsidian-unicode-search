@@ -5,7 +5,8 @@ test(
     () => {
         expect(compareUsedCharacters(
             {
-                codepoint: " ",
+                literal: " ",
+                id: 0x20,
                 name: "b",
                 category: "Ll",
 				lastUsed: new Date(2),
@@ -13,7 +14,8 @@ test(
 				useCount: 1
             },
             {
-                codepoint: " ",
+                literal: " ",
+                id: 0x20,
                 name: "a",
                 category: "Ll",
             },
@@ -27,7 +29,8 @@ test(
     () => {
         expect(compareUsedCharacters(
             {
-                codepoint: " ",
+                literal: " ",
+                id: 0x20,
                 name: "name",
                 category: "Ll",
 				firstUsed: new Date(1),
@@ -35,7 +38,8 @@ test(
 				useCount: 1,
             },
             {
-                codepoint: " ",
+                literal: " ",
+                id: 0x20,
                 name: "name",
                 category: "Ll",
 				firstUsed: new Date(1),

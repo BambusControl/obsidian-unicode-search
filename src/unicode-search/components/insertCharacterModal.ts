@@ -14,11 +14,11 @@ export class InsertCharacterModal extends FuzzySearchModal {
     }
 
     public override async onChooseSuggestion(search: MetaCharacterSearchResult, _: MouseEvent | KeyboardEvent): Promise<void> {
-        this.editor.replaceSelection(search.character.codepoint);
+        this.editor.replaceSelection(search.character.literal);
 
         try {
             /* super.characterService here throws an undefined exception (super is undefined) */
-            await this.characterService.recordUsage(search.character.codepoint);
+            await this.characterService.recordUsage(search.character.id);
         } catch (error) {
             console.error("Failed to record character usage", {err: error});
         }

@@ -5,12 +5,14 @@ test(
     () => {
         expect(compareCodepoints(
             {
-                codepoint: "a",
+                literal: "a",
+                id: 0x61,
                 name: "",
                 category: "Ll",
             },
             {
-                codepoint: "b",
+                literal: "b",
+                id: 0x62,
                 name: "",
                 category: "Ll",
             },
@@ -23,12 +25,14 @@ test(
     () => {
         expect(compareCodepoints(
             {
-                codepoint: "b",
+                literal: "b",
+                id: 0x62,
                 name: "",
                 category: "Ll",
             },
             {
-                codepoint: "a",
+                literal: "a",
+                id: 0x61,
                 name: "",
                 category: "Ll",
             },
@@ -41,12 +45,14 @@ test(
     () => {
         expect(compareCodepoints(
             {
-                codepoint: "a",
+                literal: "a",
+                id: 0x61,
                 name: "",
                 category: "Ll",
             },
             {
-                codepoint: "a",
+                literal: "a",
+                id: 0x61,
                 name: "",
                 category: "Ll",
             },
@@ -59,12 +65,14 @@ test(
     () => {
         expect(compareCodepoints(
             {
-                codepoint: "A",
+                literal: "A",
+                id: 0x41,
                 name: "",
                 category: "Lu",
             },
             {
-                codepoint: "a",
+                literal: "a",
+                id: 0x61,
                 name: "",
                 category: "Ll",
             },
@@ -77,12 +85,14 @@ test(
     () => {
         expect(compareCodepoints(
             {
-                codepoint: "z",
+                literal: "z",
+                id: 0x7a,
                 name: "",
                 category: "Ll",
             },
             {
-                codepoint: "y",
+                literal: "y",
+                id: 0x79,
                 name: "",
                 category: "Ll",
             },

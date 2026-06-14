@@ -20,4 +20,4 @@ export type MaybeFavoriteCharacter = Character | FavoriteCharacter;
  */
 export type MetadataCharacter = Character | UsedCharacter | FavoriteCharacter;
 
-export type CharacterKey = Character["codepoint"];
+export type CharacterKey = Character["id"];

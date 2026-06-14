@@ -8,6 +8,7 @@ import {mergeIntervals} from "../../libraries/helpers/mergeIntervals";
 import {codepointIn} from "../../libraries/helpers/codePointIn";
 import {CharacterCategoryType} from "../../libraries/data/characterCategory";
 import {CodepointInterval} from "../../libraries/types/codepoint/codepointInterval";
+import {toLiteral} from "../../libraries/helpers/toLiteral";
 
 export class UcdUserFilterDownloader implements CharacterDownloader {
 
@@ -94,7 +95,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
 
                 const parsedCharacters = results.data
                     .map((row): ParsedCharacter => ({
-                        codepoint: parseInt(row[0], 16),
+                        id: parseInt(row[0], 16),
                         name: row[1],
                         category: row[2],
                     }));
@@ -117,7 +118,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
 type ParsedData = string[];
 
 type ParsedCharacter = {
-    codepoint: number;
+    id: number;
     name: string;
     category: string;
 };
@@ -125,13 +126,13 @@ type ParsedCharacter = {
 function containsNullValues(char: Partial<ParsedCharacter>): boolean {
     return char == null
         || char.name == null
-        || char.codepoint == null
+        || char.id == null
         || char.category == null
 }
 
-function includedInBlocks(character: Pick<ParsedCharacter, "codepoint">, includedBlocks: CodepointInterval[]): boolean {
+function includedInBlocks(character: Pick<ParsedCharacter, "id">, includedBlocks: CodepointInterval[]): boolean {
     return includedBlocks.some(
-        (block) => codepointIn(character.codepoint, block)
+        (block) => codepointIn(character.id, block)
     );
 }
 
@@ -143,7 +144,8 @@ function categoryIncluded(character: Pick<ParsedCharacter, "category">, included
 
 function intoUnicodeCodepoint(char: ParsedCharacter): UnicodeCodepoint {
     return {
-        codepoint: String.fromCodePoint(char.codepoint).normalize("NFC"),
+        id: char.id,
+        literal: toLiteral(char.id),
         name: char.name.toLowerCase(),
         category: char.category
     };

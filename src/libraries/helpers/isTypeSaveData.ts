@@ -1,5 +1,5 @@
 import {DataFragment} from "../types/savedata/dataFragment";
-import {Char, CodepointKey} from "../types/codepoint/unicode";
+import {CharLiteral, CodepointKey} from "../types/codepoint/unicode";
 
 
 export function isTypeDataFragment(object: any): object is DataFragment {
@@ -11,12 +11,12 @@ export function isTypeDataFragment(object: any): object is DataFragment {
 
 export function isCodepointKey(object: any): object is CodepointKey {
     return object != null
-        && "codepoint" in object
-        && isChar(object.codepoint);
+        && "id" in object
+        && isCharLiteral(object.id);
 
 }
 
-export function isChar(object: any): object is Char {
+export function isCharLiteral(object: any): object is CharLiteral {
     return object != null
         && typeof object === "string"
         ;

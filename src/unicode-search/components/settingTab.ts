@@ -88,12 +88,12 @@ export class SettingTab extends PluginSettingTab {
                         return;
                     }
 
-                    const isAlreadyFavorite = favorites.some(fav => fav.codepoint === char.codepoint);
+                    const isAlreadyFavorite = favorites.some(fav => fav.id === char.id);
                     if (isAlreadyFavorite) {
                         return;
                     }
 
-                    const favorite = await this.favoritesStore.addFavorite(char.codepoint);
+                    const favorite = await this.favoritesStore.addFavorite(char.id);
                     const favoriteChar = {...favorite, ...char};
                     this.displayFavoriteChar(newCharacterList, favoriteChar)
                 })
@@ -110,7 +110,7 @@ export class SettingTab extends PluginSettingTab {
 
         setting
             .setClass("favorite-control")
-            .setName(character.codepoint)
+            .setName(character.literal)
             .setDesc(character.name)
             .addToggle(toggle => toggle
                 .setTooltip("Add insert command to Obsidian")
@@ -122,7 +122,7 @@ export class SettingTab extends PluginSettingTab {
                 .setTooltip("Remove from favorites")
                 .onClick(() => {
                     setting.settingEl.hide()
-                    return this.favoritesStore.removeFavorite(character.codepoint);
+                    return this.favoritesStore.removeFavorite(character.id);
                 })
             )
         ;
@@ -134,9 +134,9 @@ export class SettingTab extends PluginSettingTab {
         if (enabled) {
             this.plugin.addCommand({
                 id: insertCharId,
-                name: `Insert '${character.codepoint}'`,
+                name: `Insert '${character.literal}'`,
                 editorCallback: editor => {
-                    editor.replaceSelection(character.codepoint);
+                    editor.replaceSelection(character.literal);
                     return true;
                 },
             })
@@ -144,7 +144,7 @@ export class SettingTab extends PluginSettingTab {
             this.plugin.removeCommand(insertCharId);
         }
 
-        await this.favoritesStore.update(character.codepoint, () => ({hotkey: enabled}));
+        await this.favoritesStore.update(character.id, () => ({hotkey: enabled}));
     }
 
     private async displayFilterSettings(container: HTMLElement) {

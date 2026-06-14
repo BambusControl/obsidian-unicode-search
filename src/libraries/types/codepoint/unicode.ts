@@ -1,19 +1,25 @@
 /**
  * Unicode code point character defined by its normalized NFC form
  */
-export type Char = string
+export type CharLiteral = string
 
-export type Codepoint = number;
+/**
+ * The literal numeric value of a Unicode code point
+ */
+export type CodepointLiteral = number;
 
 /**
  * Universally used key for a Unicode codepoint
  */
 export interface CodepointKey {
     /**
-     * Unicode code point character defined by its normalized NFC form
-     * @minLength 1
+     * The literal numeric value of a Unicode code point
+     *
+     * @remarks
+     * I assumed that two codepoint-string-representations cannot be the same and previously used CharLiteral.
+     * That is not the case. Multiple number-codepoints represent the same character when parsed into JavaScript.
      */
-    codepoint: Char;
+    id: CodepointLiteral;
 }
 
 /**
@@ -21,7 +27,13 @@ export interface CodepointKey {
  */
 export interface CodepointAttribute {
     /**
-     * Unicode description of the character
+     * Unicode code point character defined by its normalized NFC form
+     * @minLength 1
+     */
+    literal: CharLiteral;
+
+    /**
+     * Unicode name of the character
      */
     name: string;
 

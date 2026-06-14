@@ -6,5 +6,5 @@ export function compareCodepoints(
     left: UnicodeCodepoint,
     right: UnicodeCodepoint,
 ): Order {
-    return compareNumbers(left.codepoint.codePointAt(0)!, right.codepoint.codePointAt(0)!)
+    return compareNumbers(left.id, right.id)
 }

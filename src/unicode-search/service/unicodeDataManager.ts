@@ -1,7 +1,7 @@
 import {DataFragmentManager} from "./dataFragmentManager";
 import {UnicodeFragment} from "../../libraries/types/savedata/unicodeFragment";
 import {CURRENT_DATA_VERSION} from "../../libraries/types/savedata/version";
-import {isCodepointKey} from "../../libraries/helpers/isTypeSaveData";
+import {isCodepointKey, isCharLiteral} from "../../libraries/helpers/isTypeSaveData";
 import {CharacterDownloader} from "./characterDownloader";
 import {DataEvent} from "../../libraries/types/savedata/metaFragment";
 import {DataFragment} from "../../libraries/types/savedata/dataFragment";
@@ -65,7 +65,8 @@ export function isUnicodeFragment(fragment: DataFragment): fragment is UnicodeFr
 
 function isUnicodeCodepoint(object: any): object is UnicodeCodepoint {
     return isCodepointKey(object)
-
+        && "literal" in object
+        && isCharLiteral(object.literal)
         && "name" in object
         && object.name != null
         && typeof object.name === "string"

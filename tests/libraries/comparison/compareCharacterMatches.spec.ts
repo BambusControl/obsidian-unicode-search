@@ -6,11 +6,11 @@ test(
     "better match is before worse match",
     () => {
         const betterMatch = {
-            character: { codepoint: "A", name: "LATIN CAPITAL LETTER A", category: "Lu" },
+            character: { literal: "A", id: 0x41, name: "LATIN CAPITAL LETTER A", category: "Lu" },
             match: { codepoint: { score: 0, matches: [] }, name: { score: 0, matches: [] } }
         };
         const worseMatch = {
-            character: { codepoint: "B", name: "LATIN CAPITAL LETTER B", category: "Lu" },
+            character: { literal: "B", id: 0x42, name: "LATIN CAPITAL LETTER B", category: "Lu" },
             match: { codepoint: { score: -0.5, matches: [] }, name: { score: -0.5, matches: [] } }
         };
 
@@ -22,11 +22,11 @@ test(
     "worse match is after better match",
     () => {
         const worseMatch = {
-            character: { codepoint: "B", name: "LATIN CAPITAL LETTER B", category: "Lu" },
+            character: { literal: "B", id: 0x42, name: "LATIN CAPITAL LETTER B", category: "Lu" },
             match: { codepoint: { score: -0.5, matches: [] }, name: { score: -0.5, matches: [] } }
         };
         const betterMatch = {
-            character: { codepoint: "A", name: "LATIN CAPITAL LETTER A", category: "Lu" },
+            character: { literal: "A", id: 0x41, name: "LATIN CAPITAL LETTER A", category: "Lu" },
             match: { codepoint: { score: 0, matches: [] }, name: { score: 0, matches: [] } }
         };
 
@@ -38,11 +38,11 @@ test(
     "different match scores compare correctly",
     () => {
         const matchA = {
-            character: { codepoint: "A", name: "LATIN CAPITAL LETTER A", category: "Lu" },
+            character: { literal: "A", id: 0x41, name: "LATIN CAPITAL LETTER A", category: "Lu" },
             match: { codepoint: { score: -0.3, matches: [] }, name: { score: -0.5, matches: [] } }
         };
         const matchB = {
-            character: { codepoint: "B", name: "LATIN CAPITAL LETTER B", category: "Lu" },
+            character: { literal: "B", id: 0x42, name: "LATIN CAPITAL LETTER B", category: "Lu" },
             match: { codepoint: { score: -0.6, matches: [] }, name: { score: -0.4, matches: [] } }
         };
 

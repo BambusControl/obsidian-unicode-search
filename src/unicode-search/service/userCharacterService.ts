@@ -25,7 +25,7 @@ export class UserCharacterService implements CharacterService {
 
     public async getOne(key: CharacterKey): Promise<Character> {
         const characters = await this.getAllCharacters();
-        const char = characters.find(char => char.codepoint === key);
+        const char = characters.find(char => char.id === key);
 
 		if (char == null) {
 			throw new UnicodeSearchError(`No character '${key}' exists.`);
@@ -41,12 +41,12 @@ export class UserCharacterService implements CharacterService {
     public async getUsed(): Promise<UsedCharacter[]> {
         const allCharacters = await this.getAllCharacters();
         const usedCharacters = await this.usageStore.getUsed();
-        const usedKeys = usedCharacters.map(ch => ch.codepoint);
+        const usedKeys = usedCharacters.map(ch => ch.id);
 
         return allCharacters
-            .filter(ch => usedKeys.contains(ch.codepoint))
+            .filter(ch => usedKeys.contains(ch.id))
             .map(character => ({
-                ...usedCharacters.find(usage => usage.codepoint === character.codepoint)!,
+                ...usedCharacters.find(usage => usage.id === character.id)!,
                 ...character,
             }));
     }
@@ -54,12 +54,12 @@ export class UserCharacterService implements CharacterService {
     public async getFavorites(): Promise<FavoriteCharacter[]> {
         const allCharacters = await this.getAllCharacters();
         const favorite = await this.favoritesStore.getFavorites();
-        const favoriteKeys = favorite.map(ch => ch.codepoint);
+        const favoriteKeys = favorite.map(ch => ch.id);
 
         return allCharacters
-            .filter(ch => favoriteKeys.contains(ch.codepoint))
+            .filter(ch => favoriteKeys.contains(ch.id))
             .map(character => ({
-                ...favorite.find(usage => usage.codepoint === character.codepoint)!,
+                ...favorite.find(usage => usage.id === character.id)!,
                 ...character,
             }));
     }
@@ -70,8 +70,8 @@ export class UserCharacterService implements CharacterService {
         const usedCharacters = await this.usageStore.getUsed();
 
         return allCharacters.map(character => ({
-            ...favoriteCharacters.find(fav => fav.codepoint === character.codepoint),
-            ...usedCharacters.find(usage => usage.codepoint === character.codepoint),
+            ...favoriteCharacters.find(fav => fav.id === character.id),
+            ...usedCharacters.find(usage => usage.id === character.id),
             ...character,
         }));
     }

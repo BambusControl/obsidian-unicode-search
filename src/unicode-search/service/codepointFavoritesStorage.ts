@@ -21,13 +21,13 @@ export class CodepointFavoritesStorage implements FavoritesStore {
     ): Promise<CodepointFavorite> {
         const data = await this.getFavorites();
 
-        const foundIndex = data.findIndex(ch => ch.codepoint === key);
+        const foundIndex = data.findIndex(ch => ch.id === key);
         const found = foundIndex >= 0;
         const index = found ? foundIndex : 0;
 
         const modified = {
             ...apply(found ? {...data[index]} : undefined),
-            codepoint: key,
+            id: key,
         };
 
         if (found) {
@@ -47,7 +47,7 @@ export class CodepointFavoritesStorage implements FavoritesStore {
     ): Promise<CodepointFavorite> {
         const data = await this.getFavorites();
 
-        const foundIndex = data.findIndex(ch => ch.codepoint === key);
+        const foundIndex = data.findIndex(ch => ch.id === key);
 
         if (foundIndex < 0) {
             throw new UnicodeSearchError(`No character '${key}' exists in favorites.`);
@@ -56,7 +56,7 @@ export class CodepointFavoritesStorage implements FavoritesStore {
         data[foundIndex] = {
             ...data[foundIndex],
             ...apply({...data[foundIndex]}),
-            codepoint: key,
+            id: key,
         } as CodepointFavorite;
 
         await this.overwriteFavoritesData(data);
@@ -66,14 +66,14 @@ export class CodepointFavoritesStorage implements FavoritesStore {
 
     async addFavorite(key: CharacterKey): Promise<CodepointFavorite> {
         const favorites = await this.getFavorites();
-        const foundFavorite = favorites.find(fav => fav.codepoint === key);
+        const foundFavorite = favorites.find(fav => fav.id === key);
 
         if (foundFavorite != null) {
             return foundFavorite;
         }
 
         const newFavorite: CodepointFavorite = {
-            codepoint: key,
+            id: key,
             added: new Date(),
             hotkey: false
         };
@@ -88,7 +88,7 @@ export class CodepointFavoritesStorage implements FavoritesStore {
         console.log(`Removing favorite ${key}`);
 
         let favorites = await this.getFavorites();
-        favorites = favorites.filter(fav => fav.codepoint !== key);
+        favorites = favorites.filter(fav => fav.id !== key);
         await this.overwriteFavoritesData(favorites);
     }
 

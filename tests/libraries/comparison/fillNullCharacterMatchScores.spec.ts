@@ -6,7 +6,7 @@ test(
     "fills null match attributes while preserving character",
     () => {
         const input = {
-            character: { codepoint: "A", name: "LATIN CAPITAL LETTER A", category: "Lu" },
+            character: { literal: "A", id: 0x41, name: "LATIN CAPITAL LETTER A", category: "Lu" },
             match: { codepoint: null, name: { score: -0.5, matches: [] } }
         };
 
@@ -22,7 +22,7 @@ test(
     "fills all null match attributes",
     () => {
         const input = {
-            character: { codepoint: "B", name: "LATIN CAPITAL LETTER B", category: "Lu" },
+            character: { literal: "B", id: 0x42, name: "LATIN CAPITAL LETTER B", category: "Lu" },
             match: { codepoint: null, name: null }
         };
 
@@ -38,7 +38,7 @@ test(
     "preserves non-null match attributes",
     () => {
         const input = {
-            character: { codepoint: "C", name: "LATIN CAPITAL LETTER C", category: "Lu" },
+            character: { literal: "C", id: 0x43, name: "LATIN CAPITAL LETTER C", category: "Lu" },
             match: {
                 codepoint: { score: -0.2, matches: [] },
                 name: { score: -0.3, matches: [] }

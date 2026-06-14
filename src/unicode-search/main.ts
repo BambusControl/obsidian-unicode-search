@@ -44,6 +44,13 @@ export default class UnicodeSearchPlugin extends Plugin {
             (data) => this.saveData(data)
         );
 
+        /* TODO [Dexie]: Database versioning */
+        await Dexie.delete("unicode-search")
+        const dexieDb: DexieDb = new Dexie("unicode-search") as DexieDb;
+        dexieDb.version(1).stores({
+            codepoints: "[id], literal, name, category",
+        })
+
         /* TODO [rework]: Data stores duplicate access to data */
         const dataStore = new RootPluginDataStorage(dataLoader);
         const metaStore = new MetaStorage(dataStore);

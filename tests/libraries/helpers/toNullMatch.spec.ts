@@ -4,7 +4,8 @@ import { MaybeUsedCharacter, Character } from "src/libraries/types/codepoint/cha
 describe("toNullMatch", () => {
     it("should convert character to MaybeMetaCharacterSearchResult with null matches", () => {
         const character: Character = {
-            codepoint: "A",
+            literal: "A",
+            id: 0x41,
             name: "LATIN CAPITAL LETTER A",
             category: "Lu"
         };
@@ -18,7 +19,8 @@ describe("toNullMatch", () => {
 
     it("should handle character with usage information", () => {
         const character: MaybeUsedCharacter = {
-            codepoint: "A",
+            literal: "A",
+            id: 0x41,
             name: "LATIN CAPITAL LETTER A",
             category: "Lu",
             useCount: 5,
@@ -35,7 +37,8 @@ describe("toNullMatch", () => {
 
     it("should handle basic character without usage info", () => {
         const character: Character = {
-            codepoint: "€",
+            literal: "€",
+            id: 0x20ac,
             name: "EURO SIGN",
             category: "Sc"
         };
@@ -49,7 +52,8 @@ describe("toNullMatch", () => {
 
     it("should handle character with zero usage", () => {
         const character: MaybeUsedCharacter = {
-            codepoint: "B",
+            literal: "B",
+            id: 0x42,
             name: "LATIN CAPITAL LETTER B",
             category: "Lu",
             useCount: 0,
@@ -66,7 +70,8 @@ describe("toNullMatch", () => {
 
     it("should handle character with high usage", () => {
         const character: MaybeUsedCharacter = {
-            codepoint: "C",
+            literal: "C",
+            id: 0x43,
             name: "LATIN CAPITAL LETTER C",
             category: "Lu",
             useCount: 100,
@@ -83,7 +88,8 @@ describe("toNullMatch", () => {
 
     it("should handle special characters", () => {
         const character: Character = {
-            codepoint: "🚀",
+            literal: "🚀",
+            id: 0x1f680,
             name: "ROCKET",
             category: "So"
         };
@@ -97,7 +103,8 @@ describe("toNullMatch", () => {
 
     it("should handle characters with empty names", () => {
         const character: Character = {
-            codepoint: " ",
+            literal: " ",
+            id: 0x20,
             name: "SPACE",
             category: "Zs"
         };

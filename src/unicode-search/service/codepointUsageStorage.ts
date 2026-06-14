@@ -22,13 +22,13 @@ export class CodepointUsageStorage implements UsageStore {
     {
         const data = await this.getUsed();
 
-        const foundIndex = data.findIndex(ch => ch.codepoint === key);
+        const foundIndex = data.findIndex(ch => ch.id === key);
         const found = foundIndex >= 0;
         const index = found ? foundIndex : 0;
 
         const modified = {
             ...apply(found ? {...data[index]} : undefined),
-            codepoint: key,
+            id: key,
         };
 
         if (found) {

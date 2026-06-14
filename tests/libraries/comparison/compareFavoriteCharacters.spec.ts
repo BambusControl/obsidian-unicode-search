@@ -5,14 +5,16 @@ test(
     () => {
         expect(compareFavoriteCharacters(
             {
-                codepoint: " ",
+                literal: " ",
+                id: 0x20,
                 name: "favorite",
                 category: "Ll",
                 added: new Date(1),
                 hotkey: false,
             },
             {
-                codepoint: " ",
+                literal: " ",
+                id: 0x20,
                 name: "not-favorite",
                 category: "Ll",
             },

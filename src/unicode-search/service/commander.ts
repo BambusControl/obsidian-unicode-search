@@ -4,6 +4,7 @@ import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
 import {CharacterService} from "./characterService";
 import {InsertCharacterModal} from "../components/insertCharacterModal";
 import {CodepointKey} from "../../libraries/types/codepoint/unicode";
+import {toLiteral} from "../../libraries/helpers/toLiteral";
 
 export class Commander {
     constructor(
@@ -38,13 +39,15 @@ export class Commander {
     }
 
     private addCommandFor(character: CodepointKey) {
+        const literal = toLiteral(character.id)
+
         this.plugin.addCommand({
             id: `insert-${toHexadecimal(character)}`,
-            name: `Insert '${character.codepoint}'`,
+            name: `Insert '${literal}'`,
             repeatable: true,
 
             editorCallback: editor => {
-                editor.replaceSelection(character.codepoint);
+                editor.replaceSelection(literal);
             },
         })
     }
