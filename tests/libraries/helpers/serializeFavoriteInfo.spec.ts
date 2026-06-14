@@ -1,5 +1,5 @@
 import { serializeFavoriteInfo } from "src/libraries/helpers/serializeFavoriteInfo";
-import { FavoriteInfo, ParsedFavoriteInfo } from "src/libraries/types/savedata/favoriteInfo";
+import { ParsedFavoriteInfo } from "src/libraries/types/savedata/favoriteInfo";
 
 describe("serializeFavoriteInfo", () => {
     it("should serialize favorite info with Date object to date string", () => {

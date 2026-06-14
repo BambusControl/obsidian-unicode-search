@@ -59,6 +59,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
         const filtered = await this.filterCharacters(parsed);
         const unicode = filtered.map(intoUnicodeCodepoint);
 
+        /* TODO [UX]: This message is ambiguous, what does it mean for the user? */
         info += `\n✱ Filtered ${unicode.length} out of ${parsed.length} total characters`;
         notice.setMessage(info);
 

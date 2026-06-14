@@ -1,5 +1,5 @@
 import { serializeUsageInfo } from "src/libraries/helpers/serializeUsageInfo";
-import { RawUsageInfo, UsageInfo } from "src/libraries/types/savedata/usageInfo";
+import { UsageInfo } from "src/libraries/types/savedata/usageInfo";
 
 describe("serializeUsageInfo", () => {
     it("should serialize usage info with Date objects to date strings", () => {

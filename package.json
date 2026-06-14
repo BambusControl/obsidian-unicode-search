@@ -20,6 +20,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "dexie": "^4.4.3",
     "papaparse": "^5.5.1"
   },
   "devDependencies": {

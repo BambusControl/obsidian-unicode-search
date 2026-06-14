@@ -1,5 +1,5 @@
 import { parseUsageInfo } from "src/libraries/helpers/parseUsageInfo";
-import { RawUsageInfo, UsageInfo } from "src/libraries/types/savedata/usageInfo";
+import { RawUsageInfo } from "src/libraries/types/savedata/usageInfo";
 
 describe("parseUsageInfo", () => {
     it("should parse raw usage info with date strings to Date objects", () => {

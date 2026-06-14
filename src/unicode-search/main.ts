@@ -10,13 +10,15 @@ import {UnicodeDataManager} from "./service/unicodeDataManager";
 import {UsageDataManager} from "./service/usageDataManager";
 import {FavoritesDataManager} from "./service/favoritesDataManager";
 import {PersistCache} from "../libraries/types/persistCache";
-import {RootPluginDataStorage} from "./service/rootPluginDataStorage";
 import {CodepointStorage} from "./service/codepointStorage";
 import {CodepointUsageStorage} from "./service/codepointUsageStorage";
 import {CodepointFavoritesStorage} from "./service/codepointFavoritesStorage";
 import {FilterStorage} from "./service/filterStorage";
 import {MetaDataManager} from "./service/metaDataManager";
 import {MetaStorage} from "./service/metaStorage";
+import {RootPluginDataStorage} from "./service/rootPluginDataStorage";
+import {Dexie} from "dexie";
+import {DexieDb} from "./service/dexieDb";
 
 /* Used by Obsidian */
 // noinspection JSUnusedGlobalSymbols
@@ -34,6 +36,7 @@ export default class UnicodeSearchPlugin extends Plugin {
     }
 
     public override async onload(): Promise<void> {
+        /* TODO [idea]: lightweight and high-performant IoC container? */
         console.group("Loading Unicode Search plugin");
         console.time("Unicode Search load time");
 
@@ -54,7 +57,7 @@ export default class UnicodeSearchPlugin extends Plugin {
         /* TODO [rework]: Data stores duplicate access to data */
         const dataStore = new RootPluginDataStorage(dataLoader);
         const metaStore = new MetaStorage(dataStore);
-        const codepointStore = new CodepointStorage(dataStore);
+        const codepointStore = new CodepointStorage(dexieDb);
         const usageStore = new CodepointUsageStorage(dataStore);
         const favoritesStore = new CodepointFavoritesStorage(dataStore);
         const characterService = new UserCharacterService(codepointStore, usageStore, favoritesStore);
@@ -65,7 +68,7 @@ export default class UnicodeSearchPlugin extends Plugin {
 
         const metaDm = new MetaDataManager();
         const filterDm = new FilterDataManager();
-        const unicodeDm = new UnicodeDataManager(downloader);
+        const unicodeDm = new UnicodeDataManager(downloader, dexieDb);
         const usageDm = new UsageDataManager();
         const favoritesDm = new FavoritesDataManager();
 
