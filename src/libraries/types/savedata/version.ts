@@ -23,6 +23,7 @@ export type PluginVersion
     // Update every release
     ;
 
+// noinspection JSUnusedGlobalSymbols
 export type CurrentPluginVersion = "0.7.3-NEXT" & PluginVersion;
 export const CURRENT_PLUGIN_VERSION: CurrentPluginVersion = "0.7.3-NEXT";
 
@@ -44,5 +45,6 @@ export type SaveDataVersion = PluginVersion &
     // Update only if save data schema changed
     );
 
+// noinspection JSUnusedGlobalSymbols
 export type CurrentSaveDataVersion = "0.7.3-NEXT" & SaveDataVersion;
 export const CURRENT_DATA_VERSION: SaveDataVersion = "0.7.3-NEXT";

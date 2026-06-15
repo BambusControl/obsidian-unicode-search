@@ -2,7 +2,6 @@ import {App, Plugin, PluginManifest} from "obsidian";
 import {UcdUserFilterDownloader} from "./service/ucdUserFilterDownloader";
 import {SettingTab} from "./components/settingTab";
 import {UserCharacterService} from "./service/userCharacterService";
-
 import {Commander} from "./service/commander";
 import {RootDataManager} from "./service/rootDataManager";
 import {FilterDataManager} from "./service/filterDataManager";
@@ -52,14 +51,16 @@ export default class UnicodeSearchPlugin extends Plugin {
         const dexieDb: DexieDb = new Dexie("unicode-search") as DexieDb;
         dexieDb.version(1).stores({
             codepoints: "[id], literal, name, category",
+            usage: "[id], lastUsed, firstUsed, useCount",
+            favorites: "[id], added, hotkey",
         })
 
         /* TODO [rework]: Data stores duplicate access to data */
         const dataStore = new RootPluginDataStorage(dataLoader);
         const metaStore = new MetaStorage(dataStore);
         const codepointStore = new CodepointStorage(dexieDb);
-        const usageStore = new CodepointUsageStorage(dataStore);
-        const favoritesStore = new CodepointFavoritesStorage(dataStore);
+        const usageStore = new CodepointUsageStorage(dexieDb);
+        const favoritesStore = new CodepointFavoritesStorage(dexieDb);
         const characterService = new UserCharacterService(codepointStore, usageStore, favoritesStore);
         const filterStore = new FilterStorage(dataStore, metaStore);
 
@@ -69,8 +70,8 @@ export default class UnicodeSearchPlugin extends Plugin {
         const metaDm = new MetaDataManager();
         const filterDm = new FilterDataManager();
         const unicodeDm = new UnicodeDataManager(downloader, dexieDb);
-        const usageDm = new UsageDataManager();
-        const favoritesDm = new FavoritesDataManager();
+        const usageDm = new UsageDataManager(dexieDb);
+        const favoritesDm = new FavoritesDataManager(dexieDb);
 
         const dataManager = new RootDataManager(
             dataLoader,

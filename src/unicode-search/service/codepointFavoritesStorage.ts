@@ -1,9 +1,7 @@
 import {FavoritesStore} from "./favoritesStore";
 import {CharacterKey} from "../../libraries/types/codepoint/character";
-import {serializeFavoriteInfo} from "../../libraries/helpers/serializeFavoriteInfo";
 import {UnicodeSearchError} from "../errors/unicodeSearchError";
-import {RootDataStore} from "./rootDataStore";
-import {FavoritesFragment} from "../../libraries/types/savedata/favoritesFragment";
+import {DexieDb} from "./dexieDb";
 
 import {CodepointFavorite} from "../../libraries/types/codepoint/extension";
 import {ParsedFavoriteInfo} from "../../libraries/types/savedata/favoriteInfo";
@@ -11,7 +9,7 @@ import {ParsedFavoriteInfo} from "../../libraries/types/savedata/favoriteInfo";
 export class CodepointFavoritesStorage implements FavoritesStore {
 
     constructor(
-        private readonly store: RootDataStore,
+        private readonly db: DexieDb,
     ) {
     }
 
@@ -93,28 +91,11 @@ export class CodepointFavoritesStorage implements FavoritesStore {
     }
 
     async getFavorites(): Promise<CodepointFavorite[]> {
-        return (await this.store.getFavorites()).codepoints.map(fav => ({
-            ...fav,
-            added: new Date(fav.added),
-        }));
+        return this.db.favorites.toArray();
     }
 
     private async overwriteFavoritesData(data: CodepointFavorite[]): Promise<void> {
-        const newData = await this.mergeFavorites({
-            codepoints: data.map(serializeFavoriteInfo),
-        });
-
-        await this.store.overwriteFavorites(newData);
-    }
-
-    private async mergeFavorites(data: Partial<FavoritesFragment>): Promise<FavoritesFragment> {
-        const storedData = await this.store.getFavorites();
-
-        const newData = {
-            ...storedData,
-            ...data
-        };
-
-        return await this.store.overwriteFavorites(newData);
+        await this.db.favorites.clear();
+        await this.db.favorites.bulkAdd(data);
     }
 }

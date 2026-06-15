@@ -1,16 +1,20 @@
 import {DataFragmentManager} from "./dataFragmentManager";
 import {CharacterUseFragment} from "../../libraries/types/savedata/usageFragment";
 import {CURRENT_DATA_VERSION} from "../../libraries/types/savedata/version";
-import {isCodepointKey} from "../../libraries/helpers/isTypeSaveData";
 import {DataEvent} from "../../libraries/types/savedata/metaFragment";
 import {DataFragment} from "../../libraries/types/savedata/dataFragment";
-
-
 import {RawCodepointUse} from "../../libraries/types/codepoint/extension";
+import {DexieDb} from "./dexieDb";
+import {parseUsageInfo} from "../../libraries/helpers/parseUsageInfo";
 
 export class UsageDataManager implements DataFragmentManager<CharacterUseFragment> {
+    constructor(
+        private readonly dexieDb: DexieDb
+    ) {
+    }
+
     initData(fragment: DataFragment): CharacterUseFragment {
-        if (fragment.initialized && isUsageFragment(fragment)) {
+        if (fragment.initialized) {
             return fragment;
         }
 
@@ -20,37 +24,29 @@ export class UsageDataManager implements DataFragmentManager<CharacterUseFragmen
             ...fragment,
             initialized: true,
             version: CURRENT_DATA_VERSION,
-            codepoints: [],
         };
     }
 
     async updateData(fragment: CharacterUseFragment, _: Set<DataEvent>): Promise<CharacterUseFragment> {
-        /* No-op yet */
-        return fragment;
+        return await this.updateByVersion(fragment);
     }
 
-}
+    private async updateByVersion(fragment: CharacterUseFragment): Promise<CharacterUseFragment> {
+        if (fragment.version === "0.7.0") {
+            /* Migrate codepoints from old JSON data storage to Dexie */
+            console.info("Migrating usage to Dexie");
 
-function isUsageFragment(fragment: DataFragment): fragment is CharacterUseFragment {
-    return "codepoints" in fragment
-        && fragment.codepoints != null
-        && Array.isArray(fragment.codepoints)
-        && fragment.codepoints.every(isCodepointUsage)
-        ;
-}
+            // @ts-ignore: We know the previous version had the `codepoints` property
+            const oldCodepoints = (fragment.codepoints as RawCodepointUse[]).map(parseUsageInfo);
 
-function isCodepointUsage(object: any): object is RawCodepointUse {
-    return isCodepointKey(object)
+            /* We expect the database to be empty, this is the first use of it */
+            await this.dexieDb.usage.clear();
+            await this.dexieDb.usage.bulkAdd(oldCodepoints);
 
-        && "firstUsed" in object
-        && object.firstUsed != null
-        && typeof object.firstUsed === "string"
+            fragment.version = CURRENT_DATA_VERSION;
+        }
 
-        && "lastUsed" in object
-        && object.lastUsed != null
-        && typeof object.lastUsed === "string"
-
-        && "useCount" in object
-        && object.useCount != null
-        && typeof object.useCount === "number"
+        /* Important: When adding a new migration you must finish the version with the current data version. */
+        return fragment;
+    }
 }

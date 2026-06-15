@@ -1,9 +1,6 @@
 import {UsageStore} from "./usageStore";
 import {CharacterKey} from "../../libraries/types/codepoint/character";
-import {parseUsageInfo} from "../../libraries/helpers/parseUsageInfo";
-import {serializeUsageInfo} from "../../libraries/helpers/serializeUsageInfo";
-import {RootDataStore} from "./rootDataStore";
-import {CharacterUseFragment} from "../../libraries/types/savedata/usageFragment";
+import {DexieDb} from "./dexieDb";
 
 import {CodepointUse} from "../../libraries/types/codepoint/extension";
 import {UsageInfo} from "../../libraries/types/savedata/usageInfo";
@@ -11,7 +8,7 @@ import {UsageInfo} from "../../libraries/types/savedata/usageInfo";
 export class CodepointUsageStorage implements UsageStore {
 
     constructor(
-        private readonly store: RootDataStore,
+        private readonly db: DexieDb,
     ) {
     }
 
@@ -43,27 +40,11 @@ export class CodepointUsageStorage implements UsageStore {
     }
 
     async getUsed(): Promise<CodepointUse[]> {
-        return (await this.store.getUsage())
-            .codepoints
-            .map(parseUsageInfo)
+        return this.db.usage.toArray();
     }
 
-    private async overwriteUsageData(data: CodepointUse[]): Promise<CodepointUse[]> {
-        const newData = await this.mergeUsage({
-            codepoints: data.map(serializeUsageInfo),
-        });
-
-        return newData.codepoints.map(parseUsageInfo)
-    }
-
-    private async mergeUsage(data: Partial<CharacterUseFragment>): Promise<CharacterUseFragment> {
-        const storedData = await this.store.getUsage();
-
-        const newData = {
-            ...storedData,
-            ...data
-        };
-
-        return await this.store.overwriteUsage(newData);
+    private async overwriteUsageData(data: CodepointUse[]): Promise<void> {
+        await this.db.usage.clear();
+        await this.db.usage.bulkAdd(data);
     }
 }
