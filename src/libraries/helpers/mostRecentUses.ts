@@ -1,11 +1,9 @@
 import {compareDates} from "../comparison/compareDates";
 import {inverse} from "../order/inverse";
+import {UseDate} from "../types/savedata/useRecord";
 
-
-import {UsageDate} from "../types/savedata/usageInfo";
-
-export function mostRecentUses(items: UsageDate[]): Date[] {
+export function mostRecentUses(items: UseDate[]): Date[] {
     return items.slice()
-        .map(value => value.lastUsed)
+        .map(value => value.lastUse)
         .sort((l, r) => inverse(compareDates(l, r)));
 }

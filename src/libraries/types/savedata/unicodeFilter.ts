@@ -1,4 +1,4 @@
-import {CodepointInterval} from "../codepoint/codepointInterval";
+import {CodePointInterval} from "../codePoint/codePointInterval";
 import {CharacterCategoryType} from "../../data/characterCategory";
 import {CharacterCategoryGroupType} from "../../data/characterCategoryGroup";
 
@@ -20,7 +20,7 @@ export interface UnicodeFilter {
 /**
  * Unicode Plane of Unicode Blocks
  */
-export interface PlaneFilter extends CodepointInterval {
+export interface PlaneFilter extends CodePointInterval {
     /**
      * Filter criteria for blocks of Unicode characters
      */
@@ -38,9 +38,9 @@ export interface InclusionFlag {
 }
 
 /**
- * Block of Unicode Codepoints
+ * Block of Unicode CodePoints
  */
-export type BlockFilter = CodepointInterval & InclusionFlag;
+export type BlockFilter = CodePointInterval & InclusionFlag;
 
 /**
  * Filters for a group of categories.

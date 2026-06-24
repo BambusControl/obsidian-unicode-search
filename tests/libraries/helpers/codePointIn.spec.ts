@@ -1,35 +1,35 @@
-import { codepointIn } from "src/libraries/helpers/codePointIn";
-import { Codepoint } from "src/libraries/types/codepoint/unicode";
-import { CodepointInterval } from "src/libraries/types/codepoint/codepointInterval";
+import { codePointIn } from "src/libraries/helpers/codePointIn";
+import { CodePoint } from "src/libraries/types/codePoint/unicode";
+import { CodePointInterval } from "src/libraries/types/codePoint/codePointInterval";
 
-describe("codepointIn", () => {
-    it("should return true when the codepoint is within the interval", () => {
-        const codepoint: Codepoint = 65; // 'A'
-        const interval: CodepointInterval = { start: 60, end: 70 };
-        expect(codepointIn(codepoint, interval)).toBe(true);
+describe("codePointIn", () => {
+    it("should return true when the codePoint is within the interval", () => {
+        const codePoint: CodePoint = 65; // 'A'
+        const interval: CodePointInterval = { start: 60, end: 70 };
+        expect(codePointIn(codePoint, interval)).toBe(true);
     });
 
-    it("should return false when the codepoint is less than the interval start", () => {
-        const codepoint: Codepoint = 50;
-        const interval: CodepointInterval = { start: 60, end: 70 };
-        expect(codepointIn(codepoint, interval)).toBe(false);
+    it("should return false when the codePoint is less than the interval start", () => {
+        const codePoint: CodePoint = 50;
+        const interval: CodePointInterval = { start: 60, end: 70 };
+        expect(codePointIn(codePoint, interval)).toBe(false);
     });
 
-    it("should return false when the codepoint is greater than the interval end", () => {
-        const codepoint: Codepoint = 80;
-        const interval: CodepointInterval = { start: 60, end: 70 };
-        expect(codepointIn(codepoint, interval)).toBe(false);
+    it("should return false when the codePoint is greater than the interval end", () => {
+        const codePoint: CodePoint = 80;
+        const interval: CodePointInterval = { start: 60, end: 70 };
+        expect(codePointIn(codePoint, interval)).toBe(false);
     });
 
-    it("should return true when the codepoint is equal to the interval start", () => {
-        const codepoint: Codepoint = 60;
-        const interval: CodepointInterval = { start: 60, end: 70 };
-        expect(codepointIn(codepoint, interval)).toBe(true);
+    it("should return true when the codePoint is equal to the interval start", () => {
+        const codePoint: CodePoint = 60;
+        const interval: CodePointInterval = { start: 60, end: 70 };
+        expect(codePointIn(codePoint, interval)).toBe(true);
     });
 
-    it("should return true when the codepoint is equal to the interval end", () => {
-        const codepoint: Codepoint = 70;
-        const interval: CodepointInterval = { start: 60, end: 70 };
-        expect(codepointIn(codepoint, interval)).toBe(true);
+    it("should return true when the codePoint is equal to the interval end", () => {
+        const codePoint: CodePoint = 70;
+        const interval: CodePointInterval = { start: 60, end: 70 };
+        expect(codePointIn(codePoint, interval)).toBe(true);
     });
 });
