@@ -1,15 +1,15 @@
-import {MetadataCharacter} from "../types/codepoint/character";
+import {CharacterForSearch} from "../types/codePoint/character";
 import {Order} from "../order/order";
 import {compareFavoriteCharacters} from "./compareFavoriteCharacters";
-import {compareUsedCharacters} from "./compareUsedCharacters";
-import {compareCodepoints} from "./compareCodepoints";
+import {compareCharacterWithUseHistorys} from "./compareCharacterWithUseHistory";
+import {compareCodePoints} from "./compareCodePoints";
 
 export function compareCharacters(
-    left: MetadataCharacter,
-    right: MetadataCharacter,
+    left: CharacterForSearch,
+    right: CharacterForSearch,
     recencyCutoff: Date,
 ): Order {
-    const usedComparison = compareUsedCharacters(left, right, recencyCutoff);
+    const usedComparison = compareCharacterWithUseHistorys(left, right, recencyCutoff);
 
     if (usedComparison !== Order.Equal) {
         return usedComparison;
@@ -21,5 +21,5 @@ export function compareCharacters(
         return favoriteComparison;
     }
 
-    return compareCodepoints(left, right);
+    return compareCodePoints(left, right);
 }

@@ -6,11 +6,11 @@ test(
     "better combined score is before worse combined score",
     () => {
         const betterMatch = {
-            codepoint: { score: 0, matches: [] },
+            codePoint: { score: 0, matches: [] },
             name: { score: 0, matches: [] }
         };
         const worseMatch = {
-            codepoint: { score: -0.5, matches: [] },
+            codePoint: { score: -0.5, matches: [] },
             name: { score: -0.5, matches: [] }
         };
 
@@ -22,11 +22,11 @@ test(
     "worse combined score is after better combined score",
     () => {
         const worseMatch = {
-            codepoint: { score: -0.5, matches: [] },
+            codePoint: { score: -0.5, matches: [] },
             name: { score: -0.5, matches: [] }
         };
         const betterMatch = {
-            codepoint: { score: 0, matches: [] },
+            codePoint: { score: 0, matches: [] },
             name: { score: 0, matches: [] }
         };
 
@@ -38,11 +38,11 @@ test(
     "truly equal combined scores return NaN (which is handled by caller)",
     () => {
         const match1 = {
-            codepoint: { score: -0.2, matches: [] },
+            codePoint: { score: -0.2, matches: [] },
             name: { score: -0.3, matches: [] }
         };
         const match2 = {
-            codepoint: { score: -0.2, matches: [] },
+            codePoint: { score: -0.2, matches: [] },
             name: { score: -0.3, matches: [] }
         };
 

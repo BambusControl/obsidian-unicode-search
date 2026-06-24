@@ -1,13 +1,7 @@
-import {App, Instruction, renderMatches, SuggestModal} from "obsidian";
-import {MetaCharacterSearchResult} from "./characterSearch";
-import {CharacterService} from "../service/characterService";
-import {
-    ELEMENT_FAVORITE,
-    ELEMENT_FREQUENT,
-    ELEMENT_RECENT,
-    INSTRUCTION_DISMISS,
-    NAVIGATE_INSTRUCTION
-} from "./visualElements";
+import {type App, type Instruction, renderMatches, SuggestModal} from "obsidian";
+import type {MetaCharacterSearchResult} from "./characterSearch";
+import type {CharacterService} from "../service/characterService";
+import {ELEMENT_FAVORITE, ELEMENT_FREQUENT, ELEMENT_RECENT, INSTRUCTION_DISMISS, NAVIGATE_INSTRUCTION} from "./visualElements";
 import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
 import {getRandomItem} from "../../libraries/helpers/getRandomItem";
 import {fillNullCharacterMatchScores} from "../../libraries/comparison/fillNullCharacterMatchScores";
@@ -15,13 +9,12 @@ import {compareCharacterMatches} from "../../libraries/comparison/compareCharact
 import {ReadCache} from "../../libraries/types/readCache";
 import {mostRecentUses} from "../../libraries/helpers/mostRecentUses";
 import {averageUseCount} from "../../libraries/helpers/averageUseCount";
-import {UsageDisplayStatistics} from "../../libraries/types/usageDisplayStatistics";
+import type {UseHistoryStatistics} from "../../libraries/types/useHistoryStatistics";
 import {toNullMatch} from "../../libraries/helpers/toNullMatch";
 import {toSearchQueryMatch} from "../../libraries/helpers/toSearchQueryMatch";
-import {matchedNameOrCodepoint} from "../../libraries/helpers/matchedNameOrCodepoint";
-
 import {isFavoriteCharacter} from "../../libraries/helpers/isFavoriteCharacter";
-import {UsageInfo} from "../../libraries/types/savedata/usageInfo";
+import type {UseRecord} from "../../libraries/types/savedata/useRecord";
+import {matchedNameOrCodePoint} from "../../libraries/helpers/matchedNameOrCodePoint";
 
 export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
     /* TODO [non-func]: Extract the functionalities needed for inserting/picking characters
@@ -29,13 +22,12 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
      * The inheritance used here is very messy, use composition instead.
      */
 
-    private readonly usageStatistics: ReadCache<UsageDisplayStatistics>;
+    private readonly usageStatistics: ReadCache<UseHistoryStatistics>;
 
     protected constructor(
         app: App,
         protected readonly characterService: CharacterService,
         chooseCharacter: Instruction,
-
     ) {
         super(app);
 
@@ -53,7 +45,7 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
             return {
                 topThirdRecentlyUsed: mostRecentUses(usedCharacters).slice(0, 3).last() ?? new Date(0),
                 averageUseCount: averageUseCount(usedCharacters),
-            } as UsageDisplayStatistics;
+            } as UseHistoryStatistics;
         });
     }
 
@@ -66,7 +58,7 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
                 .map(toNullMatch)
             : allCharacters
                 .map(toSearchQueryMatch(query))
-                .filter(matchedNameOrCodepoint);
+                .filter(matchedNameOrCodePoint);
 
         const recencyCutoff = (await this.usageStatistics.get()).topThirdRecentlyUsed;
 
@@ -84,7 +76,7 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
         container.createDiv({
             cls: "character-preview",
         }).createSpan({
-            text: char.codepoint,
+            text: char.glyph,
         });
 
         const matches = container.createDiv({
@@ -104,29 +96,29 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
             text: char.category,
         }); */
 
-        const codepoint = matches.createDiv({
-            cls: "character-codepoint",
+        const codePoint = matches.createDiv({
+            cls: "character-codePoint",
         });
 
-        renderMatches(codepoint, toHexadecimal(char), search.match.codepoint.matches);
+        renderMatches(codePoint, toHexadecimal(char), search.match.codePoint.matches);
 
         const detail = container.createDiv({
             cls: "detail",
         });
 
-		const attributes = detail.createDiv({
-			cls: "attributes",
-		});
+        const attributes = detail.createDiv({
+            cls: "attributes",
+        });
 
-		if (isFavoriteCharacter(char)) {
-			attributes.createDiv(ELEMENT_FAVORITE);
-		} else {
+        if (isFavoriteCharacter(char)) {
+            attributes.createDiv(ELEMENT_FAVORITE);
+        } else {
             const usageStats = await this.usageStatistics.get();
 
             /* The type hinting doesn't work, and shows as an error in the IDE (or the type is wrong) */
-            const maybeUsedChar = char as Partial<UsageInfo>
-            const showLastUsed = maybeUsedChar.lastUsed != null && maybeUsedChar.lastUsed >= usageStats.topThirdRecentlyUsed;
-            const showUseCount = maybeUsedChar.useCount != null && maybeUsedChar.useCount >= usageStats.averageUseCount;
+            const maybeUsedChar = char as Partial<UseRecord>
+            const showLastUsed = maybeUsedChar.lastUse != null && maybeUsedChar.lastUse >= usageStats.topThirdRecentlyUsed;
+            const showUseCount = maybeUsedChar.timesUsed != null && maybeUsedChar.timesUsed >= usageStats.averageUseCount;
 
             if (showLastUsed) {
                 attributes.createDiv(ELEMENT_RECENT);

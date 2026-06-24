@@ -1,22 +1,22 @@
-import {UnicodeFragment} from "../../libraries/types/savedata/unicodeFragment";
-import {FilterFragment} from "../../libraries/types/savedata/filterFragment";
-import {CharacterUseFragment} from "../../libraries/types/savedata/usageFragment";
-import {FavoritesFragment} from "../../libraries/types/savedata/favoritesFragment";
-import {MetaFragment} from "../../libraries/types/savedata/metaFragment";
+import type { CharacterChunk } from "../../libraries/types/savedata/characterChunk";
+import type { PoolChunk } from "../../libraries/types/savedata/poolChunk";
+import type { UseHistoryChunk } from "../../libraries/types/savedata/useHistoryChunk";
+import type { FavoriteChunk } from "../../libraries/types/savedata/favoriteChunk";
+import type { MetaChunk } from "../../libraries/types/savedata/metaChunk";
 
 export interface RootDataStore {
-    getMeta(): Promise<MetaFragment>
-    overwriteMeta(data: MetaFragment): Promise<MetaFragment>
+	getMeta(): Promise<MetaChunk>;
+	overwriteMeta(data: MetaChunk): Promise<MetaChunk>;
 
-    getUnicode(): Promise<UnicodeFragment>
-    overwriteUnicode(data: UnicodeFragment): Promise<UnicodeFragment>
+	getCharacters(): Promise<CharacterChunk>;
+	overwriteCharacters(data: CharacterChunk): Promise<CharacterChunk>;
 
-    getFilter(): Promise<FilterFragment>
-    overwriteFilter(settings: FilterFragment): Promise<FilterFragment>
+	getPool(): Promise<PoolChunk>;
+	overwritePool(pool: PoolChunk): Promise<PoolChunk>;
 
-    getUsage(): Promise<CharacterUseFragment>
-    overwriteUsage(usage: CharacterUseFragment): Promise<CharacterUseFragment>
+	getUseHistory(): Promise<UseHistoryChunk>;
+	overwriteUseHistory(useHistory: UseHistoryChunk): Promise<UseHistoryChunk>;
 
-    getFavorites(): Promise<FavoritesFragment>
-    overwriteFavorites(favorites: FavoritesFragment): Promise<FavoritesFragment>
+	getFavorites(): Promise<FavoriteChunk>;
+	overwriteFavorites(favorites: FavoriteChunk): Promise<FavoriteChunk>;
 }

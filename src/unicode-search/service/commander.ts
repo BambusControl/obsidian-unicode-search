@@ -1,9 +1,9 @@
-import {Plugin} from "obsidian";
-import {FavoritesStore} from "./favoritesStore";
+import type {Plugin} from "obsidian";
+import type {FavoriteStore} from "./favoriteStore";
 import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
-import {CharacterService} from "./characterService";
+import type {CharacterService} from "./characterService";
 import {InsertCharacterModal} from "../components/insertCharacterModal";
-import {CodepointKey} from "../../libraries/types/codepoint/unicode";
+import type {Character} from "../../libraries/types/codePoint/unicode";
 
 export class Commander {
     constructor(
@@ -28,23 +28,24 @@ export class Commander {
         });
     }
 
-    async addFavorites(favorites: FavoritesStore) {
-        const hotkeys = (await favorites.getFavorites())
-            .filter(favorite => favorite.hotkey);
+    async addFavorites(favorites: FavoriteStore, characters: CharacterService) {
+        const quickInsertEnableds = (await favorites.getFavorites())
+            .filter(favorite => favorite.quickInsertEnabled);
 
-        for (const character of hotkeys) {
+        for (const favorite of quickInsertEnableds) {
+            const character = await characters.getOne(favorite.id);
             this.addCommandFor(character);
         }
     }
 
-    private addCommandFor(character: CodepointKey) {
+    private addCommandFor(character: Character) {
         this.plugin.addCommand({
             id: `insert-${toHexadecimal(character)}`,
-            name: `Insert '${character.codepoint}'`,
+            name: `Insert '${character.glyph}'`,
             repeatable: true,
 
             editorCallback: editor => {
-                editor.replaceSelection(character.codepoint);
+                editor.replaceSelection(character.glyph);
             },
         })
     }

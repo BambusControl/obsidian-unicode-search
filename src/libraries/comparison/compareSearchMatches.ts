@@ -5,8 +5,8 @@ import {compareNullable} from "./compareNullable";
 import {fillNullSearchMatchScores} from "./fillNullSearchMatchScores";
 
 export function compareSearchMatches(left: MaybeSearchMatchAttributes, right: MaybeSearchMatchAttributes): Order {
-    const leftNull = left.codepoint == null && left.name == null;
-    const rightNull = right.codepoint == null && right.name == null;
+    const leftNull = left.codePoint == null && left.name == null;
+    const rightNull = right.codePoint == null && right.name == null;
 
     return compareNullable(
         leftNull ? null : fillNullSearchMatchScores(left),

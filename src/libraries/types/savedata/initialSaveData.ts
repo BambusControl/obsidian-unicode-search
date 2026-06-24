@@ -34,19 +34,19 @@ export interface InitialSaveData {
     };
     unicode: {
         initialized: boolean;
-        codepoints: Array<{
-            codepoint: string;
+        codePoints: Array<{
+            codePoint: string;
             name: string;
             category: string;
         }>
     };
     usage: {
         initialized: boolean;
-        codepoints: Array<{
-            codepoint: string
-            firstUsed: string;
-            lastUsed: string;
-            useCount: number;
+        codePoints: Array<{
+            codePoint: string
+            firstUse: string;
+            lastUse: string;
+            timesUsed: number;
         }>
     };
 }
@@ -65,11 +65,11 @@ export function isInitialSaveData(object: Partial<InitialSaveData>): object is I
         && "unicode" in object
         && object.unicode != null
         && "initialized" in object.unicode
-        && "codepoints" in object.unicode
+        && "codePoints" in object.unicode
 
         && "usage" in object
         && object.usage != null
         && "initialized" in object.usage
-        && "codepoints" in object.usage
+        && "codePoints" in object.usage
         ;
 }

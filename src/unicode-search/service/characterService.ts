@@ -2,18 +2,18 @@ import {
     Character,
     CharacterKey,
     FavoriteCharacter,
-    MaybeUsedCharacter,
-    UsedCharacter
-} from "../../libraries/types/codepoint/character";
+    MaybeCharacterWithUseHistory,
+    CharacterWithUseHistory
+} from "../../libraries/types/codePoint/character";
 
 
-import {UsageInfo} from "../../libraries/types/savedata/usageInfo";
+import {UseRecord} from "../../libraries/types/savedata/useRecord";
 
 export interface CharacterService {
 	getOne(key: CharacterKey): Promise<Character>;
     getAllCharacters(): Promise<Character[]>;
-    getUsed(): Promise<UsedCharacter[]>;
+    getUsed(): Promise<CharacterWithUseHistory[]>;
     getFavorites(): Promise<FavoriteCharacter[]>;
-    getAll(): Promise<MaybeUsedCharacter[]>;
-	recordUsage(key: CharacterKey): Promise<UsageInfo>;
+    getAll(): Promise<MaybeCharacterWithUseHistory[]>;
+	recordUsage(key: CharacterKey): Promise<UseRecord>;
 }

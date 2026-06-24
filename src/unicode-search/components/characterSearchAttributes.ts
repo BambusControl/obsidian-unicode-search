@@ -4,17 +4,17 @@
 export type CharacterSearchAttributes<T> = {
 
     /**
-     * Literal value identifying the codepoint
+     * Literal value identifying the codePoint
      *
-     * @see Codepoint
+     * @see CodePoint
      */
-    codepoint: T,
+    codePoint: T,
 
 
     /**
      * The main name representing the character
      *
-     * @see CodepointAttribute.name
+     * @see CodePointAttribute.name
      */
     name: T,
 }

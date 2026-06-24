@@ -1,5 +1,5 @@
 import {SearchResult} from "obsidian";
-import {Character, MetadataCharacter} from "../../libraries/types/codepoint/character";
+import {Character, CharacterForSearch} from "../../libraries/types/codePoint/character";
 import {CharacterSearchAttributes} from "./characterSearchAttributes";
 import {Maybe} from "../../libraries/types/maybe";
 
@@ -21,7 +21,7 @@ export type CharacterSearchResult<CharacterType, AttributeMatchType> = {
     match: CharacterSearchAttributes<AttributeMatchType>,
 }
 
-export type MetaCharacterSearchResult = CharacterSearchResult<MetadataCharacter, SearchMatchResult>;
-export type MaybeMetaCharacterSearchResult = CharacterSearchResult<MetadataCharacter, Maybe<SearchMatchResult>>;
+export type MetaCharacterSearchResult = CharacterSearchResult<CharacterForSearch, SearchMatchResult>;
+export type MaybeMetaCharacterSearchResult = CharacterSearchResult<CharacterForSearch, Maybe<SearchMatchResult>>;
 export type MaybeSearchMatchAttributes = CharacterSearchAttributes<Maybe<SearchMatchResult>>;
 export type SearchMatchAttributes = CharacterSearchAttributes<SearchMatchResult>;
