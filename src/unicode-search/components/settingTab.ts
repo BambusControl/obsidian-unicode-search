@@ -33,7 +33,7 @@ export class SettingTab extends PluginSettingTab {
 		private readonly plugin: Plugin,
 		private readonly characterService: CharacterService,
 		private readonly favoritesStore: FavoriteStore,
-		private readonly settingsStore: PoolStore,
+		private readonly poolStore: PoolStore,
 		private readonly initializer: DataBootstrapper,
 	) {
 		super(app, plugin);
@@ -60,10 +60,10 @@ export class SettingTab extends PluginSettingTab {
 	private async displayFavoritesSettings(container: HTMLElement) {
 		new Setting(container)
 			.setHeading()
-			.setName("Favorite Characters")
+			.setName("Favourite Characters")
 			.setDesc(
-				"Manage your favorite characters which will be displayed in the plugin's search results. " +
-					"You can also enable them as a quickInsertEnabled, making them available as a command in Obsidian.",
+				"Manage your favourite characters which will be displayed in the plugin's search results. " +
+					"You can also enable Quick Insert, making them available as a command in Obsidian.",
 			)
 			.setClass("group-control")
 			.addToggle((toggle) =>
@@ -91,7 +91,7 @@ export class SettingTab extends PluginSettingTab {
 
 		new Setting(newCharacterList)
 			.setName("")
-			.setDesc("Add a new favorite character")
+			.setDesc("Add a new favourite character")
 			.addButton((btn) => {
 				btn.setIcon("plus");
 				btn.onClick(async (_) => {
@@ -104,16 +104,12 @@ export class SettingTab extends PluginSettingTab {
 						return;
 					}
 
-					const isAlreadyFavorite = favorites.some(
-						(fav) => fav.id === char.id,
-					);
+					const isAlreadyFavorite = favorites.some((fav) => fav.id === char.id);
 					if (isAlreadyFavorite) {
 						return;
 					}
 
-					const favorite = await this.favoritesStore.addFavorite(
-						char.id,
-					);
+					const favorite = await this.favoritesStore.addFavorite(char.id);
 					const favoriteChar = { ...favorite, ...char };
 					this.displayFavoriteChar(newCharacterList, favoriteChar);
 				});
@@ -136,14 +132,14 @@ export class SettingTab extends PluginSettingTab {
 			.setDesc(character.name)
 			.addToggle((toggle) =>
 				toggle
-					.setTooltip("Add insert command to Obsidian")
+					.setTooltip("Enable Quick Insert command in Obsidian")
 					.setValue(character.quickInsertEnabled)
 					.onChange((enabled) => this.toggleHotkeyCommand(character, enabled)),
 			)
 			.addButton((button) =>
 				button
 					.setIcon("trash")
-					.setTooltip("Remove from favorites")
+					.setTooltip("Remove from favourites")
 					.onClick(() => {
 						setting.settingEl.hide();
 						return this.favoritesStore.removeFavorite(character.id);
@@ -178,10 +174,9 @@ export class SettingTab extends PluginSettingTab {
 	private async displayFilterSettings(container: HTMLElement) {
 		new Setting(container)
 			.setHeading()
-			.setName("Unicode Character Filters")
+			.setName("Character Pool")
 			.setDesc(
-				"Here you can set which characters would you like to be included " +
-					"or excluded from the plugins search results. " +
+				"Configure which Unicode characters are included in your search. " +
 					"Toggle the headings to display the options.",
 			);
 
@@ -243,7 +238,7 @@ export class SettingTab extends PluginSettingTab {
 		for (const category of categoryGroup.categories) {
 			await SettingTab.addCharacterCategoryFilterToggle(
 				categoryContainer,
-				this.settingsStore,
+				this.poolStore,
 				category,
 			);
 		}
@@ -270,7 +265,7 @@ export class SettingTab extends PluginSettingTab {
 		for (const block of plane.blocks) {
 			await SettingTab.addCharacterBlockFilterToggle(
 				blocksContainer,
-				this.settingsStore,
+				this.poolStore,
 				block,
 			);
 		}

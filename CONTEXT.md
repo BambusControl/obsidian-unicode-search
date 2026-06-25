@@ -6,467 +6,215 @@ An Obsidian plugin for searching the Unicode Character Database (UCD) and insert
 
 ## Core Domain
 
-### Code Point
+**Code Point**:
+The numeric address in the Unicode code space, ranging from `U+0000` to `U+10FFFF`. The identity of a character slot — a number, nothing more.
+_Avoid_: Address, slot, code
 
-The numeric address in the Unicode code space, ranging from `U+0000` to `U+10FFFF`. A code point is the *identity* of a character slot — it is a number, nothing more. In the plugin, this is stored as a plain integer (`CodePoint`), e.g., `0x269`.
+**Character**:
+The full entity representing a Unicode character. Combines identity (code point) with metadata (glyph, name, category).
+_Avoid_: Symbol, glyph (use "Glyph" for rendered form only)
 
-Unicode makes a clear separation: the **code point** is the address; the **character** is the abstract text element assigned to that address. The plugin's naming follows this distinction.
+**Glyph**:
+The rendered string representation of a character, NFC-normalised.
+_Avoid_: Symbol, character (use "Character" for the full entity)
 
-### CodePointKey
+**Code Point Key**:
+Base interface for identifying a character by its numeric code point only. Contains only the `id` field.
+_Avoid_: Identifier, key
 
-The base interface for identifying a character by its numeric code point. Contains only the `id` field. Used as a building block for extension types like `CodePointUse` and `CodePointFavorite`.
+**Code Point Attribute**:
+Metadata attributes of a character (glyph, name, category), separate from its identity.
+_Avoid_: Metadata, properties
 
-```typescript
-interface CodePointKey {
-    id: CodePoint;
-}
-```
+**Character Key**:
+The type alias for a character's identifying field: `Character["id"]`. Used as the key type for lookups and storage.
+_Avoid_: Identifier, key
 
-### CodePointAttribute
-
-The metadata attributes of a Unicode character, separate from its identity. Contains the string representation and classification.
-
-```typescript
-interface CodePointAttribute {
-    glyph: string;    // NFC-normalised string representation
-    name: string;     // Unicode character name (lowercased)
-    category: string; // General Category abbreviation (e.g., "So")
-}
-```
-
-### Character
-
-The full entity representing a Unicode character. Combines `CodePointKey` (identity) with `CodePointAttribute` (metadata). This is the canonical type used throughout the plugin.
-
-```typescript
-type Character = CodePointKey & CodePointAttribute;
-// = { id: CodePoint, glyph: string, name: string, category: string }
-```
-
-- **id** — the numeric code point (the address, e.g., `0x269`)
-- **glyph** — the JavaScript string representation, NFC-normalised (the rendered form, e.g., `"⚉"`)
-- **name** — the Unicode character name, lowercased after download (e.g., `"gear"`)
-- **category** — the Unicode General Category abbreviation (e.g., `"So"` for Symbol-other)
-
-### CharacterKey
-
-A type alias for the character's identifying field: `type CharacterKey = Character["id"]`. Used as the key type for lookups and storage operations.
-
-### CharacterForSearch
-
-A character as it flows through the search UI — exactly one of `Character`, `CharacterWithUseHistory`, or `FavoriteCharacter`. Used as the item type for search results in the modals.
-
-```typescript
-type CharacterForSearch = Character | CharacterWithUseHistory | FavoriteCharacter;
-```
-
----
-
-## Extension Types
-
-These types extend `CodePointKey` with additional data from storage.
-
-### CodePointUse
-
-A character with its use history data attached. Used by `UseHistoryStore` and `UseHistoryChunk`.
-
-```typescript
-type CodePointUse = CodePointKey & UseRecord;
-type RawCodePointUse = CodePointKey & RawUseRecord;
-```
-
-### CodePointFavorite
-
-A character with its favorite data attached. Used by `FavoriteStore` and `FavoriteChunk`.
-
-```typescript
-type CodePointFavorite = CodePointKey & ParsedFavorite;
-type RawCodePointFavorite = CodePointKey & Favorite;
-```
-
----
-
-## User Behaviour
-
-### Use History
-
-The record of which characters the user has inserted and how often. Every time a character is inserted, a use is recorded against it. The modal surfaces this as "recently used" and "frequently used" badges.
-
-### UseRecord
-
-The per-character data shape for use history. Has raw (stored) and parsed (runtime) variants.
-
-```typescript
-// Stored in save data (dates as strings)
-interface RawUseRecord {
-    firstUse: DateString;
-    lastUse: DateString;
-    timesUsed: number;
-}
-
-// Parsed for use in plugin (dates as Date objects)
-type UseRecord = UseCount & UseDate;
-interface UseCount { timesUsed: number; }
-interface UseDate { firstUse: Date; lastUse: Date; }
-```
-
-### UseHistoryStore
-
-Interface for reading and writing use records.
-
-```typescript
-interface UseHistoryStore {
-    upsert(key: CharacterKey, apply: (char?: UseRecord) => UseRecord): Promise<CodePointUse>;
-    getUsed(): Promise<CodePointUse[]>;
-}
-```
-
-### CharacterWithUseHistory
-
-A `Character` with its `UseRecord` attached. Used by the search modal to show recency and frequency badges.
-
-```typescript
-type CharacterWithUseHistory = Character & UseRecord;
-```
-
-### UseHistoryStatistics
-
-Derived summaries computed from the full use history. Used by the modal to decide which characters get badges.
-
-```typescript
-interface UseHistoryStatistics {
-    topThirdRecentlyUsed: Date;  // Recency cutoff date
-    averageUseCount: number;     // Average timesUsed across all used characters
-}
-```
-
-### UseHistoryChunk
-
-The save data chunk that persists the use history schema version and metadata. The actual use records are stored in the `codePoints` array.
-
-```typescript
-interface UseHistoryChunk extends DataChunk {
-    codePoints: RawCodePointUse[];
-}
-```
-
-### Favorite
-
-A character the user has explicitly bookmarked. Has raw (stored) and parsed (runtime) variants.
-
-```typescript
-// Stored in save data (date as string)
-interface Favorite {
-    added: DateString;
-    quickInsertEnabled: boolean;
-}
-
-// Parsed for use in plugin (date as Date object)
-interface ParsedFavorite {
-    added: Date;
-    quickInsertEnabled: boolean;
-}
-```
-
-A favourite can optionally have **quickInsertEnabled**, which registers an Obsidian command (`Insert '<glyph>'`). The user can then assign a keyboard shortcut to that command via Obsidian's hotkey settings.
-
-### FavoriteChunk
-
-The save data chunk that persists favorite data.
-
-```typescript
-interface FavoriteChunk extends DataChunk {
-    codePoints: RawCodePointFavorite[];
-}
-```
+**Character for Search**:
+A character as it flows through the search UI — exactly one of `Character`, `CharacterWithUseHistory`, or `FavoriteCharacter`.
+_Avoid_: Search character, result item
 
 ---
 
 ## Unicode Metadata
 
-### Plane
-
+**Plane**:
 A contiguous range of 65,536 code points (16 bits). The plugin structures its character pool by plane.
+_Avoid_: Group, range
 
-### Block
+**Block**:
+A named range of code points within a plane (e.g., "Basic Latin", "Arrows"). The finest-grained poolable unit by code point range.
+_Avoid_: Range, section
 
-A named range of code points within a plane (e.g., "Basic Latin", "Arrows"). Blocks are the finest-grained poolable unit by code point range.
+**General Category**:
+A single-letter-group + two-letter-category classification (e.g., `Lu` = Letter-uppercase). Used as an axis for scoping the character pool.
+_Avoid_: Type, category group
 
-### CodePointInterval
+**General Category Group**:
+A single-letter grouping of categories (L, M, N, P, S, Z, C). Each group contains its member categories.
+_Avoid_: Category, group
 
-Represents a closed interval/range of Unicode code points.
+**Code Point Interval**:
+A closed interval/range of Unicode code points.
+_Avoid_: Range, span
 
-```typescript
-interface CodePointInterval {
-    start: CodePoint;
-    end: CodePoint;
-}
-```
+See [ADR-0012](docs/adr/0012-unicode-metadata-model.md) for the full data model.
 
-### General Category (Unicode)
+---
 
-A single-letter-group + two-letter-category classification (e.g., group `L` = Letter, category `Lu` = Letter-uppercase). The plugin uses categories as a second axis for scoping the character pool.
+## User Behaviour
 
-### General Category Group
+**Character Pool**:
+The set of Unicode characters the user has chosen to include in search. Configured via a `UnicodeFilter` (planes, blocks, categories) and stored as a `PoolChunk` in save data.
+_Avoid_: Filter, settings, selection
 
-A single-letter grouping of categories (L, M, N, P, S, Z, C). Each group contains its member categories and their inclusion flags.
+**Use History**:
+Records of which characters the user has inserted and how often. Stored as a `UseHistoryChunk` in save data.
+_Avoid_: Usage, history, recents
 
-### Character Pool
+**Favourite**:
+A character the user has explicitly bookmarked. Has optional **Quick Insert** support.
+_Avoid_: Bookmark, saved character
 
-The set of characters the user has chosen to include in search. Configured via a `UnicodeFilter` (planes, blocks, categories) and stored as a `PoolChunk` in save data. The pool answers "which characters can I find?"
-
-*Avoid*: Filter, settings, unicode filter (use "Unicode Filter" for the data structure only)
-
-### UnicodeFilter
-
-The data structure that encodes the user's pool configuration. Stored inside `PoolChunk.unicode`. Applied at UCD download time to scope which characters are persisted.
-
-```typescript
-interface UnicodeFilter {
-    planes: PlaneFilter[];
-    categoryGroups: CategoryGroupFilter[];
-}
-```
+**Quick Insert**:
+A feature that registers an Obsidian command for keyboard shortcut insertion of a character's glyph.
+_Avoid_: Hotkey, shortcut
 
 ---
 
 ## Persistence Architecture
 
-### SaveData
+**Save Data**:
+The top-level plugin data structure (`data.json`), composed of five independently versioned **chunks**. See [ADR-0002](docs/adr/0002-chunk-based-data-architecture.md).
+_Avoid_: Data, storage, config
 
-The top-level plugin data structure (`data.json`), composed of five independently versioned **chunks**:
+**Chunk**:
+An independently versioned segment of save data (meta, pool, characters, useHistory, favorites).
+_Avoid_: Segment, partition, section
 
-```typescript
-interface SaveData {
-    meta: MetaChunk;
-    pool: PoolChunk;
-    characters: CharacterChunk;
-    useHistory: UseHistoryChunk;
-    favorites: FavoriteChunk;
-}
-```
+**Chunk Handler**:
+Interface for chunk lifecycle management (init, update, persist). Each chunk has one dedicated handler.
+_Avoid_: Manager, processor
 
-| Chunk | Content |
-|----------|---------|
-| `meta` | Plugin version and event queue |
-| `characters` | UCD download metadata and schema tracking |
-| `pool` | User's character pool configuration — which planes, blocks, and categories to include |
-| `useHistory` | User insertion history |
-| `favorites` | User bookmarked characters |
+**Data Event**:
+A signal queued in the meta chunk that tells other chunks to perform work during the next update cycle.
+_Avoid_: Signal, trigger, command
 
-### DataChunk
-
-The base shape of each save-data segment. Each chunk has its own lifecycle managed by a **ChunkHandler**.
-
-```typescript
-interface DataChunk {
-    initialized: boolean;
-    version: SaveDataVersion;
-}
-```
-
-### ChunkHandler
-
-Interface for chunk lifecycle management. Each chunk has one dedicated handler.
-
-```typescript
-interface ChunkHandler<Fragment extends DataChunk> {
-    initData(fragment: DataChunk): Fragment;
-    updateData(fragment: Fragment, events: Set<DataEvent>): Promise<Fragment>;
-}
-```
-
-| Chunk | Handler |
-|----------|---------|
-| `MetaChunk` | `MetaChunkHandler` |
-| `PoolChunk` | `PoolChunkHandler` |
-| `CharacterChunk` | `CharacterChunkHandler` |
-| `UseHistoryChunk` | `UseHistoryChunkHandler` |
-| `FavoriteChunk` | `FavoriteChunkHandler` |
-
-### DataBootstrapper
-
-Interface for orchestrating the one-time initialisation pipeline.
-
-```typescript
-interface DataBootstrapper {
-    initializeData(): Promise<void>;
-}
-```
-
-The `RootDataBootstrapper` implementation:
-
-1. Loads raw JSON from Obsidian storage
-2. Performs initial migration from pre-chunk data formats
-3. Shapes missing chunks into base `DataChunk` shape
-4. Initializes meta chunk first (other chunks need its events)
-5. Initializes each chunk handler
-6. Updates each chunk (migrate versions, process events like UCD download)
-7. Persists the final state back to Obsidian
-
-Called on plugin load and when settings are saved.
-
-### DataEvent
-
-A signal queued in the meta chunk that tells other chunks to perform work during the next update cycle. Events are consumed and removed after processing. Currently only `DownloadCharacters` exists.
-
-```typescript
-enum DataEvent {
-    DownloadCharacters = "download_characters",
-}
-```
+**Data Bootstrapper**:
+Interface for orchestrating the one-time initialisation pipeline. See [ADR-0003](docs/adr/0003-data-initialization-pipeline.md).
+_Avoid_: Initializer, loader
 
 ---
 
 ## Search
 
-### Fuzzy Search
+**Fuzzy Search**:
+Two-phase search: candidate retrieval, then scoring via text matching on name and hex matching on code point. See [ADR-0006](docs/adr/0006-two-phase-fuzzy-search.md).
+_Avoid_: Search, find, lookup
 
-Two-phase search: (1) candidate retrieval, then (2) scoring via text matching on the name field and hex matching on the code point.
+**Query Routing**:
+The process of routing a search query to two parallel strategies: name search and hex search.
+_Avoid_: Routing, dispatch
 
-### CharacterSearchAttributes
+**Character Search Attributes**:
+The two axes of matching per character (code point and name).
+_Avoid_: Attributes, fields, axes
 
-The two axes of matching per character. Used in search results to carry match scores and positions.
+**Candidate Retrieval**:
+Phase 1 of fuzzy search: using Obsidian's built-in `fuzzySearch` to retrieve candidates.
+_Avoid_: Retrieval, filtering
 
-```typescript
-type CharacterSearchAttributes<T> = {
-    codePoint: T;  // Match against the hex representation of the code point
-    name: T;       // Match against the character name
-}
-```
-
-### CharacterSearchResult
-
-A result item pairing a `character` with its `match` attributes, each carrying an Obsidian `SearchResult` (score + match positions for highlighting).
-
-```typescript
-type CharacterSearchResult<CharacterType, AttributeMatchType> = {
-    character: Character & CharacterType;
-    match: CharacterSearchAttributes<AttributeMatchType>;
-}
-
-type MetaCharacterSearchResult = CharacterSearchResult<CharacterForSearch, SearchMatchResult>;
-```
-
-### Query Routing
-
-A search query is routed to two parallel strategies:
-
-- **Name search**: Normalised text against character names and glyph.
-- **Hex search**: Hex string against the code point id.
-
-Results are merged by code point id and de-duplicated.
+**Scoring and Ranking**:
+Phase 2 of fuzzy search: scoring results on two axes and ranking by multiple factors.
+_Avoid_: Ranking, sorting
 
 ---
 
 ## UI Concepts
 
-### InsertCharacterModal
+**Insert Character Modal**:
+The primary modal. Opens via a command, accepts a query, displays scored results, and inserts the selected character's glyph into the active editor.
+_Avoid_: Search modal, main modal
 
-The primary modal. Opens via a command, accepts a query, displays scored results, and inserts the selected character's glyph into the active editor. Calls `characterService.recordUsage()` on insert.
+**Pick Character Modal**:
+A secondary modal used by the settings tab to let users pick a character when adding a favourite.
+_Avoid_: Selection modal, picker
 
-### PickCharacterModal
+**Fuzzy Search Modal**:
+Abstract base for both modals. Handles suggestion rendering, use-history-based ranking, and random placeholder text.
+_Avoid_: Base modal, abstract modal
 
-A secondary modal used by the settings tab to let users pick a character when adding a favourite. Resolves a promise with the chosen character.
-
-### FuzzySearchModal
-
-Abstract base for both modals. Handles suggestion rendering, use-history-based ranking (recent use, frequent use), and random placeholder text.
+See [ADR-0010](docs/adr/0010-ui-modal-architecture.md) for the modal hierarchy.
 
 ---
 
 ## Services
 
-### CharacterService
+**Character Service**:
+Main service for character operations (get, getAll, getUsed, getFavorites, recordUsage). Delegates to storage interfaces but presents a unified API to UI components.
+_Avoid_: Service, manager
 
-Main service for character operations.
+**Favourite Store**:
+Interface for managing favourite characters.
+_Avoid_: Store, repository
 
-```typescript
-interface CharacterService {
-    getOne(key: CharacterKey): Promise<Character>;
-    getAllCharacters(): Promise<Character[]>;
-    getUsed(): Promise<CharacterWithUseHistory[]>;
-    getFavorites(): Promise<FavoriteCharacter[]>;
-    getAll(): Promise<MaybeCharacterWithUseHistory[]>;
-    recordUsage(key: CharacterKey): Promise<UseRecord>;
-}
-```
+**Pool Store**:
+Interface for reading and writing the character pool configuration (`UnicodeFilter`).
+_Avoid_: Filter store, settings store
 
-### FavoriteStore
-
-Interface for managing favorite characters.
-
-```typescript
-interface FavoriteStore {
-    getFavorites(): Promise<CodePointFavorite[]>;
-    addFavorite(key: CharacterKey): Promise<CodePointFavorite>;
-    removeFavorite(key: CharacterKey): Promise<void>;
-    update(key: CharacterKey, apply: (char: ParsedFavorite) => Partial<ParsedFavorite>): Promise<CodePointFavorite>;
-    upsert(key: CharacterKey, apply: (char?: ParsedFavorite) => ParsedFavorite): Promise<CodePointFavorite>;
-}
-```
-
-### CodePointStore
-
+**Code Point Store**:
 Interface for accessing the character database.
+_Avoid_: Store, database
 
-```typescript
-interface CodePointStore {
-    getCharacters(): Promise<Character[]>;
-}
-```
+**Use History Store**:
+Interface for reading and writing use records.
+_Avoid_: Store, history manager
+
+**Store vs Storage**:
+`*Store` suffix denotes a domain interface (e.g., `PoolStore`, `CodePointStore`). `*Storage` suffix denotes its concrete implementation backed by save data (e.g., `PoolStorage`, `CodePointStorage`). This is intentional — interfaces describe what a domain exposes; storage classes implement how data is persisted.
 
 ---
 
 ## Conventions
 
-### Raw vs Parsed
+**Raw vs Parsed**:
+Serialization boundary: `Raw` prefix for stored types (dates as strings), unprefixed for runtime types (dates as Date objects). Exception: `Favorite` → `ParsedFavorite`. See [ADR-0004](docs/adr/0004-type-layering-and-extension-pattern.md).
+_Avoid_: Serialized, stored, runtime
 
-The codebase uses a `Raw` prefix for serialized (stored) types — e.g., `RawUseRecord`, `RawCodePointUse`, `RawCodePointFavorite`. Types without the prefix are parsed (runtime) variants with `Date` objects instead of date strings. Exception: `Favorite` (raw) → `ParsedFavorite` (parsed), to avoid collision with the `Character` intersection type.
+**Maybe**:
+A type alias for nullable returns: `type Maybe<T> = T | null`.
+_Avoid_: Nullable, optional
 
-### Maybe
+**Read Cache**:
+Wrapper for lazy evaluation with memoization on first access. See [ADR-0007](docs/adr/0007-readcache-for-lazy-evaluation.md).
+_Avoid_: Cache, lazy evaluator
 
-A type alias for nullable returns: `type Maybe<T> = T | null`. Used when an operation may not find a result (e.g., `PickCharacterModal` resolves to `Maybe<Character>`).
+**Persist Cache**:
+Bridge between Obsidian's `loadData`/`saveData` with an in-memory cache.
+_Avoid_: Cache, storage wrapper
 
-## Helpers
-
-### toGlyph
-
-Converts a numeric code point to its NFC-normalised string representation.
-
-```typescript
-function toGlyph(codePoint: CodePoint): string;
-```
-
-### toHexadecimal
-
-Converts a `CodePointKey` to its zero-padded hexadecimal string representation.
-
-```typescript
-function toHexadecimal(character: CodePointKey): string;
-// Returns e.g., "0041" for code point 65 (A)
-```
+**Unicode Search Error**:
+Plugin-specific error type extending `Error`.
+_Avoid_: Error, exception
 
 ---
 
-## Plugin Initialisation
+## Flagged Ambiguities
 
-The plugin's `onload` follows a multi-step initialisation pipeline:
+- "Filter" was used to mean both **Character Pool** (the set of characters) and **Unicode Filter** (the configuration). These are distinct: the **Character Pool** is the result, while the **Unicode Filter** is the configuration that determines it.
+- "Cache" was used for both **Persist Cache** (storage bridge) and **Read Cache** (lazy evaluation). These serve different purposes: **Persist Cache** bridges Obsidian's storage API, while **Read Cache** memoizes expensive derived data on first access within a session.
+- "Store" is used for domain interfaces (**Favourite Store**, **Code Point Store**, **Use History Store**, **Pool Store**). Concrete implementations use the **Storage** suffix (e.g., `FavoriteStorage` implements `FavoriteStore`). These suffixes are intentional and should not be conflated across domains.
 
-1. Create the `PersistCache` (bridge between Obsidian's `loadData`/`saveData`)
-2. Create storage wrappers (`RootPluginDataStorage`, `CodePointStorage`, `FavoriteStorage`, `UseHistoryStorage`, etc.)
-3. Create chunk handlers (`MetaChunkHandler`, `PoolChunkHandler`, `CharacterChunkHandler`, `UseHistoryChunkHandler`, `FavoriteChunkHandler`)
-4. Create `RootDataBootstrapper` with all handlers
-5. Call `dataBootstrapper.initializeData()` which:
-   - **Loads** raw JSON from Obsidian storage
-   - **Migrates** from pre-chunk data formats (version 0.6.0 and earlier)
-   - **Shapes** missing chunks into base `DataChunk` shape
-   - **Inits** each chunk with defaults
-   - **Updates** each chunk (migrate versions, process events like UCD download)
-   - **Persists** the final state back to Obsidian
-6. Register command modal and favourite hotkey commands
-7. Register settings tab
+---
 
-### Initial Migration
+## Relationships
 
-Data from plugin version `0.6.0` uses a flat schema that must be reshaped into the chunk structure during initialisation. Data version `0.7.0` is the first version to use the chunk-based architecture.
+- A **Character** has exactly one **Code Point** (identity) and one set of **Code Point Attributes** (metadata).
+- A **Character** can have zero or one **Use History** record.
+- A **Character** can be a **Favourite** (zero or one).
+- A **Character Pool** contains many **Characters** (filtered by planes, blocks, categories).
+- **Save Data** contains five **Chunks**: meta, pool, characters, useHistory, favorites.
+- Each **Chunk** has one dedicated **Chunk Handler**.
+- **Data Events** are queued in the meta **Chunk** and processed by other chunks during update.
+- **Fuzzy Search** uses **Query Routing** to parallel **Name Search** and **Hex Search**.
+- **Insert Character Modal** and **Pick Character Modal** both extend **Fuzzy Search Modal**.

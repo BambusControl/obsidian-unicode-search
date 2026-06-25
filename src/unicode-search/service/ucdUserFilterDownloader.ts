@@ -21,7 +21,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
     };
 
     public constructor(
-        private readonly filterStore: PoolStore,
+        private readonly poolStore: PoolStore,
     ) {
     }
 
@@ -68,7 +68,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
     }
 
     private async filterCharacters(parsed: ParsedCharacter[]): Promise<ParsedCharacter[]> {
-        const filter = await this.filterStore.getFilter();
+        const filter = await this.poolStore.getFilter();
 
         const includedBlocks = mergeIntervals(filter.planes
             .flatMap(p => p.blocks)

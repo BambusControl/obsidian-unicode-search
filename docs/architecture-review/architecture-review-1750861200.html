@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Architecture review — obsidian-unicode-search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+    </script>
+    <style>
+      .seam { stroke-dasharray: 4 4; }
+      .leak { stroke: #dc2626; }
+      .deep { background: linear-gradient(135deg, #0f172a, #1e293b); }
+      .shallow-border { border: 2px dashed #94a3b8; }
+      .mass-bar { transition: width 0.6s ease; }
+    </style>
+  </head>
+  <body class="bg-stone-50 text-slate-900 font-sans">
+    <main class="max-w-5xl mx-auto px-6 py-12 space-y-12">
+
+      <!-- Header -->
+      <header class="space-y-3">
+        <h1 class="text-3xl font-serif font-bold text-slate-800">Architecture Review</h1>
+        <p class="text-sm text-slate-500">obsidian-unicode-search · 25 June 2026</p>
+        <div class="flex gap-4 text-xs text-slate-500 pt-2">
+          <span class="flex items-center gap-1.5">
+            <span class="inline-block w-4 h-3 rounded bg-slate-700"></span> deep module
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="inline-block w-4 h-3 border border-dashed border-slate-400 rounded"></span> seam
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="inline-block w-4 h-3 rounded bg-red-100 border border-red-300"></span> leakage
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="inline-block w-4 h-3 rounded bg-emerald-500"></span> strong
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="inline-block w-4 h-3 rounded bg-amber-400"></span> worth exploring
+          </span>
+        </div>
+      </header>
+
+      <!-- Candidates -->
+      <section id="candidates" class="space-y-12">
+
+        <!-- Candidate 1: Collapse the Storage Adapter Chain -->
+        <article class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="px-6 py-5 border-b border-slate-100 flex items-center gap-3">
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">Strong</span>
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600">in-process</span>
+            <h2 class="text-lg font-serif font-semibold ml-2">Collapse the Storage Adapter Chain</h2>
+          </div>
+          <div class="p-6 space-y-6">
+
+            <div class="grid grid-cols-2 gap-6">
+              <!-- Before -->
+              <div>
+                <h3 class="text-xs uppercase tracking-wider text-slate-500 mb-3 font-medium">Before</h3>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 relative" style="min-height:200px">
+                  <svg width="100%" height="200" class="absolute inset-0">
+                    <defs>
+                      <marker id="arrow1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <path d="M0,0 L8,3 L0,6" fill="#64748b"/>
+                      </marker>
+                    </defs>
+                    <!-- PersistCache -->
+                    <rect x="20" y="10" width="120" height="28" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+                    <text x="80" y="28" text-anchor="middle" class="text-xs" fill="#475569" font-size="10">PersistCache</text>
+                    <!-- RootPluginDataStorage -->
+                    <rect x="20" y="52" width="120" height="28" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"/>
+                    <text x="80" y="70" text-anchor="middle" class="text-xs" fill="#475569" font-size="9">RootPluginData</text>
+                    <text x="80" y="80" text-anchor="middle" class="text-xs" fill="#475569" font-size="9">Storage (10 methods)</text>
+                    <!-- 4 Storage classes -->
+                    <rect x="170" y="42" width="100" height="20" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="220" y="56" text-anchor="middle" fill="#64748b" font-size="8">CodePointStorage</text>
+                    <rect x="170" y="68" width="100" height="20" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="220" y="82" text-anchor="middle" fill="#64748b" font-size="8">UseHistoryStorage</text>
+                    <rect x="170" y="94" width="100" height="20" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="220" y="108" text-anchor="middle" fill="#64748b" font-size="8">FavoriteStorage</text>
+                    <rect x="170" y="120" width="100" height="20" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="220" y="134" text-anchor="middle" fill="#64748b" font-size="8">PoolStorage</text>
+                    <!-- Arrows -->
+                    <line x1="80" y1="38" x2="80" y2="52" stroke="#64748b" stroke-width="1" marker-end="url(#arrow1)"/>
+                    <line x1="140" y1="60" x2="170" y2="52" stroke="#64748b" stroke-width="1" marker-end="url(#arrow1)"/>
+                    <line x1="140" y1="66" x2="170" y2="78" stroke="#64748b" stroke-width="1" marker-end="url(#arrow1)"/>
+                    <line x1="140" y1="72" x2="170" y2="104" stroke="#64748b" stroke-width="1" marker-end="url(#arrow1)"/>
+                    <line x1="140" y1="78" x2="170" y2="130" stroke="#64748b" stroke-width="1" marker-end="url(#arrow1)"/>
+                    <!-- 4 Store interfaces -->
+                    <rect x="300" y="42" width="100" height="20" rx="3" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"/>
+                    <text x="350" y="56" text-anchor="middle" fill="#475569" font-size="8">CodePointStore</text>
+                    <rect x="300" y="68" width="100" height="20" rx="3" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"/>
+                    <text x="350" y="82" text-anchor="middle" fill="#475569" font-size="8">UseHistoryStore</text>
+                    <rect x="300" y="94" width="100" height="20" rx="3" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"/>
+                    <text x="350" y="108" text-anchor="middle" fill="#475569" font-size="8">FavoriteStore</text>
+                    <rect x="300" y="120" width="100" height="20" rx="3" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"/>
+                    <text x="350" y="134" text-anchor="middle" fill="#475569" font-size="8">PoolStore</text>
+                    <!-- Arrows from Storage to Store -->
+                    <line x1="270" y1="52" x2="300" y2="52" stroke="#64748b" stroke-width="1" marker-end="url(#arrow1)"/>
+                    <line x1="270" y1="78" x2="300" y2="78" stroke="#64748b" stroke-width="1" marker-end="url(#arrow1)"/>
+                    <line x1="270" y1="104" x2="300" y2="104" stroke="#64748b" stroke-width="1" marker-end="url(#arrow1)"/>
+                    <line x1="270" y1="130" x2="300" y2="130" stroke="#64748b" stroke-width="1" marker-end="url(#arrow1)"/>
+                    <!-- UserCharacterService -->
+                    <rect x="280" y="158" width="140" height="28" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+                    <text x="350" y="176" text-anchor="middle" fill="#475569" font-size="9">UserCharacterService</text>
+                    <line x1="350" y1="140" x2="350" y2="158" stroke="#64748b" stroke-width="1" marker-end="url(#arrow1)"/>
+                  </svg>
+                </div>
+              </div>
+              <!-- After -->
+              <div>
+                <h3 class="text-xs uppercase tracking-wider text-slate-500 mb-3 font-medium">After</h3>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 relative" style="min-height:200px">
+                  <svg width="100%" height="200" class="absolute inset-0">
+                    <defs>
+                      <marker id="arrow2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <path d="M0,0 L8,3 L0,6" fill="#64748b"/>
+                      </marker>
+                    </defs>
+                    <!-- PersistCache -->
+                    <rect x="30" y="10" width="120" height="28" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+                    <text x="90" y="28" text-anchor="middle" fill="#475569" font-size="10">PersistCache</text>
+                    <!-- Deep module: ChunkStorage -->
+                    <rect x="30" y="52" width="120" height="80" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+                    <text x="90" y="72" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="bold">ChunkStorage&lt;T&gt;</text>
+                    <text x="90" y="88" text-anchor="middle" fill="#94a3b8" font-size="8">get(chunk)</text>
+                    <text x="90" y="100" text-anchor="middle" fill="#94a3b8" font-size="8">overwrite(chunk, data)</text>
+                    <text x="90" y="112" text-anchor="middle" fill="#94a3b8" font-size="8">merge(chunk, partial)</text>
+                    <!-- Arrows -->
+                    <line x1="90" y1="38" x2="90" y2="52" stroke="#64748b" stroke-width="1" marker-end="url(#arrow2)"/>
+                    <!-- UserCharacterService -->
+                    <rect x="220" y="60" width="140" height="28" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+                    <text x="290" y="78" text-anchor="middle" fill="#475569" font-size="9">UserCharacterService</text>
+                    <line x1="150" y1="92" x2="220" y2="74" stroke="#64748b" stroke-width="1" marker-end="url(#arrow2)"/>
+                    <!-- PoolModule -->
+                    <rect x="220" y="105" width="140" height="28" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+                    <text x="290" y="123" text-anchor="middle" fill="#475569" font-size="9">PoolModule</text>
+                    <line x1="150" y1="92" x2="220" y2="119" stroke="#64748b" stroke-width="1" marker-end="url(#arrow2)"/>
+                    <!-- Deleted layers crossed out -->
+                    <text x="350" y="165" text-anchor="middle" fill="#dc2626" font-size="9" text-decoration="line-through">4 Storage classes</text>
+                    <text x="350" y="180" text-anchor="middle" fill="#dc2626" font-size="9" text-decoration="line-through">4 Store interfaces</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Files</h4>
+                <p class="text-xs font-mono text-slate-600 mt-1">service/rootPluginDataStorage.ts · service/codePointStorage.ts · service/useHistoryStorage.ts · service/favoriteStorage.ts · service/poolStorage.ts · service/metaStorage.ts · service/codePointStore.ts · service/useHistoryStore.ts · service/favoriteStore.ts · service/poolStore.ts</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Problem</h4>
+                <p class="text-sm text-slate-600 mt-1">The storage layer has five near-identical adapter classes that each wrap <code>RootPluginDataStorage</code> with one trivial transformation (get chunk → extract array, serialize → overwrite chunk). The interface surface — <code>RootPluginDataStorage</code> with 10 get/overwrite methods, plus four separate <code>*Store</code> interfaces — is nearly as wide as the implementation. The modules are <strong>shallow</strong>.</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Solution</h4>
+                <p class="text-sm text-slate-600 mt-1">Collapse the chain into a single generic <code>ChunkStorage&lt;T&gt;</code> adapter that handles get/overwrite/merge for any chunk type. Delete the four <code>*Storage</code> classes and four <code>*Store</code> interfaces. The few that have extra logic (e.g., <code>PoolStorage</code>'s event triggering) move into a dedicated <code>PoolModule</code>.</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Benefits</h4>
+                <ul class="text-sm text-slate-600 mt-1 space-y-1">
+                  <li>• <strong>leverage:</strong> one generic adapter handles all five chunks — delete four shallow wrappers</li>
+                  <li>• <strong>locality:</strong> serialization/deserialization logic centralises in one place</li>
+                  <li>• <strong>interface shrinks:</strong> callers depend on <code>ChunkStorage&lt;T&gt;</code> instead of five separate interfaces</li>
+                  <li>• <strong>tests:</strong> one adapter to mock, not four — test surface halves</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Candidate 2: Collapse Pool Management into a Deep Module -->
+        <article class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="px-6 py-5 border-b border-slate-100 flex items-center gap-3">
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-200">Worth exploring</span>
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600">in-process</span>
+            <h2 class="text-lg font-serif font-semibold ml-2">Collapse Pool Configuration into a Deep Module</h2>
+          </div>
+          <div class="p-6 space-y-6">
+
+            <div class="grid grid-cols-2 gap-6">
+              <!-- Before -->
+              <div>
+                <h3 class="text-xs uppercase tracking-wider text-slate-500 mb-3 font-medium">Before</h3>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 relative" style="min-height:180px">
+                  <svg width="100%" height="180" class="absolute inset-0">
+                    <defs>
+                      <marker id="arrow3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <path d="M0,0 L8,3 L0,6" fill="#64748b"/>
+                      </marker>
+                    </defs>
+                    <!-- SettingTab -->
+                    <rect x="10" y="10" width="100" height="28" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+                    <text x="60" y="28" text-anchor="middle" fill="#92400e" font-size="9">SettingTab</text>
+                    <!-- PoolStore interface -->
+                    <rect x="140" y="10" width="90" height="28" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"/>
+                    <text x="185" y="28" text-anchor="middle" fill="#475569" font-size="8">PoolStore</text>
+                    <!-- PoolStorage -->
+                    <rect x="140" y="55" width="90" height="28" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="185" y="73" text-anchor="middle" fill="#64748b" font-size="8">PoolStorage</text>
+                    <!-- PoolChunkHandler -->
+                    <rect x="140" y="100" width="90" height="28" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="185" y="118" text-anchor="middle" fill="#64748b" font-size="8">PoolChunkHandler</text>
+                    <!-- MetaStorage -->
+                    <rect x="260" y="55" width="90" height="28" rx="4" fill="#fef9c3" stroke="#eab308" stroke-width="1"/>
+                    <text x="305" y="73" text-anchor="middle" fill="#854d0e" font-size="8">MetaStorage</text>
+                    <!-- Arrows -->
+                    <line x1="110" y1="24" x2="140" y2="24" stroke="#64748b" stroke-width="1" marker-end="url(#arrow3)"/>
+                    <line x1="185" y1="38" x2="185" y2="55" stroke="#64748b" stroke-width="1" marker-end="url(#arrow3)"/>
+                    <line x1="230" y1="69" x2="260" y2="69" stroke="#eab308" stroke-width="1" marker-end="url(#arrow3)"/>
+                    <!-- Labels -->
+                    <text x="185" y="155" text-anchor="middle" fill="#94a3b8" font-size="8">Initialization lives here</text>
+                    <text x="185" y="167" text-anchor="middle" fill="#94a3b8" font-size="8">Runtime logic lives here</text>
+                    <text x="185" y="179" text-anchor="middle" fill="#94a3b8" font-size="8">Event trigger lives here</text>
+                  </svg>
+                </div>
+              </div>
+              <!-- After -->
+              <div>
+                <h3 class="text-xs uppercase tracking-wider text-slate-500 mb-3 font-medium">After</h3>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 relative" style="min-height:180px">
+                  <svg width="100%" height="180" class="absolute inset-0">
+                    <defs>
+                      <marker id="arrow4" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <path d="M0,0 L8,3 L0,6" fill="#64748b"/>
+                      </marker>
+                    </defs>
+                    <!-- SettingTab -->
+                    <rect x="30" y="10" width="100" height="28" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+                    <text x="80" y="28" text-anchor="middle" fill="#92400e" font-size="9">SettingTab</text>
+                    <!-- Deep module: PoolModule -->
+                    <rect x="30" y="55" width="240" height="70" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+                    <text x="150" y="75" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="bold">PoolModule</text>
+                    <text x="150" y="90" text-anchor="middle" fill="#94a3b8" font-size="8">getFilter() · setBlock() · setCategory()</text>
+                    <text x="150" y="103" text-anchor="middle" fill="#94a3b8" font-size="8">initData() · downloadCharacters()</text>
+                    <text x="150" y="116" text-anchor="middle" fill="#64748b" font-size="7">owns: filter logic + event triggering + chunk init</text>
+                    <!-- Arrow -->
+                    <line x1="80" y1="38" x2="80" y2="55" stroke="#64748b" stroke-width="1" marker-end="url(#arrow4)"/>
+                    <!-- Deleted -->
+                    <text x="350" y="85" text-anchor="middle" fill="#dc2626" font-size="9" text-decoration="line-through">PoolStore</text>
+                    <text x="350" y="100" text-anchor="middle" fill="#dc2626" font-size="9" text-decoration="line-through">PoolStorage</text>
+                    <text x="350" y="115" text-anchor="middle" fill="#dc2626" font-size="9" text-decoration="line-through">PoolChunkHandler</text>
+                    <text x="350" y="130" text-anchor="middle" fill="#dc2626" font-size="9" text-decoration="line-through">MetaStorage</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Files</h4>
+                <p class="text-xs font-mono text-slate-600 mt-1">service/poolStore.ts · service/poolStorage.ts · service/poolChunkHandler.ts · service/metaStorage.ts · components/settingTab.ts</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Problem</h4>
+                <p class="text-sm text-slate-600 mt-1">Pool configuration logic is scattered across four modules. <code>PoolChunkHandler</code> owns initialization, <code>PoolStorage</code> owns runtime get/set, and <code>MetaStorage</code> owns the event that triggers UCD re-download. To understand "what happens when a user toggles a block," you must trace through three files. The <code>SettingTab</code> (332 lines) directly calls all of them.</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Solution</h4>
+                <p class="text-sm text-slate-600 mt-1">Merge into a single <code>PoolModule</code> that owns the full lifecycle: initialization, runtime get/set of blocks and categories, event triggering for re-download, and filter serialization. The module has one small interface; the implementation absorbs the logic from all four predecessors.</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Benefits</h4>
+                <ul class="text-sm text-slate-600 mt-1 space-y-1">
+                  <li>• <strong>locality:</strong> all pool-related changes concentrate in one module</li>
+                  <li>• <strong>leverage:</strong> one interface for initialization + runtime + events</li>
+                  <li>• <strong>deletion test passes:</strong> deleting it would scatter pool logic across three files plus the settings tab</li>
+                  <li>• <strong>tests:</strong> one seam to mock, not three — test through the module interface</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Candidate 3: Replace FuzzySearchModal Inheritance with Composition -->
+        <article class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="px-6 py-5 border-b border-slate-100 flex items-center gap-3">
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-200">Worth exploring</span>
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600">in-process</span>
+            <h2 class="text-lg font-serif font-semibold ml-2">Replace Modal Inheritance with Composition</h2>
+          </div>
+          <div class="p-6 space-y-6">
+
+            <div class="grid grid-cols-2 gap-6">
+              <!-- Before -->
+              <div>
+                <h3 class="text-xs uppercase tracking-wider text-slate-500 mb-3 font-medium">Before</h3>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 relative" style="min-height:180px">
+                  <svg width="100%" height="180" class="absolute inset-0">
+                    <defs>
+                      <marker id="arrow5" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <path d="M0,0 L8,3 L0,6" fill="#64748b"/>
+                      </marker>
+                    </defs>
+                    <!-- SuggestModal (Obsidian) -->
+                    <rect x="80" y="5" width="160" height="24" rx="4" fill="#e0e7ff" stroke="#818cf8" stroke-width="1"/>
+                    <text x="160" y="21" text-anchor="middle" fill="#3730a3" font-size="8">SuggestModal (Obsidian)</text>
+                    <!-- FuzzySearchModal -->
+                    <rect x="60" y="42" width="200" height="50" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+                    <text x="160" y="58" text-anchor="middle" fill="#475569" font-size="9" font-weight="bold">FuzzySearchModal</text>
+                    <text x="160" y="72" text-anchor="middle" fill="#64748b" font-size="7">search · render · statistics</text>
+                    <text x="160" y="84" text-anchor="middle" fill="#64748b" font-size="7">TODO: "very messy, use composition"</text>
+                    <line x1="160" y1="29" x2="160" y2="42" stroke="#64748b" stroke-width="1" marker-end="url(#arrow5)"/>
+                    <!-- InsertCharacterModal -->
+                    <rect x="30" y="110" width="120" height="28" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="90" y="128" text-anchor="middle" fill="#64748b" font-size="8">InsertCharacterModal</text>
+                    <!-- PickCharacterModal -->
+                    <rect x="170" y="110" width="120" height="28" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="230" y="128" text-anchor="middle" fill="#64748b" font-size="8">PickCharacterModal</text>
+                    <line x1="120" y1="92" x2="90" y2="110" stroke="#64748b" stroke-width="1" marker-end="url(#arrow5)"/>
+                    <line x1="200" y1="92" x2="230" y2="110" stroke="#64748b" stroke-width="1" marker-end="url(#arrow5)"/>
+                    <!-- Problem labels -->
+                    <text x="90" y="155" text-anchor="middle" fill="#dc2626" font-size="7">overrides onChooseSuggestion</text>
+                    <text x="90" y="165" text-anchor="middle" fill="#dc2626" font-size="7">to do nothing</text>
+                    <text x="230" y="155" text-anchor="middle" fill="#dc2626" font-size="7">overrides selectSuggestion</text>
+                    <text x="230" y="165" text-anchor="middle" fill="#dc2626" font-size="7">to resolve a promise</text>
+                  </svg>
+                </div>
+              </div>
+              <!-- After -->
+              <div>
+                <h3 class="text-xs uppercase tracking-wider text-slate-500 mb-3 font-medium">After</h3>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 relative" style="min-height:180px">
+                  <svg width="100%" height="180" class="absolute inset-0">
+                    <defs>
+                      <marker id="arrow6" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <path d="M0,0 L8,3 L0,6" fill="#64748b"/>
+                      </marker>
+                    </defs>
+                    <!-- SuggestModal (Obsidian) -->
+                    <rect x="80" y="5" width="160" height="24" rx="4" fill="#e0e7ff" stroke="#818cf8" stroke-width="1"/>
+                    <text x="160" y="21" text-anchor="middle" fill="#3730a3" font-size="8">SuggestModal (Obsidian)</text>
+                    <!-- SearchModule (deep) -->
+                    <rect x="40" y="42" width="240" height="50" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+                    <text x="160" y="58" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="bold">SearchModule</text>
+                    <text x="160" y="72" text-anchor="middle" fill="#94a3b8" font-size="7">candidates · render · statistics · ranking</text>
+                    <text x="160" y="84" text-anchor="middle" fill="#64748b" font-size="7">pure search logic, no UI coupling</text>
+                    <line x1="160" y1="29" x2="160" y2="42" stroke="#64748b" stroke-width="1" marker-end="url(#arrow6)"/>
+                    <!-- InsertCharacterModal (thin) -->
+                    <rect x="30" y="110" width="100" height="24" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="80" y="126" text-anchor="middle" fill="#64748b" font-size="8">InsertModal</text>
+                    <!-- PickCharacterModal (thin) -->
+                    <rect x="150" y="110" width="100" height="24" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="200" y="126" text-anchor="middle" fill="#64748b" font-size="8">PickModal</text>
+                    <!-- Composition arrows -->
+                    <line x1="80" y1="92" x2="80" y2="110" stroke="#64748b" stroke-width="1" marker-end="url(#arrow6)"/>
+                    <line x1="200" y1="92" x2="200" y2="110" stroke="#64748b" stroke-width="1" marker-end="url(#arrow6)"/>
+                    <!-- Benefit labels -->
+                    <text x="115" y="155" text-anchor="middle" fill="#059669" font-size="8">modals become thin</text>
+                    <text x="115" y="167" text-anchor="middle" fill="#059669" font-size="8">wrappers around SearchModule</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Files</h4>
+                <p class="text-xs font-mono text-slate-600 mt-1">components/fuzzySearchModal.ts · components/insertCharacterModal.ts · components/pickCharacterModal.ts</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Problem</h4>
+                <p class="text-sm text-slate-600 mt-1">The codebase already flags this as a TODO: <em>"The inheritance used here is very messy, use composition instead."</em> <code>PickCharacterModal</code> overrides <code>onChooseSuggestion</code> to do nothing and overrides <code>selectSuggestion</code> to resolve a promise — fighting the base class's contract. The search/render/statistics logic is locked inside the inheritance tree, untestable without an Obsidian <code>App</code>.</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Solution</h4>
+                <p class="text-sm text-slate-600 mt-1">Extract search logic into a <code>SearchModule</code> — a pure class with no Obsidian dependency. The module owns candidate retrieval, scoring, ranking, statistics, and rendering helpers. Each modal becomes a thin wrapper that composes <code>SearchModule</code> and wires <code>onChooseSuggestion</code> to its own behaviour.</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Benefits</h4>
+                <ul class="text-sm text-slate-600 mt-1 space-y-1">
+                  <li>• <strong>locality:</strong> search logic concentrates in one module, not spread across three classes</li>
+                  <li>• <strong>leverage:</strong> SearchModule usable from any future modal without inheritance</li>
+                  <li>• <strong>testability:</strong> SearchModule testable without Obsidian mocks (move to libraries/)</li>
+                  <li>• <strong>interface:</strong> modals become thin — only the choose-action differs</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Candidate 4: Decouple the Data Bootstrapper from Chunk Handlers -->
+        <article class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="px-6 py-5 border-b border-slate-100 flex items-center gap-3">
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-200">Worth exploring</span>
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600">in-process</span>
+            <h2 class="text-lg font-serif font-semibold ml-2">Decouple the Bootstrap Pipeline from Chunk Handlers</h2>
+          </div>
+          <div class="p-6 space-y-6">
+
+            <div class="grid grid-cols-2 gap-6">
+              <!-- Before -->
+              <div>
+                <h3 class="text-xs uppercase tracking-wider text-slate-500 mb-3 font-medium">Before</h3>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 relative" style="min-height:160px">
+                  <svg width="100%" height="160" class="absolute inset-0">
+                    <defs>
+                      <marker id="arrow7" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <path d="M0,0 L8,3 L0,6" fill="#64748b"/>
+                      </marker>
+                    </defs>
+                    <!-- main.ts -->
+                    <rect x="10" y="10" width="80" height="24" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+                    <text x="50" y="26" text-anchor="middle" fill="#92400e" font-size="8">main.ts</text>
+                    <!-- RootDataBootstrapper -->
+                    <rect x="110" y="10" width="130" height="24" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+                    <text x="175" y="26" text-anchor="middle" fill="#475569" font-size="8">RootDataBootstrapper</text>
+                    <line x1="90" y1="22" x2="110" y2="22" stroke="#64748b" stroke-width="1" marker-end="url(#arrow7)"/>
+                    <!-- 5 ChunkHandlers -->
+                    <rect x="270" y="5" width="90" height="16" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="315" y="16" text-anchor="middle" fill="#64748b" font-size="7">MetaChunkHandler</text>
+                    <rect x="270" y="24" width="90" height="16" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="315" y="35" text-anchor="middle" fill="#64748b" font-size="7">PoolChunkHandler</text>
+                    <rect x="270" y="43" width="90" height="16" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="315" y="54" text-anchor="middle" fill="#64748b" font-size="7">CharacterChunkH.</text>
+                    <rect x="270" y="62" width="90" height="16" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="315" y="73" text-anchor="middle" fill="#64748b" font-size="7">UseHistoryChunkH.</text>
+                    <rect x="270" y="81" width="90" height="16" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="315" y="92" text-anchor="middle" fill="#64748b" font-size="7">FavoriteChunkH.</text>
+                    <!-- Arrows from bootstrapper to each -->
+                    <line x1="240" y1="18" x2="270" y2="13" stroke="#64748b" stroke-width="1" marker-end="url(#arrow7)"/>
+                    <line x1="240" y1="20" x2="270" y2="32" stroke="#64748b" stroke-width="1" marker-end="url(#arrow7)"/>
+                    <line x1="240" y1="22" x2="270" y2="51" stroke="#64748b" stroke-width="1" marker-end="url(#arrow7)"/>
+                    <line x1="240" y1="24" x2="270" y2="70" stroke="#64748b" stroke-width="1" marker-end="url(#arrow7)"/>
+                    <line x1="240" y1="26" x2="270" y2="89" stroke="#64748b" stroke-width="1" marker-end="url(#arrow7)"/>
+                    <!-- main.ts also creates all storages -->
+                    <text x="50" y="55" text-anchor="middle" fill="#dc2626" font-size="7">also creates 6 storage</text>
+                    <text x="50" y="65" text-anchor="middle" fill="#dc2626" font-size="7">instances + downloader</text>
+                    <text x="50" y="80" text-anchor="middle" fill="#94a3b8" font-size="7">97 lines of wiring</text>
+                  </svg>
+                </div>
+              </div>
+              <!-- After -->
+              <div>
+                <h3 class="text-xs uppercase tracking-wider text-slate-500 mb-3 font-medium">After</h3>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 relative" style="min-height:160px">
+                  <svg width="100%" height="160" class="absolute inset-0">
+                    <defs>
+                      <marker id="arrow8" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <path d="M0,0 L8,3 L0,6" fill="#64748b"/>
+                      </marker>
+                    </defs>
+                    <!-- main.ts -->
+                    <rect x="10" y="10" width="80" height="24" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+                    <text x="50" y="26" text-anchor="middle" fill="#92400e" font-size="8">main.ts</text>
+                    <!-- PluginContext (deep) -->
+                    <rect x="110" y="5" width="150" height="80" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+                    <text x="185" y="25" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="bold">PluginContext</text>
+                    <text x="185" y="40" text-anchor="middle" fill="#94a3b8" font-size="7">createStorage()</text>
+                    <text x="185" y="52" text-anchor="middle" fill="#94a3b8" font-size="7">createBootstrapper()</text>
+                    <text x="185" y="64" text-anchor="middle" fill="#94a3b8" font-size="7">createServices()</text>
+                    <text x="185" y="76" text-anchor="middle" fill="#94a3b8" font-size="7">initialize()</text>
+                    <line x1="90" y1="22" x2="110" y2="22" stroke="#64748b" stroke-width="1" marker-end="url(#arrow8)"/>
+                    <!-- ChunkHandlers inside -->
+                    <rect x="290" y="15" width="80" height="60" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+                    <text x="330" y="32" text-anchor="middle" fill="#94a3b8" font-size="7">ChunkHandlers</text>
+                    <text x="330" y="44" text-anchor="middle" fill="#64748b" font-size="7">Meta · Pool</text>
+                    <text x="330" y="56" text-anchor="middle" fill="#64748b" font-size="7">Character</text>
+                    <text x="330" y="68" text-anchor="middle" fill="#64748b" font-size="7">UseHist · Fav</text>
+                    <line x1="260" y1="45" x2="290" y2="45" stroke="#64748b" stroke-width="1" marker-end="url(#arrow8)"/>
+                    <text x="50" y="120" text-anchor="middle" fill="#059669" font-size="7">main.ts: ~15 lines</text>
+                    <text x="50" y="132" text-anchor="middle" fill="#059669" font-size="7">all wiring inside</text>
+                    <text x="50" y="144" text-anchor="middle" fill="#059669" font-size="7">PluginContext</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Files</h4>
+                <p class="text-xs font-mono text-slate-600 mt-1">main.ts · service/rootDataBootstrapper.ts · service/rootPluginDataStorage.ts + all storage/handler creation</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Problem</h4>
+                <p class="text-sm text-slate-600 mt-1"><code>main.ts</code> (97 lines) is almost entirely wiring: it creates <code>PersistCache</code>, six storage instances, a downloader, five chunk handlers, the bootstrapper, and the commander. This is the <strong>composition root</strong>, but it's doing too much — understanding "how does the plugin start?" requires reading all of it plus tracing each dependency.</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Solution</h4>
+                <p class="text-sm text-slate-600 mt-1">Extract a <code>PluginContext</code> module that owns the full wiring: storage creation, handler creation, bootstrapper assembly, and service construction. <code>main.ts</code> becomes a thin entry point that calls <code>PluginContext.create()</code> and <code>PluginContext.initialize()</code>.</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Benefits</h4>
+                <ul class="text-sm text-slate-600 mt-1 space-y-1">
+                  <li>• <strong>locality:</strong> all wiring in one place — change a dependency graph in one file</li>
+                  <li>• <strong>leverage:</strong> <code>PluginContext</code> reusable if the plugin is ever tested outside Obsidian</li>
+                  <li>• <strong>interface shrinks:</strong> main.ts becomes a two-line entry point</li>
+                  <li>• <strong>tests:</strong> can instantiate <code>PluginContext</code> with test adapters to integration-test the full pipeline</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Candidate 5: Extract Search Logic from FuzzySearchModal into Libraries -->
+        <article class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="px-6 py-5 border-b border-slate-100 flex items-center gap-3">
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-200 text-slate-600 border border-slate-300">Speculative</span>
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600">ports & adapters</span>
+            <h2 class="text-lg font-serif font-semibold ml-2">Move Search Ranking into libraries/</h2>
+          </div>
+          <div class="p-6 space-y-6">
+
+            <div class="grid grid-cols-2 gap-6">
+              <!-- Before -->
+              <div>
+                <h3 class="text-xs uppercase tracking-wider text-slate-500 mb-3 font-medium">Before</h3>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 relative" style="min-height:140px">
+                  <svg width="100%" height="140" class="absolute inset-0">
+                    <!-- libraries/ boundary -->
+                    <rect x="10" y="5" width="170" height="130" rx="6" fill="#ecfdf5" stroke="#86efac" stroke-width="1" stroke-dasharray="4 4"/>
+                    <text x="95" y="20" text-anchor="middle" fill="#166534" font-size="8" font-weight="bold">libraries/</text>
+                    <text x="95" y="35" text-anchor="middle" fill="#16a34a" font-size="7">comparison/ helpers/</text>
+                    <text x="95" y="47" text-anchor="middle" fill="#16a34a" font-size="7">data/ order/ types/</text>
+                    <!-- unicode-search/ boundary -->
+                    <rect x="200" y="5" width="180" height="130" rx="6" fill="#fef3c7" stroke="#fcd34d" stroke-width="1" stroke-dasharray="4 4"/>
+                    <text x="290" y="20" text-anchor="middle" fill="#92400e" font-size="8" font-weight="bold">unicode-search/</text>
+                    <!-- Search logic inside unicode-search -->
+                    <rect x="210" y="30" width="160" height="50" rx="4" fill="#fff7ed" stroke="#fb923c" stroke-width="1"/>
+                    <text x="290" y="48" text-anchor="middle" fill="#9a3412" font-size="8">Search + Ranking Logic</text>
+                    <text x="290" y="62" text-anchor="middle" fill="#c2410c" font-size="7">fuzzySearchModal.ts</text>
+                    <text x="290" y="74" text-anchor="middle" fill="#c2410c" font-size="7">characterSearch.ts</text>
+                    <!-- Arrow showing coupling -->
+                    <line x1="180" y1="70" x2="210" y2="55" stroke="#dc2626" stroke-width="1" stroke-dasharray="3 3"/>
+                    <text x="195" y="55" fill="#dc2626" font-size="6">Obsidian coupled</text>
+                  </svg>
+                </div>
+              </div>
+              <!-- After -->
+              <div>
+                <h3 class="text-xs uppercase tracking-wider text-slate-500 mb-3 font-medium">After</h3>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 relative" style="min-height:140px">
+                  <svg width="100%" height="140" class="absolute inset-0">
+                    <!-- libraries/ boundary -->
+                    <rect x="10" y="5" width="170" height="130" rx="6" fill="#ecfdf5" stroke="#86efac" stroke-width="1" stroke-dasharray="4 4"/>
+                    <text x="95" y="20" text-anchor="middle" fill="#166534" font-size="8" font-weight="bold">libraries/</text>
+                    <!-- Deep search module inside libraries -->
+                    <rect x="20" y="30" width="150" height="50" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+                    <text x="95" y="48" text-anchor="middle" fill="#e2e8f0" font-size="8" font-weight="bold">search/</text>
+                    <text x="95" y="62" text-anchor="middle" fill="#94a3b8" font-size="7">ranking · scoring · statistics</text>
+                    <text x="95" y="74" text-anchor="middle" fill="#64748b" font-size="6">pure functions, no Obsidian</text>
+                    <!-- unicode-search/ boundary -->
+                    <rect x="200" y="5" width="180" height="130" rx="6" fill="#fef3c7" stroke="#fcd34d" stroke-width="1" stroke-dasharray="4 4"/>
+                    <text x="290" y="20" text-anchor="middle" fill="#92400e" font-size="8" font-weight="bold">unicode-search/</text>
+                    <!-- Modal layer -->
+                    <rect x="210" y="30" width="160" height="35" rx="4" fill="#fff7ed" stroke="#fb923c" stroke-width="1"/>
+                    <text x="290" y="45" text-anchor="middle" fill="#9a3412" font-size="8">Modal (UI only)</text>
+                    <text x="290" y="57" text-anchor="middle" fill="#c2410c" font-size="7">renders, calls search module</text>
+                    <!-- Clean arrow -->
+                    <line x1="170" y1="55" x2="210" y2="47" stroke="#059669" stroke-width="1.5" marker-end="url(#arrow8)"/>
+                    <text x="190" y="42" fill="#059669" font-size="6">clean import</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Files</h4>
+                <p class="text-xs font-mono text-slate-600 mt-1">components/fuzzySearchModal.ts · components/characterSearch.ts · components/characterSearchAttributes.ts · libraries/comparison/*</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Problem</h4>
+                <p class="text-sm text-slate-600 mt-1">Search ranking logic (comparing matches, filling null scores, use-history-based ranking) lives in <code>unicode-search/components/</code> — coupled to Obsidian's <code>SearchResult</code> type. The comparison functions in <code>libraries/comparison/</code> are already pure, but the ranking orchestration in <code>fuzzySearchModal.ts</code> is not testable without Obsidian mocks. This violates ADR-0005's principle that <code>libraries/</code> should contain all testable logic.</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Solution</h4>
+                <p class="text-sm text-slate-600 mt-1">Create <code>libraries/search/</code> with pure ranking and scoring functions. The modal becomes a thin adapter that calls into <code>libraries/search/</code> and renders the results. The <code>SearchResult</code> type dependency stays in the adapter; the ranking logic becomes Obsidian-agnostic.</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Benefits</h4>
+                <ul class="text-sm text-slate-600 mt-1 space-y-1">
+                  <li>• <strong>testability:</strong> ranking logic testable without Obsidian — add to <code>tests/libraries/</code></li>
+                  <li>• <strong>leverage:</strong> search module reusable for any future search UI (settings, CLI)</li>
+                  <li>• <strong>seam:</strong> clean boundary between ranking (pure) and rendering (Obsidian)</li>
+                  <li>• <strong>note:</strong> depends on Candidate 3 (composition) being done first</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Candidate 6: Thin Out the SettingTab -->
+        <article class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="px-6 py-5 border-b border-slate-100 flex items-center gap-3">
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-200 text-slate-600 border border-slate-300">Speculative</span>
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600">in-process</span>
+            <h2 class="text-lg font-serif font-semibold ml-2">Extract Settings Business Logic from SettingTab</h2>
+          </div>
+          <div class="p-6 space-y-6">
+
+            <div class="grid grid-cols-2 gap-6">
+              <!-- Before -->
+              <div>
+                <h3 class="text-xs uppercase tracking-wider text-slate-500 mb-3 font-medium">Before</h3>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 relative" style="min-height:130px">
+                  <svg width="100%" height="130" class="absolute inset-0">
+                    <rect x="30" y="10" width="280" height="100" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+                    <text x="170" y="28" text-anchor="middle" fill="#92400e" font-size="9" font-weight="bold">SettingTab (332 lines)</text>
+                    <!-- Mixed concerns -->
+                    <rect x="40" y="38" width="120" height="30" rx="3" fill="#fff" stroke="#fbbf24" stroke-width="1"/>
+                    <text x="100" y="52" text-anchor="middle" fill="#92400e" font-size="7">UI Rendering</text>
+                    <text x="100" y="62" text-anchor="middle" fill="#b45309" font-size="6">settings, toggles, lists</text>
+                    <rect x="175" y="38" width="125" height="30" rx="3" fill="#fff" stroke="#fbbf24" stroke-width="1"/>
+                    <text x="237" y="52" text-anchor="middle" fill="#92400e" font-size="7">Business Logic</text>
+                    <text x="237" y="62" text-anchor="middle" fill="#b45309" font-size="6">toggleHotkey, displayChar</text>
+                    <text x="170" y="90" text-anchor="middle" fill="#dc2626" font-size="7">mixed: UI + logic in one class</text>
+                    <text x="170" y="102" text-anchor="middle" fill="#94a3b8" font-size="7">re-initializes data on hide()</text>
+                  </svg>
+                </div>
+              </div>
+              <!-- After -->
+              <div>
+                <h3 class="text-xs uppercase tracking-wider text-slate-500 mb-3 font-medium">After</h3>
+                <div class="bg-slate-50 rounded-lg p-4 border border-slate-200 relative" style="min-height:130px">
+                  <svg width="100%" height="130" class="absolute inset-0">
+                    <!-- SettingTab (thin) -->
+                    <rect x="30" y="10" width="130" height="40" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="95" y="28" text-anchor="middle" fill="#64748b" font-size="8">SettingTab</text>
+                    <text x="95" y="42" text-anchor="middle" fill="#94a3b8" font-size="6">UI only, delegates to modules</text>
+                    <!-- SettingsModule (deep) -->
+                    <rect x="190" y="5" width="160" height="60" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+                    <text x="270" y="22" text-anchor="middle" fill="#e2e8f0" font-size="8" font-weight="bold">SettingsModule</text>
+                    <text x="270" y="36" text-anchor="middle" fill="#94a3b8" font-size="6">toggleFavoriteQuickInsert()</text>
+                    <text x="270" y="48" text-anchor="middle" fill="#94a3b8" font-size="6">addFavorite() · removeFavorite()</text>
+                    <text x="270" y="58" text-anchor="middle" fill="#64748b" font-size="6">saveAndReinitialize()</text>
+                    <line x1="160" y1="30" x2="190" y2="30" stroke="#64748b" stroke-width="1"/>
+                    <text x="50" y="80" text-anchor="middle" fill="#059669" font-size="7">SettingTab: ~120 lines</text>
+                    <text x="50" y="92" text-anchor="middle" fill="#059669" font-size="7">pure rendering</text>
+                    <text x="270" y="85" text-anchor="middle" fill="#059669" font-size="7">testable business logic</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Files</h4>
+                <p class="text-xs font-mono text-slate-600 mt-1">components/settingTab.ts</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Problem</h4>
+                <p class="text-sm text-slate-600 mt-1"><code>SettingTab</code> (332 lines) mixes Obsidian UI rendering with business logic: toggling hotkey commands, managing favourite lists, and triggering re-initialization on <code>hide()</code>. The codebase already flags this as a TODO: <em>"Make settings code easier to comprehend."</em> The business logic is untestable because it's embedded in the UI class.</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Solution</h4>
+                <p class="text-sm text-slate-600 mt-1">Extract a <code>SettingsModule</code> that owns the business logic (favourite management, hotkey command registration, re-initialization). <code>SettingTab</code> becomes pure rendering that calls into <code>SettingsModule</code>.</p>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-700">Benefits</h4>
+                <ul class="text-sm text-slate-600 mt-1 space-y-1">
+                  <li>• <strong>locality:</strong> settings business logic in one module</li>
+                  <li>• <strong>testability:</strong> SettingsModule testable without Obsidian UI</li>
+                  <li>• <strong>seam:</strong> clean boundary between rendering and logic</li>
+                  <li>• <strong>note:</strong> lower priority — the current code works, this is about long-term navigability</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- Top Recommendation -->
+      <section id="top-recommendation" class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <h2 class="text-lg font-serif font-semibold text-slate-800 mb-3">Top Recommendation</h2>
+        <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500 text-white">Start here</span>
+            <a href="#candidates" class="text-sm font-semibold text-emerald-800 hover:underline">Collapse the Storage Adapter Chain</a>
+          </div>
+          <p class="text-sm text-emerald-700">
+            This candidate has the highest leverage. The storage layer currently has <strong>ten near-identical adapter classes</strong> (five <code>*Storage</code> implementations + five <code>*Store</code> interfaces) that mostly wrap <code>RootPluginDataStorage</code> with trivial transformations. Collapsing them into a single generic <code>ChunkStorage&lt;T&gt;</code> deletes six shallow modules and halves the test surface. Every other candidate builds on top of this — cleaner storage makes the pool module, search extraction, and bootstrap decoupling all easier to reason about.
+          </p>
+          <p class="text-xs text-emerald-600 mt-2">
+            <strong>Why first:</strong> it's the deepest seam. The deletion test passes with flying colours — delete the chain and you get five copies of the same merge logic scattered across the codebase. Collapsing it concentrates that complexity in one place.
+          </p>
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>
