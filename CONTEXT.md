@@ -128,6 +128,10 @@ _Avoid_: Retrieval, filtering
 Phase 2 of fuzzy search: scoring results on two axes and ranking by multiple factors.
 _Avoid_: Ranking, sorting
 
+**Ranking module**:
+The deep module (`rankCharacterSearchResults`) that owns the full character search ranking pipeline. Accepts `MaybeMetaCharacterSearchResult[]` and a recency cutoff date; returns `MetaCharacterSearchResult[]` sorted and with null match scores filled. Internal tiebreaker order: match score → use history → favourite → code point. Implementation lives in `src/libraries/comparison/rankCharacterSearchResults.ts`.
+_Avoid_: Comparator, sorter, comparison cluster
+
 ---
 
 ## UI Concepts

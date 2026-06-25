@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Architecture review — obsidian-unicode-search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+    </script>
+    <style>
+      .seam { stroke-dasharray: 4 4; }
+      .leak { stroke: #dc2626; }
+      .deep { background: linear-gradient(135deg, #0f172a, #1e293b); }
+
+      .module-box {
+        border: 2px solid #334155;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .module-box.deep-mod {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #e2e8f0;
+        border-color: #475569;
+      }
+      .module-box.shallow-mod {
+        background: #f8fafc;
+        color: #334155;
+      }
+      .module-box.obsidian-dep {
+        background: #fef3c7;
+        color: #92400e;
+        border-color: #d97706;
+      }
+      .module-box.violated {
+        background: #fef2f2;
+        color: #991b1b;
+        border-color: #dc2626;
+      }
+      .arrow {
+        stroke: #64748b;
+        stroke-width: 1.5;
+        fill: none;
+        marker-end: url(#arrow-head);
+      }
+      .arrow-red {
+        stroke: #dc2626;
+        stroke-width: 2;
+        fill: none;
+        marker-end: url(#arrow-head-red);
+      }
+    </style>
+  </head>
+  <body class="bg-stone-50 text-slate-900 font-sans">
+    <main class="max-w-5xl mx-auto px-6 py-12 space-y-12">
+
+      <!-- Header -->
+      <header class="border-b border-slate-200 pb-8">
+        <h1 class="text-3xl font-serif font-semibold text-slate-900 mb-2">Architecture Review</h1>
+        <p class="text-slate-500 font-mono text-sm">obsidian-unicode-search · 2026-06-25</p>
+        <div class="mt-5 flex gap-6 text-xs">
+          <span class="flex items-center gap-2"><span class="inline-block w-5 h-4 border-2 border-slate-400 rounded-sm bg-slate-50"></span>module</span>
+          <span class="flex items-center gap-2"><span class="inline-block w-5 h-1 border-t-2 border-dashed border-slate-400"></span>seam</span>
+          <span class="flex items-center gap-2"><span class="inline-block w-5 h-1 bg-red-500"></span>leakage / ADR violation</span>
+          <span class="flex items-center gap-2"><span class="inline-block w-5 h-4 rounded-sm" style="background:linear-gradient(135deg,#0f172a,#1e293b)"></span>deep module</span>
+        </div>
+      </header>
+
+      <!-- CANDIDATES -->
+      <section id="candidates" class="space-y-14">
+
+        <!-- ─────────────────────────────────────────────────────────────────── -->
+        <!-- CANDIDATE 1: Ranking Module                                         -->
+        <!-- ─────────────────────────────────────────────────────────────────── -->
+        <article id="c1" class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
+          <div class="flex items-start justify-between gap-4 mb-6">
+            <h2 class="text-xl font-serif font-semibold text-slate-900">
+              1. Collapse the comparison cluster into a deep Ranking module
+            </h2>
+            <div class="flex gap-2 shrink-0 mt-1">
+              <span class="px-2 py-0.5 rounded text-xs font-semibold uppercase tracking-wider bg-emerald-100 text-emerald-800">Strong</span>
+              <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-100 text-slate-600">in-process</span>
+            </div>
+          </div>
+
+          <div class="font-mono text-xs text-slate-500 mb-6 space-y-0.5">
+            <div>src/libraries/comparison/compareCharacterMatches.ts</div>
+            <div>src/libraries/comparison/compareCharacters.ts</div>
+            <div>src/libraries/comparison/compareSearchMatches.ts</div>
+            <div>src/libraries/comparison/compareSearchMatchScores.ts</div>
+            <div>src/libraries/comparison/compareCharacterWithUseHistory.ts</div>
+            <div>src/libraries/comparison/compareFavoriteCharacters.ts</div>
+            <div>src/libraries/comparison/compareFavorite.ts</div>
+            <div>src/libraries/comparison/compareCodePoints.ts</div>
+            <div>src/libraries/comparison/compareUseRecord.ts</div>
+            <div>src/libraries/comparison/compareNullable.ts</div>
+            <div>src/libraries/comparison/compareNumbers.ts</div>
+            <div>src/libraries/comparison/compareDates.ts</div>
+            <div>src/libraries/comparison/fillNullCharacterMatchScores.ts</div>
+            <div>src/libraries/comparison/fillNullSearchMatchScores.ts</div>
+            <div class="text-slate-400 pt-1">+ 14 matching spec files in tests/</div>
+          </div>
+
+          <!-- BEFORE / AFTER DIAGRAM -->
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <!-- BEFORE -->
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3">Before</p>
+              <div class="bg-slate-50 rounded-lg border border-slate-200 p-4" style="height:320px;">
+                <svg width="100%" height="100%" viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <marker id="ah1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+                    </marker>
+                  </defs>
+                  <!-- caller -->
+                  <rect x="80" y="8" width="100" height="22" rx="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+                  <text x="130" y="23" font-family="monospace" font-size="8" fill="#475569" text-anchor="middle">FuzzySearchModal</text>
+                  <!-- compareCharacterMatches -->
+                  <rect x="60" y="44" width="140" height="18" rx="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+                  <text x="130" y="56" font-family="monospace" font-size="7" fill="#334155" text-anchor="middle">compareCharacterMatches</text>
+                  <!-- arrow from caller -->
+                  <line x1="130" y1="30" x2="130" y2="44" stroke="#64748b" stroke-width="1.2" marker-end="url(#ah1)"/>
+
+                  <!-- compareSearchMatches -->
+                  <rect x="10" y="78" width="108" height="18" rx="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+                  <text x="64" y="90" font-family="monospace" font-size="7" fill="#334155" text-anchor="middle">compareSearchMatches</text>
+                  <!-- compareCharacters -->
+                  <rect x="142" y="78" width="108" height="18" rx="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+                  <text x="196" y="90" font-family="monospace" font-size="7" fill="#334155" text-anchor="middle">compareCharacters</text>
+                  <!-- arrows from compareCharacterMatches -->
+                  <line x1="100" y1="62" x2="80" y2="78" stroke="#64748b" stroke-width="1" marker-end="url(#ah1)"/>
+                  <line x1="160" y1="62" x2="176" y2="78" stroke="#64748b" stroke-width="1" marker-end="url(#ah1)"/>
+
+                  <!-- compareSearchMatchScores -->
+                  <rect x="10" y="112" width="108" height="18" rx="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+                  <text x="64" y="124" font-family="monospace" font-size="7" fill="#334155" text-anchor="middle">compareSearchMatchScores</text>
+                  <!-- fillNullSearchMatchScores -->
+                  <rect x="10" y="134" width="108" height="18" rx="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+                  <text x="64" y="146" font-family="monospace" font-size="7" fill="#334155" text-anchor="middle">fillNullSearchMatchScores</text>
+                  <line x1="64" y1="96" x2="64" y2="112" stroke="#64748b" stroke-width="1" marker-end="url(#ah1)"/>
+                  <line x1="64" y1="96" x2="64" y2="134" stroke="#64748b" stroke-width="1" marker-end="url(#ah1)"/>
+
+                  <!-- compareCharacterWithUseHistory -->
+                  <rect x="130" y="112" width="120" height="18" rx="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+                  <text x="190" y="124" font-family="monospace" font-size="6.5" fill="#334155" text-anchor="middle">compareCharWithUseHistory</text>
+                  <!-- compareFavoriteCharacters -->
+                  <rect x="130" y="134" width="120" height="18" rx="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+                  <text x="190" y="146" font-family="monospace" font-size="6.5" fill="#334155" text-anchor="middle">compareFavoriteCharacters</text>
+                  <!-- compareCodePoints -->
+                  <rect x="130" y="156" width="120" height="18" rx="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+                  <text x="190" y="168" font-family="monospace" font-size="6.5" fill="#334155" text-anchor="middle">compareCodePoints</text>
+                  <line x1="196" y1="96" x2="196" y2="112" stroke="#64748b" stroke-width="1" marker-end="url(#ah1)"/>
+                  <line x1="196" y1="96" x2="196" y2="134" stroke="#64748b" stroke-width="1" marker-end="url(#ah1)"/>
+                  <line x1="196" y1="96" x2="196" y2="156" stroke="#64748b" stroke-width="1" marker-end="url(#ah1)"/>
+
+                  <!-- deeper leaf nodes -->
+                  <rect x="30" y="170" width="80" height="16" rx="2" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+                  <text x="70" y="181" font-family="monospace" font-size="6" fill="#64748b" text-anchor="middle">compareUseRecord</text>
+                  <rect x="30" y="190" width="80" height="16" rx="2" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+                  <text x="70" y="201" font-family="monospace" font-size="6" fill="#64748b" text-anchor="middle">compareDates</text>
+                  <rect x="30" y="210" width="80" height="16" rx="2" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+                  <text x="70" y="221" font-family="monospace" font-size="6" fill="#64748b" text-anchor="middle">compareNumbers</text>
+                  <rect x="30" y="230" width="80" height="16" rx="2" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+                  <text x="70" y="241" font-family="monospace" font-size="6" fill="#64748b" text-anchor="middle">compareNullable</text>
+                  <rect x="30" y="250" width="80" height="16" rx="2" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+                  <text x="70" y="261" font-family="monospace" font-size="6" fill="#64748b" text-anchor="middle">compareFavorite</text>
+                  <line x1="190" y1="152" x2="70" y2="170" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3,2" marker-end="url(#ah1)"/>
+                  <line x1="190" y1="152" x2="70" y2="190" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3,2" marker-end="url(#ah1)"/>
+                  <line x1="190" y1="152" x2="70" y2="210" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3,2" marker-end="url(#ah1)"/>
+                  <line x1="190" y1="152" x2="70" y2="230" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3,2" marker-end="url(#ah1)"/>
+                  <line x1="190" y1="152" x2="70" y2="250" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3,2" marker-end="url(#ah1)"/>
+
+                  <!-- label -->
+                  <text x="130" y="288" font-family="sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">14 files · 14 test seams · 236 lines total</text>
+                </svg>
+              </div>
+            </div>
+
+            <!-- AFTER -->
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3">After</p>
+              <div class="bg-slate-50 rounded-lg border border-slate-200 p-4" style="height:320px;">
+                <svg width="100%" height="100%" viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <marker id="ah2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+                    </marker>
+                  </defs>
+                  <!-- caller -->
+                  <rect x="80" y="8" width="100" height="22" rx="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+                  <text x="130" y="23" font-family="monospace" font-size="8" fill="#475569" text-anchor="middle">FuzzySearchModal</text>
+                  <!-- seam line -->
+                  <line x1="20" y1="52" x2="240" y2="52" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3"/>
+                  <text x="248" y="55" font-family="monospace" font-size="7" fill="#94a3b8">seam</text>
+                  <!-- arrow to Ranking module -->
+                  <line x1="130" y1="30" x2="130" y2="58" stroke="#64748b" stroke-width="1.5" marker-end="url(#ah2)"/>
+                  <!-- Deep Ranking module -->
+                  <rect x="40" y="58" width="180" height="120" rx="6" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+                  <text x="130" y="76" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" font-weight="bold">RANKING</text>
+                  <!-- interface surface label -->
+                  <rect x="60" y="82" width="140" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+                  <text x="130" y="96" font-family="monospace" font-size="7.5" fill="#7dd3fc" text-anchor="middle">rank(left, right, cutoff)</text>
+
+                  <!-- internal impl (faded) -->
+                  <text x="130" y="118" font-family="monospace" font-size="6.5" fill="#475569" text-anchor="middle">↳ compareSearchMatches</text>
+                  <text x="130" y="131" font-family="monospace" font-size="6.5" fill="#475569" text-anchor="middle">↳ compareCharacters</text>
+                  <text x="130" y="144" font-family="monospace" font-size="6.5" fill="#475569" text-anchor="middle">↳ useHistory / favorite / codePoint</text>
+                  <text x="130" y="157" font-family="monospace" font-size="6.5" fill="#334155" text-anchor="middle" font-style="italic">internal — private to implementation</text>
+                  <text x="130" y="170" font-family="monospace" font-size="6.5" fill="#334155" text-anchor="middle" font-style="italic">not exposed at seam</text>
+
+                  <!-- test arrow -->
+                  <line x1="220" y1="105" x2="260" y2="105" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3,2"/>
+                  <rect x="195" y="96" width="20" height="18" rx="2" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+                  <text x="205" y="108" font-family="monospace" font-size="6.5" fill="#166534" text-anchor="middle">test</text>
+
+                  <!-- legend -->
+                  <text x="130" y="210" font-family="sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">1 interface · 1 test seam</text>
+                  <text x="130" y="223" font-family="sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">internals hidden behind the seam</text>
+
+                  <!-- wins count -->
+                  <rect x="60" y="232" width="140" height="28" rx="4" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+                  <text x="130" y="243" font-family="sans-serif" font-size="7" fill="#166534" text-anchor="middle" font-weight="bold">14 shallow modules → 1 deep module</text>
+                  <text x="130" y="255" font-family="sans-serif" font-size="7" fill="#166534" text-anchor="middle">14 leaf-seam tests → 1 ranking-seam test</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-6 text-sm">
+            <div>
+              <p class="font-semibold text-slate-700 mb-1">Problem</p>
+              <p class="text-slate-600">14 micro-files, each 10–29 lines — each shallow per-file, but each one just calls the next. Understanding "how does search ranking work?" requires bouncing through the entire call graph. Tests hit 14 leaf seams instead of the ranking behaviour.</p>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-700 mb-1">Solution</p>
+              <p class="text-slate-600">One <code class="font-mono text-xs bg-slate-100 px-1 rounded">Ranking</code> module in <code class="font-mono text-xs bg-slate-100 px-1 rounded">libraries/comparison/</code> with a two-method interface: <code class="font-mono text-xs bg-slate-100 px-1 rounded">rank(l, r, cutoff)</code> and optionally <code class="font-mono text-xs bg-slate-100 px-1 rounded">sort(results, cutoff)</code>. The 14 current functions become private implementation.</p>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-700 mb-1">Wins</p>
+              <ul class="text-slate-600 space-y-1 list-none">
+                <li>→ <span class="font-medium">Locality:</span> ranking logic in one place</li>
+                <li>→ <span class="font-medium">Interface shrinks:</span> 14 exports → 1–2</li>
+                <li>→ <span class="font-medium">Leverage:</span> callers learn one seam</li>
+                <li>→ <span class="font-medium">Tests target the behaviour</span>, not leaf calls</li>
+                <li>→ Deletion test passes: delete individual fns, complexity concentrates here</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- ─────────────────────────────────────────────────────────────────── -->
+        <!-- CANDIDATE 2: ADR-0005 Boundary Violation                            -->
+        <!-- ─────────────────────────────────────────────────────────────────── -->
+        <article id="c2" class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
+          <div class="flex items-start justify-between gap-4 mb-6">
+            <h2 class="text-xl font-serif font-semibold text-slate-900">
+              2. Heal the ADR-0005 boundary: search result types are stranded in <code class="font-mono text-base">unicode-search/components/</code>
+            </h2>
+            <div class="flex gap-2 shrink-0 mt-1">
+              <span class="px-2 py-0.5 rounded text-xs font-semibold uppercase tracking-wider bg-emerald-100 text-emerald-800">Strong</span>
+              <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-100 text-slate-600">in-process</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-5 text-xs font-mono">
+            <div>
+              <p class="text-red-600 font-semibold mb-1.5">9 files in libraries/ that violate ADR-0005:</p>
+              <div class="text-red-700 space-y-0.5">
+                <div>libraries/comparison/compareCharacterMatches.ts</div>
+                <div>libraries/comparison/compareSearchMatchScores.ts</div>
+                <div>libraries/comparison/compareSearchMatches.ts</div>
+                <div>libraries/comparison/fillNullCharacterMatchScores.ts</div>
+                <div>libraries/comparison/fillNullSearchMatchScores.ts</div>
+                <div>libraries/helpers/matchedNameOrCodePoint.ts</div>
+                <div>libraries/helpers/toNullMatch.ts</div>
+                <div>libraries/helpers/toSearchQueryMatch.ts  ← also imports obsidian</div>
+                <div>libraries/types/persistCache.ts  ← imports UnicodeSearchError</div>
+              </div>
+            </div>
+            <div>
+              <p class="text-slate-500 font-semibold mb-1.5">Root cause: type definitions stranded here:</p>
+              <div class="text-slate-600 space-y-0.5">
+                <div>unicode-search/components/characterSearch.ts</div>
+                <div class="text-slate-400 pt-1">Defines: MetaCharacterSearchResult</div>
+                <div class="text-slate-400">         MaybeMetaCharacterSearchResult</div>
+                <div class="text-slate-400">         SearchMatchResult</div>
+                <div class="text-slate-400">         SearchMatchAttributes</div>
+                <div class="text-slate-400">         MaybeSearchMatchAttributes</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BEFORE / AFTER DIAGRAM -->
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <!-- BEFORE -->
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3">Before — bidirectional dependency</p>
+              <div class="bg-slate-50 rounded-lg border border-slate-200 p-4" style="height:300px;">
+                <div class="rounded-lg border border-slate-200 bg-white p-2 h-full">
+                  <pre class="mermaid text-xs">
+flowchart TB
+  subgraph libs ["libraries/ (should be agnostic)"]
+    direction TB
+    CCM["compareCharacterMatches"]
+    CSM["compareSearchMatches"]
+    FNS["fillNullSearchMatch\nScores"]
+    TSQ["toSearchQueryMatch"]
+  end
+
+  subgraph plugin ["unicode-search/components/"]
+    CS["characterSearch.ts\n(SearchMatchResult types)"]
+    FSM["FuzzySearchModal"]
+  end
+
+  OBS["obsidian"]
+
+  CS -->|imports| OBS
+  FSM -->|imports| libs
+  CCM -->|imports ❌ ADR-0005| CS
+  CSM -->|imports ❌| CS
+  FNS -->|imports ❌| CS
+  TSQ -->|imports ❌| CS
+  TSQ -->|imports ❌| OBS
+
+  classDef violation stroke:#dc2626,stroke-width:2px,color:#991b1b;
+  classDef ok fill:#f0fdf4,stroke:#86efac;
+  class CCM,CSM,FNS,TSQ violation
+  class FSM ok
+                  </pre>
+                </div>
+              </div>
+            </div>
+
+            <!-- AFTER -->
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3">After — types move to libraries/</p>
+              <div class="bg-slate-50 rounded-lg border border-slate-200 p-4" style="height:300px;">
+                <div class="rounded-lg border border-slate-200 bg-white p-2 h-full">
+                  <pre class="mermaid text-xs">
+flowchart TB
+  subgraph libs ["libraries/ (agnostic)"]
+    direction TB
+    ST["types/characterSearch.ts\n(SearchMatchResult types)"]
+    CCM["compareCharacterMatches"]
+    CSM["compareSearchMatches"]
+    FNS["fillNullSearchMatchScores"]
+    TSQ["toSearchQueryMatch\n(search fns injected)"]
+    CCM --> ST
+    CSM --> ST
+    FNS --> ST
+    TSQ --> ST
+  end
+
+  subgraph plugin ["unicode-search/components/"]
+    CS["characterSearch.ts\n(re-exports only)"]
+    FSM["FuzzySearchModal"]
+  end
+
+  OBS["obsidian"]
+
+  CS --> ST
+  CS --> OBS
+  FSM --> libs
+  FSM --> CS
+
+  classDef clean fill:#f0fdf4,stroke:#86efac,color:#166534;
+  class CCM,CSM,FNS,TSQ,ST clean
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-6 text-sm">
+            <div>
+              <p class="font-semibold text-slate-700 mb-1">Problem</p>
+              <p class="text-slate-600">ADR-0005 forbids <code class="font-mono text-xs">libraries/</code> importing from <code class="font-mono text-xs">unicode-search/</code>. But 9 library files do exactly that — because <code class="font-mono text-xs">SearchMatchResult</code> and friends live in <code class="font-mono text-xs">unicode-search/components/</code>. <code class="font-mono text-xs">toSearchQueryMatch</code> even imports from <code class="font-mono text-xs">obsidian</code> directly.</p>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-700 mb-1">Solution</p>
+              <p class="text-slate-600">Move the search result types from <code class="font-mono text-xs">characterSearch.ts</code> into <code class="font-mono text-xs">libraries/types/characterSearch.ts</code>. Make <code class="font-mono text-xs">unicode-search/components/characterSearch.ts</code> a thin re-export. Extract the Obsidian search functions out of <code class="font-mono text-xs">toSearchQueryMatch</code> as injected parameters.</p>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-700 mb-1">Wins</p>
+              <ul class="text-slate-600 space-y-1">
+                <li>→ ADR-0005 enforced in code, not just docs</li>
+                <li>→ <span class="font-medium">Locality:</span> all search types in one place</li>
+                <li>→ <code class="font-mono text-xs">libraries/</code> becomes genuinely portable</li>
+                <li>→ Prerequisite for extracting a testable search module (Candidate 3)</li>
+                <li>→ Surgical — 9 import fixes, no logic changes</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- ─────────────────────────────────────────────────────────────────── -->
+        <!-- CANDIDATE 3: Extract FuzzySearch module (ADR-0010 continuation)     -->
+        <!-- ─────────────────────────────────────────────────────────────────── -->
+        <article id="c3" class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
+          <div class="flex items-start justify-between gap-4 mb-6">
+            <h2 class="text-xl font-serif font-semibold text-slate-900">
+              3. Extract the fuzzy search pipeline from <code class="font-mono text-base">FuzzySearchModal</code> into a composable module
+            </h2>
+            <div class="flex gap-2 shrink-0 mt-1">
+              <span class="px-2 py-0.5 rounded text-xs font-semibold uppercase tracking-wider bg-amber-100 text-amber-800">Worth exploring</span>
+              <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-100 text-slate-600">ports &amp; adapters</span>
+            </div>
+          </div>
+
+          <!-- ADR CALLOUT -->
+          <div class="mb-5 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+            <span class="font-semibold">ADR-0010 alignment:</span> ADR-0010 already explicitly proposes this refactor ("the architecture review flags this as Candidate 3: extract a <code class="font-mono text-xs">SearchModule</code> via composition"). This candidate executes on that noted opportunity.
+          </div>
+
+          <div class="font-mono text-xs text-slate-500 mb-6 space-y-0.5">
+            <div>src/unicode-search/components/fuzzySearchModal.ts  (143 lines — owns search + rendering)</div>
+            <div>src/unicode-search/components/insertCharacterModal.ts  (28 lines)</div>
+            <div>src/unicode-search/components/pickCharacterModal.ts  (44 lines)</div>
+            <div>src/libraries/helpers/toSearchQueryMatch.ts  (imports obsidian)</div>
+          </div>
+
+          <!-- BEFORE / AFTER DIAGRAM -->
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <!-- BEFORE: mass diagram showing interface vs implementation -->
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3">Before — search logic locked in inheritance</p>
+              <div class="bg-slate-50 rounded-lg border border-slate-200 p-3" style="height:300px;">
+                <svg width="100%" height="100%" viewBox="0 0 260 280" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <marker id="ah3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+                    </marker>
+                  </defs>
+                  <!-- Obsidian SuggestModal -->
+                  <rect x="60" y="8" width="140" height="30" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+                  <text x="130" y="24" font-family="monospace" font-size="8" fill="#92400e" text-anchor="middle" font-weight="bold">SuggestModal (Obsidian)</text>
+                  <text x="130" y="34" font-family="monospace" font-size="6.5" fill="#92400e" text-anchor="middle">← hard inheritance dep</text>
+
+                  <!-- FuzzySearchModal -->
+                  <rect x="20" y="58" width="220" height="90" rx="5" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+                  <text x="130" y="73" font-family="monospace" font-size="8.5" fill="#991b1b" text-anchor="middle" font-weight="bold">FuzzySearchModal (abstract)</text>
+                  <!-- internal content -->
+                  <text x="130" y="88" font-family="monospace" font-size="7" fill="#991b1b" text-anchor="middle">getSuggestions() ← search pipeline</text>
+                  <text x="130" y="100" font-family="monospace" font-size="7" fill="#991b1b" text-anchor="middle">renderSuggestion() ← UI rendering</text>
+                  <text x="130" y="112" font-family="monospace" font-size="7" fill="#991b1b" text-anchor="middle">usageStatistics (ReadCache)</text>
+                  <text x="130" y="124" font-family="monospace" font-size="7" fill="#dc2626" text-anchor="middle">⚠ untestable without App instance</text>
+                  <!-- extends arrow -->
+                  <line x1="130" y1="38" x2="130" y2="58" stroke="#d97706" stroke-width="1.5" marker-end="url(#ah3)"/>
+
+                  <!-- children -->
+                  <rect x="20" y="170" width="100" height="28" rx="4" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+                  <text x="70" y="182" font-family="monospace" font-size="7.5" fill="#475569" text-anchor="middle">InsertCharacterModal</text>
+                  <text x="70" y="193" font-family="monospace" font-size="6.5" fill="#64748b" text-anchor="middle">onChooseSuggestion</text>
+
+                  <rect x="140" y="170" width="100" height="28" rx="4" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+                  <text x="190" y="182" font-family="monospace" font-size="7.5" fill="#475569" text-anchor="middle">PickCharacterModal</text>
+                  <text x="190" y="193" font-family="monospace" font-size="6.5" fill="#f59e0b" text-anchor="middle">⚠ fights onClose order</text>
+
+                  <line x1="90" y1="148" x2="70" y2="170" stroke="#64748b" stroke-width="1.2" marker-end="url(#ah3)"/>
+                  <line x1="170" y1="148" x2="190" y2="170" stroke="#64748b" stroke-width="1.2" marker-end="url(#ah3)"/>
+
+                  <!-- no tests label -->
+                  <text x="130" y="222" font-family="sans-serif" font-size="8" fill="#dc2626" text-anchor="middle">search pipeline: 0 tests possible</text>
+                  <text x="130" y="234" font-family="sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">without Obsidian App mock</text>
+                </svg>
+              </div>
+            </div>
+
+            <!-- AFTER: composition with FuzzySearch module -->
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3">After — search extracted, modals become thin</p>
+              <div class="bg-slate-50 rounded-lg border border-slate-200 p-3" style="height:300px;">
+                <svg width="100%" height="100%" viewBox="0 0 260 280" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <marker id="ah4" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+                    </marker>
+                  </defs>
+                  <!-- FuzzySearch Module (deep, in libraries) -->
+                  <rect x="30" y="8" width="140" height="80" rx="5" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+                  <text x="100" y="25" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle" font-weight="bold">FUZZY SEARCH</text>
+                  <text x="100" y="37" font-family="monospace" font-size="6.5" fill="#7dd3fc" text-anchor="middle">search(query, characters)</text>
+                  <text x="100" y="48" font-family="monospace" font-size="6" fill="#475569" text-anchor="middle">↳ query routing (internal)</text>
+                  <text x="100" y="59" font-family="monospace" font-size="6" fill="#475569" text-anchor="middle">↳ candidate retrieval (internal)</text>
+                  <text x="100" y="70" font-family="monospace" font-size="6" fill="#475569" text-anchor="middle">↳ scoring + ranking (internal)</text>
+                  <text x="100" y="81" font-family="monospace" font-size="6" fill="#334155" text-anchor="middle" font-style="italic">→ MetaCharacterSearchResult[]</text>
+
+                  <!-- test -->
+                  <rect x="180" y="30" width="28" height="16" rx="2" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+                  <text x="194" y="41" font-family="monospace" font-size="6" fill="#166534" text-anchor="middle">test</text>
+                  <line x1="170" y1="45" x2="180" y2="38" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+
+                  <!-- seam -->
+                  <line x1="10" y1="102" x2="250" y2="102" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3"/>
+                  <text x="252" y="105" font-family="monospace" font-size="6" fill="#94a3b8">seam</text>
+
+                  <!-- Obsidian SuggestModal -->
+                  <rect x="80" y="108" width="100" height="22" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+                  <text x="130" y="122" font-family="monospace" font-size="8" fill="#92400e" text-anchor="middle">SuggestModal</text>
+
+                  <!-- FuzzySearchModal - thin -->
+                  <rect x="60" y="148" width="140" height="40" rx="4" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+                  <text x="130" y="162" font-family="monospace" font-size="7.5" fill="#166534" text-anchor="middle" font-weight="bold">FuzzySearchModal (thin)</text>
+                  <text x="130" y="174" font-family="monospace" font-size="6.5" fill="#166534" text-anchor="middle">delegates to FuzzySearch</text>
+                  <text x="130" y="184" font-family="monospace" font-size="6.5" fill="#166534" text-anchor="middle">renders results only</text>
+
+                  <line x1="130" y1="88" x2="130" y2="108" stroke="#64748b" stroke-width="1.2" marker-end="url(#ah4)"/>
+                  <line x1="130" y1="130" x2="130" y2="148" stroke="#64748b" stroke-width="1.2" marker-end="url(#ah4)"/>
+
+                  <!-- children -->
+                  <rect x="20" y="212" width="95" height="22" rx="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+                  <text x="67" y="227" font-family="monospace" font-size="7" fill="#475569" text-anchor="middle">InsertCharacterModal</text>
+                  <rect x="145" y="212" width="95" height="22" rx="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+                  <text x="192" y="227" font-family="monospace" font-size="7" fill="#475569" text-anchor="middle">PickCharacterModal</text>
+
+                  <line x1="100" y1="188" x2="67" y2="212" stroke="#64748b" stroke-width="1" marker-end="url(#ah4)"/>
+                  <line x1="160" y1="188" x2="192" y2="212" stroke="#64748b" stroke-width="1" marker-end="url(#ah4)"/>
+
+                  <text x="130" y="252" font-family="sans-serif" font-size="8" fill="#166534" text-anchor="middle">search pipeline: fully testable</text>
+                  <text x="130" y="264" font-family="sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">without Obsidian App</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-6 text-sm">
+            <div>
+              <p class="font-semibold text-slate-700 mb-1">Problem</p>
+              <p class="text-slate-600">The fuzzy search pipeline — two-phase candidate retrieval, scoring on name and code point axes, use-history ranking — lives entirely inside <code class="font-mono text-xs">FuzzySearchModal.getSuggestions()</code>. It inherits from Obsidian's <code class="font-mono text-xs">SuggestModal</code>. Zero tests are possible without an Obsidian <code class="font-mono text-xs">App</code> instance.</p>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-700 mb-1">Solution</p>
+              <p class="text-slate-600">Extract a <code class="font-mono text-xs">FuzzySearch</code> module with interface <code class="font-mono text-xs">search(query, chars) → MetaCharacterSearchResult[]</code>. Inject the Obsidian search functions as parameters. <code class="font-mono text-xs">FuzzySearchModal</code> delegates to it. Both modal subclasses keep their thin overrides.</p>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-700 mb-1">Wins</p>
+              <ul class="text-slate-600 space-y-1">
+                <li>→ <span class="font-medium">Locality:</span> search pipeline testable in isolation</li>
+                <li>→ Seam cleanly separates search logic from Obsidian rendering</li>
+                <li>→ <code class="font-mono text-xs">FuzzySearchModal</code> shrinks to renderer + delegates</li>
+                <li>→ Two adapters (<code class="font-mono text-xs">InsertModal</code>, <code class="font-mono text-xs">PickModal</code>) justify the seam</li>
+                <li>→ Unblocks Candidate 1's ranking module</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-4 text-xs text-slate-400">
+            Note: Candidate 2 (type migration) is a prerequisite — move the search result types to <code class="font-mono">libraries/types/</code> before extracting <code class="font-mono">FuzzySearch</code>.
+          </div>
+        </article>
+
+      </section>
+
+
+      <!-- ─────────────────────────────────────────────────────────────────── -->
+      <!-- TOP RECOMMENDATION                                                   -->
+      <!-- ─────────────────────────────────────────────────────────────────── -->
+      <section id="top-recommendation" class="deep rounded-xl p-8 text-white shadow-xl">
+        <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-4">Top Recommendation</p>
+        <h2 class="text-2xl font-serif font-semibold text-white mb-3">
+          Start with <a href="#c1" class="text-sky-400 underline underline-offset-4">Candidate 1</a> — collapse the comparison cluster
+        </h2>
+        <p class="text-slate-300 text-sm leading-relaxed max-w-3xl">
+          It's pure TypeScript, no Obsidian entanglement, and no prerequisites. The 14 files already have matching spec files — redirecting those tests to a single ranking seam is mechanical. Every caller in the codebase today touches only <code class="font-mono text-xs bg-slate-800 px-1 rounded">compareCharacterMatches</code> at the top; the rest of the cluster is already internal in practice. Formalising that as a deep module is a low-risk, high-locality win. After it lands, Candidate 2 (ADR-0005 type migration) is the next smallest independent change — surgical import fixes, no logic moves. Candidate 3 (extract <code class="font-mono text-xs bg-slate-800 px-1 rounded">FuzzySearch</code>) follows naturally once the types are clean.
+        </p>
+      </section>
+
+    </main>
+  </body>
+</html>

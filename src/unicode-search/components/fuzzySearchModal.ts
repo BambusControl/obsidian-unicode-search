@@ -1,142 +1,169 @@
-import {type App, type Instruction, renderMatches, SuggestModal} from "obsidian";
-import type {MetaCharacterSearchResult} from "./characterSearch";
-import type {CharacterService} from "../service/characterService";
-import {ELEMENT_FAVORITE, ELEMENT_FREQUENT, ELEMENT_RECENT, INSTRUCTION_DISMISS, NAVIGATE_INSTRUCTION} from "./visualElements";
-import {toHexadecimal} from "../../libraries/helpers/toHexadecimal";
-import {getRandomItem} from "../../libraries/helpers/getRandomItem";
-import {fillNullCharacterMatchScores} from "../../libraries/comparison/fillNullCharacterMatchScores";
-import {compareCharacterMatches} from "../../libraries/comparison/compareCharacterMatches";
-import {ReadCache} from "../../libraries/types/readCache";
-import {mostRecentUses} from "../../libraries/helpers/mostRecentUses";
-import {averageUseCount} from "../../libraries/helpers/averageUseCount";
-import type {UseHistoryStatistics} from "../../libraries/types/useHistoryStatistics";
-import {toNullMatch} from "../../libraries/helpers/toNullMatch";
-import {toSearchQueryMatch} from "../../libraries/helpers/toSearchQueryMatch";
-import {isFavoriteCharacter} from "../../libraries/helpers/isFavoriteCharacter";
-import type {UseRecord} from "../../libraries/types/savedata/useRecord";
-import {matchedNameOrCodePoint} from "../../libraries/helpers/matchedNameOrCodePoint";
+import {
+	type App,
+	type Instruction,
+	renderMatches,
+	SuggestModal,
+} from "obsidian";
+import type { MetaCharacterSearchResult } from "./characterSearch";
+import type { CharacterService } from "../service/characterService";
+import {
+	ELEMENT_FAVORITE,
+	ELEMENT_FREQUENT,
+	ELEMENT_RECENT,
+	INSTRUCTION_DISMISS,
+	NAVIGATE_INSTRUCTION,
+} from "./visualElements";
+import { toHexadecimal } from "../../libraries/helpers/toHexadecimal";
+import { getRandomItem } from "../../libraries/helpers/getRandomItem";
+import { rankCharacterSearchResults } from "../../libraries/comparison/rankCharacterSearchResults";
+import { ReadCache } from "../../libraries/types/readCache";
+import { mostRecentUses } from "../../libraries/helpers/mostRecentUses";
+import { averageUseCount } from "../../libraries/helpers/averageUseCount";
+import type { UseHistoryStatistics } from "../../libraries/types/useHistoryStatistics";
+import { toNullMatch } from "../../libraries/helpers/toNullMatch";
+import { toSearchQueryMatch } from "../../libraries/helpers/toSearchQueryMatch";
+import { isFavoriteCharacter } from "../../libraries/helpers/isFavoriteCharacter";
+import type { UseRecord } from "../../libraries/types/savedata/useRecord";
+import { matchedNameOrCodePoint } from "../../libraries/helpers/matchedNameOrCodePoint";
 
 export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
-    /* TODO [non-func]: Extract the functionalities needed for inserting/picking characters
-     * Picking characters needs to have a filter for chars too.
-     * The inheritance used here is very messy, use composition instead.
-     */
+	/* TODO [non-func]: Extract the functionalities needed for inserting/picking characters
+	 * Picking characters needs to have a filter for chars too.
+	 * The inheritance used here is very messy, use composition instead.
+	 */
 
-    private readonly usageStatistics: ReadCache<UseHistoryStatistics>;
+	private readonly usageStatistics: ReadCache<UseHistoryStatistics>;
 
-    protected constructor(
-        app: App,
-        protected readonly characterService: CharacterService,
-        chooseCharacter: Instruction,
-    ) {
-        super(app);
+	protected constructor(
+		app: App,
+		protected readonly characterService: CharacterService,
+		chooseCharacter: Instruction,
+	) {
+		super(app);
 
-        super.setInstructions([
-            NAVIGATE_INSTRUCTION,
-            chooseCharacter,
-            INSTRUCTION_DISMISS,
-        ]);
+		super.setInstructions([
+			NAVIGATE_INSTRUCTION,
+			chooseCharacter,
+			INSTRUCTION_DISMISS,
+		]);
 
-        // Purposefully ignored result
-        this.setRandomPlaceholder().then();
+		// Purposefully ignored result
+		this.setRandomPlaceholder().then();
 
-        this.usageStatistics = new ReadCache(async () => {
-            const usedCharacters = await characterService.getUsed();
-            return {
-                topThirdRecentlyUsed: mostRecentUses(usedCharacters).slice(0, 3).last() ?? new Date(0),
-                averageUseCount: averageUseCount(usedCharacters),
-            } as UseHistoryStatistics;
-        });
-    }
+		this.usageStatistics = new ReadCache(async () => {
+			const usedCharacters = await characterService.getUsed();
+			return {
+				topThirdRecentlyUsed:
+					mostRecentUses(usedCharacters).slice(0, 3).last() ?? new Date(0),
+				averageUseCount: averageUseCount(usedCharacters),
+			} as UseHistoryStatistics;
+		});
+	}
 
-    public override async getSuggestions(query: string): Promise<MetaCharacterSearchResult[]> {
-        const allCharacters = (await this.characterService.getAll());
-        const queryEmpty = query == null || query.length < 1;
+	public override async getSuggestions(
+		query: string,
+	): Promise<MetaCharacterSearchResult[]> {
+		const allCharacters = await this.characterService.getAll();
+		const queryEmpty = query == null || query.length < 1;
 
-        const prepared = queryEmpty
-            ? allCharacters
-                .map(toNullMatch)
-            : allCharacters
-                .map(toSearchQueryMatch(query))
-                .filter(matchedNameOrCodePoint);
+		const prepared = queryEmpty
+			? allCharacters.map(toNullMatch)
+			: allCharacters
+					.map(toSearchQueryMatch(query))
+					.filter(matchedNameOrCodePoint);
 
-        const recencyCutoff = (await this.usageStatistics.get()).topThirdRecentlyUsed;
+		const recencyCutoff = (await this.usageStatistics.get())
+			.topThirdRecentlyUsed;
 
-        return prepared
-            .sort((l, r) => compareCharacterMatches(l, r, recencyCutoff))
-            .slice(0, this.limit)
-            .map(fillNullCharacterMatchScores);
-    }
+		return rankCharacterSearchResults(prepared, recencyCutoff).slice(
+			0,
+			this.limit,
+		);
+	}
 
-    public override async renderSuggestion(search: MetaCharacterSearchResult, container: HTMLElement): Promise<void> {
-        const char = search.character;
+	public override async renderSuggestion(
+		search: MetaCharacterSearchResult,
+		container: HTMLElement,
+	): Promise<void> {
+		const char = search.character;
 
-        container.addClass("plugin", "unicode-search", "result-item");
+		container.addClass("plugin", "unicode-search", "result-item");
 
-        container.createDiv({
-            cls: "character-preview",
-        }).createSpan({
-            text: char.glyph,
-        });
+		container
+			.createDiv({
+				cls: "character-preview",
+			})
+			.createSpan({
+				text: char.glyph,
+			});
 
-        const matches = container.createDiv({
-            cls: "character-match",
-        });
+		const matches = container.createDiv({
+			cls: "character-match",
+		});
 
-        const text = matches.createDiv({
-            cls: "character-name",
-        });
+		const text = matches.createDiv({
+			cls: "character-name",
+		});
 
-        renderMatches(text, char.name, search.match.name.matches);
+		renderMatches(text, char.name, search.match.name.matches);
 
-        /* TODO [ui][?]: We can show the character category in search results */
-        /* const category = matches.createDiv({
+		/* TODO [ui][?]: We can show the character category in search results */
+		/* const category = matches.createDiv({
             cls: "character-category",
         }).createSpan({
             text: char.category,
         }); */
 
-        const codePoint = matches.createDiv({
-            cls: "character-codePoint",
-        });
+		const codePoint = matches.createDiv({
+			cls: "character-codePoint",
+		});
 
-        renderMatches(codePoint, toHexadecimal(char), search.match.codePoint.matches);
+		renderMatches(
+			codePoint,
+			toHexadecimal(char),
+			search.match.codePoint.matches,
+		);
 
-        const detail = container.createDiv({
-            cls: "detail",
-        });
+		const detail = container.createDiv({
+			cls: "detail",
+		});
 
-        const attributes = detail.createDiv({
-            cls: "attributes",
-        });
+		const attributes = detail.createDiv({
+			cls: "attributes",
+		});
 
-        if (isFavoriteCharacter(char)) {
-            attributes.createDiv(ELEMENT_FAVORITE);
-        } else {
-            const usageStats = await this.usageStatistics.get();
+		if (isFavoriteCharacter(char)) {
+			attributes.createDiv(ELEMENT_FAVORITE);
+		} else {
+			const usageStats = await this.usageStatistics.get();
 
-            /* The type hinting doesn't work, and shows as an error in the IDE (or the type is wrong) */
-            const maybeUsedChar = char as Partial<UseRecord>
-            const showLastUsed = maybeUsedChar.lastUse != null && maybeUsedChar.lastUse >= usageStats.topThirdRecentlyUsed;
-            const showUseCount = maybeUsedChar.timesUsed != null && maybeUsedChar.timesUsed >= usageStats.averageUseCount;
+			/* The type hinting doesn't work, and shows as an error in the IDE (or the type is wrong) */
+			const maybeUsedChar = char as Partial<UseRecord>;
+			const showLastUsed =
+				maybeUsedChar.lastUse != null &&
+				maybeUsedChar.lastUse >= usageStats.topThirdRecentlyUsed;
+			const showUseCount =
+				maybeUsedChar.timesUsed != null &&
+				maybeUsedChar.timesUsed >= usageStats.averageUseCount;
 
-            if (showLastUsed) {
-                attributes.createDiv(ELEMENT_RECENT);
-            }
+			if (showLastUsed) {
+				attributes.createDiv(ELEMENT_RECENT);
+			}
 
-            if (showUseCount) {
-                attributes.createDiv(ELEMENT_FREQUENT);
-            }
-        }
-    }
+			if (showUseCount) {
+				attributes.createDiv(ELEMENT_FREQUENT);
+			}
+		}
+	}
 
-    public override async onNoSuggestion(): Promise<void> {
-        await this.setRandomPlaceholder();
-    }
+	public override async onNoSuggestion(): Promise<void> {
+		await this.setRandomPlaceholder();
+	}
 
-    private async setRandomPlaceholder(): Promise<void> {
-        const randomCharacterName = getRandomItem(await this.characterService.getAllCharacters()).name;
-        super.setPlaceholder(`Unicode search: ${randomCharacterName}`);
-    }
-
+	private async setRandomPlaceholder(): Promise<void> {
+		const randomCharacterName = getRandomItem(
+			await this.characterService.getAllCharacters(),
+		).name;
+		super.setPlaceholder(`Unicode search: ${randomCharacterName}`);
+	}
 }
