@@ -36,8 +36,6 @@ export function rankCharacterSearchResults(
 		.map(fillNullCharacterMatchScores);
 }
 
-// ─── private implementation ───────────────────────────────────────────────
-
 function fillNullCharacterMatchScores(
 	result: MaybeMetaCharacterSearchResult,
 ): MetaCharacterSearchResult {

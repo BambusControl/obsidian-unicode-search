@@ -22,6 +22,8 @@ Introduce Dexie.js for codepoint storage, then expand it to usage and favourites
 
 The entire Dexie integration was reverted before the current HEAD. The current codebase has zero Dexie references — no `dexieDb.ts`, no `dexie` in `package.json`. The revert removed IndexedDB storage, the unified codepoints table, and the denormalized `sortKey` approach together.
 
+The Dexie implementation didn't work with our data storage approach, and fuzzy searching was not supported. That resulted in too much re-work to implement without benefits.
+
 The plugin returned to chunk-based JSON storage via Obsidian's `loadData`/`saveData` API. Sorting tiebreakers are handled in-memory by the comparison layer (`compareCharacterMatches.ts`), as described in [ADR-0006](0006-two-phase-fuzzy-search.md).
 
 ## Consequences

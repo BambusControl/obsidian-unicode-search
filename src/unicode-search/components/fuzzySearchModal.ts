@@ -1,16 +1,10 @@
 import {
 	type App,
 	type Instruction,
-	prepareFuzzySearch,
-	prepareSimpleSearch,
 	renderMatches,
 	SuggestModal,
 } from "obsidian";
-import type { MaybeCharacterWithUseHistory } from "../../libraries/types/codePoint/character";
-import type {
-	MaybeMetaCharacterSearchResult,
-	MetaCharacterSearchResult,
-} from "./characterSearch";
+import type { MetaCharacterSearchResult } from "./characterSearch";
 import type { CharacterService } from "../service/characterService";
 import {
 	ELEMENT_FAVORITE,
@@ -21,15 +15,13 @@ import {
 } from "./visualElements";
 import { toHexadecimal } from "../../libraries/helpers/toHexadecimal";
 import { getRandomItem } from "../../libraries/helpers/getRandomItem";
-import { rankCharacterSearchResults } from "../../libraries/comparison/rankCharacterSearchResults";
+import { searchCharacters } from "../service/fuzzySearch";
 import { ReadCache } from "../../libraries/types/readCache";
 import { mostRecentUses } from "../../libraries/helpers/mostRecentUses";
 import { averageUseCount } from "../../libraries/helpers/averageUseCount";
 import type { UseHistoryStatistics } from "../../libraries/types/useHistoryStatistics";
-import { toNullMatch } from "../../libraries/helpers/toNullMatch";
 import { isFavoriteCharacter } from "../../libraries/helpers/isFavoriteCharacter";
 import type { UseRecord } from "../../libraries/types/savedata/useRecord";
-import { matchedNameOrCodePoint } from "../../libraries/helpers/matchedNameOrCodePoint";
 
 export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchResult> {
 	/* TODO [non-func]: Extract the functionalities needed for inserting/picking characters
@@ -69,18 +61,9 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
 		query: string,
 	): Promise<MetaCharacterSearchResult[]> {
 		const allCharacters = await this.characterService.getAll();
-		const queryEmpty = query == null || query.length < 1;
-
-		const prepared = queryEmpty
-			? allCharacters.map(toNullMatch)
-			: allCharacters
-					.map((c) => this.toSearchMatch(query)(c))
-					.filter(matchedNameOrCodePoint);
-
 		const recencyCutoff = (await this.usageStatistics.get())
 			.topThirdRecentlyUsed;
-
-		return rankCharacterSearchResults(prepared, recencyCutoff).slice(
+		return searchCharacters(query, allCharacters, recencyCutoff).slice(
 			0,
 			this.limit,
 		);
@@ -163,26 +146,6 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
 
 	public override async onNoSuggestion(): Promise<void> {
 		await this.setRandomPlaceholder();
-	}
-
-	private toSearchMatch(
-		query: string,
-	): (
-		character: MaybeCharacterWithUseHistory,
-	) => MaybeMetaCharacterSearchResult {
-		const isHexSafe = query.length <= 4 && !query.contains(" ");
-		const codePointSearch = isHexSafe
-			? prepareSimpleSearch(query)
-			: (_: string) => null;
-		const fuzzyNameSearch = prepareFuzzySearch(query);
-
-		return (character) => ({
-			character,
-			match: {
-				codePoint: codePointSearch(toHexadecimal(character)),
-				name: fuzzyNameSearch(character.name),
-			},
-		});
 	}
 
 	private async setRandomPlaceholder(): Promise<void> {

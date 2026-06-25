@@ -6,14 +6,14 @@ Accepted
 
 ## Context
 
-The plugin must initialise data on load, handling three scenarios: fresh install, upgrade from v0.6.0 (flat schema), and normal upgrade between chunk-based versions. The pipeline must ensure data is correctly shaped, migrated, and persisted before any UI or service code runs.
+The plugin must initialise data on load, handling three scenarios: fresh install, upgrade from v0.6.0 (original, deprectaed flat schema version), and normal upgrade between chunk-based versions. The pipeline must ensure data is correctly shaped, migrated, and persisted before any UI or service code runs.
 
 ## Decision
 
 Use a multi-stage bootstrap pipeline orchestrated by `RootDataBootstrapper`:
 
 1. **Load** — Read raw JSON from Obsidian storage via `PersistCache`
-2. **Migrate** — Transform v0.6.0 flat schema into chunk structure (if applicable)
+2. **Migrate** — Transform v0.6.0 flat schema into chunk structure (if applicable) and update with each new version when necessary
 3. **Shape** — Ensure all chunks exist with correct `DataChunk` shape
 4. **Init Meta** — Initialize meta chunk first (other chunks need its events)
 5. **Init Chunks** — Each chunk handler initialises its defaults
