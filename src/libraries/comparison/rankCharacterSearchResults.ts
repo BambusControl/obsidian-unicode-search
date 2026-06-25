@@ -3,8 +3,8 @@ import type {
 	MetaCharacterSearchResult,
 	MaybeSearchMatchAttributes,
 	SearchMatchAttributes,
-} from "../../unicode-search/components/characterSearch";
-import { NONE_RESULT } from "../../unicode-search/components/characterSearch";
+} from "../types/characterSearch";
+import { NONE_RESULT } from "../types/characterSearch";
 import type {
 	CharacterForSearch,
 	CharacterWithUseHistory,

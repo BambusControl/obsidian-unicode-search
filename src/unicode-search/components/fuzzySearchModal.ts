@@ -1,10 +1,16 @@
 import {
 	type App,
 	type Instruction,
+	prepareFuzzySearch,
+	prepareSimpleSearch,
 	renderMatches,
 	SuggestModal,
 } from "obsidian";
-import type { MetaCharacterSearchResult } from "./characterSearch";
+import type { MaybeCharacterWithUseHistory } from "../../libraries/types/codePoint/character";
+import type {
+	MaybeMetaCharacterSearchResult,
+	MetaCharacterSearchResult,
+} from "./characterSearch";
 import type { CharacterService } from "../service/characterService";
 import {
 	ELEMENT_FAVORITE,
@@ -21,7 +27,6 @@ import { mostRecentUses } from "../../libraries/helpers/mostRecentUses";
 import { averageUseCount } from "../../libraries/helpers/averageUseCount";
 import type { UseHistoryStatistics } from "../../libraries/types/useHistoryStatistics";
 import { toNullMatch } from "../../libraries/helpers/toNullMatch";
-import { toSearchQueryMatch } from "../../libraries/helpers/toSearchQueryMatch";
 import { isFavoriteCharacter } from "../../libraries/helpers/isFavoriteCharacter";
 import type { UseRecord } from "../../libraries/types/savedata/useRecord";
 import { matchedNameOrCodePoint } from "../../libraries/helpers/matchedNameOrCodePoint";
@@ -69,7 +74,7 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
 		const prepared = queryEmpty
 			? allCharacters.map(toNullMatch)
 			: allCharacters
-					.map(toSearchQueryMatch(query))
+					.map((c) => this.toSearchMatch(query)(c))
 					.filter(matchedNameOrCodePoint);
 
 		const recencyCutoff = (await this.usageStatistics.get())
@@ -158,6 +163,26 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
 
 	public override async onNoSuggestion(): Promise<void> {
 		await this.setRandomPlaceholder();
+	}
+
+	private toSearchMatch(
+		query: string,
+	): (
+		character: MaybeCharacterWithUseHistory,
+	) => MaybeMetaCharacterSearchResult {
+		const isHexSafe = query.length <= 4 && !query.contains(" ");
+		const codePointSearch = isHexSafe
+			? prepareSimpleSearch(query)
+			: (_: string) => null;
+		const fuzzyNameSearch = prepareFuzzySearch(query);
+
+		return (character) => ({
+			character,
+			match: {
+				codePoint: codePointSearch(toHexadecimal(character)),
+				name: fuzzyNameSearch(character.name),
+			},
+		});
 	}
 
 	private async setRandomPlaceholder(): Promise<void> {

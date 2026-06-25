@@ -198,7 +198,11 @@ Bridge between Obsidian's `loadData`/`saveData` with an in-memory cache.
 _Avoid_: Cache, storage wrapper
 
 **Unicode Search Error**:
-Plugin-specific error type extending `Error`.
+Plugin-specific error type extending `Error`. Thrown by all code in `src/unicode-search/`. See [ADR-0015](docs/adr/0015-custom-error-types.md).
+_Avoid_: Error, exception
+
+**Library Error**:
+Error type for code in `src/libraries/`. Thrown instead of plain `Error` so library-layer defects are distinguishable from plugin-layer errors and from errors thrown by Obsidian or third-party packages. See [ADR-0015](docs/adr/0015-custom-error-types.md).
 _Avoid_: Error, exception
 
 ---
