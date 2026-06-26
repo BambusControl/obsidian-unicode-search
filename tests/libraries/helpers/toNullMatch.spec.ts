@@ -1,5 +1,5 @@
-import { toNullMatch } from "src/libraries/helpers/toNullMatch";
-import type { MaybeCharacterWithUseHistory, Character } from "src/libraries/types/codePoint/character";
+import {toNullMatch} from "src/libraries/helpers/toNullMatch";
+import type {Character, MaybeCharacterWithUseHistory} from "src/libraries/types/codePoint/character";
 
 describe("toNullMatch", () => {
     it("should convert character to MaybeMetaCharacterSearchResult with null matches", () => {

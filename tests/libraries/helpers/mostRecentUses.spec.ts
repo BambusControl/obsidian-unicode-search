@@ -1,5 +1,5 @@
-import { mostRecentUses } from "src/libraries/helpers/mostRecentUses";
-import { UseDate } from "src/libraries/types/savedata/useRecord";
+import {mostRecentUses} from "src/libraries/helpers/mostRecentUses";
+import {UseDate} from "src/libraries/types/savedata/useRecord";
 
 describe("mostRecentUses", () => {
     it("should return empty array when input is empty", () => {
@@ -10,7 +10,7 @@ describe("mostRecentUses", () => {
     it("should return single date when input has one item", () => {
         const firstUse = new Date("2022-12-31");
         const lastUse = new Date("2023-01-01");
-        const items: UseDate[] = [{ firstUse, lastUse }];
+        const items: UseDate[] = [{firstUse, lastUse}];
         const result = mostRecentUses(items);
 
         expect(result).toEqual([lastUse]);
@@ -23,9 +23,9 @@ describe("mostRecentUses", () => {
         const date3 = new Date("2023-01-03");
 
         const items: UseDate[] = [
-            { firstUse, lastUse: date1 },
-            { firstUse, lastUse: date3 },
-            { firstUse, lastUse: date2 }
+            {firstUse, lastUse: date1},
+            {firstUse, lastUse: date3},
+            {firstUse, lastUse: date2}
         ];
 
         const result = mostRecentUses(items);
@@ -38,10 +38,10 @@ describe("mostRecentUses", () => {
         const date2 = new Date("2023-01-02");
 
         const items: UseDate[] = [
-            { firstUse, lastUse: date1 },
-            { firstUse, lastUse: date2 },
-            { firstUse, lastUse: date1 },
-            { firstUse, lastUse: date2 }
+            {firstUse, lastUse: date1},
+            {firstUse, lastUse: date2},
+            {firstUse, lastUse: date1},
+            {firstUse, lastUse: date2}
         ];
 
         const result = mostRecentUses(items);
@@ -54,8 +54,8 @@ describe("mostRecentUses", () => {
         const date2 = new Date("2023-01-02");
 
         const items: UseDate[] = [
-            { firstUse, lastUse: date1 },
-            { firstUse, lastUse: date2 }
+            {firstUse, lastUse: date1},
+            {firstUse, lastUse: date2}
         ];
         const originalOrder = [...items];
 
@@ -71,9 +71,9 @@ describe("mostRecentUses", () => {
         const date3 = new Date("2023-01-03");
 
         const items = [
-            { firstUse, lastUse: date1, someOtherProp: "a" },
-            { firstUse, lastUse: date3, someOtherProp: "b" },
-            { firstUse, lastUse: date2, someOtherProp: "c" }
+            {firstUse, lastUse: date1, someOtherProp: "a"},
+            {firstUse, lastUse: date3, someOtherProp: "b"},
+            {firstUse, lastUse: date2, someOtherProp: "c"}
         ];
 
         const result = mostRecentUses(items);
@@ -87,9 +87,9 @@ describe("mostRecentUses", () => {
         const date3 = new Date("2023-01-01T08:00:00Z");
 
         const items: UseDate[] = [
-            { firstUse, lastUse: date1 },
-            { firstUse, lastUse: date2 },
-            { firstUse, lastUse: date3 }
+            {firstUse, lastUse: date1},
+            {firstUse, lastUse: date2},
+            {firstUse, lastUse: date3}
         ];
 
         const result = mostRecentUses(items);

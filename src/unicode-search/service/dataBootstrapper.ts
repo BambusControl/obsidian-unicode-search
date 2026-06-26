@@ -1,3 +1,3 @@
 export interface DataBootstrapper {
-	initializeData(): Promise<void>;
+    initializeData(): Promise<void>;
 }

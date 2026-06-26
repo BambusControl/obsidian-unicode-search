@@ -29,12 +29,12 @@ export class CharacterChunkHandler implements ChunkHandler<CharacterChunk> {
     }
 
     async updateData(chunk: CharacterChunk, events: Set<DataEvent>): Promise<CharacterChunk> {
-        const updateDchunk = this.updateByVersion(chunk);
+        const updatedChunk = this.updateByVersion(chunk);
         const downloadRequested = events.has(DataEvent.DownloadCharacters);
-        const emptyCharacterSet = updateDchunk.codePoints.length < 1;
+        const emptyCharacterSet = updatedChunk.codePoints.length < 1;
 
         if (!(downloadRequested || emptyCharacterSet)) {
-            return updateDchunk;
+            return updatedChunk;
         }
 
         console.info("Downloading character database");
@@ -44,7 +44,7 @@ export class CharacterChunkHandler implements ChunkHandler<CharacterChunk> {
         events.delete(DataEvent.DownloadCharacters);
 
         return {
-            ...updateDchunk,
+            ...updatedChunk,
             codePoints: codePoints,
         };
     }

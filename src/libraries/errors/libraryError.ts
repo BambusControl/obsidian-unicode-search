@@ -8,8 +8,8 @@
  * See ADR-0015 for the full custom-error-type policy.
  */
 export class LibraryError extends Error {
-	constructor(message: string) {
-		super(message);
-		this.name = "LibraryError";
-	}
+    constructor(message: string) {
+        super(message);
+        this.name = "LibraryError";
+    }
 }

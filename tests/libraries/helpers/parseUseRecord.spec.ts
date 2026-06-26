@@ -1,5 +1,5 @@
-import { parseUseRecord } from "src/libraries/helpers/parseUseRecord";
-import { RawUseRecord, UseRecord } from "src/libraries/types/savedata/useRecord";
+import {parseUseRecord} from "src/libraries/helpers/parseUseRecord";
+import {RawUseRecord} from "src/libraries/types/savedata/useRecord";
 
 describe("parseUseRecord", () => {
     it("should parse raw usage info with date strings to Date objects", () => {

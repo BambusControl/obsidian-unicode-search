@@ -5,9 +5,12 @@ import {ParsedFavorite} from "../../libraries/types/savedata/favorite";
 
 export interface FavoriteStore {
     update(key: CharacterKey, apply: (char: ParsedFavorite) => Partial<ParsedFavorite>): Promise<CodePointFavorite>;
+
     getFavorites(): Promise<CodePointFavorite[]>;
+
     /* Maybe replace with upsert*/
     addFavorite(key: CharacterKey): Promise<CodePointFavorite>;
+
     removeFavorite(key: CharacterKey): Promise<void>;
 
 

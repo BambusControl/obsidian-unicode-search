@@ -2,7 +2,7 @@ import {SaveDataVersion} from "./version";
 
 export interface InitialSaveData {
     initialized: boolean;
-    version: SaveDataVersion & ( "0.4.0" | "0.5.0" | "0.6.0" );
+    version: SaveDataVersion & ("0.4.0" | "0.5.0" | "0.6.0");
 
     settings: {
         initialized: boolean;

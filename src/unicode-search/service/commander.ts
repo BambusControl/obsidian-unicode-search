@@ -29,10 +29,10 @@ export class Commander {
     }
 
     async addFavorites(favorites: FavoriteStore, characters: CharacterService) {
-        const quickInsertEnableds = (await favorites.getFavorites())
+        const quickInsertFavorites = (await favorites.getFavorites())
             .filter(favorite => favorite.quickInsertEnabled);
 
-        for (const favorite of quickInsertEnableds) {
+        for (const favorite of quickInsertFavorites) {
             const character = await characters.getOne(favorite.id);
             this.addCommandFor(character);
         }

@@ -1,8 +1,5 @@
-import type {
-	Character,
-	CharacterForSearch,
-} from "../types/codePoint/character";
-import type { Maybe } from "./maybe";
+import type {Character, CharacterForSearch,} from "../types/codePoint/character";
+import type {Maybe} from "./maybe";
 
 /**
  * The two axes on which a character is matched during fuzzy search.
@@ -10,10 +7,10 @@ import type { Maybe } from "./maybe";
  * and non-nullable (final output) match results.
  */
 export type CharacterSearchAttributes<T> = {
-	/** Match against the hex code point representation. */
-	codePoint: T;
-	/** Match against the Unicode character name. */
-	name: T;
+    /** Match against the hex code point representation. */
+    codePoint: T;
+    /** Match against the Unicode character name. */
+    name: T;
 };
 
 /**
@@ -22,36 +19,36 @@ export type CharacterSearchAttributes<T> = {
  * libraries/ carries no obsidian import.
  */
 export type SearchMatchResult = {
-	score: number;
-	matches: [number, number][];
+    score: number;
+    matches: [number, number][];
 };
 
 /** Sentinel used when a search axis produced no match. */
-export const NONE_RESULT: SearchMatchResult = { score: 0, matches: [] };
+export const NONE_RESULT: SearchMatchResult = {score: 0, matches: []};
 
 /** Raw search result for one character — typed on the character variant and the match kind. */
 export type CharacterSearchResult<CharacterType, MatchType> = {
-	character: Character & CharacterType;
-	match: CharacterSearchAttributes<MatchType>;
+    character: Character & CharacterType;
+    match: CharacterSearchAttributes<MatchType>;
 };
 
 /** Fully matched result ready to render. */
 export type MetaCharacterSearchResult = CharacterSearchResult<
-	CharacterForSearch,
-	SearchMatchResult
+    CharacterForSearch,
+    SearchMatchResult
 >;
 
 /** Mid-pipeline result where either axis may not have matched yet. */
 export type MaybeMetaCharacterSearchResult = CharacterSearchResult<
-	CharacterForSearch,
-	Maybe<SearchMatchResult>
+    CharacterForSearch,
+    Maybe<SearchMatchResult>
 >;
 
 /** Match attributes with concrete scores (post-fill). */
 export type SearchMatchAttributes =
-	CharacterSearchAttributes<SearchMatchResult>;
+    CharacterSearchAttributes<SearchMatchResult>;
 
 /** Match attributes where either axis may still be null (pre-fill). */
 export type MaybeSearchMatchAttributes = CharacterSearchAttributes<
-	Maybe<SearchMatchResult>
+    Maybe<SearchMatchResult>
 >;

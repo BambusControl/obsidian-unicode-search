@@ -1,5 +1,5 @@
-import { serializeUseRecord } from "src/libraries/helpers/serializeUseRecord";
-import { RawUseRecord, UseRecord } from "src/libraries/types/savedata/useRecord";
+import {serializeUseRecord} from "src/libraries/helpers/serializeUseRecord";
+import {UseRecord} from "src/libraries/types/savedata/useRecord";
 
 describe("serializeUseRecord", () => {
     it("should serialize usage info with Date objects to date strings", () => {
@@ -89,7 +89,7 @@ describe("serializeUseRecord", () => {
         expect(typeof serialized.lastUse).toBe("string");
 
         // Import parseUseRecord to test roundtrip
-        const { parseUseRecord } = require("../../../src/libraries/helpers/parseUseRecord");
+        const {parseUseRecord} = require("../../../src/libraries/helpers/parseUseRecord");
         const parsed = parseUseRecord(serialized);
 
         expect(parsed.firstUse).toEqual(originalUseRecord.firstUse);

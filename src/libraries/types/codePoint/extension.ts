@@ -1,6 +1,6 @@
-import type { Favorite, ParsedFavorite } from "../savedata/favorite";
-import type { RawUseRecord, UseRecord } from "../savedata/useRecord";
-import type { CodePointKey } from "./unicode";
+import type {Favorite, ParsedFavorite} from "../savedata/favorite";
+import type {RawUseRecord, UseRecord} from "../savedata/useRecord";
+import type {CodePointKey} from "./unicode";
 
 /**
  * Usage information of a specific codePoint as stored in save data

@@ -6,5 +6,6 @@ import {UseRecord} from "../../libraries/types/savedata/useRecord";
 
 export interface UseHistoryStore {
     upsert(key: CharacterKey, apply: (char?: UseRecord) => UseRecord): Promise<CodePointUse>;
+
     getUsed(): Promise<CodePointUse[]>;
 }

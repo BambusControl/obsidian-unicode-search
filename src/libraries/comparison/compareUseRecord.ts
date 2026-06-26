@@ -24,6 +24,6 @@ export function compareUseRecord(
         return lastUseComparison;
     }
 
-	// We want the most used to be before the less used.
-	return inverse(compareNumbers(left.timesUsed, right.timesUsed));
+    // We want the most used to be before the less used.
+    return inverse(compareNumbers(left.timesUsed, right.timesUsed));
 }

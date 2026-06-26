@@ -1,4 +1,4 @@
-import { asHexadecimal } from "src/libraries/helpers/asHexadecimal";
+import {asHexadecimal} from "src/libraries/helpers/asHexadecimal";
 
 describe("asHexadecimal", () => {
     it("should convert single digit numbers to 4-character hex strings", () => {

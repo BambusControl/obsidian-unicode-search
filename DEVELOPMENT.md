@@ -4,7 +4,7 @@ These are my notes on the development of the plugin.
 
 ## Release: How To
 
-**Important**: The version numbering scheme uses `CURRENT-NEXT` format (e.g., if releasing 0.7.3, the next development version is `0.7.3-NEXT`, not `0.7.4-NEXT`). This allows flexibility to decide whether the next release will be patch, minor, or major.
+The version numbering scheme uses `CURRENT-NEXT` format (e.g., if releasing 0.7.3, the next development version is `0.7.3-NEXT`, not `0.7.4-NEXT`). This allows flexibility to decide whether the next release will be patch, minor, or major.
 
 1. From the `develop` branch, create a release branch `release/X.Y.Z`
 2. Go to [package.json](./package.json) and overwrite `X.Y.Z-NEXT` with new release version `X.Y.Z` throughout the whole project (double check if save data version needs to be updated)
