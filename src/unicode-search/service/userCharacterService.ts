@@ -1,52 +1,50 @@
 import {UnicodeSearchError} from "../errors/unicodeSearchError";
-import {
+import type {
     Character,
     CharacterKey,
+    CharacterWithUseHistory,
     FavoriteCharacter,
-    MaybeUsedCharacter,
-    UsedCharacter
-} from "../../libraries/types/codepoint/character";
-import {CodepointStore} from "./codePointStore";
-import {CharacterService} from "./characterService";
-import {UsageStore} from "./usageStore";
+    MaybeCharacterWithUseHistory,
+} from "../../libraries/types/codePoint/character";
+import type {CodePointStore} from "./codePointStore";
+import type {CharacterService} from "./characterService";
+import type {UseHistoryStore} from "./useHistoryStore";
 
-
-import {FavoritesStore} from "./favoritesStore";
-import {UsageInfo} from "../../libraries/types/savedata/usageInfo";
+import type {FavoriteStore} from "./favoriteStore";
+import type {UseRecord} from "../../libraries/types/savedata/useRecord";
 
 export class UserCharacterService implements CharacterService {
-
-	public constructor(
-        private readonly codepointStore: CodepointStore,
-        private readonly usageStore: UsageStore,
-        private readonly favoritesStore: FavoritesStore,
-	) {
-	}
+    public constructor(
+        private readonly codePointStore: CodePointStore,
+        private readonly useHistoryStore: UseHistoryStore,
+        private readonly favoritesStore: FavoriteStore,
+    ) {
+    }
 
     public async getOne(key: CharacterKey): Promise<Character> {
         const characters = await this.getAllCharacters();
-        const char = characters.find(char => char.codepoint === key);
+        const char = characters.find((char) => char.id === key);
 
-		if (char == null) {
-			throw new UnicodeSearchError(`No character '${key}' exists.`);
-		}
+        if (char == null) {
+            throw new UnicodeSearchError(`No character '${key}' exists.`);
+        }
 
         return char;
     }
 
-	public getAllCharacters(): Promise<Character[]> {
-        return this.codepointStore.getCodepoints();
-	}
+    public getAllCharacters(): Promise<Character[]> {
+        return this.codePointStore.getCharacters();
+    }
 
-    public async getUsed(): Promise<UsedCharacter[]> {
+    public async getUsed(): Promise<CharacterWithUseHistory[]> {
         const allCharacters = await this.getAllCharacters();
-        const usedCharacters = await this.usageStore.getUsed();
-        const usedKeys = usedCharacters.map(ch => ch.codepoint);
+        const usedCharacters = await this.useHistoryStore.getUsed();
+        const usedKeys = usedCharacters.map((ch) => ch.id);
 
         return allCharacters
-            .filter(ch => usedKeys.contains(ch.codepoint))
-            .map(character => ({
-                ...usedCharacters.find(usage => usage.codepoint === character.codepoint)!,
+            .filter((ch) => usedKeys.contains(ch.id))
+            .map((character) => ({
+                ...usedCharacters.find((usage) => usage.id === character.id)!,
                 ...character,
             }));
     }
@@ -54,36 +52,36 @@ export class UserCharacterService implements CharacterService {
     public async getFavorites(): Promise<FavoriteCharacter[]> {
         const allCharacters = await this.getAllCharacters();
         const favorite = await this.favoritesStore.getFavorites();
-        const favoriteKeys = favorite.map(ch => ch.codepoint);
+        const favoriteKeys = favorite.map((ch) => ch.id);
 
         return allCharacters
-            .filter(ch => favoriteKeys.contains(ch.codepoint))
-            .map(character => ({
-                ...favorite.find(usage => usage.codepoint === character.codepoint)!,
+            .filter((ch) => favoriteKeys.contains(ch.id))
+            .map((character) => ({
+                ...favorite.find((usage) => usage.id === character.id)!,
                 ...character,
             }));
     }
 
-    public async getAll(): Promise<MaybeUsedCharacter[]> {
+    public async getAll(): Promise<MaybeCharacterWithUseHistory[]> {
         const allCharacters = await this.getAllCharacters();
         const favoriteCharacters = await this.favoritesStore.getFavorites();
-        const usedCharacters = await this.usageStore.getUsed();
+        const usedCharacters = await this.useHistoryStore.getUsed();
 
-        return allCharacters.map(character => ({
-            ...favoriteCharacters.find(fav => fav.codepoint === character.codepoint),
-            ...usedCharacters.find(usage => usage.codepoint === character.codepoint),
+        return allCharacters.map((character) => ({
+            ...favoriteCharacters.find((fav) => fav.id === character.id),
+            ...usedCharacters.find((usage) => usage.id === character.id),
             ...character,
         }));
     }
 
-	public recordUsage(key: CharacterKey): Promise<UsageInfo> {
+    public recordUsage(key: CharacterKey): Promise<UseRecord> {
         const timestamp = new Date();
 
-		return this.usageStore.upsert(key, (current) => ({
+        return this.useHistoryStore.upsert(key, (current) => ({
             ...current,
-            firstUsed: current?.firstUsed ?? timestamp,
-            lastUsed: timestamp,
-            useCount: (current?.useCount ?? 0) + 1,
-        }))
-	}
+            firstUse: current?.firstUse ?? timestamp,
+            lastUse: timestamp,
+            timesUsed: (current?.timesUsed ?? 0) + 1,
+        }));
+    }
 }

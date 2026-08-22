@@ -1,13 +1,14 @@
 import {Notice, requestUrl} from "obsidian";
-import {parse, ParseConfig, ParseResult, ParseWorkerConfig} from "papaparse";
+import {parse, type ParseConfig, type ParseResult, type ParseWorkerConfig} from "papaparse";
 import {UnicodeSearchError} from "../errors/unicodeSearchError";
-import {UnicodeCodepoint} from "../../libraries/types/codepoint/unicode";
-import {CharacterDownloader} from "./characterDownloader";
-import {FilterStore} from "./filterStore";
+import type {Character} from "../../libraries/types/codePoint/unicode";
+import type {CharacterDownloader} from "./characterDownloader";
+import type {PoolStore} from "./poolStore";
 import {mergeIntervals} from "../../libraries/helpers/mergeIntervals";
-import {codepointIn} from "../../libraries/helpers/codePointIn";
-import {CharacterCategoryType} from "../../libraries/data/characterCategory";
-import {CodepointInterval} from "../../libraries/types/codepoint/codepointInterval";
+import {codePointIn} from "../../libraries/helpers/codePointIn";
+import type {CharacterCategoryType} from "../../libraries/data/characterCategory";
+import type {CodePointInterval} from "../../libraries/types/codePoint/codePointInterval";
+import {toGlyph} from "../../libraries/helpers/toGlyph";
 
 export class UcdUserFilterDownloader implements CharacterDownloader {
 
@@ -20,11 +21,11 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
     };
 
     public constructor(
-        private readonly filterStore: FilterStore,
+        private readonly poolStore: PoolStore,
     ) {
     }
 
-    public async download(): Promise<UnicodeCodepoint[]> {
+    public async download(): Promise<Character[]> {
         /* NOTE: You must also push a GIT mirror of the UCD version to the `ucd-mirror` branch */
         const unicodeVersion = "14.0.0";
         const noticeTimeMs = 4 * 1000;
@@ -56,7 +57,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
 
         const parsed = await this.transformToCharacters(response.text);
         const filtered = await this.filterCharacters(parsed);
-        const unicode = filtered.map(intoUnicodeCodepoint);
+        const unicode = filtered.map(intoCharacter);
 
         info += `\n✱ Filtered ${unicode.length} out of ${parsed.length} total characters`;
         notice.setMessage(info);
@@ -67,7 +68,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
     }
 
     private async filterCharacters(parsed: ParsedCharacter[]): Promise<ParsedCharacter[]> {
-        const filter = await this.filterStore.getFilter();
+        const filter = await this.poolStore.getFilter();
 
         const includedBlocks = mergeIntervals(filter.planes
             .flatMap(p => p.blocks)
@@ -94,7 +95,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
 
                 const parsedCharacters = results.data
                     .map((row): ParsedCharacter => ({
-                        codepoint: parseInt(row[0], 16),
+                        id: parseInt(row[0], 16),
                         name: row[1],
                         category: row[2],
                     }));
@@ -117,7 +118,7 @@ export class UcdUserFilterDownloader implements CharacterDownloader {
 type ParsedData = string[];
 
 type ParsedCharacter = {
-    codepoint: number;
+    id: number;
     name: string;
     category: string;
 };
@@ -125,13 +126,13 @@ type ParsedCharacter = {
 function containsNullValues(char: Partial<ParsedCharacter>): boolean {
     return char == null
         || char.name == null
-        || char.codepoint == null
+        || char.id == null
         || char.category == null
 }
 
-function includedInBlocks(character: Pick<ParsedCharacter, "codepoint">, includedBlocks: CodepointInterval[]): boolean {
+function includedInBlocks(character: Pick<ParsedCharacter, "id">, includedBlocks: CodePointInterval[]): boolean {
     return includedBlocks.some(
-        (block) => codepointIn(character.codepoint, block)
+        (block) => codePointIn(character.id, block)
     );
 }
 
@@ -141,9 +142,10 @@ function categoryIncluded(character: Pick<ParsedCharacter, "category">, included
     );
 }
 
-function intoUnicodeCodepoint(char: ParsedCharacter): UnicodeCodepoint {
+function intoCharacter(char: ParsedCharacter): Character {
     return {
-        codepoint: String.fromCodePoint(char.codepoint).normalize("NFC"),
+        id: char.id,
+        glyph: toGlyph(char.id),
         name: char.name.toLowerCase(),
         category: char.category
     };

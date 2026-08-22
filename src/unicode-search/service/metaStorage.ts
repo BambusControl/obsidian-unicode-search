@@ -1,5 +1,5 @@
 import {RootDataStore} from "./rootDataStore";
-import {DataEvent} from "../../libraries/types/savedata/metaFragment";
+import {DataEvent} from "../../libraries/types/savedata/metaChunk";
 
 export class MetaStorage {
 

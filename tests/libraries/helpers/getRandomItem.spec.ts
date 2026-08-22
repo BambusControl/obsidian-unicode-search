@@ -1,10 +1,12 @@
-import { getRandomItem } from "src/libraries/helpers/getRandomItem";
-import { UnicodeSearchError } from "src/unicode-search/errors/unicodeSearchError";
+import {getRandomItem} from "src/libraries/helpers/getRandomItem";
+import {LibraryError} from "src/libraries/errors/libraryError";
 
 describe("getRandomItem", () => {
-    it("should throw UnicodeSearchError when array is empty", () => {
-        expect(() => getRandomItem([])).toThrow(UnicodeSearchError);
-        expect(() => getRandomItem([])).toThrow("Cannot get a random item from an empty array");
+    it("should throw LibraryError when array is empty", () => {
+        expect(() => getRandomItem([])).toThrow(LibraryError);
+        expect(() => getRandomItem([])).toThrow(
+            "Cannot get a random item from an empty array",
+        );
     });
 
     it("should return the only item when array has one element", () => {
@@ -27,7 +29,7 @@ describe("getRandomItem", () => {
     });
 
     it("should work with objects", () => {
-        const objects = [{ id: 1 }, { id: 2 }, { id: 3 }];
+        const objects = [{id: 1}, {id: 2}, {id: 3}];
         const result = getRandomItem(objects);
         expect(objects).toContain(result);
         expect(result).toHaveProperty("id");

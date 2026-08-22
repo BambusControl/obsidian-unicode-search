@@ -1,23 +1,17 @@
-import {DataFragment} from "../types/savedata/dataFragment";
-import {Char, CodepointKey} from "../types/codepoint/unicode";
+import type {DataChunk} from "../types/savedata/dataChunk";
+import type {CodePointKey} from "../types/codePoint/unicode";
 
 
-export function isTypeDataFragment(object: any): object is DataFragment {
+export function isDataChunk(object: any): object is DataChunk {
     return object != null
         && "initialized" in object
         && "version" in object
         ;
 }
 
-export function isCodepointKey(object: any): object is CodepointKey {
+export function isCodePointKey(object: any): object is CodePointKey {
     return object != null
-        && "codepoint" in object
-        && isChar(object.codepoint);
-
-}
-
-export function isChar(object: any): object is Char {
-    return object != null
-        && typeof object === "string"
+        && "id" in object
+        && typeof object.id === "number"
         ;
 }

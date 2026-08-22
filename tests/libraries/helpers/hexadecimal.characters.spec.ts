@@ -4,7 +4,7 @@ test(
     "character `b` is `0062`",
     () => {
         expect(toHexadecimal({
-            codepoint: "b",
+            id: 0x62,
         })).toBe("0062")
     }
 )

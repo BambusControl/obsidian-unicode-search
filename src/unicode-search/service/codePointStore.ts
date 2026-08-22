@@ -1,9 +1,8 @@
-import {UnicodeCodepoint} from "../../libraries/types/codepoint/unicode";
+import type {Character} from "../../libraries/types/codePoint/unicode";
 
-export interface CodepointStore {
-
+export interface CodePointStore {
     /**
      * Retrieve all characters.
      */
-    getCodepoints(): Promise<UnicodeCodepoint[]>;
+    getCharacters(): Promise<Character[]>;
 }

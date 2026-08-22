@@ -1,4 +1,4 @@
-import {UnicodeSearchError} from "../../unicode-search/errors/unicodeSearchError";
+import {LibraryError} from "../errors/libraryError";
 
 export class PersistCache<T> {
     private value?: T;
@@ -6,7 +6,7 @@ export class PersistCache<T> {
     constructor(
         private readonly getCallback: () => Promise<T>,
         private readonly persistCallback: (value: T) => Promise<void>,
-        initialValue?: T
+        initialValue?: T,
     ) {
         this.value = initialValue;
     }
@@ -20,12 +20,12 @@ export class PersistCache<T> {
     }
 
     set(value: T) {
-        this.value = value
+        this.value = value;
     }
 
     async persist(): Promise<T> {
         if (this.value == null) {
-            throw new UnicodeSearchError("Refuse to persist a null value");
+            throw new LibraryError("Refuse to persist a null value");
         }
 
         await this.persistCallback(this.value);

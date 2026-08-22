@@ -1,24 +1,21 @@
-import {PersistCache} from "../../libraries/types/persistCache";
-import {SaveData} from "../../libraries/types/savedata/saveData";
-import {FilterFragment} from "../../libraries/types/savedata/filterFragment";
-import {UnicodeFragment} from "../../libraries/types/savedata/unicodeFragment";
-import {CharacterUseFragment} from "../../libraries/types/savedata/usageFragment";
-import {FavoritesFragment} from "../../libraries/types/savedata/favoritesFragment";
-import {RootDataStore} from "./rootDataStore";
-import {MetaFragment} from "../../libraries/types/savedata/metaFragment";
+import type {PersistCache} from "../../libraries/types/persistCache";
+import type {SaveData} from "../../libraries/types/savedata/saveData";
+import type {PoolChunk} from "../../libraries/types/savedata/poolChunk";
+import type {CharacterChunk} from "../../libraries/types/savedata/characterChunk";
+import type {UseHistoryChunk} from "../../libraries/types/savedata/useHistoryChunk";
+import type {FavoriteChunk} from "../../libraries/types/savedata/favoriteChunk";
+import type {RootDataStore} from "./rootDataStore";
+import type {MetaChunk} from "../../libraries/types/savedata/metaChunk";
 
 export class RootPluginDataStorage implements RootDataStore {
-
-    constructor(
-        private readonly storedData: PersistCache<SaveData>,
-    ) {
+    constructor(private readonly storedData: PersistCache<SaveData>) {
     }
 
-    async getMeta(): Promise<MetaFragment> {
+    async getMeta(): Promise<MetaChunk> {
         return (await this.storedData.get()).meta;
     }
 
-    async overwriteMeta(data: MetaFragment): Promise<MetaFragment> {
+    async overwriteMeta(data: MetaChunk): Promise<MetaChunk> {
         const mergedData = await this.mergeData({
             meta: data,
         });
@@ -26,11 +23,11 @@ export class RootPluginDataStorage implements RootDataStore {
         return mergedData.meta;
     }
 
-    async getUnicode(): Promise<UnicodeFragment> {
+    async getCharacters(): Promise<CharacterChunk> {
         return (await this.storedData.get()).characters;
     }
 
-    async overwriteUnicode(data: UnicodeFragment): Promise<UnicodeFragment> {
+    async overwriteCharacters(data: CharacterChunk): Promise<CharacterChunk> {
         const mergedData = await this.mergeData({
             characters: data,
         });
@@ -38,35 +35,37 @@ export class RootPluginDataStorage implements RootDataStore {
         return mergedData.characters;
     }
 
-    async getFilter(): Promise<FilterFragment> {
-        return (await this.storedData.get()).filter
+    async getPool(): Promise<PoolChunk> {
+        return (await this.storedData.get()).pool;
     }
 
-    async overwriteFilter(filter: FilterFragment): Promise<FilterFragment> {
+    async overwritePool(pool: PoolChunk): Promise<PoolChunk> {
         const mergedData = await this.mergeData({
-            filter: filter,
+            pool: pool,
         });
 
-        return mergedData.filter;
+        return mergedData.pool;
     }
 
-    async getUsage(): Promise<CharacterUseFragment> {
-        return (await this.storedData.get()).usage;
+    async getUseHistory(): Promise<UseHistoryChunk> {
+        return (await this.storedData.get()).useHistory;
     }
 
-    async overwriteUsage(usage: CharacterUseFragment): Promise<CharacterUseFragment> {
+    async overwriteUseHistory(
+        useHistory: UseHistoryChunk,
+    ): Promise<UseHistoryChunk> {
         const mergedData = await this.mergeData({
-            usage: usage,
+            useHistory: useHistory,
         });
 
-        return mergedData.usage;
+        return mergedData.useHistory;
     }
 
-    async getFavorites(): Promise<FavoritesFragment> {
+    async getFavorites(): Promise<FavoriteChunk> {
         return (await this.storedData.get()).favorites;
     }
 
-    async overwriteFavorites(favorites: FavoritesFragment): Promise<FavoritesFragment> {
+    async overwriteFavorites(favorites: FavoriteChunk): Promise<FavoriteChunk> {
         const mergedData = await this.mergeData({
             favorites: favorites,
         });
