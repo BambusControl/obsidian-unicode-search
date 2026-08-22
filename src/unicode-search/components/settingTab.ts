@@ -319,7 +319,7 @@ export class SettingTab extends PluginSettingTab {
         interval: CodePointInterval,
     ): DocumentFragment {
         parent
-            .createSpan({cls: ["character-codePoint", "monospace"]})
+            .createSpan({cls: ["character-code-point", "monospace"]})
             .setText(
                 `${asHexadecimal(interval.start)}－${asHexadecimal(interval.end)}`,
             );

@@ -92,7 +92,7 @@ export abstract class FuzzySearchModal extends SuggestModal<MetaCharacterSearchR
         }); */
 
         const codePoint = matches.createDiv({
-            cls: "character-codePoint",
+            cls: "character-code-point",
         });
 
         renderMatches(

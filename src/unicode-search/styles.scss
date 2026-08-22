@@ -40,7 +40,7 @@
                 text-transform: capitalize;
             }
 
-            & > .character-codepoint {
+            & > .character-code-point {
                 color: var(--icon-color);
                 font-family: var(--font-monospace), monospace;
                 font-size: 0.7em;
@@ -306,7 +306,7 @@
             font-family: var(--font-monospace) monospace;
         }
 
-        .character-codepoint {
+        .character-code-point {
             letter-spacing: 0.055em;
             text-transform: uppercase;
             font-size: var(--code-size);
