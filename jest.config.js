@@ -4,6 +4,6 @@ module.exports = {
     testEnvironment: "node",
     modulePaths: ["<rootDir>"],
     moduleNameMapper: {
-        "^obsidian$": "<rootDir>/__mocks__/obsidian.ts",
+        "^obsidian$": "<rootDir>/tests/mocks/obsidian.ts",
     },
 };
