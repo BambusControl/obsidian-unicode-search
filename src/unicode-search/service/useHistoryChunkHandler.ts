@@ -39,7 +39,7 @@ export class UseHistoryChunkHandler implements ChunkHandler<UseHistoryChunk> {
                 lastUse: codepoint.lastUse,
                 timesUsed: codepoint.useCount,
             }));
-            updatedData.version = "0.7.3-NEXT";
+            updatedData.version = "0.7.0";
         }
 
         return updatedData;
