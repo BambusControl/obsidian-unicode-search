@@ -13,10 +13,9 @@ export class FavoriteChunkHandler implements ChunkHandler<FavoriteChunk> {
         console.info("Initializing favorites");
 
         return {
+            codePoints: [],
             ...chunk,
             initialized: true,
-            version: CURRENT_DATA_VERSION,
-            codePoints: [],
         };
     }
 

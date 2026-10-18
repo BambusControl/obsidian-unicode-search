@@ -12,10 +12,10 @@ export class MetaChunkHandler implements ChunkHandler<MetaChunk> {
         console.info("Initializing metadata");
 
         return {
+            events: [],
             ...chunk,
             pluginVersion: CURRENT_PLUGIN_VERSION,
             initialized: true,
-            events: [],
         };
     }
 

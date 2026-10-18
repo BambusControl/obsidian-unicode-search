@@ -17,10 +17,9 @@ export class UseHistoryChunkHandler implements ChunkHandler<UseHistoryChunk> {
         console.info("Initializing usage");
 
         return {
+            codePoints: [],
             ...chunk,
             initialized: true,
-            version: CURRENT_DATA_VERSION,
-            codePoints: [],
         };
     }
 

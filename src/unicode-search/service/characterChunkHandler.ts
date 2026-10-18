@@ -21,10 +21,9 @@ export class CharacterChunkHandler implements ChunkHandler<CharacterChunk> {
         console.info("Initializing characters");
 
         return {
+            codePoints: [],
             ...chunk,
             initialized: true,
-            version: CURRENT_DATA_VERSION,
-            codePoints: [],
         };
     }
 

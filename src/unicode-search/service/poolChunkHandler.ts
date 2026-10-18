@@ -19,9 +19,6 @@ export class PoolChunkHandler implements ChunkHandler<PoolChunk> {
         console.info("Initializing filter");
 
         return {
-            ...chunk,
-            initialized: true,
-            version: CURRENT_DATA_VERSION,
             unicode: {
                 planes: UNICODE_PLANES_ALL.map(plane => ({
                     ...plane.interval,
@@ -37,7 +34,9 @@ export class PoolChunkHandler implements ChunkHandler<PoolChunk> {
                         included: DATA_DEFAULTS.categories.includes(group.abbreviation),
                     }))
                 })),
-            }
+            },
+            ...chunk,
+            initialized: true,
         }
     }
 
