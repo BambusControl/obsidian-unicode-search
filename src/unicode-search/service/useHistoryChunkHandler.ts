@@ -25,7 +25,8 @@ export class UseHistoryChunkHandler implements ChunkHandler<UseHistoryChunk> {
     }
 
     async updateData(chunk: UseHistoryChunk, _: Set<DataEvent>): Promise<UseHistoryChunk> {
-        if (chunk.version !== "0.7.0") {
+        if (chunk.version === CURRENT_DATA_VERSION) {
+            /* No-op */
             return chunk;
         }
 
