@@ -1,15 +1,13 @@
 {
   "meta": {
     "initialized": true,
-    "version": "0.7.0",
-    "pluginVersion": "0.7.0",
-    "events": [
-      "download_characters"
-    ]
+    "version": "0.7.4",
+    "pluginVersion": "0.7.4",
+    "events": []
   },
-  "filter": {
+  "pool": {
     "initialized": true,
-    "version": "0.7.0",
+    "version": "0.7.4",
     "unicode": {
       "planes": [
         {
@@ -1856,129 +1854,141 @@
   },
   "characters": {
     "initialized": true,
-    "version": "0.7.0",
-    "codepoints": [
+    "version": "0.7.4",
+    "codePoints": [
       {
-        "codepoint": "A",
+        "id": 65,
+        "glyph": "A",
         "name": "LATIN CAPITAL LETTER A",
         "category": "Lu"
       },
       {
-        "codepoint": "é",
+        "id": 233,
+        "glyph": "é",
         "name": "LATIN SMALL LETTER E WITH ACUTE",
         "category": "Ll"
       },
       {
-        "codepoint": "α",
+        "id": 945,
+        "glyph": "α",
         "name": "GREEK SMALL LETTER ALPHA",
         "category": "Ll"
       },
       {
-        "codepoint": "Я",
+        "id": 1071,
+        "glyph": "Я",
         "name": "CYRILLIC CAPITAL LETTER YA",
         "category": "Lu"
       },
       {
-        "codepoint": "א",
+        "id": 1488,
+        "glyph": "א",
         "name": "HEBREW LETTER ALEF",
         "category": "Lo"
       },
       {
-        "codepoint": "٠",
+        "id": 1632,
+        "glyph": "٠",
         "name": "ARABIC-INDIC DIGIT ZERO",
         "category": "Nd"
       },
       {
-        "codepoint": "ᏸ",
+        "id": 5112,
+        "glyph": "ᏸ",
         "name": "CHEROKEE SMALL LETTER YE",
         "category": "Ll"
       },
       {
-        "codepoint": "—",
+        "id": 8212,
+        "glyph": "—",
         "name": "EM DASH",
         "category": "Pd"
       },
       {
-        "codepoint": "•",
+        "id": 8226,
+        "glyph": "•",
         "name": "BULLET",
         "category": "Po"
       },
       {
-        "codepoint": "≠",
+        "id": 8800,
+        "glyph": "≠",
         "name": "NOT EQUAL TO",
         "category": "Sm"
       },
       {
-        "codepoint": "✓",
+        "id": 10003,
+        "glyph": "✓",
         "name": "CHECK MARK",
         "category": "So"
       },
       {
-        "codepoint": "中",
+        "id": 20013,
+        "glyph": "中",
         "name": "CJK UNIFIED IDEOGRAPH-4E2D",
         "category": "Lo"
       }
     ]
   },
-  "usage": {
+  "useHistory": {
     "initialized": true,
-    "version": "0.7.0",
-    "codepoints": [
+    "version": "0.7.4",
+    "codePoints": [
       {
-        "codepoint": "≠",
-        "firstUsed": "2024-02-03T09:14:22.000Z",
-        "lastUsed": "2025-06-27T21:03:47.000Z",
-        "useCount": 42
+        "id": 8800,
+        "firstUse": "2024-02-03T09:14:22.000Z",
+        "lastUse": "2025-06-27T21:03:47.000Z",
+        "timesUsed": 42
       },
       {
-        "codepoint": "é",
-        "firstUsed": "2023-12-11T16:45:09.000Z",
-        "lastUsed": "2025-01-08T11:27:33.000Z",
-        "useCount": 15
+        "id": 233,
+        "firstUse": "2023-12-11T16:45:09.000Z",
+        "lastUse": "2025-01-08T11:27:33.000Z",
+        "timesUsed": 15
       },
       {
-        "codepoint": "—",
-        "firstUsed": "2024-08-01T08:00:00.000Z",
-        "lastUsed": "2025-04-14T19:52:10.000Z",
-        "useCount": 12
+        "id": 8212,
+        "firstUse": "2024-08-01T08:00:00.000Z",
+        "lastUse": "2025-04-14T19:52:10.000Z",
+        "timesUsed": 12
       },
       {
-        "codepoint": "✓",
-        "firstUsed": "2024-05-20T13:37:00.000Z",
-        "lastUsed": "2024-11-02T10:11:05.000Z",
-        "useCount": 7
+        "id": 10003,
+        "firstUse": "2024-05-20T13:37:00.000Z",
+        "lastUse": "2024-11-02T10:11:05.000Z",
+        "timesUsed": 7
       },
       {
-        "codepoint": "α",
-        "firstUsed": "2024-03-15T17:24:51.000Z",
-        "lastUsed": "2024-03-19T22:58:14.000Z",
-        "useCount": 3
+        "id": 945,
+        "firstUse": "2024-03-15T17:24:51.000Z",
+        "lastUse": "2024-03-19T22:58:14.000Z",
+        "timesUsed": 3
       }
     ]
   },
   "favorites": {
     "initialized": true,
-    "version": "0.7.0",
-    "codepoints": [
+    "version": "0.7.4",
+    "codePoints": [
       {
-        "codepoint": "中",
+        "id": 20013,
         "added": "2024-09-30T12:00:00.000Z",
-        "hotkey": false
+        "quickInsertEnabled": false
       },
       {
-        "codepoint": "✓",
+        "id": 10003,
         "added": "2024-05-20T13:40:12.000Z",
-        "hotkey": true
+        "quickInsertEnabled": true
       },
       {
-        "codepoint": "α",
+        "id": 945,
         "added": "2024-03-15T17:30:44.000Z",
-        "hotkey": false
+        "quickInsertEnabled": false
       },
       {
-        "codepoint": "≠",
+        "id": 8800,
         "added": "2024-02-03T09:20:31.000Z",
-        "hotkey": true
+        "quickInsertEnabled": true
       }
     ]
   }
