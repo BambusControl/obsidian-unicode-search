@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "initialized": true,
+    "version": "0.4.0"
+  },
+  "data": [
+    {
+      "name": "LATIN CAPITAL LETTER A",
+      "char": "A"
+    },
+    {
+      "name": "LATIN SMALL LETTER E WITH ACUTE",
+      "char": "é",
+      "useCount": 9,
+      "lastUsed": 1665498600000
+    },
+    {
+      "name": "GREEK SMALL LETTER ALPHA",
+      "char": "α"
+    },
+    {
+      "name": "CYRILLIC CAPITAL LETTER YA",
+      "char": "Я"
+    },
+    {
+      "name": "HEBREW LETTER ALEF",
+      "char": "א"
+    },
+    {
+      "name": "ARABIC-INDIC DIGIT ZERO",
+      "char": "٠"
+    },
+    {
+      "name": "CHEROKEE SMALL LETTER YE",
+      "char": "ᏸ"
+    },
+    {
+      "name": "EM DASH",
+      "char": "—",
+      "useCount": 21,
+      "lastUsed": 1674151531000
+    },
+    {
+      "name": "BULLET",
+      "char": "•"
+    },
+    {
+      "name": "NOT EQUAL TO",
+      "char": "≠",
+      "useCount": 5,
+      "lastUsed": 1667380367000,
+      "pinned": 1
+    },
+    {
+      "name": "CHECK MARK",
+      "char": "✓",
+      "useCount": 2,
+      "lastUsed": 1677573855000,
+      "pinned": 2
+    },
+    {
+      "name": "CJK UNIFIED IDEOGRAPH-4E2D",
+      "char": "中"
+    }
+  ]
+}
