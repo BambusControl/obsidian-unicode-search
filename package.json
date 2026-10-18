@@ -23,7 +23,7 @@
     "papaparse": "^5.5.1"
   },
   "devDependencies": {
-    "@types/jest": "^29",
+    "@types/jest": "^30.0.0",
     "@types/node": "^18",
     "@types/papaparse": "^5",
     "@typescript-eslint/eslint-plugin": "^8",
@@ -31,11 +31,16 @@
     "builtin-modules": "^4",
     "esbuild": "^0",
     "esbuild-sass-plugin": "^3",
-    "jest": "^29",
-    "obsidian": "1.8.7",
+    "jest": "^30.5.2",
+    "obsidian": "^1.14.4",
     "ts-jest": "^29",
     "tslib": "^2",
     "typescript": "^5",
     "typescript-json-schema": "^0"
+  },
+  "overrides": {
+    "@istanbuljs/load-nyc-config": {
+      "js-yaml": "^4.1.0"
+    }
   }
 }
