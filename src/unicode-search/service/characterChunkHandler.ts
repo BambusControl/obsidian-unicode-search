@@ -65,7 +65,7 @@ export class CharacterChunkHandler implements ChunkHandler<CharacterChunk> {
                 name: codepoint.name,
                 category: codepoint.category,
             }));
-            updatedData.version = "0.7.0";
+            updatedData.version = "0.7.4";
         }
 
         return updatedData;

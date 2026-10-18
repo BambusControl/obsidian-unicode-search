@@ -35,7 +35,7 @@ export class FavoriteChunkHandler implements ChunkHandler<FavoriteChunk> {
                 added: codepoint.added,
                 quickInsertEnabled: codepoint.hotkey,
             }));
-            updatedData.version = "0.7.0";
+            updatedData.version = "0.7.4";
         }
 
         return updatedData;
